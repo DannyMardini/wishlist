@@ -1,0 +1,17 @@
+WishlistUser:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true, unique: false }
+    is_male: { type: boolean, notnull: false, default: 1 }
+    age: { type: integer, notnull: true, default: 18 }
+    email: { type: string(255), notnull: true }
+
+WishlistItem:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+    price: { type: integer, notnull: true, unique: false }
+    is_public: { type: boolean, notnull: true, default: 1 }
+    user_id: { type: integer, notnull: true }
+  relations:
+    WishlistUser: { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: WishlistItems }

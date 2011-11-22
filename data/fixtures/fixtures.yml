@@ -15,3 +15,33 @@
 #     password: changeme
 #     name:     Kris Wallsmith
 #     email:    kris.wallsmith@symfony-project.com
+
+
+# Users
+WishlistUser:
+  wishlist_user_danny:
+    name: Danny Mardini
+    is_male: true
+    age: 25
+    email: dannymardini@gmail.com
+
+  wishlist_user_andrea:
+    name: Andrea Coba
+    is_male: false
+    age: 25
+    email: andreacoba@gmail.com
+
+
+# Items
+WishlistItem:
+  wishlistItem_ball:
+    name: bouncy ball
+    price: 500
+    is_public: true
+    WishlistUser: wishlist_user_danny
+
+  wishlistItem_purse:
+    name: purse
+    price: 1000
+    is_public: true
+    WishlistUser: wishlist_user_andrea
