@@ -59,7 +59,7 @@ abstract class BaseWishlistItem extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('WishlistUser', array(
              'local' => 'user_id',
-             'foreign' => 'id',
+             'foreign' => 'wishlistUser_id',
              'onDelete' => 'CASCADE'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();

@@ -5,6 +5,35 @@ WishlistUser:
     is_male: { type: boolean, notnull: false, default: 1 }
     age: { type: integer, notnull: true, default: 18 }
     email: { type: string(255), notnull: true }
+    wishlistuser_id: { type: integer, autoincrement: true, primary: true }
+  relations:
+    Friendships:
+      class: Friendship
+      local: wishlistuser_id
+      foreign: friendship_id
+      refClass: UserFriendship
+
+Friendship:
+  tableName: friendships
+  columns:
+    name: string(512)
+    friendship_id: { type: integer, primary: true, autoincrement: true }
+  relations:
+    WishlistUsers:
+      class: WishlistUser
+      local: friendship_id
+      foreign: wishlistuser_id
+      refClass: UserFriendship
+
+UserFriendship:
+  columns:
+    wishlistuser_id:
+      type: integer
+      primary: true
+    friendship_id:
+      type: integer
+      primary: true
+
 
 WishlistItem:
   actAs: { Timestampable: ~ }
@@ -14,4 +43,36 @@ WishlistItem:
     is_public: { type: boolean, notnull: true, default: 1 }
     user_id: { type: integer, notnull: true }
   relations:
-    WishlistUser: { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: WishlistItems }
+    WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: WishlistItems }
+
+#User:
+#  columns:
+#    name: { type: string(255), notnull: true, unique: false }
+#    user_id: { type: integer, primary: true }
+#  relations:
+#    Groups:
+#      class: Group
+#      local: user_id
+#      foreign: group_id
+#      refClass: UserGroup
+
+#Group:
+#  tableName: groups
+#  columns:
+#    name: string(30)
+#    group_id: { type: integer, primary: true }
+#  relations:
+#    Users:
+#      class: User
+#      local: group_id
+#      foreign: user_id
+#      refClass: UserGroup
+
+#UserGroup:
+#  columns:
+#    user_id:
+#      type: integer
+#      primary: true
+#    group_id:
+#      type: integer
+#      primary: true

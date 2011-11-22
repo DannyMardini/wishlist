@@ -9,18 +9,24 @@
  * @property boolean $is_male
  * @property integer $age
  * @property string $email
+ * @property integer $wishlistuser_id
+ * @property Doctrine_Collection $Friendships
  * @property Doctrine_Collection $WishlistItems
  * 
- * @method string              getName()          Returns the current record's "name" value
- * @method boolean             getIsMale()        Returns the current record's "is_male" value
- * @method integer             getAge()           Returns the current record's "age" value
- * @method string              getEmail()         Returns the current record's "email" value
- * @method Doctrine_Collection getWishlistItems() Returns the current record's "WishlistItems" collection
- * @method WishlistUser        setName()          Sets the current record's "name" value
- * @method WishlistUser        setIsMale()        Sets the current record's "is_male" value
- * @method WishlistUser        setAge()           Sets the current record's "age" value
- * @method WishlistUser        setEmail()         Sets the current record's "email" value
- * @method WishlistUser        setWishlistItems() Sets the current record's "WishlistItems" collection
+ * @method string              getName()            Returns the current record's "name" value
+ * @method boolean             getIsMale()          Returns the current record's "is_male" value
+ * @method integer             getAge()             Returns the current record's "age" value
+ * @method string              getEmail()           Returns the current record's "email" value
+ * @method integer             getWishlistuserId()  Returns the current record's "wishlistuser_id" value
+ * @method Doctrine_Collection getFriendships()     Returns the current record's "Friendships" collection
+ * @method Doctrine_Collection getWishlistItems()   Returns the current record's "WishlistItems" collection
+ * @method WishlistUser        setName()            Sets the current record's "name" value
+ * @method WishlistUser        setIsMale()          Sets the current record's "is_male" value
+ * @method WishlistUser        setAge()             Sets the current record's "age" value
+ * @method WishlistUser        setEmail()           Sets the current record's "email" value
+ * @method WishlistUser        setWishlistuserId()  Sets the current record's "wishlistuser_id" value
+ * @method WishlistUser        setFriendships()     Sets the current record's "Friendships" collection
+ * @method WishlistUser        setWishlistItems()   Sets the current record's "WishlistItems" collection
  * 
  * @package    wishlist
  * @subpackage model
@@ -53,13 +59,23 @@ abstract class BaseWishlistUser extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
+        $this->hasColumn('wishlistuser_id', 'integer', null, array(
+             'type' => 'integer',
+             'autoincrement' => true,
+             'primary' => true,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Friendship as Friendships', array(
+             'refClass' => 'UserFriendship',
+             'local' => 'wishlistuser_id',
+             'foreign' => 'friendship_id'));
+
         $this->hasMany('WishlistItem as WishlistItems', array(
-             'local' => 'id',
+             'local' => 'wishlistUser_id',
              'foreign' => 'user_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();

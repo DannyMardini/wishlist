@@ -31,7 +31,6 @@ WishlistUser:
     age: 25
     email: andreacoba@gmail.com
 
-
 # Items
 WishlistItem:
   wishlistItem_ball:
@@ -45,3 +44,32 @@ WishlistItem:
     price: 1000
     is_public: true
     WishlistUser: wishlist_user_andrea
+
+Friendship:
+  andrea_danny_friends:
+    name: Andrea and Danny
+
+UserFriendship:
+  andrea_danny_friend:
+    wishlistuser_id: 1
+    friendship_id: 1
+
+  danny_andrea_friend:
+    wishlistuser_id: 2
+    friendship_id: 1
+
+#test
+#User:
+#  user_a:
+#    user_id: 1
+#    name: some dude
+
+#Group:
+#  group_a:
+#    group_id: 2
+#    name: Group A
+
+#UserGroup:
+#  user_group_a:
+#    user_id: 1
+#    group_id: 2
