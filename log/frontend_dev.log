@@ -1,0 +1,17 @@
+Nov 21 16:47:05 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'default',  'action' => 'index',)
+Nov 21 16:47:05 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/storage/sfSessionStorage.class.php on line 93 (session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/config/sfRootConfigHandler.class.php:91))
+Nov 21 16:47:05 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 21 16:47:05 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 21 16:47:05 symfony [info] {defaultActions} Call "defaultActions->executeIndex()"
+Nov 21 16:47:05 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/controller/default/templates/indexSuccess.php"
+Nov 21 16:47:06 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/controller/default/templates/defaultLayout.php"
+Nov 21 16:47:06 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/controller/default/templates/defaultLayout.php"
+Nov 21 16:47:06 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/response/sfWebResponse.class.php on line 336 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/config/sfRootConfigHandler.class.php:91))
+Nov 21 16:47:06 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Nov 21 16:47:06 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/response/sfWebResponse.class.php on line 357 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/config/sfRootConfigHandler.class.php:91))
+Nov 21 16:47:06 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 21 16:47:06 symfony [info] {sfWebDebugLogger} Configuration 73.52 ms (9)
+Nov 21 16:47:06 symfony [info] {sfWebDebugLogger} Factories 71.28 ms (1)
+Nov 21 16:47:06 symfony [info] {sfWebDebugLogger} Action "default/index" 0.09 ms (1)
+Nov 21 16:47:06 symfony [info] {sfWebDebugLogger} View "Success" for "default/index" 9.97 ms (1)
+Nov 21 16:47:06 symfony [info] {sfWebResponse} Send content (29002 o)

@@ -1,14 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
+<!DOCTYPE HTML>
+
+  <html>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
-    <?php include_title() ?>
-    <link rel="shortcut icon" href="/favicon.ico" />
+   
+    <!-- <link rel="shortcut icon" href="/favicon.ico" /> -->
+
+    <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'/>
+    <link type="text/css" href="css/custom-theme/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+    <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+    
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
-  </head>
-  <body>
-    <?php echo $sf_content ?>
-  </body>
+    <head><title><?php include_slot("title", "Wishlist") ?></title></head>
+    
+    <body><?php echo $sf_content ?></body>
 </html>

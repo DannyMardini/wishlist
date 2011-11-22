@@ -1,0 +1,99 @@
+/* 
+    Document   : frontPage
+    Created on : Nov 21, 2011, 5:12:07 PM
+    Author     : andreacoba
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body {
+    /*background-image: url(/images/black-white-stripes.gif);*/
+    background-color: black;
+    margin: 10px 10px 10px 10px;
+    position: relative;
+}
+
+/* Make HTML 5 elements display block-level for consistent styling */
+#signIn, #registrationContainer, article, footer, address, #imageContainer {
+        display: block;
+}
+
+#signInContainer {
+    background-color: white;
+    height: 20px;
+    text-align: right;
+    width: 100%;
+}
+
+#registrationContainer {
+    background-color: yellow;
+    width: 100%;
+}
+
+#imageContainer{
+    width: 35%;
+    background-color: white;
+    float:left;
+    background-image: url(/images/gift.jpg);
+    background-size: 88%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#registrationContainer, #imageContainer {
+    height: 400px;
+}
+
+footer {
+    background-color: red;
+    height: 100px;
+    width: 100%;
+}
+
+#aboutLink:visited, #aboutLink:link, #aboutLink:active, #signInLink:visited, #signInLink:link, #signInLink:active{
+    color: gray;
+    text-decoration: none;
+}
+
+#signInLink:hover, #aboutLink:hover {
+    color: silver;
+}
+
+#logoContainer {
+    height: 50%;
+    background-color: white;
+    width: 100%;
+}
+
+#registrationForm {
+    height: 44%;
+}
+
+#name {
+    font-family: 'Satisfy', cursive; 
+    font-size: 78px;
+}
+
+#catchphrase {
+    font-family: 'Gruppo', sans-serif; 
+    font-size: 28px;
+    text-indent: 30px;
+}
+
+.toggler { 
+    width: 80%;
+    padding-left: 35%;
+    height: 100%; 
+}
+
+#effect { 
+    width: 80%;
+    height: 100%; 
+}
+
+
