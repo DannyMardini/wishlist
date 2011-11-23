@@ -1,20 +1,25 @@
 
-var togglerIsExpanded = false;
-var togglerTimeoutTime = 100;
 
 $(document).ready(function()
 {   
+    setupCSS();
+        
+    
     // hide toggle windows
     hideToggleWindows();
     
     // hover effects
-    $('#requestInviteButton, #loginButton').hover(
-            function() { $(this).addClass('ui-state-hover'); }, 
-            function() { $(this).removeClass('ui-state-hover'); }
-     );         
+    $('#requestInviteButton, #loginButton, #submitRequestInvite, #submitLogin').hover(
+            function() {$(this).addClass('ui-state-hover');}, 
+            function() {$(this).removeClass('ui-state-hover');}
+     ); 
+         
+    $('#submitRequestInvite').click(function(){
+        
+    });   
                  
     // set effect from select button
-    $("#requestInviteButton, #loginButton").click(function() {
+    $("#requestInviteButton, #loginButton, #loginLink").click(function() {
         var thisId = $(this).attr('id');
         var activeToggler_SelectorId = "";
         var hiddenToggler_SelectorId = "";
@@ -28,19 +33,23 @@ $(document).ready(function()
             activeToggler_SelectorId = "#loginToggleWindow";
             hiddenToggler_SelectorId = "#requestInviteToggleWindow";
         }
-                            
-            
-        if(togglerIsExpanded)
-        {
-            $(hiddenToggler_SelectorId).hide("clip",{ direction: "horizontal" },500);
-            togglerTimeoutTime = 1000;
-        }
-        
-        setTimeout('runEffect("' + activeToggler_SelectorId + '");', togglerTimeoutTime);
-        togglerIsExpanded = true;
+                                                
+        $(hiddenToggler_SelectorId).hide();        
+        runEffect(activeToggler_SelectorId);        
     }); 
 
 });
+
+
+function setupCSS()
+{
+    $(':input').addClass("ui-state-default");
+    $(':input').addClass("ui-corner-all");
+    
+    $('#requestInviteButton, #loginButton').addClass("ui-state-default");
+    $('#requestInviteButton, #loginButton').addClass("ui-corner-all");
+}
+
 
 // hide the toggle windows
 function hideToggleWindows()
@@ -52,6 +61,6 @@ function hideToggleWindows()
 
 // run the currently selected effect
 function runEffect(togglerWindow) {        
-        $(togglerWindow ).show( "clip",{ direction: "horizontal" }, 1000);
+        $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
 };     
 
