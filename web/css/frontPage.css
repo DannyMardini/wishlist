@@ -11,6 +11,10 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
+:invalid {
+  border: 2px solid #ff0000;
+}
+
 body {
     /*background-image: url(/images/black-white-stripes.gif);*/
     background-color: black;
@@ -19,11 +23,11 @@ body {
 }
 
 /* Make HTML 5 elements display block-level for consistent styling */
-#signIn, #registrationContainer, article, footer, address, #imageContainer {
+#login, #registrationContainer, article, footer, address, #imageContainer {
         display: block;
 }
 
-#signInContainer {
+#loginContainer {
     background-color: white;
     height: 20px;
     text-align: right;
@@ -50,17 +54,23 @@ body {
 }
 
 footer {
-    background-color: red;
-    height: 100px;
+    background-color: black;
+    height: 20px;
     width: 100%;
 }
 
-#aboutLink:visited, #aboutLink:link, #aboutLink:active, #signInLink:visited, #signInLink:link, #signInLink:active{
+#footerDetails {
+    text-align: center;
+    vertical-align: bottom;
+    padding-top: 10px;
+}
+
+#aboutLink:visited, #aboutLink:link, #aboutLink:active, #loginLink:visited, #loginLink:link, #loginLink:active{
     color: gray;
     text-decoration: none;
 }
 
-#signInLink:hover, #aboutLink:hover {
+#loginLink:hover, #aboutLink:hover {
     color: silver;
 }
 
@@ -71,7 +81,7 @@ footer {
 }
 
 #registrationForm {
-    height: 65%;
+    height: 55%;
 }
 
 #name {
@@ -93,11 +103,11 @@ footer {
 }
 
 #requestInviteToggleWindow, #loginToggleWindow { 
-   /* width: 240px; height: 135px; */
-    width: 60%;
+    width: 500px;
     height: 90%;
     padding: 0.4em; 
     position: relative;
+    background-color: white;
 }
 
 #requestInviteButton, #loginButton { 
@@ -109,6 +119,23 @@ footer {
     margin: 0; 
     padding: 0.4em; 
     text-align: center; 
+}
+
+input {
+    display: block;
+    width: 300px;
+    height: 30px;
+    font-size: 15px;
+}
+
+#submitLogin, #submitRequestInvite {    
+    width: 200px;
+}
+
+label {
+    display: block;
+    font-weight:bolder;
+    width: 200px;
 }
 
 

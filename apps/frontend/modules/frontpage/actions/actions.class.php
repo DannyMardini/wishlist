@@ -17,6 +17,12 @@ class frontpageActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
+      $email = $request->getPostParameter("email");
+      
+      if( $email )
+      {
+          WishlistUserTable::getInstance()->addNewUser($email);
+      }
     //$this->forward('default', 'module');
   }
 }

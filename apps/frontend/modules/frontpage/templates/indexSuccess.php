@@ -1,10 +1,10 @@
 <?php use_stylesheet('frontPage.css') ?>
 <?php use_javascript('frontPage.js') ?>
 
-<div id="signInContainer">
+<div id="loginContainer">
     <a id="aboutLink" href="#">About</a>
     <img src="/images/silverdot.gif" width="10" height="10" />
-    <a id="signInLink" href="#">Login</a>
+    <a id="loginLink" href="#">Login</a>
 </div>
 <div id="imageContainer"></div>
 <div id="registrationContainer">
@@ -13,21 +13,43 @@
         <div id="catchphrase">make your wishes come true!</div>
     </div>
     <div id="registrationForm">
-        <a href="#" id="requestInviteButton" class="ui-state-default ui-corner-all">Request Invite</a>        
-        <a href="#" id="loginButton" class="ui-state-default ui-corner-all">Login</a>
+        <br /><br />
+        <a href="#" id="requestInviteButton">Request Invite</a>        
+        <a href="#" id="loginButton">Login</a>
         <br />
         <div class="toggler">
-            <div id="requestInviteToggleWindow" class="ui-widget-content ui-corner-all">
-                <h3 class="ui-widget-header ui-corner-all">Submit Request Invite</h3>
-                
+            <div id="requestInviteToggleWindow"> 
+                <br /><br />
+                <label class="label">EMAIL:</label>
+                <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required />
+                <br />
+                <input type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" />
             </div>
-            <div id="loginToggleWindow" class="ui-widget-content ui-corner-all">
-                <h3 class="ui-widget-header ui-corner-all">Enter Login Info</h3>
-                <p>
-                       Please enter your login information.
-                </p>
+            <div id="loginToggleWindow">
+                <br /><br />
+                <label class="label">EMAIL or USERNAME:</label>
+                <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address or username" required />
+                <br />
+                <label class="label">PASSWORD:</label>
+                <input type="password" id="password" name="password" autocomplete="off" pattern="[A-Z]{1,20}[a-z]{1,20}[0-9]{1,20}" required />
+                <br />
+                <input type="submit" id="submitLogin" name="submitLogin" value="Login" />
             </div>
         </div>
     </div>
 </div>
-<footer>the footer</footer>
+<footer>
+    <div id="footerDetails">
+        <a id="aboutLink" href="#">ABOUT</a>                
+        <img src="/images/silverdot.gif" width="10" height="10" />
+        <a id="loginLink" href="#">CONTACT</a>
+        <img src="/images/silverdot.gif" width="10" height="10" />
+        <a id="loginLink" href="#">HELP</a>
+        <img src="/images/silverdot.gif" width="10" height="10" />
+        <a id="loginLink" href="#">TERMS</a>
+        <img src="/images/silverdot.gif" width="10" height="10" />
+        <a id="loginLink" href="#">PRIVACY</a>
+        <img src="/images/silverdot.gif" width="10" height="10" />
+        <a id="loginLink" href="#">JOIN OUR TEAM</a>
+    </div>
+</footer>
