@@ -13,15 +13,18 @@
         <div id="catchphrase">make your wishes come true!</div>
     </div>
     <div id="registrationForm">
-        <input type="submit" id="requestInviteButton" value="Request Invite">
-        <input type="submit" id="loginButton" value="Login">
-        <input type="text" name="date" id="date" />
+        <a href="#" id="requestInviteButton" class="ui-state-default ui-corner-all">Request Invite</a>        
+        <a href="#" id="loginButton" class="ui-state-default ui-corner-all">Login</a>
         <br />
         <div class="toggler">
-            <div id="effect" class="ui-widget-content ui-corner-all">
-                <h3 class="ui-widget-header ui-corner-all">Show</h3>
+            <div id="requestInviteToggleWindow" class="ui-widget-content ui-corner-all">
+                <h3 class="ui-widget-header ui-corner-all">Submit Request Invite</h3>
+                
+            </div>
+            <div id="loginToggleWindow" class="ui-widget-content ui-corner-all">
+                <h3 class="ui-widget-header ui-corner-all">Enter Login Info</h3>
                 <p>
-                        Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.
+                       Please enter your login information.
                 </p>
             </div>
         </div>
