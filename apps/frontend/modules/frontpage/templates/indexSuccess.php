@@ -20,20 +20,24 @@
         <div class="toggler">
             <div id="requestInviteToggleWindow"> 
                 <br /><br />
-                <label class="label">EMAIL:</label>
-                <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required />
-                <br />
-                <input type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" />
+                <form>
+                    <label class="label">EMAIL:</label>
+                    <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required />
+                    <br />
+                    <input type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" />
+                </form>
             </div>
             <div id="loginToggleWindow">
                 <br /><br />
-                <label class="label">EMAIL or USERNAME:</label>
-                <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address or username" required />
-                <br />
-                <label class="label">PASSWORD:</label>
-                <input type="password" id="password" name="password" autocomplete="off" pattern="[A-Z]{1,20}[a-z]{1,20}[0-9]{1,20}" required />
-                <br />
-                <input type="submit" id="submitLogin" name="submitLogin" value="Login" />
+                <form>
+                    <label class="label">EMAIL or USERNAME:</label>
+                    <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address or username" required />
+                    <br />
+                    <label class="label">PASSWORD:</label>
+                    <input type="password" id="password" name="password" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" required />
+                    <br />
+                    <input type="submit" id="submitLogin" name="submitLogin" value="Login" />
+                </form>
             </div>
         </div>
     </div>
