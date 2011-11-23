@@ -16,4 +16,21 @@ class UserFriendshipTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('UserFriendship');
     }
+
+    public function getFriendsOf( $user_id )
+    {
+        $q = $this->createQuery("c")
+                ->where('wishlistuser_id = ?', $user_id);
+
+
+        $friendships = $q->execute();
+
+        foreach ($friendships as $friendship) {
+            $id = $friendship->getFriendshipId();
+
+            $q = $this->createQuery('c')->where('wishlistuser_id != ?', $user_id)->where('friendship_id = ?', $friendship->getFriendshipId());
+            $friendUserFriends[] = $q->execute();
+        }
+
+    }
 }

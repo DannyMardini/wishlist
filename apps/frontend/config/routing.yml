@@ -12,5 +12,9 @@ default_index:
   url:   /:module
   param: { action: index }
 
+default_index_stupid:
+  url:   /:module/
+  param: { action: index }
+
 default:
   url:   /:module/:action/*

@@ -1,0 +1,150 @@
+/* 
+    Document   : friendlist
+    Created on : Nov 22, 2011, 4:21:15 PM
+    Author     : Danny
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+#feedback { font-size: 1.4em; }
+#selectable .ui-selecting { background: #FECA40; }
+#selectable .ui-selected { background: #F39814; }
+#selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+
+#selectable li {
+    padding: 0.4em;
+    font-size: 1.4em;
+    height: 40px;
+    font-family: 'Satisfy';
+    border: solid black 1px;
+    background: #feeec2;
+}
+
+#selectable .even.ui-selectee{
+    background: whitesmoke;
+}
+
+#friendlist div {
+    border: solid black 1px;
+    padding-left: 10px;
+
+    font-family: 'Satisfy', cursive;
+}
+
+#friendlist div input{
+    float: right;
+    background-image: url("css/custom-theme/images/ui-icons_cccccc_256x240.png");
+    background-position: -32px -48px;
+    
+}
+
+#friendlist span.button {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #030202;
+    background-image: url(/css/custom-theme/images/ui-bg_inset-hard_50_030202_1x100.png);
+    background-origin: padding-box;
+    border-bottom-color: #444;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: #444;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: #444;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: #444;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    color: white;
+    cursor: pointer;
+    display: list-item;
+    float: right;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    height: 16px;
+    line-height: normal;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+    padding-bottom: 4px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 4px;
+    position: relative;
+    text-align: -webkit-auto;
+    width: 24px;
+}
+
+#friendlist span{
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url(/css/custom-theme/images/ui-icons_cccccc_256x240.png);
+    background-origin: padding-box;
+    background-position: -32px -48px;
+    background-repeat: no-repeat;
+    border-bottom-color: white;
+    border-bottom-style: none;
+    border-bottom-width: 0px;
+    border-left-color: white;
+    border-left-style: none;
+    border-left-width: 0px;
+    border-right-color: white;
+    border-right-style: none;
+    border-right-width: 0px;
+    border-top-color: white;
+    border-top-style: none;
+    border-top-width: 0px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    height: 16px;
+    line-height: normal;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-bottom: 0px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    position: static;
+    text-align: -webkit-auto;
+    text-indent: -99999px;
+    width: 16px;
+}
+
+div.friendlist_slot_even{
+    background-color: #d6f4fe;
+}
