@@ -17,7 +17,7 @@ class frontpageActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-      $email = $request->getPostParameter("email");
+      $email = $request->getPostParameter("email_addr");
       
       if( $email )
       {

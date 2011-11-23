@@ -21,7 +21,7 @@ class WishlistUserTable extends Doctrine_Table
     {
        $new_user = new WishlistUser();
        $new_user->setEmail($email);
-       $new_user->setName("some name");
+       $new_user->setName("puchito");
        $new_user->setAge(23);
        $new_user->save();
     }

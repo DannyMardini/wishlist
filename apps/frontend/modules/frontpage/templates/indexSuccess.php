@@ -20,7 +20,7 @@
         <div class="toggler">
             <div id="requestInviteToggleWindow"> 
                 <br /><br />
-                <form>
+                <form action="/frontpage" method="post">
                     <label class="label">EMAIL:</label>
                     <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required />
                     <br />
