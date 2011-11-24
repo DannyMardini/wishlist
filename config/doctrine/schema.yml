@@ -44,35 +44,3 @@ WishlistItem:
     user_id: { type: integer, notnull: true }
   relations:
     WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: WishlistItems }
-
-#User:
-#  columns:
-#    name: { type: string(255), notnull: true, unique: false }
-#    user_id: { type: integer, primary: true }
-#  relations:
-#    Groups:
-#      class: Group
-#      local: user_id
-#      foreign: group_id
-#      refClass: UserGroup
-
-#Group:
-#  tableName: groups
-#  columns:
-#    name: string(30)
-#    group_id: { type: integer, primary: true }
-#  relations:
-#    Users:
-#      class: User
-#      local: group_id
-#      foreign: user_id
-#      refClass: UserGroup
-
-#UserGroup:
-#  columns:
-#    user_id:
-#      type: integer
-#      primary: true
-#    group_id:
-#      type: integer
-#      primary: true
