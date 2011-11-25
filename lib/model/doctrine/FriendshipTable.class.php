@@ -20,13 +20,13 @@ class FriendshipTable extends Doctrine_Table
     public function getFriendsOf($user)
     {
         $q = $this->createQuery()
-                ->where('userA_id = ?', $user);
+                ->where('usera_id = ?', $user);
 
         $friendships = $q->execute();
 
         foreach ($friendships as $friendship)
         {
-            $friend_ids[] = $friendship->getUserBId();
+            $friend_ids[] = $friendship->getUserbId();
         }
 
         return WishlistUserTable::getInstance()->createQuery('w')->where('w.user_id IN ?', $friend_ids)->execute();

@@ -12,8 +12,8 @@ WishlistUser:
 Friendship:
   tableName: friendships
   columns:
-    userA_id: { type: integer, notnull: true }
-    userB_id: { type: integer, notnull: true }
+    usera_id: { type: integer, notnull: true }
+    userb_id: { type: integer, notnull: true }
 
 WishlistItem:
   actAs: { Timestampable: ~ }

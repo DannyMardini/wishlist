@@ -59,17 +59,17 @@ WishlistItem:
 
 Friendship:
   andrea_danny_friends:
-    userA_id: 1
-    userB_id: 2
+    usera_id: 1
+    userb_id: 2
   danny_andrea_friends:
-    userA_id: 2
-    userB_id: 1
+    usera_id: 2
+    userb_id: 1
   danny_steve_friends:
-    userA_id: 1
-    userB_id: 3
+    usera_id: 1
+    userb_id: 3
   steve_danny_friends:
-    userA_id: 3
-    userB_id: 1
+    usera_id: 3
+    userb_id: 1
 
 Enum:
   eMale:

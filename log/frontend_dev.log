@@ -494,3 +494,81 @@ Nov 25 12:11:34 symfony [info] {sfWebDebugLogger} Configuration 1.53 ms (8)
 Nov 25 12:11:34 symfony [info] {sfWebDebugLogger} Factories 27.15 ms (1)
 Nov 25 12:11:34 symfony [info] {sfWebDebugLogger} Action "friendlist/index" 76.57 ms (1)
 Nov 25 12:11:34 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.01 ms (2)
+Nov 25 12:20:27 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /friendlist with parameters array (  'module' => 'friendlist',  'action' => 'index',)
+Nov 25 12:20:27 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 12:20:27 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 12:20:27 symfony [info] {friendlistActions} Call "friendlistActions->executeIndex()"
+Nov 25 12:20:27 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Nov 25 12:20:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT f.id AS f__id, f.usera_id AS f__usera_id, f.userb_id AS f__userb_id FROM friendships f WHERE (userA_id = ?) - (1)
+Nov 25 12:20:27 symfony [err] {Doctrine_Record_UnknownPropertyException} Unknown record property / related component "user_b_id" on "Friendship"
+Nov 25 12:20:27 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
+Nov 25 12:20:27 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 12:20:27 symfony [info] {sfWebDebugLogger} Configuration 1.52 ms (8)
+Nov 25 12:20:27 symfony [info] {sfWebDebugLogger} Factories 27.21 ms (1)
+Nov 25 12:20:27 symfony [info] {sfWebDebugLogger} Action "friendlist/index" 74.46 ms (1)
+Nov 25 12:20:27 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.01 ms (2)
+Nov 25 12:20:29 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /friendlist with parameters array (  'module' => 'friendlist',  'action' => 'index',)
+Nov 25 12:20:29 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 12:20:29 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 12:20:29 symfony [info] {friendlistActions} Call "friendlistActions->executeIndex()"
+Nov 25 12:20:29 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Nov 25 12:20:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT f.id AS f__id, f.usera_id AS f__usera_id, f.userb_id AS f__userb_id FROM friendships f WHERE (userA_id = ?) - (1)
+Nov 25 12:20:29 symfony [err] {Doctrine_Record_UnknownPropertyException} Unknown record property / related component "user_b_id" on "Friendship"
+Nov 25 12:20:29 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
+Nov 25 12:20:29 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 12:20:29 symfony [info] {sfWebDebugLogger} Configuration 1.58 ms (8)
+Nov 25 12:20:29 symfony [info] {sfWebDebugLogger} Factories 25.70 ms (1)
+Nov 25 12:20:29 symfony [info] {sfWebDebugLogger} Action "friendlist/index" 76.87 ms (1)
+Nov 25 12:20:29 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
+Nov 25 12:20:29 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /friendlist with parameters array (  'module' => 'friendlist',  'action' => 'index',)
+Nov 25 12:20:29 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 12:20:29 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 12:20:29 symfony [info] {friendlistActions} Call "friendlistActions->executeIndex()"
+Nov 25 12:20:29 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Nov 25 12:20:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT f.id AS f__id, f.usera_id AS f__usera_id, f.userb_id AS f__userb_id FROM friendships f WHERE (userA_id = ?) - (1)
+Nov 25 12:20:29 symfony [err] {Doctrine_Record_UnknownPropertyException} Unknown record property / related component "user_b_id" on "Friendship"
+Nov 25 12:20:29 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
+Nov 25 12:20:29 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 12:20:29 symfony [info] {sfWebDebugLogger} Configuration 1.49 ms (8)
+Nov 25 12:20:29 symfony [info] {sfWebDebugLogger} Factories 27.07 ms (1)
+Nov 25 12:20:29 symfony [info] {sfWebDebugLogger} Action "friendlist/index" 77.54 ms (1)
+Nov 25 12:20:29 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.01 ms (2)
+Nov 25 12:20:30 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /friendlist with parameters array (  'module' => 'friendlist',  'action' => 'index',)
+Nov 25 12:20:30 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 12:20:30 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 12:20:30 symfony [info] {friendlistActions} Call "friendlistActions->executeIndex()"
+Nov 25 12:20:30 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Nov 25 12:20:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT f.id AS f__id, f.usera_id AS f__usera_id, f.userb_id AS f__userb_id FROM friendships f WHERE (userA_id = ?) - (1)
+Nov 25 12:20:30 symfony [err] {Doctrine_Record_UnknownPropertyException} Unknown record property / related component "user_b_id" on "Friendship"
+Nov 25 12:20:30 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
+Nov 25 12:20:30 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 12:20:30 symfony [info] {sfWebDebugLogger} Configuration 1.47 ms (8)
+Nov 25 12:20:30 symfony [info] {sfWebDebugLogger} Factories 27.02 ms (1)
+Nov 25 12:20:30 symfony [info] {sfWebDebugLogger} Action "friendlist/index" 75.97 ms (1)
+Nov 25 12:20:30 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.01 ms (2)
+Nov 25 12:20:31 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /friendlist with parameters array (  'module' => 'friendlist',  'action' => 'index',)
+Nov 25 12:20:31 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 12:20:31 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 12:20:31 symfony [info] {friendlistActions} Call "friendlistActions->executeIndex()"
+Nov 25 12:20:31 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Nov 25 12:20:31 symfony [info] {Doctrine_Connection_Statement} execute : SELECT f.id AS f__id, f.usera_id AS f__usera_id, f.userb_id AS f__userb_id FROM friendships f WHERE (userA_id = ?) - (1)
+Nov 25 12:20:31 symfony [err] {Doctrine_Record_UnknownPropertyException} Unknown record property / related component "user_b_id" on "Friendship"
+Nov 25 12:20:31 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
+Nov 25 12:20:31 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 12:20:31 symfony [info] {sfWebDebugLogger} Configuration 1.53 ms (8)
+Nov 25 12:20:31 symfony [info] {sfWebDebugLogger} Factories 27.54 ms (1)
+Nov 25 12:20:31 symfony [info] {sfWebDebugLogger} Action "friendlist/index" 79.12 ms (1)
+Nov 25 12:20:31 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
+Nov 25 12:21:00 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /friendlist with parameters array (  'module' => 'friendlist',  'action' => 'index',)
+Nov 25 12:21:00 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 12:21:00 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 12:21:00 symfony [info] {friendlistActions} Call "friendlistActions->executeIndex()"
+Nov 25 12:21:00 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Nov 25 12:21:00 symfony [info] {Doctrine_Connection_Statement} execute : SELECT f.id AS f__id, f.usera_id AS f__usera_id, f.userb_id AS f__userb_id FROM friendships f WHERE (userA_id = ?) - (1)
+Nov 25 12:21:00 symfony [err] {Doctrine_Record_UnknownPropertyException} Unknown record property / related component "user_b_id" on "Friendship"
+Nov 25 12:21:00 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
+Nov 25 12:21:00 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 12:21:00 symfony [info] {sfWebDebugLogger} Configuration 1.66 ms (8)
+Nov 25 12:21:00 symfony [info] {sfWebDebugLogger} Factories 26.89 ms (1)
+Nov 25 12:21:00 symfony [info] {sfWebDebugLogger} Action "friendlist/index" 73.95 ms (1)
+Nov 25 12:21:00 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.01 ms (2)

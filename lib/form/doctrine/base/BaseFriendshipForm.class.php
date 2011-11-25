@@ -16,14 +16,14 @@ abstract class BaseFriendshipForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'       => new sfWidgetFormInputHidden(),
-      'userA_id' => new sfWidgetFormInputText(),
-      'userB_id' => new sfWidgetFormInputText(),
+      'usera_id' => new sfWidgetFormInputText(),
+      'userb_id' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'id'       => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'userA_id' => new sfValidatorInteger(),
-      'userB_id' => new sfValidatorInteger(),
+      'usera_id' => new sfValidatorInteger(),
+      'userb_id' => new sfValidatorInteger(),
     ));
 
     $this->widgetSchema->setNameFormat('friendship[%s]');

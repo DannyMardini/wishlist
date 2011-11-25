@@ -13,13 +13,13 @@ abstract class BaseFriendshipFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'userA_id' => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'userB_id' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'usera_id' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'userb_id' => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
-      'userA_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'userB_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'usera_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'userb_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('friendship_filters[%s]');
@@ -40,8 +40,8 @@ abstract class BaseFriendshipFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'       => 'Number',
-      'userA_id' => 'Number',
-      'userB_id' => 'Number',
+      'usera_id' => 'Number',
+      'userb_id' => 'Number',
     );
   }
 }
