@@ -21,15 +21,27 @@
 WishlistUser:
   wishlist_user_danny:
     name: Danny Mardini
-    is_male: true
+    gender: 0
     age: 25
     email: dannymardini@gmail.com
 
   wishlist_user_andrea:
     name: Andrea Coba
-    is_male: false
+    gender: 1
     age: 25
     email: andreacoba@gmail.com
+
+  wishlist_user_steve:
+    name: Steven Lac
+    gender: 0
+    age: 26
+    email: SteveoCPP@gmail.com
+
+  wishlist_user_jorge:
+    name: Jorge Thatcher
+    gender: 0
+    age: 40
+    email: ndnwarrior@gmail.com
 
 # Items
 WishlistItem:
@@ -47,29 +59,22 @@ WishlistItem:
 
 Friendship:
   andrea_danny_friends:
-    name: Andrea and Danny
+    userA_id: 1
+    userB_id: 2
+  danny_andrea_friends:
+    userA_id: 2
+    userB_id: 1
+  danny_steve_friends:
+    userA_id: 1
+    userB_id: 3
+  steve_danny_friends:
+    userA_id: 3
+    userB_id: 1
 
-UserFriendship:
-  andrea_danny_friend:
-    wishlistuser_id: 1
-    friendship_id: 1
-
-  danny_andrea_friend:
-    wishlistuser_id: 2
-    friendship_id: 1
-
-#test
-#User:
-#  user_a:
-#    user_id: 1
-#    name: some dude
-
-#Group:
-#  group_a:
-#    group_id: 2
-#    name: Group A
-
-#UserGroup:
-#  user_group_a:
-#    user_id: 1
-#    group_id: 2
+Enum:
+  eMale:
+    name: "Male"
+    value: 0
+  eFemale:
+    name: "Female"
+    value: 1

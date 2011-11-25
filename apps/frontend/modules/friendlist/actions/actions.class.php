@@ -17,6 +17,7 @@ class friendlistActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-      $this->friends = UserFriendshipTable::getInstance()->getFriendsOf(1);
+      //$this->friends = FriendshipTable::getInstance()->getFriendsOf($request->getPostParameter('username'));
+      $this->friends = FriendshipTable::getInstance()->getFriendsOf(1);
   }
 }

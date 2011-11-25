@@ -1,7 +1,7 @@
 <?php
 use_stylesheet("friendlist.css");
 
-$friends = array("Andrea", "Steve", "Ryan");
+//$friends = array("Andrea", "Steve", "Ryan");
 ?>
 
 <script>

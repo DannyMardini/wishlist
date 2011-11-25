@@ -1,6 +1,6 @@
 <?php use_stylesheet('frontPage.css') ?>
 <?php use_javascript('frontPage.js') ?>
-
+<?php phpinfo() ?>
 <div id="loginContainer">
     <a id="aboutLink" href="#">About</a>
     <img src="/images/silverdot.gif" width="10" height="10" />
