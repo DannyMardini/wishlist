@@ -43,6 +43,14 @@ WishlistUser:
     age: 40
     email: ndnwarrior@gmail.com
 
+<?php for($i = 1; $i <= 10; $i++): ?>
+  wishlist_user_test<?php echo $i ?>:
+    name: test user <?php echo $i."\n" ?>
+    gender: 0
+    age: <?php echo $i."\n"?>
+    email: test<?php echo $i ?>@hotmail.com
+<?php endfor; ?>
+
 # Items
 WishlistItem:
   wishlistItem_ball:
@@ -70,6 +78,16 @@ Friendship:
   steve_danny_friends:
     usera_id: 3
     userb_id: 1
+
+<?php for($i = 5; $i < 15; $i++): ?>
+  danny_test_<?php echo $i ?>:
+    usera_id: 1
+    userb_id: <?php echo $i."\n"?>
+
+  test_danny_<?php echo $i ?>:
+    usera_id: <?php echo $i."\n"?>
+    userb_id: 1
+<?php endfor; ?>
 
 Enum:
   eMale:
