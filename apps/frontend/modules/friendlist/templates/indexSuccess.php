@@ -11,7 +11,7 @@ use_stylesheet("friendlist.css");
 
 
 <div id="friendlist">
-    <p>Friends:</p>
+    <p>Friends of <?php echo $user ?></p>
     <ul id="selectable" class="ui-selectable">
         <?php foreach ($friends as $i => $friend): ?>
         <!--<li class="<?php echo fmod($i, 2) ? "odd" : "even" ?>">-->

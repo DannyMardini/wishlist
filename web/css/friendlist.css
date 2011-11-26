@@ -44,6 +44,11 @@ li.even {
     font-family: 'Satisfy', cursive;
 }
 
+p {
+    font-family: 'Satisfy';
+    font-size: 2em;
+}
+
 #friendlist div input{
     float: right;
     background-image: url("css/custom-theme/images/ui-icons_cccccc_256x240.png");
