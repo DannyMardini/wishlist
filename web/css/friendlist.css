@@ -27,10 +27,11 @@ root {
     border: solid black 1px;
     background: #feeec2;
 }
-
+/*
 #selectable .even.ui-selectee{
     background: whitesmoke;
 }
+*/
 
 #friendlist div {
     border: solid black 1px;
