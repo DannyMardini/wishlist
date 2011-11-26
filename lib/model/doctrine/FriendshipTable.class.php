@@ -34,4 +34,18 @@ class FriendshipTable extends Doctrine_Table
             return WishlistUserTable::getInstance()->createQuery('w')->whereIn('w.wishlistuser_id', $friend_ids)->execute();
         }
     }
+
+    public function createFriendship($userA, $userB)
+    {
+        $friendshipA = new Friendship();
+        $friendshipA->setUseraId($userA);
+        $friendshipA->setUserbId($userB);
+
+        $friendshipB = new Friendship();
+        $friendshipB->setUseraId($userB);
+        $friendshipB->setUserbId($userA);
+
+        $friendshipA->save();
+        $friendshipB->save();
+    }
 }
