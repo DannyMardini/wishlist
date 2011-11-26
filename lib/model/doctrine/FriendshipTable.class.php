@@ -29,6 +29,6 @@ class FriendshipTable extends Doctrine_Table
             $friend_ids[] = $friendship->getUserbId();
         }
 
-        return WishlistUserTable::getInstance()->createQuery('w')->where('w.user_id IN ?', $friend_ids)->execute();
+        return WishlistUserTable::getInstance()->createQuery('w')->whereIn('w.wishlistuser_id', $friend_ids)->execute();
     }
 }
