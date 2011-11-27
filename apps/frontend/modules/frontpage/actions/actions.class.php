@@ -24,7 +24,7 @@ class frontpageActions extends sfActions
       $lovestring = $request->getPostParameter('lovestring');
       $loveResponse = "I love you too";
 
-      $this->renderText($loveResponse);
+      return $this->renderText($loveResponse);
   }
 
   public function executeIndex(sfWebRequest $request)
