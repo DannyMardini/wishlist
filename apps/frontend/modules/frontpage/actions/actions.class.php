@@ -16,13 +16,45 @@ class frontpageActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeIndex(sfWebRequest $request)
+  {   
+      try
+      {
+          //$isAjax = $request->isXmlHttpRequest();
+                    
+          if($request->getParameter("submitRequestInvite"))
+          {
+              $this->executeRegister($request);
+              //return "success";
+              return;
+          }
+       // $status = $request->getStatusCode();
+       // $this->showUserAdded = "yes";                
+      }
+      catch(Exception $e)
+      {
+          
+      }
+  }
+  
+  public function executeRegister(sfWebRequest $request)
+  {
+      try
+      {
+          $email = $request->getParameter("email_addr");
+
+          if( $email )
+          {
+              PendingUserTable::getInstance()->addPendingUser($email);
+          }
+      }
+      catch(Exception $e)
+      {
+          $eMessage = "test";
+      }
+  }
+  
+  public function executeLogin(sfWebRequest $request)
   {
       $email = $request->getPostParameter("email_addr");
-      
-      if( $email )
-      {
-          WishlistUserTable::getInstance()->addNewUser($email);
-      }
-    //$this->forward('default', 'module');
   }
 }

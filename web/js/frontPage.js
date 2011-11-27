@@ -1,22 +1,30 @@
 
+function displayPendingRegistrantMessage()
+{
+    alert("An invite will be sent to you soon. Thank you. - Wishlist Team");
+}
+
+// run the currently selected effect
+function runEffect(togglerWindow) {        
+        $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
+};  
 
 $(document).ready(function()
 {   
-    setupCSS();
-        
+    setupCSS();    
     
     // hide toggle windows
     hideToggleWindows();
     
     // hover effects
     $('#requestInviteButton, #loginButton, #submitRequestInvite, #submitLogin').hover(
-            function() {$(this).addClass('ui-state-hover');}, 
-            function() {$(this).removeClass('ui-state-hover');}
+        function() {$(this).addClass('ui-state-hover');}, 
+        function() {$(this).removeClass('ui-state-hover');}
      ); 
          
     $('#submitRequestInvite').click(function(){
-        
-    });   
+        ajaxCall("indexSuccess.php", {email: $("#email_addr").val()}, displayPendingRegistrantMessage, "text");
+    });  
                  
     // set effect from select button
     $("#requestInviteButton, #loginButton, #loginLink").click(function() {
@@ -34,9 +42,15 @@ $(document).ready(function()
             hiddenToggler_SelectorId = "#requestInviteToggleWindow";
         }
                                                 
-        $(hiddenToggler_SelectorId).hide();        
+        $(hiddenToggler_SelectorId).hide(); 
         runEffect(activeToggler_SelectorId);        
     }); 
+    
+    /*
+    $('showUserAdded').val()== "1" ? 
+        displayMessage("An invite will be sent to you soon. Thank you. - Wishlist Team") 
+        : alert('could not add the user');//$('messagePopUp').hide();
+    */
 
 });
 
@@ -59,8 +73,5 @@ function hideToggleWindows()
 }
 
 
-// run the currently selected effect
-function runEffect(togglerWindow) {        
-        $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
-};     
+   
 
