@@ -15,21 +15,26 @@ root {
     display: block;
 }
 #feedback { font-size: 1.4em; }
-#selectable .ui-selecting { background: #FECA40; }
-#selectable .ui-selected { background: #F39814; }
-#selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#selectable .ui-selecting { background: #d3e6f7; }
+#selectable .ui-selected {
+    /*background: #6cb2f1;*/
+    background: black;
+    font-weight: bold;
+    color: white;
+}
+#selectable { list-style-type: none; margin: 0; padding: 0; width: 40%; }
 
-#selectable li {
+li {
     padding: 0.4em;
     font-size: 1.4em;
-    height: 40px;
-    font-family: 'Satisfy';
-    border: solid black 1px;
-    background: #feeec2;
+    height: 30px;
+    font-family: 'Gruppo', san-serif;
+    border-left: solid black 1px;
+    border-bottom:  solid black 1px;
 }
 
-#selectable .even.ui-selectee{
-    background: whitesmoke;
+li.even {
+    background: #feeec2;
 }
 
 #friendlist div {

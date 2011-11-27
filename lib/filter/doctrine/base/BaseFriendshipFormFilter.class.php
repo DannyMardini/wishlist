@@ -13,13 +13,13 @@ abstract class BaseFriendshipFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name'                => new sfWidgetFormFilterInput(),
-      'wishlist_users_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'WishlistUser')),
+      'usera_id' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'userb_id' => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
-      'name'                => new sfValidatorPass(array('required' => false)),
-      'wishlist_users_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'WishlistUser', 'required' => false)),
+      'usera_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'userb_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('friendship_filters[%s]');
@@ -31,24 +31,6 @@ abstract class BaseFriendshipFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
-  public function addWishlistUsersListColumnQuery(Doctrine_Query $query, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $query
-      ->leftJoin($query->getRootAlias().'.UserFriendship UserFriendship')
-      ->andWhereIn('UserFriendship.wishlistuser_id', $values)
-    ;
-  }
-
   public function getModelName()
   {
     return 'Friendship';
@@ -57,9 +39,9 @@ abstract class BaseFriendshipFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'name'                => 'Text',
-      'friendship_id'       => 'Number',
-      'wishlist_users_list' => 'ManyKey',
+      'id'       => 'Number',
+      'usera_id' => 'Number',
+      'userb_id' => 'Number',
     );
   }
 }
