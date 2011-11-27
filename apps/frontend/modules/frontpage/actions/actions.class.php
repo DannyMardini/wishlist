@@ -15,8 +15,22 @@ class frontpageActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
+  public function executeTest(sfWebRequest $request)
+  {
+  }
+
+  public function executeProcess(sfWebRequest $request)
+  {
+      $lovestring = $request->getPostParameter('lovestring');
+      $loveResponse = "I love you too";
+
+      return $this->renderText($loveResponse);
+  }
+
   public function executeIndex(sfWebRequest $request)
-  {   
+  {
+      $this->showUserAdded = "yes";
+      /*
       try
       {
           if($request->getParameter("submitRequestInvite"))
@@ -28,6 +42,8 @@ class frontpageActions extends sfActions
       {
           
       }
+       * 
+       */
   }
   
   public function executeRegister(sfWebRequest $request)

@@ -6,7 +6,9 @@
 // paramsArray {tags: "cat", tagmode: "any", format: "json"}
 function ajaxCall(url, paramsArray, onSuccessMethod, data_type)
 {    
-    
+    $.post(url, paramsArray, function(data) {
+        alert("hullo");
+    });
 }
 
 //Browser Support Code
