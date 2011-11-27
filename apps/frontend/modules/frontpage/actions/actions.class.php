@@ -19,16 +19,10 @@ class frontpageActions extends sfActions
   {   
       try
       {
-          //$isAjax = $request->isXmlHttpRequest();
-                    
           if($request->getParameter("submitRequestInvite"))
           {
-              $this->executeRegister($request);
-              //return "success";
-              return;
-          }
-       // $status = $request->getStatusCode();
-       // $this->showUserAdded = "yes";                
+              $this->executeRegister($request);                        
+          }              
       }
       catch(Exception $e)
       {

@@ -15,5 +15,19 @@ class WishlistUserTable extends Doctrine_Table
     public static function getInstance()
     {
         return Doctrine_Core::getTable('WishlistUser');
-    }
+    }    
+    
+    public static function validateUser( $email, $password )
+    {        
+        $q = $this->createQuery()
+            ->where('usera_id = ?', $user)
+            ->andWhere('usera_id = ?');
+       
+       /*
+       $new_pendingUser = new PendingUser();
+       $new_pendingUser->setEmail($email);       
+       $new_pendingUser->save();
+       */
+    } 
+    
 }

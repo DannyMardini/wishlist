@@ -1,14 +1,3 @@
-
-function displayPendingRegistrantMessage()
-{
-    alert("An invite will be sent to you soon. Thank you. - Wishlist Team");
-}
-
-// run the currently selected effect
-function runEffect(togglerWindow) {        
-        $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
-};  
-
 $(document).ready(function()
 {   
     setupCSS();    
@@ -21,6 +10,11 @@ $(document).ready(function()
         function() {$(this).addClass('ui-state-hover');}, 
         function() {$(this).removeClass('ui-state-hover');}
      ); 
+    
+    $("#submitLogin").click(function(){
+        // validate user via ajax call
+        
+    });
          
     $('#submitRequestInvite').click(function(){
         ajaxCall("indexSuccess.php", {email: $("#email_addr").val()}, displayPendingRegistrantMessage, "text");
@@ -45,14 +39,25 @@ $(document).ready(function()
         $(hiddenToggler_SelectorId).hide(); 
         runEffect(activeToggler_SelectorId);        
     }); 
-    
-    /*
-    $('showUserAdded').val()== "1" ? 
-        displayMessage("An invite will be sent to you soon. Thank you. - Wishlist Team") 
-        : alert('could not add the user');//$('messagePopUp').hide();
-    */
-
 });
+
+
+function displayPendingRegistrantMessage()
+{
+    alert("An invite will be sent to you soon. Thank you. - Wishlist Team");
+}
+
+
+function redirectToHomePage(userId)
+{
+    // redirect to the logged in user's home page
+    window.location = "http://www.google.com";
+}
+
+// run the currently selected effect
+function runEffect(togglerWindow) {        
+    $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
+} 
 
 
 function setupCSS()
