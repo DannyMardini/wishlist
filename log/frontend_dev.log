@@ -429,3 +429,170 @@ Nov 23 00:19:20 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Fou
 Nov 23 00:19:20 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Nov 23 00:19:20 symfony [info] {sfWebDebugLogger} Configuration 1.43 ms (5)
 Nov 23 00:19:20 symfony [info] {sfWebDebugLogger} Factories 31.19 ms (1)
+Nov 24 23:15:38 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /frontpage with parameters array (  'module' => 'frontpage',  'action' => 'index',)
+Nov 24 23:15:38 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/storage/sfSessionStorage.class.php on line 93 (session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/config/sfRootConfigHandler.class.php:91))
+Nov 24 23:15:39 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 24 23:15:39 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 24 23:15:39 symfony [info] {frontpageActions} Call "frontpageActions->executeIndex()"
+Nov 24 23:16:43 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /frontpage with parameters array (  'module' => 'frontpage',  'action' => 'index',)
+Nov 24 23:16:43 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 24 23:16:43 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 24 23:16:43 symfony [info] {frontpageActions} Call "frontpageActions->executeIndex()"
+Nov 24 23:16:43 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/frontpage/templates/indexSuccess.php"
+Nov 24 23:16:43 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/apps/frontend/modules/frontpage/templates/indexSuccess.php on line 3 (Undefined variable: showUserAdded)
+Nov 24 23:16:43 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
+Nov 24 23:16:43 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
+Nov 24 23:16:43 symfony [info] {main} Get slot "title"
+Nov 24 23:16:43 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Nov 24 23:16:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} Configuration 10.46 ms (10)
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} Factories 27.56 ms (1)
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} Action "frontpage/index" 0.10 ms (1)
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} View "Success" for "frontpage/index" 18.68 ms (1)
+Nov 24 23:16:43 symfony [info] {sfWebResponse} Send content (30920 o)
+Nov 24 23:16:43 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /css/custom-theme/jquery-ui-1.8.16.custom.css with parameters array (  'module' => 'css',  'action' => 'custom-theme',  'jquery-ui-1.8.16.custom.css' => true,)
+Nov 24 23:16:43 symfony [err] {sfError404Exception} Empty module and/or action after parsing the URL "/js/jquery-1.6.2.min.js" (/).
+Nov 24 23:16:43 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 24 23:16:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} Configuration 0.76 ms (5)
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} Factories 45.90 ms (1)
+Nov 24 23:16:43 symfony [info] {sfFrontWebController} Action "css/customtheme" does not exist
+Nov 24 23:16:43 symfony [err] {sfError404Exception} Action "css/customtheme" does not exist.
+Nov 24 23:16:43 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 24 23:16:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} Configuration 0.66 ms (5)
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} Factories 94.40 ms (1)
+Nov 24 23:16:43 symfony [err] {sfError404Exception} Empty module and/or action after parsing the URL "/js/jquery-ui-1.8.16.custom.min.js" (/).
+Nov 24 23:16:43 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 24 23:16:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} Configuration 11.70 ms (5)
+Nov 24 23:16:43 symfony [info] {sfWebDebugLogger} Factories 113.77 ms (1)
+Nov 25 20:43:24 symfony [info] {sfPatternRouting} Match route "default_index_stupid" (/:module/) for /frontpage/ with parameters array (  'module' => 'frontpage',  'action' => 'index',)
+Nov 25 20:43:24 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 20:43:24 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 20:43:24 symfony [info] {frontpageActions} Call "frontpageActions->executeIndex()"
+Nov 25 20:43:24 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/frontpage/templates/indexSuccess.php"
+Nov 25 20:43:24 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/apps/frontend/modules/frontpage/templates/indexSuccess.php on line 4 (Undefined variable: showUserAdded)
+Nov 25 20:43:24 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
+Nov 25 20:43:24 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
+Nov 25 20:43:24 symfony [info] {main} Get slot "title"
+Nov 25 20:43:24 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Nov 25 20:43:24 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:43:24 symfony [info] {sfWebDebugLogger} Configuration 3.03 ms (9)
+Nov 25 20:43:24 symfony [info] {sfWebDebugLogger} Factories 77.32 ms (1)
+Nov 25 20:43:24 symfony [info] {sfWebDebugLogger} Action "frontpage/index" 0.31 ms (1)
+Nov 25 20:43:24 symfony [info] {sfWebDebugLogger} View "Success" for "frontpage/index" 42.36 ms (1)
+Nov 25 20:43:24 symfony [info] {sfWebResponse} Send content (36231 o)
+Nov 25 20:43:24 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /frontpage/css/custom-theme/jquery-ui-1.8.16.custom.css with parameters array (  'module' => 'frontpage',  'action' => 'css',  'custom-theme' => 'jquery-ui-1.8.16.custom.css',)
+Nov 25 20:43:24 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /frontpage/js/jquery-1.6.2.min.js with parameters array (  'module' => 'frontpage',  'action' => 'js',  'jquery-1.6.2.min.js' => true,)
+Nov 25 20:43:24 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /frontpage/js/jquery-ui-1.8.16.custom.min.js with parameters array (  'module' => 'frontpage',  'action' => 'js',  'jquery-ui-1.8.16.custom.min.js' => true,)
+Nov 25 20:43:24 symfony [info] {sfFrontWebController} Action "frontpage/css" does not exist
+Nov 25 20:43:24 symfony [err] {sfError404Exception} Action "frontpage/css" does not exist.
+Nov 25 20:43:24 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 25 20:43:24 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:43:24 symfony [info] {sfWebDebugLogger} Configuration 1.63 ms (5)
+Nov 25 20:43:24 symfony [info] {sfWebDebugLogger} Factories 56.13 ms (1)
+Nov 25 20:43:24 symfony [info] {sfFrontWebController} Action "frontpage/js" does not exist
+Nov 25 20:43:25 symfony [err] {sfError404Exception} Action "frontpage/js" does not exist.
+Nov 25 20:43:25 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 25 20:43:25 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:43:25 symfony [info] {sfWebDebugLogger} Configuration 12.15 ms (5)
+Nov 25 20:43:25 symfony [info] {sfWebDebugLogger} Factories 130.80 ms (1)
+Nov 25 20:43:25 symfony [info] {sfFrontWebController} Action "frontpage/js" does not exist
+Nov 25 20:43:25 symfony [err] {sfError404Exception} Action "frontpage/js" does not exist.
+Nov 25 20:43:25 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 25 20:43:25 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:43:25 symfony [info] {sfWebDebugLogger} Configuration 3.05 ms (5)
+Nov 25 20:43:25 symfony [info] {sfWebDebugLogger} Factories 202.40 ms (1)
+Nov 25 20:44:54 symfony [info] {sfPatternRouting} Match route "default_index_stupid" (/:module/) for /frontpage/ with parameters array (  'module' => 'frontpage',  'action' => 'index',)
+Nov 25 20:44:54 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/storage/sfSessionStorage.class.php on line 93 (session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/config/sfRootConfigHandler.class.php:91))
+Nov 25 20:44:54 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 20:44:54 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 20:44:54 symfony [info] {frontpageActions} Call "frontpageActions->executeIndex()"
+Nov 25 20:44:54 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/frontpage/templates/indexSuccess.php"
+Nov 25 20:44:54 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/apps/frontend/modules/frontpage/templates/indexSuccess.php on line 4 (Undefined variable: showUserAdded)
+Nov 25 20:44:54 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
+Nov 25 20:44:54 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
+Nov 25 20:44:54 symfony [info] {main} Get slot "title"
+Nov 25 20:44:54 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/response/sfWebResponse.class.php on line 336 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/config/sfRootConfigHandler.class.php:91))
+Nov 25 20:44:54 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Nov 25 20:44:54 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/response/sfWebResponse.class.php on line 357 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/config/sfRootConfigHandler.class.php:91))
+Nov 25 20:44:54 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:44:54 symfony [info] {sfWebDebugLogger} Configuration 212.99 ms (9)
+Nov 25 20:44:54 symfony [info] {sfWebDebugLogger} Factories 138.21 ms (1)
+Nov 25 20:44:54 symfony [info] {sfWebDebugLogger} Action "frontpage/index" 0.22 ms (1)
+Nov 25 20:44:54 symfony [info] {sfWebDebugLogger} View "Success" for "frontpage/index" 33.34 ms (1)
+Nov 25 20:44:55 symfony [info] {sfWebResponse} Send content (36243 o)
+Nov 25 20:44:55 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /frontpage/js/jquery-1.6.2.min.js with parameters array (  'module' => 'frontpage',  'action' => 'js',  'jquery-1.6.2.min.js' => true,)
+Nov 25 20:44:55 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /frontpage/js/jquery-ui-1.8.16.custom.min.js with parameters array (  'module' => 'frontpage',  'action' => 'js',  'jquery-ui-1.8.16.custom.min.js' => true,)
+Nov 25 20:44:55 symfony [info] {sfFrontWebController} Action "frontpage/js" does not exist
+Nov 25 20:44:55 symfony [err] {sfError404Exception} Action "frontpage/js" does not exist.
+Nov 25 20:44:55 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /frontpage/css/custom-theme/jquery-ui-1.8.16.custom.css with parameters array (  'module' => 'frontpage',  'action' => 'css',  'custom-theme' => 'jquery-ui-1.8.16.custom.css',)
+Nov 25 20:44:55 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 25 20:44:55 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:44:55 symfony [info] {sfWebDebugLogger} Configuration 1.15 ms (5)
+Nov 25 20:44:55 symfony [info] {sfWebDebugLogger} Factories 58.16 ms (1)
+Nov 25 20:44:55 symfony [info] {sfFrontWebController} Action "frontpage/js" does not exist
+Nov 25 20:44:55 symfony [err] {sfError404Exception} Action "frontpage/js" does not exist.
+Nov 25 20:44:55 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 25 20:44:55 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:44:55 symfony [info] {sfWebDebugLogger} Configuration 1.17 ms (5)
+Nov 25 20:44:55 symfony [info] {sfWebDebugLogger} Factories 152.13 ms (1)
+Nov 25 20:44:55 symfony [info] {sfFrontWebController} Action "frontpage/css" does not exist
+Nov 25 20:44:55 symfony [err] {sfError404Exception} Action "frontpage/css" does not exist.
+Nov 25 20:44:55 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 25 20:44:55 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:44:55 symfony [info] {sfWebDebugLogger} Configuration 2.86 ms (5)
+Nov 25 20:44:55 symfony [info] {sfWebDebugLogger} Factories 168.12 ms (1)
+Nov 25 20:46:20 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /frontpage with parameters array (  'module' => 'frontpage',  'action' => 'index',)
+Nov 25 20:46:20 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 20:46:20 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 20:46:20 symfony [info] {frontpageActions} Call "frontpageActions->executeIndex()"
+Nov 25 20:46:20 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/frontpage/templates/indexSuccess.php"
+Nov 25 20:46:20 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/apps/frontend/modules/frontpage/templates/indexSuccess.php on line 4 (Undefined variable: showUserAdded)
+Nov 25 20:46:20 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
+Nov 25 20:46:20 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
+Nov 25 20:46:20 symfony [info] {main} Get slot "title"
+Nov 25 20:46:20 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Nov 25 20:46:20 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} Configuration 1.98 ms (9)
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} Factories 30.04 ms (1)
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} Action "frontpage/index" 0.23 ms (1)
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} View "Success" for "frontpage/index" 10.72 ms (1)
+Nov 25 20:46:20 symfony [info] {sfWebResponse} Send content (36234 o)
+Nov 25 20:46:20 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /css/custom-theme/jquery-ui-1.8.16.custom.css with parameters array (  'module' => 'css',  'action' => 'custom-theme',  'jquery-ui-1.8.16.custom.css' => true,)
+Nov 25 20:46:20 symfony [info] {sfFrontWebController} Action "css/customtheme" does not exist
+Nov 25 20:46:20 symfony [err] {sfError404Exception} Action "css/customtheme" does not exist.
+Nov 25 20:46:20 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 25 20:46:20 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} Configuration 1.12 ms (5)
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} Factories 40.16 ms (1)
+Nov 25 20:46:20 symfony [err] {sfError404Exception} Empty module and/or action after parsing the URL "/js/jquery-ui-1.8.16.custom.min.js" (/).
+Nov 25 20:46:20 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 25 20:46:20 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} Configuration 1.11 ms (5)
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} Factories 134.26 ms (1)
+Nov 25 20:46:20 symfony [err] {sfError404Exception} Empty module and/or action after parsing the URL "/js/jquery-1.6.2.min.js" (/).
+Nov 25 20:46:20 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Nov 25 20:46:20 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} Configuration 1.08 ms (5)
+Nov 25 20:46:20 symfony [info] {sfWebDebugLogger} Factories 211.27 ms (1)
+Nov 25 20:46:25 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /frontpage/register with parameters array (  'module' => 'frontpage',  'action' => 'register',)
+Nov 25 20:46:25 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 20:46:25 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 20:46:25 symfony [info] {frontpageActions} Call "frontpageActions->executeRegister()"
+Nov 25 20:46:25 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Nov 25 20:46:25 symfony [info] {Doctrine_Connection_Statement} execute : INSERT INTO pending_user (email, created_at, updated_at) VALUES (?, ?, ?) - (asdf@asdf.com, 2011-11-25 20:46:25, 2011-11-25 20:46:25)
+Nov 25 20:46:25 symfony [err] {sfException} Call to undefined method sfWebRequest::setPostParameter.
+Nov 25 20:46:26 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
+Nov 25 20:46:26 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Nov 25 20:46:26 symfony [info] {sfWebDebugLogger} Configuration 1.81 ms (8)
+Nov 25 20:46:26 symfony [info] {sfWebDebugLogger} Factories 30.73 ms (1)
+Nov 25 20:46:26 symfony [info] {sfWebDebugLogger} Action "frontpage/register" 68.19 ms (1)
+Nov 25 20:46:26 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.01 ms (1)
+Nov 25 21:00:23 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /frontpage/register with parameters array (  'module' => 'frontpage',  'action' => 'register',)
+Nov 25 21:00:23 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Nov 25 21:00:23 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Nov 25 21:00:23 symfony [info] {frontpageActions} Call "frontpageActions->executeRegister()"
+Nov 25 21:01:16 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Nov 25 21:01:16 symfony [info] {Doctrine_Connection_Statement} execute : INSERT INTO pending_user (email, created_at, updated_at) VALUES (?, ?, ?) - (red@qq.cc, 2011-11-25 21:01:16, 2011-11-25 21:01:16)

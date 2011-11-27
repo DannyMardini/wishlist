@@ -1,6 +1,7 @@
 <?php use_stylesheet('frontPage.css') ?>
 <?php use_javascript('frontPage.js') ?>
 
+<input id="showUserAdded" type="hidden" value="<?php echo $showUserAdded ?>" />
 <div id="loginContainer">
     <a id="aboutLink" href="#">About</a>
     <img src="/images/silverdot.gif" width="10" height="10" />
@@ -14,13 +15,13 @@
     </div>
     <div id="registrationForm">
         <br /><br />
-        <a href="#" id="requestInviteButton">Request Invite</a>        
+        <a href="#" id="requestInviteButton">Request Invite</a>
         <a href="#" id="loginButton">Login</a>
         <br />
         <div class="toggler">
             <div id="requestInviteToggleWindow"> 
                 <br /><br />
-                <form action="/frontpage" method="post">
+                <form> <!--action="/frontend_dev.php/frontpage/register" method="post">-->
                     <label class="label">EMAIL:</label>
                     <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required />
                     <br />
@@ -29,7 +30,7 @@
             </div>
             <div id="loginToggleWindow">
                 <br /><br />
-                <form>
+                <form action="/frontpage/login" method="post">
                     <label class="label">EMAIL or USERNAME:</label>
                     <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address or username" required />
                     <br />

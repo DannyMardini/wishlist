@@ -1,3 +1,8 @@
+PendingUser:
+  actAs: { Timestampable: ~ }
+  columns:
+    email: { type: string(255), notnull: true, unique: true }
+
 WishlistUser:
   actAs: { Timestampable: ~ }
   columns:
