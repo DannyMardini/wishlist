@@ -4,13 +4,33 @@ function displayPendingRegistrantMessage()
     alert("An invite will be sent to you soon. Thank you. - Wishlist Team");
 }
 
+function displayComplete(event, XMLHttpRequest, ajaxOptions)
+{
+    alert("An AJAX request was made.");
+}
+
+function displaySuccess(data, textStatus, jqXHR)
+{
+    alert("Successfull ajax call.");
+}
+
+function displayError(jqXHR, textStatus, errorThrown)
+{
+    alert("error ajax call.");
+}
+
 // run the currently selected effect
 function runEffect(togglerWindow) {        
         $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
 };  
 
 $(document).ready(function()
-{   
+{
+    $.ajaxSetup ({
+        cache: false
+    });
+
+
     setupCSS();    
     
     // hide toggle windows
@@ -23,7 +43,11 @@ $(document).ready(function()
      ); 
          
     $('#submitRequestInvite').click(function(){
-        ajaxCall("indexSuccess.php", {email: $("#email_addr").val()}, displayPendingRegistrantMessage, "text");
+        //ajaxCall("/frontpage/", {email: $("#email_addr").val()}, displayPendingRegistrantMessage, "json");
+        $.ajaxSuccess(displaySuccess);
+        $.ajaxError(displayError);
+        $.ajaxComplete(displayComplete);
+        $.post("/frontpage/", {email: $("#email_addr").val()});
     });  
                  
     // set effect from select button

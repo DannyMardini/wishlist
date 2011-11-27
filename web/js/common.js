@@ -6,29 +6,9 @@
 // paramsArray {tags: "cat", tagmode: "any", format: "json"}
 function ajaxCall(url, paramsArray, onSuccessMethod, data_type)
 {    
-    var request = $.ajax({
-      url: url,
-      type: "POST",
-      data: paramsArray,
-      dataType: data_type
+    $.post(url, paramsArray, function(data) {
+        alert("hullo");
     });
-
-    request.done(function(data){
-        alert(data);
-    });
-
-    request.fail(function(jqXHR, textStatus) {
-        // send email to danny and andrea here
-        alert( "Request failed, please refresh and try again: " + textStatus );      
-    });
-    
-    return;
-    
-    /*
-    $.getJSON(url, paramsArray, function(data) {
-          alert(data);
-      });
-   */
 }
 
 //Browser Support Code
