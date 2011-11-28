@@ -28,38 +28,30 @@ class frontpageActions extends sfActions
   }
 
   public function executeIndex(sfWebRequest $request)
-  {
-      $this->showUserAdded = "yes";
-      /*
-      try
-      {
-          if($request->getParameter("submitRequestInvite"))
-          {
-              $this->executeRegister($request);                        
-          }              
-      }
-      catch(Exception $e)
-      {
-          
-      }
-       * 
-       */
+  {            
   }
   
-  public function executeRegister(sfWebRequest $request)
+  public function executeRequestInvite(sfWebRequest $request)
   {
       try
       {
-          $email = $request->getParameter("email_addr");
+          $email = $request->getPostParameter("email");
 
           if( $email )
           {
-              PendingUserTable::getInstance()->addPendingUser($email);
+              PendingUserTable::getInstance()->addPendingUser($email);   
+              $response = "Success";            
           }
+          else
+          {
+              $response = "Error: email address is blank";
+          }   
+          
+          return $this->renderText($response);
       }
       catch(Exception $e)
       {
-          $eMessage = "test";
+          return $this->renderText("Error: Issue saving to database");
       }
   }
   

@@ -48,12 +48,23 @@ $(document).ready(function()
         
     });
          
-    $('#submitRequestInvite').click(function(){
-        //ajaxCall("/frontpage/", {email: $("#email_addr").val()}, displayPendingRegistrantMessage, "json");
-        $.ajaxSuccess(displaySuccess);
-        $.ajaxError(displayError);
-        $.ajaxComplete(displayComplete);
-        $.post("/frontpage/", {email: $("#email_addr").val()});
+    $('#submitRequestInvite').click(function(){                       
+        
+        $('#submitRequestInvite').ajaxComplete(function() {
+            alert('AJAX completed!');
+        });
+
+        $('#submitRequestInvite').ajaxSuccess(function() {
+            alert('AJAX succeeded!');
+        });
+
+        $('#submitRequestInvite').ajaxError(function() {
+            alert('AJAX failed!');
+        })
+        
+        $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
+            alert("Data received from server: " + data);
+        });
     });  
                  
     // set effect from select button

@@ -8,16 +8,16 @@
 <script>
 $(document).ready(function()
 {
-    $('.log').ajaxComplete(function() {
+    $('.trigger').ajaxComplete(function() {
         alert('AJAX completed!');
     });
 
-    $('.log').ajaxSuccess(function() {
+    $('.trigger').ajaxSuccess(function() {
         alert('AJAX succeeded!');
     });
 
-    $('.log').ajaxError(function() {
-        alaert('AJAX failed!');
+    $('.trigger').ajaxError(function() {
+        alert('AJAX failed!');
     })
 
     $('.trigger').click(function() {
