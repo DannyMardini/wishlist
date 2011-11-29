@@ -62,6 +62,10 @@ $(document).ready(function()
             alert('AJAX failed!');
         })
         
+        $('#submitRequestInvite').submit(function() {
+            return false;
+        });
+        
         $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
             alert("Data received from server: " + data);
         });
@@ -120,7 +124,7 @@ function setupCSS()
 // hide the toggle windows
 function hideToggleWindows()
 {
-    $('#requestInviteToggleWindow').hide();
+   // $('#requestInviteToggleWindow').hide();
     $('#loginToggleWindow').hide();        
 }
 
