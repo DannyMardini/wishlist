@@ -47,22 +47,24 @@ $(document).ready(function()
         // validate user via ajax call
         
     });
-
-    $('#requestInviteToggleWindow').ajaxComplete(function() {
+/*
+    $('#submitRequestInvite').ajaxComplete(function() {
         alert('AJAX completed!');
     });
 
     $('#submitRequestInvite').ajaxError(function() {
         alert('AJAX failed!');
     })
-
-    $('#submitRequestInvite').submit(function() {
-        return false;
+*/
+    $('#requestInviteForm').submit(function(e) {
+        e.preventDefault();
+        
+        $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
+            displayPendingRegistrantMessage(data);             
+        });
     });
 
-    $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
-        alert("Data received from server: " + data);
-    });
+    
      
                  
     // set effect from select button
@@ -84,12 +86,31 @@ $(document).ready(function()
         $(hiddenToggler_SelectorId).hide(); 
         runEffect(activeToggler_SelectorId);        
     }); 
+    
+    
+    // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+    $( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+    
 });
 
 
-function displayPendingRegistrantMessage()
+function displayPendingRegistrantMessage(message)
 {
-    alert("An invite will be sent to you soon. Thank you. - Wishlist Team");
+   $('#dialog-message').html(message);
+   popUpDialog();
+}
+
+function popUpDialog()
+{
+    $( "#dialog-message" ).dialog({
+        modal: true,
+        buttons: {
+                Ok: function() {
+                        $( this ).dialog( "close" );
+                }
+        }
+    });  
 }
 
 
@@ -118,7 +139,7 @@ function setupCSS()
 // hide the toggle windows
 function hideToggleWindows()
 {
-   // $('#requestInviteToggleWindow').hide();
+    $('#requestInviteToggleWindow').hide();
     $('#loginToggleWindow').hide();        
 }
 

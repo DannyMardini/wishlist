@@ -33,25 +33,34 @@ class frontpageActions extends sfActions
   
   public function executeRequestInvite(sfWebRequest $request)
   {
+      $htmlFormattedMessage = "<p><span class='ui-icon ui-icon-circle-check' style='float:left; margin:0 7px 50px 0;'></span> [messageInputHere].</p>";
+      
       try
       {
           $email = $request->getPostParameter("email");
 
           if( $email )
           {
-              PendingUserTable::getInstance()->addPendingUser($email);   
-              $response = "Success";            
+              PendingUserTable::getInstance()->addPendingUser($email);
+              $response = "Thanks! An invite will be sent to you shortly. <br /><br />-Wishlist Team"; 
           }
           else
           {
-              $response = "Error: email address is blank";
+              $response = "Sorry about this! we could not read your email address. Please refresh your browser and try again. <br /><br />-Wishlist Team";
           }   
-          
-          return $this->renderText($response);
+                    
+          return $this->renderText(str_replace($htmlFormattedMessage, "[messageInputHere]", $response));
+      }
+      catch(Doctrine_Connection_Mysql_Exception $e)
+      {
+          return $this->renderText(str_replace($htmlFormattedMessage, "[messageInputHere]", "A request has already been submitted with your email address. You should receive an invite shortly. <br /><br />-Wishlist Team"));
       }
       catch(Exception $e)
       {
-          return $this->renderText("Error: Issue saving to database");
+          $email = $email == null ? " no email " : $email;
+          $errMessage = str_replace($htmlFormattedMessage, "[messageInputHere]", "Sorry about this! an issue occurred while submitting your email address. If you do not receive an invite by tomorrow please try again. <br /><br />-Wishlist Team");
+          mail('dannymardini@gmail.com', 'Wishlist Error: could not add email to pendingUserTable', $errMessage + " email:" + $email);
+          return $this->renderText($errMessage);
       }
   }
   

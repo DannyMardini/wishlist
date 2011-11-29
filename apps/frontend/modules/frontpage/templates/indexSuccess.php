@@ -21,7 +21,7 @@
         <div class="toggler">
             <div id="requestInviteToggleWindow"> 
                 <br /><br />
-                <form> <!--action="/frontend_dev.php/frontpage/register" method="post">-->
+                <form id="requestInviteForm"> <!--action="/frontend_dev.php/frontpage/register" method="post">-->
                     <label class="label">EMAIL:</label>
                     <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required />
                     <br />
@@ -58,3 +58,5 @@
         <a id="loginLink" href="#">JOIN OUR TEAM</a>
     </div>
 </footer>
+
+<div id="dialog-message" title=""></div>

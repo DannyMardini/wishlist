@@ -27,6 +27,8 @@ $(document).ready(function()
             alert("Data received from server: " + data);
         });
     });
+    
+ });
     </script>
 
 
