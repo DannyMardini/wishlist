@@ -47,29 +47,23 @@ $(document).ready(function()
         // validate user via ajax call
         
     });
-         
-    $('#submitRequestInvite').click(function(){                       
-        
-        $('#submitRequestInvite').ajaxComplete(function() {
-            alert('AJAX completed!');
-        });
 
-        $('#submitRequestInvite').ajaxSuccess(function() {
-            alert('AJAX succeeded!');
-        });
+    $('#requestInviteToggleWindow').ajaxComplete(function() {
+        alert('AJAX completed!');
+    });
 
-        $('#submitRequestInvite').ajaxError(function() {
-            alert('AJAX failed!');
-        })
-        
-        $('#submitRequestInvite').submit(function() {
-            return false;
-        });
-        
-        $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
-            alert("Data received from server: " + data);
-        });
-    });  
+    $('#submitRequestInvite').ajaxError(function() {
+        alert('AJAX failed!');
+    })
+
+    $('#submitRequestInvite').submit(function() {
+        return false;
+    });
+
+    $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
+        alert("Data received from server: " + data);
+    });
+     
                  
     // set effect from select button
     $("#requestInviteButton, #loginButton, #loginLink").click(function() {
