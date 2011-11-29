@@ -47,22 +47,21 @@ $(document).ready(function()
         // validate user via ajax call
         
     });
-         
-    $('#submitRequestInvite').click(function(){                       
-        
-        $('#submitRequestInvite').ajaxComplete(function() {
-            alert('AJAX completed!');
-        });
 
-        $('#submitRequestInvite').ajaxSuccess(function() {
-            alert('AJAX succeeded!');
-        });
+    $('#requestInviteToggleWindow').ajaxComplete(function() {
+        alert('AJAX completed!');
+    });
 
-        $('#submitRequestInvite').ajaxError(function() {
-            alert('AJAX failed!');
-        })
-        
-        $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
+    $('#requestInviteToggleWindow').ajaxSuccess(function() {
+        alert('AJAX succeeded!');
+    });
+
+    $('#requestInviteToggleWindow').ajaxError(function() {
+        alert('AJAX failed!');
+    })
+
+    $('#submitRequestInvite').mouseout(function(){
+        $.post('/frontpage/process', {email: $("#email_addr").val()}, function(data){
             alert("Data received from server: " + data);
         });
     });  

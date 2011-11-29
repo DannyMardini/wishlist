@@ -8,26 +8,29 @@
 <script>
 $(document).ready(function()
 {
-    $('.trigger').ajaxComplete(function() {
+    $('#submitRequestInvite').ajaxComplete(function() {
         alert('AJAX completed!');
     });
 
-    $('.trigger').ajaxSuccess(function() {
+    $('#submitRequestInvite').ajaxSuccess(function() {
         alert('AJAX succeeded!');
     });
 
-    $('.trigger').ajaxError(function() {
+    $('#submitRequestInvite').ajaxError(function() {
         alert('AJAX failed!');
     })
 
-    $('.trigger').click(function() {
-        $.post('/frontpage/process', {lovestring: "I love you bapper"}, function(data){
+    $('#theForm').submit(function(e) {
+        e.preventDefault();
+        
+        $.post('/frontpage/process', {teststring: 'test'}, function(data){
             alert("Data received from server: " + data);
         });
     });
 });
 </script>
 
-<div class="trigger">Trigger</div>
-<div class="result"></div>
-<div class="log"></div>
+<form id="theForm"> <!-- Why doesn't this work? -->
+<input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required />
+<input type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" />
+</form>
