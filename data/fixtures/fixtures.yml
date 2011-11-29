@@ -22,32 +22,32 @@ WishlistUser:
   wishlist_user_danny:
     name: Danny Mardini
     gender: 0
-    age: 25
+    birthdate: "1986-06-11 00:00:00"
     email: dannymardini@gmail.com
 
   wishlist_user_andrea:
     name: Andrea Coba
     gender: 1
-    age: 25
+    birthdate: "1986-08-18 00:00:00"
     email: andreacoba@gmail.com
 
   wishlist_user_steve:
     name: Steven Lac
     gender: 0
-    age: 26
+    birthdate: "1985-06-04 00:00:00"
     email: SteveoCPP@gmail.com
 
   wishlist_user_jorge:
     name: Jorge Thatcher
     gender: 0
-    age: 40
+    birthdate: "1971-07-11 00:00:00"
     email: ndnwarrior@gmail.com
 
 <?php for($i = 1; $i <= 10; $i++): ?>
   wishlist_user_test<?php echo $i ?>:
     name: test user <?php echo $i."\n" ?>
     gender: 0
-    age: <?php echo $i."\n"?>
+    birthdate: <?php echo "\"".date('Y-m-d H:i:s', time())."\"\n"?>
     email: test<?php echo $i ?>@hotmail.com
 <?php endfor; ?>
 

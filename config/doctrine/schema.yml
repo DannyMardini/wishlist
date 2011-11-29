@@ -8,7 +8,7 @@ WishlistUser:
   columns:
     name: { type: string(255), notnull: true, unique: false }
     gender: { type: integer, notnull: false, default: 1 }
-    age: { type: integer, notnull: true, default: 18 }
+    birthdate: { type: datetime, notnull: true }
     email: { type: string(255), notnull: true }
     wishlistuser_id: { type: integer, autoincrement: true, primary: true }
   relations:

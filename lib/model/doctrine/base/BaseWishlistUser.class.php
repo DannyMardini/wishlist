@@ -7,7 +7,7 @@
  * 
  * @property string $name
  * @property integer $gender
- * @property integer $age
+ * @property datetime $birthdate
  * @property string $email
  * @property integer $wishlistuser_id
  * @property Enum $Enum
@@ -15,14 +15,14 @@
  * 
  * @method string              getName()            Returns the current record's "name" value
  * @method integer             getGender()          Returns the current record's "gender" value
- * @method integer             getAge()             Returns the current record's "age" value
+ * @method datetime            getBirthdate()       Returns the current record's "birthdate" value
  * @method string              getEmail()           Returns the current record's "email" value
  * @method integer             getWishlistuserId()  Returns the current record's "wishlistuser_id" value
  * @method Enum                getEnum()            Returns the current record's "Enum" value
  * @method Doctrine_Collection getWishlistItems()   Returns the current record's "WishlistItems" collection
  * @method WishlistUser        setName()            Sets the current record's "name" value
  * @method WishlistUser        setGender()          Sets the current record's "gender" value
- * @method WishlistUser        setAge()             Sets the current record's "age" value
+ * @method WishlistUser        setBirthdate()       Sets the current record's "birthdate" value
  * @method WishlistUser        setEmail()           Sets the current record's "email" value
  * @method WishlistUser        setWishlistuserId()  Sets the current record's "wishlistuser_id" value
  * @method WishlistUser        setEnum()            Sets the current record's "Enum" value
@@ -49,10 +49,9 @@ abstract class BaseWishlistUser extends sfDoctrineRecord
              'notnull' => false,
              'default' => 1,
              ));
-        $this->hasColumn('age', 'integer', null, array(
-             'type' => 'integer',
+        $this->hasColumn('birthdate', 'datetime', null, array(
+             'type' => 'datetime',
              'notnull' => true,
-             'default' => 18,
              ));
         $this->hasColumn('email', 'string', 255, array(
              'type' => 'string',
