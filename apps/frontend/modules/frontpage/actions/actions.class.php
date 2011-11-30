@@ -5,7 +5,7 @@
  *
  * @package    wishlist
  * @subpackage frontpage
- * @author     Your name here
+ * @author     Andrea & Danny
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class frontpageActions extends sfActions
@@ -15,17 +15,6 @@ class frontpageActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeTest(sfWebRequest $request)
-  {
-  }
-
-  public function executeProcess(sfWebRequest $request)
-  {
-      $lovestring = $request->getPostParameter('lovestring');
-      $loveResponse = "I love you too";
-
-      return $this->renderText($loveResponse);
-  }
 
   public function executeIndex(sfWebRequest $request)
   {            
@@ -46,7 +35,7 @@ class frontpageActions extends sfActions
           }
           else
           {
-              $response = "Sorry about this! we could not read your email address. Please refresh your browser and try again. <br /><br />-Wishlist Team";
+              $response = "Sorry about this! The system could not read your email address. Please refresh your browser and try again. <br /><br />-Wishlist Team";
           }   
                     
           return $this->renderText(str_replace($htmlFormattedMessage, "[messageInputHere]", $response));
@@ -58,14 +47,42 @@ class frontpageActions extends sfActions
       catch(Exception $e)
       {
           $email = $email == null ? " no email " : $email;
-          $errMessage = str_replace($htmlFormattedMessage, "[messageInputHere]", "Sorry about this! an issue occurred while submitting your email address. If you do not receive an invite by tomorrow please try again. <br /><br />-Wishlist Team");
+          $errMessage = str_replace($htmlFormattedMessage, "[messageInputHere]", "Sorry about this! An issue occurred while submitting your email address. If you do not receive an invite by tomorrow please try again. <br /><br />-Wishlist Team");
           mail('dannymardini@gmail.com', 'Wishlist Error: could not add email to pendingUserTable', $errMessage + " email:" + $email);
           return $this->renderText($errMessage);
       }
   }
   
-  public function executeLogin(sfWebRequest $request)
+  public function executeValidateLogin(sfWebRequest $request)
   {
-      $email = $request->getPostParameter("email_addr");
+      try
+      {
+          $response = "";
+          $email = $request->getPostParameter("email");
+          $password = $request->getPostParameter("password");
+
+          if(!$email || !$password)
+          {
+              $response = "Sorry about this! The system could not read your email and/or password. Please refresh your browser and try again. <br /><br />-Wishlist Team";
+              return $this->renderText($response);
+          }
+
+          $userId = WishlistUserTable::getInstance()->validateEmailAndPassword($email, $password);
+
+          if($userId)
+          {
+              $this->renderText ("continue");
+          }
+          else
+          {
+              $response = "The member could not be found, please check your email and password and try again. <br /><br />-Wishlist Team";
+              return $this->renderText($response);
+          }
+      }
+      catch(Exception $e)
+      {
+        $response = "Sorry about this! An issue occurred while validating your emal and password. Please refresh your browser and try again. <br /><br />-Wishlist Team";
+        return $this->renderText($response);
+      }
   }
 }

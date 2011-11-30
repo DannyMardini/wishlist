@@ -1,25 +1,4 @@
 
-
-function displayPendingRegistrantMessage()
-{
-    alert("An invite will be sent to you soon. Thank you. - Wishlist Team");
-}
-
-function displayComplete(event, XMLHttpRequest, ajaxOptions)
-{
-    alert("An AJAX request was made.");
-}
-
-function displaySuccess(data, textStatus, jqXHR)
-{
-    alert("Successfull ajax call.");
-}
-
-function displayError(jqXHR, textStatus, errorThrown)
-{
-    alert("error ajax call.");
-}
-
 // run the currently selected effect
 function runEffect(togglerWindow) {        
         $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
@@ -43,31 +22,37 @@ $(document).ready(function()
         function() {$(this).removeClass('ui-state-hover');}
      ); 
     
-    $("#submitLogin").click(function(){
+    $("#loginForm").submit(function(e){
         // validate user via ajax call
+        e.preventDefault();
         
-    });
-/*
-    $('#submitRequestInvite').ajaxComplete(function() {
-        alert('AJAX completed!');
+        $.post('/frontpage/validateLogin', {email: $("#login_email_addr").val(), password: $("#password").val()}, function(data){            
+            
+            //if(data.toLowerCase() == "success")
+            //{
+                // redirect to home page
+            //    displayMessage("redirecting");
+            //}
+            //else
+            //{
+                //displayMessage(data);
+                alert("What the fuck");
+            //}
+        });
+        
+        // redirect to home page
     });
 
-    $('#submitRequestInvite').ajaxError(function() {
-        alert('AJAX failed!');
-    })
-*/
     $('#requestInviteForm').submit(function(e) {
         e.preventDefault();
         
         $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
-            displayPendingRegistrantMessage(data);             
+            displayMessage(data);             
         });
-    });
-
-    
+    });    
      
                  
-    // set effect from select button
+    // set effect from log in or request invite buttons
     $("#requestInviteButton, #loginButton, #loginLink").click(function() {
         var thisId = $(this).attr('id');
         var activeToggler_SelectorId = "";
@@ -95,14 +80,9 @@ $(document).ready(function()
 });
 
 
-function displayPendingRegistrantMessage(message)
+function displayMessage(message)
 {
-   $('#dialog-message').html(message);
-   popUpDialog();
-}
-
-function popUpDialog()
-{
+    $('#dialog-message').html(message);
     $( "#dialog-message" ).dialog({
         modal: true,
         buttons: {
@@ -110,7 +90,7 @@ function popUpDialog()
                         $( this ).dialog( "close" );
                 }
         }
-    });  
+    }); 
 }
 
 
