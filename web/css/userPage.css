@@ -1,0 +1,44 @@
+/* 
+    Document   : userPage.css
+    Created on : Nov 28, 2011, 10:55:58 PM
+    Author     : Danny
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+body {
+    direction: ltr;
+}
+
+div {
+    display: inline-block;
+    height: auto !important;
+    height: 100%;
+}
+
+#div_user_container {
+/*    height: 250px;*/
+/*    width: 400px;*/
+    display: block;
+}
+
+p {
+    margin: 0px;
+}
+
+#div_profile_pic {
+    height: 98px;
+    width: 98px;
+    border: black solid 1px;
+/*    margin-bottom: 150px;*/
+/*    float: left;*/
+}
+
+#div_user_info {
+/*    float: right;*/
+/*    margin-top: 50px;*/
+}

@@ -3,6 +3,11 @@
  * and open the template in the editor.
  */
 
+function fillContainer(element)
+{
+    //$(element).get
+}
+
 // paramsArray {tags: "cat", tagmode: "any", format: "json"}
 function ajaxCall(url, paramsArray, onSuccessMethod, data_type)
 {    

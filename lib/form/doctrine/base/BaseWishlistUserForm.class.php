@@ -17,7 +17,7 @@ abstract class BaseWishlistUserForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'name'            => new sfWidgetFormInputText(),
       'gender'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Enum'), 'add_empty' => true)),
-      'age'             => new sfWidgetFormInputText(),
+      'birthdate'       => new sfWidgetFormInputText(),
       'email'           => new sfWidgetFormInputText(),
       'wishlistuser_id' => new sfWidgetFormInputHidden(),
       'password'        => new sfWidgetFormInputText(),
@@ -28,7 +28,7 @@ abstract class BaseWishlistUserForm extends BaseFormDoctrine
     $this->setValidators(array(
       'name'            => new sfValidatorString(array('max_length' => 255)),
       'gender'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Enum'), 'required' => false)),
-      'age'             => new sfValidatorInteger(array('required' => false)),
+      'birthdate'       => new sfValidatorPass(),
       'email'           => new sfValidatorString(array('max_length' => 255)),
       'wishlistuser_id' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('wishlistuser_id')), 'empty_value' => $this->getObject()->get('wishlistuser_id'), 'required' => false)),
       'password'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),

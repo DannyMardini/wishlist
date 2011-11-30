@@ -12,4 +12,11 @@
  */
 class WishlistUser extends BaseWishlistUser
 {
+    public function getAge()
+    {
+        $now = new DateTime('now');
+
+        $diff = date_diff($now, $this->getDateTimeObject('birthdate'));
+        return $diff->y;
+    }
 }
