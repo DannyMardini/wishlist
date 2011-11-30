@@ -10,20 +10,35 @@
    TODO customize this sample style
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
+body {
+    direction: ltr;
+}
 
-root { 
+div {
+    display: inline-block;
+    height: auto !important;
+    height: 100%;
+}
+
+#div_user_container {
+/*    height: 250px;*/
+/*    width: 400px;*/
     display: block;
 }
 
+p {
+    margin: 0px;
+}
 
 #div_profile_pic {
-    height: 100px;
-    width: 100px;
-    display: inline-block;
+    height: 98px;
+    width: 98px;
     border: black solid 1px;
+/*    margin-bottom: 150px;*/
+/*    float: left;*/
 }
 
 #div_user_info {
-    display: inline-block;
-    float: right;
+/*    float: right;*/
+/*    margin-top: 50px;*/
 }
