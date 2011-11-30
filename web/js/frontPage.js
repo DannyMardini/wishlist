@@ -42,15 +42,16 @@ $(document).ready(function()
         
         $.post('/frontpage/validateLogin', {email: $("#login_email_addr").val(), password: $("#password").val()}, function(data){            
             
-            if(data.toLowerCase() == "continue")
+            $dataArray = data.split(","); 
+            
+            if($dataArray[0].toLowerCase() == "continue")
             {
                 // redirect to home page
-                displayMessage("redirecting");
-                
+                redirectToHomePage($dataArray[1]);           
             }
             else
             {
-                displayMessage(data);            
+                displayMessage($dataArray[0]);            
             }
         });
         

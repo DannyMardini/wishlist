@@ -51,7 +51,7 @@ class WishlistUserTable extends Doctrine_Table
             return $userId;
         }catch(Exception $e)
         {
-            echo "hullo";
+            return 0;
         }
     }     
 }
