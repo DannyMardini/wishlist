@@ -26,7 +26,7 @@ class frontpageActions extends sfActions
       
       try
       {
-          $email = $request->getPostParameter("email");
+          $email = $request->getPostParammeter("email");
 
           if( $email )
           {
@@ -48,7 +48,7 @@ class frontpageActions extends sfActions
       {
           $email = $email == null ? " no email " : $email;
           $errMessage = str_replace($htmlFormattedMessage, "[messageInputHere]", "Sorry about this! An issue occurred while submitting your email address. If you do not receive an invite by tomorrow please try again. <br /><br />-Wishlist Team");
-          mail('dannymardini@gmail.com', 'Wishlist Error: could not add email to pendingUserTable', $errMessage + " email:" + $email);
+          mail('andreacoba@gmail.com', 'Wishlist Error: could not add email to pendingUserTable', $errMessage . " email:" . $email);
           return $this->renderText($errMessage);
       }
   }
@@ -71,7 +71,7 @@ class frontpageActions extends sfActions
 
               if($userId)
               {
-                  $response = "continue";
+                  $response = "continue,".$userId;
               }
               else
               {
