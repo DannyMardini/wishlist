@@ -21,6 +21,20 @@ $(document).ready(function()
         function() {$(this).addClass('ui-state-hover');}, 
         function() {$(this).removeClass('ui-state-hover');}
      ); 
+         
+    $("#loginForm").ajaxSuccess(function(){
+        //alert("Success");
+    });
+    
+          
+    $("#loginForm").ajaxComplete(function(){
+        //alert("Complete");
+    }); 
+    
+          
+    $("#loginForm").ajaxError(function(){
+        alert("Fail");
+    }); 
     
     $("#loginForm").submit(function(e){
         // validate user via ajax call
@@ -28,16 +42,16 @@ $(document).ready(function()
         
         $.post('/frontpage/validateLogin', {email: $("#login_email_addr").val(), password: $("#password").val()}, function(data){            
             
-            //if(data.toLowerCase() == "success")
-            //{
+            if(data.toLowerCase() == "continue")
+            {
                 // redirect to home page
-            //    displayMessage("redirecting");
-            //}
-            //else
-            //{
-                //displayMessage(data);
-                alert("What the fuck");
-            //}
+                displayMessage("redirecting");
+                
+            }
+            else
+            {
+                displayMessage(data);            
+            }
         });
         
         // redirect to home page

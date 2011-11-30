@@ -20,6 +20,7 @@ abstract class BaseWishlistUserForm extends BaseFormDoctrine
       'age'             => new sfWidgetFormInputText(),
       'email'           => new sfWidgetFormInputText(),
       'wishlistuser_id' => new sfWidgetFormInputHidden(),
+      'password'        => new sfWidgetFormInputText(),
       'created_at'      => new sfWidgetFormDateTime(),
       'updated_at'      => new sfWidgetFormDateTime(),
     ));
@@ -30,6 +31,7 @@ abstract class BaseWishlistUserForm extends BaseFormDoctrine
       'age'             => new sfValidatorInteger(array('required' => false)),
       'email'           => new sfValidatorString(array('max_length' => 255)),
       'wishlistuser_id' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('wishlistuser_id')), 'empty_value' => $this->getObject()->get('wishlistuser_id'), 'required' => false)),
+      'password'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'created_at'      => new sfValidatorDateTime(),
       'updated_at'      => new sfValidatorDateTime(),
     ));

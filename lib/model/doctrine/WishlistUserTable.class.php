@@ -17,27 +17,38 @@ class WishlistUserTable extends Doctrine_Table
         return Doctrine_Core::getTable('WishlistUser');
     }    
     
+    public static function addWishlistUser( $email )
+    {
+       $new_wishlistUser = new WishlistUser();
+       $new_wishlistUser->setEmail($email);
+       $new_wishlistUser->setName('Blanca Edmiston');
+       $new_wishlistUser->setGender(1);
+       $new_wishlistUser->setAge(50);
+       $new_wishlistUser->setPassword('iLoveBob');
+       $new_wishlistUser->save();
+    }
+    
     /**
      * Returns the wishlistuserID if the user is found.
      *
      * @return integer
      */
-    public static function validateEmailAndPassword( $email, $password )
+    public function validateEmailAndPassword( $email, $password )
     {
         try
-        {
-            $q = $this->createQuery('u')->where('u.email = ?', $email)->andWhere('u.password = ?', $password);
-            //$q = $this->createQuery('u')->where('u.email = ?', $email);        
-            //$user = $q->fetchArray();
-        
-            if($user)
+        {                                                    
+            $userQueryResults = $this->createQuery('w')
+                ->where('w.email = ?', $email)
+                    ->andWhere('w.password = ?', $password)->execute();
+            
+            $userId = 0;
+                        
+            foreach ($userQueryResults as $user)
             {
-                return $user->getWishlistuserId();
-            }
-            else
-            {
-                return 0;
-            }
+                $userId = $user->getWishlistuserId();
+            }        
+            
+            return $userId;
         }catch(Exception $e)
         {
             echo "hullo";

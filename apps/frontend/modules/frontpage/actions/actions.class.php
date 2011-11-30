@@ -54,35 +54,39 @@ class frontpageActions extends sfActions
   }
   
   public function executeValidateLogin(sfWebRequest $request)
-  {
+  {                  
       try
       {
           $response = "";
           $email = $request->getPostParameter("email");
-          $password = $request->getPostParameter("password");
-
+          $password = $request->getPostParameter("password");         
+          
           if(!$email || !$password)
           {
-              $response = "Sorry about this! The system could not read your email and/or password. Please refresh your browser and try again. <br /><br />-Wishlist Team";
-              return $this->renderText($response);
-          }
-
-          $userId = WishlistUserTable::getInstance()->validateEmailAndPassword($email, $password);
-
-          if($userId)
-          {
-              $this->renderText ("continue");
+              $response = "Sorry about this! The system could not read your email and/or password. Please refresh your browser and try again. <br /><br />-Wishlist Team";           
           }
           else
           {
-              $response = "The member could not be found, please check your email and password and try again. <br /><br />-Wishlist Team";
-              return $this->renderText($response);
+              $userId = WishlistUserTable::getInstance()->validateEmailAndPassword($email, $password);          
+
+              if($userId)
+              {
+                  $response = "continue";
+              }
+              else
+              {
+                  $response = "The member could not be found, please check your email and password and try again. <br /><br />-Wishlist Team";              
+              }
           }
+          
+          return $this->renderText($response);
       }
       catch(Exception $e)
       {
         $response = "Sorry about this! An issue occurred while validating your emal and password. Please refresh your browser and try again. <br /><br />-Wishlist Team";
         return $this->renderText($response);
       }
+      
+       
   }
 }

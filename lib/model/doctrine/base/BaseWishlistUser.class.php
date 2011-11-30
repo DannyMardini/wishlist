@@ -10,6 +10,7 @@
  * @property integer $age
  * @property string $email
  * @property integer $wishlistuser_id
+ * @property string $password
  * @property Enum $Enum
  * @property Doctrine_Collection $WishlistItems
  * 
@@ -18,6 +19,7 @@
  * @method integer             getAge()             Returns the current record's "age" value
  * @method string              getEmail()           Returns the current record's "email" value
  * @method integer             getWishlistuserId()  Returns the current record's "wishlistuser_id" value
+ * @method string              getPassword()        Returns the current record's "password" value
  * @method Enum                getEnum()            Returns the current record's "Enum" value
  * @method Doctrine_Collection getWishlistItems()   Returns the current record's "WishlistItems" collection
  * @method WishlistUser        setName()            Sets the current record's "name" value
@@ -25,6 +27,7 @@
  * @method WishlistUser        setAge()             Sets the current record's "age" value
  * @method WishlistUser        setEmail()           Sets the current record's "email" value
  * @method WishlistUser        setWishlistuserId()  Sets the current record's "wishlistuser_id" value
+ * @method WishlistUser        setPassword()        Sets the current record's "password" value
  * @method WishlistUser        setEnum()            Sets the current record's "Enum" value
  * @method WishlistUser        setWishlistItems()   Sets the current record's "WishlistItems" collection
  * 
@@ -63,6 +66,10 @@ abstract class BaseWishlistUser extends sfDoctrineRecord
              'type' => 'integer',
              'autoincrement' => true,
              'primary' => true,
+             ));
+        $this->hasColumn('password', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
     }
 

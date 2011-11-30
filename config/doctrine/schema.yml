@@ -11,6 +11,7 @@ WishlistUser:
     age: { type: integer, notnull: true, default: 18 }
     email: { type: string(255), notnull: true }
     wishlistuser_id: { type: integer, autoincrement: true, primary: true }
+    password: {type: string(255)}
   relations:
     Enum: { local: gender, foreign: value }
 
