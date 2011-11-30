@@ -28,7 +28,7 @@ p {
 #div_user_container {
     height: 200px;
 /*    width: 400px;*/
-    display: block;
+/*    display: block;*/
 /*    float: none;*/
 }
 
@@ -49,4 +49,6 @@ p {
 }
 
 #div_wishlist_div {
+    width: 40%;
+    float: none;
 }
