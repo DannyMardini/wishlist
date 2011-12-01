@@ -1,0 +1,77 @@
+/* 
+    Document   : homePage
+    Created on : Nov 30, 2011, 12:25:21 AM
+    Author     : andreacoba
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    background-color: black;
+    margin: 10px 10px 10px 10px;
+    position: relative;
+}
+
+#header {
+    background-color: green;
+    width: 100%;
+    height: 50px;
+}
+
+#footer {
+    background-color: purple;
+    width: 100%;
+    height: 30px;
+}
+
+#wishlistComponent {
+    background-color: blue;
+    width: 30%;
+    height: 500px;
+    float: left;
+}
+
+#newsComponent {
+    background-color: pink;
+    width: 100%;
+    height: 500px;
+}
+
+#logoContainer {
+    width: 55%;
+    background-color: white;
+    height: 50px;
+    float: left;
+    
+}
+
+#linksContainer {
+    width: 100%;
+    background-color:white;
+    height: 50px;
+}
+
+#name {
+    font-family: 'Satisfy', cursive; 
+    font-size: 40px;
+    float: right;
+    height: 50px;
+    background-color: white;    
+}
+
+#linkList{
+    position:absolute;
+    margin-left: 80%;    
+}
+
+
+

@@ -53,9 +53,7 @@ $(document).ready(function()
             {
                 displayMessage($dataArray[0]);            
             }
-        });
-        
-        // redirect to home page
+        });                
     });
 
     $('#requestInviteForm').submit(function(e) {
