@@ -19,4 +19,16 @@ class WishlistUser extends BaseWishlistUser
         $diff = date_diff($now, $this->getDateTimeObject('birthdate'));
         return $diff->y;
     }
+
+    public function getGenderString()
+    {
+        $gender = parent::getGender();
+
+        if($gender == 0)
+        {
+            return "Male";
+        }else {
+            return "Female";
+        }
+    }
 }

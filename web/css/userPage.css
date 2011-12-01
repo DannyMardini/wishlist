@@ -16,18 +16,20 @@ body {
 
 div {
     display: inline-block;
-    height: auto !important;
-    height: 100%;
-}
-
-#div_user_container {
-/*    height: 250px;*/
-/*    width: 400px;*/
-    display: block;
+    float: left;
+    overflow: hidden;
 }
 
 p {
     margin: 0px;
+}
+
+
+#div_user_container {
+    height: 200px;
+/*    width: 400px;*/
+/*    display: block;*/
+/*    float: none;*/
 }
 
 #div_profile_pic {
@@ -40,5 +42,13 @@ p {
 
 #div_user_info {
 /*    float: right;*/
-/*    margin-top: 50px;*/
+    padding-top: 50px;
+    padding-left: 5px;
+
+/*    height: 100px;*/
+}
+
+#div_wishlist_div {
+    width: 40%;
+    float: none;
 }
