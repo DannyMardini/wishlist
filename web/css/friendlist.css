@@ -17,7 +17,6 @@ root {
 #feedback { font-size: 1.4em; }
 #selectable .ui-selecting { background: #d3e6f7; }
 #selectable .ui-selected {
-    /*background: #6cb2f1;*/
     background: black;
     font-weight: bold;
     color: white;
@@ -28,9 +27,9 @@ li {
     padding: 0.4em;
     font-size: 1.4em;
     height: 30px;
-    font-family: 'Gruppo', san-serif;
     border-left: solid black 1px;
     border-bottom:  solid black 1px;
+    font-family: 'Gruppo', san-serif;
 }
 
 li.even {
