@@ -10,14 +10,18 @@
         <div id="name">Wishlist</div>
     </div>
     <div id="linksContainer">
-        <div id="profileLinks">
-             <ul id="linkList">
-              <li id="topProfileLink"><a href="#">Picture Andrea Coba</a></li>   
+        <div id="profileLinks">            
+             <ul id="linkList">              
+              <li id="mainProfileLink">
+                  <div id="userPicture"></div>
+                  <div id="userName" ><a href="#">Andrea</a></div>                  
+              </li>  
               <li><a href="#">Settings</a></li>
               <li><a href="#">Friends</a></li>              
               <li><a href="#">Logout</a></li>
             </ul>
-        </div>
+            <p style="height:157px;" id="menuCheat"></p>
+        </div>   
     </div>
 </div>
 <div id="wishlistComponent">wishlist</div>

@@ -47,17 +47,82 @@ body{
 }
 
 #logoContainer {
+    display: inline-block;
     width: 55%;
     background-color: white;
     height: 50px;
-    float: left;
-    
+    float: left;    
 }
 
 #linksContainer {
-    width: 100%;
-    background-color:white;
+    display: inline-block;
+    width: 45%;
+    background-color: white;
     height: 50px;
+}
+
+#profileLinks{
+    height: 50px;
+    width: 30%;
+    float: right;
+}
+
+#linkList{
+    width: 95%;
+}
+
+/*
+#topProfileLink{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+li {
+    list-style:none;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+}
+
+
+*/
+
+ul{
+    background-color: white;
+}
+li{
+    background-color: white;
+}
+
+#userName {
+    display: inline-block;
+    width: 50%;
+    height: 50px;
+    vertical-align: bottom;
+    background-color: white;
+}
+
+#userName a{
+    vertical-align: bottom;
+    padding: 0px;
+    text-align: right;
+    height: 50px;
+    text-decoration:none;
+    zoom: 1;
+    line-height: 3.5;
+}
+
+#userPicture{
+    display: inline-block;
+    width: 50%;
+    height: 50px;
+    background-image: url(/images/gift.jpg);
+    background-size: 94%;
+    background-repeat: no-repeat;
+    background-position: right;
+    float: left;
 }
 
 #name {
@@ -67,11 +132,5 @@ body{
     height: 50px;
     background-color: white;    
 }
-
-#linkList{
-    position:absolute;
-    margin-left: 80%;    
-}
-
 
 
