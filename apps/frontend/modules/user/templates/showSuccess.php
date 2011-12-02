@@ -8,12 +8,19 @@
         <p>Name: <?php echo $wishlist_user->getName(); ?></p>
         <p>Gender: <?php echo $wishlist_user->getGenderString(); ?></p>
         <p>Age: <?php echo $wishlist_user->getAge(); ?></p>
-        <p>Birth date: <?php echo $wishlist_user->getBirthdate(); ?></p>
-        <p>Member since: <?php echo $wishlist_user->getCreatedAt(); ?></p>
     </div>
 </div>
-<div id="div_wishlist_div">
-    Wishlist goes here.
+
+<div id="div_right_panel">
+    <h1>Wishlist</h1>
+    <div id="div_wishlist_div">
+    <?php foreach ($wishlist_items as $wishlist_item): ?>
+        <h3><a href="#"><?php echo $wishlist_item->getName(); ?></a></h3>
+        <div>
+            <p><?php echo "$".$wishlist_item->getPrice(); ?></p>
+        </div>
+    <?php        endforeach;?>
+    </div>
 </div>
 
 <!--<a href="<?php echo url_for('user/edit?wishlistuser_id='.$wishlist_user->getWishlistuserId()) ?>">Edit</a>-->

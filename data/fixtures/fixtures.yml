@@ -64,6 +64,32 @@ WishlistItem:
     is_public: true
     WishlistUser: wishlist_user_danny
 
+  wishlistItem_skyrim:
+    name: Skyrim
+    price: 60
+    is_public: true
+    WishlistUser: wishlist_user_danny
+
+  wishlistItem_ipad:
+    name: iPad
+    price: 800
+    is_public: true
+    WishlistUser: wishlist_user_danny
+
+  wishlistItem_macbook:
+    name: Macbook
+    price: 2000
+    is_public: true
+    WishlistUser: wishlist_user_danny
+
+<?php for($i = 0; $i < 10; $i++): ?>
+  wishlistItem_test<?php echo $i ?>:
+    name: testItem<?php echo $i."\n"?>
+    price: <?php echo $i."\n" ?>
+    is_public: true
+    WishlistUser: wishlist_user_danny
+<?php endfor; ?>
+
   wishlistItem_purse:
     name: purse
     price: 1000

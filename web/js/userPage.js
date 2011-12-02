@@ -5,4 +5,5 @@
 
 $(document).ready(function(){
 
+    $( "#div_wishlist_div" ).accordion();
 });
