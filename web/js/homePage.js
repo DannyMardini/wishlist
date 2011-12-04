@@ -3,8 +3,10 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function(){
-    
+var userName;
+var userID;
+
+$(document).ready(function(){   
    $("#linkList").menu();
   // $("#mainProfileLink").removeClass("ui-menu-item");
 
@@ -24,6 +26,11 @@ $(document).ready(function(){
     });
 
     showOnlyMainProfileLink();
+    
+    userName = $("#hi_username").val();    
+    userID = $("#hi_id").val();
+    
+    $("#userNameLink").html(userName);
 });
 
 function showOnlyMainProfileLink()
