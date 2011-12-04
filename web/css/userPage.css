@@ -12,43 +12,52 @@
 */
 body {
     direction: ltr;
+    background: #f9eadc;
 }
 
 div {
-    display: inline-block;
-    float: left;
-    overflow: hidden;
+/*    display: inline-block;*/
+/*    float: left;*/
+/*    overflow: hidden;*/
 }
 
 p {
     margin: 0px;
+    font-family: Verdana;
 }
 
+h1 {
+    font-family: 'Satisfy', cursive;
+    text-decoration: underline;
+}
 
 #div_user_container {
+    display: inline-block;
+    float: left;
     height: 200px;
-/*    width: 400px;*/
-/*    display: block;*/
-/*    float: none;*/
+    margin-right: 60px;
 }
 
 #div_profile_pic {
+    display: inline-block;
+    float: left;
     height: 98px;
     width: 98px;
     border: black solid 1px;
-/*    margin-bottom: 150px;*/
-/*    float: left;*/
 }
 
 #div_user_info {
-/*    float: right;*/
+    display: inline-block;
+    float: left;
     padding-top: 50px;
     padding-left: 5px;
-
-/*    height: 100px;*/
 }
 
 #div_wishlist_div {
-    width: 40%;
-    float: none;
+    display: inline-block;
+    width: 600px;
+}
+
+#div_right_panel {
+    display: inline-block;
 }

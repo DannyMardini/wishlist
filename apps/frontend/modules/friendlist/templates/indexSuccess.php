@@ -4,8 +4,14 @@ use_stylesheet("friendlist.css");
 
 <script>
     $(function() {
-       $( "#selectable" ).selectable();
+        $( "li" ).click(function(){
+            window.location = "http://www.google.com";
+           // alert("I told you bapper");
+        });
 
+        $("li").hover(function(){$(this).addClass("ui-selected")},
+            function(){$(this).removeClass("ui-selected")}
+        );
     });
 </script>
 
@@ -14,7 +20,6 @@ use_stylesheet("friendlist.css");
     <p>Friends of <?php echo $user ?></p>
     <ul id="selectable" class="ui-selectable">
         <?php foreach ($friends as $i => $friend): ?>
-        <!--<li class="<?php echo fmod($i, 2) ? "odd" : "even" ?>">-->
         <li class="ui-selectee ui-widget-content">
             <?php echo $friend ?>
         </li>

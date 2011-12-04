@@ -53,5 +53,5 @@ class WishlistUserTable extends Doctrine_Table
         {
             return 0;
         }
-    }     
+    }
 }
