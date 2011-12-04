@@ -5,7 +5,7 @@
     </div>
 
     <div id="div_user_info">
-        <p>Name: <?php echo $wishlist_user->getName(); ?></p>
+        <p>Name: <?php echo $wishlist_user->getFirstname()." ".$wishlist_user->getLastname(); ?></p>
         <p>Gender: <?php echo $wishlist_user->getGenderString(); ?></p>
         <p>Age: <?php echo $wishlist_user->getAge(); ?></p>
     </div>
