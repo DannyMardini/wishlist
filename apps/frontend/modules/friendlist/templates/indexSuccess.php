@@ -5,8 +5,8 @@ use_stylesheet("friendlist.css");
 <script>
     $(function() {
         $( "li" ).click(function(){
-            window.location = "http://www.google.com";
-           // alert("I told you bapper");
+            var loc = "http://www.wishlist.localhost.com/user/"
+            window.location = loc + this.id.replace("li_user_","")+"/";
         });
 
         $("li").hover(function(){$(this).addClass("ui-selected")},
@@ -15,12 +15,11 @@ use_stylesheet("friendlist.css");
     });
 </script>
 
-
 <div id="friendlist">
     <p>Friends of <?php echo $user ?></p>
     <ul id="selectable" class="ui-selectable">
         <?php foreach ($friends as $i => $friend): ?>
-        <li class="ui-selectee ui-widget-content">
+        <li id="li_user_<?php echo $friend->getWishlistuserId();?>" class="ui-selectee ui-widget-content">
             <?php echo $friend ?>
         </li>
         <?php endforeach;?>
