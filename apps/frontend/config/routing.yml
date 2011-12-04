@@ -10,7 +10,7 @@ friendlist_show:
   param: { module: friendlist, action: index }
   
 homepage_show:
-  url: /homepage/:wishlistuser_name/:wishlistuser_id
+  url: /homepage/:wishlistuser_firstname/:wishlistuser_id
   param: { module: homepage, action: index }
 
 # default rules

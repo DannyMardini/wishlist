@@ -10,8 +10,14 @@ $(document).ready(function(){
    $("#linkList").menu();
   // $("#mainProfileLink").removeClass("ui-menu-item");
 
+$("#test").text($("#test").text().substr(0,1).toUpperCase()+$("#test").text().substr(1,$("#test").text().length));
+
+    userName = $("#hi_username").val().substr(0,1).toUpperCase()+$("#hi_username").val().substr(1, $("#hi_username").val().length);    
+    userID = $("#hi_id").val();
+    
+    $("#userNameLink").html(userName);
        
-   $("a").click(function(){
+    $("a").click(function(){
         $(this).blur();
     });
 
@@ -25,12 +31,7 @@ $(document).ready(function(){
         showOnlyMainProfileLink();
     });
 
-    showOnlyMainProfileLink();
-    
-    userName = $("#hi_username").val();    
-    userID = $("#hi_id").val();
-    
-    $("#userNameLink").html(userName);
+    showOnlyMainProfileLink();        
 });
 
 function showOnlyMainProfileLink()

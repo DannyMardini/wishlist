@@ -17,7 +17,7 @@
              <ul id="linkList">              
               <li id="mainProfileLink">
                   <div id="userPicture"></div>
-                  <div id="userName" ><a id="userNameLink" href="#">Andrea</a></div>                  
+                  <div id="userName" ><a id="userNameLink" href="#">andrea</a></div>                  
               </li>  
               <li><a href="#">Settings</a></li>
               <li><a href="#">Friends</a></li>              
