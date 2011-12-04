@@ -6,7 +6,8 @@ PendingUser:
 WishlistUser:
   actAs: { Timestampable: ~ }
   columns:
-    name: { type: string(255), notnull: true, unique: false }
+    firstname: { type: string(255), notnull: true, unique: false }
+    lastname: { type: string(255), notnull: true, unique: false }
     gender: { type: integer, notnull: false, default: 1 }
     birthdate: { type: datetime, notnull: true }
     email: { type: string(255), notnull: true }

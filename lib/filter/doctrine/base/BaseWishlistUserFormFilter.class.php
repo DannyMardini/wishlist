@@ -13,7 +13,8 @@ abstract class BaseWishlistUserFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'firstname'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'lastname'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'gender'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Enum'), 'add_empty' => true)),
       'birthdate'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'email'           => new sfWidgetFormFilterInput(array('with_empty' => false)),
@@ -23,7 +24,8 @@ abstract class BaseWishlistUserFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
-      'name'            => new sfValidatorPass(array('required' => false)),
+      'firstname'       => new sfValidatorPass(array('required' => false)),
+      'lastname'        => new sfValidatorPass(array('required' => false)),
       'gender'          => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Enum'), 'column' => 'id')),
       'birthdate'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'email'           => new sfValidatorPass(array('required' => false)),
@@ -49,7 +51,8 @@ abstract class BaseWishlistUserFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'name'            => 'Text',
+      'firstname'       => 'Text',
+      'lastname'        => 'Text',
       'gender'          => 'ForeignKey',
       'birthdate'       => 'Date',
       'email'           => 'Text',

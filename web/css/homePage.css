@@ -71,35 +71,27 @@ body{
     width: 95%;
 }
 
-/*
-#topProfileLink{
-    margin: 0px;
-    padding: 0px;
-}
-
-
-
-li {
-    list-style:none;
-    height: 50px;
-    padding: 0;
-    margin: 0;
-}
-
-
-*/
-
 ul{
     background-color: white;
+    font-family: Verdana, Arial, sans-serif; font-size: 1.1em;
+    color: #ffffff;
+    list-style: none;
+    padding: 0;
 }
+
 li{
     background-color: white;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
 }
 
 #userName {
     display: inline-block;
     width: 50%;
-    height: 50px;
+    height: 45px;
     vertical-align: bottom;
     background-color: white;
 }
@@ -108,7 +100,7 @@ li{
     vertical-align: bottom;
     padding: 0px;
     text-align: right;
-    height: 50px;
+    height: 45px;
     text-decoration:none;
     zoom: 1;
     line-height: 3.5;
@@ -117,9 +109,9 @@ li{
 #userPicture{
     display: inline-block;
     width: 50%;
-    height: 50px;
+    height: 45px;
     background-image: url(/images/gift.jpg);
-    background-size: 94%;
+    background-size: 85%;
     background-repeat: no-repeat;
     background-position: right;
     float: left;
@@ -129,7 +121,7 @@ li{
     font-family: 'Satisfy', cursive; 
     font-size: 40px;
     float: right;
-    height: 50px;
+    height: 45px;
     background-color: white;    
 }
 

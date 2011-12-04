@@ -1,13 +1,17 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-show_user:
+user_show:
   url: /user/:wishlistuser_id/
   param: { module: user, action: show }
 
 friendlist_show:
   url:   /friendlist/:wishlistuser_id
   param: { module: friendlist, action: index }
+  
+homepage_show:
+  url: /homepage/:wishlistuser_firstname/:wishlistuser_id
+  param: { module: homepage, action: index }
 
 # default rules
 homepage:

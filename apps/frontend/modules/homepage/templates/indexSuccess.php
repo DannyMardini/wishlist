@@ -3,8 +3,11 @@
 
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>    
+  
+<form>
+<input id="hi_username" type="hidden" value="<?php echo $username ?>"/>  
+<input id="hi_id" type="hidden" value="<?php echo $id ?>"/>  
 <div id="header">
     <div id="logoContainer">
         <div id="name">Wishlist</div>
@@ -14,7 +17,7 @@
              <ul id="linkList">              
               <li id="mainProfileLink">
                   <div id="userPicture"></div>
-                  <div id="userName" ><a href="#">Andrea</a></div>                  
+                  <div id="userName" ><a id="userNameLink" href="#">andrea</a></div>                  
               </li>  
               <li><a href="#">Settings</a></li>
               <li><a href="#">Friends</a></li>              
@@ -27,3 +30,4 @@
 <div id="wishlistComponent">wishlist</div>
 <div id="newsComponent">news updates</div>
 <div id="footer">footer</div>
+</form>

@@ -17,6 +17,7 @@ class homepageActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-   
+   $this->username = $request->getParameter('wishlistuser_firstname');
+   $this->id = $request->getParameter('wishlistuser_id');
   }
 }

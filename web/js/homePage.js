@@ -3,36 +3,35 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function(){
-    
+var userName;
+var userID;
+
+$(document).ready(function(){   
    $("#linkList").menu();
-   $("#mainProfileLink").removeClass("ui-menu-item");
-//   $("#mainProfileLink").hover(
-//     function() {$("#linkList li").show();}, 
-//     function() {showOnlyMainProfileLink();}
-//   );
-   
-//   $("#profileLinks, #linkList,#linkList li a").hover(
-//     function() {$("#linkList li").show();}, 
-//     function() {showOnlyMainProfileLink();}
-//   );
+  // $("#mainProfileLink").removeClass("ui-menu-item");
+
+$("#test").text($("#test").text().substr(0,1).toUpperCase()+$("#test").text().substr(1,$("#test").text().length));
+
+    userName = $("#hi_username").val().substr(0,1).toUpperCase()+$("#hi_username").val().substr(1, $("#hi_username").val().length);    
+    userID = $("#hi_id").val();
+    
+    $("#userNameLink").html(userName);
        
-       $("a").click(function(){
-		$(this).blur();
-	});
-	
-	//When mouse rolls over
-	$("ul").mouseover(function(){
-		$(this).stop().animate({height:'150px'},{queue:false, duration:600, easing: 'easeOutBounce'})
-	});
-	
-	//When mouse is removed
-	$("ul").mouseout(function(){
-		$(this).stop().animate({height:'50px'},{queue:false, duration:600, easing: 'easeOutBounce'})
-	});
-	
-   
-    //showOnlyMainProfileLink();
+    $("a").click(function(){
+        $(this).blur();
+    });
+
+    //When mouse rolls over
+    $("#linkList").mouseover(function(){            
+        $("#linkList li").show();
+    });
+
+    //When mouse is removed
+    $("#linkList").mouseout(function(){            
+        showOnlyMainProfileLink();
+    });
+
+    showOnlyMainProfileLink();        
 });
 
 function showOnlyMainProfileLink()
