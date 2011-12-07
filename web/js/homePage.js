@@ -7,16 +7,14 @@ var userName;
 var userID;
 
 $(document).ready(function(){   
-   $("#linkList").menu();
-  // $("#mainProfileLink").removeClass("ui-menu-item");
-
-$("#test").text($("#test").text().substr(0,1).toUpperCase()+$("#test").text().substr(1,$("#test").text().length));
+    $("#linkList").menu();
+    // $("#mainProfileLink").removeClass("ui-menu-item");
 
     userName = $("#hi_username").val().substr(0,1).toUpperCase()+$("#hi_username").val().substr(1, $("#hi_username").val().length);    
     userID = $("#hi_id").val();
-    
+
     $("#userNameLink").html(userName);
-       
+
     $("a").click(function(){
         $(this).blur();
     });
