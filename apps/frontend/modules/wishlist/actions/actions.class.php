@@ -15,8 +15,11 @@ class wishlistActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex(sfWebRequest $request)
+  public function executeShow(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    $this->wishlist_user = Doctrine_Core::getTable('WishlistUser')->find(array($request->getParameter('wishlistuser_id')));
+    $this->forward404Unless($this->wishlist_user);
+
+    $this->wishlist_items = $this->wishlist_user->getWishlistItems();
   }
 }

@@ -1,6 +1,10 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+wishlist_show:
+  url: /wishlist/:wishlistuser_id/
+  param: { module: wishlist, action: show }
+
 user_show:
   url: /user/:wishlistuser_id/
   param: { module: user, action: show }
