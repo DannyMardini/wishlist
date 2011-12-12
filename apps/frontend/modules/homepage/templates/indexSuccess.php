@@ -1,5 +1,9 @@
-<?php use_stylesheet('homePage.css') ?>
-<?php use_javascript('homePage.js') ?>
+<?php
+use_stylesheet('homePage.css');
+use_javascript('homePage.js');
+use_stylesheet('/css/wishlist.css');
+use_javascript('/js/wishlist.js');
+?>
 
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
