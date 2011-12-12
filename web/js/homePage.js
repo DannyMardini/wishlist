@@ -6,7 +6,14 @@
 var userName;
 var userID;
 
-$(document).ready(function(){   
+$(document).ready(function(){  
+    
+    $( "#accordion" ).accordion({
+			event: "mouseover",
+                        $(this).animate({width: maxWidth+"px"}, { queue:false, duration:400})
+	
+		});
+    
     $("#linkList").menu();
     // $("#mainProfileLink").removeClass("ui-menu-item");
 
