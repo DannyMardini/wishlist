@@ -33,9 +33,6 @@ h1 {
 
 #div_user_container {
     display: inline-block;
-    float: left;
-    height: 200px;
-    margin-right: 60px;
 }
 
 #div_profile_pic {
@@ -53,6 +50,14 @@ h1 {
     padding-left: 5px;
 }
 
+#div_left_panel {
+    display: inline-block;
+    float: left;
+    height: 200px;
+    margin-right: 60px;
+}
+
 #div_right_panel {
     display: inline-block;
+    width: 50%;
 }
