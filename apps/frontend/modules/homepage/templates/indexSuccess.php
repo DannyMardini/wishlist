@@ -27,7 +27,10 @@
         </div>   
     </div>
 </div>
-<div id="wishlistComponent">wishlist</div>
+<div id="wishlistComponent">
+    <div><h1>My Wishlist</h1></div>
+    <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $id)); ?>
+</div>
 <div id="newsComponent">news updates</div>
 <div id="footer">footer</div>
 </form>

@@ -34,10 +34,15 @@ body{
 }
 
 #wishlistComponent {
-    background-color: blue;
+    background-color: white;
     width: 30%;
     height: 500px;
     float: left;
+    overflow:auto;
+}
+
+#wishlistComponent h1 {
+    text-align: center;
 }
 
 #newsComponent {
