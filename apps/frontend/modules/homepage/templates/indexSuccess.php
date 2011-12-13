@@ -14,6 +14,7 @@ use_javascript('/js/wishlist.js');
 <input id="id" type="hidden" value="<?php echo $id ?>"/>  
 <div id="header">
     <div id="logoContainer">
+        <div id="logo"></div>
         <div id="name">Wishlist</div>
     </div>
     <div id="linksContainer">
