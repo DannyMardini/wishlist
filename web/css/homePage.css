@@ -15,6 +15,10 @@ root {
     display: block;
 }
 
+a {
+    text-decoration: none;
+}
+
 body{
     background-color: black;
     margin: 10px 10px 10px 10px;
@@ -162,4 +166,6 @@ li a {
 /*    height: 5px;*/
 }
 
-
+#span_messages {
+    float: right;
+}

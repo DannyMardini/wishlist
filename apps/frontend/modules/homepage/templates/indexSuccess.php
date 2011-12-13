@@ -18,7 +18,7 @@ use_javascript('/js/wishlist.js');
         <div id="name">Wishlist</div>
     </div>
     <div id="linksContainer">
-        <span id="span_messages"><a id="a_messages" href="#">Messages</a><span>
+        <span id="span_messages"><a href="#">Messages</a><span>
         <div id="profileLinks">
             <ul id="linkList">              
               <li id="mainProfileLink">
