@@ -24,12 +24,12 @@ body{
 #header {
     background-color: white;
     width: 100%;
-    height: 60px;
+    height: 45px;
     border-top: 1px solid white;
-  border-left: 1px solid white;
-  border-right: 1px solid gray;
-  border-bottom: 1px solid gray;
-  box-shadow: 0px 0px 15px red;
+    border-left: 1px solid white;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    box-shadow: 0px 0px 15px red;
 }
 
 #footer {
@@ -60,25 +60,55 @@ body{
     display: inline-block;
     width: 55%;
     background-color: white;
-    height: 50px;
+    height: 45px;
     float: left;    
+}
+
+#logo{
+    display: inline-block;
+    width: 80%;
+    height: 45px;
+    background-image: url(/images/gift.jpg);
+    background-size: 10%;
+    background-repeat: no-repeat;
+    background-position: right;
+    float: left;
+}
+
+#name {
+    font-family: 'Satisfy', cursive; 
+    font-size: 40px;
+    float: right;
+    height: 45px;
+    background-color: white;    
 }
 
 #linksContainer {
     display: inline-block;
     width: 45%;
     background-color: white;
-    height: 50px;
+    height: 45px;
 }
 
 #profileLinks{
-    height: 50px;
+    height: 45px;
     width: 30%;
     float: right;
 }
 
 #linkList{
-    width: 95%;
+    width: 100%;
+    height: 45px;
+    border: 0;
+    padding: 0;
+    background-color: white;
+    vertical-align: -15px;
+}
+
+#mainProfileLink {
+    height: 45px;
+    background-color:white;
+    border:0px;
 }
 
 ul{
@@ -113,7 +143,7 @@ li a {
     height: 45px;
     text-decoration:none;
     zoom: 1;
-    line-height: 3.5;
+    line-height: 3.0;
 }
 
 #userPicture{
@@ -121,18 +151,10 @@ li a {
     width: 50%;
     height: 45px;
     background-image: url(/images/gift.jpg);
-    background-size: 85%;
+    background-size: 70%;
     background-repeat: no-repeat;
     background-position: right;
     float: left;
-}
-
-#name {
-    font-family: 'Satisfy', cursive; 
-    font-size: 40px;
-    float: right;
-    height: 45px;
-    background-color: white;    
 }
 
 #headerDivider {
