@@ -20,7 +20,7 @@ class friendlistActions extends sfActions
       //$this->friends = FriendshipTable::getInstance()->getFriendsOf($request->getPostParameter('username'));
       $this->forward404Unless($wishlist_user = WishlistUserTable::getInstance()->find($request->getParameter('wishlistuser_id')));
 
-      $this->user = $wishlist_user->getName();
+      $this->user = $wishlist_user->getFirstname();
       $this->friends = FriendshipTable::getInstance()->getFriendsOf($request->getParameter('wishlistuser_id'));
   }
 }

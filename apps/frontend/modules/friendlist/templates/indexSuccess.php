@@ -20,7 +20,7 @@ use_stylesheet("friendlist.css");
     <ul id="selectable" class="ui-selectable">
         <?php foreach ($friends as $i => $friend): ?>
         <li id="li_user_<?php echo $friend->getWishlistuserId();?>" class="ui-selectee ui-widget-content">
-            <?php echo $friend ?>
+            <?php echo $friend->getFirstName()." ".$friend->getLastName(); ?>
         </li>
         <?php endforeach;?>
     </ul>
