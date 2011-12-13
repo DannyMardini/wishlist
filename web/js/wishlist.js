@@ -5,5 +5,8 @@
 
 $(document).ready(function(){
 
-    $( "#div_wishlist_div" ).accordion();
+    $( "#div_wishlist_div" ).accordion({
+        collapsible: true,
+        active: false
+    });
 });
