@@ -7,15 +7,15 @@ use_stylesheet('/css/wishlist.css');
 use_javascript('/js/wishlist.js');
 use_javascript('/js/userPage.js');
 ?>
+
+
+<div id="div_user_info">
+    <h1><?php echo $wishlist_user->getFirstname()." ".$wishlist_user->getLastname(); ?></h1>
+</div>
+
 <div id="div_left_panel">
     <div id="div_user_container">
         <div id="div_profile_pic">
-        </div>
-
-        <div id="div_user_info">
-            <p>Name: <?php echo $wishlist_user->getFirstname()." ".$wishlist_user->getLastname(); ?></p>
-            <p>Gender: <?php echo $wishlist_user->getGenderString(); ?></p>
-            <p>Age: <?php echo $wishlist_user->getAge(); ?></p>
         </div>
     </div>
 </div>
