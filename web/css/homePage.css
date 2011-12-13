@@ -15,10 +15,6 @@ root {
     display: block;
 }
 
-a {
-    text-decoration: none;
-}
-
 body{
     background-color: black;
     margin: 10px 10px 10px 10px;
@@ -164,8 +160,4 @@ li a {
 #headerDivider {
 /*    background-color: black;*/
 /*    height: 5px;*/
-}
-
-#span_messages {
-    float: right;
 }

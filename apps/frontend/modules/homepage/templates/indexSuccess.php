@@ -18,7 +18,6 @@ use_javascript('/js/wishlist.js');
         <div id="name">Wishlist</div>
     </div>
     <div id="linksContainer">
-        <span id="span_messages"><a href="#">Messages</a><span>
         <div id="profileLinks">
             <ul id="linkList">              
               <li id="mainProfileLink">
@@ -26,7 +25,8 @@ use_javascript('/js/wishlist.js');
                   <div id="userName" ><a id="userNameLink" href="#">andrea</a></div>                  
               </li>  
               <li><a href="#">Settings</a></li>
-              <li><a href="#">Friends</a></li>              
+              <li><a href="#">Friends</a></li>
+              <li><a href="#">Messages</a></li>
               <li><a href="#">Logout</a></li>
             </ul>
             <p style="height:157px;" id="menuCheat"></p>
