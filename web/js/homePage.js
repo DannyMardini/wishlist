@@ -8,17 +8,10 @@ var userID;
 
 $(document).ready(function(){  
     
-    $( "#accordion" ).accordion({
-			event: "mouseover",
-                        $(this).animate({width: maxWidth+"px"}, { queue:false, duration:400})
-	
-		});
-    
     $("#linkList").menu();
-    // $("#mainProfileLink").removeClass("ui-menu-item");
 
-    userName = $("#hi_username").val().substr(0,1).toUpperCase()+$("#hi_username").val().substr(1, $("#hi_username").val().length);    
-    userID = $("#hi_id").val();
+    userName = $("#username").val().substr(0,1).toUpperCase()+$("#username").val().substr(1, $("#username").val().length);    
+    userID = $("#id").val();
 
     $("#userNameLink").html(userName);
 

@@ -22,9 +22,14 @@ body{
 }
 
 #header {
-    background-color: green;
+    background-color: white;
     width: 100%;
-    height: 50px;
+    height: 60px;
+    border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+  box-shadow: 0px 0px 15px red;
 }
 
 #footer {
@@ -128,6 +133,11 @@ li a {
     float: right;
     height: 45px;
     background-color: white;    
+}
+
+#headerDivider {
+/*    background-color: black;*/
+/*    height: 5px;*/
 }
 
 
