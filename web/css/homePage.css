@@ -52,7 +52,6 @@ body{
 }
 
 #newsComponent {
-    display: inline-block;
     background-color: white;
     width: 70%;
     height: 450px;
