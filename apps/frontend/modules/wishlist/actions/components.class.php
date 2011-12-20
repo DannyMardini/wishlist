@@ -14,3 +14,5 @@ class wishlistComponents extends sfComponents
     $this->wishlist_items = $this->wishlist_user->getWishlistItems();
   }
 }
+
+?>
