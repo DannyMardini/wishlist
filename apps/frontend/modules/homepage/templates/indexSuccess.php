@@ -11,27 +11,7 @@ use_javascript('/js/wishlist.js');
   
 <input id="username" type="hidden" value="<?php echo $username ?>"/>  
 <input id="id" type="hidden" value="<?php echo $id ?>"/>  
-<div id="header">
-    <div id="logoContainer">
-        <div id="logo"></div>
-        <div id="name">Wishlist</div>
-    </div>
-    <div id="linksContainer">
-        <div id="profileLinks">
-            <ul id="linkList">              
-              <li id="mainProfileLink">
-                  <div id="userPicture"></div>
-                  <div id="userName" ><a id="userNameLink" href="#">andrea</a></div>                  
-              </li>  
-              <li><a href="#">Settings</a></li>
-              <li><a href="#">Friends</a></li>
-              <li><a href="#">Messages</a></li>
-              <li><a href="#">Logout</a></li>
-            </ul>
-            <p style="height:157px;" id="menuCheat"></p>
-        </div>   
-    </div>
-</div>
+<?php include_component('navBar', 'showNavBar'); ?>
 <div id="headerDivider"></div>
 
 <div id="content">
