@@ -70,61 +70,6 @@ display: block;
 /*    overflow: auto;*/
 }
 
-#logoContainer {
-    display: inline-block;
-    width: 55%;
-    background-color: white;
-    height: 45px;
-    float: left;    
-}
-
-#logo{
-    display: inline-block;
-    width: 80%;
-    height: 45px;
-    background-image: url(/images/gift.jpg);
-    background-size: 10%;
-    background-repeat: no-repeat;
-    background-position: right;
-    float: left;
-}
-
-#name {
-    font-family: 'Satisfy', cursive; 
-    font-size: 40px;
-    float: right;
-    height: 45px;
-    background-color: white;    
-}
-
-#linksContainer {
-    display: inline-block;
-    width: 45%;
-    background-color: white;
-    height: 45px;
-}
-
-#profileLinks{
-    height: 45px;
-    width: 30%;
-    float: right;
-}
-
-#linkList{
-    width: 100%;
-    height: 45px;
-    border: 0;
-    padding: 0;
-    background-color: white;
-    vertical-align: -15px;
-}
-
-#mainProfileLink {
-    height: 45px;
-    background-color:white;
-    border:0px;
-}
-
 ul{
     background-color: white;
     font-family: Verdana, Arial, sans-serif; font-size: 1.1em;
