@@ -132,3 +132,41 @@ Enum:
   eFemale:
     name: "Female"
     value: 1
+    
+    
+#updates
+Updates:
+  updates_dannybday:
+    template: 3
+    type: 1
+    subject: "Danny Mardini"
+    message: "Check Danny's wishlist for gift ideas"
+    datetime: "1986-06-11 00:00:00"
+    
+  updates_andrearmv:  
+    template: 1
+    type: 2
+    subject: "Andrea Coba"
+    message: "Andrea removed Guess Purse from her wishlist"
+    datetime: "2011-23-12 03:00:00"
+
+  updates_dannyadd:
+    template: 1
+    type: 2
+    subject: "Danny Mardini"
+    message: "Danny added Skyrim to his wishlist"
+    datetime: "2011-23-10 08:00:00"
+  
+  updates_andreabday:
+    template: 3
+    type: 1
+    subject: "Andrea Coba"
+    message: "Check Andrea's wishlist for gift ideas"
+    datetime: "1986-06-11 00:00:00"
+    
+  updates_andreaNewFriend1:
+    template: 2
+    type: 3
+    subject: "Andrea Coba"
+    message: "Check Andrea's wishlist for gift ideas"
+    datetime: "1986-06-11 00:00:00"
