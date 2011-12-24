@@ -30,7 +30,7 @@
             </div>
             <div id="loginToggleWindow">
                 <br /><br />
-                <form id="loginForm" >
+                <form id="loginForm" method="POST" action="<?php echo url_for('homepage/index'); ?>">
                     <label class="label">EMAIL:</label>
                     <input type="email" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address or username" required />
                     <br />

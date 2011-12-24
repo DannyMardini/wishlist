@@ -17,7 +17,21 @@ class homepageActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-   $this->username = $request->getParameter('wishlistuser_firstname');
-   $this->id = $request->getParameter('wishlistuser_id');
+    try {
+      $email = $request->getPostParameter('email_addr');
+      $pass = $request->getPostParameter('password');
+
+      $this->user = WishlistUserTable::getInstance()->getUserWithEmail($email);
+
+      if ($this->user->getPassword() != $pass)
+      {
+        throw new Exception('Incorrect password');
+      }
+
+      $_SESSION['user'] = $this->user->getEmail();
+    }catch(Exception $e)
+    {
+      $e->getTrace();
+    }
   }
 }

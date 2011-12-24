@@ -54,4 +54,19 @@ class WishlistUserTable extends Doctrine_Table
             return 0;
         }
     }
+
+    public function getUserWithEmail( $email )
+    {
+      $q = $this->createQuery('w')
+              ->where('w.email = ?', $email);
+
+      $users = $q->execute();
+
+      if(!isset ($users))
+      {
+        throw new Exception('Unknown user');
+      }
+
+      return $users->getFirst();
+    }
 }

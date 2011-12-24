@@ -35,7 +35,7 @@ $(document).ready(function()
     $("#loginForm").ajaxError(function(){
         alert("Fail");
     }); 
-    
+    /*
     $("#loginForm").submit(function(e){
         // validate user via ajax call
         e.preventDefault();
@@ -53,8 +53,9 @@ $(document).ready(function()
             {
                 displayMessage($dataArray[0]);            
             }
-        });                
+        });
     });
+    */
 
     $('#requestInviteForm').submit(function(e) {
         e.preventDefault();
