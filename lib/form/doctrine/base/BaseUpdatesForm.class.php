@@ -20,7 +20,7 @@ abstract class BaseUpdatesForm extends BaseFormDoctrine
       'type'     => new sfWidgetFormInputText(),
       'subject'  => new sfWidgetFormInputText(),
       'message'  => new sfWidgetFormInputText(),
-      'datetime' => new sfWidgetFormDate(),
+      'datetime' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -29,7 +29,7 @@ abstract class BaseUpdatesForm extends BaseFormDoctrine
       'type'     => new sfValidatorInteger(),
       'subject'  => new sfValidatorString(array('max_length' => 255)),
       'message'  => new sfValidatorString(array('max_length' => 255)),
-      'datetime' => new sfValidatorDate(),
+      'datetime' => new sfValidatorPass(),
     ));
 
     $this->widgetSchema->setNameFormat('updates[%s]');

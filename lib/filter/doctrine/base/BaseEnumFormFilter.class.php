@@ -15,11 +15,13 @@ abstract class BaseEnumFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'name'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'value' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('WishlistUser'), 'add_empty' => true)),
+      'type'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
       'name'  => new sfValidatorPass(array('required' => false)),
       'value' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('WishlistUser'), 'column' => 'wishlistuser_id')),
+      'type'  => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('enum_filters[%s]');
@@ -42,6 +44,7 @@ abstract class BaseEnumFormFilter extends BaseFormFilterDoctrine
       'id'    => 'Number',
       'name'  => 'Text',
       'value' => 'ForeignKey',
+      'type'  => 'Text',
     );
   }
 }

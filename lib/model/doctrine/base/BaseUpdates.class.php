@@ -9,18 +9,18 @@
  * @property integer $type
  * @property string $subject
  * @property string $message
- * @property date $datetime
+ * @property datetime $datetime
  * 
- * @method integer getTemplate() Returns the current record's "template" value
- * @method integer getType()     Returns the current record's "type" value
- * @method string  getSubject()  Returns the current record's "subject" value
- * @method string  getMessage()  Returns the current record's "message" value
- * @method date    getDatetime() Returns the current record's "datetime" value
- * @method Updates setTemplate() Sets the current record's "template" value
- * @method Updates setType()     Sets the current record's "type" value
- * @method Updates setSubject()  Sets the current record's "subject" value
- * @method Updates setMessage()  Sets the current record's "message" value
- * @method Updates setDatetime() Sets the current record's "datetime" value
+ * @method integer  getTemplate() Returns the current record's "template" value
+ * @method integer  getType()     Returns the current record's "type" value
+ * @method string   getSubject()  Returns the current record's "subject" value
+ * @method string   getMessage()  Returns the current record's "message" value
+ * @method datetime getDatetime() Returns the current record's "datetime" value
+ * @method Updates  setTemplate() Sets the current record's "template" value
+ * @method Updates  setType()     Sets the current record's "type" value
+ * @method Updates  setSubject()  Sets the current record's "subject" value
+ * @method Updates  setMessage()  Sets the current record's "message" value
+ * @method Updates  setDatetime() Sets the current record's "datetime" value
  * 
  * @package    wishlist
  * @subpackage model
@@ -50,8 +50,8 @@ abstract class BaseUpdates extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
-        $this->hasColumn('datetime', 'date', null, array(
-             'type' => 'date',
+        $this->hasColumn('datetime', 'datetime', null, array(
+             'type' => 'datetime',
              'notnull' => true,
              ));
     }
