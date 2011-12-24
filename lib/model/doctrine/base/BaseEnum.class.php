@@ -7,13 +7,16 @@
  * 
  * @property string $name
  * @property integer $value
+ * @property string $type
  * @property Doctrine_Collection $WishlistUser
  * 
  * @method string              getName()         Returns the current record's "name" value
  * @method integer             getValue()        Returns the current record's "value" value
+ * @method string              getType()         Returns the current record's "type" value
  * @method Doctrine_Collection getWishlistUser() Returns the current record's "WishlistUser" collection
  * @method Enum                setName()         Sets the current record's "name" value
  * @method Enum                setValue()        Sets the current record's "value" value
+ * @method Enum                setType()         Sets the current record's "type" value
  * @method Enum                setWishlistUser() Sets the current record's "WishlistUser" collection
  * 
  * @package    wishlist
@@ -35,6 +38,11 @@ abstract class BaseEnum extends sfDoctrineRecord
         $this->hasColumn('value', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
+             ));
+        $this->hasColumn('type', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 255,
              ));
     }
 

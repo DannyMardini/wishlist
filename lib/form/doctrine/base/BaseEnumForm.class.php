@@ -18,12 +18,14 @@ abstract class BaseEnumForm extends BaseFormDoctrine
       'id'    => new sfWidgetFormInputHidden(),
       'name'  => new sfWidgetFormInputText(),
       'value' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('WishlistUser'), 'add_empty' => false)),
+      'type'  => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'id'    => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'name'  => new sfValidatorString(array('max_length' => 255)),
       'value' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('WishlistUser'))),
+      'type'  => new sfValidatorString(array('max_length' => 255)),
     ));
 
     $this->validatorSchema->setPostValidator(

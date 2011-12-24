@@ -25,7 +25,7 @@ abstract class BaseUpdatesFormFilter extends BaseFormFilterDoctrine
       'type'     => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'subject'  => new sfValidatorPass(array('required' => false)),
       'message'  => new sfValidatorPass(array('required' => false)),
-      'datetime' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
+      'datetime' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
 
     $this->widgetSchema->setNameFormat('updates_filters[%s]');

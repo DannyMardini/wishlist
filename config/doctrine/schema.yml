@@ -1,3 +1,9 @@
+Enum:
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+    value: { type: integer, notnull: true }
+    type: { type: string(255), notnull: true }
+
 PendingUser:
   actAs: { Timestampable: ~ }
   columns:
@@ -38,10 +44,5 @@ Updates:
     type: { type: integer, notnull: true }
     subject: { type: string(255), notnull: true }
     message: { type: string(255), notnull: true }
-    datetime: { type: date, notnull: true }
-
-Enum:
-  columns:
-    name: { type: string(255), notnull: true, unique: true }
-    value: { type: integer, notnull: true }
+    datetime: { type: datetime, notnull: true }
     
