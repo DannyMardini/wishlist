@@ -17,10 +17,12 @@ class homepageActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    try {
-      $email = $request->getPostParameter('email_addr');
-      $pass = $request->getPostParameter('password');
+    $email = $request->getPostParameter('email_addr');
+    $this->forward404Unless($email);
 
+    $pass = $request->getPostParameter('password');
+
+    try {
       $this->user = WishlistUserTable::getInstance()->getUserWithEmail($email);
 
       if ($this->user->getPassword() != $pass)
