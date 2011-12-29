@@ -12,6 +12,7 @@ $(document).ready(function(){
 
     $("a").click(function(){
         $(this).blur();
+        window.location = $(this).attr('href');
     });
 
     //When mouse rolls over
