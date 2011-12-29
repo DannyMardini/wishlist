@@ -45,4 +45,7 @@ Updates:
     subject: { type: string(255), notnull: true }
     message: { type: string(255), notnull: true }
     datetime: { type: datetime, notnull: true }
+    user_id : { type: integer }
+  relations:
+    WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: UserUpdates }
     

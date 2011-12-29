@@ -21,6 +21,7 @@ abstract class BaseUpdatesForm extends BaseFormDoctrine
       'subject'  => new sfWidgetFormInputText(),
       'message'  => new sfWidgetFormInputText(),
       'datetime' => new sfWidgetFormInputText(),
+      'user_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('WishlistUser'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -30,6 +31,7 @@ abstract class BaseUpdatesForm extends BaseFormDoctrine
       'subject'  => new sfValidatorString(array('max_length' => 255)),
       'message'  => new sfValidatorString(array('max_length' => 255)),
       'datetime' => new sfValidatorPass(),
+      'user_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('WishlistUser'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('updates[%s]');

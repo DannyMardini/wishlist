@@ -159,6 +159,7 @@ Updates:
     subject: "Danny Mardini"
     message: "Check Danny's wishlist for gift ideas"
     datetime: "1986-06-11 00:00:00"
+    user_id: 1
     
   updates_andrearmv:  
     template: 1
@@ -166,6 +167,7 @@ Updates:
     subject: "Andrea Coba"
     message: "Andrea removed Guess Purse from her wishlist"
     datetime: "2011-12-23 03:00:00"
+    user_id: 2
     
   updates_andreaNewFriend2:
     template: 2
@@ -173,6 +175,7 @@ Updates:
     subject: "Andrea Coba"
     message: "Is now friends with Uyen Vu"
     datetime: "2011-12-24 04:00:00"
+    user_id: 2
 
   updates_dannyadd:
     template: 1
@@ -180,6 +183,7 @@ Updates:
     subject: "Danny Mardini"
     message: "Danny added Skyrim to his wishlist"
     datetime: "2011-10-23 08:00:00"
+    user_id: 1
   
   updates_andreabday:
     template: 3
@@ -187,6 +191,7 @@ Updates:
     subject: "Andrea Coba"
     message: "Check Andrea's wishlist for gift ideas"
     datetime: "1986-08-18 00:00:00"
+    user_id: 2
     
   updates_andreaNewFriend1:
     template: 2
@@ -194,6 +199,7 @@ Updates:
     subject: "Andrea Coba"
     message: "Is now friends with Blanca Edmiston"
     datetime: "2011-12-22 07:00:00"
+    user_id: 2
     
   updates_dannyAnnv:
     template: 4
@@ -201,4 +207,5 @@ Updates:
     subject: "Daniel Mardini"
     message: "Check Danny's wishlist for gift ideas"
     datetime: "2010-06-25 00:00:00"
+    user_id: 1
     

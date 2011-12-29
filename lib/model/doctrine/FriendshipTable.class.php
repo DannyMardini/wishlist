@@ -19,8 +19,7 @@ class FriendshipTable extends Doctrine_Table
 
     public function getFriendsOf($user)
     {
-        $q = $this->createQuery()
-                ->where('usera_id = ?', $user);
+        $q = $this->createQuery()->where('usera_id = ?', $user);
 
         $friendships = $q->execute();
 

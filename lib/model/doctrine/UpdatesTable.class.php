@@ -16,4 +16,17 @@ class UpdatesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Updates');
     }
+    
+    public function getFriendsUpdates($userId)
+    {                                           
+        $q = Doctrine_Query::create()
+                ->select('u.id, u.template, u.type, u.subject, u.message, u.datetime, u.user_id')
+                ->from('updates u')
+                ->where('u.user_id IN ( select userb_id from friendships where usera_id = ?)',$userId)               
+                ->orderBy('type asc, datetime desc');
+        //$hullo = $q->getSqlQuery();
+        $updates = $q->execute();
+        
+        return $updates;
+    }
 }

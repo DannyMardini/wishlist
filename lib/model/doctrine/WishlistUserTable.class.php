@@ -37,9 +37,15 @@ class WishlistUserTable extends Doctrine_Table
     {
         try
         {                                                    
-            $userQueryResults = $this->createQuery('w')
+//            $userQueryResults = $this->createQuery('w')
+//                ->where('w.email = ?', $email)
+//                    ->andWhere('w.password = ?', $password)->execute();
+//            
+            $q = $this->createQuery('w')
                 ->where('w.email = ?', $email)
-                    ->andWhere('w.password = ?', $password)->execute();
+                    ->andWhere('w.password = ?', $password);
+            
+            $userQueryResults = $q->execute();
             
             $userId = 0;
                         
