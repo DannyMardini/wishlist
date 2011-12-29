@@ -48,7 +48,6 @@ display: block;
     background-color: white;
     width: 21%;
     float: left;
-/*    overflow:hidden;*/
     display: inline-block;
     padding-bottom: 50px;
     min-height: 200px;
@@ -65,9 +64,8 @@ display: block;
     background-color: white;
     width: 79%;
     min-height: 200px;
-    float:right;
-/*    border-right: 1px solid gray;*/
-/*    overflow: auto;*/
+    display: inline-block;
+    float: left;
 }
 
 ul{
