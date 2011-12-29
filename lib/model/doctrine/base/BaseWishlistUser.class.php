@@ -14,6 +14,7 @@
  * @property string $password
  * @property Enum $Enum
  * @property Doctrine_Collection $WishlistItems
+ * @property Doctrine_Collection $UserUpdates
  * 
  * @method string              getFirstname()       Returns the current record's "firstname" value
  * @method string              getLastname()        Returns the current record's "lastname" value
@@ -24,6 +25,7 @@
  * @method string              getPassword()        Returns the current record's "password" value
  * @method Enum                getEnum()            Returns the current record's "Enum" value
  * @method Doctrine_Collection getWishlistItems()   Returns the current record's "WishlistItems" collection
+ * @method Doctrine_Collection getUserUpdates()     Returns the current record's "UserUpdates" collection
  * @method WishlistUser        setFirstname()       Sets the current record's "firstname" value
  * @method WishlistUser        setLastname()        Sets the current record's "lastname" value
  * @method WishlistUser        setGender()          Sets the current record's "gender" value
@@ -33,6 +35,7 @@
  * @method WishlistUser        setPassword()        Sets the current record's "password" value
  * @method WishlistUser        setEnum()            Sets the current record's "Enum" value
  * @method WishlistUser        setWishlistItems()   Sets the current record's "WishlistItems" collection
+ * @method WishlistUser        setUserUpdates()     Sets the current record's "UserUpdates" collection
  * 
  * @package    wishlist
  * @subpackage model
@@ -89,6 +92,10 @@ abstract class BaseWishlistUser extends sfDoctrineRecord
              'foreign' => 'value'));
 
         $this->hasMany('WishlistItem as WishlistItems', array(
+             'local' => 'wishlistUser_id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('Updates as UserUpdates', array(
              'local' => 'wishlistUser_id',
              'foreign' => 'user_id'));
 

@@ -19,5 +19,9 @@ class homepageActions extends sfActions
   {
    $this->username = $request->getParameter('wishlistuser_firstname');
    $this->id = $request->getParameter('wishlistuser_id');
+   
+   // grab updates of this users friends
+   $this->friendUpdates = UpdatesTable::getInstance()->GetFriendsUpdates($this->id);                       
   }
+  
 }

@@ -10,17 +10,23 @@
  * @property string $subject
  * @property string $message
  * @property datetime $datetime
+ * @property integer $user_id
+ * @property WishlistUser $WishlistUser
  * 
- * @method integer  getTemplate() Returns the current record's "template" value
- * @method integer  getType()     Returns the current record's "type" value
- * @method string   getSubject()  Returns the current record's "subject" value
- * @method string   getMessage()  Returns the current record's "message" value
- * @method datetime getDatetime() Returns the current record's "datetime" value
- * @method Updates  setTemplate() Sets the current record's "template" value
- * @method Updates  setType()     Sets the current record's "type" value
- * @method Updates  setSubject()  Sets the current record's "subject" value
- * @method Updates  setMessage()  Sets the current record's "message" value
- * @method Updates  setDatetime() Sets the current record's "datetime" value
+ * @method integer      getTemplate()     Returns the current record's "template" value
+ * @method integer      getType()         Returns the current record's "type" value
+ * @method string       getSubject()      Returns the current record's "subject" value
+ * @method string       getMessage()      Returns the current record's "message" value
+ * @method datetime     getDatetime()     Returns the current record's "datetime" value
+ * @method integer      getUserId()       Returns the current record's "user_id" value
+ * @method WishlistUser getWishlistUser() Returns the current record's "WishlistUser" value
+ * @method Updates      setTemplate()     Sets the current record's "template" value
+ * @method Updates      setType()         Sets the current record's "type" value
+ * @method Updates      setSubject()      Sets the current record's "subject" value
+ * @method Updates      setMessage()      Sets the current record's "message" value
+ * @method Updates      setDatetime()     Sets the current record's "datetime" value
+ * @method Updates      setUserId()       Sets the current record's "user_id" value
+ * @method Updates      setWishlistUser() Sets the current record's "WishlistUser" value
  * 
  * @package    wishlist
  * @subpackage model
@@ -54,11 +60,17 @@ abstract class BaseUpdates extends sfDoctrineRecord
              'type' => 'datetime',
              'notnull' => true,
              ));
+        $this->hasColumn('user_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('WishlistUser', array(
+             'local' => 'user_id',
+             'foreign' => 'wishlistUser_id',
+             'onDelete' => 'CASCADE'));
     }
 }
