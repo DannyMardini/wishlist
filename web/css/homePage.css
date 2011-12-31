@@ -52,6 +52,8 @@ display: block;
     padding-bottom: 50px;
     min-height: 200px;
     font-size: 14px;
+    border-right-style: solid;
+    border-width: 1px;
 }
 
 #wishlistComponent h1 {
