@@ -12,7 +12,7 @@ use_javascript('/js/wishlist.js');
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
 <?php include_component('navBar', 'showNavBar', array( 'username' => $user->getFirstName(), 'user_id' => $user->getWishlistuserId())); ?>
 
-<div id="content">
+<div id="content" class="clearfix">
     <div id="wishlistComponent">
         <div><h1>My Wishlist</h1></div>
         <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>

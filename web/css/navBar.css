@@ -15,10 +15,14 @@ root {
     display: block;
 }
 
+#header {
+  height: 45px;
+  background-color: white;
+}
+
 #logoContainer {
     display: inline-block;
     width: 55%;
-    background-color: white;
     height: 45px;
     float: left;
 }
@@ -45,7 +49,6 @@ root {
 #linksContainer {
     display: inline-block;
     width: 45%;
-    background-color: white;
     height: 45px;
 }
 
