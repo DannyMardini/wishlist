@@ -150,6 +150,10 @@ li a {
     border-bottom: 1px solid gray;
 }
 
+#selectable {
+  margin: 0px;
+}
+
 /*#rightPanel{
   background-color: pink;
 
