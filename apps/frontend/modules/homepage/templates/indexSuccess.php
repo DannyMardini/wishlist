@@ -60,7 +60,7 @@ use_javascript('/js/wishlist.js');
         </div>
     </div>
   
-  <div id="rightPanel">
+<!--  <div id="rightPanel">
     <div id="friendlist">
       <ul id="selectable" class="ui-selectable">
         <?php foreach ($friends as $i => $friend): ?>
@@ -70,6 +70,6 @@ use_javascript('/js/wishlist.js');
         <?php endforeach;?>
       </ul>
     </div>
-  </div>
+  </div>-->
   
 </div>
