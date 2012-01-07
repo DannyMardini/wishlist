@@ -24,13 +24,15 @@ use_javascript('/js/wishlist.js');
             <?php   
             foreach ($friendUpdates as $update) { 
                 
+                    $message = '';
+                
                     if($update->getType()==1)
                     {
-                        $description = $update->getSubject()." -- Birthday is coming up on ".$update->getDatetime();
+                        $description = $update->getSubject(ESC_RAW)." -- Birthday is coming up on ".$update->getDatetime();
                     }
                     else if($update->getType()==4)
                     {
-                        $description = $update->getSubject()." -- Anniversary is coming up on ".$update->getDatetime();
+                        $description = $update->getSubject(ESC_RAW)." -- Anniversary is coming up on ".$update->getDatetime();
                     }
                     else
                     {
@@ -42,7 +44,7 @@ use_javascript('/js/wishlist.js');
             <div class="Update">
                 <div class="image"></div>
                 <div class="name"><?php echo $description ?></div>
-                <div class="info"><?php echo $update->getMessage() ?></div>
+                <div class="info"><?php echo $update->getMessage(ESC_RAW) ?></div>
             </div>
             
             <?php } ?>

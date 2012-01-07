@@ -24,7 +24,7 @@ class UpdatesTable extends Doctrine_Table
                 ->from('updates u')
                 ->where('u.user_id IN ( select userb_id from friendships where usera_id = ?)',$userId)               
                 ->orderBy('type asc, datetime desc');
-        //$hullo = $q->getSqlQuery();
+       
         $updates = $q->execute();
         
         return $updates;

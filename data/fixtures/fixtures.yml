@@ -204,7 +204,7 @@ Updates:
   updates_dannyAnnv:
     template: 4
     type: 4
-    subject: "Daniel Mardini"
+    subject: "<a href='http://www.google.com'>Daniel Mardini</a>"
     message: "Check Danny's wishlist for gift ideas"
     datetime: "2010-06-25 00:00:00"
     user_id: 1
