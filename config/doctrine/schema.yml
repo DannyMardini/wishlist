@@ -38,7 +38,7 @@ WishlistItem:
   relations:
     WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: WishlistItems }
 
-Updates:
+wishlist_update:
   columns: 
     template: { type: integer, notnull: true }
     type: { type: integer, notnull: true }

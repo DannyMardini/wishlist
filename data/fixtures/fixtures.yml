@@ -152,7 +152,7 @@ Enum:
     type: "UserUpdate"
     
 #updates
-Updates:
+wishlist_update:
   updates_dannybday:
     template: 3
     type: 1
