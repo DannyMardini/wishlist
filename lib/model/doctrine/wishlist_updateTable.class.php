@@ -16,4 +16,17 @@ class wishlist_updateTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('wishlist_update');
     }
+    
+    public function getFriendsUpdates($userId)
+    {                                           
+        $q = Doctrine_Query::create()
+                ->select('u.id, u.template, u.type, u.subject, u.message, u.datetime, u.user_id')
+                ->from('wishlist_update u')
+                ->where('u.user_id IN ( select userb_id from friendships where usera_id = ?)',$userId)               
+                ->orderBy('type asc, datetime desc');
+       
+        $updates = $q->execute();
+        
+        return $updates;
+    }
 }

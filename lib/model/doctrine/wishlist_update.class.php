@@ -12,4 +12,28 @@
  */
 class wishlist_update extends Basewishlist_update
 {
+    public function getFormattedTimestamp()
+    {
+        $now = time();
+        $submitted = new DateTime($this->getDateTime());
+        
+        $seconds = $now - $submitted->getTimestamp();
+        $minutes = $seconds / 60;
+        $hours = $minutes / 60;
+        $days = $hours / 24;
+        
+        if( $days > 0 )
+        {
+            return $days." days ago.";
+        }else if( $hours > 0 )
+        {
+            return $hours." hours ago.";
+        }else if( $minutes > 0 )
+        {
+            return $minutes." minutes ago.";
+        }else
+        {
+            return $seconds." seconds ago.";
+        }
+    }
 }
