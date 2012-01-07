@@ -155,14 +155,8 @@ li a {
   margin: 0px;
 }
 
-/*#rightPanel{
-  background-color: pink;
-
-  display: inline-block;
-  height: 100%;
+#rightPanel{
   width: 20%;
+  float: right;
+/*  visibility: hidden;*/
 }
-
-#selectable {
-  margin: 0px;
-}*/

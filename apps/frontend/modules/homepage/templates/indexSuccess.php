@@ -17,6 +17,19 @@ use_javascript('/js/wishlist.js');
         <div><h1>My Wishlist</h1></div>
         <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
     </div>
+
+   <div id="rightPanel">
+    <div id="friendlist">
+      <ul id="selectable" class="ui-selectable">
+        <?php foreach ($friends as $i => $friend): ?>
+        <li id="li_user_<?php echo $friend->getWishlistuserId();?>" class="ui-selectee ui-widget-content">
+            <?php echo $friend->getFirstName()." ".$friend->getLastName(); ?>
+        </li>
+        <?php endforeach;?>
+      </ul>
+    </div>
+  </div>
+  
     <div id="newsComponent">
         <div id="newsInnerComponent">
             
@@ -59,17 +72,4 @@ use_javascript('/js/wishlist.js');
             -->
         </div>
     </div>
-  
-<!--  <div id="rightPanel">
-    <div id="friendlist">
-      <ul id="selectable" class="ui-selectable">
-        <?php foreach ($friends as $i => $friend): ?>
-        <li id="li_user_<?php echo $friend->getWishlistuserId();?>" class="ui-selectee ui-widget-content">
-            <?php echo $friend->getFirstName()." ".$friend->getLastName(); ?>
-        </li>
-        <?php endforeach;?>
-      </ul>
-    </div>
-  </div>-->
-  
 </div>

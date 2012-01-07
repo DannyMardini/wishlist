@@ -16,7 +16,7 @@ use_javascript('navBar.js');
                   <div id="userName" ><a id="userNameLink" href="#"><?php echo $username ?></a></div>
               </li>
               <li><a href="#">Settings</a></li>
-              <li><a href="<?php echo url_for('friendlist/index?wishlistuser_id='.$user_id); ?>">Friends</a></li>
+              <li><a href="#">Friends</a></li>
               <li><a href="#">Messages</a></li>
               <li><a href="#">Logout</a></li>
             </ul>
