@@ -16,24 +16,41 @@ class wishlist_update extends Basewishlist_update
     {
         $now = time();
         $submitted = new DateTime($this->getDateTime());
+        $submittedTimeStamp = $submitted->getTimestamp();
         
-        $seconds = $now - $submitted->getTimestamp();
-        $minutes = $seconds / 60;
-        $hours = $minutes / 60;
-        $days = $hours / 24;
+        $seconds = $now - $submittedTimeStamp;
+        $minutes = intval($seconds / 60);
+        $hours = intval($minutes / 60);
+        $days = intval($hours / 24);
+        $weeks = intval($days / 7);  
         
-        if( $days > 0 )
+        if( $weeks > 1) // just show the full date
         {
-            return $days." days ago.";
+            return date(  "F j, Y, g:i a", $submittedTimeStamp);            
+        }
+        
+        if( $weeks > 0 )
+        {
+            return $weeks." weeks ago";
+            
+        }else if( $days > 0 )
+        {
+            if($days >= 1 && $days < 2)
+            {
+                return " yesterday";
+            }
+            
+            return $days." days ago";
+            
         }else if( $hours > 0 )
         {
-            return $hours." hours ago.";
+            return $hours." hours ago";
         }else if( $minutes > 0 )
         {
-            return $minutes." minutes ago.";
+            return $minutes." minutes ago";
         }else
         {
-            return $seconds." seconds ago.";
+            return $seconds." seconds ago";
         }
     }
 }
