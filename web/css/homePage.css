@@ -154,9 +154,3 @@ li a {
 #selectable {
   margin: 0px;
 }
-
-#rightPanel{
-  width: 20%;
-  float: right;
-  display: none;
-}

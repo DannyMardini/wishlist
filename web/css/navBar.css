@@ -118,3 +118,9 @@ li a {
     background-position: right;
     float: left;
 }
+
+#rightPanel{
+  width: 20%;
+  float: right;
+  display: none;
+}
