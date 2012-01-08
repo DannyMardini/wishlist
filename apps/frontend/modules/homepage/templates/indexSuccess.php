@@ -36,25 +36,15 @@ use_javascript('/js/wishlist.js');
             <?php   
             foreach ($friendUpdates as $update) { 
                 
-                    if($update->getType()==1)
-                    {
-                        $description = $update->getSubject()." -- Birthday is coming up on ".$update->getDatetime();
-                    }
-                    else if($update->getType()==4)
-                    {
-                        $description = $update->getSubject()." -- Anniversary is coming up on ".$update->getDatetime();
-                    }
-                    else
-                    {
-                        $description = $update->getSubject()." -- ".$update->getDatetime();
-                    }                
+                    $message = $update->getMessage(ESC_RAW);                                   
+                    $description = $update->getSubject(ESC_RAW)." -- ".$update->getFormattedTimestamp();                                   
                 
                 ?>
             
             <div class="Update">
                 <div class="image"></div>
                 <div class="name"><?php echo $description ?></div>
-                <div class="info"><?php echo $update->getMessage() ?></div>
+                <div class="info"><?php echo $message ?></div>
             </div>
             
             <?php } ?>

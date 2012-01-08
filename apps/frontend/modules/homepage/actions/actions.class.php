@@ -31,7 +31,7 @@ class homepageActions extends sfActions
       }
 
       $_SESSION['user'] = $this->user->getEmail();
-      $this->friendUpdates = UpdatesTable::getInstance()->GetFriendsUpdates($this->user->getWishlistuser_id());
+      $this->friendUpdates = wishlist_updateTable::getInstance()->GetFriendsUpdates($this->user->getWishlistuser_id());
     }catch(Exception $e)
     {
       $e->getTrace();

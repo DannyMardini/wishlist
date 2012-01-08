@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Updates form base class.
+ * wishlist_update form base class.
  *
- * @method Updates getObject() Returns the current form's model object
+ * @method wishlist_update getObject() Returns the current form's model object
  *
  * @package    wishlist
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseUpdatesForm extends BaseFormDoctrine
+abstract class Basewishlist_updateForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -34,7 +34,7 @@ abstract class BaseUpdatesForm extends BaseFormDoctrine
       'user_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('WishlistUser'), 'required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('updates[%s]');
+    $this->widgetSchema->setNameFormat('wishlist_update[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -45,7 +45,7 @@ abstract class BaseUpdatesForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Updates';
+    return 'wishlist_update';
   }
 
 }

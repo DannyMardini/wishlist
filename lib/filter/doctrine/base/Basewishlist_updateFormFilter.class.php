@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Updates filter form base class.
+ * wishlist_update filter form base class.
  *
  * @package    wishlist
  * @subpackage filter
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
-abstract class BaseUpdatesFormFilter extends BaseFormFilterDoctrine
+abstract class Basewishlist_updateFormFilter extends BaseFormFilterDoctrine
 {
   public function setup()
   {
@@ -30,7 +30,7 @@ abstract class BaseUpdatesFormFilter extends BaseFormFilterDoctrine
       'user_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('WishlistUser'), 'column' => 'wishlistuser_id')),
     ));
 
-    $this->widgetSchema->setNameFormat('updates_filters[%s]');
+    $this->widgetSchema->setNameFormat('wishlist_update_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -41,7 +41,7 @@ abstract class BaseUpdatesFormFilter extends BaseFormFilterDoctrine
 
   public function getModelName()
   {
-    return 'Updates';
+    return 'wishlist_update';
   }
 
   public function getFields()
