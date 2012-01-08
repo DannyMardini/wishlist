@@ -36,8 +36,8 @@ use_javascript('/js/wishlist.js');
             <?php   
             foreach ($friendUpdates as $update) { 
                 
-                    $message = $update->getMessage(ESC_RAW);                                   
-                    $description = $update->getSubject(ESC_RAW)." -- ".$update->getFormattedTimestamp();                                   
+                    $message = $update->getMessage(ESC_RAW);                    
+                    $description = $update[concat]." -- ".$update->getFormattedTimestamp();                                   
                 
                 ?>
             

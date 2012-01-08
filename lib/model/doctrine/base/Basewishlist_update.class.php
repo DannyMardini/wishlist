@@ -7,7 +7,6 @@
  * 
  * @property integer $template
  * @property integer $type
- * @property string $subject
  * @property string $message
  * @property datetime $datetime
  * @property integer $user_id
@@ -15,14 +14,12 @@
  * 
  * @method integer         getTemplate()     Returns the current record's "template" value
  * @method integer         getType()         Returns the current record's "type" value
- * @method string          getSubject()      Returns the current record's "subject" value
  * @method string          getMessage()      Returns the current record's "message" value
  * @method datetime        getDatetime()     Returns the current record's "datetime" value
  * @method integer         getUserId()       Returns the current record's "user_id" value
  * @method WishlistUser    getWishlistUser() Returns the current record's "WishlistUser" value
  * @method wishlist_update setTemplate()     Sets the current record's "template" value
  * @method wishlist_update setType()         Sets the current record's "type" value
- * @method wishlist_update setSubject()      Sets the current record's "subject" value
  * @method wishlist_update setMessage()      Sets the current record's "message" value
  * @method wishlist_update setDatetime()     Sets the current record's "datetime" value
  * @method wishlist_update setUserId()       Sets the current record's "user_id" value
@@ -45,11 +42,6 @@ abstract class Basewishlist_update extends sfDoctrineRecord
         $this->hasColumn('type', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
-             ));
-        $this->hasColumn('subject', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => true,
-             'length' => 255,
              ));
         $this->hasColumn('message', 'string', 255, array(
              'type' => 'string',

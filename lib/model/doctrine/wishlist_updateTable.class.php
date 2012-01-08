@@ -19,11 +19,14 @@ class wishlist_updateTable extends Doctrine_Table
     
     public function getFriendsUpdates($userId)
     {                                           
-        $q = Doctrine_Query::create()
-                ->select('u.id, u.template, u.type, u.subject, u.message, u.datetime, u.user_id')
+        $q = Doctrine_Query::create() // concat(usr.firstname, ' ', usr.lastname) as subject,
+                ->select("u.id, u.template, u.type, u.message, u.datetime, u.user_id, concat(usr.firstname,' ',usr.lastname)")
                 ->from('wishlist_update u')
+                ->leftJoin('u.WishlistUser usr') // ON u.user_id = wishlistuser_id')
                 ->where('u.user_id IN ( select userb_id from friendships where usera_id = ?)',$userId)               
                 ->orderBy('type asc, datetime desc');
+        
+        $t = $q->getSqlQuery();
        
         $updates = $q->execute();
         
