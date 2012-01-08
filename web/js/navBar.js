@@ -5,6 +5,7 @@
 
 var userName;
 var userID;
+var rightPanelVisible = 0;
 
 $(document).ready(function(){
 
@@ -26,6 +27,19 @@ $(document).ready(function(){
     });
 
     showOnlyMainProfileLink();
+
+    $("#friend_button").click(function(){
+      if( rightPanelVisible )
+      {
+        $('#rightPanel').hide();
+        rightPanelVisible = 0;
+      }else 
+      {
+        $("#rightPanel").show();
+        rightPanelVisible = 1;
+      }
+    });
+
 });
 
 function showOnlyMainProfileLink()

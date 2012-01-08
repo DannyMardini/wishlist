@@ -158,5 +158,5 @@ li a {
 #rightPanel{
   width: 20%;
   float: right;
-/*  visibility: hidden;*/
+  display: none;
 }
