@@ -41,8 +41,7 @@ WishlistItem:
 wishlist_update:
   columns: 
     template: { type: integer, notnull: true }
-    type: { type: integer, notnull: true }
-    subject: { type: string(255), notnull: true }
+    type: { type: integer, notnull: true }   
     message: { type: string(255), notnull: true }
     datetime: { type: datetime, notnull: true }
     user_id : { type: integer }

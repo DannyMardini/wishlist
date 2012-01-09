@@ -15,7 +15,6 @@ abstract class Basewishlist_updateFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'template' => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'type'     => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'subject'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'message'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'datetime' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'user_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('WishlistUser'), 'add_empty' => true)),
@@ -24,7 +23,6 @@ abstract class Basewishlist_updateFormFilter extends BaseFormFilterDoctrine
     $this->setValidators(array(
       'template' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'type'     => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'subject'  => new sfValidatorPass(array('required' => false)),
       'message'  => new sfValidatorPass(array('required' => false)),
       'datetime' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'user_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('WishlistUser'), 'column' => 'wishlistuser_id')),
@@ -50,7 +48,6 @@ abstract class Basewishlist_updateFormFilter extends BaseFormFilterDoctrine
       'id'       => 'Number',
       'template' => 'Number',
       'type'     => 'Number',
-      'subject'  => 'Text',
       'message'  => 'Text',
       'datetime' => 'Date',
       'user_id'  => 'ForeignKey',

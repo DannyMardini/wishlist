@@ -51,6 +51,14 @@ WishlistUser:
     email: ndnwarrior@gmail.com
     password: "lineage"
 
+  wishlist_user_blanca:
+    firstname: Blanca 
+    lastname: Edmiston
+    gender: 1
+    birthdate: "1961-08-25 00:00:00"
+    email: blanca.edmiston@gmail.com
+    password: "puchito"
+
 <?php for($i = 1; $i <= 10; $i++): ?>
   wishlist_user_test<?php echo $i ?>:
     firstname: test user <?php echo $i."\n" ?>
@@ -116,7 +124,7 @@ Friendship:
     userb_id: 1
   blanca_andrea_friends:
     usera_id: 2
-    userb_id: 4  
+    userb_id: 5 
 
 <?php for($i = 5; $i < 15; $i++): ?>
   danny_test_<?php echo $i ?>:
@@ -160,7 +168,6 @@ wishlist_update:
   updates_andrearmv:  
     template: 1
     type: 2
-    subject: "Andrea Coba"
     message: "Andrea removed <a href='http://www.google.com'>Guess Purse</a> from her wishlist"
     datetime: "2011-12-23 03:00:00"
     user_id: 2
@@ -168,7 +175,6 @@ wishlist_update:
   updates_andreaNewFriend2:
     template: 2
     type: 3
-    subject: "Andrea Coba"
     message: "Is now friends with <a href='www.google.com'>Uyen Vu</a>"
     datetime: "2011-12-24 04:00:00"
     user_id: 2
@@ -176,7 +182,6 @@ wishlist_update:
   updates_dannyadd:
     template: 1
     type: 2
-    subject: "Danny Mardini"
     message: "Danny added <a href='www.google.com'>Skyrim</a> to his wishlist"
     datetime: "2011-12-31 08:00:00"
     user_id: 1
@@ -184,7 +189,6 @@ wishlist_update:
   updates_dannyNewFriend:
     template: 2
     type: 3
-    subject: "Danny Mardini"
     message: "Is now friends with <a href='http:www.google.com'>Blanca Edmiston</a>"
     datetime: "2012-01-6 08:00:00"
     user_id: 1    
@@ -192,7 +196,6 @@ wishlist_update:
   updates_dannyadd:
     template: 1
     type: 2
-    subject: "Danny Mardini"
     message: "Danny added <a href='http://www.google.com'>Battlefield</a> to his wishlist"
     datetime: "2011-10-23 08:00:00"
     user_id: 1    
@@ -201,16 +204,35 @@ wishlist_update:
   updates_andreaNewFriend1:
     template: 2
     type: 3
-    subject: "Andrea Coba"
     message: "Is now friends with <a href='www.google.com'>Blanca Edmiston</a>"
     datetime: "2011-12-22 07:00:00"
     user_id: 2
     
   updates_blancaNewFriend2:
-    template: 3
-    type: 1
-    subject: "Blanca Edmiston"
+    template: 1
+    type: 2
     message: "Removed <a href='www.google.com'>boots</a> from her wishlist"
-    datetime: "1961-08-25 07:00:00"
-    user_id: 4  
+    datetime: "2012-01-07 23:00:00"
+    user_id: 5 
+
+  updates_blancaadditem:
+    template: 1
+    type: 2
+    message: "Removed <a href='www.google.com'>fur coat</a> from her wishlist"
+    datetime: "2012-01-01 07:00:00"
+    user_id: 5   
     
+    
+  updates_blancaNewFriend3:
+    template: 1
+    type: 2
+    message: "Added <a href='www.google.com'>underwear</a> to her wishlist"
+    datetime: "2011-12-31 00:00:01"
+    user_id: 5    
+    
+  updates_blancaNewFriend3:
+    template: 1
+    type: 2
+    message: "Added <a href='www.google.com'>Daniel Mardini</a> to her wishlist"
+    datetime: "2012-01-08 00:00:01"
+    user_id: 5    
