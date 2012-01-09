@@ -124,29 +124,37 @@ li a {
     padding-top: 50px;
 }
 
+#updatesInnerComponent .image {
+/*    display: inline-block;*/
+    float: left;
+    width: 10%;
+    height: 60px;
+    background-image: url(/images/default_avatar.gif);
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: left;
+    margin-top: 10px;
+}
+
 #updatesInnerComponent .name {
-/*    padding-top: 25px;*/
+    margin-top: 15px;
     font-weight: bolder;
     display: inline-block;
+    height: 30px;
+    text-align: center;
 /*    float: right;*/
 }
 
-#updatesInnerComponent .info {
+#updatesInnerComponent .message {
+    display: block;
     padding-top: 10px;
     padding-left: 15px;
 }
 
-#updatesInnerComponent .image {
-    display: inline-block;
-    width: 10%;
-    height: 75px;
-    background-image: url(/images/gift.jpg);
-    background-size: 85%;
-    background-repeat: no-repeat;
-    background-position: left;
-}
-
 #updatesInnerComponent .timestamp {
+    margin-top: 5px;
+    color: gray;
+    display: block;
     font-size:12px;
 }
 

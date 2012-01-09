@@ -36,15 +36,15 @@ use_javascript('/js/wishlist.js');
             foreach ($friendUpdates as $update) { 
                 
                     $message = $update->getMessage(ESC_RAW);                    
-                    $description = $update[concat];                                   
+                    $name = $update[concat];                                   
                     $timestamp = " -- ".$update->getFormattedTimestamp();
                 
                 ?>
             
             <div class="Update">
                 <div class="image"></div>
-                <div class="name"><?php echo $description ?></div>
-                <div class="info"><?php echo $message ?></div>
+                <div class="name"><?php echo $name ?></div>
+                <div class="message"><?php echo $message ?></div>
                 <div class="timestamp"><?php echo $timestamp ?></div>
             </div>
             
