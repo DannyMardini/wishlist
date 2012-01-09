@@ -32,9 +32,4 @@ class wishlist_updateTable extends Doctrine_Table
         
         return $updates;
     }
-    
-    public function saveUpdate($update)
-    {
-        $update->save();
-    }
 }

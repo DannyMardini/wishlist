@@ -12,7 +12,7 @@
  */
 class wishlist_update extends Basewishlist_update
 {
-    public function createUpdate($type, $message, $datetime, $user_id)
+    public function createAndSaveUpdate($type, $message, $datetime, $user_id)
     {     
         $template = "";
         
@@ -36,6 +36,8 @@ class wishlist_update extends Basewishlist_update
         $this->setTemplate($message);
         $this->setTemplate($datetime);
         $this->setTemplate($user_id);
+        
+        $this->save();
     }
 
 
