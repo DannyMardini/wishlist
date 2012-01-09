@@ -11,18 +11,10 @@
     <script src="/js/jquery-1.6.2.min.js"></script>
     <script src="/js/jquery-ui-1.8.16.custom.min.js"></script>
     <script src="/js/common.js"></script>
-    
+
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
     <head><title><?php include_slot("title", "Wishlist") ?></title></head>
-    
-    <body>
-      <?php
-      $email = $_SESSION['user'];
-      $user = WishlistUserTable::getInstance()->getUserWithEmail($email);
-      ?>
-      
-      <?php include_component('navBar', 'showNavBar', array( 'username' => $user->getFirstName(), 'user_id' => $user->getWishlistuserId())); ?>
-      <?php echo $sf_content ?>
-    </body>
+
+    <body><?php echo $sf_content ?></body>
 </html>

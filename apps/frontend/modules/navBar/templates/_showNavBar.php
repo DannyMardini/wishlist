@@ -1,8 +1,3 @@
-<?php
-use_stylesheet('navBar.css');
-use_javascript('navBar.js');
-?>
-
 <div id="header">
     <div id="logoContainer">
         <div id="logo"></div>

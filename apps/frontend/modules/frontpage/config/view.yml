@@ -1,7 +1,7 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/13-View
 
-default:
+indexSuccess:
   http_metas:
     content-type: text/html
 
@@ -12,9 +12,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [main, navBar]
+  stylesheets:    [-navBar]
 
-  javascripts:    [navBar]
+  javascripts:    [-navBar]
 
   has_layout:     true
-  layout:         layout
+  layout:         emptyLayout
