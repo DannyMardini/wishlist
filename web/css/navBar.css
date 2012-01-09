@@ -120,7 +120,7 @@ root {
     display: inline-block;
     width: 50%;
     height: 45px;
-    background-image: url(/images/gift.jpg);
+    background-image: url(/images/default_avatar.gif);
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: right;

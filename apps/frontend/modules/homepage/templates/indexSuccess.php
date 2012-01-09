@@ -2,6 +2,7 @@
 use_stylesheet('homePage.css');
 use_stylesheet('/css/wishlist.css');
 use_javascript('/js/wishlist.js');
+use_javascript('/js/homepage.js');
 ?>
 
   
@@ -24,7 +25,7 @@ use_javascript('/js/wishlist.js');
             foreach ($friendUpdates as $update) { 
                 
                     $message = $update->getMessage(ESC_RAW);                    
-                    $name = $update[concat];                                   
+                    $name = "<a href='user/".$update->getUserId()."/' >".$update[concat]."</a>";                                   
                     $timestamp = " -- ".$update->getFormattedTimestamp();
                 
                 ?>
@@ -35,8 +36,11 @@ use_javascript('/js/wishlist.js');
                 <div class="message"><?php echo $message ?></div>
                 <div class="timestamp"><?php echo $timestamp ?></div>
             </div>
-            
+           
             <?php } ?>
         </div>
     </div>
+    
+    
+    <div id="testDialog" title="test test">this is a test</div>
 </div>

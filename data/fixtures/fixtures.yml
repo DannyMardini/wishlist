@@ -172,35 +172,35 @@ wishlist_update:
   updates_andrearmv:  
     template: 1
     type: 2
-    message: "Andrea removed <a href='http://www.google.com'>Guess Purse</a> from her wishlist"
+    message: "Andrea removed <a href='#' onclick='openDialog(1)'>Guess Purse</a> from her wishlist"
     datetime: "2011-12-23 03:00:00"
     user_id: 2
     
   updates_andreaNewFriend2:
     template: 2
     type: 3
-    message: "Is now friends with <a href='www.google.com'>Uyen Vu</a>"
+    message: "Is now friends with <a href='user/4'>Uyen Vu</a>"
     datetime: "2011-12-24 04:00:00"
     user_id: 2
 
   updates_dannyadd:
     template: 1
     type: 1
-    message: "Danny added <a href='www.google.com'>Skyrim</a> to his wishlist"
+    message: "Danny added <a href='#' onclick='openDialog(1)'>Skyrim</a> to his wishlist"
     datetime: "2011-12-31 08:00:00"
     user_id: 1
 
   updates_dannyNewFriend:
     template: 2
     type: 3
-    message: "Is now friends with <a href='http:www.google.com'>Blanca Edmiston</a>"
+    message: "Is now friends with <a href='user/5/'>Blanca Edmiston</a>"
     datetime: "2012-01-6 08:00:00"
     user_id: 1    
     
   updates_dannyadd:
     template: 1
     type: 1
-    message: "Danny added <a href='http://www.google.com'>Battlefield</a> to his wishlist"
+    message: "Danny added <a href='#' onclick='openDialog(1)'>Battlefield</a> to his wishlist"
     datetime: "2011-10-23 08:00:00"
     user_id: 1    
   
@@ -208,21 +208,21 @@ wishlist_update:
   updates_andreaNewFriend1:
     template: 2
     type: 3
-    message: "Is now friends with <a href='www.google.com'>Blanca Edmiston</a>"
+    message: "Is now friends with <a href='user/5/'>Blanca Edmiston</a>"
     datetime: "2011-12-22 07:00:00"
     user_id: 2
     
   updates_blancarmvitem2:
     template: 1
     type: 2
-    message: "Removed <a href='www.google.com'>boots</a> from her wishlist"
+    message: "Removed <a href='#' onclick='openDialog(1)'>boots</a> from her wishlist"
     datetime: "2012-01-07 23:00:00"
     user_id: 5 
 
   updates_blancarmvitem:
     template: 1
     type: 2
-    message: "Removed <a href='www.google.com'>fur coat</a> from her wishlist"
+    message: "Removed <a href='#' onclick='openDialog(1)'>fur coat</a> from her wishlist"
     datetime: "2012-01-01 07:00:00"
     user_id: 5   
     
@@ -230,20 +230,20 @@ wishlist_update:
   updates_blancaadditem2:
     template: 1
     type: 1
-    message: "Added <a href='www.google.com'>underwear</a> to her wishlist"
+    message: "Added <a href='#' onclick='openDialog(1)'>underwear</a> to her wishlist"
     datetime: "2011-12-31 00:00:01"
     user_id: 5    
     
   updates_blancaaddfriend:
     template: 1
     type: 3
-    message: "Is now friends with <a href='www.google.com'>Daniel Mardini</a>"
+    message: "Is now friends with <a href='user/1/'>Daniel Mardini</a>"
     datetime: "2012-01-6 08:00:00"
     user_id: 5   
     
   updates_blancaadditem4:
     template: 1
     type: 1
-    message: "Added <a href='www.google.com'>a diamond ring</a> to her wishlist"
+    message: "Added <a href='#' onclick='openDialog(1)'>a diamond ring</a> to her wishlist"
     datetime: "2012-01-8 08:00:00"
     user_id: 5    

@@ -106,17 +106,6 @@ li a {
     line-height: 3.0;
 }
 
-#userPicture{
-    display: inline-block;
-    width: 50%;
-    height: 45px;
-    background-image: url(/images/gift.jpg);
-    background-size: 70%;
-    background-repeat: no-repeat;
-    background-position: right;
-    float: left;
-}
-
 #updatesInnerComponent{
     min-height: 300px;
     padding-left: 310px;
@@ -165,5 +154,15 @@ li a {
 
 #selectable {
   margin: 0px;
+}
+
+#updatesInnerComponent a {
+    cursor: pointer;
+    color: darkblue;
+    text-decoration: none;
+}
+
+#updatesInnerComponent a:hover {
+    text-decoration: underline;
 }
 
