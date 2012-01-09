@@ -1,8 +1,3 @@
-<?php
-use_stylesheet('navBar.css');
-use_javascript('navBar.js');
-?>
-
 <div id="header">
     <div id="logoContainer">
         <div id="logo"></div>
@@ -26,11 +21,12 @@ use_javascript('navBar.js');
 </div>
 
 <div id="rightPanel">
-  <div id="friendlist">
-    <ul id="selectable" class="ui-selectable">
+    <div id="friendlist">
+<!--    <ul id="selectable" class="ui-selectable">-->
+    <ul>
       <?php foreach ($friends as $i => $friend): ?>
-      <li id="li_user_<?php echo $friend->getWishlistuserId();?>" class="ui-selectee ui-widget-content">
-          <?php echo $friend->getFirstName()." ".$friend->getLastName(); ?>
+      <li id="li_user_<?php echo $friend->getWishlistuserId();?>">
+          <a href='<?php echo url_for('user/show?wishlistuser_id='.$friend->getWishlistuserId());?>'><?php echo $friend->getFirstName()." ".$friend->getLastName(); ?></a>
       </li>
       <?php endforeach;?>
     </ul>

@@ -5,7 +5,6 @@ use_stylesheet('/css/wishlist.css');
 
 //Javascript
 use_javascript('/js/wishlist.js');
-use_javascript('/js/userPage.js');
 ?>
 
 

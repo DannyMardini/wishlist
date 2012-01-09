@@ -10,7 +10,6 @@ use_javascript('/js/wishlist.js');
   
 <input id="username" type="hidden" value="<?php echo $user->getFirstname() ?>"/>
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
-<?php include_component('navBar', 'showNavBar', array( 'username' => $user->getFirstName(), 'user_id' => $user->getWishlistuserId())); ?>
 
 <div id="content" class="clearfix">
     <div id="wishlistComponent">
