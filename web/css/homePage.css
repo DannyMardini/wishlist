@@ -157,6 +157,7 @@ li a {
 }
 
 #updatesInnerComponent a {
+    cursor: pointer;
     color: darkblue;
     text-decoration: none;
 }

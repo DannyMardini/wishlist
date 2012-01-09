@@ -52,4 +52,7 @@ use_javascript('/js/homepage.js');
             <?php } ?>            
         </div>
     </div>
+    
+    
+    <div id="testDialog" title="test test">this is a test</div>
 </div>
