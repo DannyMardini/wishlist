@@ -12,7 +12,33 @@
  */
 class wishlist_update extends Basewishlist_update
 {
-    
+    public function createUpdate($type, $message, $datetime, $user_id)
+    {     
+        $template = "";
+        
+        switch ($type) // default templates
+        {
+            case 1: // Added Item
+              $template = 1;
+              break;
+            case 2: // Removed Item
+              $template = 1;
+              break;
+            case 3:  // Added new friend
+              $template = 2;
+              break;
+            default:
+              break;
+        }
+        
+        $this->setTemplate($template);
+        $this->setTemplate($type);
+        $this->setTemplate($message);
+        $this->setTemplate($datetime);
+        $this->setTemplate($user_id);
+    }
+
+
     public function getFormattedTimestamp()
     {                         
         $submittedDateTime = strtotime($this->getDatetime());        

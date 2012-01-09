@@ -24,12 +24,17 @@ class wishlist_updateTable extends Doctrine_Table
                 ->from('wishlist_update u')
                 ->leftJoin('u.WishlistUser usr') // ON u.user_id = wishlistuser_id')
                 ->where('u.user_id IN ( select userb_id from friendships where usera_id = ?)',$userId)               
-                ->orderBy('type asc, datetime desc');
+                ->orderBy('datetime desc');
         
         $t = $q->getSqlQuery();
        
         $updates = $q->execute();
         
         return $updates;
+    }
+    
+    public function saveUpdate($update)
+    {
+        $update->save();
     }
 }
