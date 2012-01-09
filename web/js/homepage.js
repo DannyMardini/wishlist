@@ -3,24 +3,27 @@
  * and open the template in the editor.
  */
 
-$(function() {      
+// buttons used for the dialog
+var okLabel = "Ok";
+var addToWishlist = "I want!";
+var buttons = {};
+
+buttons[okLabel] = function(){$(this).dialog("close");};
+buttons[addToWishlist] = function(){alert('to do');};
+
+
+$(function() {    
     
-//    $('.Update .message a').click(function(){
-//        openDialog();
-//        return false;
-//    });    
 });
 
 function openDialog(itemId)
-{
+{    
+    // using the item ID, grab the item's info and display in the dialog
+    
     $( "#testDialog" ).dialog({
             position: 'center', 
             modal: true,
-            buttons: {
-                    Ok: function() {
-                            $( this ).dialog( "close" );
-                    }
-            }
+            buttons: buttons            
     });    
 }
 
