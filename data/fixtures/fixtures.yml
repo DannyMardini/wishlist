@@ -209,9 +209,30 @@ wishlist_update:
     user_id: 2
     
   updates_blancaNewFriend2:
-    template: 3
-    type: 1
+    template: 1
+    type: 2
     message: "Removed <a href='www.google.com'>boots</a> from her wishlist"
-    datetime: "1961-08-25 07:00:00"
+    datetime: "2012-01-07 23:00:00"
     user_id: 5 
+
+  updates_blancaadditem:
+    template: 1
+    type: 2
+    message: "Removed <a href='www.google.com'>fur coat</a> from her wishlist"
+    datetime: "2012-01-01 07:00:00"
+    user_id: 5   
     
+    
+  updates_blancaNewFriend3:
+    template: 1
+    type: 2
+    message: "Added <a href='www.google.com'>underwear</a> to her wishlist"
+    datetime: "2011-12-31 00:00:01"
+    user_id: 5    
+    
+  updates_blancaNewFriend3:
+    template: 1
+    type: 2
+    message: "Added <a href='www.google.com'>Daniel Mardini</a> to her wishlist"
+    datetime: "2012-01-08 00:00:01"
+    user_id: 5    

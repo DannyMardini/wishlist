@@ -12,17 +12,72 @@
  */
 class wishlist_update extends Basewishlist_update
 {
+    
     public function getFormattedTimestamp()
+    {                         
+        $submittedDateTime = strtotime($this->getDatetime());        
+        $thisYear = date('Y') == date('Y', $submittedDateTime);                      
+        
+        if ( $thisYear > 0 )
+        {                     
+            $thisWeek = date('W') == date('W', $submittedDateTime);      
+            if( $thisWeek > 0 )
+            {
+                $yesterday = date('j', $submittedDateTime) == (date('j')-1);
+                $today = date('j') == date('j', $submittedDateTime);
+                
+                if( $yesterday > 0 )
+                {
+                    return " Yesterday @ ".date("g:i a", $submittedDateTime);
+                }
+                else if( $today > 0 )
+                {
+                    return "Today @".date(" g:i a", $submittedDateTime); 
+                }
+                else
+                {
+                    return date(  "l \@ g:i a", $submittedDateTime); 
+                }
+            }
+            else
+            {
+                return date(  "F jS \@ g:i a", $submittedDateTime); 
+            }
+        }
+        else
+        {                        
+            $seconds = time() - $submittedDateTime;
+            $days = round($seconds / (24*60*60));            
+            
+            $yesterday = $days <= 1;
+            $thisWeek = (round($days / 7)) <= 1;
+               
+            if($yesterday > 0)
+            {
+                return " yesterday @ ".date("g:i a", $submittedDateTime);
+            }
+            else if($thisWeek > 0)
+            {
+                return date(  "l \@ g:i a", $submittedDateTime);
+            }
+            else
+            {
+                return date(  "F jS, Y, g:i a", $submittedDateTime); 
+            }
+        }
+    }
+    
+    public function getFormattedTimestamp2()
     {
         $now = time();
         $submitted = new DateTime($this->getDateTime());
         $submittedTimeStamp = $submitted->getTimestamp();
         
         $seconds = $now - $submittedTimeStamp;
-        $minutes = intval($seconds / 60);
-        $hours = intval($minutes / 60);
-        $days = intval($hours / 24);
-        $weeks = intval($days / 7);  
+        $minutes = round($seconds / 60);
+        $hours = round($minutes / 60);
+        $days = round($hours / 24);
+        $weeks = round($days / 7);  
         
         if( $weeks > 1) // just show the full date
         {
@@ -44,7 +99,11 @@ class wishlist_update extends Basewishlist_update
             
         }else if( $hours > 0 )
         {
-            return $hours." hours ago";
+            if( $hours == 1 )
+                return $hours." hour ago at ".date("g:i a", $submittedTimeStamp);
+            
+            return $hours." hours ago at ".date("g:i a", $submittedTimeStamp);
+            
         }else if( $minutes > 0 )
         {
             return $minutes." minutes ago";
