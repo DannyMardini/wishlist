@@ -30,14 +30,15 @@ use_javascript('/js/wishlist.js');
     </div>
   </div>
   
-    <div id="newsComponent">
-        <div id="newsInnerComponent">
+    <div id="updatesComponent">
+        <div id="updatesInnerComponent">
             
             <?php   
             foreach ($friendUpdates as $update) { 
                 
                     $message = $update->getMessage(ESC_RAW);                    
-                    $description = $update[concat]." -- ".$update->getFormattedTimestamp();                                   
+                    $description = $update[concat];                                   
+                    $timestamp = " -- ".$update->getFormattedTimestamp();
                 
                 ?>
             
@@ -45,6 +46,7 @@ use_javascript('/js/wishlist.js');
                 <div class="image"></div>
                 <div class="name"><?php echo $description ?></div>
                 <div class="info"><?php echo $message ?></div>
+                <div class="timestamp"><?php echo $timestamp ?></div>
             </div>
             
             <?php } ?>
