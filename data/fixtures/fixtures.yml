@@ -74,24 +74,28 @@ WishlistItem:
   wishlistItem_ball:
     name: bouncy ball
     price: 500
+    link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_danny
 
   wishlistItem_skyrim:
     name: Skyrim
     price: 60
+    link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_danny
 
   wishlistItem_ipad:
     name: iPad
     price: 800
+    link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_danny
 
   wishlistItem_macbook:
     name: Macbook
     price: 2000
+    link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_danny
 
@@ -99,6 +103,7 @@ WishlistItem:
   wishlistItem_test<?php echo $i ?>:
     name: testItem<?php echo $i."\n"?>
     price: <?php echo $i."\n" ?>
+    link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_danny
 <?php endfor; ?>
@@ -106,6 +111,7 @@ WishlistItem:
   wishlistItem_purse:
     name: purse
     price: 1000
+    link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_andrea
 

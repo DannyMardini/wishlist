@@ -14,3 +14,11 @@
 #div_wishlist_div {
     display: inline-block;
 }
+
+#newWishLink {
+  color: pink;
+}
+
+.newWishBox {
+  height: 100px;
+}

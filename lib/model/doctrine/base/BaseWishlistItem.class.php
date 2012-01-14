@@ -7,17 +7,20 @@
  * 
  * @property string $name
  * @property integer $price
+ * @property string $link
  * @property boolean $is_public
  * @property integer $user_id
  * @property WishlistUser $WishlistUser
  * 
  * @method string       getName()         Returns the current record's "name" value
  * @method integer      getPrice()        Returns the current record's "price" value
+ * @method string       getLink()         Returns the current record's "link" value
  * @method boolean      getIsPublic()     Returns the current record's "is_public" value
  * @method integer      getUserId()       Returns the current record's "user_id" value
  * @method WishlistUser getWishlistUser() Returns the current record's "WishlistUser" value
  * @method WishlistItem setName()         Sets the current record's "name" value
  * @method WishlistItem setPrice()        Sets the current record's "price" value
+ * @method WishlistItem setLink()         Sets the current record's "link" value
  * @method WishlistItem setIsPublic()     Sets the current record's "is_public" value
  * @method WishlistItem setUserId()       Sets the current record's "user_id" value
  * @method WishlistItem setWishlistUser() Sets the current record's "WishlistUser" value
@@ -42,6 +45,11 @@ abstract class BaseWishlistItem extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              'unique' => false,
+             ));
+        $this->hasColumn('link', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 255,
              ));
         $this->hasColumn('is_public', 'boolean', null, array(
              'type' => 'boolean',

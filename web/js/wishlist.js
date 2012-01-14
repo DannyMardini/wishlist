@@ -9,4 +9,10 @@ $(document).ready(function(){
         collapsible: true,
         active: false
     });
+
+    $( "#newWishForm" ).submit(function(e) {
+        e.preventDefault();
+
+        $.post('/wishlist/new', $("#newWishForm").serialize());
+    });
 });

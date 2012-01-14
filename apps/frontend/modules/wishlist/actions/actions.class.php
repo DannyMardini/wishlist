@@ -19,4 +19,22 @@ class wishlistActions extends sfActions
   {
     $this->user_id = $request->getParameter('wishlistuser_id');
   }
+
+  public function executeNew(sfWebRequest $request)
+  {
+    $user = WishlistUserTable::getInstance()->getUserWithEmail($_SESSION['user']);
+    $name = $request->getPostParameter('newWishName');
+    $price = $request->getPostParameter('newWishPrice');
+    $link = $request->getPostParameter('newWishLink');
+
+    if( !isset ($name) || !isset ($price) || !isset ($link))
+      return;
+
+    $newItem = new WishlistItem();
+    $newItem->setName($name);
+    $newItem->setPrice($price);
+    $newItem->setLink($link);
+    $newItem->setUserId($user->getWishlistuserId());
+    $newItem->save();
+  }
 }
