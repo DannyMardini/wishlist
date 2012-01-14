@@ -4,10 +4,6 @@ use_stylesheet('/css/wishlist.css');
 use_javascript('/js/wishlist.js');
 use_javascript('/js/homepage.js');
 ?>
-
-  
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>    
   
 <input id="username" type="hidden" value="<?php echo $user->getFirstname() ?>"/>
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
