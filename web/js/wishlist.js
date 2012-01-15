@@ -2,17 +2,25 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-$(document).ready(function(){
-
-    $( "#div_wishlist_div" ).accordion({
+function setupWishlist(wishlist_div)
+{
+    $(wishlist_div).accordion({
         collapsible: true,
         active: false
     });
 
-    $( "#newWishForm" ).submit(function(e) {
-        e.preventDefault();
+    $(wishlist_div).keyup(function(e) {
+        if(e.keyCode === 13 )
+        {
+            e.preventDefault();
 
-        $.post('/wishlist/new', $("#newWishForm").serialize());
+            $( "#wishlist" ).load('/wishlist/new', {newWishName: $("#newWishName").val(), newWishPrice: $("#newWishPrice").val(), newWishLink: $("#newWishLink").val()}, function(){
+              setupWishlist(wishlist_div);
+            });
+        }
     });
+}
+
+$(document).ready(function(){
+    setupWishlist("#div_wishlist_div");
 });

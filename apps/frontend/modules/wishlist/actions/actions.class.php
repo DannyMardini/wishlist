@@ -18,6 +18,8 @@ class wishlistActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $this->user_id = $request->getParameter('wishlistuser_id');
+    //$this->wishlist_user = WishlistUserTable::getInstance()->find(array($this->wishlistuser_id));
+    //$this->wishlist_items = $this->wishlist_user->getWishlistItems();
   }
 
   public function executeNew(sfWebRequest $request)
@@ -36,5 +38,8 @@ class wishlistActions extends sfActions
     $newItem->setLink($link);
     $newItem->setUserId($user->getWishlistuserId());
     $newItem->save();
+    //return $this->renderComponent('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuser_id()));
+    //return $this->renderPartial('showWishlist')
+    return $this->renderPartial('showWishlist', array('wishlist_items' => $user->getWishlistItems()));
   }
 }

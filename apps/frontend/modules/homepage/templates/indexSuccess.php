@@ -11,7 +11,9 @@ use_javascript('/js/homepage.js');
 <div id="content" class="clearfix">
     <div id="wishlistComponent">
         <div><h1>My Wishlist</h1></div>
-        <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
+        <div id="wishlist">
+          <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
+        </div>
     </div>
   
     <div id="updatesComponent">

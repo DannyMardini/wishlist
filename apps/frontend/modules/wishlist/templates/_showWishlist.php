@@ -7,19 +7,22 @@
 ?>
 
 <div id="div_wishlist_div">
-  <h3><a id="newWishLink" href="#">New wish..</a></h3>
+  <h3><a id="newWishBox" href="#">New wish..</a></h3>
   <div class="newWishBox">
-    <form id="newWishForm" >
-      <input type="text" name="newWishName" placeholder="Name"/>
-      <input type="text" name="newWishPrice" placeholder="Price"/>
-      <input type="text" name="newWishLink" placeholder="Link"/>
-      <input type="submit" value="test"/>
-    </form>
+      <input type="text" id="newWishName" placeholder="Name"/>
+      <input type="text" id="newWishPrice" placeholder="Price"/>
+      <input type="text" id="newWishLink" placeholder="Link"/>
   </div>
-<?php foreach ($wishlist_items as $wishlist_item): ?>
-    <h3><a href="#"><?php echo $wishlist_item->getName(); ?></a></h3>
+<?php 
+  //foreach ($wishlist_items as $wishlist_item):
+  for($i = ($wishlist_items->count()-1); $i >= 0; $i--):
+?>
+    <h3><a href="#"><?php echo $wishlist_items[$i]->getName(); ?></a></h3>
     <div>
-        <p><?php echo "$".$wishlist_item->getPrice(); ?></p>
+        <p><?php echo "$".$wishlist_items[$i]->getPrice(); ?></p>
     </div>
-<?php        endforeach;?>
+<?php
+  endfor;
+////endforeach;
+?>
 </div>
