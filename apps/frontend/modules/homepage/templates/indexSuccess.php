@@ -40,5 +40,7 @@ use_javascript('/js/homepage.js');
     </div>
     
     
-    <div id="testDialog" title="test test">this is a test</div>
+    <div id="itemDialog" title="temp">        
+        <div id="price"></div>        
+    </div>
 </div>
