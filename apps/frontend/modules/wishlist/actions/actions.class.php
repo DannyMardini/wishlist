@@ -37,4 +37,11 @@ class wishlistActions extends sfActions
     $newItem->setUserId($user->getWishlistuserId());
     $newItem->save();
   }
+
+  public function executeGetWishlistItem(sfWebRequest $request)
+  {
+      $item = WishlistItemTable::getInstance()->find($request->getParameter('wishlistitem_id'));  
+      return $this->renderText($item->exportObj());
+  }
+  
 }

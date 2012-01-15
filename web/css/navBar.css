@@ -38,7 +38,7 @@ root {
     float: left;
 }
 
-#name {
+#logoContainer #name {
     font-family: 'Satisfy', cursive;
     font-size: 40px;
     float: right;
