@@ -23,15 +23,10 @@ $(document).ready(function(){
 function setupItemView(data)
 {
     $('#itemDialog').attr('title','Wishlist Item');
-   // $('#itemDialog #price').html('$50.00'); 
 
-    //$.each(data, function(index) {
     $('#itemDialog #name').html(data.name);
     $('#itemDialog #price').html(data.price);
-    $('#itemDialog #link').html(data.link);
-    //        var test2 = data.id;
-    //        var test = data[index]; 
-    //    });
+    $('#itemDialog #link').html('<a target="_blank" href="'+data.link+'">link</a>');
       
 /*
      *
