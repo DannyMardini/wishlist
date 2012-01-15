@@ -28,8 +28,11 @@ class wishlistActions extends sfActions
     $link = $request->getPostParameter('newWishLink');
 
     if( !isset ($name) || !isset ($price) || !isset ($link))
-      return;
+        return;
 
+    if(($name == "") || ($price == "") || ($link == ""))
+       return;
+    
     $newItem = new WishlistItem();
     $newItem->setName($name);
     $newItem->setPrice($price);
