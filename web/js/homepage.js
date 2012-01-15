@@ -4,66 +4,54 @@
  */
 
 // buttons used for the dialog
-var okLabel = "Ok";
-var addToWishlist = "I want!";
-var buttons = {};
+var addToWishlist =  {                        
+            priority: 'primary',           
+            id: 'addToWishlistButton',
+            label: 'add to my wishlist',
+            click: function() {
+                alert('to do');
+            }
+        };
 
-buttons[okLabel] = function(){$(this).dialog("close");};
-buttons[addToWishlist] = function(){alert('to do');};
+var itemDialogButtons = [ addToWishlist ];
+    
+
 
 $(document).ready(function(){
         
     $.ajaxSetup ({  
         cache: false  
     });
+    
+    // init item dialog
+    $( "#itemDialog" ).dialog({
+            autoOpen: false,
+            position: 'center', 
+            resizable: false,
+            height:300,
+            width:500,
+            modal: true,
+            buttons: itemDialogButtons,
+            open: function(event, ui) {
+                $(this).scrollTop(0);                
+            }
+    });   
+    
+    $('#addToWishlistButton').removeClass('ui-button-text-only');
+    $('#addToWishlistButton :first-child').removeClass('ui-button-text');
+    $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-cart');
+    $('#addToWishlistButton').addClass('itemDialogButton');
 
 });
 
 
 function setupItemView(data)
 {
-    $('#itemDialog').attr('title','Wishlist Item');
-
     $('#itemDialog #name').html(data.name);
     $('#itemDialog #price').html(data.price);
-    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">link</a>');
-      
-/*
-     *
-     *  $("#DivPassword")
-        .dialog('open');
-     **/   
+    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">'+data.link+'</a><br /><a target="_blank" href="http://'+data.link+'">'+data.link+'</a>');
     
-    
-    // create dialog
-    $( "#itemDialog" ).dialog({
-            position: 'center', 
-            resizable: false,
-            height:200,
-            width:500,
-            modal: true
-
-    });  
-    
-    $("<div id='AddToWishlist' style='margin-right:10px;text-align:left;padding-left:0px;font-size:12px;position:absolute;bottom:0px;right:0px;width:30px;height:25px;'>test tooltip</div>")
-    .button({
-        icons: {
-            primary: 'ui-icon-cart'
-        },
-        text: false            
-    })
-    .click(function (event) {
-        alert('adds this item to your cart TODO');
-    }).appendTo($( "#itemDialog" ));
-    
-    $("#AddToWishlist").tooltip({
-        fadeInSpeed: 10,
-        // change trigger opacity slowly to 0.8
-        onShow: function() {
-                this.getTrigger().fadeTo("slow", 0.8);
-        }
-
-    });   
+    $('#itemDialog').dialog('open');         
 }
 
 

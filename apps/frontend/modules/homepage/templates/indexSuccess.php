@@ -40,12 +40,16 @@ use_javascript('/js/homepage.js');
     </div>
     
     
-    <div id="itemDialog" title="temp">        
-        <label id="nameLabel">Name: </label>
+    <div id="itemDialog" title="Wish" >        
+        <label class="label">Name: </label>
         <div id="name"></div>
-        <label id="priceLabel">Price: </label>
+        <label class="label">Price: </label>
         <div id="price"></div>
-        <label id="linkLabel">Link: </label>
+        <label class="label">Quantity: </label>
+        <div id="quantity">2</div>
+        <label class="label">Website(s): </label>
         <div id="link"></div>
+        <label class="label">Comment: </label>
+        <div id="comment">Ahhh!! I just have to have this ball! I've wanted it ever since I was 3!</div>
     </div>
 </div>

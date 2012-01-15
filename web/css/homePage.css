@@ -173,3 +173,21 @@ li a {
     text-decoration: underline;
 }
 
+#itemDialog div {
+    margin-left: 10%;
+    font-size: 14px;
+}
+
+#itemDialog .label {    
+    font-weight: bold;
+    font-size: 18px;    
+}
+
+
+.itemDialogButton {
+    height: 100%;
+    width: 100%;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
