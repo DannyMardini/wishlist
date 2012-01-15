@@ -19,6 +19,15 @@ function setupWishlist(wishlist_div)
             });
         }
     });
+
+    $("h3 .ui-icon-close").click(function(e){
+        $(wishlist_div).accordion( "option", "disabled", true);
+        $( "#wishlist" ).load('/wishlist/delete', {delWishName: $(this).next().text()}, function(){
+            setupWishlist(wishlist_div);
+        });
+
+    $(wishlist_div).attr("style", "width=")
+    });
 }
 
 $(document).ready(function(){

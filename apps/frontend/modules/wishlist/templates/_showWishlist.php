@@ -17,7 +17,7 @@
   //foreach ($wishlist_items as $wishlist_item):
   for($i = ($wishlist_items->count()-1); $i >= 0; $i--):
 ?>
-    <h3><a href="#"><?php echo $wishlist_items[$i]->getName(); ?></a></h3>
+    <h3><span class="ui-icon ui-icon-close"></span><a href="#"><?php echo $wishlist_items[$i]->getName(); ?></a></h3>
     <div>
         <p><?php echo "$".$wishlist_items[$i]->getPrice(); ?></p>
     </div>
