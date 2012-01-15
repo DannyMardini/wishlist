@@ -35,6 +35,8 @@ WishlistItem:
     price: { type: integer, notnull: true, unique: false }
     link: { type: string(255), notnull: true }
     is_public: { type: boolean, notnull: true, default: 1 }
+    comment: { type: string(500), notnull: false}
+    quantity: { type: integer, notnull: true, default: 1}
     user_id: { type: integer, notnull: true }
   relations:
     WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: WishlistItems }
