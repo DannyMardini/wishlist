@@ -26,7 +26,7 @@ function setupItemView(data)
 
     $('#itemDialog #name').html(data.name);
     $('#itemDialog #price').html(data.price);
-    $('#itemDialog #link').html('<a target="_blank" href="'+data.link+'">link</a>');
+    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">link</a>');
       
 /*
      *
