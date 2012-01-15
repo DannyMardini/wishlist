@@ -125,11 +125,11 @@ li a {
     float: left;
     width: 10%;
     height: 60px;
-    background-image: url(/images/default_avatar.gif);
-    background-size: 85%;
+    /*background-image: url(/images/default_avatar.gif);
+    background-size: 85%;*/
     background-repeat: no-repeat;
     background-position: left;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 #updatesInnerComponent .name {
