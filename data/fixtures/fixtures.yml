@@ -99,15 +99,6 @@ WishlistItem:
     is_public: true
     WishlistUser: wishlist_user_danny
 
-<?php for($i = 0; $i < 10; $i++): ?>
-  wishlistItem_test<?php echo $i ?>:
-    name: testItem<?php echo $i."\n"?>
-    price: <?php echo $i."\n" ?>
-    link: 'www.link.com'
-    is_public: true
-    WishlistUser: wishlist_user_danny
-<?php endfor; ?>
-
   wishlistItem_purse:
     name: purse
     price: 1000
