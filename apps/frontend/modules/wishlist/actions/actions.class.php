@@ -42,4 +42,11 @@ class wishlistActions extends sfActions
     //return $this->renderPartial('showWishlist')
     return $this->renderPartial('showWishlist', array('wishlist_items' => $user->getWishlistItems()));
   }
+
+  public function executeGetWishlistItem(sfWebRequest $request)
+  {
+      $item = WishlistItemTable::getInstance()->find($request->getParameter('wishlistitem_id'));  
+      return $this->renderText($item->exportObj());
+  }
+  
 }

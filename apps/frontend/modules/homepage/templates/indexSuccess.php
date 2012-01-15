@@ -41,6 +41,8 @@ use_javascript('/js/homepage.js');
     
     
     <div id="itemDialog" title="temp">        
-        <div id="price"></div>        
+        <div id="name"></div>
+        <div id="price"></div>
+        <div id="link"></div>
     </div>
 </div>
