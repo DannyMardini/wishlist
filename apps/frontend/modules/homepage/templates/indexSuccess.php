@@ -47,7 +47,7 @@ use_javascript('/js/homepage.js');
         <div id="price"></div>
         <label class="label">Quantity: </label>
         <div id="quantity">2</div>
-        <label class="label">Website(s): </label>
+        <label class="label">Website: </label>
         <div id="link"></div>
         <label class="label">Comment: </label>
         <div id="comment">Ahhh!! I just have to have this ball! I've wanted it ever since I was 3!</div>

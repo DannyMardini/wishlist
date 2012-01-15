@@ -49,7 +49,9 @@ function setupItemView(data)
 {
     $('#itemDialog #name').html(data.name);
     $('#itemDialog #price').html(data.price);
-    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">'+data.link+'</a><br /><a target="_blank" href="http://'+data.link+'">'+data.link+'</a>');
+    $('#itemDialog #comment').html(data.comment);
+    $('#itemDialog #quantity').html(data.quantity);
+    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">'+data.link+'</a>');
     
     $('#itemDialog').dialog('open');         
 }

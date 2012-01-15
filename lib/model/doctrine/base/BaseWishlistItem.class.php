@@ -9,6 +9,8 @@
  * @property integer $price
  * @property string $link
  * @property boolean $is_public
+ * @property string $comment
+ * @property integer $quantity
  * @property integer $user_id
  * @property WishlistUser $WishlistUser
  * 
@@ -16,12 +18,16 @@
  * @method integer      getPrice()        Returns the current record's "price" value
  * @method string       getLink()         Returns the current record's "link" value
  * @method boolean      getIsPublic()     Returns the current record's "is_public" value
+ * @method string       getComment()      Returns the current record's "comment" value
+ * @method integer      getQuantity()     Returns the current record's "quantity" value
  * @method integer      getUserId()       Returns the current record's "user_id" value
  * @method WishlistUser getWishlistUser() Returns the current record's "WishlistUser" value
  * @method WishlistItem setName()         Sets the current record's "name" value
  * @method WishlistItem setPrice()        Sets the current record's "price" value
  * @method WishlistItem setLink()         Sets the current record's "link" value
  * @method WishlistItem setIsPublic()     Sets the current record's "is_public" value
+ * @method WishlistItem setComment()      Sets the current record's "comment" value
+ * @method WishlistItem setQuantity()     Sets the current record's "quantity" value
  * @method WishlistItem setUserId()       Sets the current record's "user_id" value
  * @method WishlistItem setWishlistUser() Sets the current record's "WishlistUser" value
  * 
@@ -53,6 +59,16 @@ abstract class BaseWishlistItem extends sfDoctrineRecord
              ));
         $this->hasColumn('is_public', 'boolean', null, array(
              'type' => 'boolean',
+             'notnull' => true,
+             'default' => 1,
+             ));
+        $this->hasColumn('comment', 'string', 500, array(
+             'type' => 'string',
+             'notnull' => false,
+             'length' => 500,
+             ));
+        $this->hasColumn('quantity', 'integer', null, array(
+             'type' => 'integer',
              'notnull' => true,
              'default' => 1,
              ));

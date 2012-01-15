@@ -77,6 +77,8 @@ WishlistItem:
     link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_danny
+    comment: "i've wanted this bouncy ball since I was 3!"
+    quantity: 1
 
   wishlistItem_skyrim:
     name: Skyrim
@@ -84,6 +86,8 @@ WishlistItem:
     link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_danny
+    comment: "please please pleeease get me this game!"
+    quantity: 1
 
   wishlistItem_ipad:
     name: iPad
@@ -91,6 +95,8 @@ WishlistItem:
     link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_danny
+    comment: "this would be the best gift eva!"
+    quantity: 1
 
   wishlistItem_macbook:
     name: Macbook
@@ -98,6 +104,8 @@ WishlistItem:
     link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_danny
+    comment: "i need a new one of these"
+    quantity: 1
 
   wishlistItem_purse:
     name: purse
@@ -105,6 +113,27 @@ WishlistItem:
     link: 'www.link.com'
     is_public: true
     WishlistUser: wishlist_user_andrea
+    comment: "this purse is so pretty :)"
+    quantity: 1
+  
+  wishlistItem_diamondring:
+    name: Diamond Solitaire Engagement Ring in 14K White Gold
+    price: 3199
+    # http://www.sears.com/princess-cut-diamond-solitaire-engagement-ring-14k-white/p-044JW661000P
+    link: 'http://www.zales.com/product/index.jsp?productId=11988130'
+    is_public: true
+    WishlistUser: wishlist_user_blanca  
+    comment: "this is what I want from my hubby....hint hint"
+    quantity: 1
+    
+  wishlistItem_ball:
+    name: UGG Classic Tall
+    price: 180
+    link: 'www.zappos.com/ugg-classic-tall-chestnut~1'
+    is_public: true
+    WishlistUser: wishlist_user_blanca
+    comment: "these boots would be so cozy"
+    quantity: 1
 
 Friendship:
   andrea_danny_friends:
@@ -212,7 +241,7 @@ wishlist_update:
   updates_blancarmvitem2:
     template: 1
     type: 2
-    message: "Removed <a href='#' onclick='openDialog(1)'>boots</a> from her wishlist"
+    message: "Removed <a href='#' onclick='openDialog(7)'>boots</a> from her wishlist"
     datetime: "2012-01-07 23:00:00"
     user_id: 5 
 
@@ -241,6 +270,6 @@ wishlist_update:
   updates_blancaadditem4:
     template: 1
     type: 1
-    message: "Added <a href='#' onclick='openDialog(1)'>a diamond ring</a> to her wishlist"
+    message: "Added <a href='#' onclick='openDialog(6)'>a diamond ring</a> to her wishlist"
     datetime: "2012-01-8 08:00:00"
     user_id: 5    
