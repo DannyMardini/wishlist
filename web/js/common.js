@@ -3,6 +3,12 @@
  * and open the template in the editor.
  */
 
+function addToWishlist(paramArr, callback)
+{
+    $( "#wishlist" ).load('/wishlist/new', 
+            paramArr, callback);
+}
+
 function fillContainer(element)
 {
     //$(element).get

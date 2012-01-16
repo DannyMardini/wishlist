@@ -3,6 +3,7 @@ use_stylesheet('homePage.css');
 use_stylesheet('/css/wishlist.css');
 use_javascript('/js/wishlist.js');
 use_javascript('/js/homepage.js');
+use_javascript('/js/common.js');
 ?>
   
 <input id="username" type="hidden" value="<?php echo $user->getFirstname() ?>"/>

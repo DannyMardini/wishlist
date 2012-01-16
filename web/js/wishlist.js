@@ -2,7 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-function setupWishlist(wishlist_div)
+
+var wishlist_div = "#div_wishlist_div";
+
+function setupWishlist()
 {
     $(wishlist_div).accordion({
         collapsible: true,
@@ -13,10 +16,7 @@ function setupWishlist(wishlist_div)
         if(e.keyCode === 13 )
         {
             e.preventDefault();
-
-            $( "#wishlist" ).load('/wishlist/new', {newWishName: $("#newWishName").val(), newWishPrice: $("#newWishPrice").val(), newWishLink: $("#newWishLink").val()}, function(){
-              setupWishlist(wishlist_div);
-            });
+            addToWishlist({newWishName: $("#newWishName").val(), newWishPrice: $("#newWishPrice").val(), newWishLink: $("#newWishLink").val()}, setupWishlist);
         }
     });
 
@@ -30,6 +30,7 @@ function setupWishlist(wishlist_div)
     });
 }
 
+
 $(document).ready(function(){
-    setupWishlist("#div_wishlist_div");
+    setupWishlist();
 });
