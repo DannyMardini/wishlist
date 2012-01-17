@@ -44,7 +44,7 @@ abstract class BaseWishlistItem extends sfDoctrineRecord
         $this->hasColumn('name', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
-             'unique' => true,
+             'unique' => false,
              'length' => 255,
              ));
         $this->hasColumn('price', 'integer', null, array(
@@ -75,6 +75,16 @@ abstract class BaseWishlistItem extends sfDoctrineRecord
         $this->hasColumn('user_id', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
+             ));
+
+
+        $this->index('item_user', array(
+             'fields' => 
+             array(
+              0 => 'name',
+              1 => 'user_id',
+             ),
+             'type' => 'unique',
              ));
     }
 

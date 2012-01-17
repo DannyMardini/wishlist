@@ -9,7 +9,7 @@ var addToWishlistButton =  {
             id: 'addToWishlistButton',
             label: 'add to my wishlist',
             click: function() {
-                   addToWishlist({newWishName: $('#itemDialog #name').val(), newWishPrice: $('#itemDialog #price').val(), newWishLink: $('#itemDialog #link').val()}, setupWishlist);
+                   addToWishlist({newWishName: $('#itemDialog #name').html(), newWishPrice: $('#itemDialog #price').html(), newWishLink: $('#itemDialog #link').html()}, setupWishlist);
             }
         };
 

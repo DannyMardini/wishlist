@@ -31,13 +31,17 @@ Friendship:
 WishlistItem:
   actAs: { Timestampable: ~ }
   columns:
-    name: { type: string(255), notnull: true, unique: true }
+    name: { type: string(255), notnull: true, unique: false }
     price: { type: integer, notnull: true, unique: false }
     link: { type: string(255), notnull: true }
     is_public: { type: boolean, notnull: true, default: 1 }
     comment: { type: string(500), notnull: false}
     quantity: { type: integer, notnull: true, default: 1}
     user_id: { type: integer, notnull: true }
+  indexes:
+    item_user:
+      fields: [name, user_id]
+      type: unique  
   relations:
     WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: WishlistItems }
 
@@ -50,4 +54,11 @@ wishlist_update:
     user_id : { type: integer }
   relations:
     WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: UserUpdates }
+    
+ 
+#wishlist_item_user_assoc:
+ # columns:
+ #   wishlistuser_id: { type: integer, notnull: true}
+ #   wishlistitem_id: { type: integer, notnull: true}
+ # relations: 
     
