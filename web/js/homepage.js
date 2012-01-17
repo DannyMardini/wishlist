@@ -4,7 +4,7 @@
  */
 
 // buttons used for the dialog
-var addToWishlist =  {                        
+var addToWishlistButton =  {
             priority: 'primary',           
             id: 'addToWishlistButton',
             label: 'add to my wishlist',
@@ -13,7 +13,7 @@ var addToWishlist =  {
             }
         };
 
-var itemDialogButtons = [ addToWishlist ];
+var itemDialogButtons = [ addToWishlistButton ];
     
 
 
