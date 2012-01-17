@@ -9,6 +9,12 @@ function addToWishlist(paramArr, callback)
             paramArr, callback);
 }
 
+function delFromWishlist(paramArr, callback)
+{
+    $( "#wishlist" ).load('/wishlist/delete', paramArr, callback);
+}
+
+
 function fillContainer(element)
 {
     //$(element).get
