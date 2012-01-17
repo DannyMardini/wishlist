@@ -82,7 +82,9 @@ abstract class BaseWishlistItem extends sfDoctrineRecord
              'fields' => 
              array(
               0 => 'name',
-              1 => 'user_id',
+              1 => 'price',
+              2 => 'link',
+              3 => 'user_id',
              ),
              'type' => 'unique',
              ));

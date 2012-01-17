@@ -41,7 +41,7 @@ abstract class BaseWishlistItemForm extends BaseFormDoctrine
     ));
 
     $this->validatorSchema->setPostValidator(
-      new sfValidatorDoctrineUnique(array('model' => 'WishlistItem', 'column' => array('name', 'user_id')))
+      new sfValidatorDoctrineUnique(array('model' => 'WishlistItem', 'column' => array('name', 'price', 'link', 'user_id')))
     );
 
     $this->widgetSchema->setNameFormat('wishlist_item[%s]');

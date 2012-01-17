@@ -38,4 +38,8 @@ class homepageActions extends sfActions
     }
   }
   
+  public function executeGetUpcomingEvents(sfWebRequest $request)
+  {
+      // to do 
+  }
 }
