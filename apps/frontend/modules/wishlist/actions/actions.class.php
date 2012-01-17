@@ -39,7 +39,7 @@ class wishlistActions extends sfActions
     $newItem->setLink($link);
     $newItem->setUserId($user->getWishlistuserId());
     $newItem->save();
-    return $this->renderPartial('showWishlist', array('wishlist_items' => $user->getWishlistItems()));
+    return $this->renderPartial('showWishlist', array( 'wishlist_user_email' => $user->getEmail(), 'wishlist_items' => $user->getWishlistItems()));
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -48,7 +48,7 @@ class wishlistActions extends sfActions
       $user = WishlistUserTable::getInstance()->getUserWithEmail($_SESSION['user']);
       $itemToDel = $itemTable->findOneByName($request->getPostParameter('delWishName'));
       $itemToDel->delete();
-      return $this->renderPartial('showWishlist', array('wishlist_user' => $user,'wishlist_items' => $user->getWishlistItems()));
+      return $this->renderPartial('showWishlist', array('wishlist_user_email' => $user->getEmail(),'wishlist_items' => $user->getWishlistItems()));
   }
 
   public function executeGetWishlistItem(sfWebRequest $request)

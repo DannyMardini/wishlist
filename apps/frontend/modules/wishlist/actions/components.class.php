@@ -10,7 +10,7 @@ class wishlistComponents extends sfComponents
   public function executeShowWishlist()
   {
     $user = WishlistUserTable::getInstance()->find(array($this->wishlistuser_id));
-    $this->wishlist_user = $user->getEmail();
+    $this->wishlist_user_email = $user->getEmail();
     $this->wishlist_items = $user->getWishlistItems();
   }
 }

@@ -8,7 +8,7 @@
 
 <div id="div_wishlist_div">
 <?php
-    if($_SESSION['user'] == $wishlist_user)
+    if($_SESSION['user'] == $wishlist_user_email)
     {
         echo "<h3><a id='newWishBox' href='#'>New wish..</a></h3>";
         echo "<div class='newWishBox'>";
