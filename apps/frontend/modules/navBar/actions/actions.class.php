@@ -18,4 +18,11 @@ class navBarActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
   }
+
+  public function executeLogout(sfWebRequest $request)
+  {
+      session_unset();
+      session_destroy();
+      $this->forward('frontpage', 'index');
+  }
 }

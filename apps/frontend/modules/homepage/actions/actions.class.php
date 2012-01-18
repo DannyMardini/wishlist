@@ -37,5 +37,4 @@ class homepageActions extends sfActions
       $e->getTrace();
     }
   }
-  
 }
