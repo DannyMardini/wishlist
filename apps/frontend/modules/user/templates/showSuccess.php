@@ -15,6 +15,7 @@ use_javascript('/js/wishlist.js');
 <div id="div_left_panel">
     <div id="div_user_container">
         <div id="div_profile_pic">
+            <img src="/images/user/<?php echo $wishlist_user->getWishlistuserId();?>/profile.jpg"/>
         </div>
     </div>
 </div>
