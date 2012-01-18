@@ -9,7 +9,7 @@ var addToWishlistButton =  {
             id: 'addToWishlistButton',
             label: 'add to my wishlist',
             click: function() {
-                   addToWishlist({newWishName: $('#itemDialog #name').html(), newWishPrice: $('#itemDialog #price').html(), newWishLink: $('#itemDialog #link').html()}, setupWishlist);
+                   addToWishlist({newWishName: $('#itemDialog #name').html(), newWishPrice: $('#itemDialog #price').html(), newWishLink: $('#itemDialog #link').html()}, onCompleteAddToWishlistEvent);
             }
         };
 
@@ -41,9 +41,36 @@ $(document).ready(function(){
     $('#addToWishlistButton :first-child').removeClass('ui-button-text');
     $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-cart');
     $('#addToWishlistButton').addClass('itemDialogButton');
+    
+    
+    displayUpcomingEvents();
 
 });
 
+
+function displayUpcomingEvents()
+{
+    // using the item ID, grab the item's info and display in the dialog
+    $.getJSON('/homepage/'+$('#id').val()+'/', function (data) {
+      populateUpcomingEvents(data);     
+    }); 
+    //$('#upcomingEvents')
+}
+
+function populateUpcomingEvents(events)
+{
+    alert('about to populate the events');
+}
+
+function onCompleteAddToWishlistEvent(e)
+{
+    setupWishlist();
+
+    if(e.match('newWishBox') != null)
+        alert('Item has been added to your list!');
+    else
+        alert('This item is already on your list.');
+}
 
 function setupItemView(data)
 {

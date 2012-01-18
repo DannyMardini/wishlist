@@ -13,8 +13,10 @@ use_javascript('/js/common.js');
     <div id="wishlistComponent">
         <div><h1>My Wishlist</h1></div>
         <div id="wishlist">
-          <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
+            <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
         </div>
+        <div style="height:50px;"></div>
+        <div id="upcomingEvents" style="display:block;background-color:red;"></div>
     </div>
   
     <div id="updatesComponent">
@@ -51,6 +53,6 @@ use_javascript('/js/common.js');
         <label class="label">Website: </label>
         <div id="link"></div>
         <label class="label">Comment: </label>
-        <div id="comment">Ahhh!! I just have to have this ball! I've wanted it ever since I was 3!</div>
+        <div id="comment"</div>
     </div>
 </div>

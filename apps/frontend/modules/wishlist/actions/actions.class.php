@@ -31,7 +31,7 @@ class wishlistActions extends sfActions
         return;
 
     if(($name == "") || ($price == "") || ($link == ""))
-       return;
+       return;        
     
     $newItem = new WishlistItem();
     $newItem->setName($name);

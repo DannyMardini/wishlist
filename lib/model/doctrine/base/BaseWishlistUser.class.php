@@ -15,6 +15,7 @@
  * @property Enum $Enum
  * @property Doctrine_Collection $WishlistItems
  * @property Doctrine_Collection $UserUpdates
+ * @property Doctrine_Collection $UserEvents
  * 
  * @method string              getFirstname()       Returns the current record's "firstname" value
  * @method string              getLastname()        Returns the current record's "lastname" value
@@ -26,6 +27,7 @@
  * @method Enum                getEnum()            Returns the current record's "Enum" value
  * @method Doctrine_Collection getWishlistItems()   Returns the current record's "WishlistItems" collection
  * @method Doctrine_Collection getUserUpdates()     Returns the current record's "UserUpdates" collection
+ * @method Doctrine_Collection getUserEvents()      Returns the current record's "UserEvents" collection
  * @method WishlistUser        setFirstname()       Sets the current record's "firstname" value
  * @method WishlistUser        setLastname()        Sets the current record's "lastname" value
  * @method WishlistUser        setGender()          Sets the current record's "gender" value
@@ -36,6 +38,7 @@
  * @method WishlistUser        setEnum()            Sets the current record's "Enum" value
  * @method WishlistUser        setWishlistItems()   Sets the current record's "WishlistItems" collection
  * @method WishlistUser        setUserUpdates()     Sets the current record's "UserUpdates" collection
+ * @method WishlistUser        setUserEvents()      Sets the current record's "UserEvents" collection
  * 
  * @package    wishlist
  * @subpackage model
@@ -95,9 +98,13 @@ abstract class BaseWishlistUser extends sfDoctrineRecord
              'local' => 'wishlistUser_id',
              'foreign' => 'user_id'));
 
-        $this->hasMany('wishlist_update as UserUpdates', array(
+        $this->hasMany('WishlistUpdate as UserUpdates', array(
              'local' => 'wishlistUser_id',
              'foreign' => 'user_id'));
+
+        $this->hasMany('Event as UserEvents', array(
+             'local' => 'wishlistUser_id',
+             'foreign' => 'wishlistuser_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

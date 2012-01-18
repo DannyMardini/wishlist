@@ -40,12 +40,12 @@ WishlistItem:
     user_id: { type: integer, notnull: true }
   indexes:
     item_user:
-      fields: [name, user_id]
+      fields: [name, price, link, user_id]
       type: unique  
   relations:
     WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: WishlistItems }
 
-wishlist_update:
+WishlistUpdate:
   columns: 
     template: { type: integer, notnull: true }
     type: { type: integer, notnull: true }   
@@ -55,10 +55,11 @@ wishlist_update:
   relations:
     WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: UserUpdates }
     
- 
-#wishlist_item_user_assoc:
- # columns:
- #   wishlistuser_id: { type: integer, notnull: true}
- #   wishlistitem_id: { type: integer, notnull: true}
- # relations: 
+Event:
+  columns:
+    wishlistuser_id: { type: integer, notnull:true }
+    event_date: { type: datetime, notnull: true }
+    event_type: { type: integer, notnull:true }
+  relations:
+    WishlistUser: { onDelete: CASCADE, local: wishlistuser_id, foreign: wishlistUser_id, foreignAlias: UserEvents }
     

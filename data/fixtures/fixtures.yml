@@ -193,7 +193,7 @@ Enum:
     type: "Wishlist_Update"
     
 #updates
-wishlist_update:
+WishlistUpdate:
     
   updates_andrearmv:  
     template: 1
@@ -272,4 +272,28 @@ wishlist_update:
     type: 1
     message: "Added <a href='#' onclick='openDialog(6)'>a diamond ring</a> to her wishlist"
     datetime: "2012-01-8 08:00:00"
-    user_id: 5    
+    user_id: 5 
+    
+# events
+
+Event:
+
+  event_danny1:
+    wishlistuser_id: 1
+    event_date: "1986-06-11 08:00:00"
+    event_type: 1
+      
+  event_blanca1:
+    wishlistuser_id: 5
+    event_date: "1961-08-25 08:00:00"
+    event_type: 1
+      
+  event_andrea1:
+    wishlistuser_id: 2 
+    event_date: "1986-08-18 08:00:00"
+    event_type: 1
+      
+  event_blanca1:
+    wishlistuser_id: 5
+    event_date: "2007-11-26 08:00:00"
+    event_type:  4     
