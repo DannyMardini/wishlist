@@ -59,7 +59,7 @@ function displayUpcomingEvents()
 
 function populateUpcomingEvents(events)
 {
-    alert('about to populated the events');
+    alert('about to populate the events');
 }
 
 function onCompleteAddToWishlistEvent(e)

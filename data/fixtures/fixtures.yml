@@ -193,7 +193,7 @@ Enum:
     type: "Wishlist_Update"
     
 #updates
-wishlist_update:
+WishlistUpdate:
     
   updates_andrearmv:  
     template: 1
@@ -276,22 +276,24 @@ wishlist_update:
     
 # events
 
-  events_danny1:
+Event:
+
+  event_danny1:
     wishlistuser_id: 1
     event_date: "1986-06-11 08:00:00"
     event_type: 1
       
-  events_blanca1:
+  event_blanca1:
     wishlistuser_id: 5
     event_date: "1961-08-25 08:00:00"
     event_type: 1
       
-  events_andrea1:
+  event_andrea1:
     wishlistuser_id: 2 
     event_date: "1986-08-18 08:00:00"
     event_type: 1
       
-  events_blanca1:
+  event_blanca1:
     wishlistuser_id: 5
     event_date: "2007-11-26 08:00:00"
     event_type:  4     

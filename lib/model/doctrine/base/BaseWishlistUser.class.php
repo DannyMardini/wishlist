@@ -98,11 +98,11 @@ abstract class BaseWishlistUser extends sfDoctrineRecord
              'local' => 'wishlistUser_id',
              'foreign' => 'user_id'));
 
-        $this->hasMany('wishlist_update as UserUpdates', array(
+        $this->hasMany('WishlistUpdate as UserUpdates', array(
              'local' => 'wishlistUser_id',
              'foreign' => 'user_id'));
 
-        $this->hasMany('Events as UserEvents', array(
+        $this->hasMany('Event as UserEvents', array(
              'local' => 'wishlistUser_id',
              'foreign' => 'wishlistuser_id'));
 
