@@ -10,7 +10,6 @@ use_javascript('/js/common.js');
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
 
 <div class="sideBar" >
-
     <div id="wishlistComponent">
         <div><h1>My Wishlist</h1></div>
         <div id="wishlist">
@@ -20,7 +19,12 @@ use_javascript('/js/common.js');
 
     <div id="upcomingEvents">
         <div><h1>Upcoming Events</h1></div>
-        <div id="events"></div>
+        <div id="events">
+            <div><h2>Birthdays</h2></div>
+            <div id="birthdays"></div>
+            <div><h2>Anniversaries</h2></div>
+            <div id="anniversaries"></div>
+        </div>
     </div>
 
 </div>

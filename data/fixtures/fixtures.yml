@@ -297,3 +297,8 @@ Event:
     wishlistuser_id: 5
     event_date: "2007-11-26 08:00:00"
     event_type:  4     
+    
+  event_blanca4:
+    wishlistuser_id: 5
+    event_date: "2002-1-26 08:00:00"
+    event_type:  4     
