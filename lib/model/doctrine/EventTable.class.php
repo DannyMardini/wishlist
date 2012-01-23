@@ -23,7 +23,7 @@ class EventTable extends Doctrine_Table
                 ->select("e.event_date, e.wishlistuser_id, e.event_type, concat(usr.firstname,' ',usr.lastname) as fullname")
                 ->from('Event e')
                 ->leftJoin('e.WishlistUser usr') 
-                ->where('e.wishlistuser_id IN ( select userb_id from friendships where usera_id = ?)',$userId)               
+                ->where('MONTH(curdate()) =  MONTH(e.event_date) and DAY(curdate()) >= (DAY(e.event_date)-7) and DAY(curdate()) <= DAY(e.event_date) and e.wishlistuser_id IN ( select userb_id from friendships where usera_id = ?)',$userId)               
                 ->orderBy('event_date desc');
         
         $t = $q->getSqlQuery();
