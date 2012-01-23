@@ -42,7 +42,6 @@ class homepageActions extends sfActions
   {
       $userId = $request->getParameter('wishlistuser_id');
       $events = EventTable::getInstance()->getUpcomingEvents($userId);
-      $test = '{"bindings": [{"ircEvent": "PRIVMSG"},{"ircEvent": "PRIVMSG"},{"ircEvent": "PRIVMSG"}]}'; 
       return $this->renderText($events); 
   }
 }
