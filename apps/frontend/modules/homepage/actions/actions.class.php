@@ -40,6 +40,9 @@ class homepageActions extends sfActions
   
   public function executeGetUpcomingEvents(sfWebRequest $request)
   {
-      $this->user = EventTable::getInstance()->getUserWithEmail($email);
+      $userId = $request->getParameter('wishlistuser_id');
+      $events = EventTable::getInstance()->getUpcomingEvents($userId);
+      $test = '{"bindings": [{"ircEvent": "PRIVMSG"},{"ircEvent": "PRIVMSG"},{"ircEvent": "PRIVMSG"}]}'; 
+      return $this->renderText($events); 
   }
 }

@@ -54,7 +54,8 @@ class wishlistActions extends sfActions
   public function executeGetWishlistItem(sfWebRequest $request)
   {
       $item = WishlistItemTable::getInstance()->find($request->getParameter('wishlistitem_id'));  
-      return $this->renderText($item->exportObj());
+      $t = $this->renderText($item->exportData());
+      return $this->renderText($item->exportData());
   }
   
 }

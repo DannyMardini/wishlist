@@ -54,7 +54,7 @@ body{
   visibility: hidden;
 }
 
-#wishlistComponent {
+.sideBar {
     background-color: white;
     width: 20%;
     float: left;
@@ -63,9 +63,29 @@ body{
     font-size: 14px;
     border-right-style: solid;
     border-width: 1px;
+    height: 100%;
 }
 
-#wishlistComponent h1 {
+#upcomingEvents {
+    float:left;
+    display:block;
+    background-color:white;
+    width:100%;
+    min-height:100px;
+}
+
+#wishlistComponent {
+    background-color: white;
+    width: 100%;
+   /* float: left;*/
+    padding-bottom: 50px;
+    min-height: 200px;
+    font-size: 14px;
+    border-right-style: solid;
+    border-width: 1px;
+}
+
+#wishlistComponent h1, #upcomingEvents h1 {
     font-size: 16px;
     text-align: left;
     padding-left: 10px;

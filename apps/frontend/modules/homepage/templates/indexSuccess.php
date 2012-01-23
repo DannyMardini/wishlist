@@ -10,15 +10,22 @@ use_javascript('/js/common.js');
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
 
 <div id="content" class="clearfix">
-    <div id="wishlistComponent">
-        <div><h1>My Wishlist</h1></div>
-        <div id="wishlist">
-            <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
+    <div class="sideBar" >
+    
+        <div id="wishlistComponent">
+            <div><h1>My Wishlist</h1></div>
+            <div id="wishlist">
+                <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
+            </div>        
         </div>
-        <div style="height:50px;"></div>
-        <div id="upcomingEvents" style="display:block;background-color:red;"></div>
+
+        <div id="upcomingEvents">
+            <div><h1>Upcoming Events</h1></div>
+            <div id="events"></div>
+        </div>
+
     </div>
-  
+    
     <div id="updatesComponent">
         <div id="updatesInnerComponent">
             

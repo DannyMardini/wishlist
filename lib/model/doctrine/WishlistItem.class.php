@@ -13,7 +13,7 @@
 class WishlistItem extends BaseWishlistItem
 {
     
-    public function exportObj()
+    public function exportData()
     {        
         // $t = get_object_vars($this);
         return json_encode($this->getData());

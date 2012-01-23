@@ -19,18 +19,41 @@ class EventTable extends Doctrine_Table
     
     public function getUpcomingEvents($userId)
     {
-        $q = $this->createQuery()->where('usera_id = ?', $user);
-
-        $friendships = $q->execute();
-
-        foreach ($friendships as $friendship)
-        {
-            $friend_ids[] = $friendship->getUserbId();
+         $q = Doctrine_Query::create() 
+                ->select("e.event_date, e.wishlistuser_id, e.event_type, concat(usr.firstname,' ',usr.lastname) as fullname")
+                ->from('Event e')
+                ->leftJoin('e.WishlistUser usr') 
+                ->where('e.wishlistuser_id IN ( select userb_id from friendships where usera_id = ?)',$userId)               
+                ->orderBy('event_date desc');
+        
+        $t = $q->getSqlQuery();
+       
+        $events = $q->execute();
+        
+        $jsonData = $this->exportEventData($events); 
+        
+        return $jsonData;
+    }
+    
+    public function exportEventData($events)
+    {            
+        $eventsData = $events->getData();       
+               
+        $tempObj;
+        $jsonString = "{\"events\":[";
+        
+        for ($i = 0; $i < sizeof($eventsData); $i++) {
+            
+            $tempObj = $eventsData[$i]->getData();
+            $tempObj["fullname"] = $eventsData[0]->fullname;
+            $jsonString = $jsonString.json_encode($tempObj);
+            
+            if(!(($i + 1) == sizeof($eventsData)))
+                $jsonString = $jsonString.",";
         }
-
-        if($friend_ids)
-        {
-            return WishlistUserTable::getInstance()->createQuery('w')->whereIn('w.wishlistuser_id', $friend_ids)->execute();
-        }        
+        
+        $jsonString = $jsonString."]}";
+        
+        return $jsonString;
     }
 }

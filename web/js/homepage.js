@@ -52,14 +52,19 @@ function displayUpcomingEvents()
 {
     // using the item ID, grab the item's info and display in the dialog
     $.getJSON('/homepage/'+$('#id').val()+'/', function (data) {
-      populateUpcomingEvents(data);     
-    }); 
-    //$('#upcomingEvents')
+       $(data.events).each(function () {
+            populateEvent(this);            
+        });
+    });     
 }
 
-function populateUpcomingEvents(events)
+function populateEvent(event)
 {
-    alert('about to populate the events');
+    var eventDiv = $("<div/>").attr('id',event.id).html(event.event_date);
+    $('#events').append(eventDiv);
+    
+    $('#events').append("<div>test</div>");
+    
 }
 
 function onCompleteAddToWishlistEvent(e)
@@ -91,9 +96,6 @@ function openDialog(itemId)
     $.getJSON('/wishlistitem/'+itemId+'/', function (data) {
       setupItemView(data);     
     }); 
-    
-    
-    
 }
 
 
