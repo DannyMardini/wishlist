@@ -23,6 +23,8 @@
       ?>
       
       <?php include_component('navBar', 'showNavBar', array( 'username' => $user->getFirstName(), 'user_id' => $user->getWishlistuserId())); ?>
+      <div id="content" class="clearfix">
       <?php echo $sf_content ?>
+      </div>
     </body>
 </html>
