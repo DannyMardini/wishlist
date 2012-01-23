@@ -60,11 +60,14 @@ function displayUpcomingEvents()
 
 function populateEvent(event)
 {
-    var eventDiv = $("<div/>").attr('id',event.id).html(event.event_date);
-    $('#events').append(eventDiv);
+    var eventType = event.event_type;
+    var div = eventType == 1 ? $('#birthdays') : (eventType == 4 ? $('#anniversaries') : null);
     
-    $('#events').append("<div>test</div>");
-    
+    if(div)
+    {
+        var eventDiv = $("<div/>").attr('id',event.id).html(event.eventdate);
+        $(div).append(eventDiv);
+    }
 }
 
 function onCompleteAddToWishlistEvent(e)

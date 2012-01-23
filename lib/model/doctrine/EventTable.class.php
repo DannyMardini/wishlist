@@ -45,7 +45,8 @@ class EventTable extends Doctrine_Table
         for ($i = 0; $i < sizeof($eventsData); $i++) {
             
             $tempObj = $eventsData[$i]->getData();
-            $tempObj["fullname"] = $eventsData[0]->fullname;
+            $tempObj["fullname"] = $eventsData[$i]->fullname;
+            $tempObj["eventdate"] = $eventsData[$i]->getFormattedTimestamp();
             $jsonString = $jsonString.json_encode($tempObj);
             
             if(!(($i + 1) == sizeof($eventsData)))
