@@ -26,9 +26,12 @@ h1 {
 
 #div_profile_pic {
     float: left;
-    height: 198px;
-    width: 148px;
-    border: black solid 1px;
+    max-width: 150px;
+    overflow: hidden;
+}
+
+#div_profile_pic img {
+    max-width: 150px;
 }
 
 #div_left_panel {

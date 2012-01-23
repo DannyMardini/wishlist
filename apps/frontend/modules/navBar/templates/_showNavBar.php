@@ -13,7 +13,7 @@
               <li><a href="#">Settings</a></li>
               <li><a id="friend_button" href="#">Friends</a></li>
               <li><a href="#">Messages</a></li>
-              <li><a href="#">Logout</a></li>
+              <li><a href='<?php echo url_for('navBar/logout'); ?>'>Logout</a></li>
             </ul>
             <p style="height:157px;" id="menuCheat"></p>
         </div>
