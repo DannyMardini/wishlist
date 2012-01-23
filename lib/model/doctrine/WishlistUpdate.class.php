@@ -12,7 +12,7 @@
  */
 class WishlistUpdate extends BaseWishlistUpdate
 {
-       public function createAndSaveUpdate($type, $message, $datetime, $user_id)
+    public function createAndSaveUpdate($type, $message, $datetime, $user_id)
     {     
         $template = "";
         

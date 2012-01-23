@@ -40,6 +40,8 @@ class homepageActions extends sfActions
   
   public function executeGetUpcomingEvents(sfWebRequest $request)
   {
-      $this->user = EventTable::getInstance()->getUserWithEmail($email);
+      $userId = $request->getParameter('wishlistuser_id');
+      $events = EventTable::getInstance()->getUpcomingEvents($userId);
+      return $this->renderText($events); 
   }
 }
