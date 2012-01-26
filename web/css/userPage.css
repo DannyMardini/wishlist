@@ -38,7 +38,8 @@ h1 {
     display: inline-block;
     float: left;
     height: 200px;
-    margin-right: 60px;
+    margin: 10px 60px 0px 10px;
+    border-style: solid;
 }
 
 #div_right_panel {
