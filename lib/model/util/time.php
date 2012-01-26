@@ -1,5 +1,4 @@
 <?php
-namespace util;
 
 class Time
 {
