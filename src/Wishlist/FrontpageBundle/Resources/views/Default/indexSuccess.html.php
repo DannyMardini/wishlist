@@ -1,6 +1,7 @@
 <?php // use_stylesheet('frontPage.css') ?>
 <link href="/css/frontPage.css" rel="stylesheet" type="text/css" />
 <?php // use_javascript('frontPage.js') ?>
+<!--<link href="/js/frontPage.js" rel="stylesheet" type="text/css" />-->
 
 <input id="showUserAdded" type="hidden" value="<?php echo $showUserAdded ?>" />
 <div id="loginContainer">
