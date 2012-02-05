@@ -1,0 +1,3 @@
+WishlistFrontpageBundle_homepage:
+    pattern:  /Homepage
+    defaults: { _controller: WishlistFrontpageBundle:Default:index }

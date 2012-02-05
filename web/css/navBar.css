@@ -1,0 +1,134 @@
+/* 
+    Document   : navBar
+    Created on : Dec 23, 2011, 1:58:41 PM
+    Author     : Danny
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+#header {
+  height: 45px;
+  background-color: white;
+}
+
+#logoContainer {
+    display: inline-block;
+    width: 55%;
+    height: 45px;
+    float: left;
+}
+
+#logo{
+    display: inline-block;
+    width: 80%;
+    height: 45px;
+    background-image: url(/images/gift.jpg);
+    background-size: 10%;
+    background-repeat: no-repeat;
+    background-position: right;
+    float: left;
+}
+
+#logoContainer #name {
+    font-family: 'Satisfy', cursive;
+    font-size: 40px;
+    float: right;
+    height: 45px;
+    background-color: white;
+}
+
+#linksContainer {
+    display: inline-block;
+    width: 45%;
+    height: 45px;
+}
+
+#profileLinks{
+    height: 45px;
+    width: 30%;
+    float: right;
+}
+
+#linkList{
+    width: 100%;
+    height: 45px;
+    border: 0;
+    padding: 0;
+    background-color: white;
+    vertical-align: -15px;
+}
+
+#mainProfileLink {
+    height: 45px;
+    background-color:white;
+    border:0px;
+}
+
+#friendlist ul{
+    background-color: white;
+    font-family: Verdana, Arial, sans-serif; font-size: 1.1em;
+    color: #ffffff;
+    list-style: none;
+    padding: 0;
+    margin: 0px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+#friendlist li{
+    background-color: white;
+/*    border-style: solid;*/
+/*    border-color: black;*/
+/*    border-width: 1px;*/
+    margin-bottom: 5px;
+}
+
+#friendlist li a {
+    text-decoration: none;
+    color: black;
+}
+
+#userName {
+    display: inline-block;
+    width: 50%;
+    height: 45px;
+    vertical-align: bottom;
+    background-color: white;
+}
+
+#userName a{
+    vertical-align: bottom;
+    padding: 0px;
+    text-align: center;
+    height: 45px;
+    text-decoration:none;
+    zoom: 1;
+    line-height: 3.0;
+}
+
+#userPicture{
+    display: inline-block;
+    width: 50%;
+    height: 45px;
+    background-image: url(/images/default_avatar.gif);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: right;
+    float: left;
+}
+
+#rightPanel{
+  width: 20%;
+  float: right;
+  display: none;
+}

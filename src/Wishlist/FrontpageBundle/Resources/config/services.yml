@@ -1,0 +1,7 @@
+parameters:
+#    wishlist_frontpage.example.class: Wishlist\FrontpageBundle\Example
+
+services:
+#    wishlist_frontpage.example:
+#        class: %wishlist_frontpage.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
