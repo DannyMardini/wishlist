@@ -1,0 +1,9 @@
+#homepage:
+#  pattern:   /homepage
+#  defaults: { _controller: WishlistHomepageBundle:Default:index }
+  
+  
+homepage:
+  pattern: /homepage/{wishlistuser_firstname}/{wishlistuser_id}
+  defaults: { _controller: WishlistHomepageBundle:Default:index }
+
