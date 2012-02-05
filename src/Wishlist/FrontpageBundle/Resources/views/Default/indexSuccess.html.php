@@ -1,7 +1,9 @@
-<?php // use_stylesheet('frontPage.css') ?>
+<script type="text/javascript" src="/js/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min"></script>
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
 <link href="/css/frontPage.css" rel="stylesheet" type="text/css" />
-<?php // use_javascript('frontPage.js') ?>
-<!--<link href="/js/frontPage.js" rel="stylesheet" type="text/css" />-->
+<script type="text/javascript" src="/js/frontPage.js"></script>
 
 <input id="showUserAdded" type="hidden" value="<?php echo $showUserAdded ?>" />
 <div id="loginContainer">
