@@ -1,0 +1,20 @@
+Wishlist\CoreBundle\Entity\WishlistUser:
+  type: entity
+  repositoryClass: Wishlist\CoreBundle\Repository\WishlistUserRepository
+  id:
+    wishlistuser_id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    firstname:
+      type: string
+    lastname:
+      type: string
+    gender:
+      type: integer
+    birthdate:
+      type: datetime
+    email:
+      type: string
+    password:
+      type: string
