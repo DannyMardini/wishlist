@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Wishlist\FrontpageBundle\WishlistFrontpageBundle(),
             new Wishlist\HomepageBundle\WishlistHomepageBundle(),
             new Wishlist\CoreBundle\WishlistCoreBundle(),
+            new Wishlist\FriendlistBundle\WishlistFriendlistBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,7 @@
+parameters:
+#    wishlist_friendlist.example.class: Wishlist\FriendlistBundle\Example
+
+services:
+#    wishlist_friendlist.example:
+#        class: %wishlist_friendlist.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
