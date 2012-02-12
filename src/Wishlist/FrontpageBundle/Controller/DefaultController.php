@@ -10,6 +10,6 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
-        return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php' );
+        return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php', array("showUserAdded" => "hullo"));
     }
 }
