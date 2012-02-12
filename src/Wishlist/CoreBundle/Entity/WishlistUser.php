@@ -16,7 +16,7 @@ namespace Wishlist\CoreBundle\Entity;
 class WishlistUser {
     protected $firstname;
     protected $lastname;
-    protected $gender;
+    protected $gender = 1;
     protected $birthdate;
     protected $email;
     protected $wishlistuser_id;
