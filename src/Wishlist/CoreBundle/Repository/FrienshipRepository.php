@@ -12,4 +12,39 @@ use Doctrine\ORM\EntityRepository;
  */
 class FrienshipRepository extends EntityRepository
 {
+//    public static function getInstance()
+//    {
+//        return Doctrine_Core::getTable('Friendship');
+//    }
+//
+//    public function getFriendsOf($user)
+//    {
+//        $q = $this->createQuery()->where('usera_id = ?', $user);
+//
+//        $friendships = $q->execute();
+//
+//        foreach ($friendships as $friendship)
+//        {
+//            $friend_ids[] = $friendship->getUserbId();
+//        }
+//
+//        if($friend_ids)
+//        {
+//            return WishlistUserTable::getInstance()->createQuery('w')->whereIn('w.wishlistuser_id', $friend_ids)->execute();
+//        }
+//    }
+//
+//    public function createFriendship($userA, $userB)
+//    {
+//        $friendshipA = new Friendship();
+//        $friendshipA->setUseraId($userA);
+//        $friendshipA->setUserbId($userB);
+//
+//        $friendshipB = new Friendship();
+//        $friendshipB->setUseraId($userB);
+//        $friendshipB->setUserbId($userA);
+//
+//        $friendshipA->save();
+//        $friendshipB->save();
+//    }
 }

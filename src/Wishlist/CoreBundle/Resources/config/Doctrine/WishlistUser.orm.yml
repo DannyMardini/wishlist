@@ -1,5 +1,9 @@
 Wishlist\CoreBundle\Entity\WishlistUser:
   type: entity
+  oneToMany:
+    friendships:
+      targetEntity: WishlistUser
+      mappedBy: Friendship
   repositoryClass: Wishlist\CoreBundle\Repository\WishlistUserRepository
   id:
     wishlistuser_id:
@@ -18,3 +22,4 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       type: string
     password:
       type: string
+

@@ -151,4 +151,33 @@ class WishlistUser {
     {
         return $this->password;
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\WishlistUser
+     */
+    private $friendships;
+
+    public function __construct()
+    {
+        $this->friendships = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add friendships
+     *
+     * @param Wishlist\CoreBundle\Entity\WishlistUser $friendships
+     */
+    public function addWishlistUser(\Wishlist\CoreBundle\Entity\WishlistUser $friendships)
+    {
+        $this->friendships[] = $friendships;
+    }
+
+    /**
+     * Get friendships
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getFriendships()
+    {
+        return $this->friendships;
+    }
 }
