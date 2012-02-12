@@ -1,10 +1,8 @@
-<?php
-use_stylesheet('homePage.css');
-use_stylesheet('/css/wishlist.css');
-use_javascript('/js/wishlist.js');
-use_javascript('/js/homepage.js');
-use_javascript('/js/common.js');
-?>
+<link href='/css/homePage.css' rel='stylesheet' />
+<link href='/css/wishlist.css' rel='stylesheet' />
+<script type="text/javascript" src="/js/wishlist.js"></script>
+<script type="text/javascript" src="/js/homepage.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
   
 <input id="username" type="hidden" value="<?php echo $user->getFirstname() ?>"/>
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
