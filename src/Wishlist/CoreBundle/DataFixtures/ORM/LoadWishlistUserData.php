@@ -17,6 +17,7 @@ class LoadWishlistUserData implements FixtureInterface
         $maleEnum = $enumRepo->findOneByName('male');
         
         addUser($manager, "Danny", "Mardini", $birthdate, "hoohaw@gmail.com", $maleEnum, "hoohaw");
+        //addUser($manager, "Andrea", "Coba", new DateTime("08/18/1986"), "andee@g.c", $enumRepo->findOneByName('female'), "dingaling");
         
         $manager->flush();
     }
