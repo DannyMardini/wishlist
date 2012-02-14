@@ -1,6 +1,6 @@
 Wishlist\CoreBundle\Entity\Enum:
   type: entity
-  table: null
+  repositoryClass: Wishlist\CoreBundle\Repository\EnumRepository
   fields:
     id:
       type: integer
@@ -9,11 +9,9 @@ Wishlist\CoreBundle\Entity\Enum:
         strategy: AUTO
     name:
       type: string
-      length: '255'
       unique: true
     value:
       type: integer
     type:
       type: string
-      length: '255'
   lifecycleCallbacks: {  }
