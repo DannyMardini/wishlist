@@ -25,6 +25,8 @@ class DefaultController extends Controller
         }
         
         $this->user = $wishlist_user->getFirstname();
+        
+        $this->friends = $wishlist_user->getFriendships();
 //        
 //       // $this->friends = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship')->
 //        $this->friends = FriendshipTable::getInstance()->getFriendsOf($request->getParameter('wishlistuser_id'));

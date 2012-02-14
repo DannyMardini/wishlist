@@ -1,0 +1,19 @@
+Wishlist\CoreBundle\Entity\Enum:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: '255'
+      unique: true
+    value:
+      type: integer
+    type:
+      type: string
+      length: '255'
+  lifecycleCallbacks: {  }

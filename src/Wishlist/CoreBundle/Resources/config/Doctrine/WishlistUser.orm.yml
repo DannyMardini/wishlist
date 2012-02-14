@@ -1,5 +1,9 @@
 Wishlist\CoreBundle\Entity\WishlistUser:
   type: entity
+  oneToOne:
+    gender:
+      type: integer
+      targetEntity: Enum
   oneToMany:
     friendships:
       targetEntity: WishlistUser
@@ -14,8 +18,8 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       type: string
     lastname:
       type: string
-    gender:
-      type: integer
+ #   gender:
+ #     type: integer
     birthdate:
       type: datetime
     email:
