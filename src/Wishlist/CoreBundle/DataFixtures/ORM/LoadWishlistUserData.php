@@ -16,13 +16,13 @@ class LoadWishlistUserData implements FixtureInterface
         $enumRepo = $manager->getRepository('WishlistCoreBundle:Enum');
         $maleEnum = $enumRepo->findOneByName('male');
         
-        addUser($manager, "Danny", "Mardini", $birthdate, "hoohaw@gmail.com", $maleEnum, "hoohaw");
-        //addUser($manager, "Andrea", "Coba", new DateTime("08/18/1986"), "andee@g.c", $enumRepo->findOneByName('female'), "dingaling");
+        $this->addUser($manager, "Danny", "Mardini", $birthdate, "hoohaw@gmail.com", $maleEnum, "hoohaw");
+        $this->addUser($manager, "Andrea", "Coba", new DateTime("08/18/1986"), "andee@g.c", $enumRepo->findOneByName('female'), "dingaling");
         
         $manager->flush();
     }
 
-    public function addUser(ObjectManager $manager, String $firstname, String $lastname, DateTime $birthdate, String $email, Enum $gender, String $password)
+    public function addUser(ObjectManager $manager, $firstname, $lastname, DateTime $birthdate, $email, $gender, $password)
     {
         $user = new WishlistUser();
         
