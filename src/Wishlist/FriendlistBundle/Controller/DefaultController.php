@@ -22,10 +22,20 @@ class DefaultController extends Controller
             throw $this->createNotFoundException ('500 Internal server error(user not found in database "friendlist"). Please refresh your browser and try again.');
         }
         
-        $this->user = $wishlist_user->getFirstname();
+        $user = $wishlist_user->getFirstname();
         
-        $this->friends = $wishlist_user->getFriendships();
+        //$friends = $wishlist_user->getFriendships();
         
-        return $this->render('WishlistFriendlistBundle:Default:index.html.php', array('user' => 'andrea', '[1,2]' => ''));
+        $friendships = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship')->findBy(array('usera_id' => $wishlist_user->getWishlistuserId()));
+        
+        $friends = array();
+        
+        foreach($friendships as $friendship)
+        {
+            $friends[] = $wishlist_user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($friendship->getUserbId());
+        }
+        
+        
+        return $this->render('WishlistFriendlistBundle:Default:index.html.php', array('user' => $user, 'friends' => $friends)); //'[1,2]'
     }
 }
