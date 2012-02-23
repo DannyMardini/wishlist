@@ -12,4 +12,9 @@ class DefaultController extends Controller
     {
         return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php', array("showUserAdded" => "hullo"));
     }
+    
+    public function navBarAction($username)
+    {
+        return $this->render('WishlistFrontpageBundle:Default:navBarTest.html.php', array('username' => $username));
+    }
 }
