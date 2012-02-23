@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     
-    public function indexAction()
+    public function indexAction($t)
     {
         $request = Request::createFromGlobals()->request;        
         
