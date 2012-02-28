@@ -1,6 +1,6 @@
 Wishlist\CoreBundle\Entity\Friendship:
   type: entity
-  repositoryClass: Wishlist\CoreBundle\Repository\FrienshipRepository
+  repositoryClass: Wishlist\CoreBundle\Repository\FriendshipRepository
   id:
     id:
       type: integer
