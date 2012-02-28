@@ -2,5 +2,5 @@ php_errors.log
 nbproject/private/
 app/cache/
 app/logs/
-vendor/*
+vendor/
 nbproject/configs/
