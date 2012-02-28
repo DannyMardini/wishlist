@@ -6,9 +6,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Repository\EnumRepository;
+use \Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use \DateTime;
 
-class LoadWishlistUserData implements FixtureInterface
+class LoadWishlistUserData implements FixtureInterface,OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -33,6 +34,11 @@ class LoadWishlistUserData implements FixtureInterface
         $user->setLastname($lastname);
         $user->setPassword($password);
         $manager->persist($user);
+    }
+    
+    public function getOrder()
+    {
+        return 1;
     }
 }
 

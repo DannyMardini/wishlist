@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class WishlistUserRepository extends EntityRepository
 {
+    public function getUser($fullname)
+    {
+        $name = explode(" ", $fullname);
+        $first = $name[0];
+        $last = $name[1];
+        
+        return $this->findOneBy(array('firstname' => $first, 'lastname' => $last));
+    }
 }
