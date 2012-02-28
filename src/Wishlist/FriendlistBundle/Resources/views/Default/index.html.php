@@ -1,3 +1,5 @@
+<?php $view->extend('::main.html.php'); ?>
+
 <link href='/css/friendlist.css' rel='stylesheet' />
 
 <script>
