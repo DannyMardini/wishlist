@@ -11,6 +11,8 @@
  * @author Danny
  */
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 namespace Wishlist\CoreBundle\Entity;
 
 class WishlistUser {
@@ -21,6 +23,8 @@ class WishlistUser {
     protected $email;
     protected $wishlistuser_id;
     protected $password;
+    protected $wishlistItems;
+    protected $friendships;
 
     /**
      * Get wishlistuser_id
@@ -158,7 +162,8 @@ class WishlistUser {
 
     public function __construct()
     {
-        $this->friendships = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->friendships = new ArrayCollection();
+        $this->wishlistItems = new ArrayCollection();
     }
     
     /**

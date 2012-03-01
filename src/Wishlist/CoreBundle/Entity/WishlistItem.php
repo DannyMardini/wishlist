@@ -12,42 +12,44 @@ class WishlistItem
     /**
      * @var integer $id
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string $name
      */
-    private $name;
+    protected $name;
 
     /**
      * @var integer $price
      */
-    private $price;
+    protected $price;
 
     /**
      * @var string $link
      */
-    private $link;
+    protected $link;
 
     /**
      * @var boolean $is_public
      */
-    private $is_public;
+    protected $is_public;
 
     /**
      * @var string $comment
      */
-    private $comment;
+    protected $comment;
 
     /**
      * @var integer $quantity
      */
-    private $quantity;
+    protected $quantity;
 
     /**
      * @var integer $user_id
      */
-    private $user_id;
+    protected $user_id;
+    
+    protected $wishlistUser;
 
 
     /**

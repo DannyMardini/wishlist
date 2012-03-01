@@ -1,11 +1,13 @@
 Wishlist\CoreBundle\Entity\WishlistItem:
   type: entity
   table: null
-  oneToOne:
-    user_id:
-      type: integer
-      targetEntity: WishlistUser
-      onDelete: CASCADE
+#  oneToMany:
+#        wishlistUser:
+#          targetEntity: WishlistUser
+#          inversedBy: wishlistItems
+#          joinColumn:
+#                  name: user_id
+#                  referencedColumnName: wishlistuser_id
   fields:
     id:
       type: integer
@@ -30,6 +32,9 @@ Wishlist\CoreBundle\Entity\WishlistItem:
     quantity:
       type: integer
       length: null
+    user_id:  
+      type: integer
+      notnull: true    
   lifecycleCallbacks: {  }
   
   
