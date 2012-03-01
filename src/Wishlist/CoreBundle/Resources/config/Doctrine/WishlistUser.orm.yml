@@ -7,11 +7,11 @@ Wishlist\CoreBundle\Entity\WishlistUser:
   oneToMany:
     friendships:
       targetEntity: WishlistUser
-      mapped-by: Friendship
+      mappedBy: Friendship
   oneToMany:
     wishlistItems:
       targetEntity: WishlistItem
-      mapped-by: wishlistUser
+      mappedBy: wishlistUser
   repositoryClass: Wishlist\CoreBundle\Repository\WishlistUserRepository
   id:
     wishlistuser_id:
