@@ -1,13 +1,13 @@
 Wishlist\CoreBundle\Entity\WishlistItem:
   type: entity
   table: null
-#  oneToMany:
-#        wishlistUser:
-#          targetEntity: WishlistUser
-#          inversedBy: wishlistItems
-#          joinColumn:
-#                  name: user_id
-#                  referencedColumnName: wishlistuser_id
+  manyToOne:
+        wishlistUser:
+          targetEntity: WishlistUser
+          inversedBy: wishlistItems
+          joinColumn:
+                  name: user_id
+                  referencedColumnName: wishlistuser_id
   fields:
     id:
       type: integer

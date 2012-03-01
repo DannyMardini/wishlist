@@ -24,7 +24,6 @@ class WishlistUser {
     protected $wishlistuser_id;
     protected $password;
     protected $wishlistItems;
-    protected $friendships;
 
     /**
      * Get wishlistuser_id
