@@ -11,6 +11,8 @@
  * @author Danny
  */
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 namespace Wishlist\CoreBundle\Entity;
 
 class WishlistUser {

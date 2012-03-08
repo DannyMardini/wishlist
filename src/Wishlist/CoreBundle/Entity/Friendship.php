@@ -72,4 +72,29 @@ class Friendship {
     {
         return $this->userb_id;
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\WishlistUser
+     */
+    private $wishlistUser;
+
+
+    /**
+     * Set wishlistUser
+     *
+     * @param Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser
+     */
+    public function setWishlistUser(\Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser)
+    {
+        $this->wishlistUser = $wishlistUser;
+    }
+
+    /**
+     * Get wishlistUser
+     *
+     * @return Wishlist\CoreBundle\Entity\WishlistUser 
+     */
+    public function getWishlistUser()
+    {
+        return $this->wishlistUser;
+    }
 }

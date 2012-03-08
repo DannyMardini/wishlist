@@ -1,6 +1,13 @@
 Wishlist\CoreBundle\Entity\Friendship:
   type: entity
   repositoryClass: Wishlist\CoreBundle\Repository\FriendshipRepository
+  manyToOne:
+        wishlistUser:
+          targetEntity: WishlistUser
+          inversedBy: friendships
+          joinColumn:
+                  name: usera_id
+                  referencedColumnName: wishlistuser_id
   id:
     id:
       type: integer
