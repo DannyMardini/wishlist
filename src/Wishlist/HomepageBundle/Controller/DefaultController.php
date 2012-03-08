@@ -9,20 +9,16 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     
-    public function indexAction($t)
+    public function indexAction($wishlistuser_id)
     {
-        $request = Request::createFromGlobals()->request;        
+        $session = $this->getRequest()->getSession();        
         
-        
-        //return $this->render('WishlistHomepageBundle:Default:index.html.twig', array('name' => $name));
-        $email = $request->get('email_addr');   
-        $email = 'andreacoba@gmail.com';
+        $email = $session->get('email_addr');
         
         if(!$email){
             throw $this->createNotFoundException ('500 Internal server error. Please go to wishlist.com and sign in.');
         }
 
-        $pass = $request->get('password');
         
         //return new Response('<html><body>Hello test test!</body></html>');
         

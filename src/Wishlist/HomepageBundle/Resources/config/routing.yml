@@ -4,6 +4,6 @@
   
   
 homepage:
-  pattern: /homepage/{wishlistuser_firstname}/{wishlistuser_id}
+  pattern: /homepage/{wishlistuser_id}
   defaults: { _controller: WishlistHomepageBundle:Default:index }
 

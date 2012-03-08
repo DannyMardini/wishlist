@@ -38,6 +38,9 @@ class DefaultController extends Controller
 
                 if($userId)
                 {
+                    $session = $this->getRequest()->getSession();
+                    $session->set('email_addr', $email);
+                    $session->set('user_id', $userId);
                     $response = "continue,".$userId;
                 }
                 else

@@ -110,7 +110,8 @@ function displayMessage(message)
 function redirectToHomePage(userId)
 {
     // redirect to the logged in user's home page
-    window.location = "http://www.google.com";
+//    window.location = "http://www.google.com";
+    window.location = "/app_dev.php/homepage/"+userId;
 }
 
 // run the currently selected effect
