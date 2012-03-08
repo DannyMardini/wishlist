@@ -5,3 +5,7 @@ WishlistFrontpageBundle_homepage:
 WishlistFrontpageBundle_navBarTest:
   pattern: /navBar/{username}
   defaults: { _controller: WishlistFrontpageBundle:Default:navBar }
+  
+Validate:
+  pattern: /Frontpage/validateLogin
+  defaults: { _controller: WishlistFrontpageBundle:Default:validateLogin }

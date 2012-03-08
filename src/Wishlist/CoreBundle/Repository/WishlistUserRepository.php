@@ -20,4 +20,29 @@ class WishlistUserRepository extends EntityRepository
         
         return $this->findOneBy(array('firstname' => $first, 'lastname' => $last));
     }
+    
+    public function validateEmailAndPassword( $email, $password )
+    {
+        try
+        {                                                    
+            $q = $this->getEntityManager()
+                    ->createQuery('SELECT w FROM WishlistCoreBundle:WishlistUser w WHERE w.email = :email AND w.password = :password')
+                    ->setParameter('email', $email)
+                    ->setParameter('password', $password);
+            
+            $userQueryResults = $q->getResult();
+            
+            $userId = 0;
+                        
+            foreach ($userQueryResults as $user)
+            {
+                $userId = $user->getWishlistuserId();
+            }        
+            
+            return $userId;
+        }catch(Exception $e)
+        {
+            return 0;
+        }
+    }    
 }

@@ -35,12 +35,12 @@ $(document).ready(function()
     $("#loginForm").ajaxError(function(){
         alert("Fail");
     }); 
-    /*
     $("#loginForm").submit(function(e){
         // validate user via ajax call
         e.preventDefault();
+        var url = $(this).attr('action');
         
-        $.post('/frontpage/validateLogin', {email: $("#login_email_addr").val(), password: $("#password").val()}, function(data){            
+        $.post( url, {email: $("#login_email_addr").val(), password: $("#password").val()}, function(data){            
             
             $dataArray = data.split(","); 
             
@@ -55,7 +55,6 @@ $(document).ready(function()
             }
         });
     });
-    */
 
     $('#requestInviteForm').submit(function(e) {
         e.preventDefault();
