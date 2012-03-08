@@ -11,8 +11,6 @@
  * @author Danny
  */
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 namespace Wishlist\CoreBundle\Entity;
 
 class WishlistUser {
@@ -161,8 +159,6 @@ class WishlistUser {
 
     public function __construct()
     {
-        $this->friendships = new ArrayCollection();
-        $this->wishlistItems = new ArrayCollection();
     }
     
     /**
