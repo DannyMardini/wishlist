@@ -3,6 +3,7 @@
 namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NoResultException;
 
 /**
  * WishlistUserRepository
@@ -20,6 +21,19 @@ class WishlistUserRepository extends EntityRepository
         
         return $this->findOneBy(array('firstname' => $first, 'lastname' => $last));
     }
+
+//    public static function addWishlistUser( $email )
+//    {
+//        $em = $this->getEntityManager();
+//        
+//        $new_wishlistUser = new WishlistUser();
+//        $new_wishlistUser->setEmail($email);
+//        $new_wishlistUser->setName('Blanca Edmiston');
+//        $new_wishlistUser->setGender(1);
+//        $new_wishlistUser->setAge(50);
+//        $new_wishlistUser->setPassword('iLoveBob');
+//        $new_wishlistUser->save();
+//    }
     
     public function validateEmailAndPassword( $email, $password )
     {
@@ -44,5 +58,17 @@ class WishlistUserRepository extends EntityRepository
         {
             return 0;
         }
-    }    
+    }
+    
+    public function getUserWithEmail( $email )
+    {
+        $user = $this->findOneBy(array('email' => $email));
+
+        if(!isset ($user))
+        {
+            throw new NoResultException();
+        }
+
+        return $user;
+    }
 }

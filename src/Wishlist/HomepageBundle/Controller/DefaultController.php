@@ -5,13 +5,15 @@ namespace Wishlist\HomepageBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManager;
 
 class DefaultController extends Controller
 {
     
     public function indexAction($wishlistuser_id)
     {
-        $session = $this->getRequest()->getSession();        
+        $session = $this->getRequest()->getSession();
+        $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
         
         $email = $session->get('email_addr');
         
@@ -20,9 +22,9 @@ class DefaultController extends Controller
         }
 
         
-        //return new Response('<html><body>Hello test test!</body></html>');
+        $user = $userRepo->getUserWithEmail($email);
         
-        return $this->render('WishlistHomepageBundle:Default:index.html.php', array('email' => $email));
+        return $this->render('WishlistHomepageBundle:Default:index.html.php', array('user' => $user));
 
         
         try {

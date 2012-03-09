@@ -11,7 +11,8 @@
     <div id="wishlistComponent">
         <div><h1>My Wishlist</h1></div>
         <div id="wishlist">
-            <?php include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
+            Wishlist Here.
+            <?php // include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
         </div>
     </div>
 
@@ -27,28 +28,28 @@
 
 </div>
 
-<div id="updatesComponent">
+<!--<div id="updatesComponent">
     <div id="updatesInnerComponent">
 
         <?php
-        foreach ($friendUpdates as $update) {
+//        foreach ($friendUpdates as $update) {
 
-                $message = $update->getMessage(ESC_RAW);
-                $name = "<a href='user/".$update->getUserId()."/' >".$update[concat]."</a>";
-                $timestamp = " -- ".$update->getFormattedTimestamp();
+//                $message = $update->getMessage(ESC_RAW);
+//                $name = "<a href='user/".$update->getUserId()."/' >".$update[concat]."</a>";
+//                $timestamp = " -- ".$update->getFormattedTimestamp();
 
             ?>
 
         <div class="Update">
             <div class="image"><img src="/images/default_avatar.gif" alt="Smiley face" height="42" width="42" /></div>
-            <div class="name"><?php echo $name ?></div>
-            <div class="message"><?php echo $message ?></div>
-            <div class="timestamp"><?php echo $timestamp ?></div>
+            <div class="name"><?php // echo $name ?></div>
+            <div class="message"><?php // echo $message ?></div>
+            <div class="timestamp"><?php // echo $timestamp ?></div>
         </div>
 
-        <?php } ?>
+        <?php // } ?>
     </div>
-</div>
+</div>-->
 
 
 <div id="itemDialog" title="Wish" >        
