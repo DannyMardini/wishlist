@@ -12,6 +12,10 @@ Wishlist\CoreBundle\Entity\WishlistUser:
     wishlistItems:
       targetEntity: WishlistItem
       mappedBy: wishlistUser
+      
+    wishlistUpdates:
+      targetEntity: WishlistUpdate
+      mappedBy: wishlistUser
   repositoryClass: Wishlist\CoreBundle\Repository\WishlistUserRepository
   id:
     wishlistuser_id:

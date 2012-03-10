@@ -200,4 +200,29 @@ class WishlistUser {
     {
         return $this->wishlistItems;
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\WishlistUpdate
+     */
+    private $wishlistUpdates;
+
+
+    /**
+     * Add wishlistUpdates
+     *
+     * @param Wishlist\CoreBundle\Entity\WishlistUpdate $wishlistUpdates
+     */
+    public function addWishlistUpdate(\Wishlist\CoreBundle\Entity\WishlistUpdate $wishlistUpdates)
+    {
+        $this->wishlistUpdates[] = $wishlistUpdates;
+    }
+
+    /**
+     * Get wishlistUpdates
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getWishlistUpdates()
+    {
+        return $this->wishlistUpdates;
+    }
 }
