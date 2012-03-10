@@ -1,3 +1,5 @@
+<?php $view->extend('::navBar.html.php') ?>
+
 <link href='/css/homePage.css' rel='stylesheet' />
 <link href='/css/wishlist.css' rel='stylesheet' />
 <script type="text/javascript" src="/js/wishlist.js"></script>
@@ -28,7 +30,7 @@
 
 </div>
 
-<!--<div id="updatesComponent">
+<div id="updatesComponent">
     <div id="updatesInnerComponent">
 
         <?php
@@ -49,7 +51,7 @@
 
         <?php // } ?>
     </div>
-</div>-->
+</div>
 
 
 <div id="itemDialog" title="Wish" >        
