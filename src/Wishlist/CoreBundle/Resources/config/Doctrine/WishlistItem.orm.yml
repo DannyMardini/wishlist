@@ -1,6 +1,7 @@
 Wishlist\CoreBundle\Entity\WishlistItem:
   type: entity
   table: null
+  repositoryClass: Wishlist\CoreBundle\Repository\WishlistItemRepository
   manyToOne:
         wishlistUser:
           targetEntity: WishlistUser
@@ -32,10 +33,5 @@ Wishlist\CoreBundle\Entity\WishlistItem:
     quantity:
       type: integer
       length: null
-    user_id:  
-      type: integer
-      notnull: true    
   lifecycleCallbacks: {  }
   
-  
-#  WishlistUser: { onDelete: CASCADE, local: user_id, foreign: wishlistUser_id, foreignAlias: WishlistItems }
