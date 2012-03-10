@@ -4,6 +4,8 @@ namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
+use Wishlist\CoreBundle\Entity\WishlistUser;
+use \DateTime;
 
 /**
  * WishlistUserRepository
@@ -21,7 +23,34 @@ class WishlistUserRepository extends EntityRepository
         
         return $this->findOneBy(array('firstname' => $first, 'lastname' => $last));
     }
-
+    
+    public function addUser(WishlistUser $user)
+    {
+        $em = $this->getEntityManager();
+        
+        if(!isset($user))
+        {
+            throw new \Exception("Error, user not defined!");
+        }
+        
+        $em->persist($user);
+        $em->flush();
+    }
+    
+    public function addNewUser($firstname, $lastname, DateTime $birthdate, $email, $gender, $password)
+    {
+        $user = new WishlistUser();
+        
+        $user->setBirthdate($birthdate);
+        $user->setEmail($email);
+        $user->setGender($gender);
+        $user->setFirstname($firstname);
+        $user->setLastname($lastname);
+        $user->setPassword($password);
+        
+        $this->addUser($user);
+    }
+    
 //    public static function addWishlistUser( $email )
 //    {
 //        $em = $this->getEntityManager();
