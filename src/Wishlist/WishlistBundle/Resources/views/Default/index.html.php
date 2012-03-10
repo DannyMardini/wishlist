@@ -1,3 +1,12 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+ $self = ( $loggedInUser == $wishlist_user_email);
+
 ?>
 
 <div id="div_wishlist_div">

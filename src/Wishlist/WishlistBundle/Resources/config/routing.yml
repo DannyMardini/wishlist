@@ -1,7 +1,7 @@
-#wishlistItem:
-#    pattern:  /wishlistitem/{wishlistitem_id}
-#    defaults: { _controller: WishlistWishlistBundle:Default:getWishlistItem }
+#wishlist:
+#    pattern:  /wishlist/{wishlistuser_id}
+#    defaults: { _controller: WishlistWishlistBundle:Default:index }
     
-wishlist:
-    pattern:  /wishlist/{wishlistuser_id}
-    defaults: { _controller: WishlistWishlistBundle:Default:index }
+WishlistWishlistBundle_wishlistShow:
+    pattern: /wishlist/{wishlistuser_id}
+    defaults: { _controller: WishlistWishlistBundle:Default:show }
