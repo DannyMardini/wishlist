@@ -18,7 +18,7 @@ class WishlistUpdateRepository extends EntityRepository
         $newUpdate = new WishlistUpdate();
         
         $newUpdate->setTemplate($template);
-        $newUpdate->setTemplate($type);
+        $newUpdate->setType($type);
         $newUpdate->setMessage($message);
         $newUpdate->setDatetime($datetime);
         

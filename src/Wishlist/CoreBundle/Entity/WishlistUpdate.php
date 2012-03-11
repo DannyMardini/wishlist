@@ -28,9 +28,30 @@ class WishlistUpdate
      * @var datetime $datetime
      */
     private $datetime;
+    
+    private static $templateEnums = array(
+        "TYPE_1" => 1,
+        "TYPE_2" => 2,
+    );
+    
+    private static $typeEnums = array(
+        "ADD_ITEM" => 1,
+        "REMOVE_ITEM" => 2,
+        "ADD_FRIEND" => 3,
+        "REMOVE_FRIEND" => 4
+    );
 
+    public static function templateEnums(/*string*/ $name = null)
+    {
+        return WishlistUpdate::$templateEnums[$name];
+    }
+    
+    public static function typeEnums(/*string*/ $name = null)
+    {
+        return WishlistUpdate::$typeEnums[$name];
+    }
 
-    /**
+        /**
      * Set template
      *
      * @param integer $template
