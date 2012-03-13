@@ -4,7 +4,6 @@ echo "Dropping Database..."
 php app/console doctrine:schema:drop --force
 
 echo "Updating Database..."
-#php app/console doctrine:schema:update --force 2>&1 > /dev/null
 php app/console doctrine:schema:update --force
 
 if [ ! $? ]; then
@@ -14,7 +13,6 @@ fi
 
 
 echo "Loading Fixtures..."
-#php app/console doctrine:fixtures:load 2>&1 > /dev/null
 php app/console doctrine:fixtures:load
 
 if [ ! $? ]; then

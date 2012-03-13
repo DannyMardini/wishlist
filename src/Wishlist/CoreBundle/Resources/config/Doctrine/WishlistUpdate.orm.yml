@@ -1,6 +1,6 @@
 Wishlist\CoreBundle\Entity\WishlistUpdate:
   type: entity
-  ManyToOne:
+  manyToOne:
     wishlistUser:
       targetEntity: WishlistUser
       inversedBy: wishlistUpdates

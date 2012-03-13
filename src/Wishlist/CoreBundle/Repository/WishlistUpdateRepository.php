@@ -4,6 +4,7 @@ namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\WishlistUpdate;
+use Wishlist\CoreBundle\Entity\WishlistUser;
 
 /**
  * WishlistUpdateRepository
@@ -13,7 +14,7 @@ use Wishlist\CoreBundle\Entity\WishlistUpdate;
  */
 class WishlistUpdateRepository extends EntityRepository
 {
-    public function addNewUpdate($template, $type, $message, $datetime)
+    public function addNewUpdate($template, $type, $message, $datetime, WishlistUser $user)
     {
         $newUpdate = new WishlistUpdate();
         
@@ -21,6 +22,7 @@ class WishlistUpdateRepository extends EntityRepository
         $newUpdate->setType($type);
         $newUpdate->setMessage($message);
         $newUpdate->setDatetime($datetime);
+        $newUpdate->setWishlistUser($user);
         
         $this->getEntityManager()->persist($newUpdate);
         $this->getEntityManager()->flush();
