@@ -34,22 +34,22 @@
     <div id="updatesInnerComponent">
 
         <?php
-//        foreach ($friendUpdates as $update) {
-//
-//                $message = $update->getMessage(ESC_RAW);
-//                $name = "<a href='user/".$update->getUserId()."/' >".$update[concat]."</a>";
-//                $timestamp = " -- ".$update->getFormattedTimestamp();
+        foreach ($friendUpdates as $update) {
+                  $message = $update->getMessage();
+                  $user = $update->getWishlistUser();
+                  $name = "<a href='user/".$user->getWishlistUserId()."/' >".$user->getFirstname()." ".$user->getLastname()."</a>";
+                  $timestamp = " -- ".$update->getFormattedTimestamp();
 
             ?>
 
-<!--        <div class="Update">
+        <div class="Update">
             <div class="image"><img src="/images/default_avatar.gif" alt="Smiley face" height="42" width="42" /></div>
-            <div class="name"><?php // echo $name ?></div>
-            <div class="message"><?php // echo $message ?></div>
-            <div class="timestamp"><?php // echo $timestamp ?></div>
-        </div>-->
+            <div class="name"><?php echo $name ?></div>
+            <div class="message"><?php echo $message ?></div>
+            <div class="timestamp"><?php echo $timestamp ?></div>
+        </div>
 
-        <?php // } ?>
+        <?php } ?>
     </div>
 </div>
 

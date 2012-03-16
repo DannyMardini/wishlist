@@ -3,6 +3,7 @@
 namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Wishlist\CoreBundle\Entity\WishlistUpdate;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 
@@ -26,5 +27,59 @@ class WishlistUpdateRepository extends EntityRepository
         
         $this->getEntityManager()->persist($newUpdate);
         $this->getEntityManager()->flush();
+    }
+    
+    public function getFriendsUpdatesByUser(WishlistUser $user)
+    {
+    }
+    
+    public function getFriendsUpdates(/*int*/ $userId)
+    {                                           
+//        $q = Doctrine_Query::create() 
+//                ->select("u.id, u.template, u.type, u.message, u.datetime, u.user_id, concat(usr.firstname,' ',usr.lastname)")
+//                ->from('WishlistUpdate u')
+//                ->leftJoin('u.WishlistUser usr') 
+//                ->where('u.user_id IN ( select userb_id from friendships where usera_id = ?)',$userId)               
+//                ->orderBy('datetime desc');
+        
+//        $qb = $this->getEntityManager()->createQueryBuilder()
+//                ->select('u', 'usr')
+//                ->from('WishlistUpdate', 'u')
+//                ->leftJoin('u.WishlistUser', 'usr')
+//                ->leftJoin('u.WishlistUser', 'usr', Expr\Join::WITH, "usr.wishlistuser_id = ?1")
+//                ->where('u.user_id IN ( select userb_id from friendships where usera_id = ?2)')
+//                ->setParameters(array(1 => $userId, 2 => $userId))
+//                ->orderBy('datetime desc');
+        /*
+        $q = $this->getEntityManager()->createQuery('
+            SELECT u, usr 
+            FROM WishlistCoreBundle:WishlistUpdate u
+            LEFT JOIN u.wishlistUser usr
+            WHERE usr.wishlistuser_id = :uid
+            ORDER BY u.datetime DESC')
+                ->setParameter('uid', $userId);
+        //*/
+        //*
+        $q = $this->getEntityManager()->createQuery('
+            SELECT u, usr 
+            FROM WishlistCoreBundle:WishlistUpdate u
+            LEFT JOIN u.wishlistUser usr
+            WHERE usr.wishlistuser_id IN (SELECT f.userb_id FROM WishlistCoreBundle:Friendship f WHERE f.usera_id = :uid)
+            ORDER BY u.datetime DESC')
+                ->setParameter('uid', $userId);
+        //*/
+//        $rsm = new \Doctrine\ORM\Query\ResultSetMapping();
+//        $rsm->addEntityResult('WishlistUpdate', 'u');
+//        $rsm->addFieldResult('u', 'message', 'message');
+//        $rsm->addFieldResult('u', '', $fieldName)
+//        
+//        $q = $this->getEntityManager()->createNativeQuery($sql, $rsm)
+//        $q = $qb->getQuery();
+        
+        $t = $q->getSQL();
+        
+        $updates = $q->getResult();
+        
+        return $updates;
     }
 }
