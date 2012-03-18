@@ -3,10 +3,10 @@
  * and open the template in the editor.
  */
 
-function addToWishlist(paramArr, callback)
+function addToWishlist(paramArr, callback, div)
 {
-    $( "#wishlist" ).load('/wishlist/new', 
-            paramArr, callback);
+    var paramArrStr = encodeURIComponent(paramArr.join('/')); 
+    div.load('/app_dev.php/wishlistnew/' + paramArrStr, callback); 
 }
 
 function delFromWishlist(paramArr, callback)
