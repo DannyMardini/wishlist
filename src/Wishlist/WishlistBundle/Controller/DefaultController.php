@@ -18,16 +18,16 @@ class DefaultController extends Controller
         }
         
         $session = $this->getRequest()->getSession();        
-        $loggedInUser = $session->get('email_addr');
-        $wishlist_user_email = $user->getEmail();
-        $wishlist_items = $user->getWishlistItems();
+        $loggedInUserEmail = $session->get('email_addr');
+        $wishlistUserEmail = $user->getEmail();
+        $wishlistItems = $user->getWishlistItems();
         
         
         
         return $this->render('WishlistWishlistBundle:Default:index.html.php', 
-                array('wishlist_user_email' => $wishlist_user_email, 
-                    'wishlist_items' => $wishlist_items,
-                    'loggedInUser' => $loggedInUser));  
+                array('wishlistUserEmail' => $wishlistUserEmail, 
+                    'wishlistItems' => $wishlistItems,
+                    'loggedInUserEmail' => $loggedInUserEmail));  
     }
     
     
@@ -50,6 +50,7 @@ class DefaultController extends Controller
     {
         $session = $this->getRequest()->getSession();        
         $loggedInUserId = $session->get('user_id');
+        $loggedInUserEmail = $session->get('email_addr');
         
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
                 
@@ -62,10 +63,11 @@ class DefaultController extends Controller
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
         $itemRepo->addItem($name, $price, $link, true, 'default comment', 1, $user);
         
+    //     return $this->render('WishlistWishlistBundle:Default:showSuccess.html.php', array('user_id' => $loggedInUserId));
         
         return $this->render('WishlistWishlistBundle:Default:index.html.php', 
-                array('wishlist_user_email' => $user->getEmail(),
-                      'wishlist_items' => $user->getWishlistItems()));
-//        return $this->renderPartial('showWishlist', array( 'wishlist_user_email' => $user->getEmail(), 'wishlist_items' => $user->getWishlistItems()));
+                array('loggedInUserEmail' => $loggedInUserEmail,
+                      'wishlistItems' => $user->getWishlistItems(),
+                      'wishlistUserEmail' => $loggedInUserEmail));
     }
 }

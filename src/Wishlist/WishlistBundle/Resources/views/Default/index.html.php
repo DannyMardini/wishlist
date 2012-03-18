@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 
- $self = ( $loggedInUser == $wishlist_user_email);
+ $self = ( $loggedInUserEmail == $wishlistUserEmail);
 
 ?>
 
@@ -21,15 +21,15 @@
         echo "</div>";
     }
     
-    for($i = ($wishlist_items->count()-1); $i >= 0; $i--)
+    for($i = ($wishlistItems->count()-1); $i >= 0; $i--)
     {
         echo "<h3>";
         if($self) {
             echo "<span class='ui-icon ui-icon-close'></span>";
         }
 
-        echo "<a href='#'>".$wishlist_items[$i]->getName()."</a></h3>";
-        echo "<div><p>$".$wishlist_items[$i]->getPrice()."</p></div>";
+        echo "<a href='#'>".$wishlistItems[$i]->getName()."</a></h3>";
+        echo "<div><p>$".$wishlistItems[$i]->getPrice()."</p></div>";
     }
 ?>
 </div>

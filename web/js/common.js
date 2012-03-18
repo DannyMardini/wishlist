@@ -5,7 +5,7 @@
 
 function addToWishlist(paramArr, callback, div)
 {
-    var paramArrStr = encodeURIComponent(paramArr.join('/')); 
+    var paramArrStr = paramArr.join('/'); 
     div.load('/app_dev.php/wishlistnew/' + paramArrStr, callback); 
 }
 
