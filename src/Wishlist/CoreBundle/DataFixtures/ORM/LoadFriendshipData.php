@@ -32,10 +32,14 @@ class LoadFriendshipData implements FixtureInterface,OrderedFixtureInterface{
         $users = $manager->getRepository('WishlistCoreBundle:WishlistUser');
         $friendships = $manager->getRepository('WishlistCoreBundle:Friendship');
         
-        $userA = $users->getUser('Danny Mardini');
-        $userB = $users->getUser('Andrea Coba');
-                
-        $friendships->addNewFriendship($userA, $userB);
+        $danny = $users->getUser('Danny Mardini');
+        $andrea = $users->getUser('Andrea Coba');
+        $steve = $users->getUser('Steven Lac');
+        $jorge = $users->getUser('Jorge Thatcher');
+        
+        $friendships->addNewFriendship($danny, $andrea);
+        $friendships->addNewFriendship($danny, $steve);
+        $friendships->addNewFriendship($danny, $jorge);
         
         $manager->flush();
     }

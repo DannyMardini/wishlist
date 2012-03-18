@@ -3,6 +3,7 @@
 namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Wishlist\CoreBundle\Entity\WishlistUpdate;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 
@@ -26,5 +27,22 @@ class WishlistUpdateRepository extends EntityRepository
         
         $this->getEntityManager()->persist($newUpdate);
         $this->getEntityManager()->flush();
+    }
+    
+    public function getFriendsUpdatesByUser(WishlistUser $user)
+    {
+    }
+    
+    public function getFriendsUpdates(/*int*/ $userId)
+    {                                           
+        $q = $this->getEntityManager()->createQuery('
+            SELECT u, usr 
+            FROM WishlistCoreBundle:WishlistUpdate u
+            LEFT JOIN u.wishlistUser usr
+            WHERE usr.wishlistuser_id IN (SELECT f.userb_id FROM WishlistCoreBundle:Friendship f WHERE f.usera_id = :uid)
+            ORDER BY u.datetime DESC')
+                ->setParameter('uid', $userId);
+        
+        return $q->getResult();
     }
 }

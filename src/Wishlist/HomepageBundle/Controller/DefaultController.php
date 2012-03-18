@@ -14,6 +14,7 @@ class DefaultController extends Controller
     {
         $session = $this->getRequest()->getSession();
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
+        $updateRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
         
         $email = $session->get('email_addr');
         
@@ -23,25 +24,13 @@ class DefaultController extends Controller
 
         
         $user = $userRepo->getUserWithEmail($email);
-        
-        return $this->render('WishlistHomepageBundle:Default:index.html.php', array('user' => $user));
 
-        
         try {
-            /*
-            $this->user = WishlistUserTable::getInstance()->getUserWithEmail($email);
-
-            if ($this->user->getPassword() != $pass)
-            {
-                throw new Exception('Incorrect password');
-            }
-
-            $_SESSION['user'] = $this->user->getEmail();
-            $this->friendUpdates = WishlistUpdateTable::getInstance()->GetFriendsUpdates($this->user->getWishlistuser_id());
-             * 
-             */
+            $friendUpdates =  $updateRepo->getFriendsUpdates($user->getWishlistuserId());
         }catch(Exception $e){
             $e->getTrace();
-        }                         
+        }
+        
+        return $this->render('WishlistHomepageBundle:Default:index.html.php', array('user' => $user, 'friendUpdates' => $friendUpdates));
     }
 }
