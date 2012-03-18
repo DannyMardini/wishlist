@@ -14,7 +14,6 @@
         <div><h1>My Wishlist</h1></div>
         <div id="wishlist">
             <?php echo $view->render('WishlistWishlistBundle:Default:showSuccess.html.php', array('user_id' => $user->getWishlistuserId())); ?>
-            <?php // include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
         </div>
     </div>
     
