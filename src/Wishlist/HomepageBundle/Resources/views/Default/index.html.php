@@ -13,11 +13,11 @@
     <div id="wishlistComponent">
         <div><h1>My Wishlist</h1></div>
         <div id="wishlist">
-            Wishlist Here.
+            <?php echo $view->render('WishlistWishlistBundle:Default:showSuccess.html.php', array('user_id' => $user->getWishlistuserId())); ?>
             <?php // include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $user->getWishlistuserId())); ?>
         </div>
     </div>
-
+    
     <div id="upcomingEvents">
         <div><h1>Upcoming Events</h1></div>
         <div id="events">
