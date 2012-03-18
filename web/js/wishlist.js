@@ -16,7 +16,8 @@ function setupWishlist()
         if(e.keyCode === 13 )
         {
             e.preventDefault();
-            addToWishlist({newWishName: $("#newWishName").val(), newWishPrice: $("#newWishPrice").val(), newWishLink: $("#newWishLink").val()}, setupWishlist);
+            var paramArray = new Array($("#newWishName").val(), $("#newWishPrice").val(), $("#newWishLink").val());
+            addToWishlist(paramArray, setupWishlist, $(this));
         }
     });
 
