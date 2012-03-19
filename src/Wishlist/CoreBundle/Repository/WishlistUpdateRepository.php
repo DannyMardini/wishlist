@@ -6,6 +6,8 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Wishlist\CoreBundle\Entity\WishlistUpdate;
 use Wishlist\CoreBundle\Entity\WishlistUser;
+use Wishlist\CoreBundle\Entity\WishlistItem;
+use \DateTime;
 
 /**
  * WishlistUpdateRepository
@@ -27,6 +29,17 @@ class WishlistUpdateRepository extends EntityRepository
         
         $this->getEntityManager()->persist($newUpdate);
         $this->getEntityManager()->flush();
+    }
+    
+    public function addNewItem(WishlistUser $user, WishlistItem $item)
+    {
+        $message = $user->getFirstname()." added <a href='#' onclick='openDialog(".$item->getId().")'>".$item->getName()."</a> to his wishlist";
+        
+        $this->addNewUpdate(WishlistUpdate::templateEnums('TYPE_1'),
+                WishlistUpdate::typeEnums('ADD_ITEM'),
+                $message,
+                new DateTime('now'),
+                $user);
     }
     
     public function getFriendsUpdatesByUser(WishlistUser $user)

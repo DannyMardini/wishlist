@@ -3,6 +3,8 @@
 namespace Wishlist\WishlistBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Wishlist\CoreBundle\Entity\WishlistItem;
 
 
@@ -67,5 +69,16 @@ class DefaultController extends Controller
                 array('wishlist_user_email' => $user->getEmail(),
                       'wishlist_items' => $user->getWishlistItems()));
 //        return $this->renderPartial('showWishlist', array( 'wishlist_user_email' => $user->getEmail(), 'wishlist_items' => $user->getWishlistItems()));
+    }
+    
+    public function getWishlistItemAction($itemId)
+    {
+        $response = new Response();
+        $item = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem')->findOneBy(array('id' => $itemId));
+        
+        $response->setContent($item->exportData());
+        $response->headers->set('Content-Type', 'application/json');
+        
+        return $response;
     }
 }

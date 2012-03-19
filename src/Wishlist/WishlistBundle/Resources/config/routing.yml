@@ -3,11 +3,15 @@
 #    defaults: { _controller: WishlistWishlistBundle:Default:index }
     
 WishlistWishlistBundle_wishlistShow:
-    pattern: /wishlist/{wishlistuser_id}
-    defaults: { _controller: WishlistWishlistBundle:Default:show }
+  pattern: /wishlist/{wishlistuser_id}
+  defaults: { _controller: WishlistWishlistBundle:Default:show }
     
 WishlistWishlistBundle_wishlistNew:
-    pattern: /wishlistnew/{name}/{price}/{link}
-    defaults: { _controller: WishlistWishlistBundle:Default:new }
+  pattern: /wishlistnew/{name}/{price}/{link}
+  defaults: { _controller: WishlistWishlistBundle:Default:new }
+
+WishlistWishlistBundle_wishlistItem:
+  pattern: /wishlistitem/{itemId}
+  defaults: { _controller: WishlistWishlistBundle:Default:getWishlistItem }
     
   #url:   /:module/:action/*    
