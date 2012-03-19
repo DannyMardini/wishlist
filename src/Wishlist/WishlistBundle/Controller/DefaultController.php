@@ -41,11 +41,6 @@ class DefaultController extends Controller
     } 
     
     
-     /* TODO Andrea Left off here, 2 issues:
-     * 1) if pass in item with space in the name it doesn't accept it. I tried using encode but didnt seem to help
-     * 2) after item is added, the page doesn't re-render...
-     */
-    
     public function newAction($name, $price, $link)
     {
         $session = $this->getRequest()->getSession();        
