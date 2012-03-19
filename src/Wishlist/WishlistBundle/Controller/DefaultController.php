@@ -40,7 +40,10 @@ class DefaultController extends Controller
         return $this->render('WishlistWishlistBundle:Default:showSuccess.html.php', array('user_id' => $wishlistuser_id));
     } 
     
-    
+    /**
+    * Executes add new wishlist item action
+    *
+    */      
     public function newAction($name, $price, $link)
     {
         $session = $this->getRequest()->getSession();        
