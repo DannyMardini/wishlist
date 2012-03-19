@@ -23,7 +23,7 @@ function setupWishlist()
 
     $("h3 .ui-icon-close").click(function(e){
         $(wishlist_div).accordion( "option", "disabled", true);
-        delFromWishlist({delWishName: $(this).next().text()}, setupWishlist);
+        delFromWishlist($(this).next().text(), setupWishlist);
     });
 }
 

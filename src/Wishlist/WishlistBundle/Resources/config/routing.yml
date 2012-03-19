@@ -9,5 +9,7 @@ WishlistWishlistBundle_wishlistShow:
 WishlistWishlistBundle_wishlistNew:
     pattern: /wishlistnew/{name}/{price}/{link}
     defaults: { _controller: WishlistWishlistBundle:Default:new }
-    
-  #url:   /:module/:action/*    
+
+WishlistWishlistBundle_wishlistDelete:
+    pattern: /wishlistdelete/{deletedItemName}
+    defaults: { _controller: WishlistWishlistBundle:Default:delete }

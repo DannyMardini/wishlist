@@ -66,4 +66,24 @@ class DefaultController extends Controller
                       'wishlistItems' => $user->getWishlistItems(),
                       'wishlistUserEmail' => $loggedInUserEmail));
     }
+    
+    /**
+    * Executes delete wishlist item action
+    *
+    */     
+    public function deleteAction($deletedItemName)
+    {        
+        $session = $this->getRequest()->getSession();
+        $loggedInUserId = $session->get('user_id');
+        $loggedInUserEmail = $session->get('email_addr');
+        
+        $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
+        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+        $itemRepo->deleteItem($deletedItemName, $user);        
+        
+        return $this->render('WishlistWishlistBundle:Default:index.html.php', 
+                array('loggedInUserEmail' => $loggedInUserEmail,
+                        'wishlistItems' => $user->getWishlistItems(),
+                        'wishlistUserEmail' => $loggedInUserEmail));
+    }    
 }

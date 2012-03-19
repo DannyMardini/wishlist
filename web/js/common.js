@@ -11,7 +11,7 @@ function addToWishlist(paramArr, callback)
 
 function delFromWishlist(paramArr, callback)
 {
-    $( "#wishlist" ).load('/wishlist/delete', paramArr, callback);
+    $( "#wishlist" ).load('/app_dev.php/wishlistdelete/' + paramArr, callback);
 }
 
 
