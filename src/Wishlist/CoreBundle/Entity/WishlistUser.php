@@ -22,6 +22,9 @@ class WishlistUser {
     protected $wishlistuser_id;
     protected $password;
     protected $wishlistItems;
+    
+    const GENDER_MALE = 1;
+    const GENDER_FEMALE = 2;
 
     /**
      * Get wishlistuser_id

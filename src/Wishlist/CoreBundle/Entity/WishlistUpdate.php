@@ -29,6 +29,8 @@ class WishlistUpdate
      */
     private $datetime;
     
+    
+    // TODO Change this to the correct way of making enums. Change these to constants.
     private static $templateEnums = array(
         "TYPE_1" => 1,
         "TYPE_2" => 2,

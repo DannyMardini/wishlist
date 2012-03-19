@@ -33,7 +33,23 @@ class WishlistUpdateRepository extends EntityRepository
     
     public function addNewItem(WishlistUser $user, WishlistItem $item)
     {
-        $message = $user->getFirstname()." added <a href='#' onclick='openDialog(".$item->getId().")'>".$item->getName()."</a> to his wishlist";
+        if($user->getGender() == WishlistUser::GENDER_MALE)
+        {
+            $gender_determiner = "his";
+        }
+        else
+        {
+            $gender_determiner = "her";
+        }
+
+        $message = $user->getFirstname().
+                " added <a href='#' onclick='openDialog(".
+                $item->getId().
+                ")'>".
+                $item->getName().
+                "</a> to ".
+                $gender_determiner.
+                " wishlist";
         
         $this->addNewUpdate(WishlistUpdate::templateEnums('TYPE_1'),
                 WishlistUpdate::typeEnums('ADD_ITEM'),
