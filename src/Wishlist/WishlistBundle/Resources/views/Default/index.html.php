@@ -32,4 +32,5 @@
         echo "<div><p>$".$wishlistItems[$i]->getPrice()."</p></div>";
     }
 ?>
+
 </div>

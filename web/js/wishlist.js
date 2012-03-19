@@ -15,9 +15,10 @@ function setupWishlist()
     $(wishlist_div).keyup(function(e) {
         if(e.keyCode === 13 )
         {
+            var wishlistdiv = $('#wishlist');
             e.preventDefault();
             var paramArray = new Array(encodeURIComponent($("#newWishName").val()), $("#newWishPrice").val(), encodeURIComponent($("#newWishLink").val()));
-            addToWishlist(paramArray, setupWishlist, $(this));
+            addToWishlist(paramArray, setupWishlist, $(wishlistdiv));
         }
     });
 
