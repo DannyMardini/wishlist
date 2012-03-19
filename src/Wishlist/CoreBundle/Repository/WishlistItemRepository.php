@@ -31,4 +31,24 @@ class WishlistItemRepository extends EntityRepository
         $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
         $updateRepo->addNewItem($wishlistUser, $newItem);
     }
+    
+    public function deleteItem( $deletedItemName, WishlistUser $wishlistUser)
+    {
+        $em = $this->getEntityManager();
+        
+//        $criteria = array('name' => $deletedItemName);
+        
+        $q = $em->createQuery('
+            SELECT i
+            FROM WishlistCoreBundle:WishlistItem i
+            LEFT JOIN i.wishlistUser usr
+            WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
+                ->setParameters(array('itemName' => $deletedItemName, 'userId' => $wishlistUser->getWishlistuserId()));
+        
+               
+//        $itemToDelete = $this->findOneBy($criteria);
+        $itemToDelete = $q->getOneOrNullResult();
+        $em->remove($itemToDelete);
+        $em->flush();                
+    }
 }

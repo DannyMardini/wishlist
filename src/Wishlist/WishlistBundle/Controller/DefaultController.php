@@ -20,16 +20,16 @@ class DefaultController extends Controller
         }
         
         $session = $this->getRequest()->getSession();        
-        $loggedInUser = $session->get('email_addr');
-        $wishlist_user_email = $user->getEmail();
-        $wishlist_items = $user->getWishlistItems();
+        $loggedInUserEmail = $session->get('email_addr');
+        $wishlistUserEmail = $user->getEmail();
+        $wishlistItems = $user->getWishlistItems();
         
         
         
         return $this->render('WishlistWishlistBundle:Default:index.html.php', 
-                array('wishlist_user_email' => $wishlist_user_email, 
-                    'wishlist_items' => $wishlist_items,
-                    'loggedInUser' => $loggedInUser));  
+                array('wishlistUserEmail' => $wishlistUserEmail, 
+                    'wishlistItems' => $wishlistItems,
+                    'loggedInUserEmail' => $loggedInUserEmail));  
     }
     
     
@@ -42,16 +42,15 @@ class DefaultController extends Controller
         return $this->render('WishlistWishlistBundle:Default:showSuccess.html.php', array('user_id' => $wishlistuser_id));
     } 
     
-    
-     /* TODO Andrea Left off here, 2 issues:
-     * 1) if pass in item with space in the name it doesn't accept it. I tried using encode but didnt seem to help
-     * 2) after item is added, the page doesn't re-render...
-     */
-    
+    /**
+    * Executes add new wishlist item action
+    *
+    */      
     public function newAction($name, $price, $link)
     {
         $session = $this->getRequest()->getSession();        
         $loggedInUserId = $session->get('user_id');
+        $loggedInUserEmail = $session->get('email_addr');
         
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
                 
@@ -62,13 +61,12 @@ class DefaultController extends Controller
             return;        
 
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
-        $itemRepo->addItem($name, $price, $link, true, 'default comment', 1, $user);
-        
+        $itemRepo->addItem($name, $price, $link, true, 'default comment', 1, $user);          
         
         return $this->render('WishlistWishlistBundle:Default:index.html.php', 
-                array('wishlist_user_email' => $user->getEmail(),
-                      'wishlist_items' => $user->getWishlistItems()));
-//        return $this->renderPartial('showWishlist', array( 'wishlist_user_email' => $user->getEmail(), 'wishlist_items' => $user->getWishlistItems()));
+                array('loggedInUserEmail' => $loggedInUserEmail,
+                      'wishlistItems' => $user->getWishlistItems(),
+                      'wishlistUserEmail' => $loggedInUserEmail));
     }
     
     public function getWishlistItemAction($itemId)
@@ -81,4 +79,24 @@ class DefaultController extends Controller
         
         return $response;
     }
+
+    /**
+    * Executes delete wishlist item action
+    *
+    */     
+    public function deleteAction($deletedItemName)
+    {        
+        $session = $this->getRequest()->getSession();
+        $loggedInUserId = $session->get('user_id');
+        $loggedInUserEmail = $session->get('email_addr');
+        
+        $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
+        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+        $itemRepo->deleteItem($deletedItemName, $user);        
+        
+        return $this->render('WishlistWishlistBundle:Default:index.html.php', 
+                array('loggedInUserEmail' => $loggedInUserEmail,
+                        'wishlistItems' => $user->getWishlistItems(),
+                        'wishlistUserEmail' => $loggedInUserEmail));
+    }    
 }

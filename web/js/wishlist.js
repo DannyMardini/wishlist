@@ -14,16 +14,16 @@ function setupWishlist()
 
     $(wishlist_div).keyup(function(e) {
         if(e.keyCode === 13 )
-        {
+        {            
             e.preventDefault();
-            var paramArray = new Array($("#newWishName").val(), $("#newWishPrice").val(), $("#newWishLink").val());
-            addToWishlist(paramArray, setupWishlist, $(this));
+            var paramArray = new Array(encodeURIComponent($("#newWishName").val()), $("#newWishPrice").val(), encodeURIComponent($("#newWishLink").val()));
+            addToWishlist(paramArray, setupWishlist);
         }
     });
 
     $("h3 .ui-icon-close").click(function(e){
         $(wishlist_div).accordion( "option", "disabled", true);
-        delFromWishlist({delWishName: $(this).next().text()}, setupWishlist);
+        delFromWishlist($(this).next().text(), setupWishlist);
     });
 }
 

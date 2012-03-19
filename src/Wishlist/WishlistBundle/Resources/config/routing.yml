@@ -14,4 +14,6 @@ WishlistWishlistBundle_wishlistItem:
   pattern: /wishlistitem/{itemId}
   defaults: { _controller: WishlistWishlistBundle:Default:getWishlistItem }
     
-  #url:   /:module/:action/*    
+WishlistWishlistBundle_wishlistDelete:
+    pattern: /wishlistdelete/{deletedItemName}
+    defaults: { _controller: WishlistWishlistBundle:Default:delete }
