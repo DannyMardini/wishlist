@@ -63,5 +63,5 @@
     <label class="label">Website: </label>
     <div id="link"></div>
     <label class="label">Comment: </label>
-    <div id="comment"</div>
+    <div id="comment"></div>
 </div>
