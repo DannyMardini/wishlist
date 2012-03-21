@@ -1,16 +1,16 @@
 <?php
 
-namespace Wishlist\HomepageBundle\Controller;
+namespace Wishlist\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 
+
 class DefaultController extends Controller
 {
-    
-    public function indexAction($wishlistuser_id)
+    public function showHomepageAction()
     {
         $session = $this->getRequest()->getSession();
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
@@ -31,6 +31,14 @@ class DefaultController extends Controller
             $e->getTrace();
         }
         
-        return $this->render('WishlistHomepageBundle:Default:index.html.php', array('user' => $user, 'friendUpdates' => $friendUpdates));
+        return $this->render('WishlistUserBundle:Default:homepage.html.php', array('user' => $user, 'friendUpdates' => $friendUpdates));
+    }
+    
+    public function showFriendlistAction()
+    {
+    }
+    
+    public function showUserpageAction()
+    {
     }
 }

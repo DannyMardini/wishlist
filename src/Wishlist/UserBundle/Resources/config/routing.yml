@@ -1,0 +1,3 @@
+WishlistUserBundle_homepage:
+  pattern: /homepage/{wishlistuser_id}
+  defaults: { _controller: WishlistUserBundle:Default:showHomepage}

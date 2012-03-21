@@ -1,7 +1,0 @@
-parameters:
-#    wishlist_homepage.example.class: Wishlist\HomepageBundle\Example
-
-services:
-#    wishlist_homepage.example:
-#        class: %wishlist_homepage.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

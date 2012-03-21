@@ -1,3 +1,7 @@
+WishlistUserBundle:
+    resource: "@WishlistUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 WishlistWishlistBundle:
     resource: "@WishlistWishlistBundle/Resources/config/routing.yml"
     prefix:   /
@@ -11,10 +15,6 @@ WishlistFriendlistBundle:
 
 WishlistFrontpageBundle:
     resource: "@WishlistFrontpageBundle/Resources/config/routing.yml"
-    prefix:   /
-
-WishlistHomepageBundle:
-    resource: "@WishlistHomepageBundle/Resources/config/routing.yml"
     prefix:   /
 
 # Internal routing configuration to handle ESI

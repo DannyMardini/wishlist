@@ -1,6 +1,6 @@
 <?php
 
-namespace Wishlist\HomepageBundle\Tests\Controller;
+namespace Wishlist\UserBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

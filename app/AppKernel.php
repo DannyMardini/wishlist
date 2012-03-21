@@ -19,10 +19,10 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Wishlist\FrontpageBundle\WishlistFrontpageBundle(),
-            new Wishlist\HomepageBundle\WishlistHomepageBundle(),
             new Wishlist\CoreBundle\WishlistCoreBundle(),
             new Wishlist\FriendlistBundle\WishlistFriendlistBundle(),
             new Wishlist\WishlistBundle\WishlistWishlistBundle(),
+            new Wishlist\UserBundle\WishlistUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

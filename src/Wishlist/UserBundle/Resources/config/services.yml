@@ -1,0 +1,7 @@
+parameters:
+#    wishlist_user.example.class: Wishlist\UserBundle\Example
+
+services:
+#    wishlist_user.example:
+#        class: %wishlist_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
