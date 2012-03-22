@@ -1,5 +1,4 @@
 <?php
-/*
 $default_pic = "images/default_avatar.gif";
 $user_pic = "images/user/".$wishlist_user->getWishlistuserId()."/profile.jpg";
 
@@ -10,8 +9,6 @@ if( file_exists($user_pic) )
 {
     $profile_pic = $default_pic;
 }
- * 
- */
 ?>
 <link href='/css/userPage.css' rel='stylesheet' />
 <link href='/css/wishlist.css' rel='stylesheet' />
@@ -20,7 +17,7 @@ if( file_exists($user_pic) )
 <div id="div_left_panel">
     <div id="div_user_container">
         <div id="div_profile_pic">
-            <img src="/<?php //echo $profile_pic ?>"/>
+            <img src="/<?php echo $profile_pic ?>"/>
         </div>
     </div>
 </div>
