@@ -1,0 +1,32 @@
+<?php
+/*
+$default_pic = "images/default_avatar.gif";
+$user_pic = "images/user/".$wishlist_user->getWishlistuserId()."/profile.jpg";
+
+if( file_exists($user_pic) )
+{
+    $profile_pic = $user_pic;
+}else
+{
+    $profile_pic = $default_pic;
+}
+ * 
+ */
+?>
+<link href='/css/userPage.css' rel='stylesheet' />
+<link href='/css/wishlist.css' rel='stylesheet' />
+<script type="text/javascript" src="/js/wishlist.js"></script>
+
+<div id="div_left_panel">
+    <div id="div_user_container">
+        <div id="div_profile_pic">
+            <img src="/<?php //echo $profile_pic ?>"/>
+        </div>
+    </div>
+</div>
+
+<div id="div_right_panel">
+    <h1><?php echo $wishlist_user->getFirstname()." ".$wishlist_user->getLastname(); ?></h1>
+    <?php echo $view->render('WishlistWishlistBundle:Default:showSuccess.html.php', array('user_id' => $wishlist_user->getWishlistuserId())); ?>
+    <?php //include_component('wishlist', 'showWishlist', array('wishlistuser_id' => $wishlist_user->getWishlistuserId())); ?>
+</div>

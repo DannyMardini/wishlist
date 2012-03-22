@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\NoResultException;
 
 
 class DefaultController extends Controller
@@ -36,9 +37,21 @@ class DefaultController extends Controller
     
     public function showFriendlistAction()
     {
+        return $this->render('WishlistUserBundle:Default:friendlist.html.php');
     }
     
     public function showUserpageAction()
     {
+        $session = $this->getRequest()->getSession();
+        
+        try
+        {
+            $wishlist_user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->getUserWithId($session->get('user_id'));
+        }catch(NoResultException $e)
+        {
+            throw $this->createNotFoundException("Could not find user");
+        }
+
+        return $this->render('WishlistUserBundle:Default:userpage.html.php', array('wishlist_user' => $wishlist_user));
     }
 }

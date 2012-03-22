@@ -1,3 +1,12 @@
 WishlistUserBundle_homepage:
-  pattern: /homepage/{wishlistuser_id}
+  pattern: /Homepage
   defaults: { _controller: WishlistUserBundle:Default:showHomepage}
+
+WishlistUserBundle_userpage:
+  pattern: /User
+  defaults: { _controller: WishlistUserBundle:Default:showUserpage}
+  
+WishlistUserBundle_friendlist:
+  pattern: /Friendlist
+  defaults: { _controller: WishlistUserBundle:Default:showFriendlist}
+  

@@ -89,7 +89,7 @@ class WishlistUserRepository extends EntityRepository
         }
     }
     
-    public function getUserWithEmail( $email )
+    public function getUserWithEmail( /*string*/ $email )
     {
         $user = $this->findOneBy(array('email' => $email));
 
@@ -98,6 +98,18 @@ class WishlistUserRepository extends EntityRepository
             throw new NoResultException();
         }
 
+        return $user;
+    }
+    
+    public function getUserWithId( /*int*/ $id )
+    {
+        $user = $this->findOneBy(array('wishlistuser_id' => $id));
+        
+        if( !isset($user) )
+        {
+            throw new NoResultException();
+        }
+        
         return $user;
     }
 }
