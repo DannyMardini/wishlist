@@ -25,18 +25,37 @@ class WishlistItemRepository extends EntityRepository
         $newItem->setQuantity($quantity);
         $newItem->setWishlistUser($wishlistUser);
         
-        $this->getEntityManager()->persist($newItem);
-        $this->getEntityManager()->flush();
         
-        $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
-        $updateRepo->addNewItem($wishlistUser, $newItem);
+        // check if the item already exists for this user
+        $itemExists = $this->checkItemExists($newItem);
+        
+        if(!$itemExists){
+            $this->getEntityManager()->persist($newItem);
+            $this->getEntityManager()->flush();
+
+            $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
+            $updateRepo->addNewItem($wishlistUser, $newItem);
+        }
+    }
+    
+    public function checkItemExists($item)
+    {
+       $em = $this->getEntityManager();       
+        
+        $q = $em->createQuery('
+            SELECT i
+            FROM WishlistCoreBundle:WishlistItem i
+            LEFT JOIN i.wishlistUser usr
+            WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
+                ->setParameters(array('itemName' => $item->getName(), 'userId' => $item->getWishlistUser()->getWishlistuserId()));
+                      
+        $itemInDatabase = $q->getOneOrNullResult();  
+        return $itemInDatabase;
     }
     
     public function deleteItem( $deletedItemName, WishlistUser $wishlistUser)
     {
-        $em = $this->getEntityManager();
-        
-//        $criteria = array('name' => $deletedItemName);
+        $em = $this->getEntityManager();       
         
         $q = $em->createQuery('
             SELECT i
@@ -44,9 +63,7 @@ class WishlistItemRepository extends EntityRepository
             LEFT JOIN i.wishlistUser usr
             WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
                 ->setParameters(array('itemName' => $deletedItemName, 'userId' => $wishlistUser->getWishlistuserId()));
-        
-               
-//        $itemToDelete = $this->findOneBy($criteria);
+                      
         $itemToDelete = $q->getOneOrNullResult();
         $em->remove($itemToDelete);
         $em->flush();                
