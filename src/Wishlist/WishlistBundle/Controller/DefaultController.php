@@ -46,9 +46,14 @@ class DefaultController extends Controller
     * Executes add new wishlist item action
     *
     */      
-    public function newAction($name, $price, $link)
+    public function newAction()
     {
-        $session = $this->getRequest()->getSession();        
+        $session = $this->getRequest()->getSession(); 
+       
+        $name = $this->getRequest()->get('name');
+        $price = $this->getRequest()->get('price');
+        $link = $this->getRequest()->get('link');
+        
         $loggedInUserId = $session->get('user_id');
         $loggedInUserEmail = $session->get('email_addr');
         
