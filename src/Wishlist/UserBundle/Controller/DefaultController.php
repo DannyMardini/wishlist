@@ -40,13 +40,11 @@ class DefaultController extends Controller
         return $this->render('WishlistUserBundle:Default:friendlist.html.php');
     }
     
-    public function showUserpageAction()
+    public function showUserpageAction(/*int*/ $user_id)
     {
-        $session = $this->getRequest()->getSession();
-        
         try
         {
-            $wishlist_user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->getUserWithId($session->get('user_id'));
+            $wishlist_user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->getUserWithId($user_id);
         }catch(NoResultException $e)
         {
             throw $this->createNotFoundException("Could not find user");
