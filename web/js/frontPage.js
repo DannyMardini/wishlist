@@ -47,7 +47,7 @@ $(document).ready(function()
             if($dataArray[0].toLowerCase() == "continue")
             {
                 // redirect to home page
-                redirectToHomePage($dataArray[1]);           
+                redirectToHomePage();           
             }
             else
             {
@@ -107,11 +107,10 @@ function displayMessage(message)
 }
 
 
-function redirectToHomePage(userId)
+function redirectToHomePage()
 {
     // redirect to the logged in user's home page
-//    window.location = "http://www.google.com";
-    window.location = "/app_dev.php/homepage/"+userId;
+    window.location = "/app_dev.php/Homepage";
 }
 
 // run the currently selected effect

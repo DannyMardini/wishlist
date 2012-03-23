@@ -104,7 +104,7 @@ function openDialog(itemId)
 
 function goToUserPage(userId)
 {
-    var loc = "www.wishlist.com/user/"+id;
+    var loc = "www.wishlist.com/User";
     window.location = loc;
 }  
  
