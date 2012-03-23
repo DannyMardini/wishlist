@@ -7,7 +7,7 @@ WishlistWishlistBundle_wishlistShow:
   defaults: { _controller: WishlistWishlistBundle:Default:show }
     
 WishlistWishlistBundle_wishlistNew:
-  pattern: /wishlistnew/{name}/{price}/{link}
+  pattern: /wishlistnew
   defaults: { _controller: WishlistWishlistBundle:Default:new }
 
 WishlistWishlistBundle_wishlistItem:
@@ -15,5 +15,5 @@ WishlistWishlistBundle_wishlistItem:
   defaults: { _controller: WishlistWishlistBundle:Default:getWishlistItem }
     
 WishlistWishlistBundle_wishlistDelete:
-    pattern: /wishlistdelete/{deletedItemName}
+    pattern: /wishlistdelete
     defaults: { _controller: WishlistWishlistBundle:Default:delete }
