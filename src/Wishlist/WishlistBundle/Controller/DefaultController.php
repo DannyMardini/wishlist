@@ -89,9 +89,10 @@ class DefaultController extends Controller
     * Executes delete wishlist item action
     *
     */     
-    public function deleteAction($deletedItemName)
+    public function deleteAction()
     {        
         $session = $this->getRequest()->getSession();
+        $deletedItemName = $this->getRequest()->get('name');
         $loggedInUserId = $session->get('user_id');
         $loggedInUserEmail = $session->get('email_addr');
         

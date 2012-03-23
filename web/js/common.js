@@ -4,14 +4,13 @@
  */
 
 function addToWishlist(itemObj, callback)
-{
-    //var paramArrStr = paramArr.join('/'); 
+{    
     $( "#wishlist" ).load('/app_dev.php/wishlistnew', itemObj, callback); 
 }
 
-function delFromWishlist(paramArr, callback)
+function delFromWishlist(itemObj, callback)
 {
-    $( "#wishlist" ).load('/app_dev.php/wishlistdelete/' + paramArr, callback);
+    $( "#wishlist" ).load('/app_dev.php/wishlistdelete', itemObj, callback);
 }
 
 

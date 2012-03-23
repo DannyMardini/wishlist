@@ -15,5 +15,5 @@ WishlistWishlistBundle_wishlistItem:
   defaults: { _controller: WishlistWishlistBundle:Default:getWishlistItem }
     
 WishlistWishlistBundle_wishlistDelete:
-    pattern: /wishlistdelete/{deletedItemName}
+    pattern: /wishlistdelete
     defaults: { _controller: WishlistWishlistBundle:Default:delete }
