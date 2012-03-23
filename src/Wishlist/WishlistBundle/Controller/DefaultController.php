@@ -63,10 +63,7 @@ class DefaultController extends Controller
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');        
         $itemRepo->addItem($name, $price, $link, true, 'default comment', 1, $user);          
         
-        return $this->render('WishlistWishlistBundle:Default:index.html.php', 
-                array('loggedInUserEmail' => $loggedInUserEmail,
-                      'wishlistItems' => $user->getWishlistItems(),
-                      'wishlistUserEmail' => $loggedInUserEmail));
+        return $this->render('WishlistWishlistBundle:Default:index.html.php', array('selfWishlist' => true, 'wishlistItems' => $user->getWishlistItems()));
     }
     
     public function getWishlistItemAction($itemId)

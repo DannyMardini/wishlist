@@ -43,20 +43,20 @@ $(document).ready(function(){
     $('#addToWishlistButton').addClass('itemDialogButton');
     
     
-    displayUpcomingEvents();
+//    displayUpcomingEvents();
 
 });
 
 
-function displayUpcomingEvents()
-{
-    // using the item ID, grab the item's info and display in the dialog
-    $.getJSON('/homepage/'+$('#id').val()+'/', function (data) {
-       $(data.events).each(function () {
-            populateEvent(this);            
-        });
-    });     
-}
+//function displayUpcomingEvents()
+//{
+//    // using the item ID, grab the item's info and display in the dialog
+//    $.getJSON('/homepage/'+$('#id').val()+'/', function (data) {
+//       $(data.events).each(function () {
+//            populateEvent(this);            
+//        });
+//    });     
+//}
 
 function populateEvent(event)
 {

@@ -1,10 +1,10 @@
 <?php $view->extend('::navBar.html.php') ?>
 
-<link href='/css/homePage.css' rel='stylesheet' />
-<link href='/css/wishlist.css' rel='stylesheet' />
-<script type="text/javascript" src="/js/wishlist.js"></script>
+<link href='/css/homePage.css' rel='stylesheet' type="text/css" />
 <script type="text/javascript" src="/js/homepage.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/wishlist.js"></script>
+<link href="/css/wishlist.css" rel="stylesheet" type="text/css" />
   
 <input id="username" type="hidden" value="<?php echo $user->getFirstname() ?>"/>
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
@@ -13,7 +13,7 @@
     <div id="wishlistComponent">
         <div><h1>My Wishlist</h1></div>
         <div id="wishlist">
-            <?php echo $view->render('WishlistWishlistBundle:Default:showSuccess.html.php', array('user_id' => $user->getWishlistuserId())); ?>
+            <?php echo $view->render('WishlistWishlistBundle:Default:index.html.php', array('selfWishlist' => true, 'wishlistItems' => $user->getWishlistItems())); ?>
         </div>
     </div>
     

@@ -1,17 +1,6 @@
-<?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
- $self = ( $loggedInUserEmail == $wishlistUserEmail);
-
-?>
-
 <div id="div_wishlist_div">
 <?php
-    if($self)
+    if($selfWishlist)
     {
         echo "<h3><a id='newWishBox' href='#'>New wish..</a></h3>";
         echo "<div class='newWishBox'>";
@@ -24,7 +13,7 @@
     for($i = ($wishlistItems->count()-1); $i >= 0; $i--)
     {
         echo "<h3>";
-        if($self) {
+        if($selfWishlist) {
             echo "<span class='ui-icon ui-icon-close'></span>";
         }
 
