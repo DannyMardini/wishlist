@@ -44,12 +44,14 @@ class DefaultController extends Controller
     {
         try
         {
+            $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
+            
             $wishlist_user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->getUserWithId($user_id);
         }catch(NoResultException $e)
         {
             throw $this->createNotFoundException("Could not find user");
         }
 
-        return $this->render('WishlistUserBundle:Default:userpage.html.php', array('wishlist_user' => $wishlist_user));
+        return $this->render('WishlistUserBundle:Default:userpage.html.php', array('wishlist_user' => $wishlist_user, 'loggedInUserId' => $loggedInUserId));
     }
 }
