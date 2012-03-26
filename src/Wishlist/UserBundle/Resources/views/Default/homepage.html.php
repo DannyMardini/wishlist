@@ -17,13 +17,14 @@
         </div>
     </div>
     
-    <div id="upcomingEvents">
+    <div id="eventsComponent">
         <div><h1>Upcoming Events</h1></div>
-        <div id="events">
-            <div><h2>Birthdays</h2></div>
-            <div id="birthdays"></div>
-            <div><h2>Anniversaries</h2></div>
-            <div id="anniversaries"></div>
+        <div id="eventsInnerComponent">            
+            <div class="Event">                
+                <div class="name"></div>
+                <div class="eventType"></div>
+                <div class="timestamp"></div>
+            </div>       
         </div>
     </div>
 
