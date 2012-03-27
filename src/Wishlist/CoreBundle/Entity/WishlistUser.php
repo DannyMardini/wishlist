@@ -228,4 +228,28 @@ class WishlistUser {
     {
         return $this->wishlistUpdates;
     }
+    
+    public static function areFriends(WishlistUser $usera, WishlistUser $userb)
+    {
+        $friendships = $usera->getFriendships();
+        foreach ( $friendships as $friendship )
+        {
+            if( $friendship->getFriendId() == $userb->getWishlistuserId() )
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    /**
+     * Add friendships
+     *
+     * @param Wishlist\CoreBundle\Entity\Friendship $friendships
+     */
+    public function addFriendship(\Wishlist\CoreBundle\Entity\Friendship $friendships)
+    {
+        $this->friendships[] = $friendships;
+    }
 }

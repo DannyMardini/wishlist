@@ -26,8 +26,8 @@ class FriendshipRepository extends EntityRepository
     {
         $friendship = new Friendship();
         
-        $friendship->setUseraId($userA->getWishlistuserId());
-        $friendship->setUserbId($userB->getWishlistuserId());
+        $friendship->setWishlistUser($userA);
+        $friendship->setFriend($userB);
         
         $this->getEntityManager()->persist($friendship);
     }
