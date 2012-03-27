@@ -1,9 +1,13 @@
 Wishlist\CoreBundle\Entity\WishlistUser:
   type: entity
   oneToMany:
-    friendships:
-      targetEntity: WishlistUser
-      mappedBy: Friendship
+#    events:
+#      targetEntity: Event
+#      mappedBy: wishlistUser
+#      
+#    friendships:
+#      targetEntity: WishlistUser
+#      mappedBy: Friendship
 
     wishlistItems:
       targetEntity: WishlistItem
