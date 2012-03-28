@@ -1,6 +1,7 @@
 Wishlist\CoreBundle\Entity\Event:
   type: entity
   table: null
+  repositoryClass: Wishlist\CoreBundle\Repository\EventRepository
   manyToOne:
     wishlistUser:
       targetEntity: WishlistUser

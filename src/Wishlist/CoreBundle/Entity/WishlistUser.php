@@ -252,4 +252,29 @@ class WishlistUser {
     {
         $this->friendships[] = $friendships;
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\Event
+     */
+    private $events;
+
+
+    /**
+     * Add events
+     *
+     * @param Wishlist\CoreBundle\Entity\Event $events
+     */
+    public function addEvent(\Wishlist\CoreBundle\Entity\Event $events)
+    {
+        $this->events[] = $events;
+    }
+
+    /**
+     * Get events
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
 }
