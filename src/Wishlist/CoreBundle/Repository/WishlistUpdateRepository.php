@@ -65,10 +65,10 @@ class WishlistUpdateRepository extends EntityRepository
     public function getFriendsUpdates(/*int*/ $userId)
     {                                           
         $q = $this->getEntityManager()->createQuery('
-            SELECT u, usr 
+            SELECT u, usr_1
             FROM WishlistCoreBundle:WishlistUpdate u
-            LEFT JOIN u.wishlistUser usr
-            WHERE usr.wishlistuser_id IN (SELECT f.userb_id FROM WishlistCoreBundle:Friendship f WHERE f.usera_id = :uid)
+            LEFT JOIN u.wishlistUser usr_1
+            WHERE usr_1.wishlistuser_id IN (SELECT f.friend_id FROM WishlistCoreBundle:Friendship f LEFT JOIN f.wishlistUser usr_2 WHERE usr_2.wishlistuser_id = :uid)
             ORDER BY u.datetime DESC')
                 ->setParameter('uid', $userId);
         
