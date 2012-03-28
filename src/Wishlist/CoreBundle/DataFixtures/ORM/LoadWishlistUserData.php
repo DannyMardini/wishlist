@@ -15,6 +15,9 @@ class LoadWishlistUserData implements FixtureInterface,OrderedFixtureInterface
     {
         $userRepo = $manager->getRepository('WishlistCoreBundle:WishlistUser');
         
+        //Make Events
+        
+        
         //TODO Change the Enum class to encapsulate the gender enums.
         $userRepo->addNewUser("Danny", "Mardini", new DateTime("06/11/1986"), "dannymardini@gmail.com", WishlistUser::GENDER_MALE, "hoohaw");
         $userRepo->addNewUser("Andrea", "Coba", new DateTime("08/18/1986"), "andee@g.c", WishlistUser::GENDER_FEMALE, "dingaling");

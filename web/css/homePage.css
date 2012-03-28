@@ -35,7 +35,7 @@ button.fg-button { width:auto; overflow:visible; }
     height: 100%;
 }
 
-#upcomingEvents {
+#eventsComponent {
     float:left;
     display:block;
     background-color:white;
@@ -54,7 +54,7 @@ button.fg-button { width:auto; overflow:visible; }
     border-width: 1px;
 }
 
-#wishlistComponent h1, #upcomingEvents h1 {
+#wishlistComponent h1, #eventsComponent h1 {
     font-size: 16px;
     text-align: left;
     padding-left: 10px;

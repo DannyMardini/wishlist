@@ -5,6 +5,10 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       targetEntity: Friendship
       mappedBy: wishlistUser
 
+    events:
+      targetEntity: Event
+      mappedBy: wishlistUser
+
     wishlistItems:
       targetEntity: WishlistItem
       mappedBy: wishlistUser
