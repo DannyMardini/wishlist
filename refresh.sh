@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Generating entities..."
-php app/console generate:doctrine:entity Wishlist
+php app/console generate:doctrine:entities Wishlist
 
 echo "Dropping Database..."
 php app/console doctrine:schema:drop --force
