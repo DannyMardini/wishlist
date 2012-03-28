@@ -51,8 +51,8 @@ class WishlistUpdateRepository extends EntityRepository
                 $gender_determiner.
                 " wishlist";
         
-        $this->addNewUpdate(WishlistUpdate::templateEnums('TYPE_1'),
-                WishlistUpdate::typeEnums('ADD_ITEM'),
+        $this->addNewUpdate(WishlistUpdate::TEMPLATE_TYPE_1,
+                WishlistUpdate::TYPE_ADD_ITEM,
                 $message,
                 new DateTime('now'),
                 $user);
