@@ -1,8 +1,10 @@
 <?php
 
-namespace Wishlist\CoreBundle\Entity;
+namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Wishlist\CoreBundle\Entity\Event;
+use Wishlist\CoreBundle\Entity\WishlistUser;
 
 /**
  * EventRepository

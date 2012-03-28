@@ -9,6 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Event
 {
+    const TYPE_BIRTHDAY = 1;
+    const TYPE_ANNIVERSARY = 2;
+    
     /**
      * @var integer $id
      */
@@ -123,5 +126,30 @@ class Event
     public function getWishlistUser()
     {
         return $this->wishlistUser;
+    }
+    /**
+     * @var string $name
+     */
+    private $name;
+
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

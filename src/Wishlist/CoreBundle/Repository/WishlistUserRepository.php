@@ -48,10 +48,7 @@ class WishlistUserRepository extends EntityRepository
         $user->setLastname($lastname);
         $user->setPassword($password);
         
-        $this->addUser($user);
-
-        $eventRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Event');
-        $eventRepo->addEvent( $name, $type, $datetime, $wishlistUser );
+        $this->addUser($user);        
     }
     
 //    public static function addWishlistUser( $email )
