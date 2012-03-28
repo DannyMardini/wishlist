@@ -14,7 +14,9 @@ Wishlist\CoreBundle\Entity\Event:
       type: integer
       id: true
       generator:
-        strategy: AUTO    
+        strategy: AUTO
+    name:
+      type: string
     eventType:
       type: integer
       length: null

@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository
 {
+    public function addEvent( $name, $type, $datetime, WishlistUser $wishlistUser )
+    {
+        $newEvent = new Event();
+        $newEvent->setName($name);
+        $newEvent->setEventType($type);
+        $newEvent->setEventDate($datetime);
+        $newEvent->setWishlistUser($wishlistUser);
+
+        $this->getEntityManager()->persist($newEvent);
+        $this->getEntityManager()->flush();       
+    }    
 }
