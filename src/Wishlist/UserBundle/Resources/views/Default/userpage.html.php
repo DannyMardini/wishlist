@@ -28,7 +28,7 @@ $selfWishlist = ($wishlist_user->getWishlistUserId() == $loggedInUserId)? true:f
         </div>
     </div>
     <div id="div_user_info">
-        <p><label><?php echo $wishlist_user->getBirthdate()->format('m/d/Y') ?></label></p>
+        <p><label>Born <?php echo $wishlist_user->getBirthdate()->format('M d, Y') ?></label></p>
         <p><label><?php echo $wishlist_user->getGender() ?></label></p>
         <p><label><?php echo $wishlist_user->getEmail() ?></label></p>
     </div>
