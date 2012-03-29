@@ -27,6 +27,11 @@ $selfWishlist = ($wishlist_user->getWishlistUserId() == $loggedInUserId)? true:f
             <img src="/<?php echo $profile_pic ?>"/>
         </div>
     </div>
+    <div id="div_user_info">
+        <p><label><?php echo $wishlist_user->getBirthdate()->format('m/d/Y') ?></label></p>
+        <p><label><?php echo $wishlist_user->getGender() ?></label></p>
+        <p><label><?php echo $wishlist_user->getEmail() ?></label></p>
+    </div>
 </div>
 
 <div id="div_right_panel">
