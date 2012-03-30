@@ -5,7 +5,7 @@ Wishlist\CoreBundle\Entity\Event:
   manyToOne:
     wishlistUser:
       targetEntity: WishlistUser
-      inversedBy: userEvents
+      inversedBy: events
       joinColumn:
         name: user_id
         referencedColumnName: wishlistuser_id

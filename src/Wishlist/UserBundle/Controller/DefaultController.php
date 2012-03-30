@@ -18,6 +18,7 @@ class DefaultController extends Controller
         $session = $this->getRequest()->getSession();
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
         $updateRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
+        $eventRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Event');
         
         $email = $session->get('email_addr');
         
@@ -30,11 +31,12 @@ class DefaultController extends Controller
 
         try {
             $friendUpdates =  $updateRepo->getFriendsUpdates($user->getWishlistuserId());
+            $friendEvents = $eventRepo->getFriendsEvents($user->getWishlistuserId());
         }catch(Exception $e){
             $e->getTrace();
         }
         
-        return $this->render('WishlistUserBundle:Default:homepage.html.php', array('user' => $user, 'friendUpdates' => $friendUpdates));
+        return $this->render('WishlistUserBundle:Default:homepage.html.php', array('user' => $user, 'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
     }
     
     public function showFriendlistAction()

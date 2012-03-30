@@ -19,15 +19,23 @@
     
     <div id="eventsComponent">
         <div><h1>Upcoming Events</h1></div>
-        <div id="eventsInnerComponent">            
+        <div id="eventsInnerComponent">  
+        <?php  
+        foreach ($friendEvents as $event) {
+                $eventName = $event->getName();
+                $friend = $event->getWishlistUser();
+                $eventDate = $event->getFormattedTimestamp($event->getEventDate());
+                $name = "<a href='user/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
+                $timestamp = " -- ".$eventDate;
+        ?>  
             <div class="Event">                
-                <div class="name"></div>
-                <div class="eventType"></div>
-                <div class="timestamp"></div>
-            </div>       
+                <div class="name"><?php echo $name ?></div>
+                <div class="message"><?php echo $eventName ?></div>
+                <div class="timestamp"><?php echo $timestamp ?></div>
+            </div>
+        <?php } ?>
         </div>
     </div>
-
 </div>
 
 <div id="updatesComponent">
