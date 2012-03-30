@@ -45,7 +45,7 @@
         foreach ($friendUpdates as $update) {
                   $message = $update->getMessage();
                   $user = $update->getWishlistUser();
-                  $name = "<a href='user/".$user->getWishlistUserId()."/' >".$user->getFirstname()." ".$user->getLastname()."</a>";
+                  $name = "<a href='User/".$user->getWishlistUserId()."' >".$user->getFirstname()." ".$user->getLastname()."</a>";
                   $timestamp = " -- ".$update->getFormattedTimestamp();
 
             ?>

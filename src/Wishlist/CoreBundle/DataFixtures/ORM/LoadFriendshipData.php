@@ -19,16 +19,11 @@ use Wishlist\CoreBundle\Repository\FrienshipRepository;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use \Doctrine\Common\Persistence\ObjectManager;
 use \Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use \DateTime;
 
 class LoadFriendshipData implements FixtureInterface,OrderedFixtureInterface{
     
-    private $manager; //ObjectManager
-    
     public function load(ObjectManager $manager)
     {
-        $this->manager = $manager;
-        
         $users = $manager->getRepository('WishlistCoreBundle:WishlistUser');
         $friendships = $manager->getRepository('WishlistCoreBundle:Friendship');
         

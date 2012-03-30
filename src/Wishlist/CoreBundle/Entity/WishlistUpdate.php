@@ -29,31 +29,15 @@ class WishlistUpdate
      */
     private $datetime;
     
+    const TEMPLATE_TYPE_1 = 1;
+    const TEMPLATE_TYPE_2 = 2;
     
-    // TODO Change this to the correct way of making enums. Change these to constants.
-    private static $templateEnums = array(
-        "TYPE_1" => 1,
-        "TYPE_2" => 2,
-    );
+    const TYPE_ADD_ITEM = 1;
+    const TYPE_REMOVE_ITEM = 2;
+    const TYPE_ADD_FRIEND = 3;
+    const TYPE_REMOVE_FRIEND = 4;
     
-    private static $typeEnums = array(
-        "ADD_ITEM" => 1,
-        "REMOVE_ITEM" => 2,
-        "ADD_FRIEND" => 3,
-        "REMOVE_FRIEND" => 4
-    );
-
-    public static function templateEnums(/*string*/ $name = null)
-    {
-        return WishlistUpdate::$templateEnums[$name];
-    }
-    
-    public static function typeEnums(/*string*/ $name = null)
-    {
-        return WishlistUpdate::$typeEnums[$name];
-    }
-
-        /**
+    /**
      * Set template
      *
      * @param integer $template
