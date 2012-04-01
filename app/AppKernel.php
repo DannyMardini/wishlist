@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new Wishlist\FrontpageBundle\WishlistFrontpageBundle(),
             new Wishlist\CoreBundle\WishlistCoreBundle(),
             new Wishlist\FriendlistBundle\WishlistFriendlistBundle(),
-            new Wishlist\WishlistBundle\WishlistWishlistBundle(),
             new Wishlist\UserBundle\WishlistUserBundle(),
             new Wishlist\ListBundle\WishlistListBundle(),
         );

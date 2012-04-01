@@ -1,3 +1,11 @@
-WishlistListBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: WishlistListBundle:Default:index }
+WishlistListBundle_wishlistNew:
+  pattern: /wishlistnew
+  defaults: { _controller: WishlistListBundle:Default:newWishlist }
+
+WishlistListBundle_wishlistItem:
+  pattern: /wishlistitem/{itemId}
+  defaults: { _controller: WishlistListBundle:Default:getWishlistItem }
+    
+WishlistListBundle_wishlistDelete:
+    pattern: /wishlistdelete
+    defaults: { _controller: WishlistListBundle:Default:deleteWishlist }
