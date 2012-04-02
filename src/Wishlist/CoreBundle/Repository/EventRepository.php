@@ -28,13 +28,16 @@ class EventRepository extends EntityRepository
     
     public function getFriendsEvents(/*int*/ $userId)
     {                                           
-        $q = $this->getEntityManager()->createQuery('
+        $q = $this->getEntityManager()->createQuery("
             SELECT u, usr_1
             FROM WishlistCoreBundle:Event u
             LEFT JOIN u.wishlistUser usr_1
-            WHERE usr_1.wishlistuser_id IN (SELECT f.friend_id FROM WishlistCoreBundle:Friendship f LEFT JOIN f.wishlistUser usr_2 WHERE usr_2.wishlistuser_id = :uid)
-            ORDER BY u.eventDate DESC')
+            WHERE date_format(u.eventDate, '%c-%e') < date_format(date_add(CURRENT_DATE(), 4, 'MONTH'),'%c-%e') and date_format(u.eventDate, '%c-%e') > date_format(CURRENT_DATE(), '%c-%e')
+            AND usr_1.wishlistuser_id IN (SELECT f.friend_id FROM WishlistCoreBundle:Friendship f LEFT JOIN f.wishlistUser usr_2 WHERE usr_2.wishlistuser_id = :uid)
+            ORDER BY u.eventDate DESC")
                 ->setParameter('uid', $userId);
+        
+        $test = $q->getSQL();
         
         return $q->getResult();
     }
