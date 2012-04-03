@@ -1,52 +1,27 @@
 <?php
 
-namespace Wishlist\WishlistBundle\Controller;
+namespace Wishlist\ListBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Wishlist\CoreBundle\Entity\WishlistItem;
+
 
 
 class DefaultController extends Controller
 {
-    
-    public function indexAction($wishlistuser_id)
-    {                        
-        $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($wishlistuser_id);
-        
-        if(!$user){
-            throw $this->createNotFoundException ('500 Internal server error(user not found in database). Please refresh your browser and try again.');
-        }
-        
-        $session = $this->getRequest()->getSession();        
-        $loggedInUserEmail = $session->get('email_addr');
-        $wishlistUserEmail = $user->getEmail();
-        $wishlistItems = $user->getWishlistItems();
-        
-        
-        
-        return $this->render('WishlistWishlistBundle:Default:index.html.php', 
-                array('wishlistUserEmail' => $wishlistUserEmail, 
-                    'wishlistItems' => $wishlistItems,
-                    'loggedInUserEmail' => $loggedInUserEmail));  
+    public function friendlistAction()
+    {
     }
     
-    
-    /**
-    * Executes show wishlist item action
-    *
-    */    
-    public function showAction($wishlistuser_id)
-    {        
-        return $this->render('WishlistWishlistBundle:Default:showSuccess.html.php', array('user_id' => $wishlistuser_id));
-    } 
+    public function shoppinglistAction()
+    {
+    }
     
     /**
     * Executes add new wishlist item action
     *
     */      
-    public function newAction()
+    public function newWishlistAction()
     {
         $session = $this->getRequest()->getSession(); 
        
@@ -68,7 +43,7 @@ class DefaultController extends Controller
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');        
         $itemRepo->addItem($name, $price, $link, true, 'default comment', 1, $user);          
         
-        return $this->render('WishlistWishlistBundle:Default:index.html.php', array('selfWishlist' => true, 'wishlistItems' => $user->getWishlistItems()));
+        return $this->render('WishlistListBundle:Default:wishlist.html.php', array('selfWishlist' => true, 'wishlistItems' => $user->getWishlistItems()));
     }
     
     public function getWishlistItemAction($itemId)
@@ -86,7 +61,7 @@ class DefaultController extends Controller
     * Executes delete wishlist item action
     *
     */     
-    public function deleteAction()
+    public function deleteWishlistAction()
     {        
         $session = $this->getRequest()->getSession();
         $deletedItemName = $this->getRequest()->get('name');
@@ -98,6 +73,6 @@ class DefaultController extends Controller
         
         $selfWishlist = ($user->getWishlistUserId() == $loggedInUserId)? true:false;
         
-        return $this->render('WishlistWishlistBundle:Default:index.html.php', array('selfWishlist' => $selfWishlist, 'wishlistItems' => $user->getWishlistItems()));
-    }    
+        return $this->render('WishlistListBundle:Default:wishlist.html.php', array('selfWishlist' => $selfWishlist, 'wishlistItems' => $user->getWishlistItems()));
+    }
 }

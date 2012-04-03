@@ -1,9 +1,9 @@
-WishlistUserBundle:
-    resource: "@WishlistUserBundle/Resources/config/routing.yml"
+WishlistListBundle:
+    resource: "@WishlistListBundle/Resources/config/routing.yml"
     prefix:   /
 
-WishlistWishlistBundle:
-    resource: "@WishlistWishlistBundle/Resources/config/routing.yml"
+WishlistUserBundle:
+    resource: "@WishlistUserBundle/Resources/config/routing.yml"
     prefix:   /
 
 WishlistCoreBundle:

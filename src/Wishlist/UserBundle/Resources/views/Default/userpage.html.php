@@ -15,9 +15,6 @@ if( file_exists($user_pic) )
 
 $selfWishlist = ($wishlist_user->getWishlistUserId() == $loggedInUserId)? true:false;
 ?>
-<!--<script type="text/javascript" src="/js/jquery-1.7.1.js"></script>-->
-<!--<script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min"></script>-->
-<!--<link href="/css/custom-theme/jquery-ui-1.8.16.custom.css" rel="stylesheet" />-->
 <script type="text/javascript" src="/js/common.js"></script>
 <link href='/css/userPage.css' rel='stylesheet' />
 <link href='/css/wishlist.css' rel='stylesheet' />
@@ -38,5 +35,5 @@ $selfWishlist = ($wishlist_user->getWishlistUserId() == $loggedInUserId)? true:f
 
 <div id="div_right_panel">
     <h1><?php echo $wishlist_user->getFirstname()." ".$wishlist_user->getLastname(); ?></h1>
-    <?php echo $view->render('WishlistWishlistBundle:Default:index.html.php', array('selfWishlist' => $selfWishlist,'wishlistItems' => $wishlist_user->getWishlistItems())); ?>
+    <?php echo $view->render('WishlistListBundle:Default:wishlist.html.php', array('selfWishlist' => $selfWishlist,'wishlistItems' => $wishlist_user->getWishlistItems())); ?>
 </div>
