@@ -20,7 +20,7 @@
     </head>
     <body>
         <?php echo $view['actions']->render('WishlistCoreBundle:Default:navBar'); ?>
-        <div id="content">
+        <div id="content" class="clearfix">
         <?php $view['slots']->output('_content'); ?>
         </div>
     </body>
