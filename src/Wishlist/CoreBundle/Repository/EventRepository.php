@@ -5,6 +5,8 @@ namespace Wishlist\CoreBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\Event;
 use Wishlist\CoreBundle\Entity\WishlistUser;
+use Doctrine\ORM\Query\ResultSetMapping;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 
 /**
  * EventRepository
@@ -27,7 +29,30 @@ class EventRepository extends EntityRepository
     }
     
     public function getFriendsEvents(/*int*/ $userId)
-    {                                           
+    {                                     
+        $rsm = new ResultSetMapping;
+        $rsm->addEntityResult('Event', 'e');
+        $rsm->addFieldResult('e', 'id', 'id');
+        $rsm->addFieldResult('e', 'name', 'name');
+        $rsm->addFieldResult('e', 'eventType', 'eventType');
+        $rsm->addFieldResult('e', 'eventDate', 'eventDate');
+        //$rsm->addFieldResult('e', 'wishlistuser_id', 'user_id');
+        $rsm->addJoinedEntityResult('WishlistUser' , 'u', 'e', 'user_id');
+        $rsm->addFieldResult('u', 'wishlistuser_id', 'wishlistuser_id');
+        $rsm->addFieldResult('u', 'firstname', 'firstname');
+        $rsm->addFieldResult('u', 'lastname', 'lastname');
+        $rsm->addFieldResult('u', 'birthdate', 'birthdate');
+        $rsm->addFieldResult('u', 'email', 'email');
+        $rsm->addFieldResult('u', 'password', 'password');
+        $rsm->addFieldResult('u', 'gender', 'gender');
+        
+
+        $query = $this->_em->createNativeQuery("select * from event e left join wishlistuser u on u.wishlistuser_id = e.user_id  where  e.user_id in  ( select f.friend_id  from friendship f  where f.user_id = ? )  and  date_format(e.eventDate, '%c-%e') < date_format(date_add(now(), interval 4 MONTH),'%c-%e')", $rsm);
+        $query->setParameter(1, 'romanb');
+
+        $users = $query->getResult();        
+        
+        /*
         $q = $this->getEntityManager()->createQuery("
             SELECT u, usr_1
             FROM WishlistCoreBundle:Event u
@@ -40,5 +65,9 @@ class EventRepository extends EntityRepository
         $test = $q->getSQL();
         
         return $q->getResult();
+         
+         */
+        
+        return $users;
     }
 }
