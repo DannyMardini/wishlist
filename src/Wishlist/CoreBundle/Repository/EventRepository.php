@@ -31,13 +31,12 @@ class EventRepository extends EntityRepository
     public function getFriendsEvents(/*int*/ $userId)
     {                                     
         $rsm = new ResultSetMapping;
-        $rsm->addEntityResult('Event', 'e');
+        $rsm->addEntityResult('Wishlist\CoreBundle\Entity\Event', 'e');
         $rsm->addFieldResult('e', 'id', 'id');
         $rsm->addFieldResult('e', 'name', 'name');
         $rsm->addFieldResult('e', 'eventType', 'eventType');
         $rsm->addFieldResult('e', 'eventDate', 'eventDate');
-        //$rsm->addFieldResult('e', 'wishlistuser_id', 'user_id');
-        $rsm->addJoinedEntityResult('WishlistUser' , 'u', 'e', 'user_id');
+        $rsm->addJoinedEntityResult('Wishlist\CoreBundle\Entity\WishlistUser' , 'u', 'e', 'wishlistUser');
         $rsm->addFieldResult('u', 'wishlistuser_id', 'wishlistuser_id');
         $rsm->addFieldResult('u', 'firstname', 'firstname');
         $rsm->addFieldResult('u', 'lastname', 'lastname');
@@ -47,27 +46,18 @@ class EventRepository extends EntityRepository
         $rsm->addFieldResult('u', 'gender', 'gender');
         
 
-        $query = $this->_em->createNativeQuery("select * from event e left join wishlistuser u on u.wishlistuser_id = e.user_id  where  e.user_id in  ( select f.friend_id  from friendship f  where f.user_id = ? )  and  date_format(e.eventDate, '%c-%e') < date_format(date_add(now(), interval 4 MONTH),'%c-%e')", $rsm);
-        $query->setParameter(1, 'romanb');
+        $query = $this->_em->createNativeQuery("
+            select * 
+            from event e left join wishlistuser u on u.wishlistuser_id = e.user_id  
+            where  e.user_id in 
+                ( select f.friend_id  from friendship f  where f.user_id = ? )  
+            and  date_format(e.eventDate, '%c-%e') < date_format(date_add(now(), interval 4 MONTH),'%c-%e')",
+        $rsm);
+        
+        $query->setParameter(1, $userId);
 
-        $users = $query->getResult();        
-        
-        /*
-        $q = $this->getEntityManager()->createQuery("
-            SELECT u, usr_1
-            FROM WishlistCoreBundle:Event u
-            LEFT JOIN u.wishlistUser usr_1
-            WHERE date_format(u.eventDate, '%c-%e') < date_format(date_add(CURRENT_DATE(), 4, 'MONTH'),'%c-%e') and date_format(u.eventDate, '%c-%e') > date_format(CURRENT_DATE(), '%c-%e')
-            AND usr_1.wishlistuser_id IN (SELECT f.friend_id FROM WishlistCoreBundle:Friendship f LEFT JOIN f.wishlistUser usr_2 WHERE usr_2.wishlistuser_id = :uid)
-            ORDER BY u.eventDate DESC")
-                ->setParameter('uid', $userId);
-        
-        $test = $q->getSQL();
-        
-        return $q->getResult();
-         
-         */
-        
-        return $users;
+        $events = $query->getResult();        
+                
+        return $events;
     }
 }
