@@ -56,7 +56,10 @@ class DefaultController extends Controller
             
         }catch(NoResultException $e)
         {
-            throw $this->createNotFoundException("Could not find user");
+            if(!isset($loggedInUserId))
+                throw $this->createNotFoundException('Please to go the Frontpage to sign on');
+            else
+                throw $this->createNotFoundException('Could not find user');
         }
         
         if(!($loggedInUserId == $user_id) && !WishlistUser::areFriends($wishlist_user, $loggedIn_user))
