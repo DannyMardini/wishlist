@@ -22,17 +22,17 @@
         <div id="eventsInnerComponent">  
         <?php  
         foreach ($friendEvents as $event) {
+                $eventImage = $event->getEventImage();
                 $eventName = $event->getName();
                 $friend = $event->getWishlistUser();
-                $eventDate = $event->getFormattedTimestamp($event->getEventDate()); //date("g:i a", $event->getEventDate()->getTimestamp());
-                $name = "<a href='user/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
+                $eventDate = $event->getFormattedTimestamp();
+                $name = "<a href='User/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
                 $timestamp = " -- ".$eventDate;
         ?>  
             <div class="Event"> 
-                <div class="image" title='<?php echo $eventName ?>'><img src="/images/birthday1.png" height="26" width="26" /></div>
+                <div class="image" title='<?php echo $eventName ?>'><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
                 <div class="name"><?php echo $name ?></div>
                 <div class="message" title='<?php echo $eventName ?>'><?php echo $timestamp ?></div>
-<!--                <div class="timestamp"><?php echo $timestamp ?></div>-->
             </div>
         <?php } ?>
         </div>
