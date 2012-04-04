@@ -8,7 +8,11 @@
             <ul id="linkList">
             <li id="mainProfileLink">
                 <div id="userPicture"></div>
-                <div id="userName" ><a id="userNameLink" href="#"><?php echo $user->getFirstName() ?></a></div>
+                <div id="userName" >
+                    <a id="userNameLink" href="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>">
+                        <?php echo $user->getFirstName() ?>
+                    </a>
+                </div>
             </li>
             <li><a href="#">Settings</a></li>
             <li><a id="friend_button" href="#">Friends</a></li>

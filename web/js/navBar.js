@@ -40,6 +40,10 @@ $(document).ready(function(){
       }
     });
 
+    $("#userName").click(function(){
+        window.location = $('#userNameLink').attr('href');
+    });
+
 });
 
 function showOnlyMainProfileLink()

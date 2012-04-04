@@ -69,6 +69,10 @@ root {
     background-color: white;
 }
 
+#userName:hover {
+    background-color: #f4f6f5;
+}
+
 #userName a{
     vertical-align: bottom;
     padding: 0px;
