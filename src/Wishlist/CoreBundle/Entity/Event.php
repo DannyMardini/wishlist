@@ -153,9 +153,14 @@ class Event
         return $this->name;
     }
     
-    public function getFormattedTimestamp($dateTimeOrig)
+    public function getFormattedTimestamp()
     {                         
-        $submittedDateTime = $dateTimeOrig->getTimestamp();
+        $submittedDateTime = $this->eventDate->getTimestamp();
         return date(  "l, F jS", $submittedDateTime);
-    }    
+    }
+    
+    public function getEventImage()
+    {                
+        return ($this->eventType == Event::TYPE_BIRTHDAY) ? '/images/birthday1.png' : '/images/anniversary4.gif';        
+    }
 }

@@ -9,6 +9,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NoResultException;
 use Wishlist\CoreBundle\Entity\WishlistUser;
+use Wishlist\CoreBundle\Entity\Event;
 
 
 class DefaultController extends Controller
