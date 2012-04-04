@@ -24,14 +24,15 @@
         foreach ($friendEvents as $event) {
                 $eventName = $event->getName();
                 $friend = $event->getWishlistUser();
-                $eventDate = $event->getFormattedTimestamp($event->getEventDate());
+                $eventDate = $event->getFormattedTimestamp($event->getEventDate()); //date("g:i a", $event->getEventDate()->getTimestamp());
                 $name = "<a href='user/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
                 $timestamp = " -- ".$eventDate;
         ?>  
-            <div class="Event">                
+            <div class="Event"> 
+                <div class="image" title='<?php echo $eventName ?>'><img src="/images/birthday1.png" height="26" width="26" /></div>
                 <div class="name"><?php echo $name ?></div>
-                <div class="message"><?php echo $eventName ?></div>
-                <div class="timestamp"><?php echo $timestamp ?></div>
+                <div class="message" title='<?php echo $eventName ?>'><?php echo $timestamp ?></div>
+<!--                <div class="timestamp"><?php echo $timestamp ?></div>-->
             </div>
         <?php } ?>
         </div>
