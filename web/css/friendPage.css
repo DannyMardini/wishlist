@@ -1,0 +1,25 @@
+#friendlist ul{
+    background-color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0px;
+}
+
+#friendlist li{
+    background-color: white;
+    margin-bottom: 5px;
+}
+
+#friendlist li a {
+    text-decoration: none;
+    color: black;
+}
+
+#friendlist li a:hover {
+    color: #93b0ac;
+}
+
+label {
+    display: block;
+    padding-bottom: 20px;
+}

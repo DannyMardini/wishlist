@@ -50,7 +50,9 @@ class DefaultController extends Controller
             $e->getTrace();
         }
         
-        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $friends));
+        $username = $wishlist_user->getFirstname()." ".$wishlist_user->getLastname();
+        
+        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $friends, 'username' => $username));
     }
     
     public function showUserpageAction(/*int*/ $user_id)
