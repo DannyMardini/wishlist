@@ -162,3 +162,48 @@ li a {
     padding-bottom: 5px;
     padding-top: 5px;
 }
+
+#eventsInnerComponent .image {
+/*    display: inline-block;*/
+    float: left;
+   
+    /*background-image: url(/images/default_avatar.gif);
+    background-size: 85%;*/
+    background-repeat: no-repeat;
+    background-position: left;
+    margin-top: 15px;
+}
+
+#eventsInnerComponent .name {
+    margin-top: 15px;
+    font-weight: bolder;
+    display: inline-block;
+    height: 15px;
+    text-align: center;
+    font-size: 14px;
+    padding-left: 5px;
+/*    float: right;*/
+}
+
+#eventsInnerComponent .message {
+    display: block;
+    padding-top: 5px;
+    padding-left: 11px;
+}
+
+#eventsInnerComponent .timestamp {
+    margin-top: 5px;
+    color: gray;
+    display: block;
+    font-size:12px;
+}
+
+#eventsInnerComponent a {
+    cursor: pointer;
+    color: darkblue;
+    text-decoration: none;
+}
+
+#eventsInnerComponent a:hover {
+    text-decoration: underline;
+}
