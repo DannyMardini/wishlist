@@ -112,4 +112,16 @@ class WishlistUserRepository extends EntityRepository
         
         return $user;
     }
+    
+    public function getFriendsOf(WishlistUser $user)
+    {
+        $friendships = $user->getFriendships();
+        
+        foreach($friendships as $friendship)
+        {
+            $friends[] = $this->getUserWithId($friendship->getFriendId());
+        }
+        
+        return $friends;
+    }
 }

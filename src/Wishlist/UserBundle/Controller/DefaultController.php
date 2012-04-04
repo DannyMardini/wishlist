@@ -39,9 +39,18 @@ class DefaultController extends Controller
         return $this->render('WishlistUserBundle:Default:homepage.html.php', array('user' => $user, 'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
     }
     
-    public function showFriendlistAction()
+    public function showFriendpageAction(/*int*/ $user_id)
     {
-        return $this->render('WishlistUserBundle:Default:friendlist.html.php');
+        $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
+        
+        try{
+            $wishlist_user = $userRepo->getUserWithId($user_id);
+            $friends = $userRepo->getFriendsOf($wishlist_user);
+        }catch(Exception $e){
+            $e->getTrace();
+        }
+        
+        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $friends));
     }
     
     public function showUserpageAction(/*int*/ $user_id)
