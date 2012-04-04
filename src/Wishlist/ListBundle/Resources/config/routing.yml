@@ -9,3 +9,8 @@ WishlistListBundle_wishlistItem:
 WishlistListBundle_wishlistDelete:
     pattern: /wishlistdelete
     defaults: { _controller: WishlistListBundle:Default:deleteWishlist }
+
+WishlistListBundle_friendlist:
+    pattern: /friendlist/{user_id}
+    defaults: { _controller: WishlistListBundle:Default:friendlist }
+    
