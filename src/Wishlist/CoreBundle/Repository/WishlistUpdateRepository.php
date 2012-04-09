@@ -35,11 +35,11 @@ class WishlistUpdateRepository extends EntityRepository
     {
         if($user->getGender() == WishlistUser::GENDER_MALE)
         {
-            $gender_determiner = "his";
+            $gender_attribute = "his";
         }
         else
         {
-            $gender_determiner = "her";
+            $gender_attribute = "her";
         }
 
         $message = $user->getFirstname().
@@ -48,7 +48,7 @@ class WishlistUpdateRepository extends EntityRepository
                 ")'>".
                 $item->getName().
                 "</a> to ".
-                $gender_determiner.
+                $gender_attribute.
                 " wishlist";
         
         $this->addNewUpdate(WishlistUpdate::TEMPLATE_TYPE_1,
