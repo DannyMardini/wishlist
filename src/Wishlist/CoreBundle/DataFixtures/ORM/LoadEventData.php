@@ -28,6 +28,7 @@ class LoadEventData implements FixtureInterface,OrderedFixtureInterface{
         
         $eventsRepo->addEvent( 'Birthday', 1, new DateTime("06/11/1986"), $danny );
         $eventsRepo->addEvent( 'Anniversary with Andrea', 2, new DateTime("06/25/2010"), $danny );
+        $eventsRepo->addEvent( 'Anniversary at work', 2, new DateTime("04/15/2010"), $danny );
         $eventsRepo->addEvent( 'Birthday', '1', new DateTime("08/18/1986"), $andrea );
         $eventsRepo->addEvent( 'Anniversary with Danny', 2, new DateTime("06/25/2010"), $andrea );        
     }

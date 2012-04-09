@@ -156,7 +156,8 @@ class Event
     public function getFormattedTimestamp()
     {                         
         $submittedDateTime = $this->eventDate->getTimestamp();
-        return date(  "l, F jS", $submittedDateTime);
+        //return date(  "l, F jS", $submittedDateTime);
+        return date(  "F jS", $submittedDateTime);
     }
     
     public function getEventImage()
