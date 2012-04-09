@@ -89,9 +89,19 @@ class WishlistUser {
     /**
      * Get gender
      *
-     * @return string 
+     * @return integer $gender 
      */
     public function getGender()
+    {
+        return $this->gender;
+    }
+    
+    /**
+     * Get gender
+     *
+     * @return string form of gender.
+     */
+    public function getGenderString()
     {
         if($this->gender == WishlistUser::GENDER_MALE)
         {
@@ -99,7 +109,7 @@ class WishlistUser {
         }else
         {
             return "Female";
-        }
+        }        
     }
 
     /**
