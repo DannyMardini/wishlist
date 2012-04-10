@@ -1,7 +1,7 @@
 <html>
     <head>
-        <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' />
-        <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' />
+<!--        <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' />
+        <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' />-->
         <link rel="shortcut icon" href="/images/favicon.ico">
         <script type="text/javascript" src="/js/jquery-1.7.1.js"></script>
         <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min"></script>
@@ -21,9 +21,9 @@
         <div id="imageContainer"></div>
         <div id="registrationContainer">
             <div id="logoContainer">
-<!--                <div id="name">Wishlist</div>-->
                 <div id="name"><image src="/images/wishlist_logo_large.png"></div>
-                <div id="catchphrase">make your wishes come true!</div>
+                <div id="catchphrase"><image src="/images/wishlist_catchphrase.png"></div>
+<!--                <div id="catchphrase">make your wishes come true!</div>-->
             </div>
             <div id="registrationForm">
                 <br /><br />
