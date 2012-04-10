@@ -30,9 +30,9 @@
                 $timestamp = " -- ".$eventDate;
         ?>  
             <div class="Event"> 
-                <div class="image" title='<?php echo $eventName ?>'><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
-                <div class="name"><?php echo $name ?></div>
-                <div class="message" title='<?php echo $eventName ?>'><?php echo $timestamp ?></div>
+                <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
+                <div class="name" title ="<?php echo $eventName ?>"><?php echo $name ?></div>
+                <div class="message" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>
             </div>
         <?php } ?>
         </div>
