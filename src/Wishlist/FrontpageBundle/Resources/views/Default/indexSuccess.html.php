@@ -22,6 +22,7 @@
         <div id="registrationContainer">
             <div id="logoContainer">
                 <div id="name">Wishlist</div>
+<!--                <div id="name"><image src="/images/wishlist_logo_large.png"></div>-->
                 <div id="catchphrase">make your wishes come true!</div>
             </div>
             <div id="registrationForm">
