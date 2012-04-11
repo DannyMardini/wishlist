@@ -1,6 +1,6 @@
 <div id="header">
     <div id="logoContainer">
-        <div id="logo"></div>
+        <img id="logo" src="/images/gift.jpg"/>
         <div id="name">Wishlist</div>
     </div>
     <div id="linksContainer">

@@ -10,18 +10,16 @@ root {
     border-top: 1px solid white;
     border-bottom: 1px solid gray;
     box-shadow: 0px 0px 15px red;
+    text-align: center;
 }
 
 #logoContainer {
     display: inline-block;
-    width: 55%;
     height: 45px;
-    float: left;
 }
 
 #logo{
     display: inline-block;
-    width: 80%;
     height: 45px;
     background-image: url(/images/gift.jpg);
     background-size: 10%;
@@ -40,8 +38,8 @@ root {
 
 #linksContainer {
     display: inline-block;
-    width: 45%;
     height: 45px;
+    float: right;
 }
 
 #linkList{
@@ -64,6 +62,7 @@ root {
     background: white;
     margin: 0px;
     font-family: Verdana, Arial, sans-serif;
+    padding: 0px;
 }
 
 #navigation li{
