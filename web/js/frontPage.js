@@ -86,7 +86,7 @@ $(document).ready(function()
     }); 
     
     
-    $("#aboutLink").click(displayAboutDialog);
+    $(".aboutLink").click(displayAboutDialog);    
     
     // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
     $( "#dialog:ui-dialog" ).dialog( "destroy" );
@@ -96,13 +96,12 @@ $(document).ready(function()
 
 function displayAboutDialog()
 {
-    var aboutMessage = "Wishlist lets you keep track of all of your wishes in one location and lets you share your list with friends! <br />\n\
-     Your friends can see when your birthday or anniversary is coming up and get a present from your list without you knowing!<br /><br />\n\
+    var aboutMessage = "Wishlist lets you keep track of all of your wishes in one location and shares your list with friends! <br />\n\
+     Your friends can see when your birthday or anniversary is coming up and get you a present from your list without you knowing!<br /><br />\n\
      Our Goal is to make life easier by providing a central location where everyone can bookmark their wishes and their friends can easily see what they want!<br /><br />\n\
      Request an invite to create your wishlist today!";
     
-    $( "#dialog-message" ).attr('title','What is Wishlist?');
-    $( "#dialog-message" ).css('width','300px');
+    $( "#dialog-message" ).attr('title','What is Wishlist?');    
     
     displayMessage(aboutMessage);
 }
@@ -113,6 +112,8 @@ function displayMessage(message)
     $('#dialog-message').html(message);
     $( "#dialog-message" ).dialog({
         modal: true,
+        height:400,
+        width:600,
         buttons: {
                 Ok: function() {
                         $( this ).dialog( "close" );

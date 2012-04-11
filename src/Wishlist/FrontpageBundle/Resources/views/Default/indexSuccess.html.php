@@ -14,9 +14,9 @@
 
         <input id="showUserAdded" type="hidden" value="<?php echo $showUserAdded ?>" />
         <div id="loginContainer">
-            <a id="aboutLink" href="#">About</a>
+            <a class="aboutLink frontpageLink" href="#">About</a>
             <img src="/images/silverdot.gif" width="10" height="10" />
-            <a id="loginLink" href="#">Login</a>
+            <a id="loginLink" class="frontpageLink" href="#">Login</a>
         </div>
         <div id="imageContainer"></div>
         <div id="registrationContainer">
@@ -57,17 +57,15 @@
         </div>
         <footer>
             <div id="footerDetails">
-                <a id="aboutLink" href="#">ABOUT</a>                
+                <a class="aboutLink frontpageLink" href="#">ABOUT</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">CONTACT</a>
+                <a class="frontpageLink" href="#">HELP</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">HELP</a>
+                <a class="frontpageLink" href="#">TERMS</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">TERMS</a>
+                <a class="frontpageLink" href="#">PRIVACY</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">PRIVACY</a>
-                <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">JOIN OUR TEAM</a>
+                <a class="frontpageLink" href="#">JOIN OUR TEAM</a>
             </div>
         </footer>
         <div id="dialog-message" title=""></div>
