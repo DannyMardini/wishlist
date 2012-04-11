@@ -4,23 +4,23 @@
         <div id="name">Wishlist</div>
     </div>
     <div id="linksContainer">
-        <div id="profileLinks">
-            <ul id="linkList">
-            <li id="mainProfileLink">
-                <div id="userPicture"></div>
-                <div id="userName" >
-                    <a id="userNameLink" href="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>">
-                        <?php echo $user->getFirstName() ?>
-                    </a>
-                </div>
+        <ul id="navigation">
+            <li>
+                <img class="tinyProfile" src="<?php echo "/images/user/".$user->getWishlistuserId()."/profile.jpg" ?>"/>
             </li>
-            <li><a href="#">Settings</a></li>
-            <li><a id="friend_button" href="#">Friends</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href='<?php // echo url_for('navBar/logout'); ?>'>Logout</a></li>
-            </ul>
-            <p style="height:157px;" id="menuCheat"></p>
-        </div>
+            
+            <li class="navLink">
+                <a href="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>"><?php echo $user->getFirstName() ?></a>
+            </li>
+            
+            <li class="navLink">
+                <a href="<?php echo $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $user->getWishlistuserId())) ?>">Friends</a>
+            </li>
+            
+<!--            <li class="navLink">
+                <a href="#">Settings</a>
+            </li>-->
+        </ul>
     </div>
 </div>
 

@@ -4,8 +4,12 @@ root {
 }
 
 #header {
-  height: 45px;
-  background-color: white;
+    background-color: white;
+    width: 100%;
+    height: 45px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid gray;
+    box-shadow: 0px 0px 15px red;
 }
 
 #logoContainer {
@@ -40,12 +44,6 @@ root {
     height: 45px;
 }
 
-#profileLinks{
-    height: 45px;
-    width: 30%;
-    float: right;
-}
-
 #linkList{
     width: 100%;
     height: 45px;
@@ -55,32 +53,34 @@ root {
     vertical-align: -15px;
 }
 
-#mainProfileLink {
-    height: 45px;
+#navigation {
     background-color:white;
     border:0px;
+    margin: 0px;
+
+    list-style-type: none;
+    text-align: right;
+    height: 45px;
+    background: white;
+    margin: 0px;
+    font-family: Verdana, Arial, sans-serif;
 }
 
-#userName {
+#navigation li{
     display: inline-block;
-    width: 50%;
-    height: 45px;
-    vertical-align: bottom;
-    background-color: white;
 }
 
-#userName:hover {
-    background-color: #f4f6f5;
+#navigation li a {
+    display: block;
+    height: 25px;
+    padding-top: 20px;
+    padding-right: 5px;
+    text-decoration: none;
+    color: black;
 }
 
-#userName a{
-    vertical-align: bottom;
-    padding: 0px;
-    text-align: center;
-    height: 45px;
-    text-decoration:none;
-    zoom: 1;
-    line-height: 3.0;
+#navigation .navLink:hover {
+    background-color: #efefef;
 }
 
 #userPicture{
@@ -92,6 +92,12 @@ root {
     background-repeat: no-repeat;
     background-position: right;
     float: left;
+}
+
+.tinyProfile {
+/*    display: block;*/
+    width: 25px;
+    height: 25px;
 }
 
 #rightPanel{

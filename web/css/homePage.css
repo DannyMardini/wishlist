@@ -67,14 +67,6 @@ button.fg-button { width:auto; overflow:visible; }
 
 }
 
-ul{
-    background-color: white;
-    font-family: Verdana, Arial, sans-serif; font-size: 1.1em;
-    color: #ffffff;
-    list-style: none;
-    padding: 0;
-}
-
 li{
     background-color: white;
 }
