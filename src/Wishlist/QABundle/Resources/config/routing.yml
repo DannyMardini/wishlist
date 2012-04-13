@@ -1,3 +1,3 @@
 WishlistQABundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: WishlistQABundle:Default:index }
+    pattern:  /help
+    defaults: { _controller: WishlistQABundle:Default:help }
