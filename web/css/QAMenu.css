@@ -9,18 +9,21 @@ ul {
 
 li:hover {
     background-color:#999999;
+    cursor: hand;
 }
 
 .topic {
     color:white;
     font-weight: bolder;
     font-size: 24px;
+    padding-bottom: 3px;
 }
 
-.subTopic {
-    height: 18px;
+.subTopic {        
     color:pink;
     font-size: 14px;
     font-weight: normal;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
