@@ -1,0 +1,26 @@
+root { 
+    display: block;    
+}
+
+ul {
+    list-style-type: none;
+    padding:0; margin:0;
+}
+
+li:hover {
+    background-color:#999999;
+}
+
+.topic {
+    color:white;
+    font-weight: bolder;
+    font-size: 24px;
+}
+
+.subTopic {
+    height: 18px;
+    color:pink;
+    font-size: 14px;
+    font-weight: normal;
+}
+

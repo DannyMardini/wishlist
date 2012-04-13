@@ -1,13 +1,10 @@
-/* 
-    Document   : help
-    Created on : Apr 10, 2012, 10:51:03 PM
-    Author     : andreacoba
-    Description:
-        Purpose of the stylesheet follows.
-*/
-
 root { 
     display: block;    
+}
+
+header {
+    font-size:30px;
+    font-weight: bolder;
 }
 
 body {
