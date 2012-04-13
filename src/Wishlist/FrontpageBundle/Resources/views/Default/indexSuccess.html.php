@@ -1,7 +1,7 @@
 <html>
     <head>
-        <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' />
-        <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' />
+<!--        <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' />
+        <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' />-->
         <link rel="shortcut icon" href="/images/favicon.ico">
         <script type="text/javascript" src="/js/jquery-1.7.1.js"></script>
         <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min"></script>
@@ -14,15 +14,16 @@
 
         <input id="showUserAdded" type="hidden" value="<?php echo $showUserAdded ?>" />
         <div id="loginContainer">
-            <a id="aboutLink" href="#">About</a>
+            <a class="aboutLink frontpageLink" href="#">About</a>
             <img src="/images/silverdot.gif" width="10" height="10" />
-            <a id="loginLink" href="#">Login</a>
+            <a id="loginLink" class="frontpageLink" href="#">Login</a>
         </div>
         <div id="imageContainer"></div>
         <div id="registrationContainer">
             <div id="logoContainer">
-                <div id="name">Wishlist</div>
-                <div id="catchphrase">make your wishes come true!</div>
+                <div id="name"><image src="/images/wishlist_logo_large.png"></div>
+                <div id="catchphrase"><image src="/images/wishlist_catchphrase.png"></div>
+<!--                <div id="catchphrase">make your wishes come true!</div>-->
             </div>
             <div id="registrationForm">
                 <br /><br />
@@ -56,17 +57,15 @@
         </div>
         <footer>
             <div id="footerDetails">
-                <a id="aboutLink" href="#">ABOUT</a>                
+                <a class="aboutLink frontpageLink" href="#">ABOUT</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">CONTACT</a>
+                <a class="frontpageLink" href="#">HELP</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">HELP</a>
+                <a class="frontpageLink" href="#">TERMS</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">TERMS</a>
+                <a class="frontpageLink" href="#">PRIVACY</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">PRIVACY</a>
-                <img src="/images/silverdot.gif" width="10" height="10" />
-                <a id="loginLink" href="#">JOIN OUR TEAM</a>
+                <a class="frontpageLink" href="#">JOIN OUR TEAM</a>
             </div>
         </footer>
         <div id="dialog-message" title=""></div>
