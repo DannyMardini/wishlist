@@ -8,8 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     
-    public function indexAction($name)
+    public function helpAction()
     {
-        return $this->render('WishlistQABundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('WishlistQABundle:Default:help.html.php');
     }
 }
