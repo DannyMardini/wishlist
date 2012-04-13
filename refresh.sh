@@ -1,4 +1,5 @@
 #!/bin/bash
+#This script will refresh your database fixture and entities.
 echo "Generating entities..."
 php app/console generate:doctrine:entities Wishlist
 
