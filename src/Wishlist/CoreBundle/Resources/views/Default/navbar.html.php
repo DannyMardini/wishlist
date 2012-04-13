@@ -3,7 +3,7 @@
         <img id="logo" src="/images/gift.jpg"/>
         <div id="name">Wishlist</div>
     </div>
-    <div id="linksContainer">
+    <span id="linksContainer">
         <ul id="navigation">
             <!--
                 WOW, html and css suck... are you kidding me?? inline-block is the more correct approach here...
@@ -18,7 +18,7 @@
                 <a href="<?php echo $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $user->getWishlistuserId())) ?>">Friends</a>
             </li><li class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
         </ul>
-    </div>
+    </span>
 </div>
 
 <div id="rightPanel">
