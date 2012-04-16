@@ -3,6 +3,11 @@ root {
     display: block;
 }
 
+li a {
+    text-decoration: none;
+    color: black;
+}
+
 #header {
     background-color: white;
 /*    width: 100%;*/
@@ -110,8 +115,19 @@ root {
     height: 25px;
 }
 
-#rightPanel{
-  width: 20%;
+#dropDownMenu{
   float: right;
   display: none;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+#dropDownMenu ul{
+    list-style: none;
+    padding: 0px 20px 0px 20px;
+    margin: 16px 0px 0px 0px;
+}
+
+#dropDownMenu ul li {
+    padding: 0px 0px 5px 0px;
 }

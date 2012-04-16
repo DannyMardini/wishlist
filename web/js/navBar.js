@@ -28,14 +28,14 @@ $(document).ready(function(){
 //
     showOnlyMainProfileLink();
 
-    $("#friend_button").click(function(){
+    $("#dropDownButton").click(function(){
       if( rightPanelVisible )
       {
-        $('#rightPanel').hide();
+        $('#dropDownMenu').hide();
         rightPanelVisible = 0;
       }else 
       {
-        $("#rightPanel").show();
+        $("#dropDownMenu").show();
         rightPanelVisible = 1;
       }
     });
