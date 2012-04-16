@@ -9,18 +9,29 @@ ul {
 
 li:hover {
     background-color:#999999;
+    cursor: hand;
 }
 
 .topic {
     color:white;
-    font-weight: bolder;
     font-size: 24px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
-.subTopic {
-    height: 18px;
+.subTopic {        
     color:pink;
     font-size: 14px;
     font-weight: normal;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+.currentSelection {
+    background-color:#666666;
+    font-weight: bolder;
+    padding-left: 30px;
 }
 
