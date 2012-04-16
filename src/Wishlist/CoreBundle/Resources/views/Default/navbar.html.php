@@ -17,7 +17,6 @@
                 <a href="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>"><?php echo $user->getFirstName() ?></a>
             </li><li class="navLink">
                 <a href="<?php echo $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $user->getWishlistuserId())) ?>">Friends</a>
-            </li><li class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
             </li><li id="dropDownButton" class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
             <?php } else { ?><li>
                 <a href="#">Sign-In</a>
