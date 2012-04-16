@@ -37,7 +37,6 @@ root {
 }
 
 #linksContainer {
-    display: inline-block;
     height: 45px;
     float: right;
 }
