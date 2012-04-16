@@ -27,14 +27,4 @@
         <li><a href="#">Help</a></li>
         <li><a href="#">Log Out</a></li>
     </ul>
-<!--    <div id="friendlist">
-    <ul id="selectable" class="ui-selectable">
-    <ul>
-    <?php // foreach ($friends as $i => $friend): ?>
-    <li id="li_user_<?php // echo $friend->getWishlistuserId();?>">
-        <a href='<?php // echo url_for('user/show?wishlistuser_id='.$friend->getWishlistuserId());?>'><?php // echo $friend->getFirstName()." ".$friend->getLastName(); ?></a>
-    </li>
-    <?php // endforeach;?>
-    </ul>
-    </div>-->
 </div>
