@@ -41,10 +41,15 @@ body {
 }
 
 .contentInfoDetails{
+    display: none;
     font-size: 18px;    
     line-height: 38px;    
     padding-left: 33%;
     padding-top: 15px;    
+}
+
+.displayContentInfo{
+    display:block;
 }
 
 
