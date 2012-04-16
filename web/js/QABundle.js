@@ -11,7 +11,14 @@ function onClickMenuSubOption(event)
     //var liObj = event.target; 
 }
 
-function onClickContentTopic(event){
-    $(this).next().addClass('displayContentInfo').siblings().removeClass('displayContentInfo');
+function onClickContentTopic(event){    
+    
+    if(!$(this).next().hasClass('displayContentInfo')){
+        $(this).next().addClass('displayContentInfo');
+    }
+    else
+    {
+        $(this).next().removeClass('displayContentInfo');
+    }
 }
 
