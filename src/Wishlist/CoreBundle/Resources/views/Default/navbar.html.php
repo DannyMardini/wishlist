@@ -16,14 +16,19 @@
                 <a href="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>"><?php echo $user->getFirstName() ?></a>
             </li><li class="navLink">
                 <a href="<?php echo $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $user->getWishlistuserId())) ?>">Friends</a>
-            </li><li class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
+            </li><li id="dropDownButton" class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
         </ul>
     </span>
 </div>
 
-<div id="rightPanel">
-    <div id="friendlist">
-<!--    <ul id="selectable" class="ui-selectable">-->
+<div id="dropDownMenu">
+    <ul>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Log Out</a></li>
+    </ul>
+<!--    <div id="friendlist">
+    <ul id="selectable" class="ui-selectable">
     <ul>
     <?php // foreach ($friends as $i => $friend): ?>
     <li id="li_user_<?php // echo $friend->getWishlistuserId();?>">
@@ -31,5 +36,5 @@
     </li>
     <?php // endforeach;?>
     </ul>
-    </div>
+    </div>-->
 </div>
