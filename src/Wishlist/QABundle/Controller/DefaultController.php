@@ -10,6 +10,6 @@ class DefaultController extends Controller
     
     public function helpAction()
     {
-        return $this->render('WishlistQABundle:Default:help.html.php');
+        return $this->render('WishlistQABundle:Default:GettingStarted.html.php');
     }
 }

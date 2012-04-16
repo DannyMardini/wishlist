@@ -14,16 +14,24 @@ li:hover {
 
 .topic {
     color:white;
-    font-weight: bolder;
     font-size: 24px;
-    padding-bottom: 3px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .subTopic {        
     color:pink;
     font-size: 14px;
     font-weight: normal;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+.currentSelection {
+    background-color:#666666;
+    font-weight: bolder;
+    padding-left: 30px;
 }
 
