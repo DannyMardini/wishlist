@@ -12,7 +12,7 @@
             -->
             <?php if($user!=null) { ?>
             <li>
-                <img class="tinyProfile" src="<?php echo $user!=null ? ("/images/user/".$user->getWishlistuserId()."/profile.jpg") : ""; ?>"/>
+                <img class="tinyProfile" src="<?php echo $user!=null ? ($pic_service->getProfileUrl($user->getWishlistuserId())) : ""; ?>"/>
             </li><li class="navLink">
                 <a href="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>"><?php echo $user->getFirstName() ?></a>
             </li><li class="navLink">

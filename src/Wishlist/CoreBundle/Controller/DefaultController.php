@@ -27,6 +27,8 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('Please to go the Frontpage to sign on');
         }
         
-        return $this->render('WishlistCoreBundle:Default:navbar.html.php', array('user' => $user));
+        $pic_service = $this->get('pic_service');
+        
+        return $this->render('WishlistCoreBundle:Default:navbar.html.php', array('user' => $user, 'pic_service' => $pic_service));
     }
 }

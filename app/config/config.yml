@@ -58,3 +58,7 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+services:
+  pic_service:
+    class: Wishlist\CoreBundle\Services\PicService
