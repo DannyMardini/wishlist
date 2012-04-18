@@ -7,8 +7,14 @@ $(document).ready(function(){
 
 function onClickMenuSubOption(event)
 {
-   $(this).addClass('currentSelection').siblings().removeClass('currentSelection');   
+   $(this).addClass('currentSelection').siblings().removeClass('currentSelection');
+   redirectTo($(this).attr('id'));
     //var liObj = event.target; 
+}
+
+function redirectTo(url)
+{
+    window.open(url, 'help');
 }
 
 function onClickContentTopic(event){    

@@ -4,11 +4,11 @@
 <div>
     <ul>
         <li class="topic">Basics</li>
-        <li class="subTopic">Getting Started</li>
-        <li class="subTopic">Friends</a></li>
-        <li class="subTopic">Wishlist</li>
-        <li class="subTopic">Shopping list</li>
-        <li class="subTopic">Events</li> 
+        <li class="subTopic" id="<?php echo $view['router']->generate('WishlistQABundle_gettingStarted')?>">Getting Started</li>
+        <li class="subTopic" id="<?php echo $view['router']->generate('WishlistQABundle_wishlistHelp')?>">Friends</li>
+        <li class="subTopic" id="<?php echo $view['router']->generate('WishlistQABundle_wishlistHelp')?>">Wishlist</li>
+        <li class="subTopic" id="<?php echo $view['router']->generate('WishlistQABundle_wishlistHelp')?>">Shopping list</li>
+        <li class="subTopic" id="<?php echo $view['router']->generate('WishlistQABundle_wishlistHelp')?>">Events</li> 
         <li class="topic">Report Issues        
         </li>
     </ul> 

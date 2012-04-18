@@ -15,16 +15,16 @@
                 <div class="contentInfoDetails">
                     Wishlist lets you keep track of all of your wishes in one location and shares your list with friends! <br />
                     Your friends can see when your birthday or anniversary is coming up and get you a present from your list without you knowing!<br /><br />
-                    Our Goal is to make life easier by providing a central location where everyone can bookmark their wishes and their friends can easily see what they want!<br /><br />                    
+                    Our Goal is to make life easier by providing a central location where everyone can bookmark their wishes and their friends can easily see what they want!<br /><br />
                 </div>
                 <div class="contentInfoTopic">Adding Wishes</div>
                 <div class="contentInfoDetails">
                     To add a wish, blah blah blah
-                </div>                
+                </div>
                 <div class="contentInfoTopic">Account Settings</div>
-                <div class="contentInfoTopic">Linking to your website</div>                
+                <div class="contentInfoTopic">Linking to your website</div>             
             </div>
         </div>
-        <footer>end</footer>
+        <footer></footer>
     </body>    
 </html>
