@@ -11,7 +11,7 @@ class PicService
     {
     }
     
-    public function getProfileUrl(/*int*/ $wishlistUserId)
+    public static function getProfileUrl(/*int*/ $wishlistUserId)
     {
         $pic_url = "images/user/".$wishlistUserId."/profile.jpg";
         

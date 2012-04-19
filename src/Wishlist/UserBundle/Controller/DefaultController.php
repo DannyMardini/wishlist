@@ -53,9 +53,7 @@ class DefaultController extends Controller
         
         $username = $wishlist_user->getFirstname()." ".$wishlist_user->getLastname();
         
-        $pic_service = $this->get('pic_service');
-        
-        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $friends, 'username' => $username, "pic_service" => $pic_service));
+        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $friends, 'username' => $username));
     }
     
     public function showUserpageAction(/*int*/ $user_id)

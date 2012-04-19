@@ -5,6 +5,6 @@
 
 <div id='friendlist'>
 <?php
-echo $view->render('WishlistListBundle:Default:friendlist.html.php', array('friends' => $friends, 'pic_service' => $pic_service));
+echo $view->render('WishlistListBundle:Default:friendlist.html.php', array('friends' => $friends));
 ?>
 </div>
