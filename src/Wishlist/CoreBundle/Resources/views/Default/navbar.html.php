@@ -17,7 +17,6 @@
                 <a href="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>"><?php echo $user->getFirstName() ?></a>
             </li><li class="navLink">
                 <a href="<?php echo $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $user->getWishlistuserId())) ?>">Friends</a>
-            </li><li class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
             </li><li id="dropDownButton" class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
             <?php } else { ?><li>
                 <a href="#">Sign-In</a>
@@ -32,14 +31,4 @@
         <li><a href="#">Help</a></li>
         <li><a href="#">Log Out</a></li>
     </ul>
-<!--    <div id="friendlist">
-    <ul id="selectable" class="ui-selectable">
-    <ul>
-    <?php // foreach ($friends as $i => $friend): ?>
-    <li id="li_user_<?php // echo $friend->getWishlistuserId();?>">
-        <a href='<?php // echo url_for('user/show?wishlistuser_id='.$friend->getWishlistuserId());?>'><?php // echo $friend->getFirstName()." ".$friend->getLastName(); ?></a>
-    </li>
-    <?php // endforeach;?>
-    </ul>
-    </div>-->
 </div>
