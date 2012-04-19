@@ -8,7 +8,7 @@
         <header>How can we help you?</header>
         <div class="content">
             <div class="contentMenu">                
-                <?php echo $view->render('WishlistQABundle:Default:QAMenu.html.php'); ?>
+                <?php echo $view->render('WishlistQABundle:Default:QAMenu.html.php', array('selectedOptionIndex' => 1)); ?>
             </div>
             <div class="contentInfo">
                 <div class="contentInfoTopic">What is Wishlist?</div>
@@ -17,12 +17,14 @@
                     Your friends can see when your birthday or anniversary is coming up and get you a present from your list without you knowing!<br /><br />
                     Our Goal is to make life easier by providing a central location where everyone can bookmark their wishes and their friends can easily see what they want!<br /><br />
                 </div>
-                <div class="contentInfoTopic">Adding Wishes</div>
-                <div class="contentInfoDetails">
-                    To add a wish, blah blah blah
-                </div>
                 <div class="contentInfoTopic">Account Settings</div>
-                <div class="contentInfoTopic">Linking to your website</div>             
+                <div class="contentInfoDetails">
+                    To DO
+                </div>                  
+                <div class="contentInfoTopic">Linking to your website</div>
+                <div class="contentInfoDetails">
+                    To DO
+                </div>                  
             </div>
         </div>
         <footer></footer>
