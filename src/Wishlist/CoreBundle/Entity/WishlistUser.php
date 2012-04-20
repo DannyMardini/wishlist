@@ -13,6 +13,8 @@
 
 namespace Wishlist\CoreBundle\Entity;
 
+use Wishlist\CoreBundle\Services\PicService;
+
 class WishlistUser {
     protected $firstname;
     protected $lastname;
@@ -292,5 +294,10 @@ class WishlistUser {
     public function getEvents()
     {
         return $this->events;
+    }
+    
+    public function getProfileUrl()
+    {
+        return PicService::getProfileUrl($this->wishlistuser_id);
     }
 }

@@ -3,7 +3,7 @@
 echo "<ul>";
 foreach($friends as $friend)
 {
-    echo "<li><img class='friendIcon' src='/images/user/".$friend->getWishlistuserId()."/profile.jpg'/><a href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'>"
+    echo "<li><img class='friendIcon' src='".$friend->getProfileUrl()."'/><a href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'>"
             .$friend->getFirstname()." ".$friend->getLastname()."</a></li>\n";
 }
 echo "</ul>";

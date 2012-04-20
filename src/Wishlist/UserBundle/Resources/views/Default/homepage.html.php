@@ -53,7 +53,7 @@
             ?>
 
         <div class="Update">
-            <div class="image"><img src="/images/default_avatar.gif" alt="Smiley face" height="42" width="42" /></div>
+            <div class="image"><img src="<?php echo $user->getProfileUrl() ?>" alt="Smiley face" height="42" width="42" /></div>
             <div class="name"><?php echo $name ?></div>
             <div class="message"><?php echo $message ?></div>
             <div class="timestamp"><?php echo $timestamp ?></div>
