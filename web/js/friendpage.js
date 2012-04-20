@@ -1,6 +1,7 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
+$(document).ready(function(){
+    
+    $('#friendlist ul li').click(function(){
+       window.location = $(this).find("a").attr("href");
+    });
+    
+});

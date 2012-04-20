@@ -17,6 +17,7 @@
 
 #friendlist li:hover {
     background-color: #efefef;
+    cursor: hand;
 }
 
 label {
