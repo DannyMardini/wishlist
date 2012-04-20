@@ -9,11 +9,17 @@ $(document).ready(function(){
        appendIcon($('.currentSelection'));
    });
    
-   //$('.contentInfoTopic').click(onClickContentTopic);
    $(document).on("click", ".contentInfoTopic", onClickContentTopic); 
+   
+   $('#goBack').click(goBackToPrevPage);
 
    preSelectMenuSubOption();
 });
+
+function goBackToPrevPage()
+{
+     history.back();
+}
 
 function appendIcon(option)
 {

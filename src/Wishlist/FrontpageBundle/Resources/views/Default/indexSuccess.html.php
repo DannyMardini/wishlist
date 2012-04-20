@@ -59,7 +59,7 @@
             <div id="footerDetails">
                 <a class="aboutLink frontpageLink" href="#">ABOUT</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="frontpageLink" href="#">HELP</a>
+                <a class="frontpageLink" href="<?php echo $view['router']->generate('WishlistQABundle_help')?>">HELP</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
                 <a class="frontpageLink" href="#">TERMS</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />

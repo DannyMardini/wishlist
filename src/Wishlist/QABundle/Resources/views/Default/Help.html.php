@@ -6,7 +6,10 @@
     </head>
     <body>
         <?php $view->extend('::navBar.html.php') ?>
-        <header>How can we help you?</header>
+        <span id="goBack" class="goBackDiv"><-- Go Back</span>
+        <header>            
+            How can we help you?            
+        </header>
         <div class="content">
             <div class="contentMenu">                
                 <?php echo $view->render('WishlistQABundle:Default:QAMenu.html.php', array('selectedOptionIndex' => 0)); ?>
