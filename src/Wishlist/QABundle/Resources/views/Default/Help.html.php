@@ -9,7 +9,7 @@
         <header>How can we help you?</header>
         <div class="content">
             <div class="contentMenu">                
-                <?php echo $view->render('WishlistQABundle:Default:QAMenu.html.php', array('selectedOptionIndex' => 1)); ?>
+                <?php echo $view->render('WishlistQABundle:Default:QAMenu.html.php', array('selectedOptionIndex' => 0)); ?>
             </div>
             <div class="contentInfo"></div>
         </div>
