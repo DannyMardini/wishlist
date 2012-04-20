@@ -8,7 +8,7 @@ header {
 }
 
 body {
-    background-color:#D3D3D3;
+    /*background-color:#D3D3D3;*/
     font-family: "helvetica neue",arial,sans-serif;
 }
 
@@ -20,14 +20,17 @@ body {
 }
 
 .contentMenu {
-    background-color: gray;
+    /*background-color: gray;*/
     height: 100%;
     width: 30%;
     float: left;
+    border-right: black;
+    border-right-width: 1px;
+    border-right-style: solid;
 }
 
 .contentInfo {
-    background-color: yellowgreen;
+    /*background-color: yellowgreen;*/
     width: 100%;
     height: 100%;
 }
