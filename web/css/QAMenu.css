@@ -8,8 +8,11 @@ ul {
 }
 
 li:hover {
-    /*background-color:#999999;*/
     cursor: hand;
+    text-decoration: underline;
+    border-bottom-color:#EFEFEF;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
 
 .topic {

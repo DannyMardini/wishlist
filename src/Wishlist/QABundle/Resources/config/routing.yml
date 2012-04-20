@@ -5,3 +5,7 @@ WishlistQABundle_gettingStarted:
 WishlistQABundle_wishlistHelp:
     pattern:  /wishlistHelp
     defaults: { _controller: WishlistQABundle:Default:wishlistHelp }    
+
+WishlistQABundle_help:
+    pattern:  /help
+    defaults: { _controller: WishlistQABundle:Default:help }    

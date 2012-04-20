@@ -1,34 +1,48 @@
 
 $(document).ready(function(){
     
-   $('.subTopic').click(onClickMenuSubOption);
-   $('.contentInfoTopic').click(onClickContentTopic);
-   preSelectMenuOption();
+   $('.subTopic').click(onClickMenuSubOption);   
+   $('.subTopic').hover(function(){
+       appendIcon(this);
+   },function(){
+       $('.silverDot',this).remove();
+       appendIcon($('.currentSelection'));
+   });
+   
+   //$('.contentInfoTopic', $('.contentInfo')).click(onClickContentTopic);
+
+   preSelectMenuSubOption();
 });
 
-function preSelectMenuOption(){
-    //var selectedIndex = $('#selectedOptionIndex').val().replace(/\./g, "\\\\\.").replace(/\//g,"\\\\\/");
-    var selectedIndex = '.topic'+$('#selectedOptionIndex').val();
-    selectMenuSubOption(selectedIndex);
+function appendIcon(option)
+{
+    if($('.silverDot',option).length <= 0)
+    {
+        $(option).append("<img class='silverDot' style='padding-left:15px;' src='/images/silverdot.gif' width='12px' height='12px' />");
+        $('.silverDot', $(option).siblings()).remove();
+    }
+}
+
+function preSelectMenuSubOption(){
+    selectMenuSubOption('.topic'+$('#selectedOptionIndex').val());
 }
 
 function onClickMenuSubOption()
 {
    selectMenuSubOption(this);
-   redirectTo($(this).attr('id'));
-    //var liObj = event.target; 
+   $('.contentInfo').load($(this).attr('id'));
+    $('.contentInfoTopic', $('.contentInfo')).click(onClickContentTopic);
 }
 
 function selectMenuSubOption(option)
 {
    $(option).addClass('currentSelection').siblings().removeClass('currentSelection');  
    
-   $(option).append("<img style='padding-left:15px;' src='/images/silverdot.gif' width='12px' height='12px' />");
-}
-
-function redirectTo(url)
-{
-    document.location.href = url;
+   if($('.silverDot',option).length <= 0)
+   {
+        $(option).append("<img class='silverDot' style='padding-left:15px;' src='/images/silverdot.gif' width='12px' height='12px' />");
+        $('.silverDot', $(option).siblings()).remove();
+   }
 }
 
 function onClickContentTopic(event){    

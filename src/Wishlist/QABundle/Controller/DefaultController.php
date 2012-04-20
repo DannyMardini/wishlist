@@ -7,6 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
+    public function helpAction()
+    {
+        return $this->render('WishlistQABundle:Default:Help.html.php');
+    }
     
     public function gettingStartedAction()
     {
