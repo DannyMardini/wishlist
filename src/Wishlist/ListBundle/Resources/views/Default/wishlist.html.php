@@ -18,7 +18,13 @@
         }
 
         echo "<a href='#'>".$wishlistItems[$i]->getName()."</a></h3>";
-        echo "<div><p>$".$wishlistItems[$i]->getPrice()."</p></div>";
+        echo "<div>";
+        echo "<p>$".$wishlistItems[$i]->getPrice()."</p>";
+        if(!$selfWishlist)
+        {
+            echo "<span>Purchase!</span>";
+        }
+        echo "</div>";
     }
 ?>
 
