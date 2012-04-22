@@ -1,4 +1,3 @@
-<!--<script type="text/javascript" src="/js/QABundle.js"></script>-->
 <div class="contentInfoTopic">Adding Wishes</div>
 <div class="contentInfoDetails">
     To DO

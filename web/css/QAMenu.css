@@ -2,12 +2,12 @@ root {
     display: block;    
 }
 
-ul {
+.content ul {
     list-style-type: none;
     padding:0; margin:0;
 }
 
-li:hover {
+.content li:hover {
     cursor: hand;
     text-decoration: underline;
     border-bottom-color:#EFEFEF;

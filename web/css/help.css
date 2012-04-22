@@ -60,5 +60,20 @@ body {
     display:block;
 }
 
+.goBackDiv{
+    margin-left:5px;
+    margin-right: 20px;
+    font-size: 15px; 
+    vertical-align: center;
+    margin-top: 15px;
+    float:left;
+    width: 100px;
+}
+
+.goBackDiv:hover{
+    text-decoration: underline;
+    cursor: hand;
+    font-weight: bolder;
+}
 
 

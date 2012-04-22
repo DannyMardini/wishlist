@@ -9,10 +9,17 @@ $(document).ready(function(){
        appendIcon($('.currentSelection'));
    });
    
-   //$('.contentInfoTopic', $('.contentInfo')).click(onClickContentTopic);
+   $(document).on("click", ".contentInfoTopic", onClickContentTopic); 
+   
+   $('#goBack').click(goBackToPrevPage);
 
    preSelectMenuSubOption();
 });
+
+function goBackToPrevPage()
+{
+     history.back();
+}
 
 function appendIcon(option)
 {
@@ -30,8 +37,7 @@ function preSelectMenuSubOption(){
 function onClickMenuSubOption()
 {
    selectMenuSubOption(this);
-   $('.contentInfo').load($(this).attr('id'));
-    $('.contentInfoTopic', $('.contentInfo')).click(onClickContentTopic);
+   $('.contentInfo').load($(this).attr('id'));    
 }
 
 function selectMenuSubOption(option)
@@ -45,7 +51,7 @@ function selectMenuSubOption(option)
    }
 }
 
-function onClickContentTopic(event){    
+function onClickContentTopic(){    
     
     if(!$(this).next().hasClass('displayContentInfo')){
         $(this).next().addClass('displayContentInfo');
