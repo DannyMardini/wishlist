@@ -1,7 +1,9 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 ?>
+<div id="div_shoppinglist_div">
+    <ul>
+    <?php foreach($purchasedItems as $purchasedItem):?>
+        <li><?php echo $purchasedItem->getName()?></li>
+    <?php endforeach; ?>
+    </ul>
+</div>
