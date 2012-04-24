@@ -234,4 +234,29 @@ class WishlistItem
         
         return json_encode($exportVars);
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\WishlistUser
+     */
+    private $purchaser;
+
+
+    /**
+     * Set purchaser
+     *
+     * @param Wishlist\CoreBundle\Entity\WishlistUser $purchaser
+     */
+    public function setPurchaser(\Wishlist\CoreBundle\Entity\WishlistUser $purchaser)
+    {
+        $this->purchaser = $purchaser;
+    }
+
+    /**
+     * Get purchaser
+     *
+     * @return Wishlist\CoreBundle\Entity\WishlistUser 
+     */
+    public function getPurchaser()
+    {
+        return $this->purchaser;
+    }
 }

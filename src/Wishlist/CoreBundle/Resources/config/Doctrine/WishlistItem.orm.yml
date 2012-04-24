@@ -9,6 +9,13 @@ Wishlist\CoreBundle\Entity\WishlistItem:
           joinColumn:
                   name: user_id
                   referencedColumnName: wishlistuser_id
+                  
+        purchaser:
+          targetEntity: WishlistUser
+          inversedBy: purchases
+          joinColumn:
+            name: purchaser_id
+            referencedColumnName: wishlistuser_id
   fields:
     id:
       type: integer

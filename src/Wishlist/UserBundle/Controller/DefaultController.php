@@ -81,4 +81,11 @@ class DefaultController extends Controller
 
         return $this->render('WishlistUserBundle:Default:userpage.html.php', array('wishlist_user' => $wishlist_user, 'loggedInUserId' => $loggedInUserId));
     }
+    
+    public function showShoppinglistPageAction()
+    {
+        $loggedInId = $this->getRequest()->getSession()->get('user_id');
+
+        return $this->render('WishlistUserBundle:Default:shoppinglistPage.html.php', array('userId' => $loggedInId));
+    }
 }

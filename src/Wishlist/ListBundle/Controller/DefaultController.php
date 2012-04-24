@@ -13,8 +13,12 @@ class DefaultController extends Controller
     {
     }
     
-    public function shoppinglistAction()
+    public function shoppinglistAction(/*int*/ $userId)
     {
+        $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->getUserWithId($userId);
+        $purchasedItems = $user->getPurchases();
+        
+        return $this->render('WishlistListBundle:Default:shoppinglist.html.php', array('purchasedItems' => $purchasedItems));
     }
     
     /**

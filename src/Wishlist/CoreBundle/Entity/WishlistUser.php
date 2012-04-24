@@ -300,4 +300,19 @@ class WishlistUser {
     {
         return PicService::getProfileUrl($this->wishlistuser_id);
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\WishlistItem
+     */
+    private $purchases;
+
+
+    /**
+     * Get purchases
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPurchases()
+    {
+        return $this->purchases;
+    }
 }
