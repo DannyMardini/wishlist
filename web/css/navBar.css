@@ -1,4 +1,3 @@
-
 root { 
     display: block;
 }
@@ -34,7 +33,7 @@ li a {
 }
 
 #logoContainer #name {
-    font-family: 'Satisfy', cursive;
+    font-family: Satisfy, cursive;
     font-size: 40px;
     float: right;
     height: 45px;
