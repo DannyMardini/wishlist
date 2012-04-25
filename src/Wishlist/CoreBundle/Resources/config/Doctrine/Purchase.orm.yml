@@ -1,0 +1,27 @@
+Wishlist\CoreBundle\Entity\Purchase:
+  type: entity
+  table: null
+  repositoryClass: Wishlist\CoreBundle\Repository\PurchaseRepository
+  oneToOne:
+    user:
+      targetEntity: WishlistUser
+      joinColumn:
+        name: user_id
+        referencedColumnName: wishlistuser_id
+        
+    item:
+      targetEntity: WishlistItem
+      joinColumn:
+        name: item_id
+        referencedColumnName: id
+        
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    notify_date:
+      type: datetime
+      nullable: true
+  lifecycleCallbacks: {  }
