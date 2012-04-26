@@ -7,6 +7,16 @@ root {
     padding:0; margin:0;
 }
 
+.topic {
+    color:white;
+    background-color: gray;
+    font-size: 24px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-decoration: none;
+}
+
 .content li:hover {
     cursor: hand;
     text-decoration: underline;
@@ -15,26 +25,16 @@ root {
     border-bottom-width: 1px;
 }
 
-.topic {
-    color:white;
-    background-color: gray;
-    font-size: 24px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-top: 10px;
-}
-
 .subTopic {        
-    color:pink;
+    color:red;
     font-size: 16px;
     font-weight: normal;
     padding-top: 15px;
     padding-bottom: 15px;
-    padding-left: 10px;      
+    padding-left: 10px;
 }
 
 .currentSelection {
-    /*background-color:#666666;*/
     font-weight: bolder;
     padding-left: 30px;
 }
