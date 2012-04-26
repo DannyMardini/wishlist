@@ -26,4 +26,23 @@ class PurchaseRepository extends EntityRepository
         $em->persist($newPurchase);
         $em->flush();
     }
+    
+    public function getPurchasesById(/*int*/ $uid)
+    {
+        $em = $this->getEntityManager();
+        
+        $q = $em->createQuery('
+            SELECT p
+            FROM WishlistCoreBundle:Purchase p
+            LEFT JOIN p.user usr
+            where usr.wishlistuser_id = :uid')
+                ->setParameter('uid', $uid);
+        
+        return $q->getResult();
+    }
+    
+    public function getPurchasesByUser(WishlistUser $user)
+    {
+        return $this->getPurchasesById($user->getWishlistuserId());
+    }
 }

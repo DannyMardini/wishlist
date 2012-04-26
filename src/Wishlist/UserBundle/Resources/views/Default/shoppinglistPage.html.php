@@ -4,4 +4,4 @@ $view->extend('::navBar.html.php');
 ?>
 The Shopping List!
 
-<?php $view['actions']->render('WishlistListBundle:Default:shoppinglist', array('userId' => $userId)); ?>
+<?php echo $view['actions']->render('WishlistListBundle:Default:shoppinglist', array('userId' => $userId)); ?>

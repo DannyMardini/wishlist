@@ -15,8 +15,15 @@ class DefaultController extends Controller
     
     public function shoppinglistAction(/*int*/ $userId)
     {
-        $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->getUserWithId($userId);
-        $purchasedItems = $user->getPurchases();
+        $purchasedItems = array();
+        
+        $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
+        $purchases = $purchaseRepo->getPurchasesById($userId);
+        
+        foreach ($purchases as $purchase)
+        {
+            $purchasedItems[] = $purchase->getItem();
+        }
         
         return $this->render('WishlistListBundle:Default:shoppinglist.html.php', array('purchasedItems' => $purchasedItems));
     }
