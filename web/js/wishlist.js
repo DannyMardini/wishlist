@@ -26,6 +26,8 @@ function setupWishlist()
         var itemObj = {name: $(this).next().text()};
         delFromWishlist(itemObj, setupWishlist);
     });
+    
+    $('.purchaseBtn').click(purchaseItem);
 }
 
 

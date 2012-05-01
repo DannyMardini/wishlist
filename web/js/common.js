@@ -1,7 +1,15 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+function purchaseItem()
+{
+    var itemId = $(this).attr('id');
+    
+    $.ajax({
+        type: 'POST',
+        url: '/app_dev.php/purchaseItem',
+        data: {id: itemId}
+    })
+    .done(function() {alert("success!")})
+    .fail(function() {alert("Failure!")});
+}
 
 function addToWishlist(itemObj, callback)
 {    

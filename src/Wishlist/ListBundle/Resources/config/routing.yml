@@ -7,10 +7,14 @@ WishlistListBundle_wishlistItem:
   defaults: { _controller: WishlistListBundle:Default:getWishlistItem }
     
 WishlistListBundle_wishlistDelete:
-    pattern: /wishlistdelete
-    defaults: { _controller: WishlistListBundle:Default:deleteWishlist }
+  pattern: /wishlistdelete
+  defaults: { _controller: WishlistListBundle:Default:deleteWishlist }
 
 WishlistListBundle_friendlist:
-    pattern: /friendlist/{user_id}
-    defaults: { _controller: WishlistListBundle:Default:friendlist }
+  pattern: /friendlist/{user_id}
+  defaults: { _controller: WishlistListBundle:Default:friendlist }
     
+WishlistListBundle_purchaseItem:
+  pattern: /purchaseItem
+  defaults: { _controller: WishlistListBundle:Default:purchaseItem }
+  

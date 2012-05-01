@@ -86,4 +86,20 @@ class DefaultController extends Controller
         
         return $this->render('WishlistListBundle:Default:wishlist.html.php', array('selfWishlist' => $selfWishlist, 'wishlistItems' => $user->getWishlistItems()));
     }
+    
+    public function purchaseItemAction()
+    {
+        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+        $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
+        $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $session = $this->getRequest()->getSession();
+        $itemId = $this->getRequest()->get('id');
+        
+        $item = $itemRepo->find($itemId);
+        $purchaser = $userRepo->find($session->get('user_id'));
+        
+        $purchaseRepo->newPurchase($purchaser, $item);
+        
+        return new Response();
+    }
 }

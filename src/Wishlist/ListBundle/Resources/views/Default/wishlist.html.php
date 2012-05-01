@@ -12,17 +12,20 @@
     
     for($i = ($wishlistItems->count()-1); $i >= 0; $i--)
     {
+        $currItem = $wishlistItems[$i];
+        
         echo "<h3>";
         if($selfWishlist) {
             echo "<span class='ui-icon ui-icon-close'></span>";
         }
 
-        echo "<a href='#'>".$wishlistItems[$i]->getName()."</a></h3>";
+        echo "<a href='#'>".$currItem->getName()."</a></h3>";
         echo "<div>";
-        echo "<p>$".$wishlistItems[$i]->getPrice()."</p>";
+        echo "<p>$".$currItem->getPrice()."</p>";
         if(!$selfWishlist)
         {
-            echo "<span>Purchase!</span>";
+            //TODO: This really should use the new HTML 5 
+            echo "<span id='".$currItem->getId()."' class='purchaseBtn'>Purchase!</span>";
         }
         echo "</div>";
     }
