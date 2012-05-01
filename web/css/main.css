@@ -34,17 +34,3 @@ body {
 #content {
     background-color: white;
 }
-
-/*@font-face {
-  font-family: 'Satisfy';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Satisfy'), url('/css/fonts/Satisfy/Satisfy-Regular.ttf') format('ttf');
-}
-
-@font-face {
-  font-family: 'Gruppo';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Gruppo'), url('/css/fonts/Gruppo/Gruppo-Regular.ttf') format('ttf');
-}*/
