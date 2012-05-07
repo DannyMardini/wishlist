@@ -97,7 +97,7 @@ form {
 input, select, textarea{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border:1px solid #ccc;
-  font-size:20px;
+  font-size:14px;
   width:300px;
   min-height:30px;
   display:block;
@@ -115,6 +115,17 @@ input, select, textarea{
 input[type=submit] {
   background:none;
   padding:10px;
+}
+
+input[type=submit]:hover {
+  cursor: hand;
+  font-weight: bold;
+  border-color: #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);  
 }
 
 

@@ -1,3 +1,7 @@
 WishlistCoreBundle_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: WishlistCoreBundle:Default:index }
+    
+WishlistCoreBundle_NotifyAdmin:
+    pattern:  /Notify/Admin
+    defaults: { _controller: WishlistCoreBundle:Default:NotifyAdmin }    
