@@ -22,3 +22,9 @@
 .newWishBox {
   height: 100px;
 }
+
+span.purchaseBtn {
+    border-style: solid;
+    border-width: 1px;
+    cursor: hand;
+}
