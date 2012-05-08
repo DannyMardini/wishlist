@@ -47,7 +47,7 @@ class DefaultController extends Controller
             }
             else
             {
-                $full_message = ' From: ' . $fullname . ' contact: ' . $email . '\r\n' . $message;
+                $full_message = ' from: ' . $fullname . '  email: ' . $email . '  message: ' . $message;
                 $headers = 'MIME-Version: 1.0' . '\r\n';
                 $headers .= 'Content-type: text/html; charset=iso-8859-1' . '\r\n';
                 $headers .= 'From: contactsupport@wishlist.com' . '\r\n';
