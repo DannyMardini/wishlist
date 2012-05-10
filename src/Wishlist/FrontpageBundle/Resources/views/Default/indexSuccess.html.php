@@ -58,11 +58,11 @@
                 <img src="/images/silverdot.gif" width="10" height="10" />
                 <a class="frontpageLink" href="<?php echo $view['router']->generate('WishlistQABundle_help')?>">HELP</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="frontpageLink" href="#">TERMS</a>
+                <a class="termsLink frontpageLink" href="#">TERMS</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="frontpageLink" href="#">PRIVACY</a>
+                <a class="privacyLink frontpageLink" href="#">PRIVACY</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="frontpageLink" href="#">JOIN OUR TEAM</a>
+                <a class="joinLink frontpageLink" href="#">JOIN OUR TEAM</a>
             </div>
         </footer>
         <div id="dialog-message" title=""></div>
