@@ -8,4 +8,8 @@ WishlistQABundle_wishlistHelp:
 
 WishlistQABundle_help:
     pattern:  /help
-    defaults: { _controller: WishlistQABundle:Default:help }    
+    defaults: { _controller: WishlistQABundle:Default:help }
+    
+WishlistQABundle_contactSupport:
+    pattern:  /contactSupport
+    defaults: { _controller: WishlistQABundle:Default:contactSupport }

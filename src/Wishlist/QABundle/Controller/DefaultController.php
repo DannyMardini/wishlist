@@ -21,4 +21,9 @@ class DefaultController extends Controller
     {
         return $this->render('WishlistQABundle:Default:WishlistHelp.html.php');
     }
+    
+    public function contactSupportAction()
+    {
+        return $this->render('WishlistQABundle:Default:ContactSupport.html.php');
+    }
 }

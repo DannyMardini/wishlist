@@ -1,6 +1,6 @@
 <div class="contentInfoTopic">Adding Wishes</div>
 <div class="contentInfoDetails">
-    To DO
+    To Do
 </div>
 <div class="contentInfoTopic">Removing Wishes</div>
 <div class="contentInfoDetails">

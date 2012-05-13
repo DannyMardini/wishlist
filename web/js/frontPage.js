@@ -86,7 +86,8 @@ $(document).ready(function()
     }); 
     
     
-    $(".aboutLink").click(displayAboutDialog);    
+    $(".aboutLink").click(function(){eval('displayMessageDialog(aboutMessage, "What is Wishlist?")')});
+    $(".termsLink").click(function(){eval('displayMessageDialog(termsMessage, "Terms and Conditions?")')});
     
     // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
     $( "#dialog:ui-dialog" ).dialog( "destroy" );
@@ -94,18 +95,18 @@ $(document).ready(function()
     
 });
 
-function displayAboutDialog()
-{
-    var aboutMessage = "Wishlist lets you keep track of all of your wishes in one location and shares your list with friends! <br />\n\
-     Your friends can see when your birthday or anniversary is coming up and get you a present from your list without you knowing!<br /><br />\n\
-     Our Goal is to make life easier by providing a central location where everyone can bookmark their wishes and their friends can easily see what they want!<br /><br />\n\
-     Request an invite to create your wishlist today!";
-    
-    $( "#dialog-message" ).attr('title','What is Wishlist?');    
-    
-    displayMessage(aboutMessage);
-}
+var aboutMessage = "<b><u>Our Goal:</u></b><i> to make your life easier by providing a \n\
+    central location where you can easily bookmark and keep track of your wishes; making it \n\
+    easy for your friends to see and get you just what you want!</i><br /><br />\n\
+    Return to the previous page and request an invite to create your wishlist today!";
 
+var termsMessage = "<b><u>Terms:</u></b><i> TO DO";
+
+function displayMessageDialog(msg, title)
+{    
+    $( "#dialog-message" ).attr('title',title);    
+    displayMessage(msg);
+}
 
 function displayMessage(message)
 {
