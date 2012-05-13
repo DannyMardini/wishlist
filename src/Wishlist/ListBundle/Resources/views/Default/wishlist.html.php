@@ -32,3 +32,11 @@
 ?>
 
 </div>
+
+<div id="confirmDialog" title="Purchase">
+    <p>When would you like to give this item?</p>
+    <div id="name">Name</div>
+    <div id="events">Events</div>
+    <div id="create">Create a new Event!</div>
+    <span id="confirmBtn">Ok</span>
+</div>

@@ -1,7 +1,5 @@
-function purchaseItem()
+function purchaseItem(itemId)
 {
-    var itemId = $(this).attr('id');
-    
     $.ajax({
         type: 'POST',
         url: '/app_dev.php/purchaseItem',

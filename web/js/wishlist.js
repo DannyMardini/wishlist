@@ -4,6 +4,7 @@
  */
 
 var wishlist_div = "#div_wishlist_div";
+var selected_itemId;
 
 function setupWishlist()
 {
@@ -27,9 +28,37 @@ function setupWishlist()
         delFromWishlist(itemObj, setupWishlist);
     });
     
-    $('.purchaseBtn').click(purchaseItem);
+    $('.purchaseBtn').click(selectItem);
+
+    $('#confirmDialog').dialog(
+        {
+            autoOpen: false,
+            position: 'center',
+            modal: true,
+            open: confirmDialogOpen,
+            close: confirmDialogClose
+        }
+    );
 }
 
+function selectItem()
+{
+    selected_itemId = $(this).attr('id');
+    $('#confirmDialog').dialog('open');
+}
+
+function confirmDialogOpen()
+{
+    $('#confirmBtn').click(function(){ 
+        purchaseItem(selected_itemId);
+        $('#confirmDialog').dialog('close');
+    });
+}
+
+function confirmDialogClose()
+{
+    $('#confirmBtn').unbind('click');
+}
 
 $(document).ready(function(){
     setupWishlist();
