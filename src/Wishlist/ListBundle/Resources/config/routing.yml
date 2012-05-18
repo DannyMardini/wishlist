@@ -17,7 +17,3 @@ WishlistListBundle_friendlist:
 WishlistListBundle_purchaseItem:
   pattern: /purchaseItem
   defaults: { _controller: WishlistListBundle:Default:purchaseItem }
-
-WishlistListBundle_getItemInfo:
-  pattern: /ItemInfo
-  defaults: { _controller: WishlistListBundle:Default:getItemInfo }
