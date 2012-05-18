@@ -13,4 +13,7 @@ WishlistUserBundle_userpage:
 WishlistUserBundle_friendlist:
   pattern: /Friendpage/{user_id}
   defaults: { _controller: WishlistUserBundle:Default:showFriendpage}
-  
+
+WishlistUserBundle_accountsettings:
+  pattern: /AccountSettings/{user_id}
+  defaults: { _controller: WishlistUserBundle:Default:showAccountSettings}

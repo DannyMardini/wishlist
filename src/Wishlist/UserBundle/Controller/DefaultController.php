@@ -88,4 +88,23 @@ class DefaultController extends Controller
 
         return $this->render('WishlistUserBundle:Default:shoppinglistPage.html.php', array('userId' => $loggedInId));
     }
+    
+    public function showAccountSettingsAction()
+    {
+        try{
+            
+            $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
+            
+            return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId));
+            
+        }catch(NoResultException $e)
+        {
+            if(!isset($loggedInUserId)){
+                throw $this->createNotFoundException('Please to go the Frontpage to sign on');
+            }
+            else {
+                throw $this->createNotFoundException('Could not find user');
+            }
+        }        
+    }
 }
