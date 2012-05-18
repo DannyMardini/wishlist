@@ -102,4 +102,15 @@ class DefaultController extends Controller
         
         return new Response();
     }
+    
+    public function getItemInfoAction()
+    {
+        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+        $itemId = $this->getRequest()->request->get('id');
+        
+        $item = $itemRepo->find($itemId);
+        
+        
+        return new Response($item->exportData());
+    }
 }

@@ -44,15 +44,44 @@ function setupWishlist()
 function selectItem()
 {
     selected_itemId = $(this).attr('id');
-    $('#confirmDialog').dialog('open');
+    getItemInfo(selected_itemId, function(itemInfo){
+        populateDialogItemInfo(itemInfo);
+        $('#confirmDialog').dialog('open');
+    });
+}
+
+function getItemInfo(itemId, callBackFunc)
+{
+    $.ajax({
+        type: 'POST',
+        url: '/app_dev.php/ItemInfo',
+        data: {id: itemId}
+    }).success(function(data){
+        if(data)
+            callBackFunc(data);        
+    });
 }
 
 function confirmDialogOpen()
 {
+    //Set up purchase button
     $('#confirmBtn').click(function(){ 
         purchaseItem(selected_itemId);
         $('#confirmDialog').dialog('close');
     });
+}
+
+function populateDialogItemInfo(itemInfo)
+{
+    if( !itemInfo )
+    {
+        $('#confirmDialog').dialog('close');
+        return;
+    }
+    
+    var item = JSON.parse(itemInfo);
+    
+    $('#confirmName').html('<p>' + item.name + '</p>');
 }
 
 function confirmDialogClose()
