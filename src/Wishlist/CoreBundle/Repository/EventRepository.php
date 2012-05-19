@@ -28,7 +28,7 @@ class EventRepository extends EntityRepository
         $this->getEntityManager()->flush();       
     }
     
-    public function getUserEvents(/*int*/ $userId)
+    public function getFriendEvents(/*int*/ $userId)
     {                                     
         $rsm = new ResultSetMapping;
         $rsm->addEntityResult('Wishlist\CoreBundle\Entity\Event', 'e');
