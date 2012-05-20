@@ -5,6 +5,7 @@
 
 var wishlist_div = "#div_wishlist_div";
 var selected_itemId;
+var selected_eventId;
 
 function setupWishlist()
 {
@@ -29,6 +30,7 @@ function setupWishlist()
     });
     
     $('.purchaseBtn').click(selectItem);
+    $('.confirmEvent').click(selectEvent);
 
     $('#confirmDialog').dialog(
         {
@@ -50,6 +52,25 @@ function selectItem()
     });
 }
 
+function parseEventId(idString)
+{
+    var split_str = idString.split('_');
+    
+    if(split_str.length != 2)
+        return -1;  //Return an invalid event id if we couldn't parse
+    
+    return parseInt(split_str[1]);
+}
+
+function selectEvent()
+{
+    selected_eventId = parseEventId($(this).attr('id'));
+    
+    //Make sure only the selected event is highlighted.
+    $('.confirmEvent').css('background-color', '');
+    $(this).css('background-color', '#999999');
+}
+
 function getItemInfo(itemId, callBackFunc)
 {
     $.ajax({
@@ -66,7 +87,7 @@ function confirmDialogOpen()
 {
     //Set up purchase button
     $('#confirmBtn').click(function(){ 
-        purchaseItem(selected_itemId);
+        purchaseItem(selected_itemId, selected_eventId);
         $('#confirmDialog').dialog('close');
     });
 }
@@ -81,7 +102,7 @@ function populateDialogItemInfo(itemInfo)
     
     var item = JSON.parse(itemInfo);
     
-    $('#confirmName').html('<p>' + item.name + '</p>');
+    $('#confirmName').html(item.name);
 }
 
 function confirmDialogClose()

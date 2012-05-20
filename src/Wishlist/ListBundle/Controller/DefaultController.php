@@ -89,16 +89,21 @@ class DefaultController extends Controller
     
     public function purchaseItemAction()
     {
+        $request = $this->getRequest()->request;
+        
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
         $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
         $session = $this->getRequest()->getSession();
-        $itemId = $this->getRequest()->get('id');
+        $itemId = $request->get('id');
+        $eventId = $request->get('eventId');
         
         $item = $itemRepo->find($itemId);
+        $event = $eventRepo->find($eventId);
         $purchaser = $userRepo->find($session->get('user_id'));
         
-        $purchaseRepo->newPurchase($purchaser, $item);
+        $purchaseRepo->newPurchase($purchaser, $item, $event);
         
         return new Response();
     }

@@ -8,6 +8,12 @@ Wishlist\CoreBundle\Entity\Purchase:
       joinColumn:
         name: user_id
         referencedColumnName: wishlistuser_id
+        
+    event:
+      targetEntity: Event
+      joinColumn:
+        name: event_id
+        referencedColumnName: id
   
   oneToOne:
     item:
@@ -15,7 +21,7 @@ Wishlist\CoreBundle\Entity\Purchase:
       joinColumn:
         name: item_id
         referencedColumnName: id
-        
+            
   fields:
     id:
       type: integer

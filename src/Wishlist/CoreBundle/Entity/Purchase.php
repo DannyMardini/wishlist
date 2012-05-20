@@ -124,4 +124,29 @@ class Purchase
     {
         return $this->item;
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\Event
+     */
+    private $event;
+
+
+    /**
+     * Set event
+     *
+     * @param Wishlist\CoreBundle\Entity\Event $event
+     */
+    public function setEvent(\Wishlist\CoreBundle\Entity\Event $event)
+    {
+        $this->event = $event;
+    }
+
+    /**
+     * Get event
+     *
+     * @return Wishlist\CoreBundle\Entity\Event 
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
 }

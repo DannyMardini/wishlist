@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Entity\WishlistItem;
 use Wishlist\CoreBundle\Entity\Purchase;
+use Wishlist\CoreBundle\Entity\Event;
 
 /**
  * PurchaseRepository
@@ -16,13 +17,17 @@ use Wishlist\CoreBundle\Entity\Purchase;
 class PurchaseRepository extends EntityRepository
 {
     
-    public function newPurchase(WishlistUser $user, WishlistItem $item)
+    public function newPurchase(WishlistUser $user, WishlistItem $item, Event $event = NULL)
     {
         $em = $this->getEntityManager();
         
         $newPurchase = new Purchase();
         $newPurchase->setUser($user);
         $newPurchase->setItem($item);
+        if($event != NULL)
+        {
+            $newPurchase->setEvent($event);
+        }
         $em->persist($newPurchase);
         $em->flush();
     }

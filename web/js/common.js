@@ -1,9 +1,12 @@
-function purchaseItem(itemId)
+function purchaseItem(itemId, eventId)
 {
+    if((itemId < 0) || (eventId < 0))
+        throw('item or event id is invalid');
+    
     $.ajax({
         type: 'POST',
         url: '/app_dev.php/purchaseItem',
-        data: {id: itemId}
+        data: {id: itemId, eventId: eventId}
     })
     .done(function() {alert("success!")})
     .fail(function() {alert("Failure!")});

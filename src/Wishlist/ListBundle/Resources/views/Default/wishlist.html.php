@@ -34,9 +34,17 @@
 </div>
 
 <div id="confirmDialog" title="Purchase">
-    <p>When would you like to give this item?</p>
-    <div id="confirmName">Name</div>
-    <div id="confirmEvents">Events</div>
+    <p>Purchase <span id="confirmName">Name</span> for event:</p>
+    <div id="confirmEventContainer">
+    <?php 
+    if(isset($events))
+    {
+        foreach ($events as $event){
+            echo "<div id='event_".$event->getId()."' class='confirmEvent'>".$event->getName()."</div>\n";
+        }
+    }
+    ?>
+    </div>
     <div id="confirmCreateEvent">Create a new Event!</div>
     <span id="confirmBtn">Ok</span>
 </div>
