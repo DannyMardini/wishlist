@@ -5,3 +5,7 @@ WishlistCoreBundle_homepage:
 WishlistCoreBundle_NotifyAdmin:
     pattern:  /Notify/Admin
     defaults: { _controller: WishlistCoreBundle:Default:NotifyAdmin }    
+
+WishlistCoreBundle_getItemInfo:
+  pattern: /ItemInfo
+  defaults: { _controller: WishlistCoreBundle:EntityServices:getItemInfo }

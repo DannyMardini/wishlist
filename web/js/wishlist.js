@@ -5,6 +5,7 @@
 
 var wishlist_div = "#div_wishlist_div";
 var selected_itemId;
+var selected_eventId;
 
 function setupWishlist()
 {
@@ -29,6 +30,7 @@ function setupWishlist()
     });
     
     $('.purchaseBtn').click(selectItem);
+    $('.confirmEvent').click(selectEvent);
 
     $('#confirmDialog').dialog(
         {
@@ -44,15 +46,63 @@ function setupWishlist()
 function selectItem()
 {
     selected_itemId = $(this).attr('id');
-    $('#confirmDialog').dialog('open');
+    getItemInfo(selected_itemId, function(itemInfo){
+        populateDialogItemInfo(itemInfo);
+        $('#confirmDialog').dialog('open');
+    });
+}
+
+function parseEventId(idString)
+{
+    var split_str = idString.split('_');
+    
+    if(split_str.length != 2)
+        return -1;  //Return an invalid event id if we couldn't parse
+    
+    return parseInt(split_str[1]);
+}
+
+function selectEvent()
+{
+    selected_eventId = parseEventId($(this).attr('id'));
+    
+    //Make sure only the selected event is highlighted.
+    $('.confirmEvent').css('background-color', '');
+    $(this).css('background-color', '#999999');
+}
+
+function getItemInfo(itemId, callBackFunc)
+{
+    $.ajax({
+        type: 'POST',
+        url: '/app_dev.php/ItemInfo',
+        data: {id: itemId}
+    }).success(function(data){
+        if(data)
+            callBackFunc(data);        
+    });
 }
 
 function confirmDialogOpen()
 {
+    //Set up purchase button
     $('#confirmBtn').click(function(){ 
-        purchaseItem(selected_itemId);
+        purchaseItem(selected_itemId, selected_eventId);
         $('#confirmDialog').dialog('close');
     });
+}
+
+function populateDialogItemInfo(itemInfo)
+{
+    if( !itemInfo )
+    {
+        $('#confirmDialog').dialog('close');
+        return;
+    }
+    
+    var item = JSON.parse(itemInfo);
+    
+    $('#confirmName').html(item.name);
 }
 
 function confirmDialogClose()

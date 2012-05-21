@@ -28,3 +28,17 @@ span.purchaseBtn {
     border-width: 1px;
     cursor: hand;
 }
+
+#confirmEventContainer {
+    border-style: solid;
+    border-width: 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 1em;
+    max-height: 3em;
+}
+
+div.confirmEvent:hover {
+    background-color: #efefef;
+    cursor: hand;
+}

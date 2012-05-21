@@ -32,7 +32,7 @@ class DefaultController extends Controller
 
         try {
             $friendUpdates =  $updateRepo->getFriendsUpdates($user->getWishlistuserId());
-            $friendEvents = $eventRepo->getFriendsEvents($user->getWishlistuserId());
+            $friendEvents = $eventRepo->getFriendEvents($user->getWishlistuserId());
         }catch(Exception $e){
             $e->getTrace();
         }

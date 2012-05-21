@@ -28,7 +28,20 @@ class EventRepository extends EntityRepository
         $this->getEntityManager()->flush();       
     }
     
-    public function getFriendsEvents(/*int*/ $userId)
+    public function getUserEvents(/*int*/ $userId, /*int*/ $daysInterval = 32)
+    {
+        //Get Events
+        $query = $this->createQueryBuilder('e')
+                ->where('e.user_id = :uid')
+                ->setParameter('uid', $userId)
+                ->andWhere('DATE_DIFF(e.eventDate, CURRENT_DATE()) < :day_interval')
+                ->setParameter('day_interval', $daysInterval);
+        
+        $events = $query->getResult();
+        return $events;
+    }
+    
+    public function getFriendEvents(/*int*/ $userId)
     {                                     
         $rsm = new ResultSetMapping;
         $rsm->addEntityResult('Wishlist\CoreBundle\Entity\Event', 'e');
