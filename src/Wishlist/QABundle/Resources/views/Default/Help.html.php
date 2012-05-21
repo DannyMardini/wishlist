@@ -1,6 +1,7 @@
 <html>
     <head>
         <link href="/css/help.css" rel="stylesheet" type="text/css" />
+        <link href="/css/formStyling.css" rel="stylesheet" type="text/css" />
         <link href="/css/navBar.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="/js/QABundle.js"></script>
     </head>

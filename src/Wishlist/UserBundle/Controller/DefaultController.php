@@ -107,4 +107,56 @@ class DefaultController extends Controller
             }
         }        
     }
+    
+    public function uploadUserImageAction(){
+        try{
+            $response = 'Image cannot be shown';
+            $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
+            $path = "images/temp/".$loggedInUserId."/";
+            $slashlessPath = "images/temp/".$loggedInUserId;
+            
+            $foundDir = is_dir($slashlessPath);
+            
+            if(!$foundDir) // add the user directory before saving the temp image
+            {
+                mkdir($slashlessPath, 0777);
+            }
+            
+            // continue on to save the image in the user directory
+            $valid_formats = array("jpg", "png", "gif", "bmp");
+            if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
+            {
+                $name = $_FILES['photoimg']['name'];
+                $size = $_FILES['photoimg']['size'];
+			
+                if(strlen($name))
+                {
+                    list($txt, $ext) = explode(".", $name);
+                    if(in_array(strtolower($ext),$valid_formats))
+                    {
+                        if($size<(1024*1024))
+                        {                  
+                            $actual_image_name = time().substr(str_replace(" ", "_", $txt), 5).".".$ext;
+                            $actual_image_name = "profile.".$ext;
+                            
+                            $tmp = $_FILES['photoimg']['tmp_name'];
+                            
+                            if(move_uploaded_file($tmp, $path . $actual_image_name))
+                            {
+                                //mysql_query("UPDATE users SET profile_image='$actual_image_name' WHERE uid='$session_id'");                                
+                                $response = "<img src='/".$path.$actual_image_name."'  class='preview'>";
+                            }
+                            else
+                                $response = "failed";
+                        }
+                    }
+                }
+            }    
+            
+           return new Response($response);
+        }
+        catch(Exception $e){
+            return new Response("An issue occurred, please try again later or try a different image");
+        }
+    }
 }
