@@ -108,6 +108,35 @@ class DefaultController extends Controller
         }        
     }
     
+    public function saveAccountSettingsAction(){
+        $response = 'could not save changes. please try again later.';
+        try{
+            $loggedInUserId = $this->getRequest()->getSession()->get('user_id');            
+            $slashlessImagePath = "images/temp/".$loggedInUserId;
+            $foundDir = is_dir($slashlessImagePath);
+
+            // save image to user page if user uploaded a new image
+            if($foundDir) // move image to official user image and remove temp folder
+            {
+                // TO DO
+            }
+            
+            $full_name = $this->getRequest()->get('fullname');
+            $email = $this->getRequest()->get('email');
+            $new_password = $this->getRequest()->get('new_password');
+            $old_password = $this->getRequest()->get('old_password');
+            
+            // TO DO 
+            // get the user then compare the users info to the variables above to check for changes.
+
+            
+            
+        }
+        catch(Exception $e){
+            return new Response($response);
+        }
+    }
+    
     public function uploadUserImageAction(){
         try{
             $response = 'Image cannot be shown';
@@ -144,7 +173,7 @@ class DefaultController extends Controller
                             if(move_uploaded_file($tmp, $path . $actual_image_name))
                             {
                                 //mysql_query("UPDATE users SET profile_image='$actual_image_name' WHERE uid='$session_id'");                                
-                                $response = "<img src='/".$path.$actual_image_name."'  class='preview'>";
+                                $response = "<img id='user_image' src='/".$path.$actual_image_name."'  class='preview'>";
                             }
                             else
                                 $response = "failed";
