@@ -95,17 +95,63 @@ class DefaultController extends Controller
             
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
             
-            return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId));
+            if(!isset($loggedInUserId)){
+                $message = 'Please go to the frontpage to sign in.';
+                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));                
+            }
+            else {
+                // get the original password IF any exists.
+                $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');        
+                $user = $userRepo->getUserWithId($loggedInUserId);
+                $originalPassword = $user->getPassword();
+                $firstName = $user->getFirstName();
+                $lastName = $user->getLastName();
+                $email = $user->getEmail();
+                $gender = $user->getGender();
+                
+                return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId, 'firstName' => $firstName, 
+                    'lastName' => $lastName, 'email' => $email, 'originalPassword' => $originalPassword,
+                    'gender' => $gender));
+            }
             
         }catch(NoResultException $e)
         {
             if(!isset($loggedInUserId)){
-                throw $this->createNotFoundException('Please to go the Frontpage to sign on');
+                throw $this->createNotFoundException('Please to go the Frontpage to sign in');
             }
             else {
                 throw $this->createNotFoundException('Could not find user');
             }
         }        
+    }
+    
+    public function saveAccountSettingsAction(){
+        $response = 'could not save changes. please try again later.';
+        try{
+            $loggedInUserId = $this->getRequest()->getSession()->get('user_id');            
+            $slashlessImagePath = "images/temp/".$loggedInUserId;
+            $foundDir = is_dir($slashlessImagePath);
+
+            // save image to user page if user uploaded a new image
+            if($foundDir) // move image to official user image and remove temp folder
+            {
+                // TO DO
+            }
+            
+            $full_name = $this->getRequest()->get('fullname');
+            $email = $this->getRequest()->get('email');
+            $new_password = $this->getRequest()->get('new_password');
+            $old_password = $this->getRequest()->get('old_password');
+            
+            // TO DO 
+            // get the user then compare the users info to the variables above to check for changes.
+
+            
+            
+        }
+        catch(Exception $e){
+            return new Response($response);
+        }
     }
     
     public function uploadUserImageAction(){
@@ -144,7 +190,7 @@ class DefaultController extends Controller
                             if(move_uploaded_file($tmp, $path . $actual_image_name))
                             {
                                 //mysql_query("UPDATE users SET profile_image='$actual_image_name' WHERE uid='$session_id'");                                
-                                $response = "<img src='/".$path.$actual_image_name."'  class='preview'>";
+                                $response = "<img id='user_image' src='/".$path.$actual_image_name."'  class='preview'>";
                             }
                             else
                                 $response = "failed";

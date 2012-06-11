@@ -21,3 +21,7 @@ WishlistUserBundle_accountsettings:
 WishlistUserBundle_accountsettingsUploadImage:
   pattern: /UploadUserImage
   defaults: { _controller: WishlistUserBundle:Default:uploadUserImage }
+  
+WishlistUserBundle_save_account_settings:
+  pattern: /SaveAccountSettings
+  defaults: { _controller: WishlistUserBundle:Default:saveAccountSettings }
