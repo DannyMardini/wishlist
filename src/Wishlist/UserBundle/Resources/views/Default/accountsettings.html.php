@@ -10,25 +10,28 @@
         <script type="text/javascript" src="/js/accountsettings.js"></script>
     </head>
     <body>
-        <input type="hidden" id="gender" value="<?php echo $gender ?>" />
+        <input type="hidden" id="orig_gender" value="<?php echo $gender ?>" />
+        <input type="hidden" id="orig_firstName" value="<?php echo $firstName ?>" />
+        <input type="hidden" id="orig_lastName" value="<?php echo $lastName ?>" />
+        <input type="hidden" id="orig_email" value="<?php echo $email ?>" />
+        
         <form id="accountSettingsForm" action="/app_dev.php/SaveAccountSettings">
 
         <label>First Name:</label>
-        <input type="text" id="full_name" name="first_name" placeholder="Jane" required value="<?php echo $firstName ?>">
+        <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
         
         <label>Last Name:</label>
-        <input type="text" id="full_name" name="last_name" placeholder="Doe" required value="<?php echo $lastName ?>">        
+        <input type="text" id="lastName" name="lastName" placeholder="Doe" required>        
 
         <label>Email:</label>
-        <input type="email" id="email_addr" name="email_addr" placeholder="email" value="<?php echo $email ?>">       
-        <input type="email" id="email_addr_repeat" name="email_addr_repeat" placeholder="repeat email" oninput="checkEmail(this)">
+        <input type="email" id="email" name="email" placeholder="email" required>        
         
         <label>Gender:</label>
-        <div style="display:block;margin:0;padding:0;margin-bottom:15px;">
-        <ul style="-webkit-padding-start: 5px;display:block;">
-        <li style="list-style:none;display:inline;width:auto;clear:none;padding:4px 0 0 0;margin-right:34px;float:left;"><label style="float:right;display:block;width:auto;"><input style="width:15px;float:left; display:inline-block" type="radio" id="gender_1" name="Gender" value="1" />Male</label></li>
-        <li style="list-style:none;display:inline;width:auto;clear:none;padding:4px 0 0 0;margin-right:34px;float:left;"><label style="float:right;display:block;width:auto;"><input style="width:15px;float:left; display:inline-block" type="radio" id="gender_2" name="Gender" value="2" />Female</label></li>
-        <li style="list-style:none;display:inline;width:auto;clear:none;padding:4px 0 0 0;margin-right:34px;float:left;"><label style="float:right;display:block;width:auto;"><input style="width:15px;float:left; display:inline-block" type="radio" id="gender_0" name="Gender" value="0" />Unspecified</label></li>
+        <div class="genderDiv">
+        <ul>
+        <li><label><input type="radio" id="gender_1" name="Gender" value="1" />Male</label></li>
+        <li><label><input type="radio" id="gender_2" name="Gender" value="2" />Female</label></li>
+        <li><label><input type="radio" id="gender_0" name="Gender" value="0" />Unspecified</label></li>
         </ul>
         </div>        
         

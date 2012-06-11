@@ -22,3 +22,22 @@ form {
     margin: 20px auto;
 }
 
+.genderDiv{
+    display:block;margin:0;padding:0;margin-bottom:15px;
+}
+
+.genderDiv ul{
+    -webkit-padding-start: 5px;display:block;
+}
+
+.genderDiv ul li{
+    list-style:none;display:inline;width:auto;clear:none;padding:4px 0 0 0;margin-right:34px;float:left;
+}
+
+.genderDiv label{
+    float:right;display:block;width:auto;
+}
+
+.genderDiv input{
+    width:15px;float:left; display:inline-block;
+}

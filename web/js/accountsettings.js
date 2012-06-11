@@ -1,12 +1,12 @@
-    function checkEmail(input) {
-        if (input.value != document.getElementById('email_addr').value) {
-            input.setCustomValidity('The two email addresses must match.');
-        } 
-        else {
-            // input is valid -- reset the error message
-            input.setCustomValidity('');
-        }
-    }
+//    function checkEmail(input) {
+//        if (input.value != document.getElementById('email_addr').value) {
+//            input.setCustomValidity('The two email addresses must match.');
+//        } 
+//        else {
+//            // input is valid -- reset the error message
+//            input.setCustomValidity('');
+//        }
+//    }
     
     function checkPassword(input) {
         if (input.value != document.getElementById('new_password1').value) {
@@ -52,8 +52,11 @@
             }).submit();    
         });     
                
-        var gender = $('#gender').val();
+        var gender = $('#orig_gender').val();
         $('#gender_'+gender).attr('checked',true);
+        $('#firstName').val($('#orig_firstName').val());
+        $('#lastName').val($('#orig_lastName').val());
+        $('#email').val($('#orig_email').val());
         
     });
     

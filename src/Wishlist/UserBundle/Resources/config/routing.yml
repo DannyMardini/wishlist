@@ -15,7 +15,7 @@ WishlistUserBundle_friendlist:
   defaults: { _controller: WishlistUserBundle:Default:showFriendpage}
 
 WishlistUserBundle_accountsettings:
-  pattern: /AccountSettings/{user_id}
+  pattern: /AccountSettings
   defaults: { _controller: WishlistUserBundle:Default:showAccountSettings}
   
 WishlistUserBundle_accountsettingsUploadImage:
