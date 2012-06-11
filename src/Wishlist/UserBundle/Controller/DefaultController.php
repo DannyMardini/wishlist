@@ -95,12 +95,29 @@ class DefaultController extends Controller
             
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
             
-            return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId));
+            if(!isset($loggedInUserId)){
+                $message = 'Please go to the frontpage to sign in.';
+                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));                
+            }
+            else {
+                // get the original password IF any exists.
+                $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');        
+                $user = $userRepo->getUserWithId($loggedInUserId);
+                $originalPassword = $user->getPassword();
+                $firstName = $user->getFirstName();
+                $lastName = $user->getLastName();
+                $email = $user->getEmail();
+                $gender = $user->getGender();
+                
+                return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId, 'firstName' => $firstName, 
+                    'lastName' => $lastName, 'email' => $email, 'originalPassword' => $originalPassword,
+                    'gender' => $gender));
+            }
             
         }catch(NoResultException $e)
         {
             if(!isset($loggedInUserId)){
-                throw $this->createNotFoundException('Please to go the Frontpage to sign on');
+                throw $this->createNotFoundException('Please to go the Frontpage to sign in');
             }
             else {
                 throw $this->createNotFoundException('Could not find user');

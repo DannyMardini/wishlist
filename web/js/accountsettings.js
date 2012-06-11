@@ -50,7 +50,10 @@
             {
                 target: '#preview'
             }).submit();    
-        });        
+        });     
+               
+        var gender = $('#gender').val();
+        $('#gender_'+gender).attr('checked',true);
         
     });
     
