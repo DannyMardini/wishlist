@@ -1,13 +1,3 @@
-    function checkEmail(input) {
-        if (input.value != document.getElementById('email_addr').value) {
-            input.setCustomValidity('The two email addresses must match.');
-        } 
-        else {
-            // input is valid -- reset the error message
-            input.setCustomValidity('');
-        }
-    }
-    
     function checkPassword(input) {
         if (input.value != document.getElementById('new_password1').value) {
             input.setCustomValidity('The two passwords must match.');
