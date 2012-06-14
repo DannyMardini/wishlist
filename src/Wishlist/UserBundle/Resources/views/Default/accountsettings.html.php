@@ -47,7 +47,7 @@
         
         <form id="imageform" method="post" enctype="multipart/form-data" action='/app_dev.php/UploadUserImage'>
             Upload image <input type="file" name="photoimg" id="photoimg" />
-            <div id='preview'></div>
+            <div id='preview'><?php echo $profileImage ?></div>
         </form>
         
         
