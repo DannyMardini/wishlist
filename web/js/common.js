@@ -1,7 +1,10 @@
 function purchaseItem(itemId, eventId)
 {
-    if((itemId < 0) || (eventId < 0))
-        throw('item or event id is invalid');
+    if(itemId < 0)
+        throw('item is invalid.');
+    
+    if(eventId < 0)
+        throw('Please select a valid event.');
     
     $.ajax({
         type: 'POST',

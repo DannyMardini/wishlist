@@ -10,17 +10,21 @@
         <script type="text/javascript" src="/js/accountsettings.js"></script>
     </head>
     <body>
-        <input type="hidden" id="gender" value="<?php echo $gender ?>" />
+        <input type="hidden" id="orig_gender" value="<?php echo $gender ?>" />
+        <input type="hidden" id="orig_firstName" value="<?php echo $firstName ?>" />
+        <input type="hidden" id="orig_lastName" value="<?php echo $lastName ?>" />
+        <input type="hidden" id="orig_email" value="<?php echo $email ?>" />
+        
         <form id="accountSettingsForm" action="/app_dev.php/SaveAccountSettings">
 
         <label>First Name:</label>
-        <input type="text" id="full_name" name="first_name" placeholder="Jane" required value="<?php echo $firstName ?>">
+        <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
         
         <label>Last Name:</label>
-        <input type="text" id="full_name" name="last_name" placeholder="Doe" required value="<?php echo $lastName ?>">        
+        <input type="text" id="lastName" name="lastName" placeholder="Doe" required>        
 
         <label>Email:</label>
-        <input type="email" id="email_addr" name="email_addr" placeholder="email" value="<?php echo $email ?>">       
+        <input type="email" id="email" name="email" placeholder="email" required>        
         
         <label>Gender:</label>
         <div class="genderDiv">

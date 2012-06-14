@@ -1,3 +1,4 @@
+
     function checkPassword(input) {
         if (input.value != document.getElementById('new_password1').value) {
             input.setCustomValidity('The two passwords must match.');
@@ -42,8 +43,11 @@
             }).submit();    
         });     
                
-        var gender = $('#gender').val();
+        var gender = $('#orig_gender').val();
         $('#gender_'+gender).attr('checked',true);
+        $('#firstName').val($('#orig_firstName').val());
+        $('#lastName').val($('#orig_lastName').val());
+        $('#email').val($('#orig_email').val());
         
     });
     

@@ -4,8 +4,8 @@
  */
 
 var wishlist_div = "#div_wishlist_div";
-var selected_itemId;
-var selected_eventId;
+var selected_itemId = -1;
+var selected_eventId = -1;
 
 function setupWishlist()
 {
@@ -29,8 +29,8 @@ function setupWishlist()
         delFromWishlist(itemObj, setupWishlist);
     });
     
-    $('.purchaseBtn').click(selectItem);
-    $('.confirmEvent').click(selectEvent);
+    $('.purchaseBtn').click(clickedItem);
+    $('.confirmEvent').click(clickedEvent);
 
     $('#confirmDialog').dialog(
         {
@@ -43,7 +43,7 @@ function setupWishlist()
     );
 }
 
-function selectItem()
+function clickedItem()
 {
     selected_itemId = $(this).attr('id');
     getItemInfo(selected_itemId, function(itemInfo){
@@ -62,13 +62,28 @@ function parseEventId(idString)
     return parseInt(split_str[1]);
 }
 
-function selectEvent()
+function toggleSelectEvent(selected)
 {
-    selected_eventId = parseEventId($(this).attr('id'));
+    var eventId = parseEventId(selected.attr('id'));
     
+    if(eventId < 0)
+        return;
+    
+    if(selected_eventId == eventId){
+        //unselect the event
+        selected_eventId = -1
+    }
+    else {
+        selected_eventId = eventId;
+        selected.css('background-color', '#999999');
+    }
+}
+
+function clickedEvent()
+{   
     //Make sure only the selected event is highlighted.
     $('.confirmEvent').css('background-color', '');
-    $(this).css('background-color', '#999999');
+    toggleSelectEvent($(this));
 }
 
 function getItemInfo(itemId, callBackFunc)
