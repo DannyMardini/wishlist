@@ -7,6 +7,32 @@ var wishlist_div = "#div_wishlist_div";
 var selected_itemId = -1;
 var selected_eventId = -1;
 
+function parseDate(/*string*/ str)
+{
+    var retDate = new Date();
+    
+    if(str == ""){
+        //string is not defined
+        return null;
+    }
+    
+    var str_arr = str.split("/");
+    
+    if( str_arr.length != 3 ){
+        throw "Invalid date.";
+    }
+    
+    retDate.setFullYear(str_arr[2], str_arr[0], str_arr[1]);
+
+    /*
+     * TODO:
+     * FIx purchaseItem function to also accept a date.
+     * Finish the rest of this parseDate function.
+     */
+    
+    return retDate;
+}
+
 function setupWishlist()
 {
     $(wishlist_div).accordion({
@@ -41,6 +67,8 @@ function setupWishlist()
             close: confirmDialogClose
         }
     );
+    
+    $('#giftDateInput').datepicker();
 }
 
 function clickedItem()
@@ -98,13 +126,31 @@ function getItemInfo(itemId, callBackFunc)
     });
 }
 
+function confirmOK()
+{
+    var giftDate = parseDate($('#giftDateInput').attr('value'));
+    
+    if((selected_eventId > 0) && (giftDate == null)){
+        purchaseItem(selected_itemId, selected_eventId, "Event");
+    }
+    else if((giftDate != null) && (selected_eventId < 0)){
+        purchaseItem(selected_itemId, giftDate.toDateString(), "Date");
+    }
+    else {
+        alert("Please select either an event or a date.");
+        return;
+    }
+        
+    $('#confirmDialog').dialog('close');
+}
+
 function confirmDialogOpen()
 {
+    //Give the confirm button focus.
+    $('#confirmBtn').focus();
+    
     //Set up purchase button
-    $('#confirmBtn').click(function(){ 
-        purchaseItem(selected_itemId, selected_eventId);
-        $('#confirmDialog').dialog('close');
-    });
+    $('#confirmBtn').click(confirmOK);
 }
 
 function populateDialogItemInfo(itemInfo)

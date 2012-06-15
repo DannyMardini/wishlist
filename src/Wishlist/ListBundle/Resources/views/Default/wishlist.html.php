@@ -45,6 +45,6 @@
     }
     ?>
     </div>
-    <div id="confirmCreateEvent">Create a new Event!</div>
+    <div id="confirmCreateEvent"><p>or enter a date!</p><input id="giftDateInput" type="text" tabindex="-1" placeholder="mm/dd/yyyy"/></div>
     <span id="confirmBtn">Ok</span>
 </div>

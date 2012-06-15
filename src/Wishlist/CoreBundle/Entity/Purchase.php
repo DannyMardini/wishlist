@@ -9,6 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Purchase
 {
+    const TYPE_EVENT = "Event";
+    const TYPE_DATE = "Date";
+    
     /**
      * @var integer $id
      */
@@ -25,36 +28,6 @@ class Purchase
         return $this->id;
     }
     /**
-     * @var datetime $date
-     */
-    private $date;
-
-
-    /**
-     * Set date
-     *
-     * @param datetime $date
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    }
-
-    /**
-     * Get date
-     *
-     * @return datetime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-    /**
-     * @var datetime $notify_date
-     */
-    private $notify_date;
-
-    /**
      * @var Wishlist\CoreBundle\Entity\WishlistUser
      */
     private $user;
@@ -63,27 +36,6 @@ class Purchase
      * @var Wishlist\CoreBundle\Entity\WishlistItem
      */
     private $item;
-
-
-    /**
-     * Set notify_date
-     *
-     * @param datetime $notifyDate
-     */
-    public function setNotifyDate($notifyDate)
-    {
-        $this->notify_date = $notifyDate;
-    }
-
-    /**
-     * Get notify_date
-     *
-     * @return datetime 
-     */
-    public function getNotifyDate()
-    {
-        return $this->notify_date;
-    }
 
     /**
      * Set user
@@ -148,5 +100,50 @@ class Purchase
     public function getEvent()
     {
         return $this->event;
+    }
+    /**
+     * @var date $gift_date
+     */
+    private $gift_date;
+
+
+    /**
+     * Set gift_date
+     *
+     * @param date $notifyDate
+     */
+    public function setNotifyDate($notifyDate)
+    {
+        $this->gift_date = $notifyDate;
+    }
+
+    /**
+     * Get gift_date
+     *
+     * @return date 
+     */
+    public function getNotifyDate()
+    {
+        return $this->gift_date;
+    }
+
+    /**
+     * Set gift_date
+     *
+     * @param date $giftDate
+     */
+    public function setGiftDate($giftDate)
+    {
+        $this->gift_date = $giftDate;
+    }
+
+    /**
+     * Get gift_date
+     *
+     * @return date 
+     */
+    public function getGiftDate()
+    {
+        return $this->gift_date;
     }
 }

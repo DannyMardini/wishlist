@@ -28,7 +28,7 @@ Wishlist\CoreBundle\Entity\Purchase:
       id: true
       generator:
         strategy: AUTO
-    notify_date:
-      type: datetime
+    gift_date:
+      type: date
       nullable: true
   lifecycleCallbacks: {  }
