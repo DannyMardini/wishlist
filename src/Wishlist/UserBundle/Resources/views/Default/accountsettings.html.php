@@ -33,7 +33,12 @@
         <li><label><input type="radio" id="gender_2" name="Gender" value="2" />Female</label></li>
         <li><label><input type="radio" id="gender_0" name="Gender" value="0" />Unspecified</label></li>
         </ul>
-        </div>        
+        </div>
+        
+        <label>Events:</label>
+        <div class="eventsDiv">
+            TO DO
+        </div>
         
         <label>Password:</label>
         <?php if(isset($originalPassword)) { ?>
@@ -47,7 +52,7 @@
         
         <form id="imageform" method="post" enctype="multipart/form-data" action='/app_dev.php/UploadUserImage'>
             Upload image <input type="file" name="photoimg" id="photoimg" />
-            <div id='preview'></div>
+            <div id='preview'><?php echo $profileImage ?></div>
         </form>
         
         

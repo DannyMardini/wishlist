@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NoResultException;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Entity\Event;
+use Wishlist\CoreBundle\Services\PicService;
 
 
 class DefaultController extends Controller
@@ -100,7 +101,7 @@ class DefaultController extends Controller
                 return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));                
             }
             else {
-                // get the original password IF any exists.
+                // get the original user information to pre-populate the form
                 $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');        
                 $user = $userRepo->getUserWithId($loggedInUserId);
                 $originalPassword = $user->getPassword();
@@ -108,10 +109,11 @@ class DefaultController extends Controller
                 $lastName = $user->getLastName();
                 $email = $user->getEmail();
                 $gender = $user->getGender();
+                $profileImage = "<img id='user_image' src='" . PicService::getProfileUrl($loggedInUserId) . "'  class='preview'>";
                 
                 return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId, 'firstName' => $firstName, 
                     'lastName' => $lastName, 'email' => $email, 'originalPassword' => $originalPassword,
-                    'gender' => $gender));
+                    'gender' => $gender, 'profileImage' => $profileImage));
             }
             
         }catch(NoResultException $e)

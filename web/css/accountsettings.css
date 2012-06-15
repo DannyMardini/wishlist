@@ -41,3 +41,7 @@ form {
 .genderDiv input{
     width:15px;float:left; display:inline-block;
 }
+
+.eventsDiv{
+    margin-bottom: 15px;
+}
