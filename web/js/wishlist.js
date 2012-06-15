@@ -90,27 +90,61 @@ function parseEventId(idString)
     return parseInt(split_str[1]);
 }
 
-function toggleSelectEvent(selected)
+function clearEventHighlights()
+{
+    $('.confirmEvent').css('background-color', '');
+}
+
+function highlightEvent(selected)
+{
+    selected.css('background-color', '#999999');
+}
+
+function unselectEvent()
+{
+    clearEventHighlights();
+    selected_eventId = -1;
+}
+
+function selectEvent(selected)
 {
     var eventId = parseEventId(selected.attr('id'));
     
     if(eventId < 0)
         return;
     
-    if(selected_eventId == eventId){
-        //unselect the event
-        selected_eventId = -1
+    selected_eventId = eventId;
+    clearEventHighlights();
+    highlightEvent(selected)
+}
+
+function isSelectedEvent(selected)
+{
+    var eventId = parseEventId(selected.attr('id'));
+    
+    if( eventId == selected_eventId )
+    {
+        return true;
+        
     }
-    else {
-        selected_eventId = eventId;
-        selected.css('background-color', '#999999');
+    
+    return false;
+}
+
+function toggleSelectEvent(selected)
+{
+    if( isSelectedEvent(selected) )
+    {
+        unselectEvent();
+    }
+    else 
+    {
+        selectEvent(selected);
     }
 }
 
 function clickedEvent()
 {   
-    //Make sure only the selected event is highlighted.
-    $('.confirmEvent').css('background-color', '');
     toggleSelectEvent($(this));
 }
 
@@ -168,6 +202,7 @@ function populateDialogItemInfo(itemInfo)
 
 function confirmDialogClose()
 {
+    unselectEvent();
     $('#confirmBtn').unbind('click');
 }
 
