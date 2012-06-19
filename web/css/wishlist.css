@@ -42,3 +42,7 @@ div.confirmEvent:hover {
     background-color: #efefef;
     cursor: hand;
 }
+
+#confirmBtn:hover {
+    cursor: hand;
+}
