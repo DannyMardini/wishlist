@@ -9,13 +9,15 @@ var selected_eventId = -1;
 
 function isValidDate(year, month, day)
 {
+    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate(); };
+    
     if(year < 2000 || year > 3000)
         return false;
     
     if(month < 0 || month > 11)
         return false;
     
-    if(day < 0 || day > 31)
+    if(day < 0 || day > daysInMonth(year, month))
         return false;
     
     return true;
