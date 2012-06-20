@@ -7,6 +7,20 @@ var wishlist_div = "#div_wishlist_div";
 var selected_itemId = -1;
 var selected_eventId = -1;
 
+function isValidDate(year, month, day)
+{
+    if(year < 2000 || year > 3000)
+        return false;
+    
+    if(month < 0 || month > 11)
+        return false;
+    
+    if(day < 0 || day > 31)
+        return false;
+    
+    return true;
+}
+
 function parseDate(/*string*/ str)
 {
     var retDate = new Date();
@@ -22,7 +36,20 @@ function parseDate(/*string*/ str)
         throw "Invalid date.";
     }
     
-    retDate.setFullYear(str_arr[2], str_arr[0], str_arr[1]);
+    var month = parseInt(str_arr[0], 10);
+    var day = parseInt(str_arr[1], 10);
+    var year = parseInt(str_arr[2], 10);
+    
+    //This is quite stupid as monthValue is the only value that begins with an
+    //index of zero, subtract one to fix it.
+    month--;
+    
+    if(!isValidDate(year, month, day))
+    {
+        throw "Invalid date.";
+    }
+    
+    retDate.setFullYear(year, month, day);
 
     /*
      * TODO:
@@ -162,16 +189,23 @@ function getItemInfo(itemId, callBackFunc)
 
 function confirmOK()
 {
-    var giftDate = parseDate($('#giftDateInput').attr('value'));
+    try
+    {
+        var giftDate = parseDate($('#giftDateInput').attr('value'));
     
-    if((selected_eventId > 0) && (giftDate == null)){
-        purchaseItem(selected_itemId, selected_eventId, "Event");
-    }
-    else if((giftDate != null) && (selected_eventId < 0)){
-        purchaseItem(selected_itemId, giftDate.toDateString(), "Date");
-    }
-    else {
-        alert("Please select either an event or a date.");
+    
+        if((selected_eventId > 0) && (giftDate == null)){
+            purchaseItem(selected_itemId, selected_eventId, "Event");
+        }
+        else if((giftDate != null) && (selected_eventId < 0)){
+            purchaseItem(selected_itemId, giftDate.toDateString(), "Date");
+        }
+        else {
+            throw "Please select either an event or a date.";
+        }
+    }catch(e)
+    {
+        alert(e);
         return;
     }
         
