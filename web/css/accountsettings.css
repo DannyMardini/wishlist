@@ -22,6 +22,12 @@ form {
     margin: 20px auto;
 }
 
+.newEventInput 
+{
+    width: 80px;
+    font-size: 10px;
+}
+
 .genderDiv{
     display:block;margin:0;padding:0;margin-bottom:15px;
 }

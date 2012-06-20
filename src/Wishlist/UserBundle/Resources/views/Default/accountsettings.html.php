@@ -35,9 +35,13 @@
         </ul>
         </div>
         
-        <label>Events:</label>
-        <div class="eventsDiv">
-            TO DO
+        <label style="margin-left: 1px;">Life Events:</label>
+        <div class="eventsOuterDiv">
+            <div id="newEventButton">
+                <input id="addEvent" type="submit" value="Add Event" class="newEventInput" />
+            </div>
+            
+            <div class="events"></div>
         </div>
         
         <label>Password:</label>

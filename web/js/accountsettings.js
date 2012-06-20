@@ -49,7 +49,16 @@
         $('#lastName').val($('#orig_lastName').val());
         $('#email').val($('#orig_email').val());
         
+        $('#addEvent').click(addNewEvent);
+        
     });
+    
+    
+    function addNewEvent(e)
+    {
+        e.preventDefault();
+        alert('hi');
+    }
     
     
     function redirectToUserPage()
