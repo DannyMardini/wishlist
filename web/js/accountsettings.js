@@ -51,6 +51,10 @@
         
         $('#addEvent').click(addNewEvent);
         
+        $( "#datepicker" ).datepicker({
+                changeMonth: true,
+                changeYear: true
+        });
     });
     
     

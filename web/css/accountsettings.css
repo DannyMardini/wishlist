@@ -48,6 +48,20 @@ form {
     width:15px;float:left; display:inline-block;
 }
 
-.eventsDiv{
-    margin-bottom: 15px;
+label {
+    float: left;
+    display: inline-block;
+    width: 150px;
+}
+
+.right_content {
+    display: inline-block;
+}
+
+.buttonClass {
+    margin-top:10px;
+}
+
+.life_event_select {
+    margin-top: 10px;
 }

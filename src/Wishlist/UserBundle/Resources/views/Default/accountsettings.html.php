@@ -18,16 +18,22 @@
         <form id="accountSettingsForm" action="/app_dev.php/SaveAccountSettings">
 
         <label>First Name:</label>
+        <div class="right_content">
         <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+        </div>
         
         <label>Last Name:</label>
+        <div class="right_content">
         <input type="text" id="lastName" name="lastName" placeholder="Doe" required>        
-
+        </div>
+        
         <label>Email:</label>
+        <div class="right_content">
         <input type="email" id="email" name="email" placeholder="email" required>        
+        </div>
         
         <label>Gender:</label>
-        <div class="genderDiv">
+        <div class="genderDiv right_content">
         <ul>
         <li><label><input type="radio" id="gender_1" name="Gender" value="1" />Male</label></li>
         <li><label><input type="radio" id="gender_2" name="Gender" value="2" />Female</label></li>
@@ -35,28 +41,43 @@
         </ul>
         </div>
         
-        <label style="margin-left: 1px;">Life Events:</label>
-        <div class="eventsOuterDiv">
-            <div id="newEventButton">
-                <input id="addEvent" type="submit" value="Add Event" class="newEventInput" />
+        <label>Life Events:</label>        
+        <div class="right_content">            
+            <div style="text-decoration: underline; margin-left: 150px;">
+                <span style="display:block;"> New Event: </span>
+                <input style="margin-right:5px;width:20%; float:left; display:inline-block" type="text" name="event_name" placeholder="name">
+                <input style="margin-right:5px;width:20%;float:left;display:inline-block" type="text" id="datepicker" placeholder="mm/dd/yy">
+                <select class="life_event_select" style="margin-right:5px;width:20%; float:left;display:inline-block">
+                <option value="-1">--Type--</option>
+                <option value="1">Birthday</option>
+                <option value="2">Anniversary</option>                
+                </select>
+                <img class="buttonClass" src="/images/plus_icon.jpeg" alt="Add a new life event" />
             </div>
-            
-            <div class="events"></div>
+            <div style="text-decoration: underline; width:50%;margin-left: 150px; float:left;">
+                <span style="display:block;"> View Saved Events: </span>
+                <ul><li>Bippy Anniv</li></ul>
+            </div>            
         </div>
         
         <label>Password:</label>
+        <div class="right_content">
         <?php if(isset($originalPassword)) { ?>
         <input type="password" id="old_password" name="old_password" placeholder="old password">
         <?php } ?>
         <input type="password" id="new_password1" name="new_password1" placeholder="new password">      
         <input type="password" id="new_password2" name="new_password2" placeholder="repeat new password"
         oninput="checkPassword(this)">
+        </div>
         
         </form>
         
         <form id="imageform" method="post" enctype="multipart/form-data" action='/app_dev.php/UploadUserImage'>
-            Upload image <input type="file" name="photoimg" id="photoimg" />
+            <label>Upload image</label>
+            <div class="right_content">
+            <input type="file" name="photoimg" id="photoimg" />
             <div id='preview'><?php echo $profileImage ?></div>
+            </div>
         </form>
         
         
