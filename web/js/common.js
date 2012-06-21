@@ -1,15 +1,15 @@
-function purchaseItem(itemId, eventId)
+/*
+ * Type can be either 'Event' or 'Date'
+ */
+function purchaseItem(itemId, purchaseData, /*string*/ type)
 {
     if(itemId < 0)
         throw('item is invalid.');
     
-    if(eventId < 0)
-        throw('Please select a valid event.');
-    
     $.ajax({
         type: 'POST',
         url: '/app_dev.php/purchaseItem',
-        data: {id: itemId, eventId: eventId}
+        data: {id: itemId, purchaseData: purchaseData, type: type}
     })
     .done(function() {alert("success!")})
     .fail(function() {alert("Failure!")});

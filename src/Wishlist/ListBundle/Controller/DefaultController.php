@@ -4,8 +4,8 @@ namespace Wishlist\ListBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-
-
+use Wishlist\CoreBundle\Entity\Purchase;
+use \DateTime;
 
 class DefaultController extends Controller
 {
@@ -96,14 +96,30 @@ class DefaultController extends Controller
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
         $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
         $session = $this->getRequest()->getSession();
+        
         $itemId = $request->get('id');
-        $eventId = $request->get('eventId');
+        $purchaseData = $request->get('purchaseData');
+        $type = $request->get('type');
         
         $item = $itemRepo->find($itemId);
-        $event = $eventRepo->find($eventId);
         $purchaser = $userRepo->find($session->get('user_id'));
         
-        $purchaseRepo->newPurchase($purchaser, $item, $event);
+        if($type == Purchase::TYPE_EVENT)
+        {
+            $event = $eventRepo->find($purchaseData);
+
+            $purchaseRepo->newPurchase($purchaser, $item, $event);
+            
+        }else if ($type == Purchase::TYPE_DATE)
+        {
+            $date = DateTime::createFromFormat('D M d Y', $purchaseData);
+            
+            $purchaseRepo->newPurchase($purchaser, $item, NULL, $date);
+            
+        }else
+        {
+            return new Exception("Unknown purchase type.");
+        }
         
         return new Response();
     }

@@ -7,6 +7,61 @@ var wishlist_div = "#div_wishlist_div";
 var selected_itemId = -1;
 var selected_eventId = -1;
 
+function isValidDate(year, month, day)
+{
+    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate(); };
+    
+    if(year < 2000 || year > 3000)
+        return false;
+    
+    if(month < 0 || month > 11)
+        return false;
+    
+    if(day < 0 || day > daysInMonth(year, month))
+        return false;
+    
+    return true;
+}
+
+function parseDate(/*string*/ str)
+{
+    var retDate = new Date();
+    
+    if(str == ""){
+        //string is not defined
+        return null;
+    }
+    
+    var str_arr = str.split("/");
+    
+    if( str_arr.length != 3 ){
+        throw "Invalid date.";
+    }
+    
+    var month = parseInt(str_arr[0], 10);
+    var day = parseInt(str_arr[1], 10);
+    var year = parseInt(str_arr[2], 10);
+    
+    //This is quite stupid as monthValue is the only value that begins with an
+    //index of zero, subtract one to fix it.
+    month--;
+    
+    if(!isValidDate(year, month, day))
+    {
+        throw "Invalid date.";
+    }
+    
+    retDate.setFullYear(year, month, day);
+
+    /*
+     * TODO:
+     * FIx purchaseItem function to also accept a date.
+     * Finish the rest of this parseDate function.
+     */
+    
+    return retDate;
+}
+
 function setupWishlist()
 {
     $(wishlist_div).accordion({
@@ -41,6 +96,8 @@ function setupWishlist()
             close: confirmDialogClose
         }
     );
+    
+    $('#giftDateInput').datepicker();
 }
 
 function clickedItem()
@@ -62,27 +119,61 @@ function parseEventId(idString)
     return parseInt(split_str[1]);
 }
 
-function toggleSelectEvent(selected)
+function clearEventHighlights()
+{
+    $('.confirmEvent').css('background-color', '');
+}
+
+function highlightEvent(selected)
+{
+    selected.css('background-color', '#999999');
+}
+
+function unselectEvent()
+{
+    clearEventHighlights();
+    selected_eventId = -1;
+}
+
+function selectEvent(selected)
 {
     var eventId = parseEventId(selected.attr('id'));
     
     if(eventId < 0)
         return;
     
-    if(selected_eventId == eventId){
-        //unselect the event
-        selected_eventId = -1
+    selected_eventId = eventId;
+    clearEventHighlights();
+    highlightEvent(selected)
+}
+
+function isSelectedEvent(selected)
+{
+    var eventId = parseEventId(selected.attr('id'));
+    
+    if( eventId == selected_eventId )
+    {
+        return true;
+        
     }
-    else {
-        selected_eventId = eventId;
-        selected.css('background-color', '#999999');
+    
+    return false;
+}
+
+function toggleSelectEvent(selected)
+{
+    if( isSelectedEvent(selected) )
+    {
+        unselectEvent();
+    }
+    else 
+    {
+        selectEvent(selected);
     }
 }
 
 function clickedEvent()
 {   
-    //Make sure only the selected event is highlighted.
-    $('.confirmEvent').css('background-color', '');
     toggleSelectEvent($(this));
 }
 
@@ -98,13 +189,38 @@ function getItemInfo(itemId, callBackFunc)
     });
 }
 
+function confirmOK()
+{
+    try
+    {
+        var giftDate = parseDate($('#giftDateInput').attr('value'));
+    
+    
+        if((selected_eventId > 0) && (giftDate == null)){
+            purchaseItem(selected_itemId, selected_eventId, "Event");
+        }
+        else if((giftDate != null) && (selected_eventId < 0)){
+            purchaseItem(selected_itemId, giftDate.toDateString(), "Date");
+        }
+        else {
+            throw "Please select either an event or a date.";
+        }
+    }catch(e)
+    {
+        alert(e);
+        return;
+    }
+        
+    $('#confirmDialog').dialog('close');
+}
+
 function confirmDialogOpen()
 {
+    //Give the confirm button focus.
+    $('#confirmBtn').focus();
+    
     //Set up purchase button
-    $('#confirmBtn').click(function(){ 
-        purchaseItem(selected_itemId, selected_eventId);
-        $('#confirmDialog').dialog('close');
-    });
+    $('#confirmBtn').click(confirmOK);
 }
 
 function populateDialogItemInfo(itemInfo)
@@ -122,6 +238,7 @@ function populateDialogItemInfo(itemInfo)
 
 function confirmDialogClose()
 {
+    unselectEvent();
     $('#confirmBtn').unbind('click');
 }
 

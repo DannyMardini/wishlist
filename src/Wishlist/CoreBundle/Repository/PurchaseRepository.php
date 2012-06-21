@@ -17,8 +17,16 @@ use Wishlist\CoreBundle\Entity\Event;
 class PurchaseRepository extends EntityRepository
 {
     
-    public function newPurchase(WishlistUser $user, WishlistItem $item, Event $event = NULL)
+    /*
+     * This function accepts either an event or a gift_date, but not both.
+     */
+    public function newPurchase(WishlistUser $user, WishlistItem $item, Event $event = NULL, \DateTime $gift_date = NULL)
     {
+        if(isset($event) && isset($gift_date))
+        {
+            throw new \RuntimeException('Ambiguous notification date for puchase.');
+        }
+        
         $em = $this->getEntityManager();
         
         $newPurchase = new Purchase();
@@ -27,6 +35,10 @@ class PurchaseRepository extends EntityRepository
         if($event != NULL)
         {
             $newPurchase->setEvent($event);
+            $newPurchase->setNotifyDate($event->getEventDate());
+        }else if($gift_date != NULL)
+        {
+            $newPurchase->setNotifyDate($gift_date);
         }
         $em->persist($newPurchase);
         $em->flush();
