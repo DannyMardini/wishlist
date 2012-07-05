@@ -42,22 +42,36 @@
         </div>
         
         <label>Life Events:</label>        
-        <div class="right_content">            
-            <div style="text-decoration: underline; margin-left: 150px;">
-                <span style="display:block;"> New Event: </span>
-                <input style="margin-right:5px;width:20%; float:left; display:inline-block" type="text" name="event_name" placeholder="name">
-                <input style="margin-right:5px;width:20%;float:left;display:inline-block" type="text" id="datepicker" placeholder="mm/dd/yy">
-                <select class="life_event_select" style="margin-right:5px;width:20%; float:left;display:inline-block">
-                <option value="-1">--Type--</option>
-                <option value="1">Birthday</option>
-                <option value="2">Anniversary</option>                
-                </select>
-                <img class="buttonClass" src="/images/plus_icon.jpeg" alt="Add a new life event" />
+        <div class="lifeEventDiv right_content">
+            <div class="right_innercontent">
+                <div id="new_life_event_div">                    
+                    <label>Add New Event: </label>
+                    <div class="flexbox">
+                        <input type="text" id="eventname" name="event_name" placeholder="name">
+                        <input type="text" id="datepicker" placeholder="mm/dd/yy">
+                        <select>
+                        <option value="-1">--Type--</option>
+                        <option value="1">Birthday</option>
+                        <option value="2">Anniversary</option>                
+                        </select>
+                        <img class="buttonClass" id="addEventButton" src="/images/plus_icon.jpeg" alt="Add a new life event" />
+                    </div>                    
+                </div>
+
+                <div id="saved_life_events_div" style="margin-top:20px">
+                    <label> My Events: </label>
+                    <div class="flexbox">                        
+                        <input type="text" id="eventname" name="event_name" placeholder="name">
+                        <input type="text" id="datepicker" placeholder="mm/dd/yy">
+                        <select>
+                        <option value="-1">--Type--</option>
+                        <option value="1">Birthday</option>
+                        <option value="2">Anniversary</option>                
+                        </select>
+                        <img class="buttonClass" id="removeEventButton" src="/images/remove_icon_small.jpeg" alt="Remove this event" />
+                    </div>
+                </div>
             </div>
-            <div style="text-decoration: underline; width:50%;margin-left: 150px; float:left;">
-                <span style="display:block;"> View Saved Events: </span>
-                <ul><li>Bippy Anniv</li></ul>
-            </div>            
         </div>
         
         <label>Password:</label>
