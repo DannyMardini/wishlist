@@ -35,10 +35,10 @@ class PurchaseRepository extends EntityRepository
         if($event != NULL)
         {
             $newPurchase->setEvent($event);
-            $newPurchase->setNotifyDate($event->getEventDate());
+            $newPurchase->setGiftDate($event->getEventDate());
         }else if($gift_date != NULL)
         {
-            $newPurchase->setNotifyDate($gift_date);
+            $newPurchase->setGiftDate($gift_date);
         }
         $em->persist($newPurchase);
         $em->flush();
