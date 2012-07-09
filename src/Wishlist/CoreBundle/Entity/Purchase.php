@@ -106,27 +106,6 @@ class Purchase
      */
     private $gift_date;
 
-
-    /**
-     * Set gift_date
-     *
-     * @param date $notifyDate
-     */
-    public function setNotifyDate($notifyDate)
-    {
-        $this->gift_date = $notifyDate;
-    }
-
-    /**
-     * Get gift_date
-     *
-     * @return date 
-     */
-    public function getNotifyDate()
-    {
-        return $this->gift_date;
-    }
-
     /**
      * Set gift_date
      *
