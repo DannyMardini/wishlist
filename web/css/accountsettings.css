@@ -29,7 +29,7 @@ form {
 }
 
 .genderDiv{
-    display:block;margin:0;padding:0;
+    display:block;margin:0;padding:0;width:400px;
 }
 
 .genderDiv ul{
@@ -58,11 +58,16 @@ label {
 
 .right_content {
     display: inline-block;
+    width:400px;
 }
 
 .buttonClass {
-    margin-top:10px;
+    /*margin-top:10px;*/
     vertical-align: center;    
+}
+
+#removeEventButton {
+    margin-top: -10px;
 }
 
 .lifeEventDiv label{
@@ -73,25 +78,25 @@ label {
 }
 
 .lifeEventDiv #addEventButton{
-    height: 3.5%;margin-right:5px;margin-bottom:15px;
+    /*margin-right:5px;margin-bottom:15px;*/
 }
 
 .lifeEventDiv select {
-    margin-top: 5px;height: 5%;margin-right:5px;width:25%;
+    margin-top: 5px;height: 5%;margin-right:5px;width:19%;
 }
 
 .lifeEventDiv #eventname{
-    margin-right:5px;width:30%;
+    margin-right:5px;width:50%;
 }
 
 .lifeEventDiv #datepicker {
-    margin-right:5px;width:25%;    
+    margin-right:5px;width:18%;
 }
 
 .right_innercontent {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size:14px;
-  width:300px;
+  width:100%;
   min-height:30px;
   display:block;
   margin-bottom:15px;
@@ -105,6 +110,10 @@ label {
   border-radius:5px;
 }
 
+.newEventDiv {
+    width: 100%;
+}
+
 .remove_button:hover {
   cursor: hand;
   font-weight: bold;
@@ -113,10 +122,11 @@ label {
   -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  box-shadow: 0 0 5px rgba(0, 0, 255, .5);      
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);
 }
 
 .flexbox { 
+    width: 100%;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
     -webkit-box-pack: center;
