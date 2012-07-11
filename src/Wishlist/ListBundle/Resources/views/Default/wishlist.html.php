@@ -10,9 +10,11 @@
         echo "</div>";
     }
     
-    for($i = ($wishlistItems->count()-1); $i >= 0; $i--)
+    $i = $wishlistItems->count();
+    
+    while($i > 0)
     {
-        $currItem = $wishlistItems[$i];
+        $currItem = $wishlistItems[$i-1];
         
         echo "<h3>";
         if($selfWishlist) {
@@ -28,6 +30,7 @@
             echo "<span id='".$currItem->getId()."' class='purchaseBtn'>Purchase!</span>";
         }
         echo "</div>";
+        $i--;
     }
 ?>
 
