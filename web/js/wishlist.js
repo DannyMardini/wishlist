@@ -7,61 +7,6 @@ var wishlist_div = "#div_wishlist_div";
 var selected_itemId = -1;
 var selected_eventId = -1;
 
-function isValidDate(year, month, day)
-{
-    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate();};
-    
-    if(year < 2000 || year > 3000)
-        return false;
-    
-    if(month < 0 || month > 11)
-        return false;
-    
-    if(day < 0 || day > daysInMonth(year, month))
-        return false;
-    
-    return true;
-}
-
-function parseDate(/*string*/ str)
-{
-    var retDate = new Date();
-    
-    if(str == ""){
-        //string is not defined
-        return null;
-    }
-    
-    var str_arr = str.split("/");
-    
-    if( str_arr.length != 3 ){
-        throw "Invalid date.";
-    }
-    
-    var month = parseInt(str_arr[0], 10);
-    var day = parseInt(str_arr[1], 10);
-    var year = parseInt(str_arr[2], 10);
-    
-    //This is quite stupid as monthValue is the only value that begins with an
-    //index of zero, subtract one to fix it.
-    month--;
-    
-    if(!isValidDate(year, month, day))
-    {
-        throw "Invalid date.";
-    }
-    
-    retDate.setFullYear(year, month, day);
-
-    /*
-     * TODO:
-     * FIx purchaseItem function to also accept a date.
-     * Finish the rest of this parseDate function.
-     */
-    
-    return retDate;
-}
-
 function setupWishlist()
 {
     $(wishlist_div).accordion({

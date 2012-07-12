@@ -8,6 +8,7 @@
         <script type="text/javascript" src="/js/QABundle.js"></script>
         <script type="text/javascript" src="/js/jquery.form.js"></script>
         <script type="text/javascript" src="/js/accountsettings.js"></script>
+        <script type="text/javascript" src="/js/common.js"></script>
     </head>
     <body>
         <input type="hidden" id="orig_gender" value="<?php echo $gender ?>" />
@@ -18,16 +19,22 @@
         <form id="accountSettingsForm" action="/app_dev.php/SaveAccountSettings">
 
         <label>First Name:</label>
+        <div class="right_content">
         <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+        </div>
         
         <label>Last Name:</label>
+        <div class="right_content">
         <input type="text" id="lastName" name="lastName" placeholder="Doe" required>        
-
+        </div>
+        
         <label>Email:</label>
+        <div class="right_content">
         <input type="email" id="email" name="email" placeholder="email" required>        
+        </div>
         
         <label>Gender:</label>
-        <div class="genderDiv">
+        <div class="genderDiv right_content">
         <ul>
         <li><label><input type="radio" id="gender_1" name="Gender" value="1" />Male</label></li>
         <li><label><input type="radio" id="gender_2" name="Gender" value="2" />Female</label></li>
@@ -35,24 +42,57 @@
         </ul>
         </div>
         
-        <label>Events:</label>
-        <div class="eventsDiv">
-            TO DO
+        <label>Life Events:</label>        
+        <div class="lifeEventDiv right_content">
+            <div class="right_innercontent">
+                <div id="new_life_event_div" class="newEventDiv">                    
+                    <label>Add New Event: </label>
+                    <div class="flexbox">
+                        <input type="text" id="newEventname" class="eventname" name="event_name" placeholder="name">
+                        <input type="text" id="newDatepicker" class="datepicker" placeholder="mm/dd/yyyy">
+                        <select id="newEventType">
+                        <option value="-1">--Type--</option>
+                        <option value="1">Birthday</option>
+                        <option value="2">Anniversary</option>                
+                        </select>
+                        <img class="buttonClass" id="addEventButton" src="/images/plus_icon.jpeg" alt="Add a new life event" />
+                    </div>                    
+                </div>
+
+                <div id="saved_life_events_div" class="newEventDiv" style="margin-top:20px">
+                    <label> My Events: </label>
+                    <div class="flexbox">                        
+                        <input type="text" class="eventname" name="event_name" placeholder="name">
+                        <input type="text" class="datepicker" placeholder="mm/dd/yyyy">
+                        <select>
+                        <option value="-1">--Type--</option>
+                        <option value="1">Birthday</option>
+                        <option value="2">Anniversary</option>                
+                        </select>
+                        <img class="buttonClass" id="removeEventButton" src="/images/remove_icon.jpeg" alt="Remove this event" />
+                    </div>
+                </div>
+            </div>
         </div>
         
         <label>Password:</label>
+        <div class="right_content">
         <?php if(isset($originalPassword)) { ?>
         <input type="password" id="old_password" name="old_password" placeholder="old password">
         <?php } ?>
         <input type="password" id="new_password1" name="new_password1" placeholder="new password">      
         <input type="password" id="new_password2" name="new_password2" placeholder="repeat new password"
         oninput="checkPassword(this)">
+        </div>
         
         </form>
         
         <form id="imageform" method="post" enctype="multipart/form-data" action='/app_dev.php/UploadUserImage'>
-            Upload image <input type="file" name="photoimg" id="photoimg" />
+            <label>Upload image</label>
+            <div class="right_content">
+            <input type="file" name="photoimg" id="photoimg" />
             <div id='preview'><?php echo $profileImage ?></div>
+            </div>
         </form>
         
         

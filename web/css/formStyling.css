@@ -19,8 +19,8 @@
 input, select, textarea{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border:1px solid #ccc;
-  font-size:14px;
-  width:300px;
+  font-size:12px;
+  width:100%;
   min-height:30px;
   display:block;
   margin-bottom:15px;
@@ -50,9 +50,22 @@ input[type=submit]:hover {
   box-shadow: 0 0 5px rgba(0, 0, 255, .5);  
 }
 
+.buttonClass:hover {
+  cursor: hand;
+  font-weight: bold;
+  border-color: #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);  
+}
+
 form {
-  width:350px;
+  width:650px;
   margin: 20px auto;
   color: #8C7E7E;text-shadow: 0 1px rgba(255, 255, 255, 0.9);font-weight: 300;
+  vertical-align: center;
+  horizontal-align: center;
 }
 
