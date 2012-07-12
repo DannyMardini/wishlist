@@ -68,17 +68,39 @@
             // validate the date
             try {
                 eventDateObj = parseDate($('#newDatepicker').val());
-                alert('yes :)');
+                // insert the new event into the My Events section
+                insertNewEvent();
             }
             catch(e)
             {
-                alert('Please enter a valid date.')
+                alert(e)
             }            
         }
         else
         {
             alert('invalid inputs');
         }
+    }
+    
+    var newEventCounter = 0;
+    
+    function insertNewEvent()
+    {
+        newEventCounter++;
+        var eventId = "newEvent"+newEventCounter;
+        
+        $("<div/>", {
+            "class": "flexbox",
+            "id": eventId            
+        }).appendTo("#saved_life_events_div");
+        
+        $('<input />', {
+            type: 'text',
+            name: 'event_name',
+            "class": "eventname",
+            "placeholder": "name"
+        }).appendTo('#'+eventId);
+        
     }
     
     function validateEventInputs()
