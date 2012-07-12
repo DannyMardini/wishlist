@@ -8,6 +8,7 @@
         <script type="text/javascript" src="/js/QABundle.js"></script>
         <script type="text/javascript" src="/js/jquery.form.js"></script>
         <script type="text/javascript" src="/js/accountsettings.js"></script>
+        <script type="text/javascript" src="/js/common.js"></script>
     </head>
     <body>
         <input type="hidden" id="orig_gender" value="<?php echo $gender ?>" />
@@ -47,9 +48,9 @@
                 <div id="new_life_event_div" class="newEventDiv">                    
                     <label>Add New Event: </label>
                     <div class="flexbox">
-                        <input type="text" id="eventname" name="event_name" placeholder="name">
-                        <input type="text" id="datepicker" placeholder="mm/dd/yyyy">
-                        <select>
+                        <input type="text" id="newEventname" class="eventname" name="event_name" placeholder="name">
+                        <input type="text" id="newDatepicker" class="datepicker" placeholder="mm/dd/yyyy">
+                        <select id="newEventType">
                         <option value="-1">--Type--</option>
                         <option value="1">Birthday</option>
                         <option value="2">Anniversary</option>                
@@ -61,8 +62,8 @@
                 <div id="saved_life_events_div" class="newEventDiv" style="margin-top:20px">
                     <label> My Events: </label>
                     <div class="flexbox">                        
-                        <input type="text" id="eventname" name="event_name" placeholder="name">
-                        <input type="text" id="datepicker" placeholder="mm/dd/yyyy">
+                        <input type="text" class="eventname" name="event_name" placeholder="name">
+                        <input type="text" class="datepicker" placeholder="mm/dd/yyyy">
                         <select>
                         <option value="-1">--Type--</option>
                         <option value="1">Birthday</option>

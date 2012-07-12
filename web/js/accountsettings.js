@@ -49,25 +49,45 @@
         $('#lastName').val($('#orig_lastName').val());
         $('#email').val($('#orig_email').val());
         
-        $('#addEvent').click(addNewEvent);
-        
         $( "#datepicker" ).datepicker({
                 changeMonth: true,
                 changeYear: true
         });
+        
+        $('#addEventButton').click(addNewEventHandler);
     });
     
     
-    function addNewEvent(e)
+    function addNewEventHandler(e)
     {
         e.preventDefault();
-        alert('hi');
+        var eventDateObj = null;
+        
+        if(validateEventInputs())
+        {
+            // validate the date
+            try {
+                eventDateObj = parseDate($('#newDatepicker').val());
+                alert('yes :)');
+            }
+            catch(e)
+            {
+                alert('Please enter a valid date.')
+            }            
+        }
+        else
+        {
+            alert('invalid inputs');
+        }
     }
     
+    function validateEventInputs()
+    {
+        return ($('#newEventname').val() != "" && $('#newDatepicker').val() != ""
+        && $("#newEventType option:selected").length > 0);
+    }
     
     function redirectToUserPage()
     {
         window.location = "/app_dev.php/Homepage/";
     }
-
-
