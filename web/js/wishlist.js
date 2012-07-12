@@ -139,8 +139,13 @@ function confirmOK()
     try
     {
         var giftDate = parseDate($('#giftDateInput').attr('value'));
+    }catch(e)
+    {
+        giftDate = null;
+    }
     
-    
+    try
+    {
         if((selected_eventId > 0) && (giftDate == null)){
             purchaseItem(selected_itemId, selected_eventId, "Event");
         }
