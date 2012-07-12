@@ -10,9 +10,9 @@ function purchaseItem(itemId, purchaseData, /*string*/ type)
         type: 'POST',
         url: '/app_dev.php/purchaseItem',
         data: {id: itemId, purchaseData: purchaseData, type: type}
-    })
-    .done(function() {alert("success!")})
-    .fail(function() {alert("Failure!")});
+    });
+//    .done(function() {alert("success!")})
+//    .fail(function() {alert("Failure!")});
 }
 
 function addToWishlist(itemObj, callback)

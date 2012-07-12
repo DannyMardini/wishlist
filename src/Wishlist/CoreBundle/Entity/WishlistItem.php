@@ -235,28 +235,37 @@ class WishlistItem
         return json_encode($exportVars);
     }
     /**
-     * @var Wishlist\CoreBundle\Entity\WishlistUser
+     * @var Wishlist\CoreBundle\Entity\Purchase
      */
-    private $purchaser;
+    private $purchase;
 
 
     /**
-     * Set purchaser
+     * Set purchase
      *
-     * @param Wishlist\CoreBundle\Entity\WishlistUser $purchaser
+     * @param Wishlist\CoreBundle\Entity\Purchase $purchase
      */
-    public function setPurchaser(\Wishlist\CoreBundle\Entity\WishlistUser $purchaser)
+    public function setPurchase(\Wishlist\CoreBundle\Entity\Purchase $purchase)
     {
-        $this->purchaser = $purchaser;
+        $this->purchase = $purchase;
     }
 
     /**
-     * Get purchaser
+     * Get purchase
      *
-     * @return Wishlist\CoreBundle\Entity\WishlistUser 
+     * @return Wishlist\CoreBundle\Entity\Purchase 
      */
-    public function getPurchaser()
+    public function getPurchase()
     {
-        return $this->purchaser;
+        return $this->purchase;
+    }
+    
+    public function isPurchased()
+    {
+        if($this->purchase instanceof Purchase)
+        {
+            return true;
+        }
+        return false;
     }
 }

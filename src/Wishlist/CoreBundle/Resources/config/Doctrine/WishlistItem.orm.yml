@@ -3,19 +3,18 @@ Wishlist\CoreBundle\Entity\WishlistItem:
   table: null
   repositoryClass: Wishlist\CoreBundle\Repository\WishlistItemRepository
   manyToOne:
-        wishlistUser:
-          targetEntity: WishlistUser
-          inversedBy: wishlistItems
-          joinColumn:
-                  name: user_id
-                  referencedColumnName: wishlistuser_id
-                  
-        purchaser:
-          targetEntity: WishlistUser
-          inversedBy: purchases
-          joinColumn:
-            name: purchaser_id
-            referencedColumnName: wishlistuser_id
+    wishlistUser:
+      targetEntity: WishlistUser
+      inversedBy: wishlistItems
+      joinColumn:
+        name: user_id
+        referencedColumnName: wishlistuser_id
+   
+  oneToOne:               
+    purchase:
+      targetEntity: Purchase
+      mappedBy: item
+        
   fields:
     id:
       type: integer

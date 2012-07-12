@@ -16,7 +16,15 @@
     {
         $currItem = $wishlistItems[$i-1];
         
-        echo "<h3>";
+        //Add a purchased class to purchased wishlist items.
+        if( !$selfWishlist && $currItem->isPurchased() )
+        {
+            echo "<h3 id='".$currItem->getId()."' class='purchased'>";
+        }else {
+            echo "<h3 id='".$currItem->getId()."'>";
+        }
+        
+        
         if($selfWishlist) {
             echo "<span class='ui-icon ui-icon-close'></span>";
         }

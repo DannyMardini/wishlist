@@ -9,7 +9,7 @@ var selected_eventId = -1;
 
 function isValidDate(year, month, day)
 {
-    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate(); };
+    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate();};
     
     if(year < 2000 || year > 3000)
         return false;
@@ -212,6 +212,7 @@ function confirmOK()
     }
         
     $('#confirmDialog').dialog('close');
+    $('h3[id=' + selected_itemId + ']').addClass('purchased');
 }
 
 function confirmDialogOpen()

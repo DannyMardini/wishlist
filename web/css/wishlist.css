@@ -46,3 +46,7 @@ div.confirmEvent:hover {
 #confirmBtn:hover {
     cursor: hand;
 }
+
+h3.purchased {
+    background: green;
+}

@@ -18,6 +18,7 @@ Wishlist\CoreBundle\Entity\Purchase:
   oneToOne:
     item:
       targetEntity: WishlistItem
+      inversedBy: purchase
       joinColumn:
         name: item_id
         referencedColumnName: id

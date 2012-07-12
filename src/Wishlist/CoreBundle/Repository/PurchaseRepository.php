@@ -40,6 +40,9 @@ class PurchaseRepository extends EntityRepository
         {
             $newPurchase->setGiftDate($gift_date);
         }
+        
+        $item->setPurchase($newPurchase);
+        
         $em->persist($newPurchase);
         $em->flush();
     }
