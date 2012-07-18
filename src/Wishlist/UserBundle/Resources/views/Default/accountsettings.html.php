@@ -60,17 +60,7 @@
                 </div>
 
                 <div id="saved_life_events_div" class="newEventDiv" style="margin-top:20px">
-                    <label> My Events: </label>
-                    <div class="flexbox">                        
-                        <input type="text" class="eventname" name="event_name" placeholder="name">
-                        <input type="text" class="datepicker" placeholder="mm/dd/yyyy">
-                        <select>
-                        <option value="-1">--Type--</option>
-                        <option value="1">Birthday</option>
-                        <option value="2">Anniversary</option>                
-                        </select>
-                        <img class="buttonClass" id="removeEventButton" src="/images/remove_icon.jpeg" alt="Remove this event" />
-                    </div>
+                    <label> My Events: </label>                    
                 </div>
             </div>
         </div>
