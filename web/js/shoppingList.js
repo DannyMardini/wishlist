@@ -11,6 +11,25 @@ function setupPage()
     });
 }
 
+function retractPurchaseEvent()
+{
+    var selectedPurchases = $('.selected','#div_shoppinglist_div table');
+    var retractedPurchases = new Array();
+    for(var p = 0; p < selectedPurchases.length; p++)
+    {
+        retractedPurchases.push(selectedPurchases[p].id);
+    }
+    
+    selectedPurchases.remove();
+    
+    $.ajax({
+        type: 'POST',
+        url: '/app_dev.php/retractPurchases',
+        data: {purchaseIds: retractedPurchases}
+    });
+}
+
 $(document).ready(function(){
     setupPage();
+    $('#retractPurchaseButton').click(retractPurchaseEvent);
 });

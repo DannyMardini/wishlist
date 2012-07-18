@@ -1,7 +1,7 @@
 <?php 
 $view->extend('::navBar.html.php');
 
-?>
-The Shopping List!
+echo "The Shopping List!";
 
-<?php echo $view['actions']->render('WishlistListBundle:Default:shoppinglist', array('userId' => $userId)); ?>
+echo $view['actions']->render('WishlistListBundle:Shoppinglist:shoppinglist', array('userId' => $userId)); 
+?>

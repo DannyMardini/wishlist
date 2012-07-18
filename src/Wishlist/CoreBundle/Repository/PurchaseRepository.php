@@ -65,4 +65,17 @@ class PurchaseRepository extends EntityRepository
     {
         return $this->getPurchasesById($user->getWishlistuserId());
     }
+    
+    public function deletePurchases($purchaseIds)
+    {
+        $em = $this->getEntityManager();
+        
+        foreach ($purchaseIds as $purchaseId)
+        {
+            $purchase = $this->find($purchaseId);
+            $em->remove($purchase);
+        }
+        
+        $em->flush();
+    }
 }
