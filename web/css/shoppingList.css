@@ -10,6 +10,11 @@
     border-spacing: 0px;
 }
 
+#div_shoppinglist_div td
+{
+    padding: 5px 20px;
+}
+
 #div_shoppinglist_div table tr.selected
 {
     background-color: #00aa00;

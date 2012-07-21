@@ -3,21 +3,23 @@
 
 <div id="div_shoppinglist_div">
     <table>
-    <?php 
+    <?php
+    $createDateLink = "<a href='#'>New Giftdate!</a>";
+    
     foreach($purchases as $purchase)
     {
         $giftDate = $purchase->getGiftDate();
         $purchasedItem = $purchase->getItem();
         $giftUser = $purchasedItem->getWishlistUser();
 
-        echo "<tr id='".$purchasedItem->getId()."'>";
+        echo "<tr id='".$purchase->getId()."'>";
         echo "<td>".$purchasedItem->getName()."</td>";
         echo "<td>".$giftUser->getFirstname()." ".$giftUser->getLastname()."</td>";
-        echo "<td>".(isset($giftDate)? $giftDate->format('Y-m-d'):"")."</td>";
+        echo "<td>".(isset($giftDate)? $giftDate->format('d/m/Y'):$createDateLink)."</td>";
         echo "<td><input type='checkbox'/></td>";
         echo "</tr>";
     }
     ?>
     </table>
-    <button type='button'>Apply</button>
+    <button id='retractPurchaseButton' type='button'>Apply</button>
 </div>

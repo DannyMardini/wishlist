@@ -1,5 +1,4 @@
 <?php
-
 namespace Wishlist\ListBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -7,20 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Wishlist\CoreBundle\Entity\Purchase;
 use \DateTime;
 
-class DefaultController extends Controller
+class WishlistController extends Controller
 {
-    public function friendlistAction()
-    {
-    }
-    
-    public function shoppinglistAction(/*int*/ $userId)
-    {
-        $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
-        $purchases = $purchaseRepo->getPurchasesById($userId);
-        
-        return $this->render('WishlistListBundle:Default:shoppinglist.html.php', array('purchases' => $purchases));        
-    }
-    
     /**
     * Executes add new wishlist item action
     *
@@ -117,3 +104,4 @@ class DefaultController extends Controller
         return new Response();
     }
 }
+?>
