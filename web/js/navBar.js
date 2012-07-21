@@ -44,10 +44,18 @@ $(document).ready(function(){
         window.location = $('#userNameLink').attr('href');
     });
 
+    $('.ui-MenuLink').bind('click', function(){
+        navigate($(["#", $(this).attr('id'), "Path"].join('')).val());
+    });
 });
 
 function showOnlyMainProfileLink()
 {
    $("#linkList li").hide();
    $("#mainProfileLink").show();
+}
+
+function navigate(path)
+{
+    window.location = path;
 }

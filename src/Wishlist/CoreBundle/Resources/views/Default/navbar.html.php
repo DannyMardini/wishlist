@@ -1,3 +1,6 @@
+<input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />
+<input type="hidden" id="friendListLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $user->getWishlistuserId())) ?>" />
+
 <div id="header">
     <div id="logoContainer">
         <img id="logo" src="/images/gift.jpg"/>
@@ -14,9 +17,9 @@
             <li>
                 <img class="tinyProfile" src="<?php echo $user!=null ? ($user->getProfileUrl()) : ""; ?>"/>
             </li><li class="navLink">
-                <a href="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>"><?php echo $user->getFirstName() ?></a>
+                <a href="#" id='homepageLink' class='ui-MenuLink'><?php echo $user->getFirstName() ?></a>
             </li><li class="navLink">
-                <a href="<?php echo $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $user->getWishlistuserId())) ?>">Friends</a>
+                <a href="#" id='friendListLink' class='ui-MenuLink'>Friends</a>
             </li><li id="dropDownButton" class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
             <?php } else { ?><li>
                 <a href="#">Sign-In</a>

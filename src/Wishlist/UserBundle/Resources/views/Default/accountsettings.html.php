@@ -20,17 +20,17 @@
 
         <label>First Name:</label>
         <div class="right_content">
-        <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+        <input type="text" class="trackChanges" id="firstName" name="firstName" placeholder="Jane" required>
         </div>
         
         <label>Last Name:</label>
         <div class="right_content">
-        <input type="text" id="lastName" name="lastName" placeholder="Doe" required>        
+        <input type="text" class="trackChanges" id="lastName" name="lastName" placeholder="Doe" required>        
         </div>
         
         <label>Email:</label>
         <div class="right_content">
-        <input type="email" id="email" name="email" placeholder="email" required>        
+        <input type="email" class="trackChanges" id="email" name="email" placeholder="email" required>        
         </div>
         
         <label>Gender:</label>
@@ -42,6 +42,7 @@
         </ul>
         </div>
         
+        <!--
         <label>Life Events:</label>        
         <div class="lifeEventDiv right_content">
             <div class="right_innercontent">
@@ -64,13 +65,14 @@
                 </div>
             </div>
         </div>
+        -->
         
         <label>Password:</label>
         <div class="right_content">
         <?php if(isset($originalPassword)) { ?>
         <input type="password" id="old_password" name="old_password" placeholder="old password">
         <?php } ?>
-        <input type="password" id="new_password1" name="new_password1" placeholder="new password">      
+        <input type="password" class="trackChanges" id="new_password1" name="new_password1" placeholder="new password">      
         <input type="password" id="new_password2" name="new_password2" placeholder="repeat new password"
         oninput="checkPassword(this)">
         </div>
@@ -86,7 +88,7 @@
         </form>
         
         
-        <input id="saveChanges" type="submit" value="Save Changes" class="inputField" />
+        <input id="saveChanges" type="submit" value="Save Changes" class="inputField uiButtonConfirm uiButton" />
         
         
     </body>

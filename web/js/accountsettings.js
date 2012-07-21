@@ -1,4 +1,33 @@
+var changes = {};
+changes.count = 0;
+window.onbeforeunload = promptConfirmation;
 
+    function pushChange(elementId, newValue)
+    {
+        var key = elementId.toString();
+        var orig_value = $("#orig_"+key).val();
+        
+        // check if the new value equals the original value
+        if(newValue == orig_value)
+        {
+            popChange(key);
+            return;
+        }
+        
+        if(!changes.hasOwnProperty(key))
+        {
+            changes.count++;
+        }
+        
+        changes[key] = newValue;
+    }
+    
+    function popChange(key)
+    {
+        delete changes[key];
+        changes.count--;
+    }
+    
     function checkPassword(input) {
         if (input.value != document.getElementById('new_password1').value) {
             input.setCustomValidity('The two passwords must match.');
@@ -8,11 +37,17 @@
             input.setCustomValidity('');
         }
     }    
+    
+    function promptConfirmation()
+    {
+        if(changes.count > 0){
+            return "You have unsaved changes";
+        }
+    }
 
     $(document).ready(function(){
         
         $('#saveChanges').click(function(){
-            
             var url = $('#accountSettingsForm').attr('action');
             
             $.post( url, {fullname: $('#full_name').val() , email: $("#email_addr").val(), 
@@ -49,14 +84,58 @@
         $('#lastName').val($('#orig_lastName').val());
         $('#email').val($('#orig_email').val());
         
-        $( "#datepicker" ).datepicker({
+        $( "#newDatepicker" ).datepicker({
                 changeMonth: true,
                 changeYear: true
         });
         
+        /*
         $('#addEventButton').click(addNewEventHandler);
+        
+        //Don't display My Events if there are no events.
+        var myEvents = $('#saved_life_events_div div.flexbox');
+        
+        if( myEvents.length <= 0 )
+        {
+            $('#saved_life_events_div').hide();
+        }
+        */
+       
+        // add change event handlers
+        $('.trackChanges').keyup(onEditInputEvent);
+        
+        // Disable save button
+        disableSaveButton();
     });
     
+    function disableSaveButton()
+    {
+        $('#saveChanges').attr('disabled', 'true');
+        $('#saveChanges').addClass('disabledButton');
+    }
+    
+    function enableSaveButton()
+    {
+        $('#saveChanges').removeAttr('disabled').removeClass('disabledButton');
+        $('#saveChanges').addClass('enabledButton');
+    }
+    
+    function toggleSaveButton()
+    {
+        if(changes.count > 0)
+        {
+            enableSaveButton();
+        }else
+        {
+            disableSaveButton();
+        }
+    }
+    
+    function onEditInputEvent()
+    {
+        pushChange($(this).attr('id'), $(this).val());
+        toggleSaveButton();
+    }
     
     function addNewEventHandler(e)
     {
@@ -70,6 +149,8 @@
                 eventDateObj = parseDate($('#newDatepicker').val());
                 // insert the new event into the My Events section
                 insertNewEvent();
+                
+                $('#saved_life_events_div').show();
             }
             catch(e)
             {
@@ -82,6 +163,7 @@
         }
     }
     
+    /*
     var newEventCounter = 0;
     
     function insertNewEvent()
@@ -129,7 +211,8 @@
         
         
     }
-    
+    */
+   
     function validateEventInputs()
     {
         return ($('#newEventname').val() != "" && $('#newDatepicker').val() != ""
