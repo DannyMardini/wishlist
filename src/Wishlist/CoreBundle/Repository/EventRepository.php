@@ -65,6 +65,7 @@ class EventRepository extends EntityRepository
             where  e.user_id in 
                 ( select f.friend_id  from friendship f  where f.user_id = ? )  
             and  date_format(e.eventDate, '%c-%e') < date_format(date_add(now(), interval 1 MONTH),'%c-%e')
+            and date_format(e.eventDate, '%c-%e') >= date_format(now(),'%c-%e')
             order by date_format(e.eventDate, '%c-%e') asc",
         $rsm);
         
