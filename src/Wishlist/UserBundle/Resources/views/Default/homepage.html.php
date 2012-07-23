@@ -5,6 +5,7 @@
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/wishlist.js"></script>
 <link href="/css/wishlist.css" rel="stylesheet" type="text/css" />
+<link href="/css/formStyling.css" rel="stylesheet" type="text/css" />
   
 <input id="username" type="hidden" value="<?php echo $user->getFirstname() ?>"/>
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
@@ -15,9 +16,10 @@
         <div id="wishlist">
             <?php echo $view->render('WishlistListBundle:Default:wishlist.html.php', array('selfWishlist' => true, 'wishlistItems' => $user->getWishlistItems())); ?>
         </div>
-    </div>
+    </div>    
     
     <div id="eventsComponent">
+        <br />
         <div><h1>Upcoming Events</h1></div>
         <div id="eventsInnerComponent">  
         <?php  

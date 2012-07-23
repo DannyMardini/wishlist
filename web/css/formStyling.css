@@ -34,6 +34,16 @@ input, select, textarea{
   border-radius:5px;
 }
 
+div.buttonClass {
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
+  -ms-border-radius:5px;
+  border-radius:5px; 
+  vertical-align: center;
+  text-align: center;
+}
+
 input[type=submit] {
   background:none;
   padding:10px;
