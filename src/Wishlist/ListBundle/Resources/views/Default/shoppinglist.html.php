@@ -21,5 +21,5 @@
     }
     ?>
     </table>
-    <button id='retractPurchaseButton' type='button'>Apply</button>
+    <button id='retractPurchaseButton' type='button'>Cancel purchases</button>
 </div>
