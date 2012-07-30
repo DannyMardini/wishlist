@@ -10,8 +10,7 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
-        return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php', 
-                array("showUserAdded" => "hullo", "loginURL" => "/app_dev.php/Frontpage/validateLogin"));
+        return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');
     }
     
     public function navBarAction($username)
