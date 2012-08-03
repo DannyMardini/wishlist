@@ -32,6 +32,7 @@ class PurchaseRepository extends EntityRepository
         $newPurchase = new Purchase();
         $newPurchase->setUser($user);
         $newPurchase->setItem($item);
+        
         if($event != NULL)
         {
             $newPurchase->setEvent($event);
@@ -39,6 +40,9 @@ class PurchaseRepository extends EntityRepository
         }else if($gift_date != NULL)
         {
             $newPurchase->setGiftDate($gift_date);
+        }else
+        {
+            throw new RuntimeException('A purchase requires an event or date.');
         }
         
         $item->setPurchase($newPurchase);
