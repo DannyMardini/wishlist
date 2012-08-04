@@ -32,10 +32,12 @@ $(document).ready(function(){
       if( rightPanelVisible )
       {
         $('#dropDownMenu').hide();
+        $("#dropDownButton").removeClass('selected');
         rightPanelVisible = 0;
       }else 
       {
         $("#dropDownMenu").show();
+        $("#dropDownButton").addClass('selected');
         rightPanelVisible = 1;
       }
     });

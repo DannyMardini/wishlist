@@ -94,7 +94,11 @@ li a {
 }
 
 #navigation .navLink:hover {
-    background-color: #efefef;
+    background-color: #efefff;
+}
+
+.selected {
+    background-color: #efefff;
 }
 
 #userPicture{
@@ -123,10 +127,17 @@ li a {
 
 #dropDownMenu ul{
     list-style: none;
-    padding: 0px 20px 0px 20px;
-    margin: 16px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+    width: 80px;
 }
 
 #dropDownMenu ul li {
-    padding: 0px 0px 5px 0px;
+    padding: 10px 0px 5px 0px;
+}
+
+#dropDownMenu ul li :hover{
+    font-weight: bolder;
+    text-decoration: underline;
 }

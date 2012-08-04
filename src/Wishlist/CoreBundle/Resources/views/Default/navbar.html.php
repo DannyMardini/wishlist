@@ -19,10 +19,10 @@
             </li><li class="navLink">
                 <a href="#" id='homepageLink' class='ui-MenuLink'><?php echo $user->getFirstName() ?></a>
             </li><li>
-                <div class="buttonClass" id="eventManagerButton"><img src="/images/calendar_icon.png" alt="manage my life events" /></div>
+                <div class="buttonClass" id="eventManagerButton"><img src="/images/calendar_icon.png" title="Life Events" /></div>
             </li>
             <li>
-                <div class="buttonClass ui-MenuLink" id="friendListLink"><img src='/images/friend_icon.png' alt='friends' /></div>
+                <div class="buttonClass ui-MenuLink" id="friendListLink"><img src='/images/friend_icon.png' title='Friends' /></div>
                 <!--<a href="#" id='friendListLink' class='ui-MenuLink'>Friends</a>-->
             </li><li id="dropDownButton" class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
             <?php } else { ?><li>
