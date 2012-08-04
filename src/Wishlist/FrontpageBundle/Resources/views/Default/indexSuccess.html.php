@@ -10,7 +10,7 @@
         <link href="/css/frontPage.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="/js/frontPage.js"></script>
 
-        <input id="showUserAdded" type="hidden" value="<?php echo $showUserAdded ?>" />
+        <input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />
         <div id="loginContainer">
             <a class="aboutLink frontpageLink" href="#">About</a>
             <img src="/images/silverdot.gif" width="10" height="10" />
@@ -39,7 +39,7 @@
                     </div>
                     <div id="loginToggleWindow">
                         <br /><br />
-                        <form id="loginForm" method="POST" action="<?php echo $loginURL ?>">
+                        <form id="loginForm" method="POST" action="<?php echo $view['router']->generate('Validate') ?>">
                             <label class="label">EMAIL:</label>
                             <input type="email" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address or username" required />
                             <br />

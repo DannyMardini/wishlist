@@ -127,7 +127,7 @@ function displayMessage(message)
 function redirectToHomePage()
 {
     // redirect to the logged in user's home page
-    window.location = "/app_dev.php/Homepage";
+    window.location = $('#homepageLinkPath').val();
 }
 
 // run the currently selected effect
