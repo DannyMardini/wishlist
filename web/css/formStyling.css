@@ -62,7 +62,7 @@ input[type=submit]:hover {
 
 .buttonClass:hover {
   cursor: hand;
-  font-weight: bold;
+  /*font-weight: bold;*/
   border-color: #88a;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);

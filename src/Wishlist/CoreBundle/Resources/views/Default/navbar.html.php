@@ -14,14 +14,15 @@
                 in the actual presentation... html and css are fucking broken...
             -->
             <?php if($user!=null) { ?>
-            <li class="navLink">
-                <img class="tinyProfile" src="<?php echo $user!=null ? ($user->getProfileUrl()) : ""; ?>"/>
-            </li><li class="navLink">
-                <a href="#" id='homepageLink' class='ui-MenuLink'><?php echo $user->getFirstName() ?></a>
+            <li style="padding-right:5px;">
+                <div class="buttonClass">
+                    <img class="tinyProfile" src="<?php echo $user!=null ? ($user->getProfileUrl()) : ""; ?>"/>    
+                    <span id="homepageLink" class="ui-MenuLink"><?php echo $user->getFirstName() ?></span>
+                </div>
             </li><li>
-                <div class="buttonClass" id="eventManagerButton"><img src="/images/calendar_icon.png" title="Life Events" /></div>
+                <div class="buttonClass ui-MenuLink" id="eventManagerButton"><img src="/images/calendar_icon.png" title="Life Events" /></div>
             </li>
-            <li>
+            <li style="padding-right:5px;">
                 <div class="buttonClass ui-MenuLink" id="friendListLink"><img src='/images/friend_icon.png' title='Friends' /></div>
                 <!--<a href="#" id='friendListLink' class='ui-MenuLink'>Friends</a>-->
             </li><li id="dropDownButton" class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
