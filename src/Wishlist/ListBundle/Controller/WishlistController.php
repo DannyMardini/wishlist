@@ -11,7 +11,17 @@ class WishlistController extends Controller
     /**
     * Executes add new wishlist item action
     *
-    */      
+    */
+    public function showWishlistAction($userId)
+    {
+        $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($userId);
+        $session = $this->getRequest()->getSession();
+        $loggedInUserId = $session->get('user_id');
+        
+        $selfWishlist = ($loggedInUserId == $userId ) ? true : false;
+        
+    }
+    
     public function newWishlistAction()
     {
         $session = $this->getRequest()->getSession(); 

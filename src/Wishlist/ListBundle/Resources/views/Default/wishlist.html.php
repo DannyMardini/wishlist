@@ -32,11 +32,10 @@
         echo "<a href='#'>".$currItem->getName()."</a></h3>";
         echo "<div>";
         echo "<p>$".$currItem->getPrice()."</p>";
-        if(!$selfWishlist)
-        {
-            //TODO: This really should use the new HTML 5 
-            echo "<span id='".$currItem->getId()."' class='purchaseBtn'>Purchase!</span>";
-        }
+        
+        //TODO: This really should use the new HTML 5 
+        echo "<span id='".$currItem->getId()."' class='purchaseBtn'>Purchase!</span>";
+        
         echo "</div>";
         $i--;
     }
