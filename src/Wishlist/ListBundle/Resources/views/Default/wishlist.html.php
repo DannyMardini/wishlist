@@ -1,5 +1,35 @@
-<div id="div_wishlist_div">
 <?php
+//Helper functions
+function wishlistItemHeader(/*Boolean*/$selfWishlist, /*WishlistItem*/$currItem, /*WishlistUser*/$wishlistUser)
+{
+    $classes = "";
+    $showPurchased = false;
+    
+    if ($selfWishlist)
+    {
+        //Only see the items that you purchased for yourself.
+        if( $currItem->isPurchased() && ($currItem->getPurchaser() == $wishlistUser) )
+            $showPurchased = true;
+    }
+    else
+    {
+        //See the items that anyone purchased.
+        if($currItem->isPurchased())
+            $showPurchased = true;
+    }
+    
+    if($showPurchased == true)
+    {
+        $classes = " class='purchased'";
+    }
+    
+    $header = "<h3 id='".$currItem->getId()."'".$classes.">";
+    
+    return $header;
+}
+
+//HTML processing
+echo "<div id='div_wishlist_div'>";
     if($selfWishlist)
     {
         echo "<h3><a id='newWishBox' href='#'>New wish..</a></h3>";
@@ -15,15 +45,9 @@
     while($i > 0)
     {
         $currItem = $wishlistItems[$i-1];
+
         
-        //Add a purchased class to purchased wishlist items.
-        if( !$selfWishlist && $currItem->isPurchased() )
-        {
-            echo "<h3 id='".$currItem->getId()."' class='purchased'>";
-        }else {
-            echo "<h3 id='".$currItem->getId()."'>";
-        }
-        
+        echo wishlistItemHeader($selfWishlist, $currItem, $user);
         
         if($selfWishlist) {
             echo "<span class='ui-icon ui-icon-close'></span>";

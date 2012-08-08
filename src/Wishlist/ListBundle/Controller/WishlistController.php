@@ -4,6 +4,7 @@ namespace Wishlist\ListBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Wishlist\CoreBundle\Entity\Purchase;
+use Wishlist\CoreBundle\Entity\WishlistUser;
 use \DateTime;
 
 class WishlistController extends Controller
@@ -12,14 +13,24 @@ class WishlistController extends Controller
     * Executes add new wishlist item action
     *
     */
-    public function showWishlistAction($userId)
+    public function showWishlistAction(/*WishlistUser*/ $user)
     {
-        $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($userId);
         $session = $this->getRequest()->getSession();
         $loggedInUserId = $session->get('user_id');
         
+        if( !($user instanceof WishlistUser) )
+        {
+            throw new Exception('Invalid parameter');
+        }
+        
+        $userId = $user->getWishlistuserId();
+        
         $selfWishlist = ($loggedInUserId == $userId ) ? true : false;
         
+        return $this->render('WishlistListBundle:Default:wishlist.html.php', array( 'selfWishlist' => $selfWishlist, 
+                                                                                    'wishlistItems' => $user->getWishlistItems(),
+                                                                                    'events' => $user->getEvents(),
+                                                                                    'user' => $user));
     }
     
     public function newWishlistAction()
@@ -44,7 +55,7 @@ class WishlistController extends Controller
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');        
         $itemRepo->addItem($name, $price, $link, true, 'default comment', 1, $user);          
         
-        return $this->render('WishlistListBundle:Default:wishlist.html.php', array('selfWishlist' => true, 'wishlistItems' => $user->getWishlistItems()));
+        return $this->showWishlistAction($user);
     }
     
     public function getWishlistItemAction($itemId)
@@ -74,7 +85,7 @@ class WishlistController extends Controller
         
         $selfWishlist = ($user->getWishlistUserId() == $loggedInUserId)? true:false;
         
-        return $this->render('WishlistListBundle:Default:wishlist.html.php', array('selfWishlist' => $selfWishlist, 'wishlistItems' => $user->getWishlistItems()));
+        return $this->showWishlistAction($user);
     }
     
     public function purchaseItemAction()

@@ -260,6 +260,16 @@ class WishlistItem
         return $this->purchase;
     }
     
+    public function getPurchaser()
+    {
+        if($this->isPurchased())
+        {
+            return $this->purchase->getUser();
+        }
+        
+        throw new Exception("Item is not purchased");
+    }
+    
     public function isPurchased()
     {
         if($this->purchase instanceof Purchase)

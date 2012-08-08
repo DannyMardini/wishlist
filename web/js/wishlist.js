@@ -7,6 +7,11 @@ var wishlist_div = "#div_wishlist_div";
 var selected_itemId = -1;
 var selected_eventId = -1;
 
+function setupEvents()
+{
+    $('.confirmEvent').on('click', clickedEvent);
+}
+
 function setupWishlist()
 {
     $(wishlist_div).accordion({
@@ -29,9 +34,8 @@ function setupWishlist()
         delFromWishlist(itemObj, setupWishlist);
     });
     
-    $('.purchaseBtn').click(clickedItem);
-    $('.confirmEvent').click(clickedEvent);
-
+    $('.purchaseBtn').on('click', clickedItem);
+    
     $('#confirmDialog').dialog(
         {
             autoOpen: false,
@@ -41,8 +45,9 @@ function setupWishlist()
             close: confirmDialogClose
         }
     );
-    
+        
     $('#giftDateInput').datepicker();
+
 }
 
 function clickedItem()
@@ -195,4 +200,5 @@ function confirmDialogClose()
 
 $(document).ready(function(){
     setupWishlist();
+    setupEvents();
 });

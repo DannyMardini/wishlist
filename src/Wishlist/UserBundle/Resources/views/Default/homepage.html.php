@@ -14,7 +14,7 @@
     <div id="wishlistComponent">
         <div><h1>My Wishlist</h1></div>
         <div id="wishlist">
-            <?php echo $view->render('WishlistListBundle:Default:wishlist.html.php', array('selfWishlist' => true, 'wishlistItems' => $user->getWishlistItems(), 'events' => $user->getEvents())); ?>
+            <?php echo $view['actions']->render('WishlistListBundle:Wishlist:showWishlist', array('user' => $user)); ?>
         </div>
     </div>    
     
