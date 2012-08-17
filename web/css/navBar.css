@@ -73,12 +73,12 @@ li a {
 }
 
 .navLink img {
-    padding: 0px 5px 7px 0px;
+    padding: 0px 0px 0px 0px;
 }
 
 #navigation li a {
-    display: block;
-    height: 25px;
+    /*display: block;*/
+    height: 35px;
     padding-top: 20px;
     padding-right: 5px;
     text-decoration: none;
@@ -86,7 +86,7 @@ li a {
 }
 
 #navigation li span {
-    margin-top: 29px;
+    margin-top: 0px;
 }
 
 #navigation .navLink {
@@ -114,8 +114,9 @@ li a {
 
 .tinyProfile {
 /*    display: block;*/
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 70%;
+    padding-top: 5px;
 }
 
 #dropDownMenu{
