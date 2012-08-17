@@ -1,4 +1,5 @@
 <input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />
+<input type="hidden" id="accountSettingsLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_accountsettings')?>" />
 <input type="hidden" id="friendListLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $user->getWishlistuserId())) ?>" />
 
 <div id="header">
@@ -38,7 +39,7 @@
 
 <div id="dropDownMenu">
     <ul>
-        <li><a href="#">Settings</a></li>
+        <li><a id="accountSettingsLink" class="ui-MenuLink" href="#">Settings</a></li>
         <li><a href="#">Help</a></li>
         <li><a href="#">Log Out</a></li>
     </ul>

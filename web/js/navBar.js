@@ -13,6 +13,8 @@ $(document).ready(function(){
 
     $("a").click(function(){
         $(this).blur();
+        var location = $(this).attr('href');
+        if(location == '#') return false;
         window.location = $(this).attr('href');
     });
 
