@@ -27,19 +27,36 @@ class EventRepository extends EntityRepository
         $this->getEntityManager()->persist($newEvent);
         $this->getEntityManager()->flush();       
     }
-    
-    public function getUserEvents(/*int*/ $userId, /*int*/ $daysInterval = 32)
+
+    public function getAllUserEvents(/*int*/ $userId)
     {
-        //Get Events
-        $query = $this->createQueryBuilder('e')
-                ->where('e.user_id = :uid')
-                ->setParameter('uid', $userId)
-                ->andWhere('DATE_DIFF(e.eventDate, CURRENT_DATE()) < :day_interval')
-                ->setParameter('day_interval', $daysInterval);
-        
-        $events = $query->getResult();
-        return $events;
-    }
+        try
+        {
+            $query = $this->getEntityManager()
+                        ->createQuery('SELECT e FROM WishlistCoreBundle:Event e LEFT JOIN e.wishlistUser usr WHERE usr.wishlistuser_id = :uid')
+                        ->setParameter('uid', $userId);                              
+
+            $events = $query->getResult();
+            return $events;
+        }catch(Exception $e)
+        {
+            return 0;
+        }
+    }    
+ 
+    // I don't think the function below is being used
+//    public function getUserEvents(/*int*/ $userId, /*int*/ $daysInterval = 32)
+//    {
+//        //Get Events
+//        $query = $this->createQueryBuilder('e')
+//                ->where('e.user_id = :uid')
+//                ->setParameter('uid', $userId)
+//                ->andWhere('DATE_DIFF(e.eventDate, CURRENT_DATE()) < :day_interval')
+//                ->setParameter('day_interval', $daysInterval);
+//        
+//        $events = $query->getResult();
+//        return $events;
+//    }
     
     public function getFriendEvents(/*int*/ $userId)
     {                                     

@@ -207,4 +207,36 @@ class DefaultController extends Controller
             return new Response("An issue occurred, please try again later or try a different image");
         }
     }
+
+    public function showLifeEventsManagerAction()
+    {
+       try{
+            
+            $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
+            
+            if(!isset($loggedInUserId)){
+                $message = 'Please to go the Frontpage to sign in';
+                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));                
+            }
+            else {
+                // get the original user information to pre-populate the form
+                $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
+                $eventRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Event');
+                $events = $eventRepo->getAllUserEvents($loggedInUserId);
+//                $user = $userRepo->getUserWithId($loggedInUserId);
+//                $events = $user->getEvents();
+                
+                return $this->render('WishlistUserBundle:Default:lifeEventsManager.html.php', array('events' => $events));
+            }
+            
+        }catch(NoResultException $e)
+        {
+            if(!isset($loggedInUserId)){
+                throw $this->createNotFoundException('Please to go the Frontpage to sign in');
+            }
+            else {
+                throw $this->createNotFoundException('Could not find user');
+            }
+        }    
+    }
 }

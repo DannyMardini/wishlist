@@ -25,3 +25,7 @@ WishlistUserBundle_accountsettingsUploadImage:
 WishlistUserBundle_save_account_settings:
   pattern: /SaveAccountSettings
   defaults: { _controller: WishlistUserBundle:Default:saveAccountSettings }
+  
+WishlistUserBundle_lifeEventsManager:
+  pattern: /LifeEventsManager
+  defaults: { _controller: WishlistUserBundle:Default:showLifeEventsManager }

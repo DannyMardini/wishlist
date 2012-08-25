@@ -1,0 +1,44 @@
+.lifeEventDiv label{
+    display:block;
+    float: none;
+    width: 100%;
+    height: 25px;
+}
+
+.lifeEventDiv select {
+    margin-top: 5px;height: 5%;margin-right:5px;width:19%;
+}
+
+.lifeEventDiv .eventname{
+    margin-right:5px;width:50%;
+}
+
+.lifeEventDiv .datepicker {
+    margin-right:5px;width:18%;
+}
+
+label {
+    float: left;
+    display: inline-block;
+    width: 150px;
+    font-family: Satisfy, cursive;
+}
+
+.eventListDiv {
+    border: 1px solid black; 
+    width: 80%;
+    height: 50%;
+    margin: 10%;
+    margin-top: 2%;
+}
+
+.eventsHeader{
+    font-size: 28px;
+    font-weight:bold;
+    padding-top: 10px;
+    padding-left: 60px;
+}
+
+#addLifeEventButton, #removeLifeEventButton, #saveLifeEventButton {
+    width: 1em;
+}
