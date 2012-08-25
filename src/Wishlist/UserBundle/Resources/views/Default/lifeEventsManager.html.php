@@ -8,14 +8,38 @@
     <body>
         <div class="eventsHeader">
             <label>Life Events</label>
-            <button id="addLifeEventButton"></button>
-            <button id="removeLifeEventButton"></button>
-            <button id="saveLifeEventButton"></button>
+            <button title="add new life event" id="addLifeEventButton"></button>
+            <button title="remove selected life events" id="removeLifeEventButton"></button>
+            <button title="save changes" id="saveLifeEventButton"></button>
         </div>
         <hr size="1" width="90%" color="grey">
         <div id="EventList" class="eventListDiv">
-            
-            You haven't added any life events yet.
+            <?php  
+            if(count($events) > 0)
+            {
+                foreach ($events as $event) {
+                        $eventImage = $event->getEventImage();
+                        $eventName = $event->getName();
+                        $friend = $event->getWishlistUser();
+                        $eventDate = $event->getFormattedTimestamp();
+                        $name = "<a href='User/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
+                        $timestamp = " -- ".$eventDate;
+           ?>  
+                    <div class="Event"> 
+                        <div class="checkbox"><input type="checkbox"></div>
+                        <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
+                        <div class="name" title ="<?php echo $eventName ?>"><?php echo $name ?></div>
+                        <div class="message" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>
+                    </div>
+           <?php 
+
+                } 
+            }
+            else 
+            { 
+               echo "You haven't added any life events yet.";
+            }
+           ?>            
         </div>
         
 <!--        <div class="lifeEventDiv right_content">

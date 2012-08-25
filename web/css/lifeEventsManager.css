@@ -42,3 +42,55 @@ label {
 #addLifeEventButton, #removeLifeEventButton, #saveLifeEventButton {
     width: 1em;
 }
+
+#EventList .image {
+/*    display: inline-block;*/
+    float: left;
+   
+    /*background-image: url(/images/default_avatar.gif);
+    background-size: 85%;*/
+    background-repeat: no-repeat;
+    background-position: left;
+    margin-top: 15px;
+}
+
+#EventList .checkbox {
+    margin-top: 15px;
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#EventList .name {
+    margin-top: 15px;
+    font-weight: bolder;
+    display: inline-block;
+    height: 15px;
+    text-align: center;
+    font-size: 14px;
+    padding-left: 5px;
+/*    float: right;*/
+}
+
+#EventList .message {
+    display: block;
+    padding-top: 5px;
+    padding-left: 11px;
+}
+
+#EventList .timestamp {
+    margin-top: 5px;
+    color: gray;
+    display: block;
+    font-size:12px;
+}
+
+#EventList a {
+    cursor: pointer;
+    color: darkblue;
+    text-decoration: none;
+}
+
+#EventList a:hover {
+    text-decoration: underline;
+}
