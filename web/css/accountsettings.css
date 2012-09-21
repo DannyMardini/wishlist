@@ -70,29 +70,6 @@ label {
     margin-top: -10px;
 }
 
-.lifeEventDiv label{
-    display:block;
-    float: none;
-    width: 100%;
-    height: 25px;
-}
-
-.lifeEventDiv #addEventButton{
-    /*margin-right:5px;margin-bottom:15px;*/
-}
-
-.lifeEventDiv select {
-    margin-top: 5px;height: 5%;margin-right:5px;width:19%;
-}
-
-.lifeEventDiv .eventname{
-    margin-right:5px;width:50%;
-}
-
-.lifeEventDiv .datepicker {
-    margin-right:5px;width:18%;
-}
-
 .right_innercontent {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size:14px;

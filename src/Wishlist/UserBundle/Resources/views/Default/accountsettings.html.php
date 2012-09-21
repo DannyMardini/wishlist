@@ -42,31 +42,6 @@
         </ul>
         </div>
         
-        <!--
-        <label>Life Events:</label>        
-        <div class="lifeEventDiv right_content">
-            <div class="right_innercontent">
-                <div id="new_life_event_div" class="newEventDiv">                    
-                    <label>Add New Event: </label>
-                    <div class="flexbox">
-                        <input type="text" id="newEventname" class="eventname" name="event_name" placeholder="name">
-                        <input type="text" id="newDatepicker" class="datepicker" placeholder="mm/dd/yyyy">
-                        <select id="newEventType">
-                        <option value="-1">--Type--</option>
-                        <option value="1">Birthday</option>
-                        <option value="2">Anniversary</option>                
-                        </select>
-                        <img class="buttonClass" id="addEventButton" src="/images/plus_icon.jpeg" alt="Add a new life event" />
-                    </div>                    
-                </div>
-
-                <div id="saved_life_events_div" class="newEventDiv" style="margin-top:20px">
-                    <label> My Events: </label>                    
-                </div>
-            </div>
-        </div>
-        -->
-        
         <label>Password:</label>
         <div class="right_content">
         <?php if(isset($originalPassword)) { ?>
