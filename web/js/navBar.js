@@ -8,26 +8,6 @@ var userID;
 var rightPanelVisible = 0;
 
 $(document).ready(function(){
-
-//    $("#linkList").menu();
-
-    $("a").click(function(){
-        $(this).blur();
-        var location = $(this).attr('href');
-        if(location == '#') return false;
-        window.location = $(this).attr('href');
-    });
-
-    //When mouse rolls over
-//    $("#linkList").mouseover(function(){
-//        $("#linkList li").show();
-//    });
-//
-//    //When mouse is removed
-//    $("#linkList").mouseout(function(){
-//        showOnlyMainProfileLink();
-//    });
-//
     showOnlyMainProfileLink();
 
     $("#dropDownButton").click(function(){
