@@ -32,7 +32,7 @@
                         $timestamp = " -- ".$eventDate;
            ?>  
                     <div class="Event"> 
-                        <div class="checkbox"><input name="selected" type="checkbox"></div>
+                        <div class="checkbox"><input class="eventSelect" name="selected" type="checkbox"></div>
                         <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
                         <div class="name" title ="<?php echo $eventName ?>"><?php echo $eventName ?></div>
                         <div class="timestamp" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>
