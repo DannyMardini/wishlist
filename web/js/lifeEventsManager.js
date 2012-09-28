@@ -7,6 +7,13 @@ $(document).ready(function(){
             text: false
     });
     
+    $('#saveLifeEventButton').button({
+            icons: {
+                primary: "ui-icon-disk"
+            },
+            text: false
+    });    
+    
     $('#removeLifeEventButton').button({
             icons: {
                 primary: "ui-icon-trash"
@@ -14,27 +21,31 @@ $(document).ready(function(){
             text: false
     });
     
-    $('#removeLifeEventButton').attr('disabled', 'disabled'); // disabled by default
+    $('#removeLifeEventButton').hide(); // disabled by default
     
-    $('#saveLifeEventButton').button({
-            icons: {
-                primary: "ui-icon-disk"
-            },
-            text: false
+    $('#selectall').click(function(){
+       var selected = $(this).is(':checked');
+       if(selected)
+        {
+            $('input',$('.Event')).attr('checked','true');
+        }
+        else 
+        {
+            $('input',$('.Event')).removeAttr('checked');
+        }
     });
     
     $('.Event input:checkbox').click(function(){
-        
         // check if any checkboxes are selected
         var arrChecked = $('input:checked',$('.Event'));
         if(arrChecked.length > 0)
         {
-            $('#removeLifeEventButton').removeAttr('disabled');
+            $('#removeLifeEventButton').show();
         }
         else
         {
-            $('#removeLifeEventButton').attr('disabled', 'disabled');
-        }
-    });
+            $('#removeLifeEventButton').hide();
+        }    
+    })
     
 });

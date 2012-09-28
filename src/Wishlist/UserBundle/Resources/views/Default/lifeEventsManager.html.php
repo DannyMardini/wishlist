@@ -8,12 +8,18 @@
     <body>
         <div class="eventsHeader">
             <label>Life Events</label>
-            <button title="add event" id="addLifeEventButton"></button>
-            <button title="remove event(s)" id="removeLifeEventButton"></button>
+            <button title="add event" id="addLifeEventButton"></button>            
             <button title="save changes" id="saveLifeEventButton"></button>
+            <button title="remove event(s)" id="removeLifeEventButton"></button>
         </div>
         <hr size="1" width="90%" color="grey">
         <div id="EventList" class="eventListDiv">
+                    <div class="Event"> 
+                        <div class="checkbox"><input name="selected" id="selectall" title="select all" type="checkbox"></div>
+                        <div class="image"></div>
+                        <div class="name"></div>
+                        <div class="timestamp"></div>
+                    </div>            
             <?php  
             if(count($events) > 0)
             {
