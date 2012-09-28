@@ -8,17 +8,50 @@ $(document).ready(function(){
     
     $('.eventSelect',$('.Event')).click(function(){onSelectEventHandler(this)});
     
-//    $('#addLifeEventButton').click(addNewEventHandler);
-//
-//    //Don't display My Events if there are no events.
-//    var myEvents = $('#saved_life_events_div div.flexbox');
-//
-//    if( myEvents.length <= 0 )
-//    {
-//        $('#saved_life_events_div').hide();
-//    }
+    $('#addLifeEventButton').click(addNewEventHandler);
+
+    //Don't display My Events if there are no events.
+    var myEvents = $('#saved_life_events_div div.flexbox');
+
+    if( myEvents.length <= 0 )
+    {
+        $('#saved_life_events_div').hide();
+    }
     
 });
+
+//function addNewEventHandler(e)
+//{
+//    e.preventDefault();
+//    var eventDateObj = null;
+//
+//    if(validateEventInputs())
+//    {
+//        // validate the date
+//        try {
+//            eventDateObj = parseDate($('#newDatepicker').val());
+//            // insert the new event into the My Events section
+//            insertNewEvent();
+//
+//            $('#saved_life_events_div').show();
+//        }
+//        catch(e)
+//        {
+//            alert(e)
+//        }            
+//    }
+//    else
+//    {
+//        alert('invalid inputs');
+//    }
+//}
+    
+    
+function validateEventInputs()
+{
+    return ($('#newEventname').val() != "" && $('#newDatepicker').val() != ""
+    && $("#newEventType option:selected").val()!=-1);
+}
 
 function createEventMenuButtons()
 {
@@ -55,17 +88,6 @@ function onSelectEventHandler(obj)
     {
         $('#removeLifeEventButton').hide();
     }
-    
-    // check if any checkboxes are selected
-//    var arrChecked = $('input:checked',$('.Event'));
-//    if(arrChecked.length > 0)
-//    {
-//        $('#removeLifeEventButton').show();
-//    }
-//    else
-//    {
-//        $('#removeLifeEventButton').hide();
-//    } 
 }
 
 function onSelectAllEventHandler(obj)

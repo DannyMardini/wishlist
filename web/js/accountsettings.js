@@ -125,39 +125,6 @@ window.onbeforeunload = promptConfirmation;
         toggleSaveButton();
     }
     
-    function addNewEventHandler(e)
-    {
-        e.preventDefault();
-        var eventDateObj = null;
-        
-        if(validateEventInputs())
-        {
-            // validate the date
-            try {
-                eventDateObj = parseDate($('#newDatepicker').val());
-                // insert the new event into the My Events section
-                insertNewEvent();
-                
-                $('#saved_life_events_div').show();
-            }
-            catch(e)
-            {
-                alert(e)
-            }            
-        }
-        else
-        {
-            alert('invalid inputs');
-        }
-    }
-    
-    
-    function validateEventInputs()
-    {
-        return ($('#newEventname').val() != "" && $('#newDatepicker').val() != ""
-        && $("#newEventType option:selected").val()!=-1);
-    }
-    
     function redirectToUserPage()
     {
         window.location = "/app_dev.php/Homepage/";
