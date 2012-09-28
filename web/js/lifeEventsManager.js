@@ -6,22 +6,17 @@ $(document).ready(function(){
     
     $('#selectall').click(function(){onSelectAllEventHandler(this);});
     
-    $('.Event input:checkbox').click(function(){onSelectEventHandler(this)});
+    $('.eventSelect',$('.Event')).click(function(){onSelectEventHandler(this)});
     
-    
-    
-    
-    /*
-    $('#addEventButton').click(addNewEventHandler);
-
-    //Don't display My Events if there are no events.
-    var myEvents = $('#saved_life_events_div div.flexbox');
-
-    if( myEvents.length <= 0 )
-    {
-        $('#saved_life_events_div').hide();
-    }
-    */    
+//    $('#addLifeEventButton').click(addNewEventHandler);
+//
+//    //Don't display My Events if there are no events.
+//    var myEvents = $('#saved_life_events_div div.flexbox');
+//
+//    if( myEvents.length <= 0 )
+//    {
+//        $('#saved_life_events_div').hide();
+//    }
     
 });
 
@@ -79,10 +74,12 @@ function onSelectAllEventHandler(obj)
     if(selected)
     {
         $('input',$('.Event')).attr('checked','true');
+        $('#removeLifeEventButton').show();
     }
     else 
     {
         $('input',$('.Event')).removeAttr('checked');
+        $('#removeLifeEventButton').hide();
     }
 }
 
