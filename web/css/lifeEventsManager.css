@@ -98,7 +98,7 @@ label {
 }
 
 .focusEvent {
-    background-color: #cdc9c9;
+    background-color:#EFEFEF;
 }
 
 .focusEventRemove {
@@ -106,9 +106,15 @@ label {
     cursor: pointer;
 }
 
-.Event .remove {
+#EventList .Event .remove {
     display:none;
     float:right;
     margin-right: 5px;
     margin-top: 5px;
+}
+
+#EventList .Event {
+    padding-left: 10px;
+    border-bottom: solid 1px #EFEFEF;
+    padding-bottom: 5px;
 }
