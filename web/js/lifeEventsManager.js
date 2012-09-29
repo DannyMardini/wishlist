@@ -4,11 +4,19 @@ $(document).ready(function(){
     
     $('#removeLifeEventButton').hide(); // disabled by default
     
-    $('#selectall').click(function(){onSelectAllEventHandler(this);});
+    $('.Event').hover(function(){
+        onEventHover(this);
+    }, function(){
+        onEventHoverOut(this);        
+    });
     
-    $('.eventSelect',$('.Event')).click(function(){onSelectEventHandler(this)});
+    $('.remove').hover(function(){
+        $(this).addClass('focusEventRemove');
+    },function(){
+        $(this).removeClass('focusEventRemove');
+    });
     
-    $('#addLifeEventButton').click(addNewEventHandler);
+    //$('#addLifeEventButton').click(addNewEventHandler);
 
     //Don't display My Events if there are no events.
     var myEvents = $('#saved_life_events_div div.flexbox');
@@ -19,6 +27,24 @@ $(document).ready(function(){
     }
     
 });
+
+function onEventHoverOut(obj)
+{
+    $(obj).removeClass('focusEvent');
+    $('.remove', $(obj)).hide();
+    //$('.remove',$(obj)).unbind('hover');    
+}
+
+function onEventHover(obj)
+{
+    $(obj).addClass('focusEvent');
+    $('.remove', $(obj)).show();
+//    $('.remove',$(obj)).bind('hover',function(){
+//        $(this).addClass('focusEventRemove');
+//    },function(){
+//        $(this).removeClass('focusEventRemove');
+//    });    
+}
 
 //function addNewEventHandler(e)
 //{
@@ -79,6 +105,8 @@ function createEventMenuButtons()
 
 function onSelectEventHandler(obj)
 {
+    alert('test');
+    return;
     var selected = $(obj).is(':checked');
     if(selected)
     {
@@ -86,21 +114,6 @@ function onSelectEventHandler(obj)
     }
     else 
     {
-        $('#removeLifeEventButton').hide();
-    }
-}
-
-function onSelectAllEventHandler(obj)
-{
-    var selected = $(obj).is(':checked');
-    if(selected)
-    {
-        $('input',$('.Event')).attr('checked','true');
-        $('#removeLifeEventButton').show();
-    }
-    else 
-    {
-        $('input',$('.Event')).removeAttr('checked');
         $('#removeLifeEventButton').hide();
     }
 }

@@ -14,12 +14,6 @@
         </div>
         <hr size="1" width="90%" color="grey">
         <div id="EventList" class="eventListDiv">
-                    <div class="Event"> 
-                        <div class="checkbox"><input name="selected" id="selectall" title="select all" type="checkbox"></div>
-                        <div class="image"></div>
-                        <div class="name"></div>
-                        <div class="timestamp"></div>
-                    </div>            
             <?php  
             if(count($events) > 0)
             {
@@ -32,10 +26,10 @@
                         $timestamp = " -- ".$eventDate;
            ?>  
                     <div class="Event"> 
-                        <div class="checkbox"><input class="eventSelect" name="selected" type="checkbox"></div>
+                        <div class="remove ui-icon ui-icon-closethick" title="remove event"></div>
                         <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
                         <div class="name" title ="<?php echo $eventName ?>"><?php echo $eventName ?></div>
-                        <div class="timestamp" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>
+                        <div class="timestamp" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>                        
                     </div>
            <?php 
 

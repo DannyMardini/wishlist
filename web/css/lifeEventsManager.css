@@ -94,3 +94,18 @@ label {
 #EventList a:hover {
     text-decoration: underline;
 }
+
+.focusEvent {
+    background-color: pink;
+}
+
+.focusEventRemove {
+    background-color: gray;
+    border: solid 2px white;
+    cursor: pointer;
+}
+
+.Event .remove {
+    display:none;
+    float:right;
+}
