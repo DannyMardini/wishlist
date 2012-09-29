@@ -103,18 +103,21 @@ label {
 
 .focusEventRemove {
     background-color: gray;    
-    cursor: pointer;
 }
 
 #EventList .Event .remove {
     display:none;
     float:right;
-    margin-right: 5px;
-    margin-top: 5px;
+    padding: 0px;
+    margin: 0px;
+    width:1.0em;
 }
 
 #EventList .Event {
-    padding-left: 10px;
+    padding: 5px;
     border-bottom: solid 1px #EFEFEF;
-    padding-bottom: 5px;
+}
+
+.eventListDiv {
+    overflow: scroll;
 }

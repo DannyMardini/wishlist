@@ -26,24 +26,25 @@ $(document).ready(function(){
         $('#saved_life_events_div').hide();
     }
     
+    $('.remove').button({
+            icons: {
+                primary: "ui-icon-closethick"
+            },
+            text: false
+    });
+    
 });
 
 function onEventHoverOut(obj)
 {
     $(obj).removeClass('focusEvent');
     $('.remove', $(obj)).hide();
-    //$('.remove',$(obj)).unbind('hover');    
 }
 
 function onEventHover(obj)
 {
     $(obj).addClass('focusEvent');
-    $('.remove', $(obj)).show();
-//    $('.remove',$(obj)).bind('hover',function(){
-//        $(this).addClass('focusEventRemove');
-//    },function(){
-//        $(this).removeClass('focusEventRemove');
-//    });    
+    $('.remove', $(obj)).show(); 
 }
 
 //function addNewEventHandler(e)

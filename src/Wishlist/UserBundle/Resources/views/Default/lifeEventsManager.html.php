@@ -26,7 +26,7 @@
                         $timestamp = " -- ".$eventDate;
            ?>  
                     <div class="Event"> 
-                        <div class="remove ui-icon ui-icon-closethick" title="remove event"></div>
+                        <button class="remove" title="remove event"></button>
                         <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
                         <div class="name" title ="<?php echo $eventName ?>"><?php echo $eventName ?></div>
                         <div class="timestamp" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>                        
