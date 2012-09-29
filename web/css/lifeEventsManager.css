@@ -1,3 +1,4 @@
+/* i think these are not used 
 .lifeEventDiv label{
     display:block;
     float: none;
@@ -16,6 +17,7 @@
 .lifeEventDiv .datepicker {
     margin-right:5px;width:18%;
 }
+*/
 
 label {
     float: left;
@@ -96,16 +98,17 @@ label {
 }
 
 .focusEvent {
-    background-color: pink;
+    background-color: #cdc9c9;
 }
 
 .focusEventRemove {
-    background-color: gray;
-    border: solid 2px white;
+    background-color: gray;    
     cursor: pointer;
 }
 
 .Event .remove {
     display:none;
     float:right;
+    margin-right: 5px;
+    margin-top: 5px;
 }
