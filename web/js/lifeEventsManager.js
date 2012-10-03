@@ -31,7 +31,14 @@ $(document).ready(function(){
                 primary: "ui-icon-closethick"
             },
             text: false
-    });
+    }).click(function(){alert('remove');});
+    
+    $('.edit').button({
+            icons: {
+                primary: "ui-icon-pencil"
+            },
+            text: false
+    }).click(function(){alert('edit');});    
     
 });
 
@@ -39,12 +46,14 @@ function onEventHoverOut(obj)
 {
     $(obj).removeClass('focusEvent');
     $('.remove', $(obj)).hide();
+    $('.edit',$(obj)).hide();
 }
 
 function onEventHover(obj)
 {
     $(obj).addClass('focusEvent');
     $('.remove', $(obj)).show(); 
+    $('.edit',$(obj)).show();
 }
 
 //function addNewEventHandler(e)
@@ -106,8 +115,6 @@ function createEventMenuButtons()
 
 function onSelectEventHandler(obj)
 {
-    alert('test');
-    return;
     var selected = $(obj).is(':checked');
     if(selected)
     {

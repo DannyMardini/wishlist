@@ -27,6 +27,7 @@
            ?>  
                     <div class="Event"> 
                         <button class="remove" title="remove event"></button>
+                        <button class="edit" title="edit event"></button>                        
                         <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
                         <div class="name" title ="<?php echo $eventName ?>"><?php echo $eventName ?></div>
                         <div class="timestamp" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>                        
