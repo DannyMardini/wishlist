@@ -42,5 +42,14 @@
             }
            ?>            
         </div>
+        <div style="display:none;" id="newEventPanel">
+            <input type="text" required placeholder="Name" />
+            <input type="date" required placeholder="Date" />
+            <select><option value="-1">Select Type</option>
+                <option value="1">Birthday</option>
+                <option value="2">Anniversary</option>
+                <option value="0">Other</option></select>
+            <input type="submit" value="Save">
+        </div>
     </body>
 </html>

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Event
 {
+    const TYPE_OTHER = 0;
     const TYPE_BIRTHDAY = 1;
     const TYPE_ANNIVERSARY = 2;
     

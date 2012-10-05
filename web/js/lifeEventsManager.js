@@ -27,18 +27,27 @@ $(document).ready(function(){
     }
     
     $('.remove').button({
-            icons: {
-                primary: "ui-icon-closethick"
-            },
-            text: false
+        icons: {
+            primary: "ui-icon-closethick"
+        },
+        text: false
     }).click(function(){alert('remove');});
     
     $('.edit').button({
-            icons: {
-                primary: "ui-icon-pencil"
-            },
-            text: false
-    }).click(function(){alert('edit');});    
+        icons: {
+            primary: "ui-icon-pencil"
+        },
+        text: false
+    }).click(function(){alert('edit');}); 
+    
+    
+    $('#newEventPanel').dialog({
+        modal: true,
+        autoOpen: false,
+        title: 'New Event',
+        draggable: false,
+        resizable: false 
+    });
     
 });
 
@@ -56,31 +65,36 @@ function onEventHover(obj)
     $('.edit',$(obj)).show();
 }
 
-//function addNewEventHandler(e)
-//{
-//    e.preventDefault();
-//    var eventDateObj = null;
-//
-//    if(validateEventInputs())
-//    {
-//        // validate the date
-//        try {
-//            eventDateObj = parseDate($('#newDatepicker').val());
-//            // insert the new event into the My Events section
-//            insertNewEvent();
-//
-//            $('#saved_life_events_div').show();
-//        }
-//        catch(e)
-//        {
-//            alert(e)
-//        }            
-//    }
-//    else
-//    {
-//        alert('invalid inputs');
-//    }
-//}
+function addNewEventHandler(e)
+{
+    $('#newEventPanel').show();
+}
+
+function onClickSaveAddNewEvent()
+{
+    e.preventDefault();
+    var eventDateObj = null;
+
+    if(validateEventInputs())
+    {
+        // validate the date
+        try {
+            eventDateObj = parseDate($('#newDatepicker').val());
+            // insert the new event into the My Events section
+            insertNewEvent();
+
+            $('#saved_life_events_div').show();
+        }
+        catch(e)
+        {
+            alert(e)
+        }            
+    }
+    else
+    {
+        alert('invalid inputs');
+    }
+}
     
     
 function validateEventInputs()
@@ -96,6 +110,8 @@ function createEventMenuButtons()
                 primary: "ui-icon-plusthick"
             },
             text: false
+    }).click(function(){
+        $('#newEventPanel').dialog('open');
     });
 
     $('#saveLifeEventButton').button({
