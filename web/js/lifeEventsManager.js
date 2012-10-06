@@ -17,6 +17,7 @@ $(document).ready(function(){
     });
     
     //$('#addLifeEventButton').click(addNewEventHandler);
+    $('#saveNewEvent').click(onClickSaveAddNewEvent);
 
     //Don't display My Events if there are no events.
     var myEvents = $('#saved_life_events_div div.flexbox');
@@ -70,7 +71,7 @@ function addNewEventHandler(e)
     $('#newEventPanel').show();
 }
 
-function onClickSaveAddNewEvent()
+function onClickSaveAddNewEvent(e)
 {
     e.preventDefault();
     var eventDateObj = null;
@@ -79,11 +80,13 @@ function onClickSaveAddNewEvent()
     {
         // validate the date
         try {
-            eventDateObj = parseDate($('#newDatepicker').val());
+            //var dateArr = $('#newDatepicker').val().split('-');
+            //var strDate = dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0];
+            //eventDateObj = parseDate(strDate);
             // insert the new event into the My Events section
             insertNewEvent();
 
-            $('#saved_life_events_div').show();
+            $('#newEventPanel').dialog('close');            
         }
         catch(e)
         {
@@ -144,43 +147,52 @@ function onSelectEventHandler(obj)
 
 var newEventCounter = 0;
 
+var month=new Array();
+month[0]="January";
+month[1]="February";
+month[2]="March";
+month[3]="April";
+month[4]="May";
+month[5]="June";
+month[6]="July";
+month[7]="August";
+month[8]="September";
+month[9]="October";
+month[10]="November";
+month[11]="December";
+
+function get_nth_suffix(date) {
+  switch (date) {
+    case 1:
+    case 21:
+    case 31:
+       return 'st';
+    case 2:
+    case 22:
+       return 'nd';
+    case 3:
+    case 23:
+       return 'rd';
+    default:
+       return 'th';
+  }
+}
+
 function insertNewEvent()
 {
-    newEventCounter++;
-    var eventId = "newEvent"+newEventCounter;
-    var jqueryEventId = "#" + eventId;
-
-    $("<div/>", {
-        "class": "flexbox",
-        "id": eventId            
-    }).appendTo("#saved_life_events_div");
-
-    $('<input />', {
-        type: 'text',
-        name: 'event_name',
-        "value": $('#newEventname').val(),
-        "class": "eventname",
-        "placeholder": "name"
-    }).appendTo(jqueryEventId);
-
-    $('<input />', {
-        type: 'text',
-        "class": "datepicker",
-        "value": $('#newDatepicker').val(),
-        "placeholder": "mm/dd/yyyy"
-    }).appendTo(jqueryEventId);
-
-    var select = $("<select><option value='-1'>--Type--</option><option value='1'>Birthday</option>" + 
-        "<option value='2'>Anniversary</option></select>");
-    $('option[value='+ $('#newEventType :selected').val() +']',select).attr('selected', 'selected');
-    $(select).appendTo(jqueryEventId);  
-
-    $("<img />", {
-        "class": "buttonClass",
-        "src": "/images/remove_icon.jpeg", 
-        "alt": "Remove this event"
-    }).appendTo(jqueryEventId);
-
+    var newEventType = $('#newEventType').val();
+    var newEventName = $('#newEventname').val();
+    var dateArr = $('#newDatepicker').val().split('-');
+    var dateObj = parseDate(dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0]);
+    var newImage = newEventType == 1 ? "/images/birthday1.png" : (newEventType == 2 ? "/images/anniversary4.gif" : "other");
+    var day = dateObj.getDay();
+    var newEvent = ["<div class='Event'><button class='remove' title='remove event'></button>",
+                   ,"<button class='edit' title='edit event'></button>",
+                   ,"<div class='image' title='", newEventName, "'><img src='", newImage,"' height='30' width='30' /></div>",
+                   ,"<div class='name' title ='", newEventName, "'>", newEventName,"</div>",
+                   ,"<div class='timestamp' title='", newEventName, "'>-- ", month[dateObj.getMonth()]," ",day,get_nth_suffix(day),"</div></div>"].join('');
+    $('#EventList').append(newEvent);
+    
     // clear the entries previously input
     $('#newEventname').val('');
     $('#newDatepicker').val('');
