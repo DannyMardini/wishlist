@@ -9,3 +9,7 @@ WishlistCoreBundle_NotifyAdmin:
 WishlistCoreBundle_getItemInfo:
   pattern: /ItemInfo
   defaults: { _controller: WishlistCoreBundle:EntityServices:getItemInfo }
+  
+WishlistCoreBundle_testPage:
+  pattern: /TestPage
+  defaults: { _controller: WishlistCoreBundle:Default:testPage }

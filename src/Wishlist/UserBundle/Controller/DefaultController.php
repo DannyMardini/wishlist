@@ -38,7 +38,8 @@ class DefaultController extends Controller
             $e->getTrace();
         }
         
-        return $this->render('WishlistUserBundle:Default:homepage.html.php', array('user' => $user, 'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
+        return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user, 'wishlistItems' => $user->getWishlistItems(),
+                                                                                    'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
     }
     
     public function showFriendpageAction(/*int*/ $user_id)

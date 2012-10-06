@@ -23,16 +23,39 @@ button.fg-button { width:auto; overflow:visible; }
     
 }
 
-.sideBar {
+.mockup {
+    border-style: solid;
+    border-width: 1px;
+}
+
+#giftBox {
+    display: inline-block;
     background-color: white;
-    width: 20%;
-    float: left;
-    padding-bottom: 50px;
+/*    width: 900px;*/
+    width: 1000px;
+    height: 800px;
+/*    float: left;*/
+    padding: 0px 50px 50px 50px;
     min-height: 200px;
     font-size: 14px;
-    border-right-style: solid;
-    border-width: 1px;
-    height: 80%;
+/*    text-align: center;*/
+    margin-left: 10%;
+/*    background-image: url('/images/giftBox.jpg');*/
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#giftContent {
+/*    height: 100%;
+    width: 100%;*/
+    border-top-style: none;
+    font-size: 2em;
+}
+
+ul.contentItem {
+    list-style: none;
+    padding: 0px 30px 0px 30px;
+    margin: 0px;
 }
 
 #eventsComponent {
@@ -62,9 +85,34 @@ button.fg-button { width:auto; overflow:visible; }
 
 #updatesComponent {
     background-color: white;
-    width: 100%;
-    min-height: 200px;
+    width: 280px;
+/*    min-height: 200px;*/
+    float: right;
+}
 
+#giftNav {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    height: 30px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+
+#giftNav li {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    -moz-border-radius: 0px 0px 5px 5px;
+    -o-border-radius: 0px 0px 5px 5px;
+    -ms-border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 5px;
+    
+    cursor: pointer;
 }
 
 li{
@@ -73,9 +121,9 @@ li{
 
 #updatesInnerComponent{
     min-height: 300px;
-    padding-left: 310px;
-    padding-right: 100px;
-    padding-top: 50px;
+/*    padding-left: 310px;*/
+/*    padding-right: 100px;*/
+/*    padding-top: 50px;*/
 }
 
 #updatesInnerComponent .image {
@@ -83,8 +131,7 @@ li{
     float: left;
     width: 10%;
     height: 60px;
-    /*background-image: url(/images/default_avatar.gif);
-    background-size: 85%;*/
+/*    background-image: url(/images/default_avatar.gif);*/
     background-repeat: no-repeat;
     background-position: left;
     margin-top: 15px;

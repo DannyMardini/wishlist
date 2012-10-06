@@ -4,6 +4,7 @@
  */
 
 // buttons used for the dialog
+// TODO: What does this do?? Do we even use this?
 var addToWishlistButton =  {
             priority: 'primary',           
             id: 'addToWishlistButton',
@@ -45,9 +46,9 @@ $(document).ready(function(){
     $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-cart');
     $('#addToWishlistButton').addClass('itemDialogButton');
     
-    
+    $('#giftNav li').on('click', giftNavClicked);
 //    displayUpcomingEvents();
-
+    initGiftBox();
 });
 
 
@@ -94,8 +95,6 @@ function setupItemView(data)
     $('#itemDialog').dialog('open');         
 }
 
-
-
 function openDialog(itemId)
 {
     // using the item ID, grab the item's info and display in the dialog
@@ -104,15 +103,41 @@ function openDialog(itemId)
     }); 
 }
 
-
 function goToUserPage(userId)
 {
     var loc = "www.wishlist.com/User";
     window.location = loc;
-}  
- 
- 
-       
-        
+}
 
+function initGiftBox()
+{
+    var giftNav = $('#giftNav');
+    var giftWindow = $('#giftContent');
+    var giftBox = $('#giftBox');
+    
+    console.log('Window: '+$(window).height());
+    giftWindow.height(giftBox.height()-giftNav.height());
+}
 
+function giftNavClicked()
+{
+    var button = $(this).html();
+    var url = 'Giftbox';
+    
+    url += button;
+    
+    $('#giftContent').load('/app_dev.php/'+url);
+//    switch(button)
+//    {
+//        case 'Wishlist':
+//            break;
+//        case 'Shoppinglist':
+//            break;
+//        case 'Events':
+//            break;
+//        case 'Friends':
+//            break;
+//        default:
+//            break;
+//    }
+}

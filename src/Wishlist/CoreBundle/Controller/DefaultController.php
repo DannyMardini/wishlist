@@ -62,5 +62,10 @@ class DefaultController extends Controller
             $response = "Sorry about this! An issue occurred while sending the message. Please refresh your browser and try again. <br /><br />-Wishlist Team";
             return $this->renderText($response);
         }
-    }    
+    }
+    
+    public function testPageAction()
+    {
+        return $this->render('WishlistCoreBundle:default:testpage.html.php');
+    }
 }
