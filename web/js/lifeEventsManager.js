@@ -80,12 +80,11 @@ function onClickSaveAddNewEvent(e)
     {
         // validate the date
         try {
-            //var dateArr = $('#newDatepicker').val().split('-');
-            //var strDate = dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0];
-            //eventDateObj = parseDate(strDate);
+            // save the new event
+            
+            
             // insert the new event into the My Events section
             insertNewEvent();
-
             $('#newEventPanel').dialog('close');            
         }
         catch(e)
@@ -115,14 +114,7 @@ function createEventMenuButtons()
             text: false
     }).click(function(){
         $('#newEventPanel').dialog('open');
-    });
-
-    $('#saveLifeEventButton').button({
-            icons: {
-                primary: "ui-icon-disk"
-            },
-            text: false
-    });    
+    });   
 
     $('#removeLifeEventButton').button({
             icons: {
@@ -182,9 +174,9 @@ function insertNewEvent()
 {
     var newEventType = $('#newEventType').val();
     var newEventName = $('#newEventname').val();
+    var newImage = newEventType == 1 ? "/images/birthday1.png" : (newEventType == 2 ? "/images/anniversary4.gif" : "other");    
     var dateArr = $('#newDatepicker').val().split('-');
     var dateObj = parseDate(dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0]);
-    var newImage = newEventType == 1 ? "/images/birthday1.png" : (newEventType == 2 ? "/images/anniversary4.gif" : "other");
     var day = dateObj.getDay();
     var newEvent = ["<div class='Event'><button class='remove' title='remove event'></button>",
                    ,"<button class='edit' title='edit event'></button>",

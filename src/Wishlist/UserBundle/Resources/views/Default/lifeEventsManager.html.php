@@ -8,10 +8,8 @@
     </head>
     <body>
         <div class="eventsHeader">
-            <label>Life Events</label>
+            <label>Events</label>
             <button title="add event" id="addLifeEventButton"></button>            
-            <button title="save changes" id="saveLifeEventButton"></button>
-            <button title="remove event(s)" id="removeLifeEventButton"></button>
         </div>
         <hr size="1" width="90%" color="grey">
         <div id="EventList" class="eventListDiv">
@@ -39,7 +37,7 @@
             }
             else 
             { 
-               echo "You haven't added any life events yet.";
+               echo "You haven't added any events yet.";
             }
            ?>            
         </div>
