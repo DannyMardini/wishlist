@@ -16,7 +16,6 @@ $(document).ready(function(){
         $(this).removeClass('focusEventRemove');
     });
     
-    //$('#addLifeEventButton').click(addNewEventHandler);
     $('#saveNewEvent').click(onClickSaveAddNewEvent);
 
     //Don't display My Events if there are no events.
@@ -73,29 +72,27 @@ function addNewEventHandler(e)
 
 function onClickSaveAddNewEvent(e)
 {
-    e.preventDefault();
-    var eventDateObj = null;
+    try {
+        
+        e.preventDefault();
 
-    if(validateEventInputs())
-    {
-        // validate the date
-        try {
-            // save the new event
-            
-            
-            // insert the new event into the My Events section
-            insertNewEvent();
-            $('#newEventPanel').dialog('close');            
-        }
-        catch(e)
+        if(!validateEventInputs())
         {
-            alert(e)
-        }            
+            alert('invalid inputs');
+            return;
+        }
+    
+        // save the new event
+        
+
+        // insert the new event into the My Events section
+        insertNewEvent();
+        $('#newEventPanel').dialog('close');            
     }
-    else
+    catch(e)
     {
-        alert('invalid inputs');
-    }
+        alert(e)
+    }        
 }
     
     
