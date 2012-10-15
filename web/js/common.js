@@ -29,11 +29,11 @@ function fillContainer(element)
     //$(element).get
 }
 
-// paramsArray {tags: "cat", tagmode: "any", format: "json"}
-function ajaxCall(url, paramsArray, onSuccessMethod, data_type)
+// paramsObj {tags: "cat", tagmode: "any", format: "json"}
+function ajaxCall(url, paramsObj, onSuccessMethod)
 {    
-    $.post(url, paramsArray, function(data) {
-        alert("hullo");
+    $.post(url, paramsObj, function(data) {
+        onSuccessMethod(data);
     });
 }
 

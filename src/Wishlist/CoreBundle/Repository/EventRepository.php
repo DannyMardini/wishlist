@@ -22,7 +22,7 @@ class EventRepository extends EntityRepository
         $newEvent->setName($name);
         $newEvent->setEventType($type);
         $newEvent->setEventDate($datetime);
-        $newEvent->setWishlistUser($wishlistUser);
+        $newEvent->setWishlistUser($wishlistUser);                
 
         $this->getEntityManager()->persist($newEvent);
         $this->getEntityManager()->flush();       

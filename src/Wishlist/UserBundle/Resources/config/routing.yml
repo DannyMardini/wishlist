@@ -29,3 +29,7 @@ WishlistUserBundle_save_account_settings:
 WishlistUserBundle_lifeEventsManager:
   pattern: /LifeEventsManager
   defaults: { _controller: WishlistUserBundle:Default:showLifeEventsManager }
+  
+WishlistUserBundle_saveEvent:
+  pattern: /SaveEvent
+  defaults: { _controller: WishlistUserBundle:Default:saveEvent }

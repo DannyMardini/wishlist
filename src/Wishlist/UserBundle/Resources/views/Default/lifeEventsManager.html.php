@@ -41,7 +41,7 @@
             }
            ?>            
         </div>
-        <div style="display:none;" id="newEventPanel">
+        <div style="display:none;" id="newEventPanel">            
             <input id="newEventname" type="text" required placeholder="Name" />
             <input id="newDatepicker" type="date" required placeholder="Date" />
             <select id="newEventType"><option value="-1">Select Type</option>

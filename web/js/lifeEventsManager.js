@@ -73,21 +73,17 @@ function addNewEventHandler(e)
 function onClickSaveAddNewEvent(e)
 {
     try {
-        
         e.preventDefault();
 
-        if(!validateEventInputs())
-        {
-            alert('invalid inputs');
+        if(!validateEventInputs()){
+            alert('Invalid inputs');
             return;
         }
     
         // save the new event
+        var success = saveNewEvent();
         
-
-        // insert the new event into the My Events section
-        insertNewEvent();
-        $('#newEventPanel').dialog('close');            
+        $('#newEventPanel').dialog('close');
     }
     catch(e)
     {
@@ -95,7 +91,26 @@ function onClickSaveAddNewEvent(e)
     }        
 }
     
+function saveNewEvent()
+{
+    var newEventname = $('#newEventname').val();
+    var newDatepicker = $('#newDatepicker').val();
+    var newEventType = $('#newEventType option:selected').val();                
     
+    ajaxCall('/app_dev.php/SaveEvent', {name: newEventname, date: newDatepicker, type:newEventType}, saveNewEventCallback);  
+}
+
+function saveNewEventCallback(data)
+{
+    // insert the new event into the My Events section
+    if(data.toLowerCase().indexOf('issue') > -1){
+        alert('The save could not be processed. Contact the wishlist support if the issue persists.');
+        return;
+    }  
+    
+    insertNewEvent();
+}
+ 
 function validateEventInputs()
 {
     return ($('#newEventname').val() != "" && $('#newDatepicker').val() != ""
