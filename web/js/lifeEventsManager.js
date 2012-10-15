@@ -151,37 +151,6 @@ function onSelectEventHandler(obj)
 
 var newEventCounter = 0;
 
-var month=new Array();
-month[0]="January";
-month[1]="February";
-month[2]="March";
-month[3]="April";
-month[4]="May";
-month[5]="June";
-month[6]="July";
-month[7]="August";
-month[8]="September";
-month[9]="October";
-month[10]="November";
-month[11]="December";
-
-function get_nth_suffix(date) {
-  switch (date) {
-    case 1:
-    case 21:
-    case 31:
-       return 'st';
-    case 2:
-    case 22:
-       return 'nd';
-    case 3:
-    case 23:
-       return 'rd';
-    default:
-       return 'th';
-  }
-}
-
 function insertNewEvent()
 {
     var newEventType = $('#newEventType').val();
