@@ -164,7 +164,7 @@ function insertNewEvent()
                    ,"<div class='image' title='", newEventName, "'><img src='", newImage,"' height='30' width='30' /></div>",
                    ,"<div class='name' title ='", newEventName, "'>", newEventName,"</div>",
                    ,"<div class='timestamp' title='", newEventName, "'>-- ", month[dateObj.getMonth()]," ",day,get_nth_suffix(day),"</div></div>"].join('');
-    $('#EventList').append(newEvent);
+    $('#EventList').prepend(newEvent);
     
     // clear the entries previously input
     $('#newEventname').val('');

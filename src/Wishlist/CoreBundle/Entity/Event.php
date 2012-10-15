@@ -163,6 +163,8 @@ class Event
     
     public function getEventImage()
     {                
-        return ($this->eventType == Event::TYPE_BIRTHDAY) ? '/images/birthday1.png' : '/images/anniversary4.gif';        
+        return ($this->eventType == Event::TYPE_BIRTHDAY) ? '/images/birthday1.png' : 
+            (($this->eventType == Event::TYPE_ANNIVERSARY) ? '/images/anniversary4.gif':
+            '/images/otherEvent.jpeg');
     }
 }
