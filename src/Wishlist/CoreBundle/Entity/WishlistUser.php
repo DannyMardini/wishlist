@@ -300,6 +300,11 @@ class WishlistUser {
     {
         return PicService::getProfileUrl($this->wishlistuser_id);
     }
+    
+    public function getProfileThumb()
+    {
+        return PicService::getProfileThumb($this->wishlistuser_id);
+    }
     /**
      * @var Wishlist\CoreBundle\Entity\WishlistItem
      */

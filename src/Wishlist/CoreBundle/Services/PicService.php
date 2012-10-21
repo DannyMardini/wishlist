@@ -22,6 +22,18 @@ class PicService
         
         return PicService::default_pic;
     }
+    
+    public static function getProfileThumb(/*int*/ $wishlistUserId)
+    {
+        $pic_url = "images/user/".$wishlistUserId."/profile_thumb.jpg";
+        
+        if(file_exists($pic_url))
+        {
+            return '/'.$pic_url;
+        }
+        
+        return PicService::default_pic;
+    }
 }
 
 ?>
