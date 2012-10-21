@@ -255,4 +255,24 @@ class DefaultController extends Controller
             return new Response($message);
         }
     }
+    
+    public function removeEventAction()
+    {
+        try {
+           $eventId = $this->getRequest()->get('id');
+           $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+           $wishlistUser = $userRepo->getUserWithId($this->getRequest()->getSession()->get('user_id'));
+           
+           if($wishlistUser)
+           {                          
+                $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
+                $saved = $eventRepo->removeEvent( $eventId );
+                return new Response( $saved );
+           }
+        } 
+        catch(Exception $e){
+            $message = "An issue has occurred. Contact the wishlist support for assistance. Message:".$e->getMessage();
+            return new Response($message);
+        }
+    }
 }

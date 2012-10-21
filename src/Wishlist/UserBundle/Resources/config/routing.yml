@@ -33,3 +33,7 @@ WishlistUserBundle_lifeEventsManager:
 WishlistUserBundle_saveEvent:
   pattern: /SaveEvent
   defaults: { _controller: WishlistUserBundle:Default:saveEvent }
+  
+WishlistUserBundle_removeEvent:
+  pattern: /RemoveEvent
+  defaults: { _controller: WishlistUserBundle:Default:removeEvent }  

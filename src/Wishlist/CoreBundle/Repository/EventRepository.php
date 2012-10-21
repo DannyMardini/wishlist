@@ -28,8 +28,33 @@ class EventRepository extends EntityRepository
         $this->getEntityManager()->flush();
         return $newEvent->getId();
     }
+    
+    public function removeEvent( $id )
+    {
+        $event = $this->getEventById($id);                
+        
+        if(!$event){
+            return 'false';
+        }
+        
+        $em = $this->getEntityManager();
+        $em->remove($event);
+        $em->flush();
+        
+        return 'true';
+    }
+    
+    public function getEventById( $eventId )
+    {
+        $query = $this->getEntityManager()
+                ->createQuery('SELECT e 
+                    FROM WishlistCoreBundle:Event e 
+                    WHERE e.id = :uid')
+                ->setParameter('uid', $eventId);
+        return $query->getOneOrNullResult();
+    }
 
-    public function getAllUserEvents(/*int*/ $userId)
+    public function getAllUserEvents( $userId )
     {
         try
         {
@@ -43,21 +68,7 @@ class EventRepository extends EntityRepository
         {
             return 0;
         }
-    }    
- 
-    // I don't think the function below is being used
-//    public function getUserEvents(/*int*/ $userId, /*int*/ $daysInterval = 32)
-//    {
-//        //Get Events
-//        $query = $this->createQueryBuilder('e')
-//                ->where('e.user_id = :uid')
-//                ->setParameter('uid', $userId)
-//                ->andWhere('DATE_DIFF(e.eventDate, CURRENT_DATE()) < :day_interval')
-//                ->setParameter('day_interval', $daysInterval);
-//        
-//        $events = $query->getResult();
-//        return $events;
-//    }
+    }
     
     public function getFriendEvents(/*int*/ $userId)
     {                                     

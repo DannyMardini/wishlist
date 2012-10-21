@@ -48,12 +48,14 @@ function onClickRemoveEvent(e)
 {
     // get the event ID
     var eventId = $(e.target).parent()[0].id.split('_')[2];
-    //ajaxCall('/app_dev.php/RemoveEvent', {id:eventId}, removeEventCallback);
+    ajaxCall('/app_dev.php/RemoveEvent', {id:eventId}, removeEventCallback);
 }
 
-function removeEventCallback()
+function removeEventCallback(response)
 {
-    alert('Event Removed');
+    response == 'true' ?
+        alert('Event Removed') :
+        alert('The event could not be removed. Try again later.');
 }
 
 function onEventHoverOut(obj)
