@@ -38,8 +38,8 @@ button.fg-button { width:auto; overflow:visible; }
     padding: 0px 50px 50px 50px;
     min-height: 200px;
     font-size: 14px;
-/*    text-align: center;*/
-/*    margin-left: 10%;*/
+    text-align: center;
+    margin-left: 10%;
 /*    background-image: url('/images/giftBox.jpg');*/
     background-repeat: no-repeat;
     background-size: contain;
