@@ -1,45 +1,11 @@
 $(document).ready(function(){
-    
     createEventMenuButtons();
     
-    $('#removeLifeEventButton').hide(); // disabled by default
+    applyEventOnHoverEvent($('.Event'));
     
-    $('.Event').hover(function(){
-        onEventHover(this);
-    }, function(){
-        onEventHoverOut(this);        
-    });
-    
-    $('.remove').hover(function(){
-        $(this).addClass('focusEventRemove');
-    },function(){
-        $(this).removeClass('focusEventRemove');
-    });
-    
-    $('#saveNewEvent').click(onClickSaveAddNewEvent);
+    $('#saveNewEvent').click(onClickSaveEvent);
 
-    //Don't display My Events if there are no events.
-    var myEvents = $('#saved_life_events_div div.flexbox');
-
-    if( myEvents.length <= 0 )
-    {
-        $('#saved_life_events_div').hide();
-    }
-    
-    $('.remove').button({
-        icons: {
-            primary: "ui-icon-closethick"
-        },
-        text: false
-    }).click(function(){alert('remove');});
-    
-    $('.edit').button({
-        icons: {
-            primary: "ui-icon-pencil"
-        },
-        text: false
-    }).click(function(){alert('edit');}); 
-    
+    applyRemoveEventButton($('.remove'));
     
     $('#newEventPanel').dialog({
         modal: true,
@@ -48,8 +14,47 @@ $(document).ready(function(){
         draggable: false,
         resizable: false 
     });
-    
 });
+
+function applyEditEventButton(selector){
+    selector.button({
+        icons: {
+            primary: "ui-icon-pencil"
+        },
+        text: false
+    }).click(function(){alert('edit');}); 
+}
+
+function applyRemoveEventButton(selector)
+{
+    selector.button({
+        icons: {
+            primary: "ui-icon-closethick"
+        },
+        text: false
+    }).click(onClickRemoveEvent);    
+}
+
+function applyEventOnHoverEvent(selector)
+{
+    $(selector).hover(function(){
+        onEventHover(this);
+    }, function(){
+        onEventHoverOut(this);        
+    });    
+}
+
+function onClickRemoveEvent(e)
+{
+    // get the event ID
+    var eventId = $(e.target).parent()[0].id.split('_')[2];
+    //ajaxCall('/app_dev.php/RemoveEvent', {id:eventId}, removeEventCallback);
+}
+
+function removeEventCallback()
+{
+    alert('Event Removed');
+}
 
 function onEventHoverOut(obj)
 {
@@ -70,7 +75,7 @@ function addNewEventHandler(e)
     $('#newEventPanel').show();
 }
 
-function onClickSaveAddNewEvent(e)
+function onClickSaveEvent(e)
 {
     try {
         e.preventDefault();
@@ -81,7 +86,7 @@ function onClickSaveAddNewEvent(e)
         }
     
         // save the new event
-        var success = saveNewEvent();
+        saveNewEvent();
         
         $('#newEventPanel').dialog('close');
     }
@@ -106,9 +111,9 @@ function saveNewEventCallback(data)
     if(data.toLowerCase().indexOf('issue') > -1){
         alert('The save could not be processed. Contact the wishlist support if the issue persists.');
         return;
-    }  
+    }
     
-    insertNewEvent();
+    insertNewEvent(data);
 }
  
 function validateEventInputs()
@@ -126,41 +131,18 @@ function createEventMenuButtons()
             text: false
     }).click(function(){
         $('#newEventPanel').dialog('open');
-    });   
-
-    $('#removeLifeEventButton').button({
-            icons: {
-                primary: "ui-icon-trash"
-            },
-            text: false
-    });        
+    });      
 }
 
-function onSelectEventHandler(obj)
-{
-    var selected = $(obj).is(':checked');
-    if(selected)
-    {
-        $('#removeLifeEventButton').show();
-    }
-    else 
-    {
-        $('#removeLifeEventButton').hide();
-    }
-}
-
-var newEventCounter = 0;
-
-function insertNewEvent()
+function insertNewEvent(id)
 {
     var newEventType = $('#newEventType').val();
     var newEventName = $('#newEventname').val();
-    var newImage = newEventType == 1 ? "/images/birthday1.png" : (newEventType == 2 ? "/images/anniversary4.gif" : "other");    
+    var newImage = newEventType == 1 ? "/images/birthday1.png" : (newEventType == 2 ? "/images/anniversary4.gif" : "/images/otherEvent.jpeg");    
     var dateArr = $('#newDatepicker').val().split('-');
     var dateObj = parseDate(dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0]);
     var day = dateObj.getDay();
-    var newEvent = ["<div class='Event'><button class='remove' title='remove event'></button>",
-                   ,"<button class='edit' title='edit event'></button>",
+    var newEvent = ["<div class='Event' id='event_",id,"'><button id='remove_event_", id, "' class='remove' title='remove event'></button>",
                    ,"<div class='image' title='", newEventName, "'><img src='", newImage,"' height='30' width='30' /></div>",
                    ,"<div class='name' title ='", newEventName, "'>", newEventName,"</div>",
                    ,"<div class='timestamp' title='", newEventName, "'>-- ", month[dateObj.getMonth()]," ",day,get_nth_suffix(day),"</div></div>"].join('');
@@ -171,5 +153,8 @@ function insertNewEvent()
     $('#newDatepicker').val('');
     $('#newEventType :selected').removeAttr('selected');
     $('option[value=-1]','#newEventType').attr('selected', 'selected');
+    
+    applyRemoveEventButton($('#remove_event_'+id));
+    applyEventOnHoverEvent($('#event_'+id));
 }
     

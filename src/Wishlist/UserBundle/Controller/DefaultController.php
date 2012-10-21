@@ -221,8 +221,6 @@ class DefaultController extends Controller
                 $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
                 $eventRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Event');
                 $events = $eventRepo->getAllUserEvents($loggedInUserId);
-//                $user = $userRepo->getUserWithId($loggedInUserId);
-//                $events = $user->getEvents();
                 
                 return $this->render('WishlistUserBundle:Default:lifeEventsManager.html.php', array('events' => $events));
             }
@@ -243,18 +241,18 @@ class DefaultController extends Controller
         try {
            $name = stripslashes($this->getRequest()->get('name'));
            $time = $this->getRequest()->get('date');
-           $type = $this->getRequest()->get('type');           
+           $type = $this->getRequest()->get('type');
            
            $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
            $wishlistUser = $userRepo->getUserWithId($this->getRequest()->getSession()->get('user_id'));
            
-           $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');  
-           $eventRepo->addEvent( $name, intval($type), new DateTime($time), $wishlistUser);
-           return new Response("Success");
+           $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
+           $newId = $eventRepo->addEvent( $name, intval($type), new DateTime($time), $wishlistUser);
+           return new Response($newId);
         } 
-        catch(Exception $e){            
+        catch(Exception $e){
             $message = "An issue has occurred. Contact the wishlist support for assistance. Message:".$e->getMessage();
-            return new Response($message);            
+            return new Response($message);
         }
     }
 }

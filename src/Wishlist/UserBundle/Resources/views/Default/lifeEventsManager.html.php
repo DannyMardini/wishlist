@@ -17,6 +17,7 @@
             if(count($events) > 0)
             {
                 foreach ($events as $event) {
+                        $eventId = $event->getId();
                         $eventImage = $event->getEventImage();
                         $eventName = $event->getName();
                         $friend = $event->getWishlistUser();
@@ -24,9 +25,8 @@
                         $name = "<a href='User/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
                         $timestamp = " -- ".$eventDate;
            ?>  
-                    <div class="Event"> 
-                        <button class="remove" title="remove event"></button>
-                        <button class="edit" title="edit event"></button>
+                    <div class="Event">
+                        <button class="remove" id="remove_event_<?php echo $eventId ?>" title="remove event"></button>
                         <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
                         <div class="name" title ="<?php echo $eventName ?>"><?php echo $eventName ?></div>
                         <div class="timestamp" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>
