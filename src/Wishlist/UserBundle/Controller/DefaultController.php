@@ -125,7 +125,8 @@ class DefaultController extends Controller
         }        
     }
     
-    public function saveAccountSettingsAction(){
+    public function saveAccountSettingsAction()
+    {
         $response = 'could not save changes. please try again later.';
         try{
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');            
@@ -154,7 +155,8 @@ class DefaultController extends Controller
         }
     }
     
-    public function uploadUserImageAction(){
+    public function uploadUserImageAction()
+    {
         try{
             $response = 'Image cannot be shown';
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
