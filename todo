@@ -1,0 +1,6 @@
+point of this file is to write out quick general todo's if you're in the middle of working on something and an idea pops into your head.
+
+TODO:   Add a small javascript program which allows the user to create a thumbnail of their profile picture like Facebook.
+
+TODO:   Need to be able to delete associated purchase of a wishlistitem if a user removes that item from their wishlist. Also need to make a new cancelledItem entity 
+        so that we can notify the purchaser that the item they were going to purchase has been removed.

@@ -46,7 +46,6 @@ $(document).ready(function(){
     $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-cart');
     $('#addToWishlistButton').addClass('itemDialogButton');
     
-    $('#giftNav li').on('click', giftNavClicked);
 //    displayUpcomingEvents();
     initGiftBox();
 });
@@ -114,17 +113,19 @@ function initGiftBox()
     var giftNav = $('#giftNav');
     var giftWindow = $('#giftContent');
     var giftBox = $('#giftBox');
-    var wishlistItems = $('.gbWishlistItem');
+//    var wishlistItems = $('.gbWishlistItem');
     
     console.log('Window: '+$(window).height());
     giftWindow.height(giftBox.height()-giftNav.height());
     
-    wishlistItems.hover( function(){$(this).children('.deleteButton').addClass('hoverButton')}, 
-                         function(){$(this).children('.deleteButton').removeClass('hoverButton')});
+    $('#giftNav li').on('click', giftNavClicked);
     
-    $.each( wishlistItems, function(index, item){
-        fillPic(item);
-    });
+//    wishlistItems.hover( function(){$(this).children('.deleteButton').addClass('hoverButton')}, 
+//                         function(){$(this).children('.deleteButton').removeClass('hoverButton')});
+//    
+//    $.each( wishlistItems, function(index, item){
+//        fillPic(item);
+//    });
 }
 
 function fillPic(item)
@@ -142,20 +143,25 @@ function giftNavClicked()
     
     url += button;
     
-    $('#giftContent').load('/app_dev.php/'+url);
-//    switch(button)
-//    {
-//        case 'Wishlist':
-//            break;
-//        case 'Shoppinglist':
-//            break;
-//        case 'Events':
-//            break;
-//        case 'Friends':
-//            break;
-//        default:
-//            break;
-//    }
+    //Set up callback function
+    var callback = function() {
+        switch(button)
+        {
+            case 'Wishlist':
+                setupWishlist();
+                break;
+            case 'Shoppinglist':
+                break;
+            case 'Events':
+                break;
+            case 'Friends':
+                break;
+            default:
+                break;
+        }
+    }
+    
+    $('#giftContent').load('/app_dev.php/'+url, callback);
 }
 
 function fillGoogleImage(query, picContainer)
