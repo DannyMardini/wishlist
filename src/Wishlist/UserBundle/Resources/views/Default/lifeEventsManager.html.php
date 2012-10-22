@@ -25,7 +25,7 @@
                         $name = "<a href='User/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
                         $timestamp = " -- ".$eventDate;
            ?>  
-                    <div class="Event">
+                    <div class="Event" id="event_<?php echo $eventId ?>">
                         <button class="remove" id="remove_event_<?php echo $eventId ?>" title="remove event"></button>
                         <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
                         <div class="name" title ="<?php echo $eventName ?>"><?php echo $eventName ?></div>
@@ -50,5 +50,12 @@
                 <option value="0">Other</option></select>
             <input id="saveNewEvent" type="submit" value="Save">
         </div>
+        
+        <div id="dialog-confirm" title="Remove the event?">
+            <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 2px 2px 0;"></span>
+            The event will be permanently deleted and cannot be recovered.</p>
+        </div>
+        
+        <div id="dialog-message" title="Message"></div>
     </body>
 </html>

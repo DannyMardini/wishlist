@@ -266,15 +266,15 @@ class DefaultController extends Controller
            $wishlistUser = $userRepo->getUserWithId($this->getRequest()->getSession()->get('user_id'));
            
            if($wishlistUser)
-           {                          
+           {
                 $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
                 $saved = $eventRepo->removeEvent( $eventId );
-                return new Response( $saved );
+                $response = ($saved == 'true' ? (string)$eventId : '0');
+                return new Response( $response );
            }
         } 
         catch(Exception $e){
-            $message = "An issue has occurred. Contact the wishlist support for assistance. Message:".$e->getMessage();
-            return new Response($message);
+            return new Response('0');
         }
     }
 }

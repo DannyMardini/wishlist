@@ -1,88 +1,147 @@
-$(document).ready(function(){
-    createEventMenuButtons();
-    
-    applyEventOnHoverEvent($('.Event'));
-    
-    $('#saveNewEvent').click(onClickSaveEvent);
+var selectedEventId = null;
+var couldNotRemoveEventMessage = 'Event could not be removed. Contact the Wishlist support if the issue persists.';
+var couldNotSaveEventMessage = 'The save could not be processed. Contact the wishlist support if the issue persists.';
 
-    applyRemoveEventButton($('.remove'));
+$(document).ready(function(){
+    createGUIButtons();
+    createGUIDialogs();
+    setupEventHandlers();
+});
+
+function setupEventHandlers()
+{
+    applyEventHoverHandler($('.Event'));
+    $('#saveNewEvent').click(onClickSaveEventHandler);    
+}
+
+function createGUIButtons()
+{
+    $('#addLifeEventButton').button({
+            icons: {
+                primary: "ui-icon-plusthick"
+            },
+            text: false
+    }).click(function(){
+        $('#newEventPanel').dialog('open');
+    });
     
-    $('#newEventPanel').dialog({
+    setupRemoveEventButtons($('.remove'));
+}
+
+function createGUIDialogs()
+{
+   $('#newEventPanel').dialog({
         modal: true,
         autoOpen: false,
         title: 'New Event',
         draggable: false,
         resizable: false 
     });
-});
-
-function applyEditEventButton(selector){
-    selector.button({
-        icons: {
-            primary: "ui-icon-pencil"
-        },
-        text: false
-    }).click(function(){alert('edit');}); 
+    
+    $('#dialog-message').dialog({
+        autoOpen: false,
+        resizable: false,
+        height:230,
+        modal:true,
+        buttons: {
+            "Ok": function(){
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+    
+    $( "#dialog-confirm" ).dialog({
+        autoOpen: false,
+        resizable: false,
+        height:230,
+        modal: true,
+        buttons: {
+            "Continue": function() {                
+                removeEvent();
+                $( this ).dialog( "close" );
+            },
+            Cancel: function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });    
 }
 
-function applyRemoveEventButton(selector)
+function setupRemoveEventButtons(selector)
 {
     selector.button({
         icons: {
             primary: "ui-icon-closethick"
         },
         text: false
-    }).click(onClickRemoveEvent);    
+    }).click(onClickRemoveEventHandler); 
 }
 
-function applyEventOnHoverEvent(selector)
+function applyEventHoverHandler(selector)
 {
     $(selector).hover(function(){
-        onEventHover(this);
+        onEventHoverHandler(this);
     }, function(){
-        onEventHoverOut(this);        
+        onEventHoverOutHandler(this);        
     });    
 }
 
-function onClickRemoveEvent(e)
-{
-    // get the event ID
-    var eventId = $(e.target).parent()[0].id.split('_')[2];
-    ajaxCall('/app_dev.php/RemoveEvent', {id:eventId}, removeEventCallback);
-}
-
-function removeEventCallback(response)
-{
-    response == 'true' ?
-        alert('Event Removed') :
-        alert('The event could not be removed. Try again later.');
-}
-
-function onEventHoverOut(obj)
+function onEventHoverOutHandler(obj)
 {
     $(obj).removeClass('focusEvent');
     $('.remove', $(obj)).hide();
     $('.edit',$(obj)).hide();
 }
 
-function onEventHover(obj)
+function onEventHoverHandler(obj)
 {
     $(obj).addClass('focusEvent');
     $('.remove', $(obj)).show(); 
     $('.edit',$(obj)).show();
 }
 
-function addNewEventHandler(e)
-{
-    $('#newEventPanel').show();
+function onClickRemoveEventHandler(e)
+{   
+    // get the event ID
+    selectedEventId = $(e.target).parent()[0].id.split('_')[2];
+    
+    // confirm deletion before continuing
+    $('#dialog-confirm').dialog('open');
 }
 
-function onClickSaveEvent(e)
+function removeEvent()
+{
+    if(!selectedEventId)
+    {
+        $('#dialog-message').attr('title','An issue occurred!').html('<p>'+couldNotRemoveEventMessage+'</p>').dialog('open');
+    }
+    
+    ajaxCall('/app_dev.php/RemoveEvent', {id:selectedEventId}, removeEventCallback);        
+    
+}
+
+function removeEventCallback(response)
+{
+    if(response == '0')
+    {        
+        $('#dialog-message').attr('title','An issue occurred!').html('<p>'+couldNotRemoveEventMessage+'</p>').dialog('open');
+        return;
+    }
+    
+    // remove the event from the table view.
+    $('#event_'+response).remove();
+    $('#dialog-message').dialog('open');
+    $('#dialog-message').attr('title','Event removed!').html('<p>The event was permanently removed.</p>');
+    
+    selectedEventId = null;
+}
+
+function onClickSaveEventHandler(e)
 {
     try {
         e.preventDefault();
 
-        if(!validateEventInputs()){
+        if(!validateNewEventInputs()){
             alert('Invalid inputs');
             return;
         }
@@ -110,33 +169,23 @@ function saveNewEvent()
 function saveNewEventCallback(data)
 {
     // insert the new event into the My Events section
-    if(data.toLowerCase().indexOf('issue') > -1){
-        alert('The save could not be processed. Contact the wishlist support if the issue persists.');
+    if(data.toLowerCase().indexOf('issue') > -1){        
+        $('#dialog-message').attr('title','An issue occurred!').html('<p>'+couldNotSaveEventMessage+'</p>').dialog('open');
         return;
     }
     
-    insertNewEvent(data);
+    renderNewEvent(data);
+    
+    $('#dialog-message').attr('title','Event saved!').html('<p>The event was saved.</p>').dialog('open');
 }
  
-function validateEventInputs()
+function validateNewEventInputs()
 {
     return ($('#newEventname').val() != "" && $('#newDatepicker').val() != ""
     && $("#newEventType option:selected").val()!=-1);
 }
 
-function createEventMenuButtons()
-{
-    $('#addLifeEventButton').button({
-            icons: {
-                primary: "ui-icon-plusthick"
-            },
-            text: false
-    }).click(function(){
-        $('#newEventPanel').dialog('open');
-    });      
-}
-
-function insertNewEvent(id)
+function renderNewEvent(id)
 {
     var newEventType = $('#newEventType').val();
     var newEventName = $('#newEventname').val();
@@ -156,7 +205,7 @@ function insertNewEvent(id)
     $('#newEventType :selected').removeAttr('selected');
     $('option[value=-1]','#newEventType').attr('selected', 'selected');
     
-    applyRemoveEventButton($('#remove_event_'+id));
-    applyEventOnHoverEvent($('#event_'+id));
+    setupRemoveEventButtons($('#remove_event_'+id));
+    applyEventHoverHandler($('#event_'+id));
 }
     
