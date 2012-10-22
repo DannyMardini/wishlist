@@ -8,21 +8,20 @@
     </head>
     <body>
         <div class="eventsHeader">
-            <label>Events</label>
-            <button title="add event" id="addLifeEventButton"></button>            
-        </div>
+            <?php $eventCount = count($events); ?>
+            <label class="event-header-label" id="event_count_<?php echo $eventCount ?>">Events ( <?php echo $eventCount ?> )</label>
+            <button title="add event" id="addLifeEventButton"></button>
+        </div>        
         <hr size="1" width="90%" color="grey">
         <div id="EventList" class="eventListDiv">
             <?php  
-            if(count($events) > 0)
+            if($eventCount > 0)
             {
                 foreach ($events as $event) {
                         $eventId = $event->getId();
                         $eventImage = $event->getEventImage();
                         $eventName = $event->getName();
-                        $friend = $event->getWishlistUser();
                         $eventDate = $event->getFormattedTimestamp();
-                        $name = "<a href='User/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
                         $timestamp = " -- ".$eventDate;
            ?>  
                     <div class="Event" id="event_<?php echo $eventId ?>">

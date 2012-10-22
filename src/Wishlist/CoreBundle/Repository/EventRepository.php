@@ -59,7 +59,10 @@ class EventRepository extends EntityRepository
         try
         {
             $query = $this->getEntityManager()
-                        ->createQuery('SELECT e FROM WishlistCoreBundle:Event e LEFT JOIN e.wishlistUser usr WHERE usr.wishlistuser_id = :uid')
+                        ->createQuery('SELECT e 
+                            FROM WishlistCoreBundle:Event e LEFT JOIN e.wishlistUser usr 
+                            WHERE usr.wishlistuser_id = :uid
+                            ORDER BY e.eventDate desc')
                         ->setParameter('uid', $userId);                              
 
             $events = $query->getResult();

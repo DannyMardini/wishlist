@@ -130,6 +130,11 @@ function removeEventCallback(response)
     
     // remove the event from the table view.
     $('#event_'+response).remove();
+    var eventCount = resetEventCount('minus');
+    if(eventCount == 0)
+    {
+        $('#EventList').html("You haven't added any events yet.");
+    }
     $('#dialog-message').dialog('open');
     $('#dialog-message').attr('title','Event removed!').html('<p>The event was permanently removed.</p>');
     
@@ -185,8 +190,23 @@ function validateNewEventInputs()
     && $("#newEventType option:selected").val()!=-1);
 }
 
+function resetEventCount(type)
+{
+    // reset the total event count and check if this is the first event added
+    var eventCount = parseInt($('.event-header-label').attr('id').split('_')[2]);
+    type == 'plus' ? eventCount++ : eventCount--;
+    $('.event-header-label').html('Events ('+eventCount+')');
+    $('.event-header-label').attr('id', 'event_count_'+eventCount);
+    return eventCount;
+}
+
 function renderNewEvent(id)
 {
+    var eventCount = resetEventCount('plus');    
+    if(eventCount==1){
+        $('#EventList').html('');
+    }
+    
     var newEventType = $('#newEventType').val();
     var newEventName = $('#newEventname').val();
     var newImage = newEventType == 1 ? "/images/birthday1.png" : (newEventType == 2 ? "/images/anniversary4.gif" : "/images/otherEvent.jpeg");    
