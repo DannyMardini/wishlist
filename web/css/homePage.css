@@ -46,10 +46,7 @@ button.fg-button { width:auto; overflow:visible; }
 }
 
 #giftContent {
-/*    height: 100%;
-    width: 100%;*/
     border-top-style: none;
-/*    font-size: 2em;*/
 }
 
 ul.contentItem {
@@ -121,35 +118,28 @@ li{
 
 #updatesInnerComponent{
     min-height: 300px;
-/*    padding-left: 310px;*/
-/*    padding-right: 100px;*/
-/*    padding-top: 50px;*/
 }
 
 #updatesInnerComponent .image {
-/*    display: inline-block;*/
     float: left;
-    width: 10%;
-    height: 60px;
-/*    background-image: url(/images/default_avatar.gif);*/
     background-repeat: no-repeat;
     background-position: left;
     margin-top: 15px;
+    margin-right: 3px;
 }
 
 #updatesInnerComponent .name {
     margin-top: 15px;
     font-weight: bolder;
     display: inline-block;
-    height: 30px;
     text-align: center;
-/*    float: right;*/
+    vertical-align: bottom;
 }
 
 #updatesInnerComponent .message {
     display: block;
-    padding-top: 10px;
-    padding-left: 15px;
+    margin-top: 10px;
+    margin-left: 15px;
 }
 
 #updatesInnerComponent .timestamp {
@@ -160,7 +150,6 @@ li{
 }
 
 .Update{
-/*    padding-bottom: 20px;*/
     border-bottom: 1px solid gray;
 }
 
