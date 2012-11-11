@@ -16,7 +16,7 @@ root {
 }
 
 body {
-    background-color: black;
+    background-color: white;
     margin: 10px 10px 10px 10px;
     position: relative;
 }
@@ -33,5 +33,9 @@ body {
 
 #content {
     background-color: white;
-    width: 100%;
+    /*width: 100%;*/
+    width: 981px;
+    margin: auto;
+    position: relative;
+    zoom: 1;
 }

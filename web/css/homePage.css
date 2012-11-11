@@ -37,7 +37,7 @@ button.fg-button { width:auto; overflow:visible; }
     min-height: 200px;
     font-size: 14px;
     text-align: center;
-    /*margin-left: 8%;*/
+    margin-left: auto;
     background-repeat: no-repeat;
     background-size: contain;
 }

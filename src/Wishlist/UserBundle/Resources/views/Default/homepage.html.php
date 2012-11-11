@@ -37,8 +37,6 @@
     </div>
 </div>
 
-<div class="spacer"></div>
-
 <!--<div class="giftBox" >-->
 <div id="giftBox" class="mockup">
     <ul id="giftNav">

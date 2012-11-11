@@ -11,13 +11,6 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
-.spacer {
-    width: 2%;
-    height: 100%;
-    display: inline-block;
-    float: left;
-}
-
 #div_wishlist_div {
     display: inline-block;
 }
