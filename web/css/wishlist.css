@@ -48,6 +48,6 @@ div.confirmEvent:hover {
 }
 
 h3.purchased {
-    background: green;
+    background: #333 url(black-tie/images/ui-bg_diagonals-thick_8_333333_40x40.png) 50% 50% repeat;
 }
 

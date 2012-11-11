@@ -23,12 +23,9 @@ class GiftboxController extends Controller
     
     public function shoppinglistAction()
     {
-        $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
-        
         $userId = $this->getLoggedInUserId();
-        $purchases = $purchaseRepo->getPurchasesById($userId);
         
-        return $this->render('WishlistUserBundle:Giftbox:shoppinglist.html.php', array('purchases' => $purchases));
+        return $this->render('WishlistUserBundle:Giftbox:shoppinglist.html.php', array('userId' => $userId));
     }
     
     public function eventsAction()
