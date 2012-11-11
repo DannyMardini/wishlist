@@ -1,3 +1,4 @@
+/* i think these are not used 
 .lifeEventDiv label{
     display:block;
     float: none;
@@ -16,6 +17,7 @@
 .lifeEventDiv .datepicker {
     margin-right:5px;width:18%;
 }
+*/
 
 label {
     float: left;
@@ -93,4 +95,29 @@ label {
 
 #EventList a:hover {
     text-decoration: underline;
+}
+
+.focusEvent {
+    background-color:#EFEFEF;
+}
+
+.focusEventRemove {
+    background-color: gray;    
+}
+
+#EventList .Event .remove, #EventList .Event .edit {
+    display:none;
+    float: right; 
+    padding: 0px;
+    margin: 0px 0px 0px 5px;
+    width: 1.0em;
+}
+
+#EventList .Event {
+    padding: 5px;
+    border-bottom: solid 1px #EFEFEF;
+}
+
+.eventListDiv {
+    overflow: scroll;
 }

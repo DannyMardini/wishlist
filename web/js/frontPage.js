@@ -5,11 +5,11 @@ function runEffect(togglerWindow) {
 };  
 
 $(document).ready(function()
-{
+{    
     $.ajaxSetup ({
         cache: false
-    });        
-
+    });   
+      
 
     setupCSS();    
     
@@ -24,8 +24,8 @@ $(document).ready(function()
          
     $("#loginForm").ajaxSuccess(function(){
         //alert("Success");
-    });
-    
+    });    
+          
           
     $("#loginForm").ajaxComplete(function(){
         //alert("Complete");

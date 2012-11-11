@@ -1,3 +1,35 @@
+
+var month=new Array();
+month[0]="January";
+month[1]="February";
+month[2]="March";
+month[3]="April";
+month[4]="May";
+month[5]="June";
+month[6]="July";
+month[7]="August";
+month[8]="September";
+month[9]="October";
+month[10]="November";
+month[11]="December";
+
+function get_nth_suffix(date) {
+  switch (date) {
+    case 1:
+    case 21:
+    case 31:
+       return 'st';
+    case 2:
+    case 22:
+       return 'nd';
+    case 3:
+    case 23:
+       return 'rd';
+    default:
+       return 'th';
+  }
+}
+
 /*
  * Type can be either 'Event' or 'Date'
  */
@@ -29,11 +61,11 @@ function fillContainer(element)
     //$(element).get
 }
 
-// paramsArray {tags: "cat", tagmode: "any", format: "json"}
-function ajaxCall(url, paramsArray, onSuccessMethod, data_type)
+// paramsObj {tags: "cat", tagmode: "any", format: "json"}
+function ajaxCall(url, paramsObj, onSuccessMethod)
 {    
-    $.post(url, paramsArray, function(data) {
-        alert("hullo");
+    $.post(url, paramsObj, function(data) {
+        onSuccessMethod(data);
     });
 }
 

@@ -17,7 +17,7 @@
         <link href="/css/main.css" rel="stylesheet" type="text/css" />                
         <link href="/css/navBar.css" rel="stylesheet" type="text/css" />        
     </head>
-    <body>
+    <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
         <?php echo $view['actions']->render('WishlistCoreBundle:Default:navBar'); ?>
         <div id="content" class="clearfix">
         <?php $view['slots']->output('_content'); ?>

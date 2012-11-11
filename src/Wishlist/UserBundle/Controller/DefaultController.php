@@ -4,13 +4,11 @@ namespace Wishlist\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NoResultException;
 use Wishlist\CoreBundle\Entity\WishlistUser;
-use Wishlist\CoreBundle\Entity\Event;
 use Wishlist\CoreBundle\Services\PicService;
+use \DateTime;
 
 
 class DefaultController extends Controller
@@ -25,10 +23,9 @@ class DefaultController extends Controller
         $email = $session->get('email_addr');
         
         if(!$email){
-            throw $this->createNotFoundException ('500 Internal server error. Please go to wishlist.com and sign in.');
+            return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');            
         }
 
-        
         $user = $userRepo->getUserWithEmail($email);
 
         try {
@@ -99,7 +96,7 @@ class DefaultController extends Controller
             
             if(!isset($loggedInUserId)){
                 $message = 'Please go to the frontpage to sign in.';
-                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));                
+                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));
             }
             else {
                 // get the original user information to pre-populate the form
@@ -128,7 +125,8 @@ class DefaultController extends Controller
         }        
     }
     
-    public function saveAccountSettingsAction(){
+    public function saveAccountSettingsAction()
+    {
         $response = 'could not save changes. please try again later.';
         try{
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');            
@@ -157,7 +155,8 @@ class DefaultController extends Controller
         }
     }
     
-    public function uploadUserImageAction(){
+    public function uploadUserImageAction()
+    {
         try{
             $response = 'Image cannot be shown';
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
@@ -224,8 +223,6 @@ class DefaultController extends Controller
                 $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
                 $eventRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Event');
                 $events = $eventRepo->getAllUserEvents($loggedInUserId);
-//                $user = $userRepo->getUserWithId($loggedInUserId);
-//                $events = $user->getEvents();
                 
                 return $this->render('WishlistUserBundle:Default:lifeEventsManager.html.php', array('events' => $events));
             }
@@ -239,5 +236,45 @@ class DefaultController extends Controller
                 throw $this->createNotFoundException('Could not find user');
             }
         }    
+    }
+
+    public function saveEventAction()
+    {
+        try {
+           $name = stripslashes($this->getRequest()->get('name'));
+           $time = $this->getRequest()->get('date');
+           $type = $this->getRequest()->get('type');
+           
+           $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+           $wishlistUser = $userRepo->getUserWithId($this->getRequest()->getSession()->get('user_id'));
+           
+           $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
+           $newId = $eventRepo->addEvent( $name, intval($type), new DateTime($time), $wishlistUser);
+           return new Response($newId);
+        } 
+        catch(Exception $e){
+            $message = "An issue has occurred. Contact the wishlist support for assistance. Message:".$e->getMessage();
+            return new Response($message);
+        }
+    }
+    
+    public function removeEventAction()
+    {
+        try {
+           $eventId = $this->getRequest()->get('id');
+           $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+           $wishlistUser = $userRepo->getUserWithId($this->getRequest()->getSession()->get('user_id'));
+           
+           if($wishlistUser)
+           {
+                $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
+                $saved = $eventRepo->removeEvent( $eventId );
+                $response = ($saved == 'true' ? (string)$eventId : '0');
+                return new Response( $response );
+           }
+        } 
+        catch(Exception $e){
+            return new Response('0');
+        }
     }
 }

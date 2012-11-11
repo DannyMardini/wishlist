@@ -45,3 +45,11 @@ WishlistUserBundle_giftboxEvents:
 WishlistUserBundle_giftboxFriends:
   pattern: /GiftboxFriends
   defaults: { _controller: WishlistUserBundle:Giftbox:friends }
+
+WishlistUserBundle_saveEvent:
+  pattern: /SaveEvent
+  defaults: { _controller: WishlistUserBundle:Default:saveEvent }
+  
+WishlistUserBundle_removeEvent:
+  pattern: /RemoveEvent
+  defaults: { _controller: WishlistUserBundle:Default:removeEvent }  

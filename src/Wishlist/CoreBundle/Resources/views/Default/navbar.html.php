@@ -1,4 +1,5 @@
 <input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />
+<input type="hidden" id="frontpageLinkPath" value="<?php echo $view['router']->generate('WishlistFrontpageBundle_homepage')?>" />
 <input type="hidden" id="accountSettingsLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_accountsettings')?>" />
 <input type="hidden" id="friendListLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $user->getWishlistuserId())) ?>" />
 <input type="hidden" id="helpLinkPath" value="<?php echo $view['router']->generate('WishlistQABundle_help') ?>" />
@@ -43,6 +44,6 @@
     <ul>
         <li><a id="accountSettingsLink" class="ui-MenuLink" href="#">Settings</a></li>
         <li><a id="helpLink" href="#" class="ui-MenuLink">Help</a></li>
-        <li><a href="#">Log Out</a></li>
+        <li><a id="logoutLink" href="#" class="ui-MenuLink">Log Out</a></li>
     </ul>
 </div>

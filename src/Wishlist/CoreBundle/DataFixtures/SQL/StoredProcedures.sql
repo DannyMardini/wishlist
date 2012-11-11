@@ -3,8 +3,8 @@
 
 use wishlist;
 
-DROP PROCEDURE selectPurchase;
-DROP PROCEDURE PurchaseItem;
+ DROP PROCEDURE selectPurchase;
+ DROP PROCEDURE PurchaseItem;
 
 DELIMITER //
 
