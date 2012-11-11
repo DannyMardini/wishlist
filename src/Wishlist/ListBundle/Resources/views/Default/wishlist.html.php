@@ -36,7 +36,9 @@ echo "<div id='div_wishlist_div'>";
         echo "<div class='newWishBox'>";
         echo "    <input type='text' id='newWishName' placeholder='Name'/>";
         echo "    <input type='text' id='newWishPrice' placeholder='Price'/>";
-        echo "    <input type='text' id='newWishLink' placeholder='Link'/>";
+        echo "    <input type='text' id='newWishLink' placeholder='Link (Optional)'/>";
+        echo "    <input type='text' id='newWishLink' placeholder='Comment (Optional)'/>";
+        echo "    <input type='text' id='newWishLink' placeholder='Quantity (Default = 1)'/>";
         echo "</div>";
     }
     
