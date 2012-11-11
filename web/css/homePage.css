@@ -31,18 +31,13 @@ button.fg-button { width:auto; overflow:visible; }
 #giftBox {
     display: inline-block;
     background-color: white;
-/*    width: 900px;*/
-/*    width: 1000px;*/
     width: 65%;
-/*    height: 800px;*/
     height: 80%;
-/*    float: left;*/
-    padding: 0px 50px 50px 50px;
+    padding: 0px 3% 3% 3%;
     min-height: 200px;
     font-size: 14px;
     text-align: center;
-    margin-left: 10%;
-/*    background-image: url('/images/giftBox.jpg');*/
+    margin-left: 8%;
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -84,7 +79,7 @@ ul.contentItem {
 
 #updatesComponent {
     background-color: white;
-    width: 15%;
+    width: 20%;
 /*    min-height: 200px;*/
     float: right;
 }
