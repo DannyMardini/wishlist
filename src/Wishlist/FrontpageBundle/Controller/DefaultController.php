@@ -10,6 +10,16 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
+        $session = $this->getRequest()->getSession();
+        $session->set('email_addr', '');
+        $session->set('user_id', '');
+        $session->clear();
+        
+//        Session.clear();//clear session
+//        Session.Abandon();//Abandon session
+//        Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+//        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+//        Response.Cache.SetNoStore();
         return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');
     }
     

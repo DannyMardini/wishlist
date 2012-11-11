@@ -21,7 +21,7 @@ var itemDialogButtons = [ addToWishlistButton ];
 
 
 $(document).ready(function(){
-        
+    
     $.ajaxSetup ({  
         cache: false  
     });
@@ -36,7 +36,7 @@ $(document).ready(function(){
             modal: true,
             buttons: itemDialogButtons,
             open: function(event, ui) {
-                $(this).scrollTop(0);                
+                $(this).scrollTop(0);
             }
     });   
     

@@ -7,8 +7,16 @@ var userName;
 var userID;
 var rightPanelVisible = 0;
 
+window.history.forward();
+
+function noBack() { 
+    window.history.forward(); 
+}
+
 $(document).ready(function(){
     showOnlyMainProfileLink();
+    
+    $('#logoutLink').click(onLogoutClickEvent);
 
     $("#dropDownButton").click(function(){
       if( rightPanelVisible )
@@ -16,7 +24,8 @@ $(document).ready(function(){
         $('#dropDownMenu').hide();
         $("#dropDownButton").removeClass('selected');
         rightPanelVisible = 0;
-      }else 
+      }
+      else
       {
         $("#dropDownMenu").show();
         $("#dropDownButton").addClass('selected');
@@ -33,6 +42,16 @@ $(document).ready(function(){
     });
 });
 
+       function noBack()
+         {
+             window.history.forward()
+         }
+
+function onLogoutClickEvent()
+{
+    navigate($('#frontpageLinkPath').val());
+}
+
 function showOnlyMainProfileLink()
 {
    $("#linkList li").hide();
@@ -41,5 +60,8 @@ function showOnlyMainProfileLink()
 
 function navigate(path)
 {
-    window.location = path;
+    if(path)
+    {
+        window.location = path;
+    }
 }

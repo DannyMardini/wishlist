@@ -23,10 +23,9 @@ class DefaultController extends Controller
         $email = $session->get('email_addr');
         
         if(!$email){
-            throw $this->createNotFoundException ('500 Internal server error. Please go to wishlist.com and sign in.');
+            return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');            
         }
 
-        
         $user = $userRepo->getUserWithEmail($email);
 
         try {

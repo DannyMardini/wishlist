@@ -21,10 +21,13 @@ class DefaultController extends Controller
         {
             $uid = $this->getRequest()->getSession()->get('user_id'); //The logged in user id.
             $user = null;
-            if($uid!=null) {
+            if($uid!=null) 
+            {
                 $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->getUserWithId($uid);
             }
-        }catch(Exception $e){
+        }
+        catch(Exception $e)
+        {
             throw $this->createNotFoundException('Please to go the Frontpage to sign on');
         }
         
