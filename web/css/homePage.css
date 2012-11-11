@@ -31,13 +31,13 @@ button.fg-button { width:auto; overflow:visible; }
 #giftBox {
     display: inline-block;
     background-color: white;
-    width: 65%;
+    width: 67%;
     height: 80%;
     padding: 0px 3% 3% 3%;
     min-height: 200px;
     font-size: 14px;
     text-align: center;
-    margin-left: 8%;
+    /*margin-left: 8%;*/
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -79,9 +79,10 @@ ul.contentItem {
 
 #updatesComponent {
     background-color: white;
-    width: 20%;
+    width: 23%;
 /*    min-height: 200px;*/
     float: right;
+    margin-right: 1%;
 }
 
 #giftNav {
