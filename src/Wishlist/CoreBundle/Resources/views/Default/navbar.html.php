@@ -20,7 +20,7 @@
             <?php if($user!=null) { ?>
             <li style="padding-right:5px;">
                 <div class="buttonClass">
-                    <img class="tinyProfile" src="<?php echo $user!=null ? ($user->getProfileUrl()) : ""; ?>"/>    
+                    <img class="tinyProfile" src="<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>"/>    
                     <span id="homepageLink" class="ui-MenuLink"><?php echo $user->getFirstName() ?></span>
                 </div>
             </li><li>

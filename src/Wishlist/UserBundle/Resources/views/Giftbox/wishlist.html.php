@@ -1,10 +1,3 @@
-<?php
-echo "<ul id='wishlistItems' class='contentItem'>\n";
-
-foreach ($wishlistItems as $wishlistItem)
-{
-    echo "<li>".$wishlistItem->getName()."</li>\n";
-}
-
-echo "</ul>";
-?>
+<div id="wishlist">
+    <?php echo $view['actions']->render('WishlistListBundle:Wishlist:showWishlist', array('user' => $user)); ?>
+</div>

@@ -46,7 +46,6 @@ $(document).ready(function(){
     $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-cart');
     $('#addToWishlistButton').addClass('itemDialogButton');
     
-    $('#giftNav li').on('click', giftNavClicked);
 //    displayUpcomingEvents();
     initGiftBox();
 });
@@ -114,9 +113,27 @@ function initGiftBox()
     var giftNav = $('#giftNav');
     var giftWindow = $('#giftContent');
     var giftBox = $('#giftBox');
+//    var wishlistItems = $('.gbWishlistItem');
     
     console.log('Window: '+$(window).height());
     giftWindow.height(giftBox.height()-giftNav.height());
+    
+    $('#giftNav li').on('click', giftNavClicked);
+    
+//    wishlistItems.hover( function(){$(this).children('.deleteButton').addClass('hoverButton')}, 
+//                         function(){$(this).children('.deleteButton').removeClass('hoverButton')});
+//    
+//    $.each( wishlistItems, function(index, item){
+//        fillPic(item);
+//    });
+}
+
+function fillPic(item)
+{
+    var picContainer = $(item).children('span.picContainer');
+    var query = $(item).children('label').html();
+    
+    fillGoogleImage(query, picContainer);
 }
 
 function giftNavClicked()
@@ -126,18 +143,49 @@ function giftNavClicked()
     
     url += button;
     
-    $('#giftContent').load('/app_dev.php/'+url);
-//    switch(button)
-//    {
-//        case 'Wishlist':
-//            break;
-//        case 'Shoppinglist':
-//            break;
-//        case 'Events':
-//            break;
-//        case 'Friends':
-//            break;
-//        default:
-//            break;
-//    }
+    //Set up callback function
+    var callback = function() {
+        switch(button)
+        {
+            case 'Wishlist':
+                setupWishlist();
+                break;
+            case 'Shoppinglist':
+                break;
+            case 'Events':
+                break;
+            case 'Friends':
+                break;
+            default:
+                break;
+        }
+    }
+    
+    $('#giftContent').load('/app_dev.php/'+url, callback);
+}
+
+function fillGoogleImage(query, picContainer)
+{
+    var mykey = "AIzaSyBHtgh3ihz8AHCBw0LkEi_Snl96elJCSpA";
+    var cx = "015228749791243702187:ctequifxi_s";
+//    var query = "Metal+Gear+Solid";
+    var hndlr = "googleQryHndlr";
+    var url = "https://www.googleapis.com/customsearch/v1?key="+mykey+"&cx="+cx+"&q="+query+"&searchType=image&num=1";
+    
+    $.get(url, function(response) {fillPicContainer(picContainer, response)}, "json");
+}
+
+function fillPicContainer(picContainer, response)
+{
+    picContainer.html( function(index, oldhtml){
+        var newhtml = '';
+        
+        if (response.items.length > 0)
+        {
+            var item = response.items[0];
+            newhtml += "<img class='itemThumb' src='"+item.link+"' />";
+        }
+        
+        return newhtml;
+    });
 }

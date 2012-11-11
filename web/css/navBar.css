@@ -113,8 +113,6 @@ li a {
 }
 
 .tinyProfile {
-/*    display: block;*/
-    width: 30px;
     height: 70%;
     padding-top: 5px;
 }
@@ -124,6 +122,8 @@ li a {
   display: none;
   border-bottom: 1px solid;
   border-left: 1px solid;
+  position: absolute;
+  right: 0px;
 }
 
 #dropDownMenu ul{
@@ -140,5 +140,5 @@ li a {
 
 #dropDownMenu ul li :hover{
     font-weight: bolder;
-    text-decoration: underline;    
+    text-decoration: underline;
 }

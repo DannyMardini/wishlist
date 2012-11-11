@@ -15,19 +15,17 @@ class GiftboxController extends Controller
         if (!isset($user))
             return;
         
-        $wishlistItems = $user->getWishlistItems();
+//        $wishlistItems = $user->getWishlistItems();
         
-        return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('wishlistItems' => $wishlistItems));
+//        return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('wishlistItems' => $wishlistItems));
+        return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('user' => $user));
     }
     
     public function shoppinglistAction()
     {
-        $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
-        
         $userId = $this->getLoggedInUserId();
-        $purchases = $purchaseRepo->getPurchasesById($userId);
         
-        return $this->render('WishlistUserBundle:Giftbox:shoppinglist.html.php', array('purchases' => $purchases));
+        return $this->render('WishlistUserBundle:Giftbox:shoppinglist.html.php', array('userId' => $userId));
     }
     
     public function eventsAction()
