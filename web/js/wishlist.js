@@ -12,6 +12,12 @@ function setupEvents()
     $('.confirmEvent').on('click', clickedEvent);
 }
 
+function submitTheNewWish()
+{
+    var itemObj = {name: $("#newWishName").val(), price: $("#newWishPrice").val(), link: $("#newWishLink").val()};
+    addToWishlist(itemObj, setupWishlist);    
+}
+
 function setupWishlist()
 {
     $(wishlist_div).accordion({
@@ -23,10 +29,14 @@ function setupWishlist()
         if(e.keyCode === 13 )
         {            
             e.preventDefault();
-            var itemObj = {name: $("#newWishName").val(), price: $("#newWishPrice").val(), link: $("#newWishLink").val()};
-            addToWishlist(itemObj, setupWishlist);
+            submitTheNewWish();
         }
     });
+    
+    $('#submitNewWish').click(function(e){
+        e.preventDefault();
+        submitTheNewWish();               
+    })
 
     $("h3 .ui-icon-close").click(function(e){
         $(wishlist_div).accordion( "option", "disabled", true);
