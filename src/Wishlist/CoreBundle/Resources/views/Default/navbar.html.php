@@ -12,7 +12,7 @@
     </div>
     <span id="linksContainer">
         <ul id="navigation">
-            <!--
+       <!--            
                 WOW, html and css suck... are you kidding me?? inline-block is the more correct approach here...
                 HOWEVER if there is a line break between successive li's then there will be a small gap between them 
                 in the actual presentation... html and css are fucking broken...

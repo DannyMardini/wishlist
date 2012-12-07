@@ -19,6 +19,12 @@
     </head>
     <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
         <?php echo $view['actions']->render('WishlistCoreBundle:Default:navBar'); ?>
+        <ul id="giftNav">
+            <li>Wishlist</li>
+            <li>Shoppinglist</li>
+            <li>Events</li>
+            <li>Friends</li>
+        </ul>
         <div id="content" class="clearfix">
         <?php $view['slots']->output('_content'); ?>
         </div>

@@ -39,12 +39,6 @@
 
 <!--<div class="giftBox" >-->
 <div id="giftBox" class="mockup">
-    <ul id="giftNav">
-        <li>Wishlist</li>
-        <li>Shoppinglist</li>
-        <li>Events</li>
-        <li>Friends</li>
-    </ul>
     <div id="giftContent" class="mockup">
 
         <?php echo $view['actions']->render('WishlistUserBundle:Giftbox:wishlist'); ?>

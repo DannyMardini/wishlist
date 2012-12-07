@@ -23,6 +23,31 @@ li a {
     height: 45px;
 }
 
+#giftNav {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    height: 30px;
+    font-family: Verdana, Arial, sans-serif;
+    border-bottom: 1px solid #BEBDBD;
+    margin-bottom: 10px;
+}
+
+#giftNav li {
+    display: inline-block;
+    margin-right: 10px;
+/*    background-color: black;*/
+/*    color: white;*/
+    padding: 5px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    -moz-border-radius: 0px 0px 5px 5px;
+    -o-border-radius: 0px 0px 5px 5px;
+    -ms-border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 5px;
+    cursor: pointer;
+}
+
 #logo{
     display: inline-block;
     height: 45px;
@@ -43,7 +68,8 @@ li a {
 
 #linksContainer {
     height: 45px;
-    float: right;
+    position: absolute;
+    right: 0px;
 }
 
 #linkList{
