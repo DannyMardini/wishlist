@@ -11,6 +11,20 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
+.WishlistItemBody{
+    font-size: 12px;
+}
+
+.WishlistItemBody p {
+/*    display: inline-block;*/
+    margin-left: 5px;
+}
+
+.WishlistItemBody label{
+    font-weight: bold;
+    /*display: inline-block;*/
+}
+
 #div_wishlist_div {
     display: inline-block;
     font-size: 12px;
