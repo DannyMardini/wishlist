@@ -28,6 +28,24 @@ function wishlistItemHeader(/*Boolean*/$selfWishlist, /*WishlistItem*/$currItem,
     return $header;
 }
 
+function wishlistItemBody(/*WishlistItem*/$currItem)
+{
+    $quantity = $currItem->getQuantity();
+    if(is_null($quantity) || $quantity <= 0)
+    {
+        $quantity = "Not Specified";
+    }
+    
+    return "<a class='ItemName' href='#'>".$currItem->getName()."</a></h3>" .
+            "<div class='WishlistItemBody'>" . 
+            "<label>Price: </label><p>$".$currItem->getPrice()."</p><br />" . 
+            "<label>Link: </label><p>".$currItem->getLink()."</p><br />" .
+            "<label>Notes: </label><p>".$currItem->getComment()."</p><br />" .
+            "<label>Quantity: </label><p>".$quantity."</p><br />" .
+            "<span id='".$currItem->getId()."' class='purchaseBtn'>Purchase!</span>" .
+            "</div>";
+}
+
 //HTML processing
 echo "<div id='div_wishlist_div'>";
     if($selfWishlist)
@@ -36,9 +54,9 @@ echo "<div id='div_wishlist_div'>";
         echo "<div class='newWishBox'>";
         echo "    <input type='text' id='newWishName' placeholder='Name'/>";
         echo "    <input type='text' id='newWishPrice' placeholder='Price'/>";
-        echo "    <input type='text' id='newWishLink' placeholder='Link (Optional)'/>";
-        echo "    <input type='text' id='newWishLink' placeholder='Comment (Optional)'/>";
-        echo "    <input type='text' id='newWishLink' placeholder='Quantity (Default = 1)'/>";
+        echo "    <input type='text' id='newWishLink' placeholder='Link'/>";
+        echo "    <input type='text' id='newWishNotes' placeholder='Notes (Optional)'/>";
+        echo "    <input type='text' id='newWishQuantity' placeholder='Quantity (Default = 1)'/>";
         echo "    <input type='submit' id='submitNewWish' name='Save' />";
         echo "</div>";
     }
@@ -56,14 +74,7 @@ echo "<div id='div_wishlist_div'>";
             echo "<span class='ui-icon ui-icon-close'></span>";
         }
 
-        echo "<a href='#'>".$currItem->getName()."</a></h3>";
-        echo "<div>";
-        echo "<p>$".$currItem->getPrice()."</p>";
-        
-        //TODO: This really should use the new HTML 5 
-        echo "<span id='".$currItem->getId()."' class='purchaseBtn'>Purchase!</span>";
-        
-        echo "</div>";
+        echo wishlistItemBody($currItem);
         $i--;
     }
 ?>

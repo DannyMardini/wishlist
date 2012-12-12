@@ -12,10 +12,59 @@ function setupEvents()
     $('.confirmEvent').on('click', clickedEvent);
 }
 
+function validateInputs()
+{
+    var name = $("#newWishName").val();
+    var price = $("#newWishPrice").val();
+    var link = $("#newWishLink").val();
+    //var notes = $("#newWishNotes").val();
+    var quantity = $("#newWishQuantity").val();
+    var message = "";
+    
+    // validate the required inputs
+    
+    if(name.length < 3) 
+    {
+        message += "\nName";
+    }
+    
+    if(price.length < 1 || !IsNumber(price))
+    {
+        message += "\nPrice";
+    }
+    
+    var url_regexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/;
+    if(link.length <= 0 || !url_regexp.test(link))
+    {
+        message += "\nLink";
+    }
+
+    // validate the optional inputs
+    
+    if(quantity.length > 0 && !IsNumber(quantity))
+    {
+        message += "\nQuantity"
+    }
+    
+    return message;
+}
+
+function IsNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 function submitTheNewWish()
 {
-    var itemObj = {name: $("#newWishName").val(), price: $("#newWishPrice").val(), link: $("#newWishLink").val()};
-    addToWishlist(itemObj, setupWishlist);    
+    var message = validateInputs();
+    
+    if(message.length <= 0)
+    {
+        var itemObj = {name: $("#newWishName").val(), price: $("#newWishPrice").val(), link: $("#newWishLink").val()};
+        addToWishlist(itemObj, setupWishlist);
+        return;
+    }    
+    
+    alert('Invalid arguments: '+message);
 }
 
 function setupWishlist()
