@@ -8,8 +8,12 @@ use \DateTime;
 
 class FriendlistController extends Controller
 {
-    public function friendlistAction()
+    public function friendlistAction(/*int*/ $user_id)
     {
+        $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $friends = $userRepo->getFriendsOf($userRepo->getUserWithId($user_id));
+        
+        return $this->render('WishlistListBundle:Default:friendlist.html.php', array('friends' => $friends));
     }
 }
 ?>

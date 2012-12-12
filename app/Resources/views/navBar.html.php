@@ -1,9 +1,8 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+$wishlistUrl = $view['router']->generate('WishlistUserBundle_homepage');
+$shoppinglistUrl = $view['router']->generate('WishlistUserBundle_shoppinglist');
+$eventsUrl = $view['router']->generate('WishlistUserBundle_lifeEventsManager');
+$friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $view['session']->get('user_id')));
 ?>
 <html>
     <head>
@@ -20,10 +19,10 @@
     <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
         <?php echo $view['actions']->render('WishlistCoreBundle:Default:navBar'); ?>
         <ul id="giftNav">
-            <li>Wishlist</li>
-            <li>Shoppinglist</li>
-            <li>Events</li>
-            <li>Friends</li>
+            <li><a href="<?php echo $wishlistUrl ?>">Wishlist</a></li>
+            <li><a href="<?php echo $shoppinglistUrl ?>">Shoppinglist</a></li>
+            <li><a href="<?php echo $eventsUrl ?>">Events</a></li>
+            <li><a href="<?php echo $friendsUrl ?>">Friends</a></li>
         </ul>
         <div id="content" class="clearfix">
         <?php $view['slots']->output('_content'); ?>
