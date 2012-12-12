@@ -17,37 +17,40 @@ function validateInputs()
     var name = $("#newWishName").val();
     var price = $("#newWishPrice").val();
     var link = $("#newWishLink").val();
-    var comment = $("#newWishNotes").val();
+    //var notes = $("#newWishNotes").val();
     var quantity = $("#newWishQuantity").val();
     var message = "";
     
-    if(name.length < 3) // validate the required inputs
+    // validate the required inputs
+    
+    if(name.length < 3) 
     {
         message += "\nName";
     }
     
-    if(price.length < 1)
+    if(price.length < 1 || !IsNumber(price))
     {
         message += "\nPrice";
     }
     
-    // validate URL if one was set.
-    // allow any protocol: ([a-zA-Z]{3,})://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
-    // or allow specific protocols: (http|https|ftp|mailto)://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)? 
-    var urlregex = new RegExp(/((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/);
-    //urlregex = new RegExp(/^\d+$/);
-    //if(link.length <= 0 || !urlregex.test(link))
-    if(link.length <= 0 || link.match(/((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/)==null)
+    var url_regexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/;
+    if(link.length <= 0 || !url_regexp.test(link))
     {
         message += "\nLink";
     }
+
+    // validate the optional inputs
     
-    if(quantity.length > 0 && !isNumeric(quantity))
+    if(quantity.length > 0 && !IsNumber(quantity))
     {
         message += "\nQuantity"
     }
     
     return message;
+}
+
+function IsNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 function submitTheNewWish()
