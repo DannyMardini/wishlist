@@ -17,11 +17,16 @@
 }
 
 #newWishBox {
-  color: pink;
+    color: pink;
+}
+
+#submitNewWish {
+    width:80px;
+    margin-left: 45%;    
 }
 
 .newWishBox {
-  height: 100px;
+    height: 100px;
 }
 
 span.purchaseBtn {

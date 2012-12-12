@@ -12,10 +12,56 @@ function setupEvents()
     $('.confirmEvent').on('click', clickedEvent);
 }
 
+function validateInputs()
+{
+    var name = $("#newWishName").val();
+    var price = $("#newWishPrice").val();
+    var link = $("#newWishLink").val();
+    var comment = $("#newWishNotes").val();
+    var quantity = $("#newWishQuantity").val();
+    var message = "";
+    
+    if(name.length < 3) // validate the required inputs
+    {
+        message += "\nName";
+    }
+    
+    if(price.length < 1)
+    {
+        message += "\nPrice";
+    }
+    
+    // validate URL if one was set.
+    // allow any protocol: ([a-zA-Z]{3,})://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
+    // or allow specific protocols: (http|https|ftp|mailto)://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)? 
+    var urlregex = new RegExp(/((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/);
+    //urlregex = new RegExp(/^\d+$/);
+    //if(link.length <= 0 || !urlregex.test(link))
+    if(link.length <= 0 || link.match(/((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/)==null)
+    {
+        message += "\nLink";
+    }
+    
+    if(quantity.length > 0 && !isNumeric(quantity))
+    {
+        message += "\nQuantity"
+    }
+    
+    return message;
+}
+
 function submitTheNewWish()
 {
-    var itemObj = {name: $("#newWishName").val(), price: $("#newWishPrice").val(), link: $("#newWishLink").val()};
-    addToWishlist(itemObj, setupWishlist);    
+    var message = validateInputs();
+    
+    if(message.length <= 0)
+    {
+        var itemObj = {name: $("#newWishName").val(), price: $("#newWishPrice").val(), link: $("#newWishLink").val()};
+        addToWishlist(itemObj, setupWishlist);
+        return;
+    }    
+    
+    alert('Invalid arguments: '+message);
 }
 
 function setupWishlist()
