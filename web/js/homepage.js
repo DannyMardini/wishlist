@@ -113,19 +113,9 @@ function initGiftBox()
     var giftNav = $('#giftNav');
     var giftWindow = $('#giftContent');
     var giftBox = $('#giftBox');
-//    var wishlistItems = $('.gbWishlistItem');
     
     console.log('Window: '+$(window).height());
     giftWindow.height(giftBox.height()-giftNav.height());
-    
-    $('#giftNav li').on('click', giftNavClicked);
-    
-//    wishlistItems.hover( function(){$(this).children('.deleteButton').addClass('hoverButton')}, 
-//                         function(){$(this).children('.deleteButton').removeClass('hoverButton')});
-//    
-//    $.each( wishlistItems, function(index, item){
-//        fillPic(item);
-//    });
 }
 
 function fillPic(item)
@@ -134,34 +124,6 @@ function fillPic(item)
     var query = $(item).children('label').html();
     
     fillGoogleImage(query, picContainer);
-}
-
-function giftNavClicked()
-{
-    var button = $(this).html();
-    var url = 'Giftbox';
-    
-    url += button;
-    
-    //Set up callback function
-    var callback = function() {
-        switch(button)
-        {
-            case 'Wishlist':
-                setupWishlist();
-                break;
-            case 'Shoppinglist':
-                break;
-            case 'Events':
-                break;
-            case 'Friends':
-                break;
-            default:
-                break;
-        }
-    }
-    
-    $('#giftContent').load('/app_dev.php/'+url, callback);
 }
 
 function fillGoogleImage(query, picContainer)
