@@ -40,20 +40,23 @@ class WishlistController extends Controller
         $name = $this->getRequest()->get('name');
         $price = $this->getRequest()->get('price');
         $link = $this->getRequest()->get('link');
+        $quantity = $this->getRequest()->get('quantity');
+        $comment = $this->getRequest()->get('comment');
         
         $loggedInUserId = $session->get('user_id');
         $loggedInUserEmail = $session->get('email_addr');
         
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
                 
-        if( !isset ($name) || !isset ($price) || !isset ($link))
+        if( !isset ($name) || ($name == "") 
+                || !isset ($price) || ($price == "") 
+                || !isset ($link) || ($link == ""))
+        {
             return;
-
-        if(($name == "") || ($price == "") || ($link == ""))
-            return;        
+        }
 
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');        
-        $itemRepo->addItem($name, $price, $link, true, 'default comment', 1, $user);          
+        $itemRepo->addItem($name, $price, $link, true, $comment, $quantity, $user);          
         
         return $this->showWishlistAction($user);
     }
