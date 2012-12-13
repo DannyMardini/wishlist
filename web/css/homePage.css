@@ -23,19 +23,36 @@ button.fg-button { width:auto; overflow:visible; }
     
 }
 
-.sideBar {
-    background-color: white;
-    width: 20%;
-    float: left;
-    padding-bottom: 50px;
-    min-height: 200px;
-    font-size: 14px;
-    border-right-style: solid;
+.mockup {
+    border-style: solid;
     border-width: 1px;
-    height: 100%;
 }
 
-#upcomingEvents {
+#giftBox {
+    display: inline-block;
+    background-color: white;
+    width: 67%;
+    height: 80%;
+    padding: 0px 3% 3% 3%;
+    min-height: 200px;
+    font-size: 14px;
+    text-align: center;
+    margin-left: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#giftContent {
+    border-top-style: none;
+}
+
+ul.contentItem {
+    list-style: none;
+    padding: 0px 30px 0px 30px;
+    margin: 0px;
+}
+
+#eventsComponent {
     float:left;
     display:block;
     background-color:white;
@@ -54,7 +71,7 @@ button.fg-button { width:auto; overflow:visible; }
     border-width: 1px;
 }
 
-#wishlistComponent h1, #upcomingEvents h1 {
+#wishlistComponent h1, #eventsComponent h1 {
     font-size: 16px;
     text-align: left;
     padding-left: 10px;
@@ -62,78 +79,40 @@ button.fg-button { width:auto; overflow:visible; }
 
 #updatesComponent {
     background-color: white;
-    width: 100%;
-    min-height: 200px;
-
-}
-
-ul{
-    background-color: white;
-    font-family: Verdana, Arial, sans-serif; font-size: 1.1em;
-    color: #ffffff;
-    list-style: none;
-    padding: 0;
+    width: 23%;
+/*    min-height: 200px;*/
+    float: right;
+    margin-right: 1%;
 }
 
 li{
     background-color: white;
 }
 
-li a {
-    text-decoration: none;
-    color: black;
-}
-
-#userName {
-    display: inline-block;
-    width: 50%;
-    height: 45px;
-    vertical-align: bottom;
-    background-color: white;
-}
-
-#userName a{
-    vertical-align: bottom;
-    padding: 0px;
-    text-align: right;
-    height: 45px;
-    text-decoration:none;
-    zoom: 1;
-    line-height: 3.0;
-}
-
 #updatesInnerComponent{
     min-height: 300px;
-    padding-left: 310px;
-    padding-right: 100px;
-    padding-top: 50px;
 }
 
 #updatesInnerComponent .image {
-/*    display: inline-block;*/
     float: left;
-    width: 10%;
-    height: 60px;
-    /*background-image: url(/images/default_avatar.gif);
-    background-size: 85%;*/
     background-repeat: no-repeat;
     background-position: left;
     margin-top: 15px;
+    margin-right: 3px;
 }
 
 #updatesInnerComponent .name {
     margin-top: 15px;
     font-weight: bolder;
     display: inline-block;
-    height: 30px;
     text-align: center;
-/*    float: right;*/
+    vertical-align: bottom;
 }
 
 #updatesInnerComponent .message {
     display: block;
-    padding-top: 10px;
-    padding-left: 15px;
+    margin-top: 10px;
+    margin-left: 15px;
 }
 
 #updatesInnerComponent .timestamp {
@@ -144,7 +123,6 @@ li a {
 }
 
 .Update{
-    padding-bottom: 20px;
     border-bottom: 1px solid gray;
 }
 
@@ -179,4 +157,75 @@ li a {
     padding-left: 5px;
     padding-bottom: 5px;
     padding-top: 5px;
+}
+
+#eventsInnerComponent .image {
+/*    display: inline-block;*/
+    float: left;
+   
+    /*background-image: url(/images/default_avatar.gif);
+    background-size: 85%;*/
+    background-repeat: no-repeat;
+    background-position: left;
+    margin-top: 15px;
+}
+
+#eventsInnerComponent .name {
+    margin-top: 15px;
+    font-weight: bolder;
+    display: inline-block;
+    height: 15px;
+    text-align: center;
+    font-size: 14px;
+    padding-left: 5px;
+/*    float: right;*/
+}
+
+#eventsInnerComponent .message {
+    display: block;
+    padding-top: 5px;
+    padding-left: 11px;
+}
+
+#eventsInnerComponent .timestamp {
+    margin-top: 5px;
+    color: gray;
+    display: block;
+    font-size:12px;
+}
+
+#eventsInnerComponent a {
+    cursor: pointer;
+    color: darkblue;
+    text-decoration: none;
+}
+
+#eventsInnerComponent a:hover {
+    text-decoration: underline;
+}
+
+.gbWishlistItem:hover {
+    background-color: #f1f9f9;
+    cursor: hand;
+}
+
+.gbWishlistItem label {
+    cursor: hand;
+}
+
+.deleteButton {
+    visibility: hidden;
+    float: right;
+}
+
+.hoverButton {
+    visibility: visible;
+    line-height: 100px;
+}
+
+.itemThumb {
+    height: 100px;
+    width: 100px;
+    padding-right: 50px;
+    vertical-align: middle;
 }

@@ -1,4 +1,7 @@
 php_errors.log
 nbproject/private/
-cache/
-log/
+app/cache/
+app/logs/
+vendor/
+nbproject/configs/
+*~

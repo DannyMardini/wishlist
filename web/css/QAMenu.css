@@ -1,0 +1,45 @@
+root { 
+    display: block;    
+}
+
+.content ul {
+    list-style-type: none;
+    padding:0; margin:0;
+}
+
+.topic {
+    color:white;
+    background-color: gray;
+    font-size: 24px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-decoration: none;
+}
+
+.content li:hover {
+    cursor: hand;
+    text-decoration: underline;
+    border-bottom-color:#EFEFEF;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.subTopic {        
+    color:red;
+    font-size: 16px;
+    font-weight: normal;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+.currentSelection {
+    font-weight: bolder;
+    padding-left: 30px;
+}
+
+#contactSupportForm{
+    padding-left: 40%;
+    width: 60%;
+}

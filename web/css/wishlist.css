@@ -11,14 +11,63 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
+.WishlistItemBody{
+    font-size: 12px;
+}
+
+.WishlistItemBody p {
+/*    display: inline-block;*/
+    margin-left: 5px;
+}
+
+.WishlistItemBody label{
+    font-weight: bold;
+    /*display: inline-block;*/
+}
+
 #div_wishlist_div {
     display: inline-block;
+    font-size: 12px;
 }
 
 #newWishBox {
-  color: pink;
+    color: pink;
+}
+
+#submitNewWish {
+    width:80px;
+    margin-left: 45%;    
 }
 
 .newWishBox {
-  height: 100px;
+    height: 100px;
 }
+
+span.purchaseBtn {
+    border-style: solid;
+    border-width: 1px;
+    cursor: hand;
+}
+
+#confirmEventContainer {
+    border-style: solid;
+    border-width: 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 1em;
+    max-height: 3em;
+}
+
+div.confirmEvent:hover {
+    background-color: #efefef;
+    cursor: hand;
+}
+
+#confirmBtn:hover {
+    cursor: hand;
+}
+
+h3.purchased {
+    background: #333 url(black-tie/images/ui-bg_diagonals-thick_8_333333_40x40.png) 50% 50% repeat;
+}
+

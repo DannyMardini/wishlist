@@ -1,35 +1,54 @@
-/* 
-    Document   : navBar
-    Created on : Dec 23, 2011, 1:58:41 PM
-    Author     : Danny
-    Description:
-        Purpose of the stylesheet follows.
-*/
-
-/* 
-   TODO customize this sample style
-   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
-*/
-
 root { 
     display: block;
 }
 
+li a {
+    text-decoration: none;
+    color: black;
+}
+
 #header {
-  height: 45px;
-  background-color: white;
+    background-color: white;
+/*    width: 100%;*/
+    height: 45px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #BEBDBD;
+    /*box-shadow: 0px 0px 15px red;*/
+    padding-bottom: 5px;
+    text-align: center;
 }
 
 #logoContainer {
     display: inline-block;
-    width: 55%;
     height: 45px;
-    float: left;
+}
+
+#giftNav {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    height: 30px;
+    font-family: Verdana, Arial, sans-serif;
+    border-bottom: 1px solid #BEBDBD;
+    margin-bottom: 10px;
+}
+
+#giftNav li {
+    display: inline-block;
+    margin-right: 10px;
+/*    background-color: black;*/
+/*    color: white;*/
+    padding: 5px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    -moz-border-radius: 0px 0px 5px 5px;
+    -o-border-radius: 0px 0px 5px 5px;
+    -ms-border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 5px;
 }
 
 #logo{
     display: inline-block;
-    width: 80%;
     height: 45px;
     background-image: url(/images/gift.jpg);
     background-size: 10%;
@@ -39,7 +58,7 @@ root {
 }
 
 #logoContainer #name {
-    font-family: 'Satisfy', cursive;
+    font-family: Satisfy, cursive;
     font-size: 40px;
     float: right;
     height: 45px;
@@ -47,15 +66,9 @@ root {
 }
 
 #linksContainer {
-    display: inline-block;
-    width: 45%;
     height: 45px;
-}
-
-#profileLinks{
-    height: 45px;
-    width: 30%;
-    float: right;
+    position: absolute;
+    right: 0px;
 }
 
 #linkList{
@@ -67,53 +80,51 @@ root {
     vertical-align: -15px;
 }
 
-#mainProfileLink {
-    height: 45px;
+#navigation {
     background-color:white;
     border:0px;
-}
-
-#friendlist ul{
-    background-color: white;
-    font-family: Verdana, Arial, sans-serif; font-size: 1.1em;
-    color: #ffffff;
-    list-style: none;
-    padding: 0;
     margin: 0px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
+
+    list-style-type: none;
+    text-align: right;
+    height: 45px;
+    background: white;
+    margin: 0px;
+    font-family: Verdana, Arial, sans-serif;
+    padding: 0px;
 }
 
-#friendlist li{
-    background-color: white;
-/*    border-style: solid;*/
-/*    border-color: black;*/
-/*    border-width: 1px;*/
-    margin-bottom: 5px;
+#navigation li{
+    display: inline-block;
 }
 
-#friendlist li a {
+.navLink img {
+    padding: 0px 0px 0px 0px;
+}
+
+#navigation li a {
+    /*display: block;*/
+    height: 35px;
+    padding-top: 20px;
+    padding-right: 5px;
     text-decoration: none;
     color: black;
 }
 
-#userName {
-    display: inline-block;
-    width: 50%;
-    height: 45px;
-    vertical-align: bottom;
-    background-color: white;
+#navigation li span {
+    margin-top: 0px;
 }
 
-#userName a{
+#navigation .navLink {
     vertical-align: bottom;
-    padding: 0px;
-    text-align: center;
-    height: 45px;
-    text-decoration:none;
-    zoom: 1;
-    line-height: 3.0;
+}
+
+#navigation .navLink:hover {
+    background-color: #efefff;
+}
+
+.selected {
+    background-color: #efefff;
 }
 
 #userPicture{
@@ -127,8 +138,33 @@ root {
     float: left;
 }
 
-#rightPanel{
-  width: 20%;
+.tinyProfile {
+    height: 70%;
+    padding-top: 5px;
+}
+
+#dropDownMenu{
   float: right;
   display: none;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  position: absolute;
+  right: 0px;
+}
+
+#dropDownMenu ul{
+    list-style: none;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+    width: 80px;
+}
+
+#dropDownMenu ul li {
+    padding: 10px 0px 5px 0px;
+}
+
+#dropDownMenu ul li :hover{
+    font-weight: bolder;
+    text-decoration: underline;
 }

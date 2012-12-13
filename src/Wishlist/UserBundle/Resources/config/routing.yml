@@ -1,0 +1,55 @@
+WishlistUserBundle_homepage:
+  pattern: /Homepage
+  defaults: { _controller: WishlistUserBundle:Default:showHomepage}
+
+WishlistUserBundle_shoppinglist:
+  pattern: /Shoppinglist
+  defaults: { _controller: WishlistUserBundle:Default:showShoppinglistPage}
+
+WishlistUserBundle_userpage:
+  pattern: /User/{user_id}
+  defaults: { _controller: WishlistUserBundle:Default:showUserpage}
+  
+WishlistUserBundle_friendlist:
+  pattern: /Friendpage/{user_id}
+  defaults: { _controller: WishlistUserBundle:Default:showFriendpage}
+
+WishlistUserBundle_accountsettings:
+  pattern: /AccountSettings
+  defaults: { _controller: WishlistUserBundle:Default:showAccountSettings}
+  
+WishlistUserBundle_accountsettingsUploadImage:
+  pattern: /UploadUserImage
+  defaults: { _controller: WishlistUserBundle:Default:uploadUserImage }
+  
+WishlistUserBundle_save_account_settings:
+  pattern: /SaveAccountSettings
+  defaults: { _controller: WishlistUserBundle:Default:saveAccountSettings }
+  
+WishlistUserBundle_lifeEventsManager:
+  pattern: /LifeEventsManager
+  defaults: { _controller: WishlistUserBundle:Default:showLifeEventsManager }
+  
+WishlistUserBundle_giftboxWishlist:
+  pattern: /GiftboxWishlist
+  defaults: { _controller: WishlistUserBundle:Giftbox:wishlist }
+  
+WishlistUserBundle_giftboxShoppinglist:
+  pattern: /GiftboxShoppinglist
+  defaults: { _controller: WishlistUserBundle:Giftbox:shoppinglist }
+  
+WishlistUserBundle_giftboxEvents:
+  pattern: /GiftboxEvents
+  defaults: { _controller: WishlistUserBundle:Giftbox:events }
+  
+WishlistUserBundle_giftboxFriends:
+  pattern: /GiftboxFriends
+  defaults: { _controller: WishlistUserBundle:Giftbox:friends }
+
+WishlistUserBundle_saveEvent:
+  pattern: /SaveEvent
+  defaults: { _controller: WishlistUserBundle:Default:saveEvent }
+  
+WishlistUserBundle_removeEvent:
+  pattern: /RemoveEvent
+  defaults: { _controller: WishlistUserBundle:Default:removeEvent }  

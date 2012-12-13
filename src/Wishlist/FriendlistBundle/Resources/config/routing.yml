@@ -1,0 +1,3 @@
+friendlist:
+    pattern:  /friendlist/{wishlistuser_id}
+    defaults: { _controller: WishlistFriendlistBundle:Default:index }

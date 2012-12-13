@@ -1,0 +1,17 @@
+Wishlist\CoreBundle\Entity\Enum:
+  type: entity
+  repositoryClass: Wishlist\CoreBundle\Repository\EnumRepository
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      unique: true
+    value:
+      type: integer
+    type:
+      type: string
+  lifecycleCallbacks: {  }

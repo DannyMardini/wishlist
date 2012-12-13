@@ -1,0 +1,7 @@
+parameters:
+#    wishlist_core.example.class: Wishlist\CoreBundle\Example
+
+services:
+#    wishlist_core.example:
+#        class: %wishlist_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

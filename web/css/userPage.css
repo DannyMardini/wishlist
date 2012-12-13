@@ -22,6 +22,7 @@ h1 {
 
 #div_user_container {
     display: inline-block;
+    border-style: solid;
 }
 
 #div_profile_pic {
@@ -37,12 +38,15 @@ h1 {
 #div_left_panel {
     display: inline-block;
     float: left;
-    height: 200px;
+/*    height: 200px;*/
     margin: 10px 60px 0px 10px;
-    border-style: solid;
 }
 
 #div_right_panel {
     display: inline-block;
     width: 50%;
+}
+
+#div_user_info {
+    padding-top: 20px;
 }

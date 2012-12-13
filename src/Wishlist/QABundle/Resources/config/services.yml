@@ -1,0 +1,7 @@
+parameters:
+#    wishlist_qa.example.class: Wishlist\QABundle\Example
+
+services:
+#    wishlist_qa.example:
+#        class: %wishlist_qa.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

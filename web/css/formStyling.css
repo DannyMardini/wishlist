@@ -1,0 +1,99 @@
+:invalid { 
+  border-color: #e88;
+  -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
+  -moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+  -o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+  -ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+  box-shadow:0 0 5px rgba(255, 0, 0, .8);
+}
+
+:required {
+  border-color: #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+}
+
+input, select, textarea{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border:1px solid #ccc;
+  font-size:12px;
+  width:100%;
+  min-height:30px;
+  display:block;
+  margin-bottom:15px;
+  margin-top:5px;
+  outline: none;
+
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
+  -ms-border-radius:5px;
+  border-radius:5px;
+}
+
+div.buttonClass {
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
+  -ms-border-radius:5px;
+  border-radius:5px; 
+  vertical-align: center;
+  text-align: center;
+}
+
+input[type=submit] {
+  background:none;
+  padding:10px;
+}
+
+input[type=submit]:hover {
+  cursor: hand;
+  font-weight: bold;
+  border-color: #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);  
+}
+
+.buttonClass:hover {
+  cursor: hand;
+  /*font-weight: bold;*/
+  border-color: #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);  
+}
+
+form {
+  width:650px;
+  margin: 20px auto;
+  color: #8C7E7E;text-shadow: 0 1px rgba(255, 255, 255, 0.9);font-weight: 300;
+  vertical-align: center;
+  horizontal-align: center;
+}
+
+
+.uiButton.uiButtonConfirm, .uiButton.uiButtonConfirm.disabledButton, .uiButtonConfirm.disabledButton:active, .uiButtonConfirm.disabledButton:focus, .uiButtonConfirm.disabledButton:hover {
+    background:#cccccc;
+    border-color: #94A2BF;
+    font-weight: bold;
+    box-shadow: none;
+    cursor: auto;
+}
+
+.uiButton.uiButtonConfirm {
+    background: white url(custom-theme/images/ui-bg_inset-hard_50_030202_1x100.png) 50% 50% repeat-x;
+    color:#FFFFFF;
+    font-weight: lighter;
+}
+
+.uiButton.uiButtonConfirm.enabledButton:hover {
+    font-weight:bold;
+}

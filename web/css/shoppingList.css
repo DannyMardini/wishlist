@@ -1,0 +1,21 @@
+#div_shoppinglist_div ul
+{
+    list-style: none;
+    padding-left: 5%;
+}
+
+#div_shoppinglist_div table
+{
+    padding-left: 5%;
+    border-spacing: 0px;
+}
+
+#div_shoppinglist_div td
+{
+    padding: 5px 20px;
+}
+
+#div_shoppinglist_div table tr.selected
+{
+    background-color: #00aa00;
+}

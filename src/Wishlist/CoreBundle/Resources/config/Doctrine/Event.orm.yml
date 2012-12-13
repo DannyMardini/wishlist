@@ -1,0 +1,27 @@
+Wishlist\CoreBundle\Entity\Event:
+  type: entity
+  table: null
+  repositoryClass: Wishlist\CoreBundle\Repository\EventRepository
+  manyToOne:
+    wishlistUser:
+      targetEntity: WishlistUser
+      inversedBy: events
+      joinColumn:
+        name: user_id
+        referencedColumnName: wishlistuser_id
+        
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+    eventType:
+      type: integer
+      length: null
+    eventDate:
+      type: datetime
+      length: null
+  lifecycleCallbacks: {  }

@@ -80,12 +80,12 @@ footer {
     padding-top: 10px;
 }
 
-#aboutLink:visited, #aboutLink:link, #aboutLink:active, #loginLink:visited, #loginLink:link, #loginLink:active{
+.frontpageLink:visited, .frontpageLink:link, .frontpageLink:active{
     color: gray;
     text-decoration: none;
 }
 
-#loginLink:hover, #aboutLink:hover {
+.frontpageLink:hover{
     color: silver;
 }
 

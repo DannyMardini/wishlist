@@ -1,0 +1,30 @@
+Wishlist\CoreBundle\Entity\WishlistUpdate:
+  type: entity
+  manyToOne:
+    wishlistUser:
+      targetEntity: WishlistUser
+      inversedBy: wishlistUpdates
+      joinColumn:
+        name: user_id
+        referencedColumnName: wishlistuser_id 
+   
+  repositoryClass: Wishlist\CoreBundle\Repository\WishlistUpdateRepository
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    template:
+      type: integer
+      notnull: true
+    type:
+      type: integer
+      notnull: true
+    message: 
+      type: string
+      notnull: true
+    datetime:
+      type: datetime
+      notnull: true
+      

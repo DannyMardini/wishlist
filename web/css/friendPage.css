@@ -1,0 +1,40 @@
+#friendlist ul{
+    background-color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0px;
+    margin-left: 80px;
+    width: 80%;
+}
+
+#friendlist li{
+    background-color: white;
+    margin-bottom: 5px;
+}
+
+#friendlist li a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+#friendlist li:hover {
+    background-color: #efefef;
+    cursor: hand;
+}
+
+span.uiButton{
+    display: inline-block;
+    padding: 10px 5px 10px 5px;
+    margin: 10px 0px 10px 10px;
+    border: 1px solid #999;
+    font-size: 18px;
+}
+
+img.friendIcon {
+    width: 50px;
+    height: 50px;
+    padding-right: 50px;
+}
+
+

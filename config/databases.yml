@@ -1,7 +1,0 @@
-all:
-  doctrine:
-    class: sfDoctrineDatabase
-    param:
-      dsn: 'mysql:host=127.0.0.1;dbname=wishlist'
-      username: root
-      password: null

@@ -1,0 +1,40 @@
+Wishlist\CoreBundle\Entity\WishlistUser:
+  type: entity
+  oneToMany:
+    friendships:
+      targetEntity: Friendship
+      mappedBy: wishlistUser
+
+    events:
+      targetEntity: Event
+      mappedBy: wishlistUser
+
+    wishlistItems:
+      targetEntity: WishlistItem
+      mappedBy: wishlistUser
+      
+    purchases:
+      targetEntity: WishlistItem
+      mappedBy: purchaser
+      
+    wishlistUpdates:
+      targetEntity: WishlistUpdate
+      mappedBy: wishlistUser
+  repositoryClass: Wishlist\CoreBundle\Repository\WishlistUserRepository
+  id:
+    wishlistuser_id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    firstname:
+      type: string
+    lastname:
+      type: string
+    birthdate:
+      type: datetime
+    email:
+      type: string
+    password:
+      type: string
+    gender:
+      type: integer
