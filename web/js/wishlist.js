@@ -55,12 +55,18 @@ function submitTheNewWish()
     var theLink = $("#newWishLink").val();
     var theQuantity = $("#newWishQuantity").val();
     var theNotes = $("#newWishNotes").val();
+    var theIsPrivate = $("#isPrivate").attr('checked');
     
     var message = validateInputs(theName, thePrice, theLink, theQuantity);
     
     if(message.length <= 0)
     {
-        var itemObj = {name: theName, price: thePrice, link: theLink, quantity: theQuantity, comment: theNotes};
+        var itemObj = { name: theName, 
+                        price: thePrice, 
+                        link: theLink, 
+                        quantity: theQuantity, 
+                        comment: theNotes, 
+                        isprivate: theIsPrivate};
         addToWishlist(itemObj, setupWishlist);
         return;
     }    

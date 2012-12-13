@@ -31,6 +31,7 @@ function wishlistItemHeader(/*Boolean*/$selfWishlist, /*WishlistItem*/$currItem,
 function wishlistItemBody(/*WishlistItem*/$currItem)
 {
     $quantity = $currItem->getQuantity();
+    $isPublic = $currItem->getIsPublic() == false ? 'False' : 'True';
     if(is_null($quantity) || $quantity <= 0)
     {
         $quantity = "Not Specified";
@@ -42,6 +43,7 @@ function wishlistItemBody(/*WishlistItem*/$currItem)
             "<label>Link: </label><p>".$currItem->getLink()."</p><br />" .
             "<label>Notes: </label><p>".$currItem->getComment()."</p><br />" .
             "<label>Quantity: </label><p>".$quantity."</p><br />" .
+            "<label>Is Private Wish: </label><p>".$isPublic."</p>".
             "<span id='".$currItem->getId()."' class='purchaseBtn'>Purchase!</span>" .
             "</div>";
 }
@@ -57,6 +59,8 @@ echo "<div id='div_wishlist_div'>";
         echo "    <input type='text' id='newWishLink' placeholder='Link'/>";
         echo "    <input type='text' id='newWishNotes' placeholder='Notes (Optional)'/>";
         echo "    <input type='text' id='newWishQuantity' placeholder='Quantity (Default = 1)'/>";
+        echo "    <span style='display:inline-block;'>Keep this wish private:</span>";
+        echo "    <input style='width:25%;display:inline-block;' type='checkbox' id='isPrivate' />";
         echo "    <input type='submit' id='submitNewWish' name='Save' />";
         echo "</div>";
     }

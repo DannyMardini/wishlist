@@ -42,6 +42,7 @@ class WishlistController extends Controller
         $link = $this->getRequest()->get('link');
         $quantity = $this->getRequest()->get('quantity');
         $comment = $this->getRequest()->get('comment');
+        $isPrivate = ($this->getRequest()->get('isprivate') == "checked");
         
         $loggedInUserId = $session->get('user_id');
         $loggedInUserEmail = $session->get('email_addr');
@@ -56,7 +57,7 @@ class WishlistController extends Controller
         }
 
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');        
-        $itemRepo->addItem($name, $price, $link, true, $comment, $quantity, $user);          
+        $itemRepo->addItem($name, $price, $link, $isPrivate, $comment, $quantity, $user);          
         
         return $this->showWishlistAction($user);
     }
