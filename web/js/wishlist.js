@@ -12,13 +12,8 @@ function setupEvents()
     $('.confirmEvent').on('click', clickedEvent);
 }
 
-function validateInputs()
+function validateInputs(name, price, link, quantity)
 {
-    var name = $("#newWishName").val();
-    var price = $("#newWishPrice").val();
-    var link = $("#newWishLink").val();
-    //var notes = $("#newWishNotes").val();
-    var quantity = $("#newWishQuantity").val();
     var message = "";
     
     // validate the required inputs
@@ -55,11 +50,23 @@ function IsNumber(n) {
 
 function submitTheNewWish()
 {
-    var message = validateInputs();
+    var theName = $("#newWishName").val();
+    var thePrice = $("#newWishPrice").val();
+    var theLink = $("#newWishLink").val();
+    var theQuantity = $("#newWishQuantity").val();
+    var theNotes = $("#newWishNotes").val();
+    var theIsPrivate = $("#isPrivate").attr('checked');
+    
+    var message = validateInputs(theName, thePrice, theLink, theQuantity);
     
     if(message.length <= 0)
     {
-        var itemObj = {name: $("#newWishName").val(), price: $("#newWishPrice").val(), link: $("#newWishLink").val()};
+        var itemObj = { name: theName, 
+                        price: thePrice, 
+                        link: theLink, 
+                        quantity: theQuantity, 
+                        comment: theNotes, 
+                        isprivate: theIsPrivate};
         addToWishlist(itemObj, setupWishlist);
         return;
     }    
