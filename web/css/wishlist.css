@@ -56,6 +56,15 @@
     cursor: hand;
     height: 25px;
     margin-top: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.purchaseBtn:hover {
+    background-color: white;
+    font-color: black;
 }
 
 #confirmEventContainer {

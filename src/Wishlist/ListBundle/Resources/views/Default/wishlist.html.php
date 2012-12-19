@@ -44,7 +44,7 @@ function wishlistItemBody(/*WishlistItem*/$currItem)
             "<div><label>Notes: </label></div><p>".$currItem->getComment()."</p><br />" .
             "<div><label>Quantity: </label></div><p>".$quantity."</p><br />" .
             "<div><label>Private: </label></div><p>". ($isPublic == 'False' ? "No" : "Yes") . "</p>" .            
-            "<button id='".$currItem->getId()."' class='purchaseBtn' type='button'>Purchase</button>" .
+            "<button id='".$currItem->getId()."' class='purchaseBtn' type='button'>Grant Wish</button>" .
             "</div>";
 }
 
