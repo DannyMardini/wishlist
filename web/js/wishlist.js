@@ -23,7 +23,7 @@ function validateInputs(name, price, link, quantity)
         message += "\nName";
     }
     
-    if(price.length < 1 || !IsNumber(price))
+    if(price.length < 1 || !IsNumber(price) || (IsNumber(price) && parseInt(price) <= 0 ))
     {
         message += "\nPrice";
     }
@@ -36,7 +36,7 @@ function validateInputs(name, price, link, quantity)
 
     // validate the optional inputs
     
-    if(quantity.length > 0 && !IsNumber(quantity))
+    if(quantity.length > 0 && !IsNumber(quantity) || (IsNumber(quantity) && parseInt(quantity) <= 0) )
     {
         message += "\nQuantity"
     }
