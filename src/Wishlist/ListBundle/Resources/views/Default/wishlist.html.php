@@ -39,12 +39,12 @@ function wishlistItemBody(/*WishlistItem*/$currItem)
     
     return "<a class='ItemName' href='#'>".$currItem->getName()."</a></h3>" .
             "<div class='WishlistItemBody'>" . 
-            "<label>Price: </label><p>$".$currItem->getPrice()."</p><br />" . 
-            "<label>Link: </label><p>".$currItem->getLink()."</p><br />" .
-            "<label>Notes: </label><p>".$currItem->getComment()."</p><br />" .
-            "<label>Quantity: </label><p>".$quantity."</p><br />" .
-            "<label>Is Private Wish: </label><p>".$isPublic."</p>".
-            "<span id='".$currItem->getId()."' class='purchaseBtn'>Purchase!</span>" .
+            "<div><label>Price: </label></div><p>$".$currItem->getPrice()."</p><br />" . 
+            "<div><label>Link: </label></div><p>".$currItem->getLink()."</p><br />" .
+            "<div><label>Notes: </label></div><p>".$currItem->getComment()."</p><br />" .
+            "<div><label>Quantity: </label></div><p>".$quantity."</p><br />" .
+            "<div><label>Private: </label></div><p>". ($isPublic == 'False' ? "No" : "Yes") . "</p>" .            
+            "<button id='".$currItem->getId()."' class='purchaseBtn' type='button'>Purchase</button>" .
             "</div>";
 }
 

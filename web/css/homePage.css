@@ -47,6 +47,7 @@ button.fg-button { width:auto; overflow:visible; }
 
 #giftContent {
     border-top-style: none;
+    overflow: scroll;
 }
 
 ul.contentItem {

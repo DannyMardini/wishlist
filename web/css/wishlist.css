@@ -11,18 +11,27 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
+.itemName {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
 .WishlistItemBody{
     font-size: 12px;
+    text-align: center;
 }
 
 .WishlistItemBody p {
-/*    display: inline-block;*/
     margin-left: 5px;
 }
 
 .WishlistItemBody label{
     font-weight: bold;
-    /*display: inline-block;*/
+}
+
+.WishlistItemBody div{
+    width: 100%;
+    background-color: gray;
 }
 
 #div_wishlist_div {
@@ -43,10 +52,10 @@
     height: 100px;
 }
 
-span.purchaseBtn {
-    border-style: solid;
-    border-width: 1px;
+.purchaseBtn {
     cursor: hand;
+    height: 25px;
+    margin-top: 20px;
 }
 
 #confirmEventContainer {
