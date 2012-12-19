@@ -94,10 +94,13 @@ function setupWishlist()
         submitTheNewWish();               
     })
 
-    $("h3 .ui-icon-close").click(function(e){
-        $(wishlist_div).accordion( "option", "disabled", true);
-        var itemObj = {name: $(this).next().text()};
-        delFromWishlist(itemObj, setupWishlist);
+    $("h3 .ui-icon-close").click(function(){
+        if(confirm("Are you sure you want to delete this wish?"))
+        {
+            $(wishlist_div).accordion( "option", "disabled", true);
+            var itemObj = {name: $(this).next().text()};
+            delFromWishlist(itemObj, setupWishlist);            
+        }        
     });
     
     $('.purchaseBtn').on('click', clickedItem);
