@@ -15,30 +15,40 @@ function setupEvents()
 function validateInputs(name, price, link, quantity)
 {
     var message = "";
+    var ignore = 0;
     
     // validate the required inputs
     
     if(name.length < 3) 
     {
         message += "\nName";
+        ignore++;
     }
     
     if(price.length < 1 || !IsNumber(price) || (IsNumber(price) && parseInt(price) <= 0 ))
     {
         message += "\nPrice";
+        ignore++;
     }
     
     var url_regexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/;
     if(link.length <= 0 || !url_regexp.test(link))
     {
         message += "\nLink";
+        ignore++;
     }
 
     // validate the optional inputs
     
     if(quantity.length > 0 && !IsNumber(quantity) || (IsNumber(quantity) && parseInt(quantity) <= 0) )
     {
-        message += "\nQuantity"
+        message += "\nQuantity";
+        ignore++;
+    }
+    
+    if(ignore > 4)
+    {
+        return ignore;
     }
     
     return message;
@@ -58,6 +68,11 @@ function submitTheNewWish()
     var theIsPrivate = $("#isPrivate").attr('checked');
     
     var message = validateInputs(theName, thePrice, theLink, theQuantity);
+    
+    if(message = 4)
+    {
+        return; // ignore if all fiels are empty.
+    }
     
     if(message.length <= 0)
     {
@@ -99,7 +114,7 @@ function setupWishlist()
         {
             $(wishlist_div).accordion( "option", "disabled", true);
             var itemObj = {name: escape($(this).next().text())};
-            delFromWishlist(itemObj, setupWishlist);            
+            delFromWishlist(itemObj, setupWishlist);
         }        
     });
     
