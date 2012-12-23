@@ -98,7 +98,7 @@ function setupWishlist()
         if(confirm("Are you sure you want to delete this wish?"))
         {
             $(wishlist_div).accordion( "option", "disabled", true);
-            var itemObj = {name: $(this).next().text()};
+            var itemObj = {name: escape($(this).next().text())};
             delFromWishlist(itemObj, setupWishlist);            
         }        
     });

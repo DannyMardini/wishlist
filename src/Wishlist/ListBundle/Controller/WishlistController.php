@@ -80,7 +80,7 @@ class WishlistController extends Controller
     public function deleteWishlistAction()
     {        
         $session = $this->getRequest()->getSession();
-        $deletedItemName = $this->getRequest()->get('name');
+        $deletedItemName = urldecode($this->getRequest()->get('name'));
         $loggedInUserId = $session->get('user_id');
         
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
