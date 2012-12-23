@@ -61,7 +61,7 @@ function submitTheNewWish()
     
     if(message.length <= 0)
     {
-        var itemObj = { name: theName, 
+        var itemObj = { name: escape(theName), 
                         price: thePrice, 
                         link: theLink, 
                         quantity: theQuantity, 

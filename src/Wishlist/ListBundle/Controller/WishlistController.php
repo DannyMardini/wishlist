@@ -37,7 +37,7 @@ class WishlistController extends Controller
     {
         $session = $this->getRequest()->getSession(); 
        
-        $name = $this->getRequest()->get('name');
+        $name = urldecode($this->getRequest()->get('name'));
         $price = $this->getRequest()->get('price');
         $link = $this->getRequest()->get('link');
         $quantity = $this->getRequest()->get('quantity');
