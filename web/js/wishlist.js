@@ -45,7 +45,7 @@ function validateInputs(name, price, link, quantity)
         message += "\nQuantity";        
     }
     
-    if(ignore > 3)
+    if(ignore >= 3)
     {
         return ignore;
     }
