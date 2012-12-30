@@ -62,9 +62,23 @@ class WishlistItemRepository extends EntityRepository
             FROM WishlistCoreBundle:WishlistItem i
             LEFT JOIN i.wishlistUser usr
             WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
-                ->setParameters(array('itemName' => $deletedItemName, 'userId' => $wishlistUser->getWishlistuserId()));
+                ->setParameters(array('itemName' => $deletedItemName, 'userId' => $wishlistUser->getWishlistuserId()));        
                       
         $itemToDelete = $q->getOneOrNullResult();
+        
+        $q2 = $em->createQuery('
+            SELECT i FROM WishlistCoreBundle:Purchase i
+            WHERE i.item = :itemId')
+                ->setParameters(array( 'itemId' => $itemToDelete->getId() ));        
+        
+        $purchase = $q2->getOneOrNullResult();
+        
+        if(is_null($purchase)==FALSE) // remove the purchase
+        {
+            $em->remove($purchase);
+            $em->flush();
+        }
+        
         $em->remove($itemToDelete);
         $em->flush();                
     }

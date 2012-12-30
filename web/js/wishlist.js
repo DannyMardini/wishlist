@@ -42,11 +42,10 @@ function validateInputs(name, price, link, quantity)
     
     if(quantity.length > 0 && !IsNumber(quantity) || (IsNumber(quantity) && parseInt(quantity) <= 0) )
     {
-        message += "\nQuantity";
-        ignore++;
+        message += "\nQuantity";        
     }
     
-    if(ignore > 4)
+    if(ignore > 3)
     {
         return ignore;
     }
@@ -69,7 +68,7 @@ function submitTheNewWish()
     
     var message = validateInputs(theName, thePrice, theLink, theQuantity);
     
-    if(message = 4)
+    if(message == 3)
     {
         return; // ignore if all fiels are empty.
     }
