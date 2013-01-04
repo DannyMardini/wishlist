@@ -73,13 +73,13 @@ class WishlistItemRepository extends EntityRepository
         
         $purchase = $q2->getOneOrNullResult();
         
-        if(is_null($purchase)==FALSE) // remove any purchases associated to this item
+        if(isset($purchase)) // remove any purchases associated to this item
         {
             $em->remove($purchase);
             $em->flush();
         }
         
-        $likeVar = '%openDialog('.$itemToDelete->getId().')%';
+        $likeVar = '\'%openDialog('.$itemToDelete->getId().')%\'';
         $q3 = $em ->createQuery('
             SELECT i FROM WishlistCoreBundle:WishlistUpdate i
             WHERE i.message like :likeVar')
@@ -87,7 +87,7 @@ class WishlistItemRepository extends EntityRepository
         
         $updates = $q3 ->getOneOrNullResult();
         
-        if(is_null($updates)==FALSE) // remove any updates associated to this item
+        if(isset($updates)) // remove any updates associated to this item
         {
             $em->remove($updates);
             $em->flush();
