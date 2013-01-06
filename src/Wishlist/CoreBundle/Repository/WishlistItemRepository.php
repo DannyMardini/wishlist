@@ -87,7 +87,7 @@ class WishlistItemRepository extends EntityRepository
         
         $updates = $q3 ->getOneOrNullResult();
         
-        if(isset($updates)) // remove any updates associated to this item
+        if(isset($updates)) // deactivate any updates associated to this item
         {
             $em->remove($updates);
             $em->flush();
