@@ -95,10 +95,9 @@ $(document).ready(function()
     
 });
 
-var aboutMessage = "<b><u>Our Goal:</u></b><i> to make your life easier by providing a \n\
-    central location where you can easily bookmark and keep track of your wishes; making it \n\
-    easy for your friends to see and get you just what you want!</i><br /><br />\n\
-    Return to the previous page and request an invite to create your wishlist today!";
+var aboutMessage = "Our Goal is to make your life easier by never having to worry about giving \n\
+    or receiving a bad gift again. View your friends and families wishlists and even share your own.<br /><br /> \n\
+    Gift giving has never been simpler!";
 
 var termsMessage = "<b><u>Terms:</u></b><i> TO DO";
 
