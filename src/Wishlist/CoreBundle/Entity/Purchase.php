@@ -33,7 +33,7 @@ class Purchase
     private $user;
 
     /**
-     * @var Wishlist\CoreBundle\Entity\WishlistItem
+     * @var Wishlist\CoreBundle\Entity\Item
      */
     private $item;
 
@@ -60,9 +60,9 @@ class Purchase
     /**
      * Set item
      *
-     * @param Wishlist\CoreBundle\Entity\WishlistItem $item
+     * @param Wishlist\CoreBundle\Entity\Item $item
      */
-    public function setItem(\Wishlist\CoreBundle\Entity\WishlistItem $item)
+    public function setItem(\Wishlist\CoreBundle\Entity\Item $item)
     {
         $this->item = $item;
     }
@@ -70,7 +70,7 @@ class Purchase
     /**
      * Get item
      *
-     * @return Wishlist\CoreBundle\Entity\WishlistItem 
+     * @return Wishlist\CoreBundle\Entity\Item 
      */
     public function getItem()
     {

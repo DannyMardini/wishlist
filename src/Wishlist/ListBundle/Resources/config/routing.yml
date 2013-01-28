@@ -4,7 +4,7 @@ WishlistListBundle_wishlistNew:
 
 WishlistListBundle_wishlistItem:
   pattern: /wishlistitem/{itemId}
-  defaults: { _controller: WishlistListBundle:Wishlist:getWishlistItem }
+  defaults: { _controller: WishlistListBundle:Wishlist:getItem }
     
 WishlistListBundle_wishlistDelete:
   pattern: /wishlistdelete

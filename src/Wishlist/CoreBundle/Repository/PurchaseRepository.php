@@ -4,7 +4,8 @@ namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\WishlistUser;
-use Wishlist\CoreBundle\Entity\WishlistItem;
+use Wishlist\CoreBundle\Entity\Item;
+use Wishlist\CoreBundle\Entity\Item;
 use Wishlist\CoreBundle\Entity\Purchase;
 use Wishlist\CoreBundle\Entity\Event;
 use Doctrine\ORM\Query\ResultSetMapping;
@@ -22,7 +23,7 @@ class PurchaseRepository extends EntityRepository
     /*
      * This function accepts either an event or a gift_date, but not both.
      */
-    public function newPurchase(WishlistUser $user, WishlistItem $item, Event $event = NULL, \DateTime $gift_date = NULL)
+    public function newPurchase(WishlistUser $user, Item $item, Event $event = NULL, \DateTime $gift_date = NULL)
     {
         
         $rsm = new ResultSetMapping;
@@ -107,7 +108,7 @@ class PurchaseRepository extends EntityRepository
          */
     }
     
-    private function overwritePrevPurchase(WishlistItem $item, Purchase $newPurchase)
+    private function overwritePrevPurchase(Item $item, Purchase $newPurchase)
     {
         $em = $this->getEntityManager();
 
@@ -153,7 +154,7 @@ class PurchaseRepository extends EntityRepository
         return $this->getPurchasesById($user->getWishlistuserId());
     }
     
-    public function getPurchaseByItem(WishlistItem $item)
+    public function getPurchaseByItem(Item $item)
     {
         return $this->getPurchaseByItemId($item->getId());
     }

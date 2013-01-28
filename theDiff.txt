@@ -1,0 +1,551 @@
+diff --git a/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadPurchaseData.php b/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadPurchaseData.php
+index 60db642..d0d681b 100644
+--- a/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadPurchaseData.php
++++ b/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadPurchaseData.php
+@@ -14,7 +14,7 @@ class LoadPurchaseData implements FixtureInterface,OrderedFixtureInterface
+     public function load(ObjectManager $manager)
+     {
+         $userRepo = $manager->getRepository('WishlistCoreBundle:WishlistUser');
+-        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
++        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
+         $purchaseRepo = $manager->getRepository('WishlistCoreBundle:Purchase');
+         $dummyDate = DateTime::createFromFormat('m/d/Y', '1/1/2013');
+         
+diff --git a/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadItemData.php b/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadItemData.php
+index c8df8f0..171131e 100644
+--- a/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadItemData.php
++++ b/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadItemData.php
+@@ -13,26 +13,26 @@ class LoadItemData implements FixtureInterface,OrderedFixtureInterface
+ {
+     public function load(ObjectManager $manager)
+     {
+-        $userRepo = $manager->getRepository('WishlistCoreBundle:WishlistUser');
+-        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
+-        
+-        $danny = $userRepo->getUser('Danny Mardini');
+-        $andrea = $userRepo->getUser('Andrea Coba');
+-        $jorge = $userRepo->getUser('Jorge Thatcher');
+-        $steve = $userRepo->getUser('Steven Lac');
+-        
+-        $itemRepo->addItem('purse', 50000, 'www.purse.com', true, 'Bug. this is a purse.', 1, $andrea);
+-        $itemRepo->addItem('Bouncy ball', 1000, 'www.bounce.com', true, 'It bounces!', 1, $andrea);
+-        $itemRepo->addItem('Macbook', 100000, 'www.apple.com', true, 'it\'s perfect', 1, $andrea);
+-        $itemRepo->addItem('Zumba Fitness videos', 10000, 'www.zumba.com', true, 'Get your booty shakin\'', 1, $andrea);
+-        $itemRepo->addItem('Pink gold watch', 20000, 'www.watch.com', true, 'it\'s pink', 1, $andrea);
+-        $itemRepo->addItem('Bug', 1, 'www.bugisbug.com', true, 'bug? this is bug.', 1, $andrea);
+-        
+-        $itemRepo->addItem('Metal Gear Solid', 3000, 'www.mgs.com', true, 'EMOTION', 1, $danny);
+-        $itemRepo->addItem('Nerf gun', 2000, 'www.nerf.com', true, 'cap in yo ass', 1, $danny);
+-        
+-        $itemRepo->addItem('Lineage II', 5000, 'www.lineage2.com', true, 'Grindin\' till we dyin\'', 1, $jorge);
+-        $itemRepo->addItem('Metal Gear Solid Peace Walker', 50000, 'www.mgs.com', true, 'HOOHAW EMOTION', 1, $steve);
++//        $userRepo = $manager->getRepository('WishlistCoreBundle:WishlistUser');
++//        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
++//        
++//        $danny = $userRepo->getUser('Danny Mardini');
++//        $andrea = $userRepo->getUser('Andrea Coba');
++//        $jorge = $userRepo->getUser('Jorge Thatcher');
++//        $steve = $userRepo->getUser('Steven Lac');
++//        
++//        $itemRepo->addItem('purse', 50000, 'www.purse.com', true, 'Bug. this is a purse.', 1, $andrea);
++//        $itemRepo->addItem('Bouncy ball', 1000, 'www.bounce.com', true, 'It bounces!', 1, $andrea);
++//        $itemRepo->addItem('Macbook', 100000, 'www.apple.com', true, 'it\'s perfect', 1, $andrea);
++//        $itemRepo->addItem('Zumba Fitness videos', 10000, 'www.zumba.com', true, 'Get your booty shakin\'', 1, $andrea);
++//        $itemRepo->addItem('Pink gold watch', 20000, 'www.watch.com', true, 'it\'s pink', 1, $andrea);
++//        $itemRepo->addItem('Bug', 1, 'www.bugisbug.com', true, 'bug? this is bug.', 1, $andrea);
++//        
++//        $itemRepo->addItem('Metal Gear Solid', 3000, 'www.mgs.com', true, 'EMOTION', 1, $danny);
++//        $itemRepo->addItem('Nerf gun', 2000, 'www.nerf.com', true, 'cap in yo ass', 1, $danny);
++//        
++//        $itemRepo->addItem('Lineage II', 5000, 'www.lineage2.com', true, 'Grindin\' till we dyin\'', 1, $jorge);
++//        $itemRepo->addItem('Metal Gear Solid Peace Walker', 50000, 'www.mgs.com', true, 'HOOHAW EMOTION', 1, $steve);
+     }
+     
+     public function getOrder()
+diff --git a/src/Wishlist/CoreBundle/Entity/Item.php b/src/Wishlist/CoreBundle/Entity/Item.php
+index 0461f68..142d187 100644
+--- a/src/Wishlist/CoreBundle/Entity/Item.php
++++ b/src/Wishlist/CoreBundle/Entity/Item.php
+@@ -24,4 +24,154 @@ class Item
+     {
+         return $this->id;
+     }
++    /**
++     * @var string $name
++     */
++    private $name;
++
++    /**
++     * @var integer $price
++     */
++    private $price;
++
++    /**
++     * @var string $link
++     */
++    private $link;
++
++    /**
++     * @var boolean $is_public
++     */
++    private $is_public;
++
++    /**
++     * @var string $comment
++     */
++    private $comment;
++
++    /**
++     * @var integer $quantity
++     */
++    private $quantity;
++
++
++    /**
++     * Set name
++     *
++     * @param string $name
++     */
++    public function setName($name)
++    {
++        $this->name = $name;
++    }
++
++    /**
++     * Get name
++     *
++     * @return string 
++     */
++    public function getName()
++    {
++        return $this->name;
++    }
++
++    /**
++     * Set price
++     *
++     * @param integer $price
++     */
++    public function setPrice($price)
++    {
++        $this->price = $price;
++    }
++
++    /**
++     * Get price
++     *
++     * @return integer 
++     */
++    public function getPrice()
++    {
++        return $this->price;
++    }
++
++    /**
++     * Set link
++     *
++     * @param string $link
++     */
++    public function setLink($link)
++    {
++        $this->link = $link;
++    }
++
++    /**
++     * Get link
++     *
++     * @return string 
++     */
++    public function getLink()
++    {
++        return $this->link;
++    }
++
++    /**
++     * Set is_public
++     *
++     * @param boolean $isPublic
++     */
++    public function setIsPublic($isPublic)
++    {
++        $this->is_public = $isPublic;
++    }
++
++    /**
++     * Get is_public
++     *
++     * @return boolean 
++     */
++    public function getIsPublic()
++    {
++        return $this->is_public;
++    }
++
++    /**
++     * Set comment
++     *
++     * @param string $comment
++     */
++    public function setComment($comment)
++    {
++        $this->comment = $comment;
++    }
++
++    /**
++     * Get comment
++     *
++     * @return string 
++     */
++    public function getComment()
++    {
++        return $this->comment;
++    }
++
++    /**
++     * Set quantity
++     *
++     * @param integer $quantity
++     */
++    public function setQuantity($quantity)
++    {
++        $this->quantity = $quantity;
++    }
++
++    /**
++     * Get quantity
++     *
++     * @return integer 
++     */
++    public function getQuantity()
++    {
++        return $this->quantity;
++    }
+ }
+\ No newline at end of file
+diff --git a/src/Wishlist/CoreBundle/Entity/Item.php b/src/Wishlist/CoreBundle/Entity/Item.php
+index 104cd44..0c4996e 100644
+--- a/src/Wishlist/CoreBundle/Entity/Item.php
++++ b/src/Wishlist/CoreBundle/Entity/Item.php
+@@ -278,4 +278,54 @@ class Item
+         }
+         return false;
+     }
++    /**
++     * @var integer $item
++     */
++    private $item;
++
++    /**
++     * @var integer $user
++     */
++    private $user;
++
++
++    /**
++     * Set item
++     *
++     * @param integer $item
++     */
++    public function setItem($item)
++    {
++        $this->item = $item;
++    }
++
++    /**
++     * Get item
++     *
++     * @return integer 
++     */
++    public function getItem()
++    {
++        return $this->item;
++    }
++
++    /**
++     * Set user
++     *
++     * @param integer $user
++     */
++    public function setUser($user)
++    {
++        $this->user = $user;
++    }
++
++    /**
++     * Get user
++     *
++     * @return integer 
++     */
++    public function getUser()
++    {
++        return $this->user;
++    }
+ }
+\ No newline at end of file
+diff --git a/src/Wishlist/CoreBundle/Repository/ItemRepository.php b/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+index e853e3a..cf70d47 100644
+--- a/src/Wishlist/CoreBundle/Repository/ItemRepository.php
++++ b/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+@@ -12,4 +12,36 @@ use Doctrine\ORM\EntityRepository;
+  */
+ class ItemRepository extends EntityRepository
+ {
++    public function addItem($name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
++    {
++        $newItem = new Item();
++        $newItem->setName($name);
++        $newItem->setPrice($price);
++        $newItem->setLink($link);
++        $newItem->setIsPublic($isPublic);
++        $newItem->setComment($comment);
++        $newItem->setQuantity($quantity);
++        
++        // check if item exists in the Item table. If not, add it                
++        $itemExists = $this->checkItemExists($newItem);
++        
++        if(!$itemExists){
++            $this->getEntityManager()->persist($newItem);
++            $this->getEntityManager()->flush();
++        }
++    }
++    
++    public function checkItemExists($item)
++    {
++       $em = $this->getEntityManager();       
++        
++        $q = $em->createQuery('
++            SELECT i
++            FROM WishlistCoreBundle:Item i
++            WHERE i.name = :itemName')
++                ->setParameters(array('itemName' => $item->getName()));
++                      
++        $itemInDatabase = $q->getOneOrNullResult();  
++        return $itemInDatabase;
++    }    
+ }
+\ No newline at end of file
+diff --git a/src/Wishlist/CoreBundle/Repository/ItemRepository.php b/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+index 7313e06..3a2484e 100644
+--- a/src/Wishlist/CoreBundle/Repository/ItemRepository.php
++++ b/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+@@ -14,44 +14,74 @@ use Wishlist\CoreBundle\Entity\WishlistUser;
+  */
+ class ItemRepository extends EntityRepository
+ {
+-    public function addItem( $name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
++    public function makeWish($name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
+     {
+-        $newItem = new Item();
+-        $newItem->setName($name);
+-        $newItem->setPrice($price);
+-        $newItem->setLink($link);
+-        $newItem->setIsPublic($isPublic);
+-        $newItem->setComment($comment);
+-        $newItem->setQuantity($quantity);
+-        $newItem->setWishlistUser($wishlistUser);
++        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
++        $newItem = $itemRepo->addItem($name, $price, $link, $isPublic, $comment, $quantity, $wishlistUser);
+         
+-        
+-        // check if the item already exists for this user
+-        $itemExists = $this->checkItemExists($newItem);
+-        
+-        if(!$itemExists){
+-            $this->getEntityManager()->persist($newItem);
+-            $this->getEntityManager()->flush();
+-
+-            $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
+-            $updateRepo->addNewItem($wishlistUser, $newItem);
+-        }
++        // if Item exists and the item is not on this users wishlist, add it.
++        //if(isset($newItem) && !isset($this->checkUserWishlist($newItem, $wishlistUser))){
++            // TO DO
++            //$newWish = new Item();
++            
++            //$updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
++            //$updateRepo->addNewItem($wishlistUser, $newItem);            
++        //}
+     }
+     
+-    public function checkItemExists($item)
++    public function checkUserWishlist($item, $user)
+     {
+        $em = $this->getEntityManager();       
+         
+         $q = $em->createQuery('
+             SELECT i
+-            FROM WishlistCoreBundle:Item i
+-            LEFT JOIN i.wishlistUser usr
++            FROM WishlistCoreBundle:Item i
++            LEFT JOIN WishlistCoreBundle:Item usr
+             WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
+-                ->setParameters(array('itemName' => $item->getName(), 'userId' => $item->getWishlistUser()->getWishlistuserId()));
++                ->setParameters(array('itemName' => $item->getName(), 'userId' => $user->getWishlistuserId()));
+                       
+         $itemInDatabase = $q->getOneOrNullResult();  
+         return $itemInDatabase;
+-    }
++    } 
++//    
++//    public function addItem( $name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
++//    {
++//        $newItem = new Item();
++//        $newItem->setName($name);
++//        $newItem->setPrice($price);
++//        $newItem->setLink($link);
++//        $newItem->setIsPublic($isPublic);
++//        $newItem->setComment($comment);
++//        $newItem->setQuantity($quantity);
++//        $newItem->setWishlistUser($wishlistUser);
++//        
++//        
++//        // check if the item already exists for this user
++//        $itemExists = $this->checkItemExists($newItem);
++//        
++//        if(!$itemExists){
++//            $this->getEntityManager()->persist($newItem);
++//            $this->getEntityManager()->flush();
++//
++//            $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
++//            $updateRepo->addNewItem($wishlistUser, $newItem);
++//        }
++//    }
++//    
++//    public function checkItemExists($item)
++//    {
++//       $em = $this->getEntityManager();       
++//        
++//        $q = $em->createQuery('
++//            SELECT i
++//            FROM WishlistCoreBundle:Item i
++//            LEFT JOIN i.wishlistUser usr
++//            WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
++//                ->setParameters(array('itemName' => $item->getName(), 'userId' => $item->getWishlistUser()->getWishlistuserId()));
++//                      
++//        $itemInDatabase = $q->getOneOrNullResult();  
++//        return $itemInDatabase;
++//    }
+     
+     public function deleteItem( $deletedItemName, WishlistUser $wishlistUser)
+     {
+diff --git a/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml b/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+index fa484a1..d701a97 100644
+--- a/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
++++ b/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+@@ -1,10 +1,36 @@
+ Wishlist\CoreBundle\Entity\Item:
+   type: entity
+   table: null
++  repositoryClass: Wishlist\CoreBundle\Repository\ItemRepository
++  
++#    oneToOne:               
++#    purchase:
++#      targetEntity: Purchase
++#      mappedBy: item
++  
++  
+   fields:
+     id:
+       type: integer
+       id: true
+       generator:
+         strategy: AUTO
++    name:
++      type: string
++      length: '255'
++    price:
++      type: integer
++      length: null
++    link:
++      type: string
++      length: '255'
++    is_public:
++      type: boolean
++      length: null
++    comment:
++      type: string
++      length: '500'
++    quantity:
++      type: integer
++      length: null        
+   lifecycleCallbacks: {  }
+diff --git a/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml b/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+index ce64dd5..cd2011e 100644
+--- a/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
++++ b/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+@@ -2,18 +2,18 @@ Wishlist\CoreBundle\Entity\Item:
+   type: entity
+   table: null
+   repositoryClass: Wishlist\CoreBundle\Repository\ItemRepository
+-  manyToOne:
+-    wishlistUser:
+-      targetEntity: WishlistUser
+-      inversedBy: wishlistItems
+-      joinColumn:
+-        name: user_id
+-        referencedColumnName: wishlistuser_id
++#  manyToOne:
++#    wishlistUser:
++#      targetEntity: WishlistUser
++#      inversedBy: wishlistItems
++#      joinColumn:
++#        name: user_id
++#        referencedColumnName: wishlistuser_id
+    
+-  oneToOne:               
+-    purchase:
+-      targetEntity: Purchase
+-      mappedBy: item
++#  oneToOne:               
++#    purchase:
++#      targetEntity: Purchase
++#      mappedBy: item
+         
+   fields:
+     id:
+@@ -21,23 +21,30 @@ Wishlist\CoreBundle\Entity\Item:
+       id: true
+       generator:
+         strategy: AUTO
+-    name:
+-      type: string
+-      length: '255'
+-    price:
++    item:
+       type: integer
+       length: null
+-    link:
+-      type: string
+-      length: '255'
+-    is_public:
+-      type: boolean
+-      length: null
+-    comment:
+-      type: string
+-      length: '500'
+-    quantity:
++    user:
+       type: integer
+       length: null
++        
++#    name:
++#      type: string
++#      length: '255'
++#    price:
++#      type: integer
++#      length: null
++#    link:
++#      type: string
++#      length: '255'
++#    is_public:
++#      type: boolean
++#      length: null
++#    comment:
++#      type: string
++#      length: '500'
++#    quantity:
++#      type: integer
++#      length: null
+   lifecycleCallbacks: {  }
+   
+\ No newline at end of file

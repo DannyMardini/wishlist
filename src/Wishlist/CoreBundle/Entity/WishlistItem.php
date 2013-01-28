@@ -5,51 +5,25 @@ namespace Wishlist\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Wishlist\CoreBundle\Entity\WishlistItem
+ * Wishlist\CoreBundle\Entity\Item
  */
-class WishlistItem
+class Item
 {
+  
     /**
      * @var integer $id
      */
-    protected $id;
+    private $id;
 
     /**
-     * @var string $name
+     * @var integer $item
      */
-    protected $name;
+    private $item;
 
     /**
-     * @var integer $price
+     * @var integer $user
      */
-    protected $price;
-
-    /**
-     * @var string $link
-     */
-    protected $link;
-
-    /**
-     * @var boolean $is_public
-     */
-    protected $is_public;
-
-    /**
-     * @var string $comment
-     */
-    protected $comment;
-
-    /**
-     * @var integer $quantity
-     */
-    protected $quantity;
-
-    /**
-     * @var integer $user_id
-     */
-    protected $user_id;
-    
-    protected $wishlistUser;
+    private $user;
 
 
     /**
@@ -63,219 +37,42 @@ class WishlistItem
     }
 
     /**
-     * Set name
+     * Set item
      *
-     * @param string $name
+     * @param integer $item
      */
-    public function setName($name)
+    public function setItem($item)
     {
-        $this->name = $name;
+        $this->item = $item;
     }
 
     /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set price
-     *
-     * @param integer $price
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }
-
-    /**
-     * Get price
+     * Get item
      *
      * @return integer 
      */
-    public function getPrice()
+    public function getItem()
     {
-        return $this->price;
+        return $this->item;
     }
 
     /**
-     * Set link
+     * Set user
      *
-     * @param string $link
+     * @param integer $user
      */
-    public function setLink($link)
+    public function setUser($user)
     {
-        $this->link = $link;
+        $this->user = $user;
     }
 
     /**
-     * Get link
-     *
-     * @return string 
-     */
-    public function getLink()
-    {
-        return $this->link;
-    }
-
-    /**
-     * Set is_public
-     *
-     * @param boolean $isPublic
-     */
-    public function setIsPublic($isPublic)
-    {
-        $this->is_public = $isPublic;
-    }
-
-    /**
-     * Get is_public
-     *
-     * @return boolean 
-     */
-    public function getIsPublic()
-    {
-        return $this->is_public;
-    }
-
-    /**
-     * Set comment
-     *
-     * @param string $comment
-     */
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-    }
-
-    /**
-     * Get comment
-     *
-     * @return string 
-     */
-    public function getComment()
-    {
-        return $this->comment;
-    }
-
-    /**
-     * Set quantity
-     *
-     * @param integer $quantity
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-    }
-
-    /**
-     * Get quantity
+     * Get user
      *
      * @return integer 
      */
-    public function getQuantity()
+    public function getUser()
     {
-        return $this->quantity;
-    }
-
-    /**
-     * Set user_id
-     *
-     * @param integer $userId
-     */
-    public function setUserId($userId)
-    {
-        $this->user_id = $userId;
-    }
-
-    /**
-     * Get user_id
-     *
-     * @return integer 
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-
-    /**
-     * Set wishlistUser
-     *
-     * @param Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser
-     */
-    public function setWishlistUser(\Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser)
-    {
-        $this->wishlistUser = $wishlistUser;
-    }
-
-    /**
-     * Get wishlistUser
-     *
-     * @return Wishlist\CoreBundle\Entity\WishlistUser 
-     */
-    public function getWishlistUser()
-    {
-        return $this->wishlistUser;
-    }
-    
-    // TODO Need to make this function part of an interface.
-    public function exportData()
-    {
-        $exportVars = array('id' => $this->id,
-                            'name' => $this->name,
-                            'price' => $this->price,
-                            'link' => $this->link,
-                            'comment' => $this->getComment(),
-                            'quantity' => $this->quantity);
-        
-        return json_encode($exportVars);
-    }
-    /**
-     * @var Wishlist\CoreBundle\Entity\Purchase
-     */
-    private $purchase;
-
-
-    /**
-     * Set purchase
-     *
-     * @param Wishlist\CoreBundle\Entity\Purchase $purchase
-     */
-    public function setPurchase(\Wishlist\CoreBundle\Entity\Purchase $purchase)
-    {
-        $this->purchase = $purchase;
-    }
-
-    /**
-     * Get purchase
-     *
-     * @return Wishlist\CoreBundle\Entity\Purchase 
-     */
-    public function getPurchase()
-    {
-        return $this->purchase;
-    }
-    
-    public function getPurchaser()
-    {
-        if($this->isPurchased())
-        {
-            return $this->purchase->getUser();
-        }
-        
-        throw new Exception("Item is not purchased");
-    }
-    
-    public function isPurchased()
-    {
-        if($this->purchase instanceof Purchase)
-        {
-            return true;
-        }
-        return false;
+        return $this->user;
     }
 }

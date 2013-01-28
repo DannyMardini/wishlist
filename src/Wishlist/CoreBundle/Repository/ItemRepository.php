@@ -1,8 +1,10 @@
 <?php
 
-namespace Wishlist\CoreBundle\Entity;
+namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Wishlist\CoreBundle\Entity\WishlistUser;
+use Wishlist\CoreBundle\Entity\Item;
 
 /**
  * ItemRepository
@@ -12,4 +14,39 @@ use Doctrine\ORM\EntityRepository;
  */
 class ItemRepository extends EntityRepository
 {
+    public function addItem($name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
+    {        
+        $newItem = new Item();
+        $newItem->setName($name);
+        $newItem->setPrice($price);
+        $newItem->setLink($link);
+        $newItem->setIsPublic($isPublic);
+        $newItem->setComment($comment);
+        $newItem->setQuantity($quantity);
+        
+        // check if item exists in the Item table. If not, add it                
+        $itemExists = $this->checkItemExists($newItem);
+        
+        if(!$itemExists){
+            $this->getEntityManager()->persist($newItem);
+            $this->getEntityManager()->flush();
+            $itemExists = $newItem;
+        }
+        
+        return $itemExists;
+    }
+    
+    public function checkItemExists($item)
+    {
+       $em = $this->getEntityManager();       
+        
+        $q = $em->createQuery('
+            SELECT i
+            FROM WishlistCoreBundle:Item i
+            WHERE i.name = :itemName')
+                ->setParameters(array('itemName' => $item->getName()));
+                      
+        $itemInDatabase = $q->getOneOrNullResult();  
+        return $itemInDatabase;
+    }    
 }

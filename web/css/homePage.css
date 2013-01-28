@@ -208,12 +208,12 @@ li{
     text-decoration: underline;
 }
 
-.gbWishlistItem:hover {
+.gbItem:hover {
     background-color: #f1f9f9;
     cursor: hand;
 }
 
-.gbWishlistItem label {
+.gbItem label {
     cursor: hand;
 }
 

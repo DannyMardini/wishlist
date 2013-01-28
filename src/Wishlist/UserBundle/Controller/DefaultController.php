@@ -35,7 +35,7 @@ class DefaultController extends Controller
             $e->getTrace();
         }
         
-        return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user, 'wishlistItems' => $user->getWishlistItems(),
+        return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user, 'wishlistItems' => $user->getItems(),
                                                                                     'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
     }
     

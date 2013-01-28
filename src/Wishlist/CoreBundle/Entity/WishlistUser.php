@@ -205,11 +205,11 @@ class WishlistUser {
     /**
      * Add wishlistItems
      *
-     * @param Wishlist\CoreBundle\Entity\WishlistItem $wishlistItems
+     * @param Wishlist\CoreBundle\Entity\Item $wishlistItems
      */
-    public function addWishlistItem(\Wishlist\CoreBundle\Entity\WishlistItem $wishlistItems)
+    public function addItems(\Wishlist\CoreBundle\Entity\Item $items)
     {
-        $this->wishlistItems[] = $wishlistItems;
+        $this->wishlistItems[] = $items;
     }
 
     /**
@@ -217,7 +217,7 @@ class WishlistUser {
      *
      * @return Doctrine\Common\Collections\Collection 
      */
-    public function getWishlistItems()
+    public function getItems()
     {
         return $this->wishlistItems;
     }
@@ -306,7 +306,7 @@ class WishlistUser {
         return PicService::getProfileThumb($this->wishlistuser_id);
     }
     /**
-     * @var Wishlist\CoreBundle\Entity\WishlistItem
+     * @var Wishlist\CoreBundle\Entity\Item
      */
     private $purchases;
 

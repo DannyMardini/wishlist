@@ -1,6 +1,6 @@
 <?php
 //Helper functions
-function wishlistItemHeader(/*Boolean*/$selfWishlist, /*WishlistItem*/$currItem, /*WishlistUser*/$wishlistUser)
+function wishlistItemHeader(/*Boolean*/$selfWishlist, /*Item*/$currItem, /*WishlistUser*/$wishlistUser)
 {
     $classes = "";
     $showPurchased = false;
@@ -28,7 +28,7 @@ function wishlistItemHeader(/*Boolean*/$selfWishlist, /*WishlistItem*/$currItem,
     return $header;
 }
 
-function wishlistItemBody(/*WishlistItem*/$currItem)
+function wishlistItemBody(/*Item*/$currItem)
 {
     $quantity = $currItem->getQuantity();
     $isPublic = $currItem->getIsPublic() == false ? 'False' : 'True';
@@ -38,7 +38,7 @@ function wishlistItemBody(/*WishlistItem*/$currItem)
     }
     
     return "<a class='ItemName' href='#'>".$currItem->getName()."</a></h3>" .
-            "<div class='WishlistItemBody'>" . 
+            "<div class='ItemBody'>" . 
             "<div><label>Price: </label></div><p>$".$currItem->getPrice()."</p><br />" . 
             "<div><label>Link: </label></div><p>".$currItem->getLink()."</p><br />" .
             "<div><label>Notes: </label></div><p>".$currItem->getComment()."</p><br />" .

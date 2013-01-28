@@ -28,7 +28,7 @@ class WishlistController extends Controller
         $selfWishlist = ($loggedInUserId == $userId ) ? true : false;
         
         return $this->render('WishlistListBundle:Default:wishlist.html.php', array( 'selfWishlist' => $selfWishlist, 
-                                                                                    'wishlistItems' => $user->getWishlistItems(),
+                                                                                    'wishlistItems' => $user->getItems(),
                                                                                     'events' => $user->getEvents(),
                                                                                     'user' => $user));
     }
@@ -56,16 +56,16 @@ class WishlistController extends Controller
             return;
         }
 
-        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');        
+        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');        
         $itemRepo->addItem($name, $price, $link, $isPrivate, $comment, $quantity, $user);          
         
         return $this->showWishlistAction($user);
     }
     
-    public function getWishlistItemAction($itemId)
+    public function getItemAction($itemId)
     {
         $response = new Response();
-        $item = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem')->findOneBy(array('id' => $itemId));
+        $item = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item')->findOneBy(array('id' => $itemId));
         
         $response->setContent($item->exportData());
         $response->headers->set('Content-Type', 'application/json');
@@ -84,7 +84,7 @@ class WishlistController extends Controller
         $loggedInUserId = $session->get('user_id');
         
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
-        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
         $itemRepo->deleteItem($deletedItemName, $user);        
         
         $selfWishlist = ($user->getWishlistUserId() == $loggedInUserId)? true:false;
@@ -96,7 +96,7 @@ class WishlistController extends Controller
     {
         $request = $this->getRequest()->request;
         
-        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
         $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
         $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');

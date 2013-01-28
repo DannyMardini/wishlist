@@ -1,10 +1,36 @@
 Wishlist\CoreBundle\Entity\Item:
   type: entity
   table: null
+  repositoryClass: Wishlist\CoreBundle\Repository\ItemRepository
+  
+#    oneToOne:               
+#    purchase:
+#      targetEntity: Purchase
+#      mappedBy: item
+  
+  
   fields:
     id:
       type: integer
       id: true
       generator:
         strategy: AUTO
+    name:
+      type: string
+      length: '255'
+    price:
+      type: integer
+      length: null
+    link:
+      type: string
+      length: '255'
+    is_public:
+      type: boolean
+      length: null
+    comment:
+      type: string
+      length: '500'
+    quantity:
+      type: integer
+      length: null        
   lifecycleCallbacks: {  }

@@ -18,22 +18,22 @@ Jan 13 23:49:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/h
 Jan 13 23:49:43 symfony [info] {sfWebDebugLogger} Configuration 1.87 ms (8)
 Jan 13 23:49:43 symfony [info] {sfWebDebugLogger} Factories 31.26 ms (1)
 Jan 13 23:49:43 symfony [info] {sfWebDebugLogger} Action "homepage/index" 28.52 ms (1)
-Jan 14 00:33:12 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
-Jan 14 00:33:12 symfony [info] {sfFrontWebController} Action "wishlist/getWishlistItem" does not exist
-Jan 14 00:33:12 symfony [err] {sfError404Exception} Action "wishlist/getWishlistItem" does not exist.
+Jan 14 00:33:12 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
+Jan 14 00:33:12 symfony [info] {sfFrontWebController} Action "wishlist/getItem" does not exist
+Jan 14 00:33:12 symfony [err] {sfError404Exception} Action "wishlist/getItem" does not exist.
 Jan 14 00:33:12 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
 Jan 14 00:33:12 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:33:12 symfony [info] {sfWebDebugLogger} Configuration 122.03 ms (6)
 Jan 14 00:33:12 symfony [info] {sfWebDebugLogger} Factories 151.11 ms (1)
-Jan 14 00:33:40 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+Jan 14 00:33:40 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:33:40 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:33:40 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:33:40 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:33:40 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:33:40 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:33:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:33:40 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:33:40 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:33:40 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:33:40 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -45,22 +45,22 @@ Jan 14 00:33:40 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:33:40 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:33:40 symfony [info] {sfWebDebugLogger} Configuration 25.28 ms (10)
 Jan 14 00:33:40 symfony [info] {sfWebDebugLogger} Factories 30.61 ms (1)
-Jan 14 00:33:40 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 39.52 ms (1)
+Jan 14 00:33:40 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 39.52 ms (1)
 Jan 14 00:33:40 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.01 ms (2)
 Jan 14 00:33:40 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 55.16 ms (1)
-Jan 14 00:33:41 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 55.16 ms (1)
+Jan 14 00:33:41 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:33:41 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:33:41 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:33:41 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:33:41 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:33:41 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:33:41 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:33:41 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:33:41 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:33:41 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:33:41 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -72,22 +72,22 @@ Jan 14 00:33:41 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:33:41 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:33:41 symfony [info] {sfWebDebugLogger} Configuration 2.04 ms (9)
 Jan 14 00:33:41 symfony [info] {sfWebDebugLogger} Factories 30.91 ms (1)
-Jan 14 00:33:41 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 38.44 ms (1)
+Jan 14 00:33:41 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 38.44 ms (1)
 Jan 14 00:33:41 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:33:41 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 49.66 ms (1)
-Jan 14 00:33:42 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 49.66 ms (1)
+Jan 14 00:33:42 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:33:42 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:33:42 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:33:42 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:33:42 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:33:42 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:33:42 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:33:42 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:33:42 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:33:42 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:33:42 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -99,22 +99,22 @@ Jan 14 00:33:42 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:33:42 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Configuration 2.00 ms (9)
 Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Factories 30.95 ms (1)
-Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 38.38 ms (1)
+Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 38.38 ms (1)
 Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 51.37 ms (1)
-Jan 14 00:33:42 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 51.37 ms (1)
+Jan 14 00:33:42 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:33:42 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:33:42 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:33:42 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:33:42 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:33:42 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:33:42 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:33:42 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:33:42 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:33:42 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:33:42 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -126,22 +126,22 @@ Jan 14 00:33:42 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:33:42 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Configuration 2.10 ms (9)
 Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Factories 32.11 ms (1)
-Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 58.80 ms (1)
+Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 58.80 ms (1)
 Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:33:42 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 62.28 ms (1)
-Jan 14 00:33:51 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 62.28 ms (1)
+Jan 14 00:33:51 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:33:51 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:33:51 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:33:51 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:33:51 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:33:51 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:33:51 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:33:51 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:33:51 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:33:51 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:33:51 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -153,13 +153,13 @@ Jan 14 00:33:52 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:33:52 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:33:52 symfony [info] {sfWebDebugLogger} Configuration 1.99 ms (9)
 Jan 14 00:33:52 symfony [info] {sfWebDebugLogger} Factories 31.18 ms (1)
-Jan 14 00:33:52 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 38.30 ms (1)
+Jan 14 00:33:52 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 38.30 ms (1)
 Jan 14 00:33:52 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:33:52 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 43.51 ms (1)
+</pre>" for "wishlist/getItem" 43.51 ms (1)
 Jan 14 00:37:43 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /wishlistitem/1 with parameters array (  'module' => 'wishlistitem',  'action' => '1',)
 Jan 14 00:37:43 symfony [info] {sfFrontWebController} Action "wishlistitem/1" does not exist
 Jan 14 00:37:43 symfony [err] {sfError404Exception} Action "wishlistitem/1" does not exist.
@@ -167,15 +167,15 @@ Jan 14 00:37:43 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Fou
 Jan 14 00:37:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:37:43 symfony [info] {sfWebDebugLogger} Configuration 1.05 ms (5)
 Jan 14 00:37:43 symfony [info] {sfWebDebugLogger} Factories 31.45 ms (1)
-Jan 14 00:38:08 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+Jan 14 00:38:08 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:38:08 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:38:08 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:38:08 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:38:08 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:38:08 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:38:08 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:38:08 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:38:08 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:38:08 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:38:08 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -187,22 +187,22 @@ Jan 14 00:38:08 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:38:08 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:38:08 symfony [info] {sfWebDebugLogger} Configuration 1.94 ms (9)
 Jan 14 00:38:08 symfony [info] {sfWebDebugLogger} Factories 30.81 ms (1)
-Jan 14 00:38:08 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 38.81 ms (1)
+Jan 14 00:38:08 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 38.81 ms (1)
 Jan 14 00:38:08 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:38:08 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 60.45 ms (1)
-Jan 14 00:40:11 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 60.45 ms (1)
+Jan 14 00:40:11 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:40:11 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:40:11 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:40:11 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:40:11 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:40:11 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:40:11 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:40:11 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:40:11 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:40:11 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:40:11 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -214,22 +214,22 @@ Jan 14 00:40:11 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:40:11 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:40:11 symfony [info] {sfWebDebugLogger} Configuration 1.92 ms (9)
 Jan 14 00:40:11 symfony [info] {sfWebDebugLogger} Factories 30.86 ms (1)
-Jan 14 00:40:11 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 39.46 ms (1)
+Jan 14 00:40:11 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 39.46 ms (1)
 Jan 14 00:40:11 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:40:11 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 40.61 ms (1)
-Jan 14 00:40:12 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 40.61 ms (1)
+Jan 14 00:40:12 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:40:12 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:40:12 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:40:12 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:40:12 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:40:12 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:40:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:40:12 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:40:12 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:40:12 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:40:12 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -241,22 +241,22 @@ Jan 14 00:40:12 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:40:12 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Configuration 1.94 ms (9)
 Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Factories 29.96 ms (1)
-Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 37.98 ms (1)
+Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 37.98 ms (1)
 Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 46.92 ms (1)
-Jan 14 00:40:12 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 46.92 ms (1)
+Jan 14 00:40:12 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:40:12 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:40:12 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:40:12 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:40:12 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:40:12 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:40:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:40:12 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:40:12 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:40:12 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:40:12 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -268,22 +268,22 @@ Jan 14 00:40:12 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:40:12 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Configuration 1.94 ms (9)
 Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Factories 30.55 ms (1)
-Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 37.81 ms (1)
+Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 37.81 ms (1)
 Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:40:12 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 41.88 ms (1)
-Jan 14 00:40:13 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 41.88 ms (1)
+Jan 14 00:40:13 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:40:13 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:40:13 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:40:13 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:40:13 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:40:13 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:40:13 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:40:13 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:40:13 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:40:13 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:40:13 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -295,22 +295,22 @@ Jan 14 00:40:13 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:40:13 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:40:13 symfony [info] {sfWebDebugLogger} Configuration 1.95 ms (9)
 Jan 14 00:40:13 symfony [info] {sfWebDebugLogger} Factories 30.07 ms (1)
-Jan 14 00:40:13 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 38.24 ms (1)
+Jan 14 00:40:13 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 38.24 ms (1)
 Jan 14 00:40:13 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:40:13 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 53.92 ms (1)
-Jan 14 00:40:13 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 53.92 ms (1)
+Jan 14 00:40:13 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:40:13 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:40:13 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:40:13 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:40:13 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:40:13 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:40:13 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:40:13 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:40:13 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:40:13 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:40:13 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -322,22 +322,22 @@ Jan 14 00:40:14 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:40:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Configuration 2.00 ms (9)
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Factories 30.49 ms (1)
-Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 38.73 ms (1)
+Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 38.73 ms (1)
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 57.79 ms (1)
-Jan 14 00:40:14 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 57.79 ms (1)
+Jan 14 00:40:14 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:40:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:40:14 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:40:14 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:40:14 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:40:14 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:40:14 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:40:14 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:40:14 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:40:14 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:40:14 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -349,22 +349,22 @@ Jan 14 00:40:14 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:40:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Configuration 2.63 ms (9)
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Factories 39.53 ms (1)
-Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 54.76 ms (1)
+Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 54.76 ms (1)
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 41.69 ms (1)
-Jan 14 00:40:14 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 41.69 ms (1)
+Jan 14 00:40:14 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:40:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:40:14 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:40:14 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:40:14 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:40:14 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:40:14 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:40:14 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:40:14 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:40:14 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:40:14 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -376,23 +376,23 @@ Jan 14 00:40:14 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:40:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Configuration 2.15 ms (9)
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Factories 42.01 ms (1)
-Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 39.17 ms (1)
+Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 39.17 ms (1)
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:40:14 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 44.38 ms (1)
-Jan 14 00:40:43 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 44.38 ms (1)
+Jan 14 00:40:43 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:40:43 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/storage/sfSessionStorage.class.php on line 93 (session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/config/sfRootConfigHandler.class.php:91))
 Jan 14 00:40:43 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:40:43 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:40:43 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:40:43 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:40:43 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:40:44 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:40:44 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:40:44 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/config/sfRootConfigHandler.class.php:91))
-Jan 14 00:40:44 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:40:44 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -404,22 +404,22 @@ Jan 14 00:40:44 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:40:44 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:40:44 symfony [info] {sfWebDebugLogger} Configuration 197.43 ms (9)
 Jan 14 00:40:44 symfony [info] {sfWebDebugLogger} Factories 148.43 ms (1)
-Jan 14 00:40:44 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 39.48 ms (1)
+Jan 14 00:40:44 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 39.48 ms (1)
 Jan 14 00:40:44 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:40:44 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 42.95 ms (1)
-Jan 14 00:43:50 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 42.95 ms (1)
+Jan 14 00:43:50 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:43:51 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:43:51 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:43:51 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:43:51 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:43:51 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:43:51 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:43:51 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:43:51 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:43:51 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:43:51 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -431,22 +431,22 @@ Jan 14 00:43:51 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:43:51 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:43:51 symfony [info] {sfWebDebugLogger} Configuration 2.05 ms (9)
 Jan 14 00:43:51 symfony [info] {sfWebDebugLogger} Factories 33.26 ms (1)
-Jan 14 00:43:51 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 37.89 ms (1)
+Jan 14 00:43:51 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 37.89 ms (1)
 Jan 14 00:43:51 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.01 ms (2)
 Jan 14 00:43:51 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 44.20 ms (1)
-Jan 14 00:44:43 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 44.20 ms (1)
+Jan 14 00:44:43 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:44:43 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:44:43 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:44:43 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:44:43 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:44:43 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:44:43 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:44:43 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:44:43 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:44:43 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:44:43 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -458,22 +458,22 @@ Jan 14 00:44:43 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:44:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:44:43 symfony [info] {sfWebDebugLogger} Configuration 1.93 ms (9)
 Jan 14 00:44:43 symfony [info] {sfWebDebugLogger} Factories 30.56 ms (1)
-Jan 14 00:44:43 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 38.23 ms (1)
+Jan 14 00:44:43 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 38.23 ms (1)
 Jan 14 00:44:43 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:44:43 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 55.02 ms (1)
-Jan 14 00:44:44 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 55.02 ms (1)
+Jan 14 00:44:44 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:44:44 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:44:44 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:44:44 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:44:44 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:44:44 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:44:44 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:44:44 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:44:44 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:44:44 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:44:44 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -485,18 +485,18 @@ Jan 14 00:44:44 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:44:44 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:44:44 symfony [info] {sfWebDebugLogger} Configuration 2.03 ms (9)
 Jan 14 00:44:44 symfony [info] {sfWebDebugLogger} Factories 30.08 ms (1)
-Jan 14 00:44:44 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 39.62 ms (1)
+Jan 14 00:44:44 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 39.62 ms (1)
 Jan 14 00:44:44 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:44:44 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 46.58 ms (1)
-Jan 14 00:45:28 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 46.58 ms (1)
+Jan 14 00:45:28 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:45:28 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:45:28 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:45:28 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
-Jan 14 00:45:28 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getWishlistItemSuccess.php"
+Jan 14 00:45:28 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
+Jan 14 00:45:28 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getItemSuccess.php"
 Jan 14 00:45:28 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:28 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:28 symfony [info] {main} Get slot "title"
@@ -510,17 +510,17 @@ Jan 14 00:45:28 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
 Jan 14 00:45:28 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:45:28 symfony [info] {sfWebDebugLogger} Configuration 11.54 ms (11)
 Jan 14 00:45:28 symfony [info] {sfWebDebugLogger} Factories 31.89 ms (1)
-Jan 14 00:45:28 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 0.23 ms (1)
-Jan 14 00:45:28 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getWishlistItem" 83.69 ms (1)
+Jan 14 00:45:28 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 0.23 ms (1)
+Jan 14 00:45:28 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getItem" 83.69 ms (1)
 Jan 14 00:45:28 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
 Jan 14 00:45:28 symfony [info] {sfWebDebugLogger} Component "navBar/showNavBar" 13.88 ms (1)
 Jan 14 00:45:28 symfony [info] {sfWebDebugLogger} Partial "navBar/_showNavBar" 4.02 ms (1)
 Jan 14 00:45:28 symfony [info] {sfWebResponse} Send content (39029 o)
-Jan 14 00:45:32 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+Jan 14 00:45:32 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:45:32 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:45:32 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:45:32 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
-Jan 14 00:45:32 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getWishlistItemSuccess.php"
+Jan 14 00:45:32 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
+Jan 14 00:45:32 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getItemSuccess.php"
 Jan 14 00:45:32 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:32 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:32 symfony [info] {main} Get slot "title"
@@ -534,19 +534,19 @@ Jan 14 00:45:32 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
 Jan 14 00:45:32 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:45:32 symfony [info] {sfWebDebugLogger} Configuration 2.68 ms (10)
 Jan 14 00:45:32 symfony [info] {sfWebDebugLogger} Factories 31.47 ms (1)
-Jan 14 00:45:32 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 0.20 ms (1)
-Jan 14 00:45:32 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getWishlistItem" 72.77 ms (1)
+Jan 14 00:45:32 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 0.20 ms (1)
+Jan 14 00:45:32 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getItem" 72.77 ms (1)
 Jan 14 00:45:32 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
 Jan 14 00:45:32 symfony [info] {sfWebDebugLogger} Component "navBar/showNavBar" 14.18 ms (1)
 Jan 14 00:45:32 symfony [info] {sfWebDebugLogger} Partial "navBar/_showNavBar" 3.79 ms (1)
 Jan 14 00:45:32 symfony [info] {sfWebResponse} Send content (39028 o)
-Jan 14 00:45:56 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+Jan 14 00:45:56 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:45:56 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:45:56 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:45:56 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:45:56 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:45:56 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:45:56 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
-Jan 14 00:45:56 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getWishlistItemSuccess.php"
+Jan 14 00:45:56 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getItemSuccess.php"
 Jan 14 00:45:56 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:56 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:56 symfony [info] {main} Get slot "title"
@@ -559,19 +559,19 @@ Jan 14 00:45:56 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
 Jan 14 00:45:56 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:45:56 symfony [info] {sfWebDebugLogger} Configuration 2.14 ms (10)
 Jan 14 00:45:56 symfony [info] {sfWebDebugLogger} Factories 30.57 ms (1)
-Jan 14 00:45:56 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 39.21 ms (1)
+Jan 14 00:45:56 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 39.21 ms (1)
 Jan 14 00:45:56 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.04 ms (5)
-Jan 14 00:45:56 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getWishlistItem" 40.54 ms (1)
+Jan 14 00:45:56 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getItem" 40.54 ms (1)
 Jan 14 00:45:56 symfony [info] {sfWebDebugLogger} Component "navBar/showNavBar" 13.92 ms (1)
 Jan 14 00:45:56 symfony [info] {sfWebDebugLogger} Partial "navBar/_showNavBar" 3.67 ms (1)
 Jan 14 00:45:56 symfony [info] {sfWebResponse} Send content (40923 o)
-Jan 14 00:45:57 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+Jan 14 00:45:57 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:45:57 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:45:57 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:45:57 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:45:57 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:45:57 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:45:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
-Jan 14 00:45:57 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getWishlistItemSuccess.php"
+Jan 14 00:45:57 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getItemSuccess.php"
 Jan 14 00:45:57 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:57 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:57 symfony [info] {main} Get slot "title"
@@ -584,19 +584,19 @@ Jan 14 00:45:57 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
 Jan 14 00:45:57 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:45:57 symfony [info] {sfWebDebugLogger} Configuration 2.20 ms (10)
 Jan 14 00:45:57 symfony [info] {sfWebDebugLogger} Factories 30.23 ms (1)
-Jan 14 00:45:57 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 37.49 ms (1)
+Jan 14 00:45:57 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 37.49 ms (1)
 Jan 14 00:45:57 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.04 ms (5)
-Jan 14 00:45:57 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getWishlistItem" 40.56 ms (1)
+Jan 14 00:45:57 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getItem" 40.56 ms (1)
 Jan 14 00:45:57 symfony [info] {sfWebDebugLogger} Component "navBar/showNavBar" 13.99 ms (1)
 Jan 14 00:45:57 symfony [info] {sfWebDebugLogger} Partial "navBar/_showNavBar" 3.60 ms (1)
 Jan 14 00:45:57 symfony [info] {sfWebResponse} Send content (40923 o)
-Jan 14 00:45:59 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+Jan 14 00:45:59 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:45:59 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:45:59 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:45:59 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:45:59 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:45:59 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:45:59 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
-Jan 14 00:45:59 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getWishlistItemSuccess.php"
+Jan 14 00:45:59 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getItemSuccess.php"
 Jan 14 00:45:59 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:59 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:45:59 symfony [info] {main} Get slot "title"
@@ -609,19 +609,19 @@ Jan 14 00:45:59 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
 Jan 14 00:45:59 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:45:59 symfony [info] {sfWebDebugLogger} Configuration 2.24 ms (10)
 Jan 14 00:45:59 symfony [info] {sfWebDebugLogger} Factories 30.13 ms (1)
-Jan 14 00:45:59 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 38.20 ms (1)
+Jan 14 00:45:59 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 38.20 ms (1)
 Jan 14 00:45:59 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.04 ms (5)
-Jan 14 00:45:59 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getWishlistItem" 40.53 ms (1)
+Jan 14 00:45:59 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getItem" 40.53 ms (1)
 Jan 14 00:45:59 symfony [info] {sfWebDebugLogger} Component "navBar/showNavBar" 13.57 ms (1)
 Jan 14 00:45:59 symfony [info] {sfWebDebugLogger} Partial "navBar/_showNavBar" 3.64 ms (1)
 Jan 14 00:46:00 symfony [info] {sfWebResponse} Send content (40923 o)
-Jan 14 00:46:02 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+Jan 14 00:46:02 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:46:02 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:46:02 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:46:02 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:46:02 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:46:02 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:46:02 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
-Jan 14 00:46:02 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getWishlistItemSuccess.php"
+Jan 14 00:46:02 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getItemSuccess.php"
 Jan 14 00:46:02 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:46:02 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:46:02 symfony [info] {main} Get slot "title"
@@ -634,19 +634,19 @@ Jan 14 00:46:02 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
 Jan 14 00:46:02 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:46:02 symfony [info] {sfWebDebugLogger} Configuration 2.28 ms (10)
 Jan 14 00:46:02 symfony [info] {sfWebDebugLogger} Factories 51.63 ms (1)
-Jan 14 00:46:02 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 46.83 ms (1)
+Jan 14 00:46:02 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 46.83 ms (1)
 Jan 14 00:46:02 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.04 ms (5)
-Jan 14 00:46:02 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getWishlistItem" 41.51 ms (1)
+Jan 14 00:46:02 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getItem" 41.51 ms (1)
 Jan 14 00:46:02 symfony [info] {sfWebDebugLogger} Component "navBar/showNavBar" 14.39 ms (1)
 Jan 14 00:46:02 symfony [info] {sfWebDebugLogger} Partial "navBar/_showNavBar" 3.68 ms (1)
 Jan 14 00:46:02 symfony [info] {sfWebResponse} Send content (40923 o)
-Jan 14 00:46:11 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+Jan 14 00:46:11 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:46:11 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:46:11 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:46:11 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:46:11 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:46:11 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:46:11 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
-Jan 14 00:46:11 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getWishlistItemSuccess.php"
+Jan 14 00:46:11 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/modules/wishlist/templates/getItemSuccess.php"
 Jan 14 00:46:11 symfony [info] {sfPHPView} Decorate content with "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:46:11 symfony [info] {sfPHPView} Render "/Users/andreacoba/Sites/wishlist/apps/frontend/templates/layout.php"
 Jan 14 00:46:11 symfony [info] {main} Get slot "title"
@@ -659,21 +659,21 @@ Jan 14 00:46:11 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
 Jan 14 00:46:11 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:46:11 symfony [info] {sfWebDebugLogger} Configuration 2.23 ms (10)
 Jan 14 00:46:11 symfony [info] {sfWebDebugLogger} Factories 31.43 ms (1)
-Jan 14 00:46:11 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 228.93 ms (1)
+Jan 14 00:46:11 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 228.93 ms (1)
 Jan 14 00:46:11 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.04 ms (5)
-Jan 14 00:46:11 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getWishlistItem" 46.74 ms (1)
+Jan 14 00:46:11 symfony [info] {sfWebDebugLogger} View "Success" for "wishlist/getItem" 46.74 ms (1)
 Jan 14 00:46:11 symfony [info] {sfWebDebugLogger} Component "navBar/showNavBar" 14.37 ms (1)
 Jan 14 00:46:11 symfony [info] {sfWebDebugLogger} Partial "navBar/_showNavBar" 3.76 ms (1)
 Jan 14 00:46:11 symfony [info] {sfWebResponse} Send content (40927 o)
-Jan 14 00:46:35 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+Jan 14 00:46:35 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 00:46:35 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 00:46:35 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 00:46:35 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 00:46:35 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 00:46:35 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
 Jan 14 00:46:35 symfony [info] {Doctrine_Connection_Statement} execute : SELECT w.id AS w__id, w.name AS w__name, w.price AS w__price, w.link AS w__link, w.is_public AS w__is_public, w.user_id AS w__user_id, w.created_at AS w__created_at, w.updated_at AS w__updated_at FROM wishlist_item w WHERE (w.id = ?) - ()
 Jan 14 00:46:35 symfony [notice] {sfWebDebugLogger}  Notice at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php on line 109 (Object of class Doctrine_Collection could not be converted to int)
 Jan 14 00:46:35 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/filter/sfExecutionFilter.class.php:109))
-Jan 14 00:46:35 symfony [err] {sfRenderException} The template "getWishlistItem<pre>
+Jan 14 00:46:35 symfony [err] {sfRenderException} The template "getItem<pre>
 Doctrine_Collection
 data : Array(
 )
@@ -685,17 +685,17 @@ Jan 14 00:46:35 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 00:46:35 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 00:46:35 symfony [info] {sfWebDebugLogger} Configuration 1.92 ms (9)
 Jan 14 00:46:35 symfony [info] {sfWebDebugLogger} Factories 31.21 ms (1)
-Jan 14 00:46:35 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 38.64 ms (1)
+Jan 14 00:46:35 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 38.64 ms (1)
 Jan 14 00:46:35 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
 Jan 14 00:46:35 symfony [info] {sfWebDebugLogger} View "<pre>
 Doctrine_Collection
 data : Array(
 )
-</pre>" for "wishlist/getWishlistItem" 40.96 ms (1)
-Jan 14 14:08:50 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getWishlistItem',  'wishlistitem_id' => '1',)
+</pre>" for "wishlist/getItem" 40.96 ms (1)
+Jan 14 14:08:50 symfony [info] {sfPatternRouting} Match route "wishlistitem_show" (/wishlistitem/:wishlistitem_id/) for /wishlistitem/1/ with parameters array (  'module' => 'wishlist',  'action' => 'getItem',  'wishlistitem_id' => '1',)
 Jan 14 14:08:52 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
 Jan 14 14:08:52 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-Jan 14 14:08:52 symfony [info] {wishlistActions} Call "wishlistActions->executeGetWishlistItem()"
+Jan 14 14:08:52 symfony [info] {wishlistActions} Call "wishlistActions->executeGetItem()"
 Jan 14 14:08:53 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/plugins/sfDoctrinePlugin/lib/vendor/doctrine/Doctrine/Connection.php on line 470 (PDO::__construct() [<a href='pdo.--construct'>pdo.--construct</a>]: [2002] Connection refused (trying to connect via tcp://127.0.0.1:3306))
 Jan 14 14:08:53 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/exception/sfException.class.php on line 105 (Cannot modify header information - headers already sent by (output started at /Users/andreacoba/Sites/wishlist/lib/vendor/symfony/lib/plugins/sfDoctrinePlugin/lib/vendor/doctrine/Doctrine/Connection.php:470))
 Jan 14 14:08:53 symfony [err] {Doctrine_Connection_Exception} PDO Connection Error: SQLSTATE[HY000] [2002] Connection refused
@@ -706,4 +706,4 @@ Jan 14 14:08:54 symfony [warning] {sfWebDebugLogger}  Warning at /Users/andreaco
 Jan 14 14:08:54 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 Jan 14 14:08:54 symfony [info] {sfWebDebugLogger} Configuration 4.06 ms (8)
 Jan 14 14:08:54 symfony [info] {sfWebDebugLogger} Factories 2255.60 ms (1)
-Jan 14 14:08:54 symfony [info] {sfWebDebugLogger} Action "wishlist/getWishlistItem" 1366.57 ms (1)
+Jan 14 14:08:54 symfony [info] {sfWebDebugLogger} Action "wishlist/getItem" 1366.57 ms (1)

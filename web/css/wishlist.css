@@ -16,20 +16,20 @@
     font-weight: bolder;
 }
 
-.WishlistItemBody{
+.ItemBody{
     font-size: 12px;
     text-align: center;
 }
 
-.WishlistItemBody p {
+.ItemBody p {
     margin-left: 5px;
 }
 
-.WishlistItemBody label{
+.ItemBody label{
     font-weight: bold;
 }
 
-.WishlistItemBody div{
+.ItemBody div{
     width: 100%;
     background-color: gray;
 }
