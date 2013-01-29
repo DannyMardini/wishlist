@@ -1,7 +1,7 @@
-Wishlist\CoreBundle\Entity\Item:
+Wishlist\CoreBundle\Entity\WishlistItem:
   type: entity
   table: null
-  repositoryClass: Wishlist\CoreBundle\Repository\ItemRepository
+  repositoryClass: Wishlist\CoreBundle\Repository\WishlistItemRepository
 #  manyToOne:
 #    wishlistUser:
 #      targetEntity: WishlistUser

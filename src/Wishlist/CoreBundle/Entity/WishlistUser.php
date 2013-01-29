@@ -320,4 +320,24 @@ class WishlistUser {
     {
         return $this->purchases;
     }
+
+    /**
+     * Add wishlistItems
+     *
+     * @param Wishlist\CoreBundle\Entity\Item $wishlistItems
+     */
+    public function addItem(\Wishlist\CoreBundle\Entity\Item $wishlistItems)
+    {
+        $this->wishlistItems[] = $wishlistItems;
+    }
+
+    /**
+     * Get wishlistItems
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getWishlistItems()
+    {
+        return $this->wishlistItems;
+    }
 }
