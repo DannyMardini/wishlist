@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Wishlist\CoreBundle\Entity\Item
  */
-class Item
+class WishlistItem
 {
   
     /**

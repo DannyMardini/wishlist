@@ -9,7 +9,7 @@ use Wishlist\CoreBundle\Repository\EnumRepository;
 use \Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use \DateTime;
 
-class LoadItemData implements FixtureInterface,OrderedFixtureInterface
+class LoadWishlistItemData implements FixtureInterface,OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
