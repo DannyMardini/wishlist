@@ -14,7 +14,7 @@ class LoadWishlistItemData implements FixtureInterface,OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $userRepo = $manager->getRepository('WishlistCoreBundle:WishlistUser');
-        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
+        $itemRepo = $manager->getRepository('WishlistCoreBundle:WishlistItem');
         
         $danny = $userRepo->getUser('Danny Mardini');
         $andrea = $userRepo->getUser('Andrea Coba');
