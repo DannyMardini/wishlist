@@ -18,7 +18,7 @@ class WishlistItemRepository extends EntityRepository
 {
     public function makeWish($name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
     {
-        $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Item');
+        $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistItem');
         $newItem = $itemRepo->addItem($name, $price, $link, $isPublic, $comment, $quantity, $wishlistUser);
         
         // associating the user to an item
