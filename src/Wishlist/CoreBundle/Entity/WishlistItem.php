@@ -75,4 +75,54 @@ class WishlistItem
     {
         return $this->user;
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\Purchase
+     */
+    private $purchase;
+
+    /**
+     * @var Wishlist\CoreBundle\Entity\WishlistUser
+     */
+    private $wishlistUser;
+
+
+    /**
+     * Set purchase
+     *
+     * @param Wishlist\CoreBundle\Entity\Purchase $purchase
+     */
+    public function setPurchase(\Wishlist\CoreBundle\Entity\Purchase $purchase)
+    {
+        $this->purchase = $purchase;
+    }
+
+    /**
+     * Get purchase
+     *
+     * @return Wishlist\CoreBundle\Entity\Purchase 
+     */
+    public function getPurchase()
+    {
+        return $this->purchase;
+    }
+
+    /**
+     * Set wishlistUser
+     *
+     * @param Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser
+     */
+    public function setWishlistUser(\Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser)
+    {
+        $this->wishlistUser = $wishlistUser;
+    }
+
+    /**
+     * Get wishlistUser
+     *
+     * @return Wishlist\CoreBundle\Entity\WishlistUser 
+     */
+    public function getWishlistUser()
+    {
+        return $this->wishlistUser;
+    }
 }

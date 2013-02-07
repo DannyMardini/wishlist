@@ -2,18 +2,18 @@ Wishlist\CoreBundle\Entity\WishlistItem:
   type: entity
   table: null
   repositoryClass: Wishlist\CoreBundle\Repository\WishlistItemRepository
-#  manyToOne:
-#    wishlistUser:
-#      targetEntity: WishlistUser
-#      inversedBy: wishlistItems
-#      joinColumn:
-#        name: user_id
-#        referencedColumnName: wishlistuser_id
+  manyToOne:
+    wishlistUser:
+      targetEntity: WishlistUser
+      inversedBy: wishlistItems
+      joinColumn:
+        name: user_id
+        referencedColumnName: wishlistuser_id
    
-#  oneToOne:               
-#    purchase:
-#      targetEntity: Purchase
-#      mappedBy: item
+  oneToOne:               
+    purchase:
+      targetEntity: Purchase
+      mappedBy: item
         
   fields:
     id:
@@ -27,24 +27,5 @@ Wishlist\CoreBundle\Entity\WishlistItem:
     user:
       type: integer
       length: null
-        
-#    name:
-#      type: string
-#      length: '255'
-#    price:
-#      type: integer
-#      length: null
-#    link:
-#      type: string
-#      length: '255'
-#    is_public:
-#      type: boolean
-#      length: null
-#    comment:
-#      type: string
-#      length: '500'
-#    quantity:
-#      type: integer
-#      length: null
   lifecycleCallbacks: {  }
   

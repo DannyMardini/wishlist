@@ -202,25 +202,7 @@ class WishlistUser {
         return $this->friendships;
     }
 
-    /**
-     * Add wishlistItems
-     *
-     * @param Wishlist\CoreBundle\Entity\Item $wishlistItems
-     */
-    public function addItems(\Wishlist\CoreBundle\Entity\Item $items)
-    {
-        $this->wishlistItems[] = $items;
-    }
 
-    /**
-     * Get wishlistItems
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getItems()
-    {
-        return $this->wishlistItems;
-    }
     /**
      * @var Wishlist\CoreBundle\Entity\WishlistUpdate
      */
