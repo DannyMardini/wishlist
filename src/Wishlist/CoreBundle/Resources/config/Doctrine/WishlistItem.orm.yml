@@ -24,8 +24,5 @@ Wishlist\CoreBundle\Entity\WishlistItem:
     item:
       type: integer
       length: null
-    user:
-      type: integer
-      length: null
   lifecycleCallbacks: {  }
   
