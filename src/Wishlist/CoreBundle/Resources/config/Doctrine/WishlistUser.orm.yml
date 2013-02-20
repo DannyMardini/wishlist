@@ -10,11 +10,11 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       mappedBy: wishlistUser
 
     wishlistItems:
-      targetEntity: Item
+      targetEntity: WishlistItem
       mappedBy: wishlistUser
       
     purchases:
-      targetEntity: Item
+      targetEntity: WishlistItem
       mappedBy: purchaser
       
     wishlistUpdates:

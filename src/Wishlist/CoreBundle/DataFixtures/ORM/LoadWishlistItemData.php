@@ -20,7 +20,7 @@ class LoadWishlistItemData implements FixtureInterface,OrderedFixtureInterface
         $andrea = $userRepo->getUser('Andrea Coba');
         $jorge = $userRepo->getUser('Jorge Thatcher');
         $steve = $userRepo->getUser('Steven Lac');
-        
+
         $itemRepo->makeWish('purse', 50000, 'www.purse.com', true, 'Bug. this is a purse.', 1, $andrea);
         $itemRepo->makeWish('Bouncy ball', 1000, 'www.bounce.com', true, 'It bounces!', 1, $andrea);
         $itemRepo->makeWish('Macbook', 100000, 'www.apple.com', true, 'it\'s perfect', 1, $andrea);

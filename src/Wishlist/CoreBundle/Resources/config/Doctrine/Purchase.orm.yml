@@ -3,7 +3,7 @@ Wishlist\CoreBundle\Entity\Purchase:
   table: null
   repositoryClass: Wishlist\CoreBundle\Repository\PurchaseRepository
   manyToOne:
-    user:
+    wishlistUser:
       targetEntity: WishlistUser
       joinColumn:
         name: user_id

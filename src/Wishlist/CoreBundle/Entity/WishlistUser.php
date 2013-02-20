@@ -322,4 +322,14 @@ class WishlistUser {
     {
         return $this->wishlistItems;
     }
+
+    /**
+     * Add wishlistItems
+     *
+     * @param Wishlist\CoreBundle\Entity\WishlistItem $wishlistItems
+     */
+    public function addWishlistItem(\Wishlist\CoreBundle\Entity\WishlistItem $wishlistItems)
+    {
+        $this->wishlistItems[] = $wishlistItems;
+    }
 }

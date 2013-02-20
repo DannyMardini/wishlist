@@ -21,12 +21,6 @@ class WishlistItem
     private $item;
 
     /**
-     * @var integer $user
-     */
-    private $user;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -56,25 +50,6 @@ class WishlistItem
         return $this->item;
     }
 
-    /**
-     * Set user
-     *
-     * @param integer $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-
-    /**
-     * Get user
-     *
-     * @return integer 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
     /**
      * @var Wishlist\CoreBundle\Entity\Purchase
      */
