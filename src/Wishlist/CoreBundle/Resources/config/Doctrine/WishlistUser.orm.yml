@@ -14,8 +14,8 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       mappedBy: wishlistUser
       
     purchases:
-      targetEntity: WishlistItem
-      mappedBy: purchaser
+      targetEntity: Purchase
+      mappedBy: user
       
     wishlistUpdates:
       targetEntity: WishlistUpdate
