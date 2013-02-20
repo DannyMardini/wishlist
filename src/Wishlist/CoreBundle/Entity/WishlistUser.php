@@ -320,4 +320,14 @@ class WishlistUser {
     {
         return $this->purchases;
     }
+
+    /**
+     * Add purchases
+     *
+     * @param Wishlist\CoreBundle\Entity\Purchase $purchases
+     */
+    public function addPurchase(\Wishlist\CoreBundle\Entity\Purchase $purchases)
+    {
+        $this->purchases[] = $purchases;
+    }
 }
