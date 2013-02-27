@@ -4,7 +4,7 @@ Wishlist\CoreBundle\Entity\Friendship:
   manyToOne:
         wishlistUser:
           targetEntity: WishlistUser
-          inversedBy: wishlistFriends
+          inversedBy: friendships
           joinColumn:
                   name: user_id
                   referencedColumnName: wishlistuser_id
