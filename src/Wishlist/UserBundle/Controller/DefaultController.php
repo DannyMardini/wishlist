@@ -35,6 +35,7 @@ class DefaultController extends Controller
             $e->getTrace();
         }
         
+        //TODO: Re-evaluate this, I'm not sure I need wishlisteItems.
         return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user, 'wishlistItems' => $user->getWishlistItems(),
                                                                                     'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
     }
@@ -53,6 +54,24 @@ class DefaultController extends Controller
         $username = $wishlist_user->getFirstname()." ".$wishlist_user->getLastname();
         
         return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $friends, 'username' => $username));
+    }
+    
+    public function friendSearchAction()
+    {
+        $request = $this->getRequest();
+        $session = $request->getSession();
+        $friendshipRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Friendship');
+        $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
+        $user = $userRepo->getUserWithId($session->get('user_id'));
+        
+        //Get the search term from the request object
+        $searchTerm = $request->get('searchTerm');
+        
+        //Search the repository for the search term.
+        $results = $friendshipRepo->searchFriends($user, $searchTerm);
+        
+        //Return results.
+        return new Response($results);
     }
     
     public function showUserpageAction(/*int*/ $user_id)
