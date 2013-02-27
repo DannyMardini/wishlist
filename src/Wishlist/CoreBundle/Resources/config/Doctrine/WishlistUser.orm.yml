@@ -9,7 +9,7 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       targetEntity: Event
       mappedBy: wishlistUser
 
-    wishlistItems:
+    wishlistItems: 
       targetEntity: WishlistItem
       mappedBy: wishlistUser
       
