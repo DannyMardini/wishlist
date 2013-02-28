@@ -15,13 +15,12 @@ Wishlist\CoreBundle\Entity\Purchase:
         name: event_id
         referencedColumnName: id
   
-  oneToOne:
-    item:
-      targetEntity: Item
-      inversedBy: purchase
-      joinColumn:
-        name: item_id
-        referencedColumnName: id
+#  oneToOne:
+#    item:
+#      targetEntity: Item
+#      joinColumn:
+#        name: item_id
+#        referencedColumnName: id
             
   fields:
     id:

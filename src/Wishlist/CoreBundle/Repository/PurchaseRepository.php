@@ -5,7 +5,6 @@ namespace Wishlist\CoreBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Entity\Item;
-use Wishlist\CoreBundle\Entity\Item;
 use Wishlist\CoreBundle\Entity\Purchase;
 use Wishlist\CoreBundle\Entity\Event;
 use Doctrine\ORM\Query\ResultSetMapping;

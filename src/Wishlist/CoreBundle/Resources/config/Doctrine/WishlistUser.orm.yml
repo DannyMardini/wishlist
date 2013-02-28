@@ -13,19 +13,20 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       targetEntity: WishlistItem
       mappedBy: wishlistUser
       
-    purchases:
-      targetEntity: WishlistItem
-      mappedBy: purchaser
+#    purchases:
+#      targetEntity: WishlistItem
+#      mappedBy: purchaser
       
     wishlistUpdates:
       targetEntity: WishlistUpdate
       mappedBy: wishlistUser
   repositoryClass: Wishlist\CoreBundle\Repository\WishlistUserRepository
-  id:
-    wishlistuser_id:
-      type: integer
-      generator: { strategy: AUTO }
+
   fields:
+    wishlistuser_id:
+      id: true
+      type: integer
+      generator: { strategy: AUTO }    
     firstname:
       type: string
     lastname:
