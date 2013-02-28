@@ -3,12 +3,6 @@ Wishlist\CoreBundle\Entity\Item:
   table: null
   repositoryClass: Wishlist\CoreBundle\Repository\ItemRepository
   
-#    oneToOne:               
-#    purchase:
-#      targetEntity: Purchase
-#      mappedBy: item
-  
-  
   fields:
     id:
       type: integer

@@ -10,10 +10,10 @@ Wishlist\CoreBundle\Entity\WishlistItem:
         name: user_id
         referencedColumnName: wishlistuser_id
    
-  oneToOne:               
-    purchase:
-      targetEntity: Purchase
-      mappedBy: item
+#  oneToOne:               
+#    purchase:
+#      targetEntity: Purchase
+#      mappedBy: item
         
   fields:
     id:
