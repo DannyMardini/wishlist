@@ -71,7 +71,7 @@ class DefaultController extends Controller
         $results = $friendshipRepo->searchFriends($user, $searchTerm);
         
         //Return results.
-        return new Response($results);
+        return new Response(json_encode($results));
     }
     
     public function showUserpageAction(/*int*/ $user_id)
