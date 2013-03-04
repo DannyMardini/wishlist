@@ -127,7 +127,7 @@ class PurchaseRepository extends EntityRepository
         $q = $em->createQuery('
             SELECT p
             FROM WishlistCoreBundle:Purchase p
-            LEFT JOIN p.user usr
+            LEFT JOIN p.wishlistUser usr
             where usr.wishlistuser_id = :uid')
                 ->setParameter('uid', $uid);
         

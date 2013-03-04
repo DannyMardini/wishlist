@@ -23,6 +23,11 @@ Wishlist\CoreBundle\Entity\WishlistItem:
         name: item_id
         referencedColumnName: id
         
+  oneToOne:
+    purchase:
+      targetEntity: Purchase
+      mappedBy: item        
+        
   fields:
     id:
       type: integer
