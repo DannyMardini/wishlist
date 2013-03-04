@@ -43,7 +43,7 @@ class FriendshipRepository extends EntityRepository
         {
             $fullname = $friend->getFirstName()." ".$friend->getLastName();
 
-            if( strncmp($fullname, $searchTerm, strlen($searchTerm)) == 0 )
+            if( strncmp(strtoupper($fullname), strtoupper($searchTerm), strlen($searchTerm)) == 0 )
             {
                 $results[] = $friend;
             }
