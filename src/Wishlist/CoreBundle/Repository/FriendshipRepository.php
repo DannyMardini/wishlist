@@ -37,10 +37,13 @@ class FriendshipRepository extends EntityRepository
         $userRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
         $friends = $userRepo->getFriendsOf($user);
         
+        $results = array();
+        
         foreach ($friends as $friend)
         {
-            if ( (strncmp($friend->getFirstname(), $searchTerm, strlen($searchTerm)) == 0) ||
-                 (strncmp($friend->getLastname(), $searchTerm, strlen($searchTerm)) == 0) )
+            $fullname = $friend->getFirstName()." ".$friend->getLastName();
+
+            if( strncmp($fullname, $searchTerm, strlen($searchTerm)) == 0 )
             {
                 $results[] = $friend;
             }
