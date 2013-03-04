@@ -114,66 +114,6 @@ class Item
     {
         return $this->link;
     }
-
-    /**
-     * Set is_public
-     *
-     * @param boolean $isPublic
-     */
-    public function setIsPublic($isPublic)
-    {
-        $this->is_public = $isPublic;
-    }
-
-    /**
-     * Get is_public
-     *
-     * @return boolean 
-     */
-    public function getIsPublic()
-    {
-        return $this->is_public;
-    }
-
-    /**
-     * Set comment
-     *
-     * @param string $comment
-     */
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-    }
-
-    /**
-     * Get comment
-     *
-     * @return string 
-     */
-    public function getComment()
-    {
-        return $this->comment;
-    }
-
-    /**
-     * Set quantity
-     *
-     * @param integer $quantity
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-    }
-
-    /**
-     * Get quantity
-     *
-     * @return integer 
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
     
     // TODO Need to make this function part of an interface.
     public function exportData()
@@ -186,5 +126,34 @@ class Item
                             'quantity' => $this->quantity);
         
         return json_encode($exportVars);
+    }
+    /**
+     * @var Wishlist\CoreBundle\Entity\WishlistItem
+     */
+    private $wishlistItems;
+
+    public function __construct()
+    {
+        $this->wishlistItems = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add wishlistItems
+     *
+     * @param Wishlist\CoreBundle\Entity\WishlistItem $wishlistItems
+     */
+    public function addWishlistItem(\Wishlist\CoreBundle\Entity\WishlistItem $wishlistItems)
+    {
+        $this->wishlistItems[] = $wishlistItems;
+    }
+
+    /**
+     * Get wishlistItems
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getWishlistItems()
+    {
+        return $this->wishlistItems;
     }
 }

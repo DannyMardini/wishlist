@@ -9,11 +9,13 @@ Wishlist\CoreBundle\Entity\WishlistItem:
       joinColumn:
         name: user_id
         referencedColumnName: wishlistuser_id
-   
-#  oneToOne:               
-#    purchase:
-#      targetEntity: Purchase
-#      mappedBy: item
+        
+    item:
+      targetEntity: Item
+      inversedBy: wishlistItems
+      joinColumn: 
+        name: item_id
+        referencedColumnName: id
         
   fields:
     id:
@@ -21,8 +23,14 @@ Wishlist\CoreBundle\Entity\WishlistItem:
       id: true
       generator:
         strategy: AUTO
-    item:
-      type: integer
+    is_public:
+      type: boolean
       length: null
+    comment:
+      type: string
+      length: '500'
+    quantity:
+      type: integer
+      length: null            
   lifecycleCallbacks: {  }
   

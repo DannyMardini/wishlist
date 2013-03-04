@@ -26,7 +26,6 @@ class WishlistController extends Controller
         $userId = $user->getWishlistuserId();
         
         $selfWishlist = ($loggedInUserId == $userId ) ? true : false;
-        $test = $user->getWishlistItems();
         return $this->render('WishlistListBundle:Default:wishlist.html.php', array( 'selfWishlist' => $selfWishlist, 
                                                                                     'wishlistItems' => $user->getWishlistItems(),
                                                                                     'events' => $user->getEvents(),

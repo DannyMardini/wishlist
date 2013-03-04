@@ -23,7 +23,10 @@ class WishlistItemRepository extends EntityRepository
         
         // associating the user to an item
         $newWish = new WishlistItem();
-        $newWish->setItem($newItem->getId());
+        $newWish->setItem($newItem);
+        $newWish->setIsPublic($isPublic);
+        $newWish->setComment($comment);
+        $newWish->setQuantity($quantity);
         $newWish->setWishlistUser($wishlistUser);
         $this->getEntityManager()->persist($newWish);
         $this->getEntityManager()->flush();

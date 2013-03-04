@@ -2,7 +2,15 @@ Wishlist\CoreBundle\Entity\Item:
   type: entity
   table: null
   repositoryClass: Wishlist\CoreBundle\Repository\ItemRepository
+
+  # the following oneToMany relationship definitions are not required but will 
+  # help us to easily grab these lists using php classes instead of writing our own queries.
   
+  oneToMany:
+    wishlistItems: 
+      targetEntity: WishlistItem
+      mappedBy: Item  
+
   fields:
     id:
       type: integer
@@ -17,14 +25,5 @@ Wishlist\CoreBundle\Entity\Item:
       length: null
     link:
       type: string
-      length: '255'
-    is_public:
-      type: boolean
-      length: null
-    comment:
-      type: string
-      length: '500'
-    quantity:
-      type: integer
-      length: null        
+      length: '255'    
   lifecycleCallbacks: {  }
