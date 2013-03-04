@@ -37,7 +37,6 @@
     </div>
 </div>
 
-<!--<div class="giftBox" >-->
 <div id="giftBox" class="mockup">
     <div id="giftContent" class="mockup">
 
