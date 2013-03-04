@@ -21,8 +21,6 @@ class GiftboxController extends Controller
             return;
         }
         
-        $test = count($wishlistItems);
-        
 //        return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('wishlistItems' => $wishlistItems));
         return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('user' => $user));
     }
