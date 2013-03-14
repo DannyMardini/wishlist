@@ -1,3 +1,17 @@
+function updateFriendList(friends)
+{
+    var friendlist = $('#friendlist ul');
+    
+    //Empty out the friendlist
+    friendlist.empty();
+
+    //Fill in the new friendlist with new friends 
+    for( var i = 0; i < friends.length; i++)
+    {
+        friendlist.append("<li>" + friends[i] + "</li>"); 
+    }
+}
+
 function filterFriends(e)
 {
     var filterTerm = $('#friendSearch').val();
@@ -11,6 +25,7 @@ function filterFriends(e)
             success: function(data, textStatus, jqXHR) {
                 console.log("Status: " + textStatus);
                 console.log("data: " + data);
+                updateFriendList(jQuery.parseJSON(data));
             }
         });
     }
