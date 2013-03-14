@@ -26,7 +26,8 @@ Wishlist\CoreBundle\Entity\WishlistItem:
   oneToOne:
     purchase:
       targetEntity: Purchase
-      mappedBy: item        
+      mappedBy: item
+      # the mappedBy field should be the name of the association declared in the targetEntity
         
   fields:
     id:

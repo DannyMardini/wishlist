@@ -9,8 +9,9 @@
     foreach($purchases as $purchase)
     {
         $giftDate = $purchase->getGiftDate();
-        $purchasedItem = $purchase->getItem();
-        $giftUser = $purchasedItem->getWishlistUser();
+        $purchasedWishlistItem = $purchase->getItem();
+        $purchasedItem = $purchasedWishlistItem->getItem();
+        $giftUser = $purchasedWishlistItem->getWishlistUser();
 
         echo "<tr id='".$purchase->getId()."'>";
         echo "<td>".$purchasedItem->getName()."</td>";
