@@ -8,7 +8,7 @@ function updateFriendList(friends)
     //Fill in the new friendlist with new friends 
     for( var i = 0; i < friends.length; i++)
     {
-        friendlist.append("<li>" + friends[i] + "</li>"); 
+        friendlist.append("<li>" + friends[i].firstname + " "+ friends[i].lastname + "</li>"); 
     }
 }
 

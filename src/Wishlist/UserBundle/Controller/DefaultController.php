@@ -68,10 +68,23 @@ class DefaultController extends Controller
         $searchTerm = $request->get('searchTerm');
         
         //Search the repository for the search term.
-        $results = $friendshipRepo->searchFriends($user, $searchTerm);
+        $friends = $friendshipRepo->searchFriends($user, $searchTerm);
+        
+        //Transform friends into json
+        $results = "[";
+        
+        foreach ($friends as $friend)
+        {
+            //$results[] = $friend->toJSON();
+            $results .= $friend->toJSON().",";
+        }
+        
+        $results = rtrim($results, ",");
+        $results .="]";
         
         //Return results.
-        return new Response(json_encode($results));
+        
+        return new Response($results);
     }
     
     public function showUserpageAction(/*int*/ $user_id)

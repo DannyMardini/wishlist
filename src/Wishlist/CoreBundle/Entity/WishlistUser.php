@@ -330,4 +330,13 @@ class WishlistUser {
     {
         $this->purchases[] = $purchases;
     }
+    
+    public function toJSON()
+    {
+        $exportvars = array('wishlistuser_id' => $this->wishlistuser_id,
+                            'firstname' => $this->firstname,
+                            'lastname' => $this->lastname );
+        
+        return json_encode($exportvars);
+    }
 }
