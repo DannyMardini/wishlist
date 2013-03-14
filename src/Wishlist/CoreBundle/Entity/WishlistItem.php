@@ -237,4 +237,29 @@ class WishlistItem
     {
         return $this->comment;
     }
+    /**
+     * @var boolean $is_active
+     */
+    private $is_active;
+
+
+    /**
+     * Set is_active
+     *
+     * @param boolean $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->is_active = $isActive;
+    }
+
+    /**
+     * Get is_active
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
+    }
 }

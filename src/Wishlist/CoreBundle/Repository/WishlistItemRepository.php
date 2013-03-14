@@ -28,6 +28,7 @@ class WishlistItemRepository extends EntityRepository
         $newWish->setComment($comment);
         $newWish->setQuantity($quantity);
         $newWish->setWishlistUser($wishlistUser);
+        $newWish->setIsActive(true);
         $this->getEntityManager()->persist($newWish);
         $this->getEntityManager()->flush();
     }
@@ -49,11 +50,14 @@ class WishlistItemRepository extends EntityRepository
     
     public function deleteItem( $deletedItemName, WishlistUser $wishlistUser)
     {
+        // when an item is "deleted" from a wishlist in reality it is just flagged as inactive
+        // going forward an inactivated wish is accessible only via the updates feed
+        
         $em = $this->getEntityManager();       
         
         $q = $em->createQuery('
             SELECT i
-            FROM WishlistCoreBundle:Item i
+            FROM WishlistCoreBundle:WishlistItem i
             LEFT JOIN i.wishlistUser usr
             WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
                 ->setParameters(array('itemName' => $deletedItemName, 'userId' => $wishlistUser->getWishlistuserId()));        

@@ -43,6 +43,9 @@ Wishlist\CoreBundle\Entity\WishlistItem:
       length: '500'
     quantity:
       type: integer
-      length: null            
+      length: null   
+    is_active:
+      type: boolean
+      length: null
   lifecycleCallbacks: {  }
   
