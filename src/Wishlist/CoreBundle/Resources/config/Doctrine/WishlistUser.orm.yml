@@ -1,6 +1,10 @@
 Wishlist\CoreBundle\Entity\WishlistUser:
   type: entity
   oneToMany:
+    
+    # the following oneToMany relationship definitions are not required but will 
+    # help us to easily grab these lists using php classes instead of writing our own queries.
+    
     friendships:
       targetEntity: Friendship
       mappedBy: wishlistUser
@@ -9,23 +13,24 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       targetEntity: Event
       mappedBy: wishlistUser
 
-    wishlistItems:
-      targetEntity: Item
+    wishlistItems: 
+      targetEntity: WishlistItem
       mappedBy: wishlistUser
       
     purchases:
-      targetEntity: Item
-      mappedBy: purchaser
+      targetEntity: Purchase
+      mappedBy: wishlistUser
       
     wishlistUpdates:
       targetEntity: WishlistUpdate
       mappedBy: wishlistUser
   repositoryClass: Wishlist\CoreBundle\Repository\WishlistUserRepository
-  id:
-    wishlistuser_id:
-      type: integer
-      generator: { strategy: AUTO }
+
   fields:
+    wishlistuser_id:
+      id: true
+      type: integer
+      generator: { strategy: AUTO }    
     firstname:
       type: string
     lastname:

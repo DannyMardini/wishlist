@@ -3,7 +3,13 @@ Wishlist\CoreBundle\Entity\Purchase:
   table: null
   repositoryClass: Wishlist\CoreBundle\Repository\PurchaseRepository
   manyToOne:
-    user:
+    
+    # The following associations that have a joinColumn field are associations
+    # that are owned by the purchase entity. These are required to properly 
+    # create the associations in the schema. They are rqeuired for one-way 
+    # associations and two-way associations.
+    
+    wishlistUser:
       targetEntity: WishlistUser
       joinColumn:
         name: user_id
@@ -13,12 +19,11 @@ Wishlist\CoreBundle\Entity\Purchase:
       targetEntity: Event
       joinColumn:
         name: event_id
-        referencedColumnName: id
+        referencedColumnName: id         
   
   oneToOne:
-    item:
-      targetEntity: Item
-      inversedBy: purchase
+    item: 
+      targetEntity: WishlistItem
       joinColumn:
         name: item_id
         referencedColumnName: id

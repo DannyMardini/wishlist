@@ -36,11 +36,11 @@ function wishlistItemBody(/*Item*/$currItem)
     {
         $quantity = "Not Specified";
     }
-    
-    return "<a class='ItemName' href='#'>".$currItem->getName()."</a></h3>" .
+    $item = $currItem->getItem();
+    return "<a class='ItemName' href='#'>".$item->getName()."</a></h3>" .
             "<div class='ItemBody'>" . 
-            "<div><label>Price: </label></div><p>$".$currItem->getPrice()."</p><br />" . 
-            "<div><label>Link: </label></div><p>".$currItem->getLink()."</p><br />" .
+            "<div><label>Price: </label></div><p>$".$item->getPrice()."</p><br />" . 
+            "<div><label>Link: </label></div><p>".$item->getLink()."</p><br />" .
             "<div><label>Notes: </label></div><p>".$currItem->getComment()."</p><br />" .
             "<div><label>Quantity: </label></div><p>".$quantity."</p><br />" .
             "<div><label>Private: </label></div><p>". ($isPublic == 'False' ? "No" : "Yes") . "</p>" .            

@@ -1,19 +1,33 @@
-Wishlist\CoreBundle\Entity\Item:
+Wishlist\CoreBundle\Entity\WishlistItem:
   type: entity
   table: null
-  repositoryClass: Wishlist\CoreBundle\Repository\ItemRepository
-#  manyToOne:
-#    wishlistUser:
-#      targetEntity: WishlistUser
-#      inversedBy: wishlistItems
-#      joinColumn:
-#        name: user_id
-#        referencedColumnName: wishlistuser_id
-   
-#  oneToOne:               
-#    purchase:
-#      targetEntity: Purchase
-#      mappedBy: item
+  repositoryClass: Wishlist\CoreBundle\Repository\WishlistItemRepository
+  
+  # The following associations that have a joinColumn field are associations
+  # that are owned by the purchase entity. These are required to properly 
+  # create the associations in the schema. They are rqeuired for one-way 
+  # associations and two-way associations.
+    
+  manyToOne:
+    wishlistUser:
+      targetEntity: WishlistUser
+      inversedBy: wishlistItems
+      joinColumn:
+        name: user_id
+        referencedColumnName: wishlistuser_id
+        
+    item:
+      targetEntity: Item
+      inversedBy: wishlistItems
+      joinColumn: 
+        name: item_id
+        referencedColumnName: id
+        
+  oneToOne:
+    purchase:
+      targetEntity: Purchase
+      mappedBy: item
+      # the mappedBy field should be the name of the association declared in the targetEntity
         
   fields:
     id:
@@ -21,30 +35,17 @@ Wishlist\CoreBundle\Entity\Item:
       id: true
       generator:
         strategy: AUTO
-    item:
-      type: integer
+    is_public:
+      type: boolean
       length: null
-    user:
+    comment:
+      type: string
+      length: '500'
+    quantity:
       type: integer
+      length: null   
+    is_active:
+      type: boolean
       length: null
-        
-#    name:
-#      type: string
-#      length: '255'
-#    price:
-#      type: integer
-#      length: null
-#    link:
-#      type: string
-#      length: '255'
-#    is_public:
-#      type: boolean
-#      length: null
-#    comment:
-#      type: string
-#      length: '500'
-#    quantity:
-#      type: integer
-#      length: null
   lifecycleCallbacks: {  }
   

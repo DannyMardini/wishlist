@@ -20,9 +20,9 @@ class ItemRepository extends EntityRepository
         $newItem->setName($name);
         $newItem->setPrice($price);
         $newItem->setLink($link);
-        $newItem->setIsPublic($isPublic);
-        $newItem->setComment($comment);
-        $newItem->setQuantity($quantity);
+        //$newItem->setIsPublic($isPublic);
+        //$newItem->setComment($comment);
+        //$newItem->setQuantity($quantity);
         
         // check if item exists in the Item table. If not, add it                
         $itemExists = $this->checkItemExists($newItem);

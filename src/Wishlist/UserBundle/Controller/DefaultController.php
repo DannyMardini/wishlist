@@ -33,9 +33,9 @@ class DefaultController extends Controller
             $friendEvents = $eventRepo->getFriendEvents($user->getWishlistuserId());
         }catch(Exception $e){
             $e->getTrace();
-        }
+        }       
         
-        return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user, 'wishlistItems' => $user->getItems(),
+        return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user, 'wishlistItems' => $user->getWishlistItems(),
                                                                                     'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
     }
     

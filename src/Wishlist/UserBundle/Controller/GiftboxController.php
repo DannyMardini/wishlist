@@ -15,7 +15,11 @@ class GiftboxController extends Controller
         if (!isset($user))
             return;
         
-//        $wishlistItems = $user->getItems();
+        $wishlistItems = $user->getWishlistItems();
+        if(!isset($wishlistItems))
+        {
+            return;
+        }
         
 //        return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('wishlistItems' => $wishlistItems));
         return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('user' => $user));

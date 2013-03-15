@@ -5,7 +5,6 @@ namespace Wishlist\CoreBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Entity\Item;
-use Wishlist\CoreBundle\Entity\Item;
 use Wishlist\CoreBundle\Entity\Purchase;
 use Wishlist\CoreBundle\Entity\Event;
 use Doctrine\ORM\Query\ResultSetMapping;
@@ -128,7 +127,7 @@ class PurchaseRepository extends EntityRepository
         $q = $em->createQuery('
             SELECT p
             FROM WishlistCoreBundle:Purchase p
-            LEFT JOIN p.user usr
+            LEFT JOIN p.wishlistUser usr
             where usr.wishlistuser_id = :uid')
                 ->setParameter('uid', $uid);
         

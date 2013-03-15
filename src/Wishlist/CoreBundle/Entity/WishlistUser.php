@@ -202,25 +202,7 @@ class WishlistUser {
         return $this->friendships;
     }
 
-    /**
-     * Add wishlistItems
-     *
-     * @param Wishlist\CoreBundle\Entity\Item $wishlistItems
-     */
-    public function addItems(\Wishlist\CoreBundle\Entity\Item $items)
-    {
-        $this->wishlistItems[] = $items;
-    }
 
-    /**
-     * Get wishlistItems
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getItems()
-    {
-        return $this->wishlistItems;
-    }
     /**
      * @var Wishlist\CoreBundle\Entity\WishlistUpdate
      */
@@ -319,5 +301,45 @@ class WishlistUser {
     public function getPurchases()
     {
         return $this->purchases;
+    }
+
+    /**
+     * Add wishlistItems
+     *
+     * @param Wishlist\CoreBundle\Entity\Item $wishlistItems
+     */
+    public function addItem(\Wishlist\CoreBundle\Entity\Item $wishlistItems)
+    {
+        $this->wishlistItems[] = $wishlistItems;
+    }
+
+    /**
+     * Get wishlistItems
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getWishlistItems()
+    {
+        return $this->wishlistItems;
+    }
+
+    /**
+     * Add wishlistItems
+     *
+     * @param Wishlist\CoreBundle\Entity\WishlistItem $wishlistItems
+     */
+    public function addWishlistItem(\Wishlist\CoreBundle\Entity\WishlistItem $wishlistItems)
+    {
+        $this->wishlistItems[] = $wishlistItems;
+    }
+    
+    /**
+     * Add purchases
+     *
+     * @param Wishlist\CoreBundle\Entity\Purchase $purchases
+     */
+    public function addPurchase(\Wishlist\CoreBundle\Entity\Purchase $purchases)
+    {
+        $this->purchases[] = $purchases;
     }
 }
