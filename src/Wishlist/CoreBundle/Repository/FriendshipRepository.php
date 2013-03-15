@@ -32,39 +32,23 @@ class FriendshipRepository extends EntityRepository
         $this->getEntityManager()->persist($friendship);
     }
     
-//    public static function getInstance()
-//    {
-//        return Doctrine_Core::getTable('Friendship');
-//    }
-//
-//    public function getFriendsOf($user)
-//    {
-//        $q = $this->createQuery()->where('usera_id = ?', $user);
-//
-//        $friendships = $q->execute();
-//
-//        foreach ($friendships as $friendship)
-//        {
-//            $friend_ids[] = $friendship->getUserbId();
-//        }
-//
-//        if($friend_ids)
-//        {
-//            return WishlistUserTable::getInstance()->createQuery('w')->whereIn('w.wishlistuser_id', $friend_ids)->execute();
-//        }
-//    }
-//
-//    public function createFriendship($userA, $userB)
-//    {
-//        $friendshipA = new Friendship();
-//        $friendshipA->setUseraId($userA);
-//        $friendshipA->setUserbId($userB);
-//
-//        $friendshipB = new Friendship();
-//        $friendshipB->setUseraId($userB);
-//        $friendshipB->setUserbId($userA);
-//
-//        $friendshipA->save();
-//        $friendshipB->save();
-//    }
+    public function searchFriends(WishlistUser $user, /*string*/ $searchTerm)
+    {
+        $userRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
+        $friends = $userRepo->getFriendsOf($user);
+        
+        $results = array();
+        
+        foreach ($friends as $friend)
+        {
+            $fullname = $friend->getFirstName()." ".$friend->getLastName();
+
+            if( strncmp(strtoupper($fullname), strtoupper($searchTerm), strlen($searchTerm)) == 0 )
+            {
+                $results[] = $friend;
+            }
+        }
+        
+        return $results;
+    }
 }

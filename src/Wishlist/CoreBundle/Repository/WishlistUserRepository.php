@@ -51,19 +51,6 @@ class WishlistUserRepository extends EntityRepository
         $this->addUser($user);        
     }
     
-//    public static function addWishlistUser( $email )
-//    {
-//        $em = $this->getEntityManager();
-//        
-//        $new_wishlistUser = new WishlistUser();
-//        $new_wishlistUser->setEmail($email);
-//        $new_wishlistUser->setName('Blanca Edmiston');
-//        $new_wishlistUser->setGender(1);
-//        $new_wishlistUser->setAge(50);
-//        $new_wishlistUser->setPassword('iLoveBob');
-//        $new_wishlistUser->save();
-//    }
-    
     public function validateEmailAndPassword( $email, $password )
     {
         try

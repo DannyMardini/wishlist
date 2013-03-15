@@ -304,6 +304,7 @@ class WishlistUser {
     }
 
     /**
+<<<<<<< HEAD
      * Add wishlistItems
      *
      * @param Wishlist\CoreBundle\Entity\Item $wishlistItems
@@ -341,5 +342,14 @@ class WishlistUser {
     public function addPurchase(\Wishlist\CoreBundle\Entity\Purchase $purchases)
     {
         $this->purchases[] = $purchases;
+    }
+    
+    public function toJSON()
+    {
+        $exportvars = array('wishlistuser_id' => $this->wishlistuser_id,
+                            'firstname' => $this->firstname,
+                            'lastname' => $this->lastname );
+        
+        return json_encode($exportvars);
     }
 }
