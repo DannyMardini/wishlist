@@ -174,10 +174,11 @@ class WishlistItem
     // TODO Need to make this function part of an interface.
     public function exportData()
     {
+        $genericItem = $this->getItem();
         $exportVars = array('id' => $this->id,
-                            'name' => $this->name,
-                            'price' => $this->price,
-                            'link' => $this->link,
+                            'name' => $genericItem->getName(),
+                            'price' => $genericItem->getPrice(),
+                            'link' => $genericItem->getLink(),
                             'comment' => $this->getComment(),
                             'quantity' => $this->quantity);
         

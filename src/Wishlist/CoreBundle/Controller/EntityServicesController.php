@@ -10,7 +10,7 @@ class EntityServicesController extends Controller
 {
     public function getItemInfoAction()
     {
-        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
+        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
         $itemId = $this->getRequest()->request->get('id');
         
         $item = $itemRepo->find($itemId);
