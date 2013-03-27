@@ -19,10 +19,7 @@ class ItemRepository extends EntityRepository
         $newItem = new Item();
         $newItem->setName($name);
         $newItem->setPrice($price);
-        $newItem->setLink($link);
-        //$newItem->setIsPublic($isPublic);
-        //$newItem->setComment($comment);
-        //$newItem->setQuantity($quantity);
+        $newItem->setLink($link);       
         
         // check if item exists in the Item table. If not, add it                
         $itemExists = $this->checkItemExists($newItem);
@@ -30,7 +27,7 @@ class ItemRepository extends EntityRepository
         if(!$itemExists){
             $this->getEntityManager()->persist($newItem);
             $this->getEntityManager()->flush();
-            $itemExists = $newItem;
+            $itemExists = $newItem;           
         }
         
         return $itemExists;

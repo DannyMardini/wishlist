@@ -30,7 +30,10 @@ class WishlistItemRepository extends EntityRepository
         $newWish->setWishlistUser($wishlistUser);
         $newWish->setIsActive(true);
         $this->getEntityManager()->persist($newWish);
-        $this->getEntityManager()->flush();
+        $this->getEntityManager()->flush(); 
+        
+        $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
+        $updateRepo->addNewItem($wishlistUser, $newItem); 
     }
     
     public function checkUserWishlist($item, $user)
