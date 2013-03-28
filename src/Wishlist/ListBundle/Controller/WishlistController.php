@@ -84,7 +84,7 @@ class WishlistController extends Controller
         
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
-        $itemRepo->deleteItem($deletedItemName, $user);        
+        $itemRepo->deleteWish($deletedItemName, $user);        
         
         $selfWishlist = ($user->getWishlistUserId() == $loggedInUserId)? true:false;
         

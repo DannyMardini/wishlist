@@ -51,7 +51,7 @@ class WishlistItemRepository extends EntityRepository
         return $itemInDatabase;
     } 
     
-    public function deleteItem( $deletedItemName, WishlistUser $wishlistUser)
+    public function deleteWish( $deletedItemName, WishlistUser $wishlistUser)
     {
         // when an item is "deleted" from a wishlist in reality it is just flagged as inactive
         // going forward an inactivated wish is accessible only via the updates feed
