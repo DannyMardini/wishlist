@@ -54,23 +54,25 @@ class WishlistItemRepository extends EntityRepository
     public function deleteWish( $deletedItemName, WishlistUser $wishlistUser)
     {
         // when an item is "deleted" from a wishlist in reality it is just flagged as inactive
-        // going forward an inactivated wish is accessible only via the updates feed
+        // going forward an inactivate wish is accessible only via the updates feed
         
         $em = $this->getEntityManager();       
         
         $q = $em->createQuery('
-            SELECT i
-            FROM WishlistCoreBundle:WishlistItem i
-            LEFT JOIN i.wishlistUser usr
-            WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
-                ->setParameters(array('itemName' => $deletedItemName, 'userId' => $wishlistUser->getWishlistuserId()));        
-                      
-        $itemToDelete = $q->getOneOrNullResult();
+            SELECT i 
+            FROM WishlistCoreBundle:WishlistItem i 
+            LEFT JOIN i.wishlistUser usr 
+            LEFT JOIN i.item itm 
+            WHERE itm.name = :itemName AND usr.wishlistuser_id = :userId')
+            ->setParameters(array('itemName' => $deletedItemName, 'userId' => $wishlistUser->getWishlistuserId()));
         
+        $wishToDelete = $q->getOneOrNullResult();
+        
+        /* // Do not think we should remove these...instead alert the user through the GUI
         $q2 = $em->createQuery('
             SELECT i FROM WishlistCoreBundle:Purchase i
             WHERE i.item = :itemId')
-                ->setParameters(array( 'itemId' => $itemToDelete->getId() ));
+                ->setParameters(array( 'itemId' => $wishToDelete->getId() ));
         
         $purchase = $q2->getOneOrNullResult();
         
@@ -79,8 +81,11 @@ class WishlistItemRepository extends EntityRepository
             $em->remove($purchase);
             $em->flush();
         }
+         * 
+         */
         
-        $likeVar = '\'%openDialog('.$itemToDelete->getId().')%\'';
+        /*
+        $likeVar = '\'%openDialog('.$wishToDelete->getId().')%\'';
         $q3 = $em ->createQuery('
             SELECT i FROM WishlistCoreBundle:WishlistUpdate i
             WHERE i.message like :likeVar')
@@ -93,8 +98,11 @@ class WishlistItemRepository extends EntityRepository
             $em->remove($updates);
             $em->flush();
         }
+         * */
         
-        $em->remove($itemToDelete);
+        $wishToDelete->setIsActive(false);
+        
+        //$em->remove($wishToDelete);
         $em->flush();                
     }
 }
