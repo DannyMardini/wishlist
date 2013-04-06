@@ -97,7 +97,7 @@ function setupItemView(data)
 function openDialog(itemId)
 {
     // using the item ID, grab the item's info and display in the dialog
-    $.getJSON('/app_dev.php/item/'+itemId, function (data) {
+    $.getJSON('/app_dev.php/wishlistitem/'+itemId, function (data) {
       setupItemView(data);     
     }); 
 }

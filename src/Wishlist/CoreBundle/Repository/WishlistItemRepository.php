@@ -55,7 +55,6 @@ class WishlistItemRepository extends EntityRepository
     {
         // when an item is "deleted" from a wishlist in reality it is just flagged as inactive
         // going forward an inactivate wish is accessible only via the updates feed
-        
         $em = $this->getEntityManager();       
         
         $q = $em->createQuery('
@@ -68,41 +67,7 @@ class WishlistItemRepository extends EntityRepository
         
         $wishToDelete = $q->getOneOrNullResult();
         
-        /* // Do not think we should remove these...instead alert the user through the GUI
-        $q2 = $em->createQuery('
-            SELECT i FROM WishlistCoreBundle:Purchase i
-            WHERE i.item = :itemId')
-                ->setParameters(array( 'itemId' => $wishToDelete->getId() ));
-        
-        $purchase = $q2->getOneOrNullResult();
-        
-        if(isset($purchase)) // remove any purchases associated to this item
-        {
-            $em->remove($purchase);
-            $em->flush();
-        }
-         * 
-         */
-        
-        /*
-        $likeVar = '\'%openDialog('.$wishToDelete->getId().')%\'';
-        $q3 = $em ->createQuery('
-            SELECT i FROM WishlistCoreBundle:WishlistUpdate i
-            WHERE i.message like :likeVar')
-                ->setParameters(array( 'likeVar' => $likeVar ));
-        
-        $updates = $q3 ->getOneOrNullResult();
-        
-        if(isset($updates)) // deactivate any updates associated to this item
-        {
-            $em->remove($updates);
-            $em->flush();
-        }
-         * */
-        
-        //$wishToDelete->setIsActive(false);
-        
-        //$em->remove($wishToDelete);
-        //$em->flush();                
+        $em->remove($wishToDelete);
+        $em->flush(); 
     }
 }
