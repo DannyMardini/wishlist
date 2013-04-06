@@ -100,9 +100,9 @@ class WishlistItemRepository extends EntityRepository
         }
          * */
         
-        $wishToDelete->setIsActive(false);
+        //$wishToDelete->setIsActive(false);
         
         //$em->remove($wishToDelete);
-        $em->flush();                
+        //$em->flush();                
     }
 }
