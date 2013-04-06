@@ -121,9 +121,7 @@ class Item
         $exportVars = array('id' => $this->id,
                             'name' => $this->name,
                             'price' => $this->price,
-                            'link' => $this->link,
-                            'comment' => $this->getComment(),
-                            'quantity' => $this->quantity);
+                            'link' => $this->link);
         
         return json_encode($exportVars);
     }
