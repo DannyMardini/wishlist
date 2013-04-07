@@ -51,12 +51,11 @@ class WishlistItemRepository extends EntityRepository
         return $itemInDatabase;
     } 
     
-    public function deleteWish( $deletedItemName, WishlistUser $wishlistUser)
+    public function deleteWish( $deletedWishName, WishlistUser $wishlistUser)
     {
-        // when an item is "deleted" from a wishlist in reality it is just flagged as inactive
-        // going forward an inactivate wish is accessible only via the updates feed
-        
-        $em = $this->getEntityManager();       
+        // remove the wish from the users wishlist
+        $em = $this->getEntityManager();  
+        $userId = $wishlistUser->getWishlistuserId(); 
         
         $q = $em->createQuery('
             SELECT i 
@@ -64,45 +63,21 @@ class WishlistItemRepository extends EntityRepository
             LEFT JOIN i.wishlistUser usr 
             LEFT JOIN i.item itm 
             WHERE itm.name = :itemName AND usr.wishlistuser_id = :userId')
-            ->setParameters(array('itemName' => $deletedItemName, 'userId' => $wishlistUser->getWishlistuserId()));
-        
+            ->setParameters(array('itemName' => $deletedWishName, 'userId' => $userId));
+
         $wishToDelete = $q->getOneOrNullResult();
         
-        /* // Do not think we should remove these...instead alert the user through the GUI
-        $q2 = $em->createQuery('
-            SELECT i FROM WishlistCoreBundle:Purchase i
-            WHERE i.item = :itemId')
-                ->setParameters(array( 'itemId' => $wishToDelete->getId() ));
-        
-        $purchase = $q2->getOneOrNullResult();
-        
-        if(isset($purchase)) // remove any purchases associated to this item
+        if(!isset($wishToDelete))
         {
-            $em->remove($purchase);
-            $em->flush();
+            throw new Exception("Wishlist Item could not be found.");            
         }
-         * 
-         */
         
-        /*
-        $likeVar = '\'%openDialog('.$wishToDelete->getId().')%\'';
-        $q3 = $em ->createQuery('
-            SELECT i FROM WishlistCoreBundle:WishlistUpdate i
-            WHERE i.message like :likeVar')
-                ->setParameters(array( 'likeVar' => $likeVar ));
+        $itemId = $wishToDelete->getItem()->getId();
+        $purchaseRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Purchase');                       
+        $purchase = $wishToDelete->getPurchase();
+        $purchaseRepo->deletePurchase($purchase);
         
-        $updates = $q3 ->getOneOrNullResult();
-        
-        if(isset($updates)) // deactivate any updates associated to this item
-        {
-            $em->remove($updates);
-            $em->flush();
-        }
-         * */
-        
-        $wishToDelete->setIsActive(false);
-        
-        //$em->remove($wishToDelete);
-        $em->flush();                
+        $em->remove($wishToDelete);
+        $em->flush();
     }
 }

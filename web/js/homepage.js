@@ -87,17 +87,14 @@ function setupItemView(data)
 {
     $('#itemDialog #name').html(data.name);
     $('#itemDialog #price').html(data.price);
-    $('#itemDialog #comment').html(data.comment);
-    $('#itemDialog #quantity').html(data.quantity);
     $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">'+data.link+'</a>');
-    
     $('#itemDialog').dialog('open');         
 }
 
 function openDialog(itemId)
 {
     // using the item ID, grab the item's info and display in the dialog
-    $.getJSON('/app_dev.php/item/'+itemId, function (data) {
+    $.getJSON('/app_dev.php/wishlistitem/'+itemId, function (data) {
       setupItemView(data);     
     }); 
 }

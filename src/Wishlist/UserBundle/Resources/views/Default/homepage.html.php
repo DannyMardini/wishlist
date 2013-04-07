@@ -77,10 +77,6 @@
     <div id="name"></div>
     <label class="label">Price: </label>
     <div id="price"></div>
-    <label class="label">Quantity: </label>
-    <div id="quantity">2</div>
     <label class="label">Website: </label>
     <div id="link"></div>
-    <label class="label">Comment: </label>
-    <div id="comment"></div>
 </div>
