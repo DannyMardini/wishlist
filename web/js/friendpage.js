@@ -9,8 +9,8 @@ function updateFriendList(friends)
     for( var i = 0; i < friends.length; i++)
     {
         //friendlist.append("<li>" + friends[i].firstName + " "+ friends[i].lastName + "</li>");
-        console.log("<li><img class='friendIcon' src='" + friends[i].profileUrl + "'/><a href='/app_dev.php/Friendpage/"+ friends[i].wishlistuser_id +"'>" + friends[i].firstName + " " + friends[i].lastName +"</a></li>");
-        friendlist.append("<li><img class='friendIcon' src='" + friends[i].profileUrl + "'/><a href='/app_dev.php/User/"+ friends[i].wishlistuser_id +"'>" + friends[i].firstName + " " + friends[i].lastName +"</a></li>");
+        console.log("<li><img class='friendIcon' src='" + friends[i].profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_friendlist', {user_id: friends[i].wishlistuser_id}) +"'>" + friends[i].firstName + " " + friends[i].lastName +"</a></li>");
+        friendlist.append("<li><img class='friendIcon' src='" + friends[i].profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_friendlist', {user_id: friends[i].wishlistuser_id}) +"'>" + friends[i].firstName + " " + friends[i].lastName +"</a></li>");
     }
 }
 
