@@ -51,11 +51,11 @@ class WishlistItemRepository extends EntityRepository
         return $itemInDatabase;
     } 
     
-    public function deleteWish( $deletedItemName, WishlistUser $wishlistUser)
+    public function deleteWish( $deletedWishName, WishlistUser $wishlistUser)
     {
-        // when an item is "deleted" from a wishlist in reality it is just flagged as inactive
-        // going forward an inactivate wish is accessible only via the updates feed
-        $em = $this->getEntityManager();       
+        // remove the wish from the users wishlist
+        $em = $this->getEntityManager();  
+        $userId = $wishlistUser->getWishlistuserId(); 
         
         $q = $em->createQuery('
             SELECT i 
@@ -63,11 +63,21 @@ class WishlistItemRepository extends EntityRepository
             LEFT JOIN i.wishlistUser usr 
             LEFT JOIN i.item itm 
             WHERE itm.name = :itemName AND usr.wishlistuser_id = :userId')
-            ->setParameters(array('itemName' => $deletedItemName, 'userId' => $wishlistUser->getWishlistuserId()));
-        
+            ->setParameters(array('itemName' => $deletedWishName, 'userId' => $userId));
+
         $wishToDelete = $q->getOneOrNullResult();
         
+        if(!isset($wishToDelete))
+        {
+            throw new Exception("Wishlist Item could not be found.");            
+        }
+        
+        $itemId = $wishToDelete->getItem()->getId();
+        $purchaseRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Purchase');                       
+        $purchase = $wishToDelete->getPurchase();
+        $purchaseRepo->deletePurchase($purchase);
+        
         $em->remove($wishToDelete);
-        $em->flush(); 
+        $em->flush();
     }
 }

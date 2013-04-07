@@ -169,13 +169,23 @@ class PurchaseRepository extends EntityRepository
         }
         
         $em->flush();
+        
+        // TO DO: send notification to user. Explaining why the item was removed from 
+        // their purchase list. It could be one of 2 reasons:
+        // The user removed it themselves OR the item was auto removed by the system because
+        // the friend removed the wish from their wishlist
+        
     }
     
     public function deletePurchase(Purchase $purchase)
     {
         $em = $this->getEntityManager();
-        
         $em->remove($purchase);
         $em->flush();
+        
+        // TO DO: send notification to user. Explaining why the item was removed from 
+        // their purchase list. It could be one of 2 reasons:
+        // The user removed it themselves OR the item was auto removed by the system because
+        // the friend removed the wish from their wishlist
     }
 }
