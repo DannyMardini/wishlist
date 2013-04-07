@@ -62,3 +62,6 @@ jms_security_extra:
 services:
   pic_service:
     class: Wishlist\CoreBundle\Services\PicService
+
+fos_js_routing:
+  routes_to_expose: [ WishlistUserBundle_friendSearch ]
