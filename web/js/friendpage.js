@@ -8,7 +8,9 @@ function updateFriendList(friends)
     //Fill in the new friendlist with new friends 
     for( var i = 0; i < friends.length; i++)
     {
-        friendlist.append("<li>" + friends[i].firstname + " "+ friends[i].lastname + "</li>"); 
+        //friendlist.append("<li>" + friends[i].firstName + " "+ friends[i].lastName + "</li>");
+        console.log("<li><img class='friendIcon' src='" + friends[i].profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_userpage', {user_id: friends[i].wishlistuser_id}) +"'>" + friends[i].firstName + " " + friends[i].lastName +"</a></li>");
+        friendlist.append("<li><img class='friendIcon' src='" + friends[i].profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_userpage', {user_id: friends[i].wishlistuser_id}) +"'>" + friends[i].firstName + " " + friends[i].lastName +"</a></li>");
     }
 }
 
@@ -23,8 +25,6 @@ function filterFriends(e)
             url: '/app_dev.php/FriendSearch',
             data: { searchTerm: filterTerm },
             success: function(data, textStatus, jqXHR) {
-                console.log("Status: " + textStatus);
-                console.log("data: " + data);
                 updateFriendList(jQuery.parseJSON(data));
             }
         });

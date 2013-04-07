@@ -347,8 +347,9 @@ class WishlistUser {
     public function toJSON()
     {
         $exportvars = array('wishlistuser_id' => $this->wishlistuser_id,
-                            'firstname' => $this->firstname,
-                            'lastname' => $this->lastname );
+                            'firstName' => $this->firstname,
+                            'lastName' => $this->lastname,
+                            'profileUrl' => $this->getProfileUrl());
         
         return json_encode($exportvars);
     }
