@@ -9,9 +9,11 @@ function updateFriendList(friends)
     for( var i = 0; i < friends.length; i++)
     {
         //friendlist.append("<li>" + friends[i].firstName + " "+ friends[i].lastName + "</li>");
-        console.log("<li><img class='friendIcon' src='" + friends[i].profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_userpage', {user_id: friends[i].wishlistuser_id}) +"'>" + friends[i].firstName + " " + friends[i].lastName +"</a></li>");
         friendlist.append("<li><img class='friendIcon' src='" + friends[i].profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_userpage', {user_id: friends[i].wishlistuser_id}) +"'>" + friends[i].firstName + " " + friends[i].lastName +"</a></li>");
     }
+    
+    //Finally make all of the newly created search results into button links.
+    createButtonLinks();
 }
 
 function filterFriends(e)
@@ -31,11 +33,16 @@ function filterFriends(e)
     }
 }
 
-$(document).ready(function(){
-    
+function createButtonLinks()
+{
     $('#friendlist ul li').click(function(){
        window.location = $(this).find("a").attr("href");
-    });
+    });    
+}
+
+$(document).ready(function(){
+    
+    createButtonLinks();
     
     $('#friendSearch').keyup(filterFriends);
 });
