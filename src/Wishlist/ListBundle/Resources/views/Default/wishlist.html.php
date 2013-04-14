@@ -28,7 +28,7 @@ function wishlistItemHeader(/*Boolean*/$selfWishlist, /*Item*/$currItem, /*Wishl
     return $header;
 }
 
-function wishlistItemBody(/*Item*/$currItem)
+function wishlistItemBody(/*WishlistItem*/$currItem)
 {
     $quantity = $currItem->getQuantity();
     $isPublic = $currItem->getIsPublic() == false ? 'False' : 'True';

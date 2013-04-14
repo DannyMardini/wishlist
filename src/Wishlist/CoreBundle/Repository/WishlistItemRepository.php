@@ -51,12 +51,31 @@ class WishlistItemRepository extends EntityRepository
         return $itemInDatabase;
     } 
     
+    /**
+     * Get wishlistItem for a user 
+     */
+    public function getWishlistItemForUser(Item $item, WishlistUser $user)
+    {
+        $q = $this->getEntityManager()->createQuery('
+            SELECT i 
+            FROM WishlistCoreBundle:WishlistItem i 
+            WHERE i.item = :itemId AND i.wishlistUser = :userId')
+                ->setParameters(array('itemId' => $item->getId(), 'userId' => $user->getWishlistuserId())
+            );
+                      
+        return $q->getOneOrNullResult();  
+    }
+    
+    /*
+     * Method called when a user removes an item from their wishlist
+     */
     public function deleteWish( $deletedWishName, WishlistUser $wishlistUser)
     {
         // remove the wish from the users wishlist
         $em = $this->getEntityManager();  
         $userId = $wishlistUser->getWishlistuserId(); 
         
+        // grab the wish item being deleted for the user
         $q = $em->createQuery('
             SELECT i 
             FROM WishlistCoreBundle:WishlistItem i 
@@ -72,10 +91,9 @@ class WishlistItemRepository extends EntityRepository
             throw new Exception("Wishlist Item could not be found.");            
         }
         
-        $itemId = $wishToDelete->getItem()->getId();
-        $purchaseRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Purchase');                       
-        $purchase = $wishToDelete->getPurchase();
-        $purchaseRepo->deletePurchase($purchase);
+        // search for and remove the promised purchase of this wish (if it exists)
+        $purchaseRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Purchase');        
+        $purchaseRepo->deletePurchase($wishToDelete->getPurchase(), PurchaseEventTypes::RemovedFromWishlist);
         
         $em->remove($wishToDelete);
         $em->flush();

@@ -4,13 +4,22 @@ namespace Wishlist\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+class PurchaseEventTypes
+{
+    const Purchased = 0;                // The purchase was completed        
+    const RemovedFromShoppingList = 1;  // The user removed the purchase from their shopping list
+    const RemovedFromWishlist = 2;      // The friend removed the wish from their wishlist
+    const Added = 3;                    // A Wish Item was added to the shopping list
+    // etc.
+}  
+
 /**
  * Wishlist\CoreBundle\Entity\Purchase
  */
 class Purchase
 {
     const TYPE_EVENT = "Event";
-    const TYPE_DATE = "Date";
+    const TYPE_DATE = "Date";     
     
     /**
      * @var integer $id

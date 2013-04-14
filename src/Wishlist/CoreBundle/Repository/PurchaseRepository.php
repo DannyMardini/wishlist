@@ -4,11 +4,14 @@ namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\WishlistUser;
+use Wishlist\CoreBundle\Entity\WishlistItem;
 use Wishlist\CoreBundle\Entity\Item;
+use Wishlist\CoreBundle\Entity\PurchaseEventTypes;
 use Wishlist\CoreBundle\Entity\Purchase;
 use Wishlist\CoreBundle\Entity\Event;
 use Doctrine\ORM\Query\ResultSetMapping;
 use \PDOException;
+
 
 /**
  * PurchaseRepository
@@ -17,12 +20,12 @@ use \PDOException;
  * repository methods below.
  */
 class PurchaseRepository extends EntityRepository
-{
+{  
     
     /*
      * This function accepts either an event or a gift_date, but not both.
      */
-    public function newPurchase(WishlistUser $user, Item $item, Event $event = NULL, \DateTime $gift_date = NULL)
+    public function newPurchase(WishlistUser $user, WishlistItem $wishlistItem, Event $event = NULL, \DateTime $gift_date = NULL)
     {
         
         $rsm = new ResultSetMapping;
@@ -49,75 +52,36 @@ class PurchaseRepository extends EntityRepository
             $eventId = 'NULL';
         }
         
-        $purchaseParams = 'CALL PurchaseItem('.$item->getId().', '.$user->getWishlistuserId().', '.$eventId.', '.$date.')';
-         
-        //$nquery = $this->getEntityManager()->createNativeQuery('CALL selectPurchase', $rsm);
+        $genericItem = $wishlistItem->getItem();
+        $purchasePromised = $wishlistItem->getPurchase();
+        $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistItem');
+        $selfPurchaseItem = $itemRepo->getWishlistItemForUser($genericItem, $user);
+        
+        
+        if(isset($purchasePromised) && !isset($selfPurchaseItem) )
+        {
+            // cannot overwrite an already promised purchase by another friend
+            throw new Exception("This wish was already promised by another friend."); 
+        }
+        
+        // if user is purchasing for themselves, remove the existing purchase promise
+        if(isset($selfPurchaseItem) && isset($purchasePromised))
+        {
+            $this->deletePurchase($purchasePromised, PurchaseEventTypes::RemovedFromWishlist);
+        }
+        
+        // Add the item to the users shopping list
+        $purchaseParams = 'CALL PurchaseItem('.
+                $wishlistItem->getId().
+                ', '.
+                $user->getWishlistuserId().
+                ', '.
+                $eventId.
+                ', '.
+                $date.
+         ')';
         $nquery = $this->getEntityManager()->createNativeQuery($purchaseParams, $rsm);
-        
-        $purchases = $nquery->getResult();
-        
-        if( count($purchases) )
-        {
-            $purchase = $purchases[0];
-            $item = $purchase->getItem();
-        }
-        
-        /*
-        if(isset($event) && isset($gift_date))
-        {
-            throw new \RuntimeException('Ambiguous notification date for puchase.');
-        }
-        
-        $em = $this->getEntityManager();
-        
-        $newPurchase = new Purchase();
-        $newPurchase->setUser($user);
-        $newPurchase->setItem($item);
-        
-        if($event != NULL)
-        {
-            $newPurchase->setEvent($event);
-            $newPurchase->setGiftDate($event->getEventDate());
-        }else if($gift_date != NULL)
-        {
-            $newPurchase->setGiftDate($gift_date);
-        }else
-        {
-            throw new RuntimeException('A purchase requires an event or date.');
-        }
-        
-        $item->setPurchase($newPurchase);
-        
-        $em->persist($newPurchase);
-        
-        try
-        {
-            $em->flush();
-        }catch(PDOException $e)
-        {
-            //Connection was closed, start a new one.
-            $em->getConnection()->beginTransaction();
-            //Most likely duplicate key
-            if($e->getCode() == "23000")
-            {
-                $this->overwritePrevPurchase($item, $newPurchase);
-            }
-        }
-         * 
-         */
-    }
-    
-    private function overwritePrevPurchase(Item $item, Purchase $newPurchase)
-    {
-        $em = $this->getEntityManager();
-
-        //delete old purcahse
-        $oldPurchase = $this->getPurchaseByItem($item);
-        $this->deletePurchase($oldPurchase);
-        
-        //enter new purchase
-        $em->persist($newPurchase);
-        $em->flush();
+        return $nquery->getResult();
     }
     
     public function getPurchasesById(/*int*/ $uid)
@@ -158,34 +122,62 @@ class PurchaseRepository extends EntityRepository
         return $this->getPurchaseByItemId($item->getId());
     }
     
-    public function deletePurchases($purchaseIds)
+    /* TO DO: test this.*/
+    public function deletePurchases($purchaseIds, $event_type)
     {
         $em = $this->getEntityManager();
         
         foreach ($purchaseIds as $purchaseId)
         {
-            $purchase = $this->find($purchaseId);
-            $em->remove($purchase);
+            $this->deletePurchase($this->find($purchaseId), $event_type);
         }
         
-        $em->flush();
-        
-        // TO DO: send notification to user. Explaining why the item was removed from 
-        // their purchase list. It could be one of 2 reasons:
-        // The user removed it themselves OR the item was auto removed by the system because
-        // the friend removed the wish from their wishlist
-        
+        $em->flush();        
     }
     
-    public function deletePurchase(Purchase $purchase)
+    public function deletePurchase($purchase, $event_type)
     {
+        if(!isset($purchase) || !isset($event_type))
+        {
+            return;
+        }
+        
         $em = $this->getEntityManager();
         $em->remove($purchase);
         $em->flush();
         
-        // TO DO: send notification to user. Explaining why the item was removed from 
-        // their purchase list. It could be one of 2 reasons:
-        // The user removed it themselves OR the item was auto removed by the system because
-        // the friend removed the wish from their wishlist
+        $this->purchaseEventNotification($event_type);
+    }
+
+    // TO DO: send notification to user. Explaining why the item was removed from 
+    // their purchase list. It could be one of 2 reasons:
+    // The user removed it themselves OR the item was auto removed by the system because
+    // the friend removed the wish from their wishlist    
+    private function purchaseEventNotification($event_type)
+    {
+        $success = false;        
+        
+        switch($event_type)
+        {        
+            case PurchaseEventTypes::RemovedFromWishlist :
+                /* TO DO:
+                 * send alert
+                 * SUBJECT: "Wishlist Notification: An Item has been removed from your shopping list",
+                MESSAGE: "The following item was removed from your shopping list because your friend has removed it from their wishlist",
+                EMAILS: "andreacoba@gmail.com;dannymardini@gmail.com"
+                 */
+                break;
+            case PurchaseEventTypes::RemovedFromShoppingList :
+                break;            
+            case PurchaseEventTypes::Purchased :
+                break;
+            case PurchaseEventTypes::Added :
+                break;
+            default :
+                break;
+        }
+        
+        return $success;
     }
 }
+
