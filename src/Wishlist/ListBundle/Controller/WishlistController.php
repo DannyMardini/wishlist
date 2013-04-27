@@ -95,30 +95,32 @@ class WishlistController extends Controller
     {
         $request = $this->getRequest()->request;
         
-        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
+        //$itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
+        $wishlistItemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
         $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
         $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
         $session = $this->getRequest()->getSession();
         
-        $itemId = $request->get('id');
+        $wishlistItemId = $request->get('id'); 
         $purchaseData = $request->get('purchaseData');
         $type = $request->get('type');
         
-        $item = $itemRepo->find($itemId);
-        $purchaser = $userRepo->find($session->get('user_id'));
+        //$item = $itemRepo->find($itemId);
+        $wishlistitem = $wishlistItemRepo->find($wishlistItemId);
+        $purchaser = $userRepo->find($session->get('user_id'));        
         
         if($type == Purchase::TYPE_EVENT)
         {
             $event = $eventRepo->find($purchaseData);
 
-            $purchaseRepo->newPurchase($purchaser, $item, $event);
+            $purchaseRepo->newPurchase($purchaser, $wishlistitem, $event);
             
         }else if ($type == Purchase::TYPE_DATE)
         {
             $date = DateTime::createFromFormat('D M d Y', $purchaseData);
             
-            $purchaseRepo->newPurchase($purchaser, $item, NULL, $date);
+            $purchaseRepo->newPurchase($purchaser, $wishlistitem, NULL, $date);
             
         }else
         {
