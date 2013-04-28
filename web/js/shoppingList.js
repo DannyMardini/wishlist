@@ -3,12 +3,9 @@
 $(document).ready(function(){
     createGUIButtons();
     createEventHandlers();
-    
-    // hide or show the 'cancel purchase' button
-    toggleRetractButton();
-    
-    // displays a special message if the shopping list is empty
-    updateList();
+    toggleRetractButton(); // hide or show the 'cancel purchase' button
+    updateList(); // displays a special message if the shopping list is empty
+    createGUIDialogs();
 });
 
 function createGUIButtons(){
@@ -32,6 +29,37 @@ function createEventHandlers(){
     applyItemHoverHandler($('.shoppinglistItem'));
 }
 
+// hide the cancel purchases button if there are no more purchases in the list
+function toggleRetractButton()
+{
+    var retractButton = $('#retractPurchaseButton');
+    var purchaseDivs = $('#shoppinglist .shoppinglistitem');            
+    purchaseDivs.length <= 0 ? retractButton.hide() : retractButton.show();    
+}
+
+function updateList()
+{
+    if($('.shoppinglistitem').length <= 0)
+    {
+        $('#shoppinglist').html('Your shoppinglist is empty! Browse your friends wishlists to see what they want!');
+    }
+}
+
+function createGUIDialogs()
+{
+    $('#dialog-message').dialog({
+        autoOpen: false,
+        resizable: false,
+        height:330,
+        modal:true,
+        buttons: {
+            "Ok": function(){
+                $(this).dialog("close");
+            }
+        }
+    });     
+}
+
 function applyItemHoverHandler(selector){
     $(selector).hover(function(){
         onEventHoverHandler(this);
@@ -50,22 +78,27 @@ function onEventHoverHandler(obj)
     $(obj).addClass('focusPurchase');
 }
 
-// hide the cancel purchases button if there are no more purchases in the list
-function toggleRetractButton()
-{
-    var retractButton = $('#retractPurchaseButton');
-    var purchaseDivs = $('#shoppinglist .shoppinglistitem');            
-    purchaseDivs.length <= 0 ? retractButton.hide() : retractButton.show();    
-}
-
 function retractPurchaseEvent()
 {
     // confirm that this is what the user wants to do
-    if(!confirm("Are you sure you want to remove the selected purchases?")) return;
+    //if(!confirm("Are you sure you want to remove the selected purchases?")) return;
+    
+  
+    confirm('Are you sure you want to remove the selected purchases?')
+    .then(function (answer) {//then will run if 1 (Yes) or 0 (No) is clicked
+        if(answer == 1) // 1 means continue
+        {
+            continueRemovingItems();
+        }
+    });
+}
+
+function continueRemovingItems()
+{
     var selectedPurchaseDivs = $('.selected','#shoppinglist'); 
     var selectedPurchaseIds = selectedPurchaseDivs.map(function() { return this.id; }).get();
     var purchaseData = { purchaseIds: selectedPurchaseIds};
-    ajaxPost(purchaseData, '/app_dev.php/retractPurchases', finishRetractPurchaseEvent, selectedPurchaseDivs);
+    ajaxPost(purchaseData, '/app_dev.php/retractPurchases', finishRetractPurchaseEvent, selectedPurchaseDivs);    
 }
 
 function finishRetractPurchaseEvent(response, selectedPurchaseDivs){
@@ -86,17 +119,25 @@ function finishRetractPurchaseEvent(response, selectedPurchaseDivs){
         // update the 'cancel items' button
         toggleRetractButton();
     }
-    else { // display the error if any occurred
-        alert(response);
+    else { // display the error if any occurred        
+        popupMessage('An Issue Occurred!','<p>'+response+'</p>');
     }
 }
 
-function updateList()
-{
-    if($('.shoppinglistitem').length <= 0)
-    {
-        $('#shoppinglist').html('Your shoppinglist is empty! Browse your friends wishlists to see what they want!');
-    }
+function popupMessage(theTitle, message)
+{    
+    $('<div>' + message + '</div>').dialog({
+             autoOpen: true,
+             close: function () { 
+                 $(this).dialog('destroy');
+             },
+             title: theTitle,
+             buttons: {
+                 "Ok": function() {
+                     $( this ).dialog( "close" );
+                 }
+             }
+         });    
 }
 
 function updateItemCount(itemsRemoved)
@@ -113,4 +154,26 @@ function updateItemCount(itemsRemoved)
     shoppingListHeader
         .attr('id', 'shoppinglist_count_' + newCount)
         .text('Shopping List ( ' + newCount + ' )');
+}
+
+function confirm (confirmMessage) {
+    var defer = $.Deferred(); 
+    $('<div>' + confirmMessage + '</div>').dialog({
+            autoOpen: true,
+            close: function () { 
+                $(this).dialog('destroy');
+            },
+            title: 'Continue?',
+            buttons: {
+                "Yes": function() {
+                    defer.resolve(1); //on Yes click, end deferred state successfully with 1 value
+                    $( this ).dialog( "close" );
+                },
+                "No": function() {
+                    defer.resolve(0); //on No click end deferred successfully with 0 value
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    return defer.promise(); //important to return the deferred promise
 }
