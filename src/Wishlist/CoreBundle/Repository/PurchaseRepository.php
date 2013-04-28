@@ -7,10 +7,8 @@ use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Entity\WishlistItem;
 use Wishlist\CoreBundle\Entity\Item;
 use Wishlist\CoreBundle\Entity\PurchaseEventTypes;
-use Wishlist\CoreBundle\Entity\Purchase;
 use Wishlist\CoreBundle\Entity\Event;
 use Doctrine\ORM\Query\ResultSetMapping;
-use \PDOException;
 
 
 /**
@@ -27,7 +25,6 @@ class PurchaseRepository extends EntityRepository
      */
     public function newPurchase(WishlistUser $user, WishlistItem $wishlistItem, Event $event = NULL, \DateTime $gift_date = NULL)
     {
-        
         $rsm = new ResultSetMapping;
         $rsm->addEntityResult('Wishlist\CoreBundle\Entity\Purchase', 'p');
         $rsm->addFieldResult('p', 'id', 'id');
@@ -61,7 +58,7 @@ class PurchaseRepository extends EntityRepository
         if(isset($purchasePromised) && !isset($selfPurchaseItem) )
         {
             // cannot overwrite an already promised purchase by another friend
-            throw new Exception("This wish was already promised by another friend."); 
+            throw new \Exception("This wish was already promised by another friend."); 
         }
         
         // if user is purchasing for themselves, remove the existing purchase promise
@@ -122,7 +119,6 @@ class PurchaseRepository extends EntityRepository
         return $this->getPurchaseByItemId($item->getId());
     }
     
-    /* TO DO: test this.*/
     public function deletePurchases($purchaseIds, $event_type)
     {
         $em = $this->getEntityManager();
@@ -132,20 +128,19 @@ class PurchaseRepository extends EntityRepository
             $this->deletePurchase($this->find($purchaseId), $event_type);
         }
         
-        $em->flush();        
+        $em->flush();
     }
     
     public function deletePurchase($purchase, $event_type)
     {
-        if(!isset($purchase) || !isset($event_type))
-        {
-            return;
+        if(!isset($event_type) || !isset($purchase)){
+            throw new \Exception("An invalid purchase and/or event was passed in. Contact the Wishlist Admins for assistance.");
         }
         
         $em = $this->getEntityManager();
         $em->remove($purchase);
         $em->flush();
-        
+
         $this->purchaseEventNotification($event_type);
     }
 
