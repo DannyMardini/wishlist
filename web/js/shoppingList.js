@@ -5,7 +5,6 @@ $(document).ready(function(){
     createEventHandlers();
     toggleRetractButton(); // hide or show the 'cancel purchase' button
     updateList(); // displays a special message if the shopping list is empty
-    createGUIDialogs();
 });
 
 function createGUIButtons(){
@@ -23,7 +22,8 @@ function createEventHandlers(){
     $('.shoppinglistItem').click(function(){
         $(this).toggleClass('selected');
         var chkBox = $('.selectItem', this);
-        chkBox.attr("checked", !chkBox.attr("checked"));        
+        chkBox.attr("checked", !chkBox.attr("checked"));
+        toggleRetractButton();
     });
     
     applyItemHoverHandler($('.shoppinglistItem'));
@@ -33,8 +33,9 @@ function createEventHandlers(){
 function toggleRetractButton()
 {
     var retractButton = $('#retractPurchaseButton');
-    var purchaseDivs = $('#shoppinglist .shoppinglistitem');            
-    purchaseDivs.length <= 0 ? retractButton.hide() : retractButton.show();    
+    //var purchaseDivs = $('#shoppinglist .shoppinglistitem');
+    var selectedDivs = $('#shoppinglist .selected');
+    selectedDivs.length <= 0 ? retractButton.hide() : retractButton.show();    
 }
 
 function updateList()
@@ -43,21 +44,6 @@ function updateList()
     {
         $('#shoppinglist').html('Your shoppinglist is empty! Browse your friends wishlists to see what they want!');
     }
-}
-
-function createGUIDialogs()
-{
-    $('#dialog-message').dialog({
-        autoOpen: false,
-        resizable: false,
-        height:330,
-        modal:true,
-        buttons: {
-            "Ok": function(){
-                $(this).dialog("close");
-            }
-        }
-    });     
 }
 
 function applyItemHoverHandler(selector){
@@ -81,9 +67,6 @@ function onEventHoverHandler(obj)
 function retractPurchaseEvent()
 {
     // confirm that this is what the user wants to do
-    //if(!confirm("Are you sure you want to remove the selected purchases?")) return;
-    
-  
     confirm('Are you sure you want to remove the selected purchases?')
     .then(function (answer) {//then will run if 1 (Yes) or 0 (No) is clicked
         if(answer == 1) // 1 means continue
@@ -109,11 +92,12 @@ function finishRetractPurchaseEvent(response, selectedPurchaseDivs){
     // the 'cancel purchase' button if there are zero items left in the list
     if(response.length <= 0){
         
-        // update count
-        updateItemCount(selectedPurchaseDivs.length);
-        
         // remove divs
         selectedPurchaseDivs.remove();
+        
+        // update count
+        updateItemCount();
+        
         updateList();
         
         // update the 'cancel items' button
@@ -140,18 +124,16 @@ function popupMessage(theTitle, message)
          });    
 }
 
-function updateItemCount(itemsRemoved)
+function updateItemCount()
 {
-    var shoppingListHeader = $('.shoppinglist-header-label');
-    var currCount = parseInt(shoppingListHeader.attr('id').split('_')[2]);
-    var newCount = currCount - itemsRemoved;
+    var newCount = $('#shoppinglist .shoppinglistitem').length; 
 
     if( newCount < 0 )
     {
         newCount = 0;
     }
 
-    shoppingListHeader
+    $('.shoppinglist-header-label')
         .attr('id', 'shoppinglist_count_' + newCount)
         .text('Shopping List ( ' + newCount + ' )');
 }
