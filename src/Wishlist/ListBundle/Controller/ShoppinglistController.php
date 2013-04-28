@@ -4,6 +4,7 @@ namespace Wishlist\ListBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Wishlist\CoreBundle\Entity\PurchaseEventTypes;
+use \Exception;
 
 class ShoppinglistController extends Controller
 {
@@ -14,9 +15,15 @@ class ShoppinglistController extends Controller
         $retractPurchases = $request->get('purchaseIds');
         $message = "";
         
-        if(isset($retractPurchases))
-        {            
-            $message = $purchaseRepo->deletePurchases($retractPurchases, PurchaseEventTypes::RemovedFromShoppingList);
+        try{
+            if(isset($retractPurchases))
+            {            
+                $purchaseRepo->deletePurchases($retractPurchases, PurchaseEventTypes::RemovedFromShoppingList);
+            }
+        }
+        catch(Exception $e)
+        {
+           return new Response($e->getMessage());    
         }
         
         return new Response($message);

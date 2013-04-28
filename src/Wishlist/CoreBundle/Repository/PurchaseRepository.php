@@ -25,7 +25,6 @@ class PurchaseRepository extends EntityRepository
      */
     public function newPurchase(WishlistUser $user, WishlistItem $wishlistItem, Event $event = NULL, \DateTime $gift_date = NULL)
     {
-        
         $rsm = new ResultSetMapping;
         $rsm->addEntityResult('Wishlist\CoreBundle\Entity\Purchase', 'p');
         $rsm->addFieldResult('p', 'id', 'id');
@@ -59,7 +58,7 @@ class PurchaseRepository extends EntityRepository
         if(isset($purchasePromised) && !isset($selfPurchaseItem) )
         {
             // cannot overwrite an already promised purchase by another friend
-            throw new Exception("This wish was already promised by another friend."); 
+            throw new \Exception("This wish was already promised by another friend."); 
         }
         
         // if user is purchasing for themselves, remove the existing purchase promise
@@ -123,32 +122,26 @@ class PurchaseRepository extends EntityRepository
     public function deletePurchases($purchaseIds, $event_type)
     {
         $em = $this->getEntityManager();
-        $message = "";
         
         foreach ($purchaseIds as $purchaseId)
         {
-            $message = $message . $this->deletePurchase($this->find($purchaseId), $event_type);
+            $this->deletePurchase($this->find($purchaseId), $event_type);
         }
         
         $em->flush();
-        return $message;
     }
     
     public function deletePurchase($purchase, $event_type)
     {
-        $message = (isset($event_type) && isset($purchase)) ? "" : " An invalid purchase and/or event was passed in. Contact the Wishlist Admins for assistance. "; 
-
-        // if there's no message generated, it means the parameters are valid and continue with the delete.
-        if(strlen($message) <= 0)
-        {
-            $em = $this->getEntityManager();
-            $em->remove($purchase);
-            $em->flush();
-
-            $this->purchaseEventNotification($event_type);
+        if(!isset($event_type) || !isset($purchase)){
+            throw new \Exception("An invalid purchase and/or event was passed in. Contact the Wishlist Admins for assistance.");
         }
         
-        return $message;
+        $em = $this->getEntityManager();
+        $em->remove($purchase);
+        $em->flush();
+
+        $this->purchaseEventNotification($event_type);
     }
 
     // TO DO: send notification to user. Explaining why the item was removed from 
