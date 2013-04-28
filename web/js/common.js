@@ -30,6 +30,24 @@ function get_nth_suffix(date) {
   }
 }
 
+/* POST: ajax call
+ * TO DO: have other ajax call this generic method instead
+ * */
+function ajaxPost(data, url, onSuccessCallback, callBackParams)
+{
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: data,
+        success: function(response) { 
+            if(onSuccessCallback)
+            {
+                onSuccessCallback.call(null, response, callBackParams);
+            }
+        }
+    });    
+}
+
 /*
  * Type can be either 'Event' or 'Date'
  */

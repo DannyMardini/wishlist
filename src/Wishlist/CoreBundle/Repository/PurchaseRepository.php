@@ -7,10 +7,8 @@ use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Entity\WishlistItem;
 use Wishlist\CoreBundle\Entity\Item;
 use Wishlist\CoreBundle\Entity\PurchaseEventTypes;
-use Wishlist\CoreBundle\Entity\Purchase;
 use Wishlist\CoreBundle\Entity\Event;
 use Doctrine\ORM\Query\ResultSetMapping;
-use \PDOException;
 
 
 /**
@@ -122,31 +120,35 @@ class PurchaseRepository extends EntityRepository
         return $this->getPurchaseByItemId($item->getId());
     }
     
-    /* TO DO: test this.*/
     public function deletePurchases($purchaseIds, $event_type)
     {
         $em = $this->getEntityManager();
+        $message = "";
         
         foreach ($purchaseIds as $purchaseId)
         {
-            $this->deletePurchase($this->find($purchaseId), $event_type);
+            $message = $message . $this->deletePurchase($this->find($purchaseId), $event_type);
         }
         
-        $em->flush();        
+        $em->flush();
+        return $message;
     }
     
     public function deletePurchase($purchase, $event_type)
     {
-        if(!isset($purchase) || !isset($event_type))
+        $message = (isset($event_type) && isset($purchase)) ? "" : " An invalid purchase and/or event was passed in. Contact the Wishlist Admins for assistance. "; 
+
+        // if there's no message generated, it means the parameters are valid and continue with the delete.
+        if(strlen($message) <= 0)
         {
-            return;
+            $em = $this->getEntityManager();
+            $em->remove($purchase);
+            $em->flush();
+
+            $this->purchaseEventNotification($event_type);
         }
         
-        $em = $this->getEntityManager();
-        $em->remove($purchase);
-        $em->flush();
-        
-        $this->purchaseEventNotification($event_type);
+        return $message;
     }
 
     // TO DO: send notification to user. Explaining why the item was removed from 
