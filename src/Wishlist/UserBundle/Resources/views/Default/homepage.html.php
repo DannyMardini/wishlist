@@ -39,7 +39,7 @@
 
 <div id="wishlistBox" class="mockup">
     <div id="wishlistContent" class="mockup">
-        <?php echo $view['actions']->render('WishlistUserBundle:Giftbox:wishlist'); ?>
+        <?php echo $view['actions']->render('WishlistUserBundle:Default:wishlist'); ?>
     </div>
 </div>
 
