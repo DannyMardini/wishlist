@@ -8,7 +8,7 @@
 var addToWishlistButton =  {
             priority: 'primary',           
             id: 'addToWishlistButton',
-            label: 'add to my wishlist',
+            title: 'Add to my wishlist',
             click: function() {
                    addToWishlist({newWishName: $('#itemDialog #name').html(), 
                        newWishPrice: $('#itemDialog #price').html(), 
@@ -43,10 +43,10 @@ $(document).ready(function(){
     
     $('#addToWishlistButton').removeClass('ui-button-text-only');
     $('#addToWishlistButton :first-child').removeClass('ui-button-text');
-    $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-cart');
+    $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-plus');
     $('#addToWishlistButton').addClass('itemDialogButton');
     
-    initGiftBox();
+    initWishlist();
 });
 
 function populateEvent(event)
@@ -93,14 +93,14 @@ function goToUserPage(userId)
     window.location = loc;
 }
 
-function initGiftBox()
+function initWishlist()
 {
-    var giftNav = $('#giftNav');
-    var giftWindow = $('#giftContent');
-    var giftBox = $('#giftBox');
+    var navigationlist = $('#navigationlist');
+    var wishlistContent = $('#wishlistContent');
+    var wishlistBox = $('#wishlistBox');
     
     console.log('Window: '+$(window).height());
-    giftWindow.height(giftBox.height()-giftNav.height());
+    wishlistContent.height(wishlistBox.height()-navigationlist.height());
 }
 
 function fillPic(item)

@@ -37,8 +37,8 @@
     </div>
 </div>
 
-<div id="giftBox" class="mockup">
-    <div id="giftContent" class="mockup">
+<div id="wishlistBox" class="mockup">
+    <div id="wishlistContent" class="mockup">
 
         <?php echo $view['actions']->render('WishlistUserBundle:Giftbox:wishlist'); ?>
 <!--        <div id="wishlistComponent">

@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class GiftboxController extends Controller
 {
+    
     public function wishlistAction()
     {
         $user = $this->getLoggedInUser();

@@ -23,7 +23,7 @@ li a {
     height: 45px;
 }
 
-#giftNav {
+#navigationlist {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
@@ -34,7 +34,7 @@ li a {
     margin-bottom: 10px;
 }
 
-#giftNav li {
+#navigationlist li {
     display: inline-block;
     margin-right: 10px;
 /*    background-color: black;*/

@@ -28,7 +28,7 @@ button.fg-button { width:auto; overflow:visible; }
     border-width: 1px;
 }
 
-#giftBox {
+#wishlistBox {
     display: inline-block;
     background-color: white;
     width: 67%;
@@ -41,11 +41,11 @@ button.fg-button { width:auto; overflow:visible; }
     background-size: contain;
 }
 
-#giftBox h3 {
+#wishlistBox h3 {
     text-align: center;
 }
 
-#giftContent {
+#wishlistContent {
     border-top-style: none;
     overflow: auto;
 }
