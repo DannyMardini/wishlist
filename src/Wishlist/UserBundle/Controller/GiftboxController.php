@@ -62,6 +62,7 @@ class GiftboxController extends Controller
         $loggedInUserId = $this->getLoggedInUserId();
         return $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
     }
+    
 }
 
 ?>

@@ -39,37 +39,8 @@
 
 <div id="wishlistBox" class="mockup">
     <div id="wishlistContent" class="mockup">
-
         <?php echo $view['actions']->render('WishlistUserBundle:Giftbox:wishlist'); ?>
-<!--        <div id="wishlistComponent">
-            <div id="wishlist">
-                <?php // echo $view['actions']->render('WishlistListBundle:Wishlist:showWishlist', array('user' => $user)); ?>
-            </div>-->
-<!--        </div>-->
     </div>
-    <!--
-    <div id="eventsComponent">
-        <br />
-        <div><h1>Upcoming Events</h1></div>
-        <div id="eventsInnerComponent">  
-        <?php  
-        foreach ($friendEvents as $event) {
-                $eventImage = $event->getEventImage();
-                $eventName = $event->getName();
-                $friend = $event->getWishlistUser();
-                $eventDate = $event->getFormattedTimestamp();
-                $name = "<a href='User/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
-                $timestamp = " -- ".$eventDate;
-        ?>  
-            <div class="Event"> 
-                <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
-                <div class="name" title ="<?php echo $eventName ?>"><?php echo $name ?></div>
-                <div class="message" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>
-            </div>
-        <?php } ?>
-        </div>
-    </div>
-    -->
 </div>
 
 <div id="itemDialog" title="Wish" >        
