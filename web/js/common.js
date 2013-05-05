@@ -63,16 +63,15 @@ function purchaseItem(itemId, purchaseData, /*string*/ type)
     });
 }
 
-function addToWishlist(itemObj, callback)
-{    
-    $( "#wishlist" ).load('/app_dev.php/wishlistnew', itemObj, callback); 
+function ajaxPageLoad(element, path, itemObj, callback)
+{
+    $(element).load(path, itemObj, callback);
 }
 
 function delFromWishlist(itemObj, callback)
 {
     $( "#wishlist" ).load('/app_dev.php/wishlistdelete', itemObj, callback);
 }
-
 
 function fillContainer(element)
 {

@@ -57,35 +57,40 @@ function IsNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-function submitTheNewWish()
-{
-    var theName = $("#newWishName").val();
-    var thePrice = $("#newWishPrice").val();
-    var theLink = $("#newWishLink").val();
-    var theQuantity = $("#newWishQuantity").val();
-    var theNotes = $("#newWishNotes").val();
-    var theIsPrivate = $("#isPrivate").attr('checked');
-    
-    var message = validateInputs(theName, thePrice, theLink, theQuantity);
-    
-    if(message == 3)
-    {
-        return; // ignore if all fiels are empty.
+function submitTheNewWish(wish)
+{        
+    // if a pre-defined wish obj was passed in, use that
+    if(wish == null) {
+        var theName = $("#newWishName").val();
+        var thePrice = $("#newWishPrice").val();
+        var theLink = $("#newWishLink").val();
+        var theQuantity = $("#newWishQuantity").val();
+        var theNotes = $("#newWishNotes").val();
+        var theIsPrivate = $("#isPrivate").attr('checked');
+        
+        wish = { name: escape(theName), 
+                 price: thePrice, 
+                 link: theLink, 
+                 quantity: theQuantity, 
+                 comment: theNotes, 
+                 isprivate: theIsPrivate
+             };
     }
     
-    if(message.length <= 0)
+    var message = validateInputs(wish.name, wish.price, wish.link, wish.quantity);
+
+    if(message == 3)
     {
-        var itemObj = { name: escape(theName), 
-                        price: thePrice, 
-                        link: theLink, 
-                        quantity: theQuantity, 
-                        comment: theNotes, 
-                        isprivate: theIsPrivate};
-        addToWishlist(itemObj, setupWishlist);
-        return;
-    }    
+       alert('Invalid arguments: '+message);
+    }   
     
-    alert('Invalid arguments: '+message);
+    if(wish && message.length <= 0){
+      ajaxPageLoad(
+            '#wishlist', 
+            '/app_dev.php/wishlistnew', 
+            wish, 
+            setupWishlist);
+    }
 }
 
 function setupWishlist()

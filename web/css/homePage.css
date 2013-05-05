@@ -149,9 +149,10 @@ li{
     font-size: 14px;
 }
 
-#itemDialog .label {    
-    font-weight: bold;
-    font-size: 18px;    
+#itemDialog label {    
+    font-size: 18px; 
+    display: block;
+    margin-bottom: 10px;
 }
 
 

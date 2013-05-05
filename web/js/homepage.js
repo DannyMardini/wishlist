@@ -4,22 +4,54 @@
  */
 
 // buttons used for the dialog
-// TODO: What does this do?? Do we even use this?
 var addToWishlistButton =  {
-            priority: 'primary',           
+            priority: 'primary',  
             id: 'addToWishlistButton',
             title: 'Add to my wishlist',
             click: function() {
-                   addToWishlist({newWishName: $('#itemDialog #name').html(), 
-                       newWishPrice: $('#itemDialog #price').html(), 
-                       newWishLink: $('#itemDialog #link').html()}, 
-                       onCompleteAddToWishlistEvent);
+            
             }
         };
-
-var itemDialogButtons = [ addToWishlistButton ];
+        
+function onWantItClickEvent() {
+    // ask them to fill out the additional details first
+    var response = alert('Would you like to fill out the quantity, notes, and privacy first?');
     
+    if(response == 'Yes'){
+        $('#wishDetails').show();
+    }
+    
+    // Hide the Grant Wish button and Change the text of the Want It button to Continue
+    var buttonPane = $('.ui-dialog-buttonpane');
+    buttonPane.find('button').hide();
+    buttonPane.find('button:contains("Add Wish")').show();
+    
+    return;
+    
+   
 
+    var itemObj = {
+        name: $('#itemDialog #name').html(), 
+        price: $('#itemDialog #price').html(), 
+        link: $('#itemDialog #link').html(),
+        quantity: $('#itemDialog #quantity').html(),
+        comment: $('#itemDialog #notes').html(),
+        isprivate: $('#itemDialog #private').html()
+    };
+
+    submitTheNewWish(itemObj); // defined in wishlist.js
+    
+    
+    // Hide the add wish button now that we are done adding it
+    buttonPane.find('button').show();
+    buttonPane.find('button:contains("Add Wish")').hide();
+    
+    // Close the dialog
+    $("#itemDialog").dialog('close');
+                
+
+//                    onCompleteAddToWishlistEvent);    
+}
 
 $(document).ready(function(){
     
@@ -35,16 +67,50 @@ $(document).ready(function(){
             height:300,
             width:500,
             modal: true,
-            buttons: itemDialogButtons,
+            buttons: {
+                    "Want This": function() {
+                        onWantItClickEvent();
+                    },
+                    "Grant Wish": function() {
+                      /* Do stuff*/  
+                      alert('TO DO');
+                      $(this).dialog('close');
+                    },
+                    "Add Wish": function() {
+                        alert('To Do');
+                        $(this).dialog('close');
+                    }
+            },
             open: function(event, ui) {
+                styleWishDialogButtons();
                 $(this).scrollTop(0);
             }
     });   
+
     
-    $('#addToWishlistButton').removeClass('ui-button-text-only');
-    $('#addToWishlistButton :first-child').removeClass('ui-button-text');
-    $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-plus');
-    $('#addToWishlistButton').addClass('itemDialogButton');
+function styleWishDialogButtons()
+{
+    var buttons = $('.ui-dialog-buttonpane'),
+        wantIt = buttons.find('button:contains("Want This")'),
+        grantIt = buttons.find('button:contains("Grant Wish")'),
+        addWish = buttons.find('button:contains("Add Wish")'),
+        iconNotDefined = !wantIt.find(":first-child").hasClass('ui-icon-plus');
+
+    addWish.hide();
+
+    if(iconNotDefined)
+    {
+        wantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-plus"></span>');
+        grantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-cart"></span>');
+        // If we want to remove the text, just remove the text-only classes. Below is an example:
+        //    $('#addToWishlistButton').removeClass('ui-button-text-only');
+        //    $('#addToWishlistButton :first-child').removeClass('ui-button-text');
+        //    $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-plus');
+        //    $('#addToWishlistButton').addClass('itemDialogButton');        
+    }
+}
+
+
     
     initWishlist();
 });
@@ -63,19 +129,25 @@ function populateEvent(event)
 
 function onCompleteAddToWishlistEvent(e)
 {
-    setupWishlist();
+    if(e.indexOf('Error') < 0){
+        setupWishlist();
 
-    if(e.match('newWishBox') != null)
-        alert('Item has been added to your list!');
-    else
-        alert('This item is already on your list.');
+        if(e.match('newWishBox') != null)
+            alert('Item has been added to your list!');
+        else
+            alert('This item is already on your list.');        
+        }
+    else {
+        alert("Sorry! The item could not be added.");
+    }
+
 }
 
 function setupItemView(data)
 {
     $('#itemDialog #name').html(data.name);
     $('#itemDialog #price').html(data.price);
-    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">'+data.link+'</a>');
+    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">webpage</a>');
     $('#itemDialog').dialog('open');         
 }
 
