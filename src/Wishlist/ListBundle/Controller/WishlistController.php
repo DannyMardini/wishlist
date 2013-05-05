@@ -41,10 +41,7 @@ class WishlistController extends Controller
         $quantity = $this->getRequest()->get('quantity');
         $comment = $this->getRequest()->get('comment');
         $isPrivate = ($this->getRequest()->get('isprivate') == "checked");
-        
         $loggedInUserId = $session->get('user_id');
-        $loggedInUserEmail = $session->get('email_addr');
-        
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
                 
         if( !isset ($name) || ($name == "") 
