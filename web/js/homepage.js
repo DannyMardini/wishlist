@@ -3,6 +3,63 @@
  * and open the template in the editor.
  */
 
+$(document).ready(function(){
+    
+    $.ajaxSetup ({  
+        cache: false  
+    });
+    
+    initDialogs();
+    initWishlist();
+});
+
+function initDialogs(){
+    // init item dialog
+    $( "#itemDialog" ).dialog({
+            autoOpen: false,
+            position: 'center', 
+            resizable: false,
+            height:300,
+            width:500,
+            modal: true,
+            buttons: {
+                    "Want This": function() {
+                        onWantItClickEvent();
+                    },
+                    "Grant Wish": function() {
+                      /* Do stuff*/  
+                      alert('TO DO');
+                      $(this).dialog('close');
+                    },
+                    "Add Wish": function() {
+                        continueAddingItemToWishlist();
+                        $(this).dialog('close');
+                    }
+            },
+            open: function(event, ui) {
+                styleWishDialogButtons();
+                $(this).scrollTop(0);
+            }
+    });      
+}
+
+function styleWishDialogButtons()
+{
+    var buttons = $('.ui-dialog-buttonpane'),
+        wantIt = buttons.find('button:contains("Want This")'),
+        grantIt = buttons.find('button:contains("Grant Wish")'),
+        addWish = buttons.find('button:contains("Add Wish")'),
+        iconNotDefined = !wantIt.find(":first-child").hasClass('ui-icon-plus');
+
+    addWish.hide();
+
+    if(iconNotDefined)
+    {
+        wantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-plus"></span>');
+        grantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-cart"></span>');
+    }
+}
+
 function continueAddingItemToWishlist()
 {
     var buttonPane = $('.ui-dialog-buttonpane');
@@ -10,7 +67,7 @@ function continueAddingItemToWishlist()
     var itemObj = {
          name: $('#itemDialog #name').html(), 
          price: $('#itemDialog #price').html(), 
-         link: $('#itemDialog #link').html(),
+         link: $($('#itemDialog #link').html()).attr('href'),
          quantity: $('#itemDialog #quantity').html(),
          comment: $('#itemDialog #notes').html(),
          isprivate: $('#itemDialog #private').html()
@@ -45,71 +102,7 @@ function onWantItClickEvent() {
             $("#itemDialog").dialog('close');                
         }
     });    
-    
-//                    onCompleteAddToWishlistEvent);    
 }
-
-$(document).ready(function(){
-    
-    $.ajaxSetup ({  
-        cache: false  
-    });
-    
-    // init item dialog
-    $( "#itemDialog" ).dialog({
-            autoOpen: false,
-            position: 'center', 
-            resizable: false,
-            height:300,
-            width:500,
-            modal: true,
-            buttons: {
-                    "Want This": function() {
-                        onWantItClickEvent();
-                    },
-                    "Grant Wish": function() {
-                      /* Do stuff*/  
-                      alert('TO DO');
-                      $(this).dialog('close');
-                    },
-                    "Add Wish": function() {
-                        continueAddingItemToWishlist();
-                        $(this).dialog('close');
-                    }
-            },
-            open: function(event, ui) {
-                styleWishDialogButtons();
-                $(this).scrollTop(0);
-            }
-    });   
-
-    
-function styleWishDialogButtons()
-{
-    var buttons = $('.ui-dialog-buttonpane'),
-        wantIt = buttons.find('button:contains("Want This")'),
-        grantIt = buttons.find('button:contains("Grant Wish")'),
-        addWish = buttons.find('button:contains("Add Wish")'),
-        iconNotDefined = !wantIt.find(":first-child").hasClass('ui-icon-plus');
-
-    addWish.hide();
-
-    if(iconNotDefined)
-    {
-        wantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-plus"></span>');
-        grantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-cart"></span>');
-        // If we want to remove the text, just remove the text-only classes. Below is an example:
-        //    $('#addToWishlistButton').removeClass('ui-button-text-only');
-        //    $('#addToWishlistButton :first-child').removeClass('ui-button-text');
-        //    $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-plus');
-        //    $('#addToWishlistButton').addClass('itemDialogButton');        
-    }
-}
-
-
-    
-    initWishlist();
-});
 
 function populateEvent(event)
 {
@@ -121,22 +114,6 @@ function populateEvent(event)
         var eventDiv = $("<div/>").attr('id',event.id).html(event.eventdate);
         $(div).append(eventDiv);
     }
-}
-
-function onCompleteAddToWishlistEvent(e)
-{
-    if(e.indexOf('Error') < 0){
-        setupWishlist();
-
-        if(e.match('newWishBox') != null)
-            alert('Item has been added to your list!');
-        else
-            alert('This item is already on your list.');        
-        }
-    else {
-        alert("Sorry! The item could not be added.");
-    }
-
 }
 
 function setupItemView(data)
@@ -183,7 +160,6 @@ function fillGoogleImage(query, picContainer)
 {
     var mykey = "AIzaSyBHtgh3ihz8AHCBw0LkEi_Snl96elJCSpA";
     var cx = "015228749791243702187:ctequifxi_s";
-//    var query = "Metal+Gear+Solid";
     var hndlr = "googleQryHndlr";
     var url = "https://www.googleapis.com/customsearch/v1?key="+mykey+"&cx="+cx+"&q="+query+"&searchType=image&num=1";
     

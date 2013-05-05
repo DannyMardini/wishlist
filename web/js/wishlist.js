@@ -89,8 +89,24 @@ function submitTheNewWish(wish)
             '#wishlist', 
             '/app_dev.php/wishlistnew', 
             wish, 
-            setupWishlist);
+            onCompleteAddToWishlistEvent);
     }
+}
+
+function onCompleteAddToWishlistEvent(e)
+{
+    if(e.indexOf('Error') < 0){
+        setupWishlist();
+
+        if(e.match('newWishBox') != null)
+            alert('Item has been added to your list!');
+        else
+            alert('This item is already on your list.');        
+        }
+    else {
+        alert("Sorry! The item could not be added.");
+    }
+
 }
 
 function setupWishlist()
