@@ -35,7 +35,6 @@ class WishlistController extends Controller
     public function newWishlistAction()
     {
         $session = $this->getRequest()->getSession(); 
-       $request = $this->getRequest();
         $name = urldecode($this->getRequest()->get('name'));
         $price = $this->getRequest()->get('price');
         $link = $this->getRequest()->get('link');
@@ -54,9 +53,9 @@ class WishlistController extends Controller
         {
             return new Response("Error"); // Error: the item was not fully defined.
         }
-
-        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');        
-        $itemRepo->addItem($name, $price, $link, $isPrivate, $comment, $quantity, $user);          
+        
+        $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+        $wishRepo->makeWish($name, $price, $link, $isPrivate, $comment, $quantity, $user);
         
         return $this->showWishlistAction($user);
     }
