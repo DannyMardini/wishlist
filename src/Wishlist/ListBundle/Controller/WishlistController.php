@@ -52,7 +52,12 @@ class WishlistController extends Controller
         }
         
         $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
-        $wishRepo->makeWish($name, $price, $link, $isPrivate, $comment, $quantity, $user);
+        $added = $wishRepo->makeWish($name, $price, $link, $isPrivate, $comment, $quantity, $user);
+        
+        if($added = false){
+            // the item was not added because it already exists
+            return new Response(" ");
+        }
         
         return $this->showWishlistAction($user);
     }

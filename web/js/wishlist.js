@@ -99,10 +99,13 @@ function onCompleteAddToWishlistEvent(e)
         setupWishlist();
 
         if(e.match('newWishBox') != null)
-            alert('Item has been added to your list!');
+            popupMessage('Yay!','Item has been added to your list!');
         else
-            alert('This item is already on your list.');        
+            popupMessage('How funny!','This item is already on your list! You must really like it! If you would like to edit it or bump it up in priority go to your wishlist and edit from there. ');
         }
+//    else if(e.indexOf('NoAction') >= 0){
+//            popupMessage('How funny!','This item is already on your list! You must really like it! If you would like to edit it or bump it up in priority go to your wishlist and edit from there. ');
+//    }
     else {
         alert("Sorry! The item could not be added.");
     }
