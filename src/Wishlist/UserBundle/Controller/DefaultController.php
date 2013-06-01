@@ -13,17 +13,21 @@ use \DateTime;
 
 class DefaultController extends Controller
 {
+    // STATUS CODES -- 
+    const SC_OK = 200;
+    
     public function wishlistAction()
     {
-        $user = $this->getLoggedInUser();
-        
-        if (!isset($user))
-            return;
+        $user = $this->getLoggedInUser();                
+            
+        if (!isset($user)){
+            return new Response("No User Found", DefaultController::SC_OK);
+        }
         
         $wishlistItems = $user->getWishlistItems();
         if(!isset($wishlistItems))
         {
-            return;
+            return new Response("No Wishes found for this User", DefaultController::SC_OK);
         }
         
         return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('user' => $user));
