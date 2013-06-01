@@ -9,6 +9,9 @@ use \DateTime;
 
 class WishlistController extends Controller
 {
+    static $STATUSCODE_NOTMODIFIED = 304;
+    static $STATUSCODE_INTERNALSERVERERROR = 500;
+    
     /**
     * Executes add new wishlist item action
     *
@@ -48,19 +51,18 @@ class WishlistController extends Controller
           || !isset ($price) || ($price == "") 
           || !isset ($link) || ($link == ""))
         {
-            return new Response("", 500); // Error: the item was not fully defined.
+            // The item was not fully defined.            
+            return new Response("", $STATUSCODE_INTERNALSERVERERROR);
         }
         
         $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
         $added = $wishRepo->makeWish($name, $price, $link, $isPrivate, $comment, $quantity, $user);
         
         if(!$added){   
-            //$content = $this->showWishlistAction($user);
-            //return new Response($content, 204);            
-            // the item was not added because it already exists    
+            // The item was not added because it already exists    
             $response  = new Response();
             $response->setContent($this->showWishlistAction($user));
-            $response->setStatusCode(304);
+            $response->setStatusCode($STATUSCODE_UNMODIFIED);
             return $response;
         }
         

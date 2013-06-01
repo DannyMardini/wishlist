@@ -1,0 +1,1451 @@
+diff --git a/app/Resources/views/navBar.html.php b/app/Resources/views/navBar.html.php
+index 9ea6cc0..87ec643 100644
+--- a/app/Resources/views/navBar.html.php
++++ b/app/Resources/views/navBar.html.php
+@@ -18,7 +18,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist', array('
+     </head>
+     <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+         <?php echo $view['actions']->render('WishlistCoreBundle:Default:navBar'); ?>
+-        <ul id="giftNav">
++        <ul id="navigationlist">
+             <li><a href="<?php echo $wishlistUrl ?>">Wishlist</a></li>
+             <li><a href="<?php echo $shoppinglistUrl ?>">Shoppinglist</a></li>
+             <li><a href="<?php echo $eventsUrl ?>">Events</a></li>
+diff --git a/deps b/deps
+index 9701152..baab727 100644
+--- a/deps
++++ b/deps
+@@ -66,9 +66,8 @@
+     git=git://github.com/doctrine/data-fixtures.git
+ 
+ [DoctrineFixturesBundle]
+-    git=http://github.com/doctrine/DoctrineFixturesBundle.git
++    git=git://github.com/symfony/DoctrineFixturesBundle.git
+     target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
+-    version=origin/2.0
+ 
+ [FOSJsRoutingBundle]
+     git=git://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git
+diff --git a/src/Wishlist/CoreBundle/Repository/WishlistItemRepository.php b/src/Wishlist/CoreBundle/Repository/WishlistItemRepository.php
+index 992eabe..935361c 100644
+--- a/src/Wishlist/CoreBundle/Repository/WishlistItemRepository.php
++++ b/src/Wishlist/CoreBundle/Repository/WishlistItemRepository.php
+@@ -21,6 +21,14 @@ class WishlistItemRepository extends EntityRepository
+         $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Item');
+         $newItem = $itemRepo->addItem($name, $price, $link, $isPublic, $comment, $quantity, $wishlistUser);
+         
++        // check if this user already has this item as a wish
++        $isWish = $this->checkUserWishlist($newItem, $wishlistUser);
++        
++        if(isset($isWish) && $isWish == true)
++        {
++            return false; // item is already a wish
++        }
++        
+         // associating the user to an item
+         $newWish = new WishlistItem();
+         $newWish->setItem($newItem);
+@@ -34,6 +42,7 @@ class WishlistItemRepository extends EntityRepository
+         
+         $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
+         $updateRepo->addNewItem($wishlistUser, $newItem); 
++        return true;
+     }
+     
+     public function checkUserWishlist($item, $user)
+@@ -41,11 +50,10 @@ class WishlistItemRepository extends EntityRepository
+        $em = $this->getEntityManager();       
+         
+         $q = $em->createQuery('
+-            SELECT i
+-            FROM WishlistCoreBundle:Item i
+-            LEFT JOIN WishlistCoreBundle:Item usr
+-            WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
+-                ->setParameters(array('itemName' => $item->getName(), 'userId' => $user->getWishlistuserId()));
++            SELECT i 
++            FROM WishlistCoreBundle:WishlistItem i 
++            WHERE i.item = :itemId and i.wishlistUser = :userId')
++                ->setParameters(array('itemId' => $item->getId(), 'userId' => $user->getWishlistuserId()));
+                       
+         $itemInDatabase = $q->getOneOrNullResult();  
+         return $itemInDatabase;
+diff --git a/src/Wishlist/ListBundle/Controller/WishlistController.php b/src/Wishlist/ListBundle/Controller/WishlistController.php
+index 445f330..21e3990 100644
+--- a/src/Wishlist/ListBundle/Controller/WishlistController.php
++++ b/src/Wishlist/ListBundle/Controller/WishlistController.php
+@@ -35,28 +35,34 @@ class WishlistController extends Controller
+     public function newWishlistAction()
+     {
+         $session = $this->getRequest()->getSession(); 
+-       
+         $name = urldecode($this->getRequest()->get('name'));
+         $price = $this->getRequest()->get('price');
+         $link = $this->getRequest()->get('link');
+         $quantity = $this->getRequest()->get('quantity');
+         $comment = $this->getRequest()->get('comment');
+         $isPrivate = ($this->getRequest()->get('isprivate') == "checked");
+-        
+         $loggedInUserId = $session->get('user_id');
+-        $loggedInUserEmail = $session->get('email_addr');
+-        
+         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
+                 
+         if( !isset ($name) || ($name == "") 
+-                || !isset ($price) || ($price == "") 
+-                || !isset ($link) || ($link == ""))
++          || !isset ($price) || ($price == "") 
++          || !isset ($link) || ($link == ""))
+         {
+-            return;
++            return new Response("", 500); // Error: the item was not fully defined.
++        }
++        
++        $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
++        $added = $wishRepo->makeWish($name, $price, $link, $isPrivate, $comment, $quantity, $user);
++        
++        if(!$added){   
++            //$content = $this->showWishlistAction($user);
++            //return new Response($content, 204);            
++            // the item was not added because it already exists    
++            $response  = new Response();
++            $response->setContent($this->showWishlistAction($user));
++            $response->setStatusCode(304);
++            return $response;
+         }
+-
+-        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');        
+-        $itemRepo->addItem($name, $price, $link, $isPrivate, $comment, $quantity, $user);          
+         
+         return $this->showWishlistAction($user);
+     }
+diff --git a/src/Wishlist/UserBundle/Controller/DefaultController.php b/src/Wishlist/UserBundle/Controller/DefaultController.php
+index 94f55be..7eb649f 100644
+--- a/src/Wishlist/UserBundle/Controller/DefaultController.php
++++ b/src/Wishlist/UserBundle/Controller/DefaultController.php
+@@ -13,6 +13,33 @@ use \DateTime;
+ 
+ class DefaultController extends Controller
+ {
++    public function wishlistAction()
++    {
++        $user = $this->getLoggedInUser();
++        
++        if (!isset($user))
++            return;
++        
++        $wishlistItems = $user->getWishlistItems();
++        if(!isset($wishlistItems))
++        {
++            return;
++        }
++        
++        return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('user' => $user));
++    }
++    
++    private function getLoggedInUserId()
++    {
++        return $this->getRequest()->getSession()->get('user_id');
++    }
++    
++    private function getLoggedInUser()
++    {
++        $loggedInUserId = $this->getLoggedInUserId();
++        return $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
++    }
++    
+     public function showHomepageAction()
+     {
+         $session = $this->getRequest()->getSession();
+diff --git a/src/Wishlist/UserBundle/Controller/GiftboxController.php b/src/Wishlist/UserBundle/Controller/GiftboxController.php
+deleted file mode 100644
+index 71d9568..0000000
+--- a/src/Wishlist/UserBundle/Controller/GiftboxController.php
++++ /dev/null
+@@ -1,66 +0,0 @@
+-<?php
+-
+-namespace Wishlist\UserBundle\Controller;
+-
+-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+-use Symfony\Component\HttpFoundation\Response;
+-use Symfony\Component\HttpFoundation\Request;
+-
+-class GiftboxController extends Controller
+-{
+-    public function wishlistAction()
+-    {
+-        $user = $this->getLoggedInUser();
+-        
+-        if (!isset($user))
+-            return;
+-        
+-        $wishlistItems = $user->getWishlistItems();
+-        if(!isset($wishlistItems))
+-        {
+-            return;
+-        }
+-        
+-//        return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('wishlistItems' => $wishlistItems));
+-        return $this->render('WishlistUserBundle:Giftbox:wishlist.html.php', array('user' => $user));
+-    }
+-    
+-    public function shoppinglistAction()
+-    {
+-        $userId = $this->getLoggedInUserId();
+-        
+-        return $this->render('WishlistUserBundle:Giftbox:shoppinglist.html.php', array('userId' => $userId));
+-    }
+-    
+-    public function eventsAction()
+-    {
+-        $user = $this->getLoggedInUser();
+-        
+-        $events = $user->getEvents();
+-        
+-        return $this->render('WishlistUserBundle:Giftbox:events.html.php', array('events' => $events));
+-    }
+-    
+-    public function friendsAction()
+-    {
+-        $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');        
+-        $user = $this->getLoggedInUser();
+-        
+-        $friends = $userRepo->getFriendsOf($user);
+-                
+-        return $this->render('WishlistUserBundle:Giftbox:friends.html.php', array('friends' => $friends));
+-    }
+-    
+-    private function getLoggedInUserId()
+-    {
+-        return $this->getRequest()->getSession()->get('user_id');
+-    }
+-    
+-    private function getLoggedInUser()
+-    {
+-        $loggedInUserId = $this->getLoggedInUserId();
+-        return $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
+-    }
+-}
+-
+-?>
+diff --git a/src/Wishlist/UserBundle/Resources/config/routing.yml b/src/Wishlist/UserBundle/Resources/config/routing.yml
+index 1a93452..0bc8622 100644
+--- a/src/Wishlist/UserBundle/Resources/config/routing.yml
++++ b/src/Wishlist/UserBundle/Resources/config/routing.yml
+@@ -33,22 +33,6 @@ WishlistUserBundle_save_account_settings:
+ WishlistUserBundle_lifeEventsManager:
+   pattern: /LifeEventsManager
+   defaults: { _controller: WishlistUserBundle:Default:showLifeEventsManager }
+-  
+-WishlistUserBundle_giftboxWishlist:
+-  pattern: /GiftboxWishlist
+-  defaults: { _controller: WishlistUserBundle:Giftbox:wishlist }
+-  
+-WishlistUserBundle_giftboxShoppinglist:
+-  pattern: /GiftboxShoppinglist
+-  defaults: { _controller: WishlistUserBundle:Giftbox:shoppinglist }
+-  
+-WishlistUserBundle_giftboxEvents:
+-  pattern: /GiftboxEvents
+-  defaults: { _controller: WishlistUserBundle:Giftbox:events }
+-  
+-WishlistUserBundle_giftboxFriends:
+-  pattern: /GiftboxFriends
+-  defaults: { _controller: WishlistUserBundle:Giftbox:friends }
+ 
+ WishlistUserBundle_saveEvent:
+   pattern: /SaveEvent
+diff --git a/src/Wishlist/UserBundle/Resources/views/Default/homepage.html.php b/src/Wishlist/UserBundle/Resources/views/Default/homepage.html.php
+index 41f52d3..18639c3 100644
+--- a/src/Wishlist/UserBundle/Resources/views/Default/homepage.html.php
++++ b/src/Wishlist/UserBundle/Resources/views/Default/homepage.html.php
+@@ -37,46 +37,20 @@
+     </div>
+ </div>
+ 
+-<div id="giftBox" class="mockup">
+-    <div id="giftContent" class="mockup">
+-
+-        <?php echo $view['actions']->render('WishlistUserBundle:Giftbox:wishlist'); ?>
+-<!--        <div id="wishlistComponent">
+-            <div id="wishlist">
+-                <?php // echo $view['actions']->render('WishlistListBundle:Wishlist:showWishlist', array('user' => $user)); ?>
+-            </div>-->
+-<!--        </div>-->
++<div id="wishlistBox" class="mockup">
++    <div id="wishlistContent" class="mockup">
++        <?php echo $view['actions']->render('WishlistUserBundle:Default:wishlist'); ?>
+     </div>
+-    <!--
+-    <div id="eventsComponent">
+-        <br />
+-        <div><h1>Upcoming Events</h1></div>
+-        <div id="eventsInnerComponent">  
+-        <?php  
+-        foreach ($friendEvents as $event) {
+-                $eventImage = $event->getEventImage();
+-                $eventName = $event->getName();
+-                $friend = $event->getWishlistUser();
+-                $eventDate = $event->getFormattedTimestamp();
+-                $name = "<a href='User/".$friend->getWishlistUserId()."/' >".$friend->getFirstname()." ".$friend->getLastname()."</a>";
+-                $timestamp = " -- ".$eventDate;
+-        ?>  
+-            <div class="Event"> 
+-                <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
+-                <div class="name" title ="<?php echo $eventName ?>"><?php echo $name ?></div>
+-                <div class="message" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>
+-            </div>
+-        <?php } ?>
+-        </div>
+-    </div>
+-    -->
+ </div>
+ 
+ <div id="itemDialog" title="Wish" >        
+-    <label class="label">Name: </label>
+-    <div id="name"></div>
+-    <label class="label">Price: </label>
+-    <div id="price"></div>
+-    <label class="label">Website: </label>
+-    <div id="link"></div>
++    <label id="name"></label>
++    <label id="price"></label>
++    <label id="link"></label>
++    <div id="wishDetails" style="display:none">
++    <input type='text' id='notes' placeholder='Notes (Optional)'/>
++    <input type='text' id='quantity' placeholder='Quantity (Default = 1)'/>
++    <span style='display:inline-block;'>Keep this wish private:</span>
++    <input style='width:25%;display:inline-block;' type='checkbox' id='isPrivate' />
++    </div>
+ </div>
+diff --git a/src/Wishlist/UserBundle/Resources/views/Giftbox/shoppinglist.html.php b/src/Wishlist/UserBundle/Resources/views/Giftbox/shoppinglist.html.php
+index a929a1d..50246b4 100644
+--- a/src/Wishlist/UserBundle/Resources/views/Giftbox/shoppinglist.html.php
++++ b/src/Wishlist/UserBundle/Resources/views/Giftbox/shoppinglist.html.php
+@@ -3,10 +3,5 @@ echo "<ul id='shoppinglistItems' class='contentItem'>\n";
+ 
+ echo $view['actions']->render('WishlistListBundle:Shoppinglist:shoppinglist', array('userId' => $userId));
+ 
+-//foreach ($purchases as $purchase)
+-//{
+-//    echo "<li>".$purchase->getItem()->getName()."</li>\n";
+-//}
+-
+ echo "</ul>";
+ ?>
+\ No newline at end of file
+diff --git a/theDiff.txt b/theDiff.txt
+deleted file mode 100644
+index 94acead..0000000
+--- a/theDiff.txt
++++ /dev/null
+@@ -1,551 +0,0 @@
+-diff --git a/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadPurchaseData.php b/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadPurchaseData.php
+-index 60db642..d0d681b 100644
+---- a/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadPurchaseData.php
+-+++ b/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadPurchaseData.php
+-@@ -14,7 +14,7 @@ class LoadPurchaseData implements FixtureInterface,OrderedFixtureInterface
+-     public function load(ObjectManager $manager)
+-     {
+-         $userRepo = $manager->getRepository('WishlistCoreBundle:WishlistUser');
+--        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
+-+        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
+-         $purchaseRepo = $manager->getRepository('WishlistCoreBundle:Purchase');
+-         $dummyDate = DateTime::createFromFormat('m/d/Y', '1/1/2013');
+-         
+-diff --git a/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadItemData.php b/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadItemData.php
+-index c8df8f0..171131e 100644
+---- a/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadItemData.php
+-+++ b/src/Wishlist/CoreBundle/DataFixtures/ORM/LoadItemData.php
+-@@ -13,26 +13,26 @@ class LoadItemData implements FixtureInterface,OrderedFixtureInterface
+- {
+-     public function load(ObjectManager $manager)
+-     {
+--        $userRepo = $manager->getRepository('WishlistCoreBundle:WishlistUser');
+--        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
+--        
+--        $danny = $userRepo->getUser('Danny Mardini');
+--        $andrea = $userRepo->getUser('Andrea Coba');
+--        $jorge = $userRepo->getUser('Jorge Thatcher');
+--        $steve = $userRepo->getUser('Steven Lac');
+--        
+--        $itemRepo->addItem('purse', 50000, 'www.purse.com', true, 'Bug. this is a purse.', 1, $andrea);
+--        $itemRepo->addItem('Bouncy ball', 1000, 'www.bounce.com', true, 'It bounces!', 1, $andrea);
+--        $itemRepo->addItem('Macbook', 100000, 'www.apple.com', true, 'it\'s perfect', 1, $andrea);
+--        $itemRepo->addItem('Zumba Fitness videos', 10000, 'www.zumba.com', true, 'Get your booty shakin\'', 1, $andrea);
+--        $itemRepo->addItem('Pink gold watch', 20000, 'www.watch.com', true, 'it\'s pink', 1, $andrea);
+--        $itemRepo->addItem('Bug', 1, 'www.bugisbug.com', true, 'bug? this is bug.', 1, $andrea);
+--        
+--        $itemRepo->addItem('Metal Gear Solid', 3000, 'www.mgs.com', true, 'EMOTION', 1, $danny);
+--        $itemRepo->addItem('Nerf gun', 2000, 'www.nerf.com', true, 'cap in yo ass', 1, $danny);
+--        
+--        $itemRepo->addItem('Lineage II', 5000, 'www.lineage2.com', true, 'Grindin\' till we dyin\'', 1, $jorge);
+--        $itemRepo->addItem('Metal Gear Solid Peace Walker', 50000, 'www.mgs.com', true, 'HOOHAW EMOTION', 1, $steve);
+-+//        $userRepo = $manager->getRepository('WishlistCoreBundle:WishlistUser');
+-+//        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
+-+//        
+-+//        $danny = $userRepo->getUser('Danny Mardini');
+-+//        $andrea = $userRepo->getUser('Andrea Coba');
+-+//        $jorge = $userRepo->getUser('Jorge Thatcher');
+-+//        $steve = $userRepo->getUser('Steven Lac');
+-+//        
+-+//        $itemRepo->addItem('purse', 50000, 'www.purse.com', true, 'Bug. this is a purse.', 1, $andrea);
+-+//        $itemRepo->addItem('Bouncy ball', 1000, 'www.bounce.com', true, 'It bounces!', 1, $andrea);
+-+//        $itemRepo->addItem('Macbook', 100000, 'www.apple.com', true, 'it\'s perfect', 1, $andrea);
+-+//        $itemRepo->addItem('Zumba Fitness videos', 10000, 'www.zumba.com', true, 'Get your booty shakin\'', 1, $andrea);
+-+//        $itemRepo->addItem('Pink gold watch', 20000, 'www.watch.com', true, 'it\'s pink', 1, $andrea);
+-+//        $itemRepo->addItem('Bug', 1, 'www.bugisbug.com', true, 'bug? this is bug.', 1, $andrea);
+-+//        
+-+//        $itemRepo->addItem('Metal Gear Solid', 3000, 'www.mgs.com', true, 'EMOTION', 1, $danny);
+-+//        $itemRepo->addItem('Nerf gun', 2000, 'www.nerf.com', true, 'cap in yo ass', 1, $danny);
+-+//        
+-+//        $itemRepo->addItem('Lineage II', 5000, 'www.lineage2.com', true, 'Grindin\' till we dyin\'', 1, $jorge);
+-+//        $itemRepo->addItem('Metal Gear Solid Peace Walker', 50000, 'www.mgs.com', true, 'HOOHAW EMOTION', 1, $steve);
+-     }
+-     
+-     public function getOrder()
+-diff --git a/src/Wishlist/CoreBundle/Entity/Item.php b/src/Wishlist/CoreBundle/Entity/Item.php
+-index 0461f68..142d187 100644
+---- a/src/Wishlist/CoreBundle/Entity/Item.php
+-+++ b/src/Wishlist/CoreBundle/Entity/Item.php
+-@@ -24,4 +24,154 @@ class Item
+-     {
+-         return $this->id;
+-     }
+-+    /**
+-+     * @var string $name
+-+     */
+-+    private $name;
+-+
+-+    /**
+-+     * @var integer $price
+-+     */
+-+    private $price;
+-+
+-+    /**
+-+     * @var string $link
+-+     */
+-+    private $link;
+-+
+-+    /**
+-+     * @var boolean $is_public
+-+     */
+-+    private $is_public;
+-+
+-+    /**
+-+     * @var string $comment
+-+     */
+-+    private $comment;
+-+
+-+    /**
+-+     * @var integer $quantity
+-+     */
+-+    private $quantity;
+-+
+-+
+-+    /**
+-+     * Set name
+-+     *
+-+     * @param string $name
+-+     */
+-+    public function setName($name)
+-+    {
+-+        $this->name = $name;
+-+    }
+-+
+-+    /**
+-+     * Get name
+-+     *
+-+     * @return string 
+-+     */
+-+    public function getName()
+-+    {
+-+        return $this->name;
+-+    }
+-+
+-+    /**
+-+     * Set price
+-+     *
+-+     * @param integer $price
+-+     */
+-+    public function setPrice($price)
+-+    {
+-+        $this->price = $price;
+-+    }
+-+
+-+    /**
+-+     * Get price
+-+     *
+-+     * @return integer 
+-+     */
+-+    public function getPrice()
+-+    {
+-+        return $this->price;
+-+    }
+-+
+-+    /**
+-+     * Set link
+-+     *
+-+     * @param string $link
+-+     */
+-+    public function setLink($link)
+-+    {
+-+        $this->link = $link;
+-+    }
+-+
+-+    /**
+-+     * Get link
+-+     *
+-+     * @return string 
+-+     */
+-+    public function getLink()
+-+    {
+-+        return $this->link;
+-+    }
+-+
+-+    /**
+-+     * Set is_public
+-+     *
+-+     * @param boolean $isPublic
+-+     */
+-+    public function setIsPublic($isPublic)
+-+    {
+-+        $this->is_public = $isPublic;
+-+    }
+-+
+-+    /**
+-+     * Get is_public
+-+     *
+-+     * @return boolean 
+-+     */
+-+    public function getIsPublic()
+-+    {
+-+        return $this->is_public;
+-+    }
+-+
+-+    /**
+-+     * Set comment
+-+     *
+-+     * @param string $comment
+-+     */
+-+    public function setComment($comment)
+-+    {
+-+        $this->comment = $comment;
+-+    }
+-+
+-+    /**
+-+     * Get comment
+-+     *
+-+     * @return string 
+-+     */
+-+    public function getComment()
+-+    {
+-+        return $this->comment;
+-+    }
+-+
+-+    /**
+-+     * Set quantity
+-+     *
+-+     * @param integer $quantity
+-+     */
+-+    public function setQuantity($quantity)
+-+    {
+-+        $this->quantity = $quantity;
+-+    }
+-+
+-+    /**
+-+     * Get quantity
+-+     *
+-+     * @return integer 
+-+     */
+-+    public function getQuantity()
+-+    {
+-+        return $this->quantity;
+-+    }
+- }
+-\ No newline at end of file
+-diff --git a/src/Wishlist/CoreBundle/Entity/Item.php b/src/Wishlist/CoreBundle/Entity/Item.php
+-index 104cd44..0c4996e 100644
+---- a/src/Wishlist/CoreBundle/Entity/Item.php
+-+++ b/src/Wishlist/CoreBundle/Entity/Item.php
+-@@ -278,4 +278,54 @@ class Item
+-         }
+-         return false;
+-     }
+-+    /**
+-+     * @var integer $item
+-+     */
+-+    private $item;
+-+
+-+    /**
+-+     * @var integer $user
+-+     */
+-+    private $user;
+-+
+-+
+-+    /**
+-+     * Set item
+-+     *
+-+     * @param integer $item
+-+     */
+-+    public function setItem($item)
+-+    {
+-+        $this->item = $item;
+-+    }
+-+
+-+    /**
+-+     * Get item
+-+     *
+-+     * @return integer 
+-+     */
+-+    public function getItem()
+-+    {
+-+        return $this->item;
+-+    }
+-+
+-+    /**
+-+     * Set user
+-+     *
+-+     * @param integer $user
+-+     */
+-+    public function setUser($user)
+-+    {
+-+        $this->user = $user;
+-+    }
+-+
+-+    /**
+-+     * Get user
+-+     *
+-+     * @return integer 
+-+     */
+-+    public function getUser()
+-+    {
+-+        return $this->user;
+-+    }
+- }
+-\ No newline at end of file
+-diff --git a/src/Wishlist/CoreBundle/Repository/ItemRepository.php b/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+-index e853e3a..cf70d47 100644
+---- a/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+-+++ b/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+-@@ -12,4 +12,36 @@ use Doctrine\ORM\EntityRepository;
+-  */
+- class ItemRepository extends EntityRepository
+- {
+-+    public function addItem($name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
+-+    {
+-+        $newItem = new Item();
+-+        $newItem->setName($name);
+-+        $newItem->setPrice($price);
+-+        $newItem->setLink($link);
+-+        $newItem->setIsPublic($isPublic);
+-+        $newItem->setComment($comment);
+-+        $newItem->setQuantity($quantity);
+-+        
+-+        // check if item exists in the Item table. If not, add it                
+-+        $itemExists = $this->checkItemExists($newItem);
+-+        
+-+        if(!$itemExists){
+-+            $this->getEntityManager()->persist($newItem);
+-+            $this->getEntityManager()->flush();
+-+        }
+-+    }
+-+    
+-+    public function checkItemExists($item)
+-+    {
+-+       $em = $this->getEntityManager();       
+-+        
+-+        $q = $em->createQuery('
+-+            SELECT i
+-+            FROM WishlistCoreBundle:Item i
+-+            WHERE i.name = :itemName')
+-+                ->setParameters(array('itemName' => $item->getName()));
+-+                      
+-+        $itemInDatabase = $q->getOneOrNullResult();  
+-+        return $itemInDatabase;
+-+    }    
+- }
+-\ No newline at end of file
+-diff --git a/src/Wishlist/CoreBundle/Repository/ItemRepository.php b/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+-index 7313e06..3a2484e 100644
+---- a/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+-+++ b/src/Wishlist/CoreBundle/Repository/ItemRepository.php
+-@@ -14,44 +14,74 @@ use Wishlist\CoreBundle\Entity\WishlistUser;
+-  */
+- class ItemRepository extends EntityRepository
+- {
+--    public function addItem( $name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
+-+    public function makeWish($name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
+-     {
+--        $newItem = new Item();
+--        $newItem->setName($name);
+--        $newItem->setPrice($price);
+--        $newItem->setLink($link);
+--        $newItem->setIsPublic($isPublic);
+--        $newItem->setComment($comment);
+--        $newItem->setQuantity($quantity);
+--        $newItem->setWishlistUser($wishlistUser);
+-+        $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
+-+        $newItem = $itemRepo->addItem($name, $price, $link, $isPublic, $comment, $quantity, $wishlistUser);
+-         
+--        
+--        // check if the item already exists for this user
+--        $itemExists = $this->checkItemExists($newItem);
+--        
+--        if(!$itemExists){
+--            $this->getEntityManager()->persist($newItem);
+--            $this->getEntityManager()->flush();
+--
+--            $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
+--            $updateRepo->addNewItem($wishlistUser, $newItem);
+--        }
+-+        // if Item exists and the item is not on this users wishlist, add it.
+-+        //if(isset($newItem) && !isset($this->checkUserWishlist($newItem, $wishlistUser))){
+-+            // TO DO
+-+            //$newWish = new Item();
+-+            
+-+            //$updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
+-+            //$updateRepo->addNewItem($wishlistUser, $newItem);            
+-+        //}
+-     }
+-     
+--    public function checkItemExists($item)
+-+    public function checkUserWishlist($item, $user)
+-     {
+-        $em = $this->getEntityManager();       
+-         
+-         $q = $em->createQuery('
+-             SELECT i
+--            FROM WishlistCoreBundle:Item i
+--            LEFT JOIN i.wishlistUser usr
+-+            FROM WishlistCoreBundle:Item i
+-+            LEFT JOIN WishlistCoreBundle:Item usr
+-             WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
+--                ->setParameters(array('itemName' => $item->getName(), 'userId' => $item->getWishlistUser()->getWishlistuserId()));
+-+                ->setParameters(array('itemName' => $item->getName(), 'userId' => $user->getWishlistuserId()));
+-                       
+-         $itemInDatabase = $q->getOneOrNullResult();  
+-         return $itemInDatabase;
+--    }
+-+    } 
+-+//    
+-+//    public function addItem( $name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
+-+//    {
+-+//        $newItem = new Item();
+-+//        $newItem->setName($name);
+-+//        $newItem->setPrice($price);
+-+//        $newItem->setLink($link);
+-+//        $newItem->setIsPublic($isPublic);
+-+//        $newItem->setComment($comment);
+-+//        $newItem->setQuantity($quantity);
+-+//        $newItem->setWishlistUser($wishlistUser);
+-+//        
+-+//        
+-+//        // check if the item already exists for this user
+-+//        $itemExists = $this->checkItemExists($newItem);
+-+//        
+-+//        if(!$itemExists){
+-+//            $this->getEntityManager()->persist($newItem);
+-+//            $this->getEntityManager()->flush();
+-+//
+-+//            $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
+-+//            $updateRepo->addNewItem($wishlistUser, $newItem);
+-+//        }
+-+//    }
+-+//    
+-+//    public function checkItemExists($item)
+-+//    {
+-+//       $em = $this->getEntityManager();       
+-+//        
+-+//        $q = $em->createQuery('
+-+//            SELECT i
+-+//            FROM WishlistCoreBundle:Item i
+-+//            LEFT JOIN i.wishlistUser usr
+-+//            WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
+-+//                ->setParameters(array('itemName' => $item->getName(), 'userId' => $item->getWishlistUser()->getWishlistuserId()));
+-+//                      
+-+//        $itemInDatabase = $q->getOneOrNullResult();  
+-+//        return $itemInDatabase;
+-+//    }
+-     
+-     public function deleteItem( $deletedItemName, WishlistUser $wishlistUser)
+-     {
+-diff --git a/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml b/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+-index fa484a1..d701a97 100644
+---- a/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+-+++ b/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+-@@ -1,10 +1,36 @@
+- Wishlist\CoreBundle\Entity\Item:
+-   type: entity
+-   table: null
+-+  repositoryClass: Wishlist\CoreBundle\Repository\ItemRepository
+-+  
+-+#    oneToOne:               
+-+#    purchase:
+-+#      targetEntity: Purchase
+-+#      mappedBy: item
+-+  
+-+  
+-   fields:
+-     id:
+-       type: integer
+-       id: true
+-       generator:
+-         strategy: AUTO
+-+    name:
+-+      type: string
+-+      length: '255'
+-+    price:
+-+      type: integer
+-+      length: null
+-+    link:
+-+      type: string
+-+      length: '255'
+-+    is_public:
+-+      type: boolean
+-+      length: null
+-+    comment:
+-+      type: string
+-+      length: '500'
+-+    quantity:
+-+      type: integer
+-+      length: null        
+-   lifecycleCallbacks: {  }
+-diff --git a/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml b/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+-index ce64dd5..cd2011e 100644
+---- a/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+-+++ b/src/Wishlist/CoreBundle/Resources/config/Doctrine/Item.orm.yml
+-@@ -2,18 +2,18 @@ Wishlist\CoreBundle\Entity\Item:
+-   type: entity
+-   table: null
+-   repositoryClass: Wishlist\CoreBundle\Repository\ItemRepository
+--  manyToOne:
+--    wishlistUser:
+--      targetEntity: WishlistUser
+--      inversedBy: wishlistItems
+--      joinColumn:
+--        name: user_id
+--        referencedColumnName: wishlistuser_id
+-+#  manyToOne:
+-+#    wishlistUser:
+-+#      targetEntity: WishlistUser
+-+#      inversedBy: wishlistItems
+-+#      joinColumn:
+-+#        name: user_id
+-+#        referencedColumnName: wishlistuser_id
+-    
+--  oneToOne:               
+--    purchase:
+--      targetEntity: Purchase
+--      mappedBy: item
+-+#  oneToOne:               
+-+#    purchase:
+-+#      targetEntity: Purchase
+-+#      mappedBy: item
+-         
+-   fields:
+-     id:
+-@@ -21,23 +21,30 @@ Wishlist\CoreBundle\Entity\Item:
+-       id: true
+-       generator:
+-         strategy: AUTO
+--    name:
+--      type: string
+--      length: '255'
+--    price:
+-+    item:
+-       type: integer
+-       length: null
+--    link:
+--      type: string
+--      length: '255'
+--    is_public:
+--      type: boolean
+--      length: null
+--    comment:
+--      type: string
+--      length: '500'
+--    quantity:
+-+    user:
+-       type: integer
+-       length: null
+-+        
+-+#    name:
+-+#      type: string
+-+#      length: '255'
+-+#    price:
+-+#      type: integer
+-+#      length: null
+-+#    link:
+-+#      type: string
+-+#      length: '255'
+-+#    is_public:
+-+#      type: boolean
+-+#      length: null
+-+#    comment:
+-+#      type: string
+-+#      length: '500'
+-+#    quantity:
+-+#      type: integer
+-+#      length: null
+-   lifecycleCallbacks: {  }
+-   
+-\ No newline at end of file
+diff --git a/vendor/bundles/FOS/JsRoutingBundle b/vendor/bundles/FOS/JsRoutingBundle
+new file mode 160000
+index 0000000..dbecb9f
+--- /dev/null
++++ b/vendor/bundles/FOS/JsRoutingBundle
+@@ -0,0 +1 @@
++Subproject commit dbecb9ffcf318f0c78ec80d7a363572599223e69
+diff --git a/web/css/homePage.css b/web/css/homePage.css
+index ba077c4..081346e 100644
+--- a/web/css/homePage.css
++++ b/web/css/homePage.css
+@@ -28,7 +28,7 @@ button.fg-button { width:auto; overflow:visible; }
+     border-width: 1px;
+ }
+ 
+-#giftBox {
++#wishlistBox {
+     display: inline-block;
+     background-color: white;
+     width: 67%;
+@@ -41,11 +41,11 @@ button.fg-button { width:auto; overflow:visible; }
+     background-size: contain;
+ }
+ 
+-#giftBox h3 {
++#wishlistBox h3 {
+     text-align: center;
+ }
+ 
+-#giftContent {
++#wishlistContent {
+     border-top-style: none;
+     overflow: auto;
+ }
+@@ -149,9 +149,10 @@ li{
+     font-size: 14px;
+ }
+ 
+-#itemDialog .label {    
+-    font-weight: bold;
+-    font-size: 18px;    
++#itemDialog label {    
++    font-size: 18px; 
++    display: block;
++    margin-bottom: 10px;
+ }
+ 
+ 
+diff --git a/web/css/navBar.css b/web/css/navBar.css
+index e8a420a..8bc3e22 100644
+--- a/web/css/navBar.css
++++ b/web/css/navBar.css
+@@ -23,7 +23,7 @@ li a {
+     height: 45px;
+ }
+ 
+-#giftNav {
++#navigationlist {
+     list-style-type: none;
+     margin: 0px;
+     padding: 0px;
+@@ -34,7 +34,7 @@ li a {
+     margin-bottom: 10px;
+ }
+ 
+-#giftNav li {
++#navigationlist li {
+     display: inline-block;
+     margin-right: 10px;
+ /*    background-color: black;*/
+diff --git a/web/js/common.js b/web/js/common.js
+index ca60ce4..4a2a014 100644
+--- a/web/js/common.js
++++ b/web/js/common.js
+@@ -63,9 +63,9 @@ function purchaseItem(itemId, purchaseData, /*string*/ type)
+     });
+ }
+ 
+-function addToWishlist(itemObj, callback)
+-{    
+-    $( "#wishlist" ).load('/app_dev.php/wishlistnew', itemObj, callback); 
++function ajaxPageLoad(element, path, itemObj, callback)
++{
++    $(element).load(path, itemObj, callback);
+ }
+ 
+ function delFromWishlist(itemObj, callback)
+@@ -73,7 +73,6 @@ function delFromWishlist(itemObj, callback)
+     $( "#wishlist" ).load('/app_dev.php/wishlistdelete', itemObj, callback);
+ }
+ 
+-
+ function fillContainer(element)
+ {
+     //$(element).get
+@@ -192,3 +191,43 @@ function parseDate(/*string*/ str)
+ }
+ 
+ // ** Date Validation Functions ****************************
++
++function confirm (confirmMessage) {
++    var defer = $.Deferred(); 
++    $('<div>' + confirmMessage + '</div>').dialog({
++            height: 300,
++            width: 300,
++            autoOpen: true,
++            close: function () { 
++                $(this).dialog('destroy');
++            },
++            title: 'Continue?',
++            buttons: {
++                "Yes": function() {
++                    defer.resolve(1); //on Yes click, end deferred state successfully with 1 value
++                    $( this ).dialog( "close" );
++                },
++                "No": function() {
++                    defer.resolve(0); //on No click end deferred successfully with 0 value
++                    $( this ).dialog( "close" );
++                }
++            }
++        });
++    return defer.promise(); //important to return the deferred promise
++}
++
++function popupMessage(theTitle, message)
++{    
++    $('<div>' + message + '</div>').dialog({
++             autoOpen: true,
++             close: function () {                  
++                 $(this).dialog('destroy');
++             },
++             title: theTitle,
++             buttons: {
++                 "Ok": function() {                     
++                     $( this ).dialog( "close" );
++                 }
++             }
++         });    
++}
+\ No newline at end of file
+diff --git a/web/js/homepage.js b/web/js/homepage.js
+index 5ff794d..ccafffb 100644
+--- a/web/js/homepage.js
++++ b/web/js/homepage.js
+@@ -3,30 +3,17 @@
+  * and open the template in the editor.
+  */
+ 
+-// buttons used for the dialog
+-// TODO: What does this do?? Do we even use this?
+-var addToWishlistButton =  {
+-            priority: 'primary',           
+-            id: 'addToWishlistButton',
+-            label: 'add to my wishlist',
+-            click: function() {
+-                   addToWishlist({newWishName: $('#itemDialog #name').html(), 
+-                       newWishPrice: $('#itemDialog #price').html(), 
+-                       newWishLink: $('#itemDialog #link').html()}, 
+-                       onCompleteAddToWishlistEvent);
+-            }
+-        };
+-
+-var itemDialogButtons = [ addToWishlistButton ];
+-    
+-
+-
+ $(document).ready(function(){
+     
+     $.ajaxSetup ({  
+         cache: false  
+     });
+     
++    initDialogs();
++    initWishlist();
++});
++
++function initDialogs(){
+     // init item dialog
+     $( "#itemDialog" ).dialog({
+             autoOpen: false,
+@@ -35,19 +22,43 @@ $(document).ready(function(){
+             height:300,
+             width:500,
+             modal: true,
+-            buttons: itemDialogButtons,
++            buttons: {
++                    "Want This": function() {
++                        onWantItClickEvent();
++                    },
++                    "Grant Wish": function() {
++                      /* Do stuff*/  
++                      alert('TO DO');
++                      $(this).dialog('close');
++                    },
++                    "Add Wish": function() {
++                        continueAddingItemToWishlist();
++                        $(this).dialog('close');
++                    }
++            },
+             open: function(event, ui) {
++                styleWishDialogButtons();
+                 $(this).scrollTop(0);
+             }
+-    });   
+-    
+-    $('#addToWishlistButton').removeClass('ui-button-text-only');
+-    $('#addToWishlistButton :first-child').removeClass('ui-button-text');
+-    $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-cart');
+-    $('#addToWishlistButton').addClass('itemDialogButton');
+-    
+-    initGiftBox();
+-});
++    });      
++}
++
++function styleWishDialogButtons()
++{
++    var buttons = $('.ui-dialog-buttonpane'),
++        wantIt = buttons.find('button:contains("Want This")'),
++        grantIt = buttons.find('button:contains("Grant Wish")'),
++        addWish = buttons.find('button:contains("Add Wish")'),
++        iconNotDefined = !wantIt.find(":first-child").hasClass('ui-icon-plus');
++
++    addWish.hide();
++
++    if(iconNotDefined)
++    {
++        wantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-plus"></span>');
++        grantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-cart"></span>');
++    }
++}
+ 
+ function populateEvent(event)
+ {
+@@ -61,21 +72,11 @@ function populateEvent(event)
+     }
+ }
+ 
+-function onCompleteAddToWishlistEvent(e)
+-{
+-    setupWishlist();
+-
+-    if(e.match('newWishBox') != null)
+-        alert('Item has been added to your list!');
+-    else
+-        alert('This item is already on your list.');
+-}
+-
+ function setupItemView(data)
+ {
+     $('#itemDialog #name').html(data.name);
+     $('#itemDialog #price').html(data.price);
+-    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">'+data.link+'</a>');
++    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">webpage</a>');
+     $('#itemDialog').dialog('open');         
+ }
+ 
+@@ -93,14 +94,14 @@ function goToUserPage(userId)
+     window.location = loc;
+ }
+ 
+-function initGiftBox()
++function initWishlist()
+ {
+-    var giftNav = $('#giftNav');
+-    var giftWindow = $('#giftContent');
+-    var giftBox = $('#giftBox');
++    var navigationlist = $('#navigationlist');
++    var wishlistContent = $('#wishlistContent');
++    var wishlistBox = $('#wishlistBox');
+     
+     console.log('Window: '+$(window).height());
+-    giftWindow.height(giftBox.height()-giftNav.height());
++    wishlistContent.height(wishlistBox.height()-navigationlist.height());
+ }
+ 
+ function fillPic(item)
+@@ -115,7 +116,6 @@ function fillGoogleImage(query, picContainer)
+ {
+     var mykey = "AIzaSyBHtgh3ihz8AHCBw0LkEi_Snl96elJCSpA";
+     var cx = "015228749791243702187:ctequifxi_s";
+-//    var query = "Metal+Gear+Solid";
+     var hndlr = "googleQryHndlr";
+     var url = "https://www.googleapis.com/customsearch/v1?key="+mykey+"&cx="+cx+"&q="+query+"&searchType=image&num=1";
+     
+diff --git a/web/js/shoppingList.js b/web/js/shoppingList.js
+index 4076689..d04a963 100644
+--- a/web/js/shoppingList.js
++++ b/web/js/shoppingList.js
+@@ -108,22 +108,6 @@ function finishRetractPurchaseEvent(response, selectedPurchaseDivs){
+     }
+ }
+ 
+-function popupMessage(theTitle, message)
+-{    
+-    $('<div>' + message + '</div>').dialog({
+-             autoOpen: true,
+-             close: function () { 
+-                 $(this).dialog('destroy');
+-             },
+-             title: theTitle,
+-             buttons: {
+-                 "Ok": function() {
+-                     $( this ).dialog( "close" );
+-                 }
+-             }
+-         });    
+-}
+-
+ function updateItemCount()
+ {
+     var newCount = $('#shoppinglist .shoppinglistitem').length; 
+@@ -136,26 +120,4 @@ function updateItemCount()
+     $('.shoppinglist-header-label')
+         .attr('id', 'shoppinglist_count_' + newCount)
+         .text('Shopping List ( ' + newCount + ' )');
+-}
+-
+-function confirm (confirmMessage) {
+-    var defer = $.Deferred(); 
+-    $('<div>' + confirmMessage + '</div>').dialog({
+-            autoOpen: true,
+-            close: function () { 
+-                $(this).dialog('destroy');
+-            },
+-            title: 'Continue?',
+-            buttons: {
+-                "Yes": function() {
+-                    defer.resolve(1); //on Yes click, end deferred state successfully with 1 value
+-                    $( this ).dialog( "close" );
+-                },
+-                "No": function() {
+-                    defer.resolve(0); //on No click end deferred successfully with 0 value
+-                    $( this ).dialog( "close" );
+-                }
+-            }
+-        });
+-    return defer.promise(); //important to return the deferred promise
+ }
+\ No newline at end of file
+diff --git a/web/js/wishlist.js b/web/js/wishlist.js
+index 5d20897..3cf4431 100644
+--- a/web/js/wishlist.js
++++ b/web/js/wishlist.js
+@@ -6,86 +6,107 @@
+ var wishlist_div = "#div_wishlist_div";
+ var selected_itemId = -1;
+ var selected_eventId = -1;
++var wishlistAddItemPath = '/app_dev.php/wishlistnew';
++var wishlistElement = '#wishlist';
+ 
+ function setupEvents()
+ {
+     $('.confirmEvent').on('click', clickedEvent);
+ }
+ 
+-function validateInputs(name, price, link, quantity)
++function validateWish(wish)
+ {
+     var message = "";
+-    var ignore = 0;
+     
+-    // validate the required inputs
++    if(!wish)
++    {
++        return "The wish object is empty.";
++    }
++    
++    var name = wish.name, 
++        price = wish.price,
++        link = wish.link;
++    
+     
++    // validate the required inputs
+     if(name.length < 3) 
+     {
+-        message += "\nName";
+-        ignore++;
++        message += "<br />Name";
+     }
+     
+     if(price.length < 1 || !IsNumber(price) || (IsNumber(price) && parseInt(price) <= 0 ))
+     {
+-        message += "\nPrice";
+-        ignore++;
++        message += "<br />Price";
+     }
+     
+     var url_regexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/;
+     if(link.length <= 0 || !url_regexp.test(link))
+     {
+-        message += "\nLink";
+-        ignore++;
+-    }
+-
+-    // validate the optional inputs
+-    
+-    if(quantity.length > 0 && !IsNumber(quantity) || (IsNumber(quantity) && parseInt(quantity) <= 0) )
+-    {
+-        message += "\nQuantity";        
++        message += "<br />Link";
+     }
+     
+-    if(ignore >= 3)
+-    {
+-        return ignore;
+-    }
+-    
+-    return message;
++    return (message.length > 0)
++                        ? "The following Wish properties were not set properly:<br /> " + message 
++                        : message;
+ }
+ 
+ function IsNumber(n) {
+   return !isNaN(parseFloat(n)) && isFinite(n);
+ }
+ 
+-function submitTheNewWish()
+-{
+-    var theName = $("#newWishName").val();
+-    var thePrice = $("#newWishPrice").val();
+-    var theLink = $("#newWishLink").val();
+-    var theQuantity = $("#newWishQuantity").val();
+-    var theNotes = $("#newWishNotes").val();
+-    var theIsPrivate = $("#isPrivate").attr('checked');
++function submitTheNewWish(/* optional wish object param */wish)
++{        
++    // if a pre-defined wish obj was passed in, use that
++    if(wish == null) {
++        var theName = $("#newWishName").val();
++        var thePrice = $("#newWishPrice").val();
++        var theLink = $("#newWishLink").val();
++        var theQuantity = $("#newWishQuantity").val();
++        var theNotes = $("#newWishNotes").val();
++        var theIsPrivate = $("#isPrivate").attr('checked');
++        
++        wish = { name: escape(theName), 
++                 price: thePrice, 
++                 link: theLink, 
++                 quantity: theQuantity, 
++                 comment: theNotes, 
++                 isprivate: theIsPrivate
++             };
++    }
+     
+-    var message = validateInputs(theName, thePrice, theLink, theQuantity);
++    var invalidWishMessage = validateWish(wish); 
+     
+-    if(message == 3)
++    if(invalidWishMessage.length > 0)
+     {
+-        return; // ignore if all fiels are empty.
++        popupMessage('Uh Oh!', invalidWishMessage);
+     }
+-    
+-    if(message.length <= 0)
++    else
+     {
+-        var itemObj = { name: escape(theName), 
+-                        price: thePrice, 
+-                        link: theLink, 
+-                        quantity: theQuantity, 
+-                        comment: theNotes, 
+-                        isprivate: theIsPrivate};
+-        addToWishlist(itemObj, setupWishlist);
+-        return;
+-    }    
+-    
+-    alert('Invalid arguments: '+message);
++        ajaxPageLoad(
++            wishlistElement,                // jQuery wishlist element
++            wishlistAddItemPath,            // Path to the backend controller for adding a wish
++            wish,                           // Wish object
++            onCompleteAddToWishlistEvent    // Handles events after adding a wish
++        );
++    }
++}
++
++function onCompleteAddToWishlistEvent(responseText, textStatus)
++{    
++    switch(textStatus.toLowerCase())
++    {
++        case "notmodified":
++            popupMessage('Oh!','This item is already on your list! To edit the item access it from your wishlist.');    
++            break;
++        case "success":
++            setupWishlist();
++            popupMessage('Yay!','The item has been added to your list!');
++            break;
++        default:
++            alert("Sorry! The item could not be added.");
++            location.reload();
++            break;       
++    }
+ }
+ 
+ function setupWishlist()
+@@ -130,7 +151,6 @@ function setupWishlist()
+     );
+         
+     $('#giftDateInput').datepicker();
+-
+ }
+ 
+ function clickedItem()
+@@ -284,4 +304,48 @@ function confirmDialogClose()
+ $(document).ready(function(){
+     setupWishlist();
+     setupEvents();
+-});
+\ No newline at end of file
++});
++
++function onWantItClickEvent() {
++    var buttonPane = $('.ui-dialog-buttonpane');
++    
++    // Ask them to fill out the additional details first
++    confirm('Would you like to edit the Quantity (Default: 1), Privacy (Default: Public) or Notes before proceeding?')
++    .then(function (answer) {
++        if(answer == 1) // The user wants to fill out the details
++        {
++            // Display the div with the form fields for the user to fill out
++            $('#wishDetails').show();
++
++            // Hide the Grant Wish button and Change the text of the Want It button to Continue            
++            buttonPane.find('button').hide();
++            buttonPane.find('button:contains("Add Wish")').show();            
++        } 
++        else { // The user will just use the default values, continue adding the item
++            continueAddingItemToWishlist();
++            
++            // Close the dialog
++            $("#itemDialog").dialog('close');                
++        }
++    });    
++}
++
++function continueAddingItemToWishlist()
++{
++    var buttonPane = $('.ui-dialog-buttonpane');
++    
++    var itemObj = {
++         name: $('#itemDialog #name').html(), 
++         price: $('#itemDialog #price').html(), 
++         link: $($('#itemDialog #link').html()).attr('href'),
++         quantity: $('#itemDialog #quantity').html(),
++         comment: $('#itemDialog #notes').html(),
++         isprivate: $('#itemDialog #private').html()
++     };
++
++    submitTheNewWish(itemObj); // defined in wishlist.js 
++
++    // Hide the add wish button now that we are done adding it
++    buttonPane.find('button').show();
++    buttonPane.find('button:contains("Add Wish")').hide();   
++}
+\ No newline at end of file
