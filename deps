@@ -66,8 +66,9 @@
     git=git://github.com/doctrine/data-fixtures.git
 
 [DoctrineFixturesBundle]
-    git=git://github.com/symfony/DoctrineFixturesBundle.git
+    git=http://github.com/doctrine/DoctrineFixturesBundle.git
     target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
+    version=origin/2.0
 
 [FOSJsRoutingBundle]
     git=git://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git
