@@ -6,58 +6,55 @@
 var wishlist_div = "#div_wishlist_div";
 var selected_itemId = -1;
 var selected_eventId = -1;
+var wishlistAddItemPath = '/app_dev.php/wishlistnew';
+var wishlistElement = '#wishlist';
 
 function setupEvents()
 {
     $('.confirmEvent').on('click', clickedEvent);
 }
 
-function validateInputs(name, price, link, quantity)
+function validateWish(wish)
 {
     var message = "";
-    var ignore = 0;
+    
+    if(!wish)
+    {
+        return "The wish object is empty.";
+    }
+    
+    var name = wish.name, 
+        price = wish.price,
+        link = wish.link;
+    
     
     // validate the required inputs
-    
     if(name.length < 3) 
     {
-        message += "\nName";
-        ignore++;
+        message += "<br />Name";
     }
     
     if(price.length < 1 || !IsNumber(price) || (IsNumber(price) && parseInt(price) <= 0 ))
     {
-        message += "\nPrice";
-        ignore++;
+        message += "<br />Price";
     }
     
     var url_regexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/;
     if(link.length <= 0 || !url_regexp.test(link))
     {
-        message += "\nLink";
-        ignore++;
-    }
-
-    // validate the optional inputs
-    
-    if(quantity.length > 0 && !IsNumber(quantity) || (IsNumber(quantity) && parseInt(quantity) <= 0) )
-    {
-        message += "\nQuantity";        
+        message += "<br />Link";
     }
     
-    if(ignore >= 3)
-    {
-        return ignore;
-    }
-    
-    return message;
+    return (message.length > 0)
+                        ? "The following Wish properties were not set properly:<br /> " + message 
+                        : message;
 }
 
 function IsNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-function submitTheNewWish(wish)
+function submitTheNewWish(/* optional wish object param */wish)
 {        
     // if a pre-defined wish obj was passed in, use that
     if(wish == null) {
@@ -77,39 +74,39 @@ function submitTheNewWish(wish)
              };
     }
     
-    var message = validateInputs(wish.name, wish.price, wish.link, wish.quantity);
-
-    if(message == 3)
-    {
-       alert('Invalid arguments: '+message);
-    }   
+    var invalidWishMessage = validateWish(wish); 
     
-    if(wish && message.length <= 0){
-      ajaxPageLoad(
-            '#wishlist', 
-            '/app_dev.php/wishlistnew', 
-            wish, 
-            onCompleteAddToWishlistEvent);
+    if(invalidWishMessage.length > 0)
+    {
+        popupMessage('Uh Oh!', invalidWishMessage);
+    }
+    else
+    {
+        ajaxPageLoad(
+            wishlistElement,                // jQuery wishlist element
+            wishlistAddItemPath,            // Path to the backend controller for adding a wish
+            wish,                           // Wish object
+            onCompleteAddToWishlistEvent    // Handles events after adding a wish
+        );
     }
 }
 
-function onCompleteAddToWishlistEvent(e)
-{
-    if(e.indexOf('Error') < 0){
-        setupWishlist();
-
-        if(e.match('newWishBox') != null)
-            popupMessage('Yay!','Item has been added to your list!');
-        else
-            popupMessage('How funny!','This item is already on your list! You must really like it! If you would like to edit it or bump it up in priority go to your wishlist and edit from there. ');
-        }
-//    else if(e.indexOf('NoAction') >= 0){
-//            popupMessage('How funny!','This item is already on your list! You must really like it! If you would like to edit it or bump it up in priority go to your wishlist and edit from there. ');
-//    }
-    else {
-        alert("Sorry! The item could not be added.");
+function onCompleteAddToWishlistEvent(responseText, textStatus)
+{    
+    switch(textStatus.toLowerCase())
+    {
+        case "notmodified":
+            popupMessage('Oh!','This item is already on your list! To edit the item access it from your wishlist.');    
+            break;
+        case "success":
+            setupWishlist();
+            popupMessage('Yay!','The item has been added to your list!');
+            break;
+        default:
+            alert("Sorry! The item could not be added.");
+            location.reload();
+            break;       
     }
-
 }
 
 function setupWishlist()
@@ -154,7 +151,6 @@ function setupWishlist()
     );
         
     $('#giftDateInput').datepicker();
-
 }
 
 function clickedItem()
@@ -309,3 +305,47 @@ $(document).ready(function(){
     setupWishlist();
     setupEvents();
 });
+
+function onWantItClickEvent() {
+    var buttonPane = $('.ui-dialog-buttonpane');
+    
+    // Ask them to fill out the additional details first
+    confirm('Would you like to edit the Quantity (Default: 1), Privacy (Default: Public) or Notes before proceeding?')
+    .then(function (answer) {
+        if(answer == 1) // The user wants to fill out the details
+        {
+            // Display the div with the form fields for the user to fill out
+            $('#wishDetails').show();
+
+            // Hide the Grant Wish button and Change the text of the Want It button to Continue            
+            buttonPane.find('button').hide();
+            buttonPane.find('button:contains("Add Wish")').show();            
+        } 
+        else { // The user will just use the default values, continue adding the item
+            continueAddingItemToWishlist();
+            
+            // Close the dialog
+            $("#itemDialog").dialog('close');                
+        }
+    });    
+}
+
+function continueAddingItemToWishlist()
+{
+    var buttonPane = $('.ui-dialog-buttonpane');
+    
+    var itemObj = {
+         name: $('#itemDialog #name').html(), 
+         price: $('#itemDialog #price').html(), 
+         link: $($('#itemDialog #link').html()).attr('href'),
+         quantity: $('#itemDialog #quantity').html(),
+         comment: $('#itemDialog #notes').html(),
+         isprivate: $('#itemDialog #private').html()
+     };
+
+    submitTheNewWish(itemObj); // defined in wishlist.js 
+
+    // Hide the add wish button now that we are done adding it
+    buttonPane.find('button').show();
+    buttonPane.find('button:contains("Add Wish")').hide();   
+}

@@ -60,50 +60,6 @@ function styleWishDialogButtons()
     }
 }
 
-function continueAddingItemToWishlist()
-{
-    var buttonPane = $('.ui-dialog-buttonpane');
-    
-    var itemObj = {
-         name: $('#itemDialog #name').html(), 
-         price: $('#itemDialog #price').html(), 
-         link: $($('#itemDialog #link').html()).attr('href'),
-         quantity: $('#itemDialog #quantity').html(),
-         comment: $('#itemDialog #notes').html(),
-         isprivate: $('#itemDialog #private').html()
-     };
-
-    submitTheNewWish(itemObj); // defined in wishlist.js 
-
-    // Hide the add wish button now that we are done adding it
-    buttonPane.find('button').show();
-    buttonPane.find('button:contains("Add Wish")').hide();   
-}
-
-function onWantItClickEvent() {
-    var buttonPane = $('.ui-dialog-buttonpane');
-    
-    // Ask them to fill out the additional details first
-    confirm('Would you like to edit the Quantity (Default: 1), the Privacy (Default: Public) or the Notes?')
-    .then(function (answer) {
-        if(answer == 1) // The user wants to fill out the details
-        {
-            // Display the div with the form fields for the user to fill out
-            $('#wishDetails').show();
-
-            // Hide the Grant Wish button and Change the text of the Want It button to Continue            
-            buttonPane.find('button').hide();
-            buttonPane.find('button:contains("Add Wish")').show();            
-        } 
-        else { // The user will just use the default values, continue adding the item
-            continueAddingItemToWishlist();
-            
-            // Close the dialog
-            $("#itemDialog").dialog('close');                
-        }
-    });    
-}
-
 function populateEvent(event)
 {
     var eventType = event.event_type;

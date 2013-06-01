@@ -220,12 +220,12 @@ function popupMessage(theTitle, message)
 {    
     $('<div>' + message + '</div>').dialog({
              autoOpen: true,
-             close: function () { 
+             close: function () {                  
                  $(this).dialog('destroy');
              },
              title: theTitle,
              buttons: {
-                 "Ok": function() {
+                 "Ok": function() {                     
                      $( this ).dialog( "close" );
                  }
              }
