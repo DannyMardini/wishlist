@@ -103,7 +103,7 @@ function onCompleteAddToWishlistEvent(responseText, textStatus)
             popupMessage('Yay!','The item has been added to your list!');
             break;
         default:
-            alert("Sorry! The item could not be added.");
+            popupMessage('Sorry!', 'The item could not be added.');
             location.reload();
             break;       
     }
