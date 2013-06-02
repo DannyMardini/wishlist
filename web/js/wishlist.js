@@ -310,7 +310,7 @@ function onWantItClickEvent() {
     var buttonPane = $('.ui-dialog-buttonpane');
     
     // Ask them to fill out the additional details first
-    confirm('Would you like to edit the Quantity (Default: 1), Privacy (Default: Public) or Notes before proceeding?')
+    confirm('Do you want to edit these first? <br /><br /> Quantity = 1 <br />Privacy = Public <br /> Notes = "" ')
     .then(function (answer) {
         if(answer == 1) // The user wants to fill out the details
         {
