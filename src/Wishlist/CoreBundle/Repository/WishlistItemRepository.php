@@ -24,7 +24,7 @@ class WishlistItemRepository extends EntityRepository
         // check if this user already has this item as a wish
         $isWish = $this->checkUserWishlist($newItem, $wishlistUser);
         
-        if(isset($isWish) && $isWish == true)
+        if(isset($isWish))
         {
             return false; // item is already a wish
         }
