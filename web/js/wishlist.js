@@ -96,7 +96,7 @@ function onCompleteAddToWishlistEvent(responseText, textStatus)
     switch(textStatus.toLowerCase())
     {
         case "notmodified":
-            popupMessage('Oh!','This item is already on your list! To edit the item access it from your wishlist.');    
+            popupMessage('Oh!','This item is already on your list! To edit the item, access it from your wishlist.');    
             break;
         case "success":
             setupWishlist();
