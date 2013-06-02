@@ -197,6 +197,7 @@ function confirm (confirmMessage) {
     $('<div>' + confirmMessage + '</div>').dialog({
             height: 300,
             width: 300,
+            modal: true,
             autoOpen: true,
             close: function () { 
                 $(this).dialog('destroy');
