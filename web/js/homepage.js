@@ -37,7 +37,8 @@ function initDialogs(){
                     }
             },
             open: function(event, ui) {
-                styleWishDialogButtons();
+                $('#wishDetails').hide();
+                styleWishDialogButtons();                
                 $(this).scrollTop(0);
             }
     });      
