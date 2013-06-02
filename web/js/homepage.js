@@ -36,7 +36,7 @@ function initDialogs(){
                         $(this).dialog('close');
                     }
             },
-            open: function(event, ui) {
+            open: function(event, ui) { 
                 $('#wishDetails').hide();
                 styleWishDialogButtons();                
                 $(this).scrollTop(0);
@@ -58,6 +58,10 @@ function styleWishDialogButtons()
     {
         wantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-plus"></span>');
         grantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-cart"></span>');
+    }
+    else {
+        wantIt.show();
+        grantIt.show();        
     }
 }
 
