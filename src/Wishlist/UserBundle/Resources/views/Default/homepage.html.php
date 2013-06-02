@@ -44,13 +44,13 @@
 </div>
 
 <div id="itemDialog" title="Wish" >        
-    <label id="name"></label>
-    <label id="price"></label>
-    <label id="link"></label>
-    <div id="wishDetails" style="display:none">
+    Name: <div id="name"></div>
+    Price:<div id="price"></div>
+    Link: <div id="link"></div>
+    <span id="wishDetails" style="display:none">        
     <input type='text' id='notes' placeholder='Notes (Optional)'/>
     <input type='text' id='quantity' placeholder='Quantity (Default = 1)'/>
     <span style='display:inline-block;'>Keep this wish private:</span>
     <input style='width:25%;display:inline-block;' type='checkbox' id='isPrivate' />
-    </div>
+    </span>
 </div>

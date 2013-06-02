@@ -74,7 +74,7 @@ function populateEvent(event)
 }
 
 function setupItemView(data)
-{
+{    
     $('#itemDialog #name').html(data.name);
     $('#itemDialog #price').html(data.price);
     $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">webpage</a>');
