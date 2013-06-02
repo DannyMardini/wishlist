@@ -73,11 +73,6 @@ function delFromWishlist(itemObj, callback)
     $( "#wishlist" ).load('/app_dev.php/wishlistdelete', itemObj, callback);
 }
 
-function fillContainer(element)
-{
-    //$(element).get
-}
-
 // paramsObj {tags: "cat", tagmode: "any", format: "json"}
 function ajaxCall(url, paramsObj, onSuccessMethod)
 {    
