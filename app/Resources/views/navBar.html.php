@@ -18,7 +18,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist', array('
     </head>
     <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
         <?php echo $view['actions']->render('WishlistCoreBundle:Default:navBar'); ?>
-        <ul id="giftNav">
+        <ul id="navigationlist">
             <li><a href="<?php echo $wishlistUrl ?>">Wishlist</a></li>
             <li><a href="<?php echo $shoppinglistUrl ?>">Shoppinglist</a></li>
             <li><a href="<?php echo $eventsUrl ?>">Events</a></li>

@@ -63,20 +63,14 @@ function purchaseItem(itemId, purchaseData, /*string*/ type)
     });
 }
 
-function addToWishlist(itemObj, callback)
-{    
-    $( "#wishlist" ).load('/app_dev.php/wishlistnew', itemObj, callback); 
+function ajaxPageLoad(element, path, itemObj, callback)
+{
+    $(element).load(path, itemObj, callback);
 }
 
 function delFromWishlist(itemObj, callback)
 {
     $( "#wishlist" ).load('/app_dev.php/wishlistdelete', itemObj, callback);
-}
-
-
-function fillContainer(element)
-{
-    //$(element).get
 }
 
 // paramsObj {tags: "cat", tagmode: "any", format: "json"}
@@ -192,3 +186,44 @@ function parseDate(/*string*/ str)
 }
 
 // ** Date Validation Functions ****************************
+
+function confirm (confirmMessage) {
+    var defer = $.Deferred(); 
+    $('<div>' + confirmMessage + '</div>').dialog({
+            height: 300,
+            width: 300,
+            modal: true,
+            autoOpen: true,
+            close: function () { 
+                $(this).dialog('destroy');
+            },
+            title: 'Continue?',
+            buttons: {
+                "Yes": function() {
+                    defer.resolve(1); //on Yes click, end deferred state successfully with 1 value
+                    $( this ).dialog( "close" );
+                },
+                "No": function() {
+                    defer.resolve(0); //on No click end deferred successfully with 0 value
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    return defer.promise(); //important to return the deferred promise
+}
+
+function popupMessage(theTitle, message)
+{    
+    $('<div>' + message + '</div>').dialog({
+             autoOpen: true,
+             close: function () {                  
+                 $(this).dialog('destroy');
+             },
+             title: theTitle,
+             buttons: {
+                 "Ok": function() {                     
+                     $( this ).dialog( "close" );
+                 }
+             }
+         });    
+}

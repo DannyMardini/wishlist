@@ -108,22 +108,6 @@ function finishRetractPurchaseEvent(response, selectedPurchaseDivs){
     }
 }
 
-function popupMessage(theTitle, message)
-{    
-    $('<div>' + message + '</div>').dialog({
-             autoOpen: true,
-             close: function () { 
-                 $(this).dialog('destroy');
-             },
-             title: theTitle,
-             buttons: {
-                 "Ok": function() {
-                     $( this ).dialog( "close" );
-                 }
-             }
-         });    
-}
-
 function updateItemCount()
 {
     var newCount = $('#shoppinglist .shoppinglistitem').length; 
@@ -136,26 +120,4 @@ function updateItemCount()
     $('.shoppinglist-header-label')
         .attr('id', 'shoppinglist_count_' + newCount)
         .text('Shopping List ( ' + newCount + ' )');
-}
-
-function confirm (confirmMessage) {
-    var defer = $.Deferred(); 
-    $('<div>' + confirmMessage + '</div>').dialog({
-            autoOpen: true,
-            close: function () { 
-                $(this).dialog('destroy');
-            },
-            title: 'Continue?',
-            buttons: {
-                "Yes": function() {
-                    defer.resolve(1); //on Yes click, end deferred state successfully with 1 value
-                    $( this ).dialog( "close" );
-                },
-                "No": function() {
-                    defer.resolve(0); //on No click end deferred successfully with 0 value
-                    $( this ).dialog( "close" );
-                }
-            }
-        });
-    return defer.promise(); //important to return the deferred promise
 }

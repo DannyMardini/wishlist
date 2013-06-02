@@ -9,6 +9,10 @@ use \DateTime;
 
 class WishlistController extends Controller
 {
+    // STATUS CODES -- 
+    const SC_NOTMODIFIED = 304;
+    const SC_INTERNALSERVERERROR = 500;
+    
     /**
     * Executes add new wishlist item action
     *
@@ -35,28 +39,33 @@ class WishlistController extends Controller
     public function newWishlistAction()
     {
         $session = $this->getRequest()->getSession(); 
-       
         $name = urldecode($this->getRequest()->get('name'));
         $price = $this->getRequest()->get('price');
         $link = $this->getRequest()->get('link');
         $quantity = $this->getRequest()->get('quantity');
         $comment = $this->getRequest()->get('comment');
         $isPrivate = ($this->getRequest()->get('isprivate') == "checked");
-        
         $loggedInUserId = $session->get('user_id');
-        $loggedInUserEmail = $session->get('email_addr');
-        
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
                 
         if( !isset ($name) || ($name == "") 
-                || !isset ($price) || ($price == "") 
-                || !isset ($link) || ($link == ""))
+          || !isset ($price) || ($price == "") 
+          || !isset ($link) || ($link == ""))
         {
-            return;
+            // The item was not fully defined.            
+            return new Response("", WishlistController::SC_INTERNALSERVERERROR);
         }
-
-        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');        
-        $itemRepo->addItem($name, $price, $link, $isPrivate, $comment, $quantity, $user);          
+        
+        $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+        $added = $wishRepo->makeWish($name, $price, $link, $isPrivate, $comment, $quantity, $user);
+        
+        if(!$added){   
+            // The item was not added because it already exists    
+            $response  = new Response();
+            $response->setContent($this->showWishlistAction($user));
+            $response->setStatusCode(WishlistController::SC_NOTMODIFIED);
+            return $response;
+        }
         
         return $this->showWishlistAction($user);
     }

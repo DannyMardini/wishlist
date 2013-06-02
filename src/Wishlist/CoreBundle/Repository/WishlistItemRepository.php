@@ -21,6 +21,14 @@ class WishlistItemRepository extends EntityRepository
         $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Item');
         $newItem = $itemRepo->addItem($name, $price, $link, $isPublic, $comment, $quantity, $wishlistUser);
         
+        // check if this user already has this item as a wish
+        $isWish = $this->checkUserWishlist($newItem, $wishlistUser);
+        
+        if(isset($isWish))
+        {
+            return false; // item is already a wish
+        }
+        
         // associating the user to an item
         $newWish = new WishlistItem();
         $newWish->setItem($newItem);
@@ -34,6 +42,7 @@ class WishlistItemRepository extends EntityRepository
         
         $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
         $updateRepo->addNewItem($wishlistUser, $newItem); 
+        return true;
     }
     
     public function checkUserWishlist($item, $user)
@@ -41,11 +50,10 @@ class WishlistItemRepository extends EntityRepository
        $em = $this->getEntityManager();       
         
         $q = $em->createQuery('
-            SELECT i
-            FROM WishlistCoreBundle:Item i
-            LEFT JOIN WishlistCoreBundle:Item usr
-            WHERE i.name = :itemName AND usr.wishlistuser_id = :userId')
-                ->setParameters(array('itemName' => $item->getName(), 'userId' => $user->getWishlistuserId()));
+            SELECT i 
+            FROM WishlistCoreBundle:WishlistItem i 
+            WHERE i.item = :itemId and i.wishlistUser = :userId')
+                ->setParameters(array('itemId' => $item->getId(), 'userId' => $user->getWishlistuserId()));
                       
         $itemInDatabase = $q->getOneOrNullResult();  
         return $itemInDatabase;

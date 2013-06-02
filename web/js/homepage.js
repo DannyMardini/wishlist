@@ -3,30 +3,17 @@
  * and open the template in the editor.
  */
 
-// buttons used for the dialog
-// TODO: What does this do?? Do we even use this?
-var addToWishlistButton =  {
-            priority: 'primary',           
-            id: 'addToWishlistButton',
-            label: 'add to my wishlist',
-            click: function() {
-                   addToWishlist({newWishName: $('#itemDialog #name').html(), 
-                       newWishPrice: $('#itemDialog #price').html(), 
-                       newWishLink: $('#itemDialog #link').html()}, 
-                       onCompleteAddToWishlistEvent);
-            }
-        };
-
-var itemDialogButtons = [ addToWishlistButton ];
-    
-
-
 $(document).ready(function(){
     
     $.ajaxSetup ({  
         cache: false  
     });
     
+    initDialogs();
+    initWishlist();
+});
+
+function initDialogs(){
     // init item dialog
     $( "#itemDialog" ).dialog({
             autoOpen: false,
@@ -35,19 +22,48 @@ $(document).ready(function(){
             height:300,
             width:500,
             modal: true,
-            buttons: itemDialogButtons,
-            open: function(event, ui) {
+            buttons: {
+                    "Want This": function() {
+                        onWantItClickEvent();
+                    },
+                    "Grant Wish": function() {
+                      /* Do stuff*/  
+                      alert('TO DO');
+                      $(this).dialog('close');
+                    },
+                    "Add Wish": function() {
+                        continueAddingItemToWishlist();
+                        $(this).dialog('close');
+                    }
+            },
+            open: function(event, ui) { 
+                $('#wishDetails').hide();
+                styleWishDialogButtons();                
                 $(this).scrollTop(0);
             }
-    });   
-    
-    $('#addToWishlistButton').removeClass('ui-button-text-only');
-    $('#addToWishlistButton :first-child').removeClass('ui-button-text');
-    $('#addToWishlistButton :first-child').addClass('ui-icon ui-icon-cart');
-    $('#addToWishlistButton').addClass('itemDialogButton');
-    
-    initGiftBox();
-});
+    });      
+}
+
+function styleWishDialogButtons()
+{
+    var buttons = $('.ui-dialog-buttonpane'),
+        wantIt = buttons.find('button:contains("Want This")'),
+        grantIt = buttons.find('button:contains("Grant Wish")'),
+        addWish = buttons.find('button:contains("Add Wish")'),
+        iconNotDefined = !wantIt.find(":first-child").hasClass('ui-icon-plus');
+
+    addWish.hide();
+
+    if(iconNotDefined)
+    {
+        wantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-plus"></span>');
+        grantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-cart"></span>');
+    }
+    else {
+        wantIt.show();
+        grantIt.show();        
+    }
+}
 
 function populateEvent(event)
 {
@@ -61,21 +77,11 @@ function populateEvent(event)
     }
 }
 
-function onCompleteAddToWishlistEvent(e)
-{
-    setupWishlist();
-
-    if(e.match('newWishBox') != null)
-        alert('Item has been added to your list!');
-    else
-        alert('This item is already on your list.');
-}
-
 function setupItemView(data)
-{
+{    
     $('#itemDialog #name').html(data.name);
     $('#itemDialog #price').html(data.price);
-    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">'+data.link+'</a>');
+    $('#itemDialog #link').html('<a target="_blank" href="http://'+data.link+'">webpage</a>');
     $('#itemDialog').dialog('open');         
 }
 
@@ -93,14 +99,14 @@ function goToUserPage(userId)
     window.location = loc;
 }
 
-function initGiftBox()
+function initWishlist()
 {
-    var giftNav = $('#giftNav');
-    var giftWindow = $('#giftContent');
-    var giftBox = $('#giftBox');
+    var navigationlist = $('#navigationlist');
+    var wishlistContent = $('#wishlistContent');
+    var wishlistBox = $('#wishlistBox');
     
     console.log('Window: '+$(window).height());
-    giftWindow.height(giftBox.height()-giftNav.height());
+    wishlistContent.height(wishlistBox.height()-navigationlist.height());
 }
 
 function fillPic(item)
@@ -115,7 +121,6 @@ function fillGoogleImage(query, picContainer)
 {
     var mykey = "AIzaSyBHtgh3ihz8AHCBw0LkEi_Snl96elJCSpA";
     var cx = "015228749791243702187:ctequifxi_s";
-//    var query = "Metal+Gear+Solid";
     var hndlr = "googleQryHndlr";
     var url = "https://www.googleapis.com/customsearch/v1?key="+mykey+"&cx="+cx+"&q="+query+"&searchType=image&num=1";
     

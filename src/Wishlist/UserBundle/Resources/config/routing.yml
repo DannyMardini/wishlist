@@ -33,22 +33,6 @@ WishlistUserBundle_save_account_settings:
 WishlistUserBundle_lifeEventsManager:
   pattern: /LifeEventsManager
   defaults: { _controller: WishlistUserBundle:Default:showLifeEventsManager }
-  
-WishlistUserBundle_giftboxWishlist:
-  pattern: /GiftboxWishlist
-  defaults: { _controller: WishlistUserBundle:Giftbox:wishlist }
-  
-WishlistUserBundle_giftboxShoppinglist:
-  pattern: /GiftboxShoppinglist
-  defaults: { _controller: WishlistUserBundle:Giftbox:shoppinglist }
-  
-WishlistUserBundle_giftboxEvents:
-  pattern: /GiftboxEvents
-  defaults: { _controller: WishlistUserBundle:Giftbox:events }
-  
-WishlistUserBundle_giftboxFriends:
-  pattern: /GiftboxFriends
-  defaults: { _controller: WishlistUserBundle:Giftbox:friends }
 
 WishlistUserBundle_saveEvent:
   pattern: /SaveEvent
