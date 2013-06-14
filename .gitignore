@@ -1,8 +1,11 @@
 .DS_Store
 php_errors.log
 nbproject/private/
-app/cache/
-app/logs/
-vendor/
 nbproject/configs/
 *~
+/web/bundles/
+/app/bootstrap*
+/app/cache/*
+/app/logs/*
+/vendor/
+/app/config/parameters.ini
