@@ -341,4 +341,36 @@ class WishlistUser {
     {
         return $this->name;
     }
+
+    /**
+     * Get first name
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        $explodedName = explode(' ', $this->name);
+        if(count($explodedName) > 0)
+        {
+            return $explodedName[0];
+        }
+        
+        return "";
+    }
+
+    /**
+     * Get last name
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        $explodedName = explode(' ', $this->name);
+        if(count($explodedName) > 1)
+        {
+            return $explodedName[1];
+        }
+        
+        return "";
+    }
 }
