@@ -21,7 +21,7 @@
             <li style="padding-right:5px;">
                 <div class="buttonClass">
                     <img class="tinyProfile" src="<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>"/>    
-                    <span id="homepageLink" class="ui-MenuLink"><?php echo $user->getFirstName() ?></span>
+                    <span id="homepageLink" class="ui-MenuLink"><?php echo $user->getName() ?></span>
                 </div>
             </li><li>
                 <div class="buttonClass ui-MenuLink" id="eventManagerLink">

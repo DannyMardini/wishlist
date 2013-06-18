@@ -8,7 +8,7 @@
 <link href="/css/wishlist.css" rel="stylesheet" type="text/css" />
 <link href="/css/formStyling.css" rel="stylesheet" type="text/css" />
   
-<input id="username" type="hidden" value="<?php echo $user->getFirstname() ?>"/>
+<input id="username" type="hidden" value="<?php echo $user->getName() ?>"/>
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
 
 <div id="updatesComponent">
@@ -21,7 +21,7 @@
                   $message = $update->getMessage();
                   $user = $update->getWishlistUser();
                   $name = "<a href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $user->getWishlistuserId())).
-                          "' >".$user->getFirstname()." ".$user->getLastname()."</a>";
+                          "' >".$user->getName()."</a>";
                   $timestamp = " -- ".$update->getFormattedTimestamp();
 
             ?>

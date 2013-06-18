@@ -1,41 +1,94 @@
-function updateFriendList(friends)
+var searchTimeout = 0.5; //timeout for search box in seconds.
+var timer = 0;
+
+function searchFriends()
 {
-    var friendlist = $('#friendlist ul');
+    var searchTerm = $('#friendSearch').val();
     
-    //Empty out the friendlist
+    //make the ajax call to search for friends.
+    $.ajax({
+        type: 'POST',
+        url: '/app_dev.php/FriendSearch',
+        data: {searchTerm: searchTerm},
+        success: function(data, textStatus, jqXHR) {
+            updateFriendList(jQuery.parseJSON(data));
+        }
+    });   
+}
+
+function timerEnd()
+{
+    window.clearTimeout(timer);
+}
+
+function timerRestart()
+{
+    timerEnd();
+    timer = window.setTimeout(searchFriends, searchTimeout*1000);
+}
+
+function updateFriendList(results)
+{
+    var friends = results.friends;
+    var persons = results.persons;
+    var friendlist = $('#friendlist');
+    
+    //Empty out the whole friendlist
     friendlist.empty();
 
-    //Fill in the new friendlist with new friends 
-    for( var i = 0; i < friends.length; i++)
-    {
-        //friendlist.append("<li>" + friends[i].firstName + " "+ friends[i].lastName + "</li>");
-        friendlist.append("<li><img class='friendIcon' src='" + friends[i].profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_userpage', {user_id: friends[i].wishlistuser_id}) +"'>" + friends[i].firstName + " " + friends[i].lastName +"</a></li>");
+    if( friends.length >= 1 ) {
+        var friendRowArray = [];
+        friendlist.append('<div id="friendSeparator" class="listSeparator">My Friends</div><div id="div_friendlist_div"><ul></ul></div>');
+        
+        friends.forEach(function(friend) {
+            friendRowArray.push("<li><div class='userButton'><img class='friendIcon' src='" + friend.profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_userpage', {user_id: friend.wishlistuser_id}) +"'>" + friend.name +"</a></div></li>");
+        });
+        
+        $('#div_friendlist_div ul').append(friendRowArray.join(""));
+    }
+    
+    if( persons.length >= 1) {
+        var personRowArray = [];
+        friendlist.append('<div id="peopleSeparator" class="listSeparator">People</div><div id="div_personlist_div"><ul></ul></div>');
+        
+        persons.forEach(function(person) {
+            personRowArray.push("<li><input class='userId' type='hidden' value='"+ person.wishlistuser_id + "' /><div class='addFriendButtonDiv'><button class='addFriendButton'>Add Friend</button></div><div class='userButton'><img class='friendIcon' src='" + person.profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_userpage', {user_id: person.wishlistuser_id}) +"'>" + person.name + "</a></div></li>");
+        });
+        
+        $('#div_personlist_div ul').append(personRowArray.join(""));
+        $('.addFriendButton').button({
+            icons: {
+                primary: "ui-icon-plusthick"
+            }
+        }).click(function(e){
+            var userRow = $(this).parents("li");
+            var personId = userRow.children("input.userId").val();
+            ajaxCall('/app_dev.php/FriendAdd', {personId: personId});
+        });
     }
     
     //Finally make all of the newly created search results into button links.
     createButtonLinks();
 }
 
-function filterFriends(e)
+function keyTrigger(e)
 {
-    var filterTerm = $('#friendSearch').val();
-
-    if( e.keyCode == 13 )
+    if( (e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode == 8 )
     {
-        $.ajax({
-            type: 'POST',
-            url: '/app_dev.php/FriendSearch',
-            data: { searchTerm: filterTerm },
-            success: function(data, textStatus, jqXHR) {
-                updateFriendList(jQuery.parseJSON(data));
-            }
-        });
+        //if it was a normal character just restart the timer for the search.
+        timerRestart();
+    }
+    else if( e.keyCode == 13 )
+    {
+        //If enter was pressed cancel the timer and search for friends.
+        timerEnd();
+        searchFriends();
     }
 }
 
 function createButtonLinks()
 {
-    $('#friendlist ul li').click(function(){
+    $('.userButton').click(function(){
        window.location = $(this).find("a").attr("href");
     });    
 }
@@ -44,5 +97,5 @@ $(document).ready(function(){
     
     createButtonLinks();
     
-    $('#friendSearch').keyup(filterFriends);
+    $('#friendSearch').keyup(keyTrigger);
 });

@@ -42,7 +42,7 @@ class WishlistUpdateRepository extends EntityRepository
             $gender_attribute = "her";
         }
 
-        $message = $user->getFirstname().
+        $message = $user->getName().
                 " added <a href='#' onclick='openDialog(".
                 $item->getId().
                 ")'>".

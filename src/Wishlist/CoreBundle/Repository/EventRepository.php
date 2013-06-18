@@ -83,8 +83,7 @@ class EventRepository extends EntityRepository
         $rsm->addFieldResult('e', 'eventDate', 'eventDate');
         $rsm->addJoinedEntityResult('Wishlist\CoreBundle\Entity\WishlistUser' , 'u', 'e', 'wishlistUser');
         $rsm->addFieldResult('u', 'wishlistuser_id', 'wishlistuser_id');
-        $rsm->addFieldResult('u', 'firstname', 'firstname');
-        $rsm->addFieldResult('u', 'lastname', 'lastname');
+        $rsm->addFieldResult('u', 'name', 'name');
         $rsm->addFieldResult('u', 'birthdate', 'birthdate');
         $rsm->addFieldResult('u', 'email', 'email');
         $rsm->addFieldResult('u', 'password', 'password');

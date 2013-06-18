@@ -31,10 +31,12 @@ class LoadFriendshipData implements FixtureInterface,OrderedFixtureInterface{
         $andrea = $users->getUser('Andrea Coba');
         $steve = $users->getUser('Steven Lac');
         $jorge = $users->getUser('Jorge Thatcher');
+        $rima = $users->getUser('Rima Mardini');
         
         $friendships->addNewFriendship($danny, $andrea);
         $friendships->addNewFriendship($danny, $steve);
         $friendships->addNewFriendship($danny, $jorge);
+        $friendships->addNewFriendship($danny, $rima);
         
         $manager->flush();
     }

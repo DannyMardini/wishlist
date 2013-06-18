@@ -75,9 +75,11 @@ function delFromWishlist(itemObj, callback)
 
 // paramsObj {tags: "cat", tagmode: "any", format: "json"}
 function ajaxCall(url, paramsObj, onSuccessMethod)
-{    
+{
     $.post(url, paramsObj, function(data) {
-        onSuccessMethod(data);
+        if(onSuccessMethod) {
+            onSuccessMethod(data);
+        }
     });
 }
 

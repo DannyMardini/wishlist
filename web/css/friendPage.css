@@ -12,15 +12,15 @@
     margin-bottom: 5px;
 }
 
+#friendlist li:hover {
+    background-color: #efefef;
+    cursor: hand;
+}
+
 #friendlist li a {
     text-decoration: none;
     color: black;
     font-size: 20px;
-}
-
-#friendlist li:hover {
-    background-color: #efefef;
-    cursor: hand;
 }
 
 img.friendIcon {
@@ -49,4 +49,16 @@ img.friendIcon {
 
 .listSeparator {
     background-color: #cccccc;
+}
+
+.userButton {
+    display: inline-block;
+    width: 70%;
+}
+
+.addFriendButtonDiv {
+    float: right;
+    font-size: 0.904em;
+    margin-top: 10px;
+    width: 30%;
 }

@@ -5,6 +5,7 @@ namespace Wishlist\CoreBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
 use Wishlist\CoreBundle\Entity\WishlistUser;
+use Doctrine\ORM\Query\ResultSetMapping;
 use \DateTime;
 
 /**
@@ -17,11 +18,7 @@ class WishlistUserRepository extends EntityRepository
 {
     public function getUser($fullname)
     {
-        $name = explode(" ", $fullname);
-        $first = $name[0];
-        $last = $name[1];
-        
-        return $this->findOneBy(array('firstname' => $first, 'lastname' => $last));
+        return $this->findOneBy(array('name' => $fullname));
     }
     
     public function addUser(WishlistUser $user)
@@ -37,15 +34,14 @@ class WishlistUserRepository extends EntityRepository
         $em->flush();
     }
     
-    public function addNewUser($firstname, $lastname, DateTime $birthdate, $email, $gender, $password)
+    public function addNewUser($name, DateTime $birthdate, $email, $gender, $password)
     {
         $user = new WishlistUser();
         
         $user->setBirthdate($birthdate);
         $user->setEmail($email);
         $user->setGender($gender);
-        $user->setFirstname($firstname);
-        $user->setLastname($lastname);
+        $user->setName($name);
         $user->setPassword($password);
         
         $this->addUser($user);        
@@ -110,5 +106,36 @@ class WishlistUserRepository extends EntityRepository
         }
         
         return $friends;
+    }
+    
+    //This function returns people who aren't this users friend using this search term.
+    public function searchPersons(WishlistUser $user, /*string*/ $searchTerm)
+    {
+        if( strlen($searchTerm) == 0 )
+        {
+            return array();
+        }
+        
+        $explodedSearchTerm = explode(' ', $searchTerm);
+        
+        $rsm = new ResultSetMapping();
+        
+        $rsm->addEntityResult('Wishlist\CoreBundle\Entity\WishlistUser', 'u');
+        $rsm->addFieldResult('u', 'wishlistuser_id', 'wishlistuser_id');
+        $rsm->addFieldResult('u', 'name', 'name');
+
+        $sql = "SELECT u.wishlistuser_id, u.name FROM WishlistUser u WHERE (";
+        foreach($explodedSearchTerm as $term)
+        {
+            $sql .= " (u.name LIKE '".$term."%' OR u.name LIKE '% ".$term."%') AND";
+        }
+        $sql = rtrim($sql, "AND");
+        
+        $sql .= ") AND u.wishlistuser_id not in ( select f.friend_id from friendship f where f.user_id = ".$user->getWishlistuserId().") and u.wishlistuser_id != ".$user->getWishlistuserId();
+        
+        $q = $this->getEntityManager()->createNativeQuery($sql, $rsm);
+        
+        $results = $q->getResult();
+        return $results;
     }
 }

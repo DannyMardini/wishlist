@@ -20,6 +20,7 @@ class LoadWishlistItemData implements FixtureInterface,OrderedFixtureInterface
         $andrea = $userRepo->getUser('Andrea Coba');
         $jorge = $userRepo->getUser('Jorge Thatcher');
         $steve = $userRepo->getUser('Steven Lac');
+        $rima = $userRepo->getUser('Rima Mardini');
         
         $itemRepo->makeWish('purse', 50000, 'www.purse.com', true, 'Bug. this is a purse.', 1, $andrea);
         $itemRepo->makeWish('Bouncy ball', 1000, 'www.bounce.com', true, 'It bounces!', 1, $andrea);
@@ -33,6 +34,9 @@ class LoadWishlistItemData implements FixtureInterface,OrderedFixtureInterface
         
         $itemRepo->makeWish('Lineage II', 5000, 'www.lineage2.com', true, 'Grindin\' till we dyin\'', 1, $jorge);
         $itemRepo->makeWish('Metal Gear Solid Peace Walker', 50000, 'www.mgs.com', true, 'HOOHAW EMOTION', 1, $steve);
+        
+        $itemRepo->makeWish('necklace', 50000, 'www.necklace.com', true, 'Bug. this is a necklace.', 1, $rima);
+        $itemRepo->makeWish('ring', 50000, 'www.ring.com', true, 'Bug. this is a ring.', 1, $rima);
     }
     
     public function getOrder()

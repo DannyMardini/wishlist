@@ -24,7 +24,7 @@ $selfWishlist = ($wishlist_user->getWishlistUserId() == $loggedInUserId)? true:f
 
 <div id="div_right_panel">
 <?php
-    echo "<h1>".$wishlist_user->getFirstname()." ".$wishlist_user->getLastname()."</h1>";
+    echo "<h1>".$wishlist_user->getName()."</h1>";
     echo $view['actions']->render('WishlistListBundle:Wishlist:showWishlist', array('user' => $wishlist_user));
 ?>
 </div>

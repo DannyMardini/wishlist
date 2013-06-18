@@ -17,6 +17,10 @@ WishlistUserBundle_friendlist:
 WishlistUserBundle_friendSearch:
   pattern: /FriendSearch
   defaults: { _controller: WishlistUserBundle:Default:friendSearch }
+  
+WishlistUserBundle_friendAdd:
+  pattern: /FriendAdd
+  defaults: { _controller: WishlistUserBundle:Default:friendAdd }
 
 WishlistUserBundle_accountsettings:
   pattern: /AccountSettings

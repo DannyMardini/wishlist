@@ -36,19 +36,52 @@ class FriendshipRepository extends EntityRepository
     {
         $userRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
         $friends = $userRepo->getFriendsOf($user);
-        
         $results = array();
+        
+        if( strlen($searchTerm) == 0 )
+        {
+            //return all friends if search term doesn't even contain one term.
+            return $friends;
+        }
+        
+        $explodedSearchTerm = explode(" ", $searchTerm);
         
         foreach ($friends as $friend)
         {
-            $fullname = $friend->getFirstName()." ".$friend->getLastName();
-
-            if( strncmp(strtoupper($fullname), strtoupper($searchTerm), strlen($searchTerm)) == 0 )
+            
+            if( $this->friendNameMatches($friend, $explodedSearchTerm))
             {
                 $results[] = $friend;
             }
+                        
+            //Don't return friend as search term didn't match first name.
         }
         
         return $results;
+    }
+    
+    private function friendNameMatches($friend, $searchTermArray)
+    {
+        $nameArray = explode(" ", strtoupper($friend->getName()));
+        
+        foreach($searchTermArray as $searchTerm)
+        {
+            $termFound = false;
+            foreach($nameArray as $name)
+            {
+                if(strncmp($name, strtoupper($searchTerm), strlen($searchTerm)) == 0)
+                {
+                    $termFound = true;
+                    break;
+                }
+            }
+            
+            if($termFound == false)
+            {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }

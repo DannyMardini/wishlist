@@ -82,7 +82,7 @@ class DefaultController extends Controller
             $e->getTrace();
         }
         
-        $username = $wishlist_user->getFirstname()." ".$wishlist_user->getLastname();
+        $username = $wishlist_user->getName();
         
         return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $friends, 'username' => $username));
     }
@@ -101,8 +101,11 @@ class DefaultController extends Controller
         //Search the repository for the search term.
         $friends = $friendshipRepo->searchFriends($user, $searchTerm);
         
+        //Search the user repos for some new friends.
+        $persons = $userRepo->searchPersons($user, $searchTerm);
+        
         //Transform friends into json
-        $results = "[";
+        $results = "{\"friends\":[";
         
         foreach ($friends as $friend)
         {
@@ -111,11 +114,54 @@ class DefaultController extends Controller
         }
         
         $results = rtrim($results, ",");
-        $results .="]";
+        
+        //Search for persons in the user database. If you were wanting to search
+        //for and add your friends this is how you would do it.
+        $results .= "],\"persons\":[";
+        
+        foreach ($persons as $person)
+        {
+            //TODO: Remove this check once I have replaced the sql query string.
+            if(!WishlistUser::areFriends($user, $person))
+            {
+                $results .= $person->toJSON().",";
+            }
+        }
+        
+        $results = rtrim($results, ",");
+        $results .="]}";
         
         //Return results.
         
         return new Response($results);
+    }
+    
+    public function friendAddAction()
+    {
+        $request = $this->getRequest();
+        $session = $request->getSession();
+        $loggedInUserId = $session->get('user_id');
+        $friendRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
+        $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+
+        $newFriendId = $request->get('personId');
+        
+        if(is_numeric($newFriendId))
+        {
+            $newFriendId = intval($newFriendId);
+        }
+        else
+        {
+            throw new \Exception('New friend ID not numeric');
+        }
+        
+        if(isset($newFriendId) && isset($loggedInUserId))
+        {
+            $friendRepo->addNewFriendship($userRepo->getUserWithId($loggedInUserId), $userRepo->getUserWithId($newFriendId));
+        }
+        
+        
+        return new Response();
     }
     
     public function showUserpageAction(/*int*/ $user_id)
@@ -166,14 +212,13 @@ class DefaultController extends Controller
                 $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');        
                 $user = $userRepo->getUserWithId($loggedInUserId);
                 $originalPassword = $user->getPassword();
-                $firstName = $user->getFirstName();
-                $lastName = $user->getLastName();
+                $name = $user->getName();
                 $email = $user->getEmail();
                 $gender = $user->getGender();
                 $profileImage = "<img id='user_image' src='" . PicService::getProfileUrl($loggedInUserId) . "'  class='preview'>";
                 
-                return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId, 'firstName' => $firstName, 
-                    'lastName' => $lastName, 'email' => $email, 'originalPassword' => $originalPassword,
+                return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId, 'name' => $name,
+                    'email' => $email, 'originalPassword' => $originalPassword,
                     'gender' => $gender, 'profileImage' => $profileImage));
             }
             

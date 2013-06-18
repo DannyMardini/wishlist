@@ -50,7 +50,7 @@ window.onbeforeunload = promptConfirmation;
         $('#saveChanges').click(function(){
             var url = $('#accountSettingsForm').attr('action');
             
-            $.post( url, {fullname: $('#full_name').val() , email: $("#email_addr").val(), 
+            $.post( url, {fullname: $('#fullname').val() , email: $("#email_addr").val(), 
                 old_password: $("#old_password").val(), new_password: $('#new_password1').val()},
                 function(response){
                     $dataArray = response.split(":"); 
@@ -80,8 +80,7 @@ window.onbeforeunload = promptConfirmation;
                
         var gender = $('#orig_gender').val();
         $('#gender_'+gender).attr('checked',true);
-        $('#firstName').val($('#orig_firstName').val());
-        $('#lastName').val($('#orig_lastName').val());
+        $('#fullname').val($('#orig_name').val());
         $('#email').val($('#orig_email').val());
         
         $( "#newDatepicker" ).datepicker({

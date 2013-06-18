@@ -12,20 +12,14 @@
     </head>
     <body>
         <input type="hidden" id="orig_gender" value="<?php echo $gender ?>" />
-        <input type="hidden" id="orig_firstName" value="<?php echo $firstName ?>" />
-        <input type="hidden" id="orig_lastName" value="<?php echo $lastName ?>" />
+        <input type="hidden" id="orig_name" value="<?php echo $name ?>" />
         <input type="hidden" id="orig_email" value="<?php echo $email ?>" />
         
         <form id="accountSettingsForm" action="/app_dev.php/SaveAccountSettings">
 
-        <label>First Name:</label>
+        <label>Name:</label>
         <div class="right_content">
-        <input type="text" class="trackChanges" id="firstName" name="firstName" placeholder="Jane" required>
-        </div>
-        
-        <label>Last Name:</label>
-        <div class="right_content">
-        <input type="text" class="trackChanges" id="lastName" name="lastName" placeholder="Doe" required>        
+        <input type="text" class="trackChanges" id="fullname" name="name" placeholder="Jane" required>
         </div>
         
         <label>Email:</label>

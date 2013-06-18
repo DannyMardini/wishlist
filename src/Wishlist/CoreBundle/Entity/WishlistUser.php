@@ -16,8 +16,6 @@ namespace Wishlist\CoreBundle\Entity;
 use Wishlist\CoreBundle\Services\PicService;
 
 class WishlistUser {
-    protected $firstname;
-    protected $lastname;
     protected $gender = 1;
     protected $birthdate;
     protected $email;
@@ -36,46 +34,6 @@ class WishlistUser {
     public function getWishlistuserId()
     {
         return $this->wishlistuser_id;
-    }
-
-    /**
-     * Set firstname
-     *
-     * @param string $firstname
-     */
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
-    }
-
-    /**
-     * Get firstname
-     *
-     * @return string 
-     */
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    /**
-     * Set lastname
-     *
-     * @param string $lastname
-     */
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
-    }
-
-    /**
-     * Get lastname
-     *
-     * @return string 
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
     }
 
     /**
@@ -304,7 +262,6 @@ class WishlistUser {
     }
 
     /**
-<<<<<<< HEAD
      * Add wishlistItems
      *
      * @param Wishlist\CoreBundle\Entity\Item $wishlistItems
@@ -343,14 +300,45 @@ class WishlistUser {
     {
         $this->purchases[] = $purchases;
     }
-    
+
+    /**
+     * toJSON
+     * 
+     * Turns object into JSON format. It is required to create an array out of 
+     * protected members because json_encode will not encode protected and private
+     * class members on it's own.
+     */    
     public function toJSON()
     {
         $exportvars = array('wishlistuser_id' => $this->wishlistuser_id,
-                            'firstName' => $this->firstname,
-                            'lastName' => $this->lastname,
+                            'name' => $this->name,
                             'profileUrl' => $this->getProfileUrl());
         
         return json_encode($exportvars);
+    }
+    /**
+     * @var string $name
+     */
+    private $name;
+
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

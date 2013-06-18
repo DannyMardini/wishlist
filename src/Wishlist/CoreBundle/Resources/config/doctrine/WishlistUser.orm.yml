@@ -31,9 +31,7 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       id: true
       type: integer
       generator: { strategy: AUTO }    
-    firstname:
-      type: string
-    lastname:
+    name:
       type: string
     birthdate:
       type: datetime
