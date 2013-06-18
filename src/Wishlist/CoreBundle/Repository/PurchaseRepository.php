@@ -63,7 +63,7 @@ class PurchaseRepository extends EntityRepository
         
         // if user is purchasing for themselves, remove the existing purchase promise
         if(isset($selfPurchaseItem) && isset($purchasePromised))
-        {
+        {            
             $this->deletePurchase($purchasePromised, PurchaseEventTypes::RemovedFromWishlist);
         }
         
@@ -134,7 +134,7 @@ class PurchaseRepository extends EntityRepository
     public function deletePurchase($purchase, $event_type)
     {
         if(!isset($event_type) || !isset($purchase)){
-            throw new \Exception("An invalid purchase and/or event was passed in. Contact the Wishlist Admins for assistance.");
+            return false; // on_error
         }
         
         $em = $this->getEntityManager();
@@ -142,6 +142,8 @@ class PurchaseRepository extends EntityRepository
         $em->flush();
 
         $this->purchaseEventNotification($event_type);
+        
+        return true; // on_success
     }
 
     // TO DO: send notification to user. Explaining why the item was removed from 
