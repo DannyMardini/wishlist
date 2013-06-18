@@ -100,8 +100,10 @@ class WishlistItemRepository extends EntityRepository
         }
         
         // search for and remove the promised purchase of this wish (if it exists)
-        $purchaseRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Purchase');        
-        $purchaseRepo->deletePurchase($wishToDelete->getPurchase(), PurchaseEventTypes::RemovedFromWishlist);
+        $purchaseRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Purchase');   
+        $thisPurchase = $wishToDelete->getPurchase();
+        $thisEventType = \Wishlist\CoreBundle\Entity\PurchaseEventTypes::RemovedFromWishlist;
+        $purchaseRepo->deletePurchase($thisPurchase, $thisEventType);
         
         $em->remove($wishToDelete);
         $em->flush();

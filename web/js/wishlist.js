@@ -130,12 +130,16 @@ function setupWishlist()
     })
 
     $("h3 .ui-icon-close").click(function(){
-        if(confirm("Are you sure you want to delete this wish?"))
-        {
-            $(wishlist_div).accordion( "option", "disabled", true);
-            var itemObj = {name: escape($(this).next().text())};
-            delFromWishlist(itemObj, setupWishlist);
-        }        
+        var itemToDelete = escape($(this).next().text());
+        confirm("Are you sure you want to delete this wish?")
+        .then(function (answer) {
+            if(answer == 1)
+            {
+                $(wishlist_div).accordion( "option", "disabled", true);
+                var itemObj = {name: itemToDelete};
+                delFromWishlist(itemObj, setupWishlist);
+            }
+        });        
     });
     
     $('.purchaseBtn').on('click', clickedItem);
