@@ -26,10 +26,8 @@ function initDialogs(){
                     "Want This": function() {
                         onWantItClickEvent();
                     },
-                    "Grant Wish": function() {
-                      /* Do stuff*/  
-                      alert('TO DO');
-                      $(this).dialog('close');
+                    "Grant Wish": function() {                                            
+                        onGrantItClickEvent();                     
                     },
                     "Add Wish": function() {
                         continueAddingItemToWishlist();

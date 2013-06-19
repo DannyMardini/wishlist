@@ -310,6 +310,18 @@ $(document).ready(function(){
     setupEvents();
 });
 
+function onGrantItClickEvent() {
+    // Ask them to confirm first
+    confirm('Are you sure you want to add this item to your shopping list?')
+    .then(function(answer){
+        if(answer == 1)
+        {
+            // to do
+            alert("to do");
+        }
+    })
+}
+
 function onWantItClickEvent() {
     var buttonPane = $('.ui-dialog-buttonpane');
     
