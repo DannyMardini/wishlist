@@ -27,6 +27,20 @@ function timerRestart()
     timer = window.setTimeout(searchFriends, searchTimeout*1000);
 }
 
+function promoteToFriend(response, row)
+{
+    console.log('Promoting friend!');
+    //var friendButtonDiv = $(row).detach('.addFriendButtonDiv'); Why doesn't this work?
+    //var friendButtonDiv = $('.addFriendButtonDiv',row).detach();
+    var friendButtonDiv = $(row).children().detach('.addFriendButtonDiv');
+}
+
+function addFriend(personId)
+{
+    var row = $("input.userId[value|='"+ personId + "']").parent();
+    ajaxPost({personId: personId}, '/app_dev.php/FriendAdd', promoteToFriend, row);
+}
+
 function updateFriendList(results)
 {
     var friends = results.friends;
@@ -61,9 +75,10 @@ function updateFriendList(results)
                 primary: "ui-icon-plusthick"
             }
         }).click(function(e){
+            addFriend(personId);
             var userRow = $(this).parents("li");
             var personId = userRow.children("input.userId").val();
-            ajaxCall('/app_dev.php/FriendAdd', {personId: personId});
+            addFriend(personId);
         });
     }
     

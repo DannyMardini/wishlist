@@ -40,9 +40,8 @@ function ajaxPost(data, url, onSuccessCallback, callBackParams)
         url: url,
         data: data,
         success: function(response) { 
-            if(onSuccessCallback)
-            {
-                onSuccessCallback.call(null, response, callBackParams);
+            if(onSuccessCallback) {
+                onSuccessCallback(response, callBackParams);
             }
         }
     });    
