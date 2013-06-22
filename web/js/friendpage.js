@@ -29,10 +29,12 @@ function timerRestart()
 
 function promoteToFriend(response, row)
 {
-    console.log('Promoting friend!');
-    //var friendButtonDiv = $(row).detach('.addFriendButtonDiv'); Why doesn't this work?
-    //var friendButtonDiv = $('.addFriendButtonDiv',row).detach();
-    var friendButtonDiv = $(row).children().detach('.addFriendButtonDiv');
+    console.log('Promoting friend!');    
+    $('.addFriendButtonDiv',row).fadeOut(400, function(){
+        $(this).detach('.addFriendButtonDiv');
+        $(row).detach();
+        $('#div_friendlist_div ul').append(row);
+    });
 }
 
 function addFriend(personId)
