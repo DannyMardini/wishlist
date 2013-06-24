@@ -6,7 +6,6 @@
 
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/friendpage.js"></script>
-<link href='/css/friendPage.css' rel='stylesheet' type="text/css" />
 
 <div id="friendsContainer">
     <input id="friendSearch" type="text" placeholder="Find People..."/>

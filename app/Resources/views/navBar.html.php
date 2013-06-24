@@ -12,9 +12,15 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist', array('
         <script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>
         <link href="/css/black-tie/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 
-        <script type="text/javascript" src="/js/navBar.js"></script>        
-        <link href="/css/main.css" rel="stylesheet" type="text/css" />                
-        <link href="/css/navBar.css" rel="stylesheet" type="text/css" />        
+        <script type="text/javascript" src="/js/navBar.js"></script>
+        <link href="/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="/css/navBar.css" rel="stylesheet" type="text/css" />
+        <link href="/compass/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href="/compass/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+        <!--[if IE]>
+            <link href="/compass/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+        <![endif]-->
+
     </head>
     <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
         <?php echo $view['actions']->render('WishlistCoreBundle:Default:navBar'); ?>

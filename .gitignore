@@ -9,3 +9,5 @@ nbproject/configs/
 /app/logs/*
 /vendor/
 /app/config/parameters.ini
+/web/compass/.sass-cache/
+
