@@ -161,8 +161,7 @@ function clickedItem()
 {
     selected_itemId = $(this).attr('id');
     getItemInfo(selected_itemId, function(itemInfo){
-        populateDialogItemInfo(itemInfo);
-        $('#confirmDialog').dialog('open');
+        openAddToShoppingListDialog(itemInfo); 
     });
 }
 
@@ -248,6 +247,9 @@ function getItemInfo(itemId, callBackFunc)
 
 function confirmOK()
 {
+    var purchaseType = null;
+    var purchaseDue = null;
+    
     try
     {
         var giftDate = parseDate($('#giftDateInput').attr('value'));
@@ -258,23 +260,48 @@ function confirmOK()
     
     try
     {
+        if(selected_itemId <= 0)
+        {
+            throw('Item is invalid.')
+        }
+        
         if((selected_eventId > 0) && (giftDate == null)){
-            purchaseItem(selected_itemId, selected_eventId, "Event");
+            purchaseType = 'Event';
+            purchaseDue = selected_eventId;            
         }
         else if((giftDate != null) && (selected_eventId < 0)){
-            purchaseItem(selected_itemId, giftDate.toDateString(), "Date");
+            purchaseType = 'Date';
+            purchaseDue = giftDate.toDateString();
         }
-        else {
-            throw "Please select either an event or a date.";
+        
+        if(purchaseType == null || purchaseDue == null)
+        {
+            throw 'Please select either an event or a date.';
         }
+        
+        item = {id: selected_itemId, purchaseData: purchaseDue, type: purchaseType};
+        ajaxPost(item, '/app_dev.php/purchaseItem', onCompleteAddItemToShoppingList, item.id);
     }catch(e)
     {
         alert(e);
         return;
     }
-        
-    $('#confirmDialog').dialog('close');
-    $('h3[id=' + selected_itemId + ']').addClass('purchased');
+}
+
+function onCompleteAddItemToShoppingList(response, responseText, textStatus, itemId){
+    $('h3[id=' + itemId + ']').addClass('purchased');
+    $('#confirmDialog').dialog('close');        
+
+    switch(textStatus.toLowerCase())
+    {
+        case "conflict":
+            popupMessage('Sorry!',response.responseText);
+            break;        
+        default:
+            popupMessage('Done!', 'The item was successfully added to your shopping list.');
+            location.reload();
+            break;       
+    }
 }
 
 function confirmDialogOpen()
@@ -294,7 +321,14 @@ function populateDialogItemInfo(itemInfo)
         return;
     }
     
-    var item = JSON.parse(itemInfo);
+    var type = whatIsIt(itemInfo);
+    
+    if(type == "null" || type == "undefined")
+    {
+        return;
+    }
+    
+    var item = (type == "String") ? JSON.parse(itemInfo) : itemInfo;        
     
     $('#confirmName').html(item.name);
 }
@@ -316,10 +350,30 @@ function onGrantItClickEvent() {
     .then(function(answer){
         if(answer == 1)
         {
-            // to do
-            alert("to do");
+            // call the method that pops open the dialog for adding the item           
+            openAddToShoppingListDialog(getItemDialogObj());
         }
     })
+}
+
+function openAddToShoppingListDialog(item)
+{
+    populateDialogItemInfo(item);
+    selected_itemId = item.id;
+    $('#confirmDialog').dialog('open');    
+}
+
+function getItemDialogObj()
+{
+    return {
+         id: $('#itemDialog #itemId').text(),
+         name: $('#itemDialog #name').html(), 
+         price: $('#itemDialog #price').html(), 
+         link: $($('#itemDialog #link').html()).attr('href'),
+         quantity: $('#itemDialog #quantity').html(),
+         comment: $('#itemDialog #notes').html(),
+         isprivate: $('#itemDialog #private').html()
+     };                
 }
 
 function onWantItClickEvent() {
@@ -349,15 +403,7 @@ function onWantItClickEvent() {
 function continueAddingItemToWishlist()
 {
     var buttonPane = $('.ui-dialog-buttonpane');
-    
-    var itemObj = {
-         name: $('#itemDialog #name').html(), 
-         price: $('#itemDialog #price').html(), 
-         link: $($('#itemDialog #link').html()).attr('href'),
-         quantity: $('#itemDialog #quantity').html(),
-         comment: $('#itemDialog #notes').html(),
-         isprivate: $('#itemDialog #private').html()
-     };
+    var itemObj = getItemDialogObj();
 
     submitTheNewWish(itemObj); // defined in wishlist.js 
 

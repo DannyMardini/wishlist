@@ -12,6 +12,7 @@ class WishlistController extends Controller
     // STATUS CODES -- 
     const SC_NOTMODIFIED = 304;
     const SC_INTERNALSERVERERROR = 500;
+    const SC_CONFLICT = 409;
     
     /**
     * Executes add new wishlist item action
@@ -103,8 +104,6 @@ class WishlistController extends Controller
     public function purchaseItemAction()
     {
         $request = $this->getRequest()->request;
-        
-        //$itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
         $wishlistItemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
         $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
@@ -115,23 +114,32 @@ class WishlistController extends Controller
         $purchaseData = $request->get('purchaseData');
         $type = $request->get('type');
         
-        //$item = $itemRepo->find($itemId);
         $wishlistitem = $wishlistItemRepo->find($wishlistItemId);
-        $purchaser = $userRepo->find($session->get('user_id'));        
+        $purchaser = $userRepo->find($session->get('user_id'));
+        $event = NULL;
+        $date = NULL;
+        
         
         if($type == Purchase::TYPE_EVENT)
         {
             $event = $eventRepo->find($purchaseData);
-
-            $purchaseRepo->newPurchase($purchaser, $wishlistitem, $event);
-            
-        }else if ($type == Purchase::TYPE_DATE)
+        }
+        else if ($type == Purchase::TYPE_DATE)
         {
             $date = DateTime::createFromFormat('D M d Y', $purchaseData);
-            
-            $purchaseRepo->newPurchase($purchaser, $wishlistitem, NULL, $date);
-            
-        }else
+        }
+        
+        try {
+            $purchaseRepo->newPurchase($purchaser, $wishlistitem, $event, $date);
+        }
+        catch (\Exception $e)
+        {
+           $response  = new Response($e->getMessage());           
+           $response->setStatusCode(WishlistController::SC_CONFLICT);
+           return $response;
+        }
+        
+        if($event == NULL && $date == NULL)
         {
             return new Exception("Unknown purchase type.");
         }

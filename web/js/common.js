@@ -33,34 +33,25 @@ function get_nth_suffix(date) {
 /* POST: ajax call
  * TO DO: have other ajax call this generic method instead
  * */
-function ajaxPost(data, url, onSuccessCallback, callBackParams)
+function ajaxPost(data, url, callback, callBackParams)
 {
     $.ajax({
         type: 'POST',
         url: url,
         data: data,
-        success: function(response) { 
-            if(onSuccessCallback)
+        success: function(context, responseText, textStatus) { 
+            if(callback)
             {
-                onSuccessCallback.call(null, response, callBackParams);
+                callback.call(null, responseText, textStatus, callBackParams);
+            }
+        },
+        error: function(response, responseText, textStatus) {
+            if(callback)
+            {
+                callback.call(null, response, responseText, textStatus, callBackParams);
             }
         }
     });    
-}
-
-/*
- * Type can be either 'Event' or 'Date'
- */
-function purchaseItem(itemId, purchaseData, /*string*/ type)
-{
-    if(itemId < 0)
-        throw('item is invalid.');
-    
-    $.ajax({
-        type: 'POST',
-        url: '/app_dev.php/purchaseItem',
-        data: {id: itemId, purchaseData: purchaseData, type: type}
-    });
 }
 
 function ajaxPageLoad(element, path, itemObj, callback)
@@ -228,4 +219,29 @@ function popupMessage(theTitle, message)
                  }
              }
          });    
+}
+
+function whatIsIt(object) {
+    var stringConstructor = "test".constructor;
+    var arrayConstructor = [].constructor;
+    var objectConstructor = {}.constructor;
+        
+    if (object === null) {
+        return "null";
+    }
+    else if (object === undefined) {
+        return "undefined";
+    }
+    else if (object.constructor === stringConstructor) {
+        return "String";
+    }
+    else if (object.constructor === arrayConstructor) {
+        return "Array";
+    }
+    else if (object.constructor === objectConstructor) {
+        return "Object";
+    }
+    else {
+        return "don't know";
+    }
 }
