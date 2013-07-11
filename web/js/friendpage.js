@@ -27,20 +27,18 @@ function timerRestart()
     timer = window.setTimeout(searchFriends, searchTimeout*1000);
 }
 
-function promoteToFriend(response, row)
+function modifyAddButton(response, row)
 {
     console.log('Promoting friend!');    
-    $('.addFriendButtonDiv',row).fadeOut(400, function(){
-        $(this).detach('.addFriendButtonDiv');
-        $(row).detach();
-        $('#div_friendlist_div ul').append(row);
+    $('.addFriendButton',row).fadeOut(400, function(){
+        $(this).parent().html("Request sent");
     });
 }
 
 function addFriend(personId)
 {
     var row = $("input.userId[value|='"+ personId + "']").parent();
-    ajaxPost({personId: personId}, '/app_dev.php/FriendAdd', promoteToFriend, row);
+    ajaxPost({personId: personId}, '/app_dev.php/FriendAdd', modifyAddButton, row);
 }
 
 function updateFriendList(results)
