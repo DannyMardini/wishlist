@@ -30,8 +30,9 @@ function timerRestart()
 function modifyAddButton(response, row)
 {
     console.log('Promoting friend!');    
-    $('.addFriendButton',row).fadeOut(400, function(){
-        $(this).parent().html("Request sent");
+    $('.addFriendButtonDiv',row).fadeOut(400, function(){
+        $(this).html("Request sent").addClass("requestSentNotification");
+        $(this).fadeIn(400);
     });
 }
 
