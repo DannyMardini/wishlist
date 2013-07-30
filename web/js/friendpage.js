@@ -51,6 +51,7 @@ function updateFriendList(results)
     //Empty out the whole friendlist
     friendlist.empty();
 
+    //TODO: This HTML is a hack, it should really be moved to the server.
     if( friends.length >= 1 ) {
         var friendRowArray = [];
         friendlist.append('<div id="friendSeparator" class="listSeparator">My Friends</div><div id="div_friendlist_div"><ul></ul></div>');
@@ -67,7 +68,17 @@ function updateFriendList(results)
         friendlist.append('<div id="peopleSeparator" class="listSeparator">People</div><div id="div_personlist_div"><ul></ul></div>');
         
         persons.forEach(function(person) {
-            personRowArray.push("<li><input class='userId' type='hidden' value='"+ person.wishlistuser_id + "' /><div class='addFriendButtonDiv'><button class='addFriendButton'>Add Friend</button></div><div class='userButton'><img class='friendIcon' src='" + person.profileUrl + "'/><a href='" + Routing.generate('WishlistUserBundle_userpage', {user_id: person.wishlistuser_id}) +"'>" + person.name + "</a></div></li>");
+            personRowArray.push("<li>" 
+                                + "<input class='userId' type='hidden' value='"+ person.wishlistuser_id + "' />"
+                                + "<div class='addFriendButtonDiv'>"
+                                    + "<button class='addFriendButton'>Add Friend</button>"
+                                + "</div>"
+                                + "<div class='userButton'>"
+                                    + "<img class='friendIcon' src='" + person.profileUrl + "'/>"
+                                    + "<a href='" + Routing.generate('WishlistUserBundle_userpage', {user_id: person.wishlistuser_id}) +"'></a>"
+                                    + person.name
+                                + "</div>"
+                                + "</li>");
         });
         
         $('#div_personlist_div ul').append(personRowArray.join(""));

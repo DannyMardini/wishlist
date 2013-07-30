@@ -20,8 +20,8 @@
             {
                 echo "<li><div class='userButton'>"
                     ."<img class='friendIcon' src='".$friend->getProfileUrl()."'/>"
-                    ."<a class='friendLink' href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'>"
-                    .$friend->getName()."</a></div></li>\n";
+                    ."<a class='friendLink' href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'></a>"
+                        .$friend->getName()."</div></li>\n";
             }
             echo "</ul>";
             ?>

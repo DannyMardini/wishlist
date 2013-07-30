@@ -54,6 +54,9 @@ body.two-col {
   }
 }
 
+$separatorColor: #efefef;
+$borderColor: #999999;
+
 #friendlist {
     ul {
         background-color: white;
@@ -73,12 +76,11 @@ body.two-col {
             cursor: hand;
         }
     }
-
-    a {
-        text-decoration: none;
-        color: black;
-        font-size: 20px;
-    }
+    text-decoration: none;
+    color: $font-color;
+    font-size: 20px;
+    border: 1px solid $borderColor;
+    border-top-style: hidden;
 }
 
 img.friendIcon {
@@ -91,19 +93,17 @@ img.friendIcon {
     height: 50px;
     border-style: solid;
     border-radius: 5px;
-    border-color: #999;
+    border-color: $borderColor;
     width: 100%;
 }
 
 #friendsContainer {
     width: 100%;
     margin: auto;
-    border-style: solid;
-    border-width: 1px;
 }
 
 div.listSeparator {
-    background-color: #cccccc;
+    background-color: $separatorColor;
 }
 
 div.userButton {
@@ -112,8 +112,17 @@ div.userButton {
 }
 
 div.addFriendButtonDiv {
+    .ui-button-text {
+        font-size: 0.8em;
+    }
     float: right;
-    font-size: 0.904em;
     margin-top: 10px;
     width: 30%;
+}
+
+div.requestSentNotification {
+    padding-top: 12px;
+    font-style: italic;
+    width: 27%;
+    color: lighten($font-color, 50%);
 }

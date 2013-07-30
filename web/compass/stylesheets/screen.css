@@ -533,7 +533,15 @@ body.two-col #content {
   overflow-x: hidden;
 }
 
-/* line 58, ../sass/screen.scss */
+/* line 60, ../sass/screen.scss */
+#friendlist {
+  text-decoration: none;
+  color: #333333;
+  font-size: 20px;
+  border: 1px solid #999999;
+  border-top-style: hidden;
+}
+/* line 61, ../sass/screen.scss */
 #friendlist ul {
   background-color: white;
   list-style: none;
@@ -542,50 +550,42 @@ body.two-col #content {
   margin-left: 80px;
   width: 80%;
 }
-/* line 67, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 #friendlist li {
   background-color: white;
   margin-bottom: 5px;
 }
-/* line 71, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 #friendlist li:hover {
   background-color: #efefef;
   cursor: hand;
 }
-/* line 77, ../sass/screen.scss */
-#friendlist a {
-  text-decoration: none;
-  color: black;
-  font-size: 20px;
-}
 
-/* line 84, ../sass/screen.scss */
+/* line 86, ../sass/screen.scss */
 img.friendIcon {
   width: 50px;
   height: 50px;
   padding-right: 50px;
 }
 
-/* line 90, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 #friendSearch {
   height: 50px;
   border-style: solid;
   border-radius: 5px;
-  border-color: #999;
+  border-color: #999999;
   width: 100%;
 }
 
-/* line 98, ../sass/screen.scss */
+/* line 100, ../sass/screen.scss */
 #friendsContainer {
   width: 100%;
   margin: auto;
-  border-style: solid;
-  border-width: 1px;
 }
 
 /* line 105, ../sass/screen.scss */
 div.listSeparator {
-  background-color: #cccccc;
+  background-color: #efefef;
 }
 
 /* line 109, ../sass/screen.scss */
@@ -597,7 +597,18 @@ div.userButton {
 /* line 114, ../sass/screen.scss */
 div.addFriendButtonDiv {
   float: right;
-  font-size: 0.904em;
   margin-top: 10px;
   width: 30%;
+}
+/* line 115, ../sass/screen.scss */
+div.addFriendButtonDiv .ui-button-text {
+  font-size: 0.8em;
+}
+
+/* line 123, ../sass/screen.scss */
+div.requestSentNotification {
+  padding-top: 12px;
+  font-style: italic;
+  width: 27%;
+  color: #b3b3b3;
 }
