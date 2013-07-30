@@ -57,6 +57,17 @@ body.two-col {
 $separatorColor: #efefef;
 $borderColor: #999999;
 
+$gradientColor: #FFFFFF;
+$gradientToColor: darken($gradientColor, 5%);
+
+body {
+    background: -webkit-linear-gradient(left, $gradientToColor, $gradientColor, $gradientToColor);
+    background: -moz-linear-gradient(left, $gradientToColor, $gradientColor, $gradientToColor);
+    background: -o-linear-gradient(left, $gradientToColor, $gradientColor, $gradientToColor);
+    background: -ms-linear-gradient(left, $gradientToColor, $gradientColor, $gradientToColor);
+    background: linear-gradient(left, $gradientToColor, $gradientColor, $gradientToColor);
+}
+
 #friendlist {
     ul {
         background-color: white;

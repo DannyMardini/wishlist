@@ -533,7 +533,16 @@ body.two-col #content {
   overflow-x: hidden;
 }
 
-/* line 60, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
+body {
+  background: -webkit-linear-gradient(left, #f2f2f2, white, #f2f2f2);
+  background: -moz-linear-gradient(left, #f2f2f2, white, #f2f2f2);
+  background: -o-linear-gradient(left, #f2f2f2, white, #f2f2f2);
+  background: -ms-linear-gradient(left, #f2f2f2, white, #f2f2f2);
+  background: linear-gradient(left, #f2f2f2, #ffffff, #f2f2f2);
+}
+
+/* line 71, ../sass/screen.scss */
 #friendlist {
   text-decoration: none;
   color: #333333;
@@ -541,7 +550,7 @@ body.two-col #content {
   border: 1px solid #999999;
   border-top-style: hidden;
 }
-/* line 61, ../sass/screen.scss */
+/* line 72, ../sass/screen.scss */
 #friendlist ul {
   background-color: white;
   list-style: none;
@@ -550,25 +559,25 @@ body.two-col #content {
   margin-left: 80px;
   width: 80%;
 }
-/* line 70, ../sass/screen.scss */
+/* line 81, ../sass/screen.scss */
 #friendlist li {
   background-color: white;
   margin-bottom: 5px;
 }
-/* line 74, ../sass/screen.scss */
+/* line 85, ../sass/screen.scss */
 #friendlist li:hover {
   background-color: #efefef;
   cursor: hand;
 }
 
-/* line 86, ../sass/screen.scss */
+/* line 97, ../sass/screen.scss */
 img.friendIcon {
   width: 50px;
   height: 50px;
   padding-right: 50px;
 }
 
-/* line 92, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 #friendSearch {
   height: 50px;
   border-style: solid;
@@ -577,35 +586,35 @@ img.friendIcon {
   width: 100%;
 }
 
-/* line 100, ../sass/screen.scss */
+/* line 111, ../sass/screen.scss */
 #friendsContainer {
   width: 100%;
   margin: auto;
 }
 
-/* line 105, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 div.listSeparator {
   background-color: #efefef;
 }
 
-/* line 109, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 div.userButton {
   display: inline-block;
   width: 70%;
 }
 
-/* line 114, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 div.addFriendButtonDiv {
   float: right;
   margin-top: 10px;
   width: 30%;
 }
-/* line 115, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
 div.addFriendButtonDiv .ui-button-text {
   font-size: 0.8em;
 }
 
-/* line 123, ../sass/screen.scss */
+/* line 134, ../sass/screen.scss */
 div.requestSentNotification {
   padding-top: 12px;
   font-style: italic;
