@@ -30,7 +30,7 @@ button.fg-button { width:auto; overflow:visible; }
 
 #wishlistBox {
     display: inline-block;
-    background-color: white;
+/*    background-color: white;*/
     width: 67%;
     height: 80%;
     padding: 0px 3% 3% 3%;
@@ -59,13 +59,13 @@ ul.contentItem {
 #eventsComponent {
     float:left;
     display:block;
-    background-color:white;
+/*    background-color:white;*/
     width:100%;
     min-height:100px;
 }
 
 #wishlistComponent {
-    background-color: white;
+/*    background-color: white;*/
     width: 100%;
    /* float: left;*/
     padding-bottom: 50px;
@@ -82,17 +82,17 @@ ul.contentItem {
 }
 
 #updatesComponent {
-    background-color: white;
+/*    background-color: white;*/
     width: 23%;
 /*    min-height: 200px;*/
     float: right;
     margin-right: 1%;
 }
-
+/*
 li{
     background-color: white;
 }
-
+*/
 #updatesInnerComponent{
     min-height: 300px;
 }

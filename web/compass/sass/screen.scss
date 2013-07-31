@@ -58,7 +58,7 @@ $separatorColor: #efefef;
 $borderColor: #999999;
 
 $gradientColor: #FFFFFF;
-$gradientToColor: darken($gradientColor, 5%);
+$gradientToColor: darken($gradientColor, 3%);
 
 body {
     background: -webkit-linear-gradient(left, $gradientToColor, $gradientColor, $gradientToColor);
