@@ -13,6 +13,10 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       targetEntity: Event
       mappedBy: wishlistUser
 
+    notifications:
+      targetEntity: Notification
+      mappedBy: wishlistUser
+
     wishlistItems: 
       targetEntity: WishlistItem
       mappedBy: wishlistUser
