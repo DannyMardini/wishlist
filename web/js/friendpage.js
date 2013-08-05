@@ -87,7 +87,6 @@ function updateFriendList(results)
                 primary: "ui-icon-plusthick"
             }
         }).click(function(e){
-            addFriend(personId);
             var userRow = $(this).parents("li");
             var personId = userRow.children("input.userId").val();
             addFriend(personId);
