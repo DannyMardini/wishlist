@@ -1,8 +1,9 @@
 <?php
 
-namespace Wishlist\CoreBundle\Entity;
+namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Wishlist\CoreBundle\Entity\Notification;
 
 /**
  * NotificationRepository
@@ -12,4 +13,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class NotificationRepository extends EntityRepository
 {
+    public function addNotification(\Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser, $text)
+    {
+        $newNotification = new Notification();
+        $newNotification->setText($text);
+        $newNotification->setState(Notification::STATE_UNREAD);
+        $newNotification->setWishlistUser($wishlistUser);
+
+        $this->getEntityManager()->persist($newNotification);
+        $this->getEntityManager()->flush();
+        return $newNotification;
+    }
 }

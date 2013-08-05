@@ -143,6 +143,7 @@ class DefaultController extends Controller
         $loggedInUserId = $session->get('user_id');
         $friendRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
 
         $newFriendId = $request->get('personId');
         
@@ -154,12 +155,18 @@ class DefaultController extends Controller
         {
             throw new \Exception('New friend ID not numeric');
         }
-        
+
+        $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
+        $newFriend = $userRepo->getUserWithId($newFriendId);
+
+        $notificationRepo->addNotification($newFriend, $loggedInUser->getName().' has requested to be your friend.');
+
+        /*
         if(isset($newFriendId) && isset($loggedInUserId))
         {
             $friendRepo->addNewFriendship($userRepo->getUserWithId($loggedInUserId), $userRepo->getUserWithId($newFriendId));
         }
-        
+         */
         
         return new Response();
     }
