@@ -13,12 +13,13 @@ use Wishlist\CoreBundle\Entity\FriendRequest;
  */
 class FriendRequestRepository extends EntityRepository
 {
-    public function addFriendRequest(\Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser, $text)
+    public function addFriendRequest(\Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser, /*int*/ $user, $text)
     {
         $newFriendRequest = new FriendRequest();
         $newFriendRequest->setText($text);
         $newFriendRequest->setState(FriendRequest::STATE_UNREAD);
         $newFriendRequest->setWishlistUser($wishlistUser);
+        $newFriendRequest->setUserRequested($user);
 
         $this->getEntityManager()->persist($newFriendRequest);
         $this->getEntityManager()->flush();

@@ -376,27 +376,27 @@ class WishlistUser {
     /**
      * @var Wishlist\CoreBundle\Entity\FriendRequest
      */
-    private $notifications;
+    private $friendRequests;
 
 
     /**
-     * Add notifications
+     * Add friendRequests
      *
-     * @param Wishlist\CoreBundle\Entity\FriendRequest $notifications
+     * @param Wishlist\CoreBundle\Entity\FriendRequest $friendRequests
      */
-    public function addFriendRequest(\Wishlist\CoreBundle\Entity\FriendRequest $notifications)
+    public function addFriendRequest(\Wishlist\CoreBundle\Entity\FriendRequest $friendRequests)
     {
-        $this->notifications[] = $notifications;
+        $this->friendRequests[] = $friendRequests;
     }
 
     /**
-     * Get notifications
+     * Get friendRequests
      *
      * @return Doctrine\Common\Collections\Collection 
      */
     public function getFriendRequests()
     {
-        return $this->notifications;
+        return $this->friendRequests;
     }
     /**
      * @var Wishlist\CoreBundle\Entity\FriendRequest

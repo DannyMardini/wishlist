@@ -102,4 +102,29 @@ class FriendRequest
     {
         return $this->wishlistUser;
     }
+    /**
+     * @var integer $userRequested
+     */
+    private $userRequested;
+
+
+    /**
+     * Set userRequested
+     *
+     * @param integer $userRequested
+     */
+    public function setUserRequested($userRequested)
+    {
+        $this->userRequested = $userRequested;
+    }
+
+    /**
+     * Get userRequested
+     *
+     * @return integer 
+     */
+    public function getUserRequested()
+    {
+        return $this->userRequested;
+    }
 }

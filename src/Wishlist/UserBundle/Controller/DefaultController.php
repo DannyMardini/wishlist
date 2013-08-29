@@ -159,7 +159,7 @@ class DefaultController extends Controller
         $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
         $newFriend = $userRepo->getUserWithId($newFriendId);
 
-        $friendRequestRepo->addFriendRequest($newFriend, $loggedInUser->getName().' has requested to be your friend.');
+        $friendRequestRepo->addFriendRequest($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' has requested to be your friend.');
 
         /*
         if(isset($newFriendId) && isset($loggedInUserId))
