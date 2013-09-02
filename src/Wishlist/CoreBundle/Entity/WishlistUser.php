@@ -398,10 +398,4 @@ class WishlistUser {
     {
         return $this->notifications;
     }
-    /**
-     * @var Wishlist\CoreBundle\Entity\Notification
-     */
-    private $notifications;
-
-
 }
