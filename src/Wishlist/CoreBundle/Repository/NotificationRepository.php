@@ -15,9 +15,9 @@ class NotificationRepository extends EntityRepository
 {
     public function addNotification(\Wishlist\CoreBundle\Entity\WishlistUser $wishlistUser, /*int*/ $user, $text)
     {
-        $newFriendRequest = new FriendRequest();
+        $newFriendRequest = new Notification();
         $newFriendRequest->setText($text);
-        $newFriendRequest->setState(FriendRequest::STATE_UNREAD);
+        $newFriendRequest->setState(Notification::STATE_UNREAD);
         $newFriendRequest->setWishlistUser($wishlistUser);
         $newFriendRequest->setUserRequested($user);
 
