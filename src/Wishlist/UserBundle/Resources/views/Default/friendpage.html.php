@@ -15,7 +15,9 @@
         </div>
         <div id='div_friendlist_div'>
         <?php
-            echo "<ul>";
+        echo "<ul>";
+        if(isset($friends))
+        {
             foreach($friends as $friend)
             {
                 echo "<li><div class='userButton'>"
@@ -23,8 +25,9 @@
                     ."<a class='friendLink' href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'></a>"
                         .$friend->getName()."</div></li>\n";
             }
-            echo "</ul>";
-            ?>
+        }
+        echo "</ul>";
+        ?>
         </div>
     </div>
 </div>

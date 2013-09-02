@@ -105,7 +105,7 @@ class WishlistUserRepository extends EntityRepository
             $friends[] = $this->getUserWithId($friendship->getFriendId());
         }
         
-        return $friends;
+        return isset($friends)? $friends : null;
     }
     
     //This function returns people who aren't this users friend using this search term.
