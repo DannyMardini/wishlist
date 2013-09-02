@@ -5,7 +5,7 @@ namespace Wishlist\CoreBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Wishlist\CoreBundle\Entity\Enum;
 use Wishlist\CoreBundle\Entity\WishlistUpdate;
-use Wishlist\CoreBundle\Entity\FriendRequest;
+use Wishlist\CoreBundle\Entity\Notification;
 use \DateTime;
 
 class LoadEnumData implements FixtureInterface
@@ -29,8 +29,8 @@ class LoadEnumData implements FixtureInterface
         $this->newEnum('WishlistUpdate', 'ADD_FRIEND', WishlistUpdate::TYPE_ADD_FRIEND);
         $this->newEnum('WishlistUpdate', 'REMOVE_FRIEND', WishlistUpdate::TYPE_REMOVE_FRIEND);
         
-        $this->newEnum('FriendRequest', 'STATE_UNREAD', FriendRequest::STATE_UNREAD);
-        $this->newEnum('FriendRequest', 'STATE_READ', FriendRequest::STATE_READ);
+        $this->newEnum('Notification', 'STATE_UNREAD', Notification::STATE_UNREAD);
+        $this->newEnum('Notification', 'STATE_READ', Notification::STATE_READ);
          
         $manager->flush();
     }

@@ -5,9 +5,9 @@ namespace Wishlist\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Wishlist\CoreBundle\Entity\FriendRequest
+ * Wishlist\CoreBundle\Entity\Notification
  */
-class FriendRequest
+class Notification
 {
     const STATE_UNREAD = 0;
     const STATE_READ = 1;

@@ -13,8 +13,8 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       targetEntity: Event
       mappedBy: wishlistUser
 
-    FriendRequests:
-      targetEntity: FriendRequest
+    notifications:
+      targetEntity: Notification
       mappedBy: wishlistUser
 
     wishlistItems: 

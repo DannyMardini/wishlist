@@ -143,7 +143,7 @@ class DefaultController extends Controller
         $loggedInUserId = $session->get('user_id');
         $friendRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
-        $friendRequestRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:FriendRequest');
+        $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
 
         $newFriendId = $request->get('personId');
         
@@ -159,7 +159,7 @@ class DefaultController extends Controller
         $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
         $newFriend = $userRepo->getUserWithId($newFriendId);
 
-        $friendRequestRepo->addFriendRequest($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' has requested to be your friend.');
+        $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' has requested to be your friend.');
 
         /*
         if(isset($newFriendId) && isset($loggedInUserId))
