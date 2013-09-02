@@ -11,11 +11,31 @@ class Notification
 {
     const STATE_UNREAD = 0;
     const STATE_READ = 1;
-
+    
     /**
      * @var integer $id
      */
     private $id;
+
+    /**
+     * @var integer $userRequested
+     */
+    private $userRequested;
+
+    /**
+     * @var integer $state
+     */
+    private $state;
+
+    /**
+     * @var string $text
+     */
+    private $text;
+
+    /**
+     * @var Wishlist\CoreBundle\Entity\WishlistUser
+     */
+    private $wishlistUser;
 
 
     /**
@@ -27,16 +47,26 @@ class Notification
     {
         return $this->id;
     }
-    /**
-     * @var integer $state
-     */
-    private $state;
 
     /**
-     * @var string $text
+     * Set userRequested
+     *
+     * @param integer $userRequested
      */
-    private $text;
+    public function setUserRequested($userRequested)
+    {
+        $this->userRequested = $userRequested;
+    }
 
+    /**
+     * Get userRequested
+     *
+     * @return integer 
+     */
+    public function getUserRequested()
+    {
+        return $this->userRequested;
+    }
 
     /**
      * Set state
@@ -77,11 +107,6 @@ class Notification
     {
         return $this->text;
     }
-    /**
-     * @var Wishlist\CoreBundle\Entity\WishlistUser
-     */
-    private $wishlistUser;
-
 
     /**
      * Set wishlistUser
@@ -101,30 +126,5 @@ class Notification
     public function getWishlistUser()
     {
         return $this->wishlistUser;
-    }
-    /**
-     * @var integer $userRequested
-     */
-    private $userRequested;
-
-
-    /**
-     * Set userRequested
-     *
-     * @param integer $userRequested
-     */
-    public function setUserRequested($userRequested)
-    {
-        $this->userRequested = $userRequested;
-    }
-
-    /**
-     * Get userRequested
-     *
-     * @return integer 
-     */
-    public function getUserRequested()
-    {
-        return $this->userRequested;
     }
 }

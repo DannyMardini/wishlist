@@ -398,4 +398,10 @@ class WishlistUser {
     {
         return $this->friendRequests;
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\Notification
+     */
+    private $notifications;
+
+
 }
