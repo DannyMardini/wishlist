@@ -1,5 +1,7 @@
 <?php
-
+//TODO: This class should be a base class to other types of notifications like friend requests.
+//TODO: Text should also be generated so it's all the same. The way it is now it is very easy to make
+//two like-type requests have completely different structured texts.
 namespace Wishlist\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;

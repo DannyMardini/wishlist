@@ -1,3 +1,5 @@
+/*TODO: This all needs to be done in compass, particularly site-wide things like border color.*/
+
 root { 
     display: block;
 }
@@ -105,11 +107,13 @@ li a {
 
 #navigation li a {
     /*display: block;*/
+    /*
     height: 35px;
     padding-top: 20px;
     padding-right: 5px;
     text-decoration: none;
     color: black;
+    */
 }
 
 #navigation li span {
@@ -149,8 +153,10 @@ li a {
   display: none;
   border-bottom: 1px solid;
   border-left: 1px solid;
+  border-color: #BEBDBD;
   position: absolute;
   right: 0px;
+  background: white;
 }
 
 #dropDownMenu ul{
@@ -169,3 +175,24 @@ li a {
     font-weight: bolder;
     text-decoration: underline;
 }
+
+#notificationDiv {
+    position: relative;
+}
+
+#notificationDiv:hover{
+    cursor: hand;
+}
+
+#notificationWindow {
+    display: none;
+    margin-top: 12px;
+    position: absolute;
+    right: 0px;
+    width: 430px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #BEBDBD;
+    background: white;
+}
+

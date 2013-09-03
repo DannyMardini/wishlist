@@ -5,7 +5,6 @@
 
 var userName;
 var userID;
-var rightPanelVisible = 0;
 
 window.history.forward();
 
@@ -18,19 +17,30 @@ $(document).ready(function(){
     
     $('#logoutLink').click(onLogoutClickEvent);
 
-    $("#dropDownButton").click(function(){
-      if( rightPanelVisible )
-      {
-        $('#dropDownMenu').hide();
-        $("#dropDownButton").removeClass('selected');
-        rightPanelVisible = 0;
-      }
-      else
-      {
-        $("#dropDownMenu").show();
-        $("#dropDownButton").addClass('selected');
-        rightPanelVisible = 1;
-      }
+    $('#dropDownButton').click(function(){
+        if( $(this).hasClass('selected') )
+        {
+            $('#dropDownMenu').hide();
+            $(this).removeClass('selected');
+        }
+        else
+        {
+            $('#dropDownMenu').show();
+            $(this).addClass('selected');
+        }
+    });
+
+    $('#notificationDiv').click(function(){
+        if( $(this).hasClass('selected') )
+        {
+            $('#notificationWindow').hide();
+            $(this).removeClass('selected');
+        }
+        else
+        {
+            $('#notificationWindow').show();
+            $(this).addClass('selected');
+        }
     });
 
     $("#userName").click(function(){
@@ -42,10 +52,10 @@ $(document).ready(function(){
     });
 });
 
-       function noBack()
-         {
-             window.history.forward()
-         }
+function noBack()
+{
+    window.history.forward()
+}
 
 function onLogoutClickEvent()
 {
