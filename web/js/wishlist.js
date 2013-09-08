@@ -288,19 +288,19 @@ function confirmOK()
     }
 }
 
-function onCompleteAddItemToShoppingList(response, responseText, textStatus, itemId){
+function onCompleteAddItemToShoppingList(responseMessage, responseObj, itemId){
     $('h3[id=' + itemId + ']').addClass('purchased');
     $('#confirmDialog').dialog('close');        
 
-    switch(textStatus.toLowerCase())
-    {
-        case "conflict":
-            popupMessage('Sorry!',response.responseText);
-            break;        
-        default:
-            popupMessage('Done!', 'The item was successfully added to your shopping list.');
-            location.reload();
-            break;       
+    // if an empty string was returned it means that no errors occurred.
+    if(responseObj.responseText.length <= 0){
+        popupMessage('Done!', 'The item was successfully added to your shopping list.', 
+            function(){
+                location.reload();
+            });
+    }
+    else { // display the error if any occurred        
+        popupMessage('Sorry!','<p>'+responseObj.responseText+'</p>');
     }
 }
 

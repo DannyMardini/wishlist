@@ -205,7 +205,7 @@ function confirm (confirmMessage) {
     return defer.promise(); //important to return the deferred promise
 }
 
-function popupMessage(theTitle, message)
+function popupMessage(theTitle, message, callback)
 {    
     $('<div>' + message + '</div>').dialog({
              autoOpen: true,
@@ -214,8 +214,12 @@ function popupMessage(theTitle, message)
              },
              title: theTitle,
              buttons: {
-                 "Ok": function() {                     
-                     $( this ).dialog( "close" );
+                 "Ok": function() {   
+                    if(callback!=null)
+                    {
+                        callback();
+                    }
+                    $( this ).dialog( "close" );
                  }
              }
          });    

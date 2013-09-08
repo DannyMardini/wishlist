@@ -135,10 +135,9 @@ class WishlistController extends Controller
         catch (\Exception $e)
         {
            $response  = new Response($e->getMessage());           
-           $response->setStatusCode(WishlistController::SC_CONFLICT);
            return $response;
         }
-        
+
         if($event == NULL && $date == NULL)
         {
             return new Exception("Unknown purchase type.");
