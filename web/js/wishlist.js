@@ -158,7 +158,7 @@ function setupWishlist()
 }
 
 function clickedItem()
-{
+{ // LEFT OFF HERE: check why selected_itemId is overwritten later
     selected_itemId = $(this).attr('id');
     getItemInfo(selected_itemId, function(itemInfo){
         openAddToShoppingListDialog(itemInfo); 
@@ -260,7 +260,7 @@ function confirmOK()
     
     try
     {
-        if(selected_itemId <= 0)
+        if(selected_itemId == null || selected_itemId <= 0)
         {
             throw('Item is invalid.')
         }
@@ -359,7 +359,10 @@ function onGrantItClickEvent() {
 function openAddToShoppingListDialog(item)
 {
     populateDialogItemInfo(item);
-    selected_itemId = item.id;
+    if(selected_itemId <= -1)
+    {
+        selected_itemId = item.id;
+    }
     $('#confirmDialog').dialog('open');    
 }
 
