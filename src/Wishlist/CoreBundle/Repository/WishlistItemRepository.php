@@ -41,7 +41,7 @@ class WishlistItemRepository extends EntityRepository
         $this->getEntityManager()->flush(); 
         
         $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
-        $updateRepo->addNewItem($wishlistUser, $newItem); 
+        $updateRepo->addNewItem($wishlistUser, $newWish); 
         return true;
     }
     

@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Wishlist\CoreBundle\Entity\WishlistUpdate;
 use Wishlist\CoreBundle\Entity\WishlistUser;
-use Wishlist\CoreBundle\Entity\Item;
+use Wishlist\CoreBundle\Entity\WishlistItem;
 use \DateTime;
 
 /**
@@ -31,7 +31,7 @@ class WishlistUpdateRepository extends EntityRepository
         $this->getEntityManager()->flush();
     }
     
-    public function addNewItem(WishlistUser $user, Item $item)
+    public function addNewItem(WishlistUser $user, WishlistItem $wishlistItem)
     {
         if($user->getGender() == WishlistUser::GENDER_MALE)
         {
@@ -44,9 +44,9 @@ class WishlistUpdateRepository extends EntityRepository
 
         $message = $user->getName().
                 " added <a href='#' onclick='openDialog(".
-                $item->getId().
+                $wishlistItem->getId().
                 ")'>".
-                $item->getName().
+                $wishlistItem->getItem()->getName().
                 "</a> to ".
                 $gender_attribute.
                 " wishlist";

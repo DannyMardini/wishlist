@@ -52,10 +52,10 @@ class PurchaseRepository extends EntityRepository
         $genericItem = $wishlistItem->getItem();
         $purchasePromised = $wishlistItem->getPurchase();
         $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistItem');
-        $selfPurchaseItem = $itemRepo->getWishlistItemForUser($genericItem, $user);
+        //$selfPurchaseItem = $itemRepo->getWishlistItemForUser($genericItem, $user); //This is a problem, it's getting an entirely different wishlistItem
+        $selfPurchaseItem = ($wishlistItem->getWishlistUser() == $user);
         
-        
-        if(isset($purchasePromised) && !isset($selfPurchaseItem) )
+        if(isset($purchasePromised) && !$selfPurchaseItem )
         {
             // cannot overwrite an already promised purchase by another friend
             throw new \Exception("This wish was already promised by another friend."); 

@@ -74,9 +74,9 @@ class WishlistController extends Controller
     public function getItemAction($itemId)
     {
         $response = new Response();
-        $item = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item')->findOneBy(array('id' => $itemId));
+        $wishlistItem = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem')->findOneBy(array('id' => $itemId));
         
-        $response->setContent($item->exportData());
+        $response->setContent($wishlistItem->exportData());
         $response->headers->set('Content-Type', 'application/json');
         
         return $response;
