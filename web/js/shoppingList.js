@@ -18,22 +18,26 @@ function createGUIButtons(){
 }
 
 function createEventHandlers(){
-    // click event handler for the purchase items
-    $('.shoppinglistItem').click(function(){
-        $(this).toggleClass('selected');
-        var chkBox = $('.selectItem', this);
-        chkBox.attr("checked", !chkBox.attr("checked"));
-        toggleRetractButton();
+    $('.selectItem').click(function(e){
+        toggleSelectedItem(this);
     });
+
     
     applyItemHoverHandler($('.shoppinglistItem'));
+}
+
+function toggleSelectedItem(obj)
+{
+    $(obj).toggleClass('selected');
+    var chkBox = $('.selectItem', obj);
+    chkBox.attr("checked", !chkBox.attr("checked"));
+    toggleRetractButton();    
 }
 
 // hide the cancel purchases button if there are no more purchases in the list
 function toggleRetractButton()
 {
     var retractButton = $('#retractPurchaseButton');
-    //var purchaseDivs = $('#shoppinglist .shoppinglistitem');
     var selectedDivs = $('#shoppinglist .selected');
     selectedDivs.length <= 0 ? retractButton.hide() : retractButton.show();    
 }
