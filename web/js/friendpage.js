@@ -46,8 +46,14 @@ function updateFriendList(results)
 {
     var friends = results.friends;
     var persons = results.persons;
-    var friendlist = $('#friendlist');
-    
+    var friendlist = $('div.friendlist');
+   
+    if(friendlist.size() == 0)
+    {
+        $('#friendsContainer').append('<div class="friendlist"></div>');
+        friendlist = $('div.friendlist');
+        friendlist.addClass('friendlist');
+    }
     //Empty out the whole friendlist
     friendlist.empty();
 

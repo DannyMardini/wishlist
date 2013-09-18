@@ -9,25 +9,24 @@
 
 <div id="friendsContainer">
     <input id="friendSearch" type="text" placeholder="Find People..."/>
-    <div id="friendlist">
-        <div id="friendSeparator" class="listSeparator">
-            My Friends
-        </div>
-        <div id='div_friendlist_div'>
-        <?php
+    <!--<div id='friendlist'></div>-->
+<?php
+    if(count($friends) > 0)
+    {
+        echo "<div class='friendlist'>";
+        echo "<div id='friendSeparator' class='listSeparator'>My Friends</div>";
+        echo "<div id='div_friendlist_div'>";
         echo "<ul>";
-        if(isset($friends))
+        foreach($friends as $friend)
         {
-            foreach($friends as $friend)
-            {
-                echo "<li><div class='userButton'>"
-                    ."<img class='friendIcon' src='".$friend->getProfileUrl()."'/>"
-                    ."<a class='friendLink' href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'></a>"
-                        .$friend->getName()."</div></li>\n";
-            }
+            echo "<li><div class='userButton'>"
+                ."<img class='friendIcon' src='".$friend->getProfileUrl()."'/>"
+                ."<a class='friendLink' href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'></a>"
+                    .$friend->getName()."</div></li>\n";
         }
         echo "</ul>";
-        ?>
-        </div>
-    </div>
+        echo "</div>";
+        echo "</div>";
+    }
+?>
 </div>

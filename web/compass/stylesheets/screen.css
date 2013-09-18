@@ -543,7 +543,7 @@ body {
 }
 
 /* line 71, ../sass/screen.scss */
-#friendlist {
+div.friendlist {
   text-decoration: none;
   color: #333333;
   font-size: 20px;
@@ -551,7 +551,7 @@ body {
   border-top-style: hidden;
 }
 /* line 72, ../sass/screen.scss */
-#friendlist ul {
+div.friendlist ul {
   background-color: white;
   list-style: none;
   padding: 0;
@@ -560,12 +560,12 @@ body {
   width: 80%;
 }
 /* line 81, ../sass/screen.scss */
-#friendlist li {
+div.friendlist li {
   background-color: white;
   margin-bottom: 5px;
 }
 /* line 85, ../sass/screen.scss */
-#friendlist li:hover {
+div.friendlist li:hover {
   background-color: #efefef;
   cursor: hand;
 }

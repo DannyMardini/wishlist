@@ -68,7 +68,7 @@ body {
     background: linear-gradient(left, $gradientToColor, $gradientColor, $gradientToColor);
 }
 
-#friendlist {
+div.friendlist {
     ul {
         background-color: white;
         list-style: none;

@@ -130,3 +130,4 @@ class Notification
         return $this->wishlistUser;
     }
 }
+
