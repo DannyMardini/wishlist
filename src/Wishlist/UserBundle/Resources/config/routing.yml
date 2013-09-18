@@ -22,6 +22,14 @@ WishlistUserBundle_friendAdd:
   pattern: /FriendAdd
   defaults: { _controller: WishlistUserBundle:Default:friendAdd }
 
+WishlistUserBundle_acceptFriendRequest:
+  pattern: /FriendRequestAccept/{notificationId}
+  defaults: { _controller: WishlistUserBundle:Default:friendRequestAccept }
+
+WishlistUserBundle_ignoreFriendRequest:
+  pattern: /FriendRequestIgnore/{notificationId}
+  defaults: { _controller: WishlistUserBundle:Default:friendRequestIgnore }
+
 WishlistUserBundle_accountsettings:
   pattern: /AccountSettings
   defaults: { _controller: WishlistUserBundle:Default:showAccountSettings}
@@ -45,3 +53,4 @@ WishlistUserBundle_saveEvent:
 WishlistUserBundle_removeEvent:
   pattern: /RemoveEvent
   defaults: { _controller: WishlistUserBundle:Default:removeEvent }  
+

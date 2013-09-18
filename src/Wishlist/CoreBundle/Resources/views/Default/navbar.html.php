@@ -32,7 +32,10 @@
                     echo "<ul>\n";
                     foreach($user->getNotifications() as $notification)
                     {
-                        echo "<li id='notification_".$notification->getId()."'>".$notification->getText()."<a href='#'>Accept</a><a href='#'>Ignore</a></li>\n";
+                        $notificationId = $notification->getId();
+                        echo "<li id='notification_".$notificationId."' class='notifications'>".$notification->getText()."    <a href='"
+                            .$view['router']->generate('WishlistUserBundle_acceptFriendRequest', array('notificationId' => $notificationId))."'>Accept</a>    <a href='"
+                            .$view['router']->generate('WishlistUserBundle_ignoreFriendRequest', array('notificationId' => $notificationId))."'>Ignore</a></li>\n";
                     }
                     echo "</ul>\n";
                     echo "</div></div>\n";

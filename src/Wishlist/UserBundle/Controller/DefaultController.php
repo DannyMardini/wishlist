@@ -15,6 +15,15 @@ class DefaultController extends Controller
 {
     // STATUS CODES -- 
     const SC_OK = 200;
+
+    // Private variables used by controller actions
+    private $loggedInUserTest;
+    
+    public function __construct()
+    {
+        //$loggedInUserId = $this->getRequest()->getSession()->get('user_id');
+        //$loggedInUserTest = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
+    }
     
     public function wishlistAction()
     {
@@ -168,6 +177,50 @@ class DefaultController extends Controller
         }
          */
         
+        return new Response();
+    }
+
+    public function friendRequestAcceptAction(/*int*/ $notificationId)
+    {
+        $session = $this->getRequest()->getSession();
+        $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
+        $friendshipRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
+        
+        $loggedInUserId = $session->get('user_id');
+        $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
+        $notification = $notificationRepo->getNotificationWithId($notificationId);
+
+        //Check if this notificationId belongs to this user
+        if($loggedInUser == $notification->getWishlistUser())
+        {
+            $newFriend = $userRepo->getUserWithId($notification->getUserRequested());
+            if(isset($newFriend))
+            {
+                $friendshipRepo->addNewFriendship($loggedInUser, $newFriend);
+                $notificationRepo->removeNotification($notification);
+            }
+        }
+
+        return new Response();
+    }
+    
+    public function friendRequestIgnoreAction(/*int*/ $notificationId)
+    {
+        $session = $this->getRequest()->getSession();
+        $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
+        $friendshipRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
+        
+        $loggedInUserId = $session->get('user_id');
+        $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
+        $notification = $notificationRepo->getNotificationWithId($notificationId);
+        
+        if($loggedInUser == $notification->getWishlistUser())
+        {
+            $notificationRepo->removeNotification($notification);
+        }
+
         return new Response();
     }
     

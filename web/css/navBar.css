@@ -194,5 +194,12 @@ li a {
     border-style: solid;
     border-color: #BEBDBD;
     background: white;
+    font-size: 12px;
+    text-align: left;
+}
+
+#notificationWindow a {
+    color: #00008F;
+    font-weight: bold;
 }
 

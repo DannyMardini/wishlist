@@ -25,4 +25,32 @@ class NotificationRepository extends EntityRepository
         $this->getEntityManager()->flush();
         return $newFriendRequest;
     }
+
+    public function removeNotifications($notifications)
+    {
+        $em  = $this->getEntityManager();
+
+        foreach ($notifications as $notification)
+        {
+            $em->remove($notification);
+        }
+        $em->flush();
+    }
+
+    public function removeNotification($notification)
+    {
+        $this->removeNotifications(array($notification));
+    }
+
+    public function getNotificationWithId(/*int*/ $notificationId)
+    {
+        $notification = $this->findOneBy(array('id' => $notificationId));
+
+        if( !isset($notification) )
+        {
+            throw new NoResultException();
+        }
+
+        return $notification;
+    }
 }

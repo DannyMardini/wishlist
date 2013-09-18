@@ -88,8 +88,7 @@ class WishlistUserRepository extends EntityRepository
     {
         $user = $this->findOneBy(array('wishlistuser_id' => $id));
         
-        if( !isset($user) )
-        {
+        if( !isset($user) ) {
             throw new NoResultException();
         }
         

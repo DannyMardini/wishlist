@@ -50,7 +50,28 @@ $(document).ready(function(){
     $('.ui-MenuLink').bind('click', function(){
         navigate($(["#", $(this).attr('id'), "Path"].join('')).val());
     });
+
+    $(".notifications a").click(function(){
+        removeNotification($(this).parent());
+    });
 });
+
+function removeNotification(notification)
+{
+    notification.fadeOut(400, function(){
+        notification.remove();
+        removeNotifyDropCheck();
+    });
+}
+
+function removeNotifyDropCheck()
+{
+    var notsRemaining = $('#notificationWindow li').size();
+    if(notsRemaining <= 0)
+    {
+        $('#notificationDiv').fadeOut(400, function(){$(this).remove()});
+    }
+}
 
 function noBack()
 {
