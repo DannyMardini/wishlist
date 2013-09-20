@@ -5,7 +5,6 @@
 
 var userName;
 var userID;
-var rightPanelVisible = 0;
 
 window.history.forward();
 
@@ -18,19 +17,30 @@ $(document).ready(function(){
     
     $('#logoutLink').click(onLogoutClickEvent);
 
-    $("#dropDownButton").click(function(){
-      if( rightPanelVisible )
-      {
-        $('#dropDownMenu').hide();
-        $("#dropDownButton").removeClass('selected');
-        rightPanelVisible = 0;
-      }
-      else
-      {
-        $("#dropDownMenu").show();
-        $("#dropDownButton").addClass('selected');
-        rightPanelVisible = 1;
-      }
+    $('#dropDownButton').click(function(){
+        if( $(this).hasClass('selected') )
+        {
+            $('#dropDownMenu').hide();
+            $(this).removeClass('selected');
+        }
+        else
+        {
+            $('#dropDownMenu').show();
+            $(this).addClass('selected');
+        }
+    });
+
+    $('#openNotificationsButton').click(function(){
+        if( $(this).hasClass('selected') )
+        {
+            $('#notificationWindow').hide();
+            $(this).removeClass('selected');
+        }
+        else
+        {
+            $('#notificationWindow').show();
+            $(this).addClass('selected');
+        }
     });
 
     $("#userName").click(function(){
@@ -40,12 +50,33 @@ $(document).ready(function(){
     $('.ui-MenuLink').bind('click', function(){
         navigate($(["#", $(this).attr('id'), "Path"].join('')).val());
     });
+
+    $(".notifications a").click(function(){
+        removeNotification($(this).parent());
+    });
 });
 
-       function noBack()
-         {
-             window.history.forward()
-         }
+function removeNotification(notification)
+{
+    notification.fadeOut(400, function(){
+        notification.remove();
+        removeNotifyDropCheck();
+    });
+}
+
+function removeNotifyDropCheck()
+{
+    var notsRemaining = $('#notificationWindow li').size();
+    if(notsRemaining <= 0)
+    {
+        $('#notificationDiv').fadeOut(400, function(){$(this).remove()});
+    }
+}
+
+function noBack()
+{
+    window.history.forward()
+}
 
 function onLogoutClickEvent()
 {

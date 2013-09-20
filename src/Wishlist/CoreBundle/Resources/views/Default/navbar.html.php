@@ -24,15 +24,23 @@
                     <span id="homepageLink" class="ui-MenuLink"><?php echo $user->getName() ?></span>
                 </div>
             </li><li>
-                <div class="buttonClass ui-MenuLink" id="eventManagerLink">
-                    <img src="/images/calendar_icon.png" title="Life Events" />
-                </div>
+                <?php
+                if(count($user->getNotifications()) > 0)
+                {
+                    echo "<div id='notificationDiv'><span id='openNotificationsButton'>!</span>\n";
+                    echo "<div id='notificationWindow'>\n";
+                    echo "<ul>\n";
+                    foreach($user->getNotifications() as $notification)
+                    {
+                        $notificationId = $notification->getId();
+                        echo "<li id='notification_".$notificationId."' class='notifications'>".$notification->getText()."    <a href='#'>Accept</a>    <a href='#'>Ignore</a></li>\n";
+                    }
+                    echo "</ul>\n";
+                    echo "</div></div>\n";
+                }
+                ?>
             </li>
-            <li style="padding-right:5px;">
-                <div class="buttonClass ui-MenuLink" id="friendListLink">
-                    <img src='/images/friend_icon.png' title='Friends' />
-                </div>
-            </li><li id="dropDownButton" class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
+            <li id="dropDownButton" class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
             <?php } else { ?><li>
                 <a href="#">Sign-In</a>
             </li><?php } ?>

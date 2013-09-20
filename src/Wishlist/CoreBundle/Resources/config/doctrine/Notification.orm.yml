@@ -1,0 +1,25 @@
+Wishlist\CoreBundle\Entity\Notification:
+  type: entity
+  table: null
+  repositoryClass: Wishlist\CoreBundle\Repository\NotificationRepository
+  manyToOne:
+    wishlistUser:
+      targetEntity: WishlistUser
+      inversedBy: notifications
+      joinColumn:
+        name: user_id
+        referencedColumnName: wishlistuser_id
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    userRequested:
+      type: integer
+    state:
+      type: integer
+    text:
+      type: string
+      length: 255
+  lifecycleCallbacks: {  }

@@ -6,26 +6,27 @@
 
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/friendpage.js"></script>
-<link href='/css/friendPage.css' rel='stylesheet' type="text/css" />
 
 <div id="friendsContainer">
     <input id="friendSearch" type="text" placeholder="Find People..."/>
-    <div id="friendlist">
-        <div id="friendSeparator" class="listSeparator">
-            My Friends
-        </div>
-        <div id='div_friendlist_div'>
-        <?php
-            echo "<ul>";
-            foreach($friends as $friend)
-            {
-                echo "<li><div class='userButton'>"
-                    ."<img class='friendIcon' src='".$friend->getProfileUrl()."'/>"
-                    ."<a class='friendLink' href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'>"
-                    .$friend->getName()."</a></div></li>\n";
-            }
-            echo "</ul>";
-            ?>
-        </div>
-    </div>
+    <!--<div id='friendlist'></div>-->
+<?php
+    if(count($friends) > 0)
+    {
+        echo "<div class='friendlist'>";
+        echo "<div id='friendSeparator' class='listSeparator'>My Friends</div>";
+        echo "<div id='div_friendlist_div'>";
+        echo "<ul>";
+        foreach($friends as $friend)
+        {
+            echo "<li><div class='userButton'>"
+                ."<img class='friendIcon' src='".$friend->getProfileUrl()."'/>"
+                ."<a class='friendLink' href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'></a>"
+                    .$friend->getName()."</div></li>\n";
+        }
+        echo "</ul>";
+        echo "</div>";
+        echo "</div>";
+    }
+?>
 </div>

@@ -26,7 +26,8 @@ class LoadWishlistUserData implements FixtureInterface,OrderedFixtureInterface
         for($i = 0; $i < 12; $i++)
         {
             $name = "Test User".$i;
-            $userRepo->addNewUser($name, new DateTime('7/20/1970'), "test@yahoo.com", 
+            $email = "test".$i."@yahoo.com";
+            $userRepo->addNewUser($name, new DateTime('7/20/1970'), $email, 
                     ($i % 2 == 0 )?WishlistUser::GENDER_MALE : WishlistUser::GENDER_FEMALE, "test");
         }
         

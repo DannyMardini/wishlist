@@ -373,4 +373,29 @@ class WishlistUser {
         
         return "";
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\Notification
+     */
+    private $notifications;
+
+
+    /**
+     * Add notifications
+     *
+     * @param Wishlist\CoreBundle\Entity\Notification $notifications
+     */
+    public function addNotification(\Wishlist\CoreBundle\Entity\Notification $notifications)
+    {
+        $this->notifications[] = $notifications;
+    }
+
+    /**
+     * Get notifications
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
 }

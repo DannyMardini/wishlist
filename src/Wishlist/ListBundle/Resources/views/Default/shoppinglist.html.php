@@ -25,7 +25,7 @@
         echo "<div title='Click to select item' class='shoppinglistItem' id='".$giftId."'> ";
         echo "<input class='selectItem' type='checkbox' />";
         echo "<label>Item:</label><div class='name itemDetail' >".$giftName."</div>"; 
-        echo "<label>For:</label><div class='itemDetail' >".$giftUser->getFirstname()."</div>";
+        echo "<label>For:</label><div class='itemDetail' >".$giftUser->getName()."</div>";
         echo "<label>Date Due:</label><div class='itemDetail'>".(isset($giftDate)? $giftDate->format('d/m/Y'):$createDateLink)."</div>";
         echo "</div>";
     }
