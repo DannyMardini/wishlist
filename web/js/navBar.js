@@ -30,7 +30,7 @@ $(document).ready(function(){
         }
     });
 
-    $('#notificationDiv').click(function(){
+    $('#openNotificationsButton').click(function(){
         if( $(this).hasClass('selected') )
         {
             $('#notificationWindow').hide();
