@@ -27,7 +27,7 @@ function timerRestart()
     timer = window.setTimeout(searchFriends, searchTimeout*1000);
 }
 
-function modifyAddButton(response, row)
+function modifyAddButton(response, textStatus, row)
 {
     console.log('Promoting friend!');    
     $('.addFriendButtonDiv',row).fadeOut(400, function(){
