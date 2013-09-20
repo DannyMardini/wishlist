@@ -5,6 +5,7 @@ nbproject/configs/
 *~
 /web/bundles/
 /app/bootstrap*
+/app/cache
 /app/cache/*
 /app/logs/*
 /vendor/
