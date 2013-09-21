@@ -77,6 +77,9 @@ function acceptFriendClicked()
 
 function ignoreFriendClicked()
 {
+    var parentLi = $(this).parent();
+    var num = getNotificationNumber(parentLi);
+    ajaxPost(null, Routing.generate('WishlistUserBundle_ignoreFriendRequest', {notificationId: num}), null, null);
 }
 
 function removeNotification(notification)
