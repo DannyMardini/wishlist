@@ -33,7 +33,7 @@
                     foreach($user->getNotifications() as $notification)
                     {
                         $notificationId = $notification->getId();
-                        echo "<li id='notification_".$notificationId."' class='notifications'>".$notification->getText()."    <a href='#'>Accept</a>    <a href='#'>Ignore</a></li>\n";
+                        echo "<li id='notification_".$notificationId."' class='notifications'>".$notification->getText()."    <a class='acceptFriend' href='#'>Accept</a>    <a class='ignoreFriend' href='#'>Ignore</a></li>\n";
                     }
                     echo "</ul>\n";
                     echo "</div></div>\n";

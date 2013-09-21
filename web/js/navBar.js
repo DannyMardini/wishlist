@@ -43,6 +43,9 @@ $(document).ready(function(){
         }
     });
 
+    $("a.acceptFriend").click(acceptFriendClicked);
+    $("a.ignoreFriend").click(ignoreFriendClicked);
+
     $("#userName").click(function(){
         window.location = $('#userNameLink').attr('href');
     });
@@ -55,6 +58,26 @@ $(document).ready(function(){
         removeNotification($(this).parent());
     });
 });
+
+function getNotificationNumber(notification)
+{
+    var stringArray = notification.attr("id").split('_');
+    if(stringArray.length > 1)
+    {
+        return stringArray[1];
+    }
+}
+
+function acceptFriendClicked()
+{
+    var parentLi = $(this).parent();
+    var num = getNotificationNumber(parentLi);
+    ajaxPost(null, Routing.generate('WishlistUserBundle_acceptFriendRequest', {notificationId: num}), null, null);
+}
+
+function ignoreFriendClicked()
+{
+}
 
 function removeNotification(notification)
 {

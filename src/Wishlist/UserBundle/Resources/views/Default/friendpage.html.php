@@ -1,9 +1,5 @@
 <!-- TODO: This page must not be viewable to those that aren't currently logged in. -->
 <?php $view->extend('::navBar.html.php') ?>
-
-<script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>
-<script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>
-
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/friendpage.js"></script>
 
