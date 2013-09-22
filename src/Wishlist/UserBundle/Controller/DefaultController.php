@@ -150,6 +150,7 @@ class DefaultController extends Controller
         $session = $request->getSession();
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
         $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
+        $friendshipRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
 
         $loggedInUserId = $session->get('user_id');
         $newFriendId = $request->get('personId');
@@ -166,8 +167,18 @@ class DefaultController extends Controller
         $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
         $newFriend = $userRepo->getUserWithId($newFriendId);
 
-        if(!($notificationRepo->notificationExists($loggedInUserId, $newFriendId)))
+        //If the complement request already exists let's just make them friends!
+        $complementNotification = $notificationRepo->complementNotification($loggedInUser, $newFriendId);
+
+        if(isset($complementNotification)) 
         {
+            //add friend
+            $friendshipRepo->addNewFriendship($loggedInUser, $newFriend);
+            $notificationRepo->removeNotification($complementNotification);
+        }
+        else if(!($notificationRepo->notificationExists($loggedInUserId, $newFriendId))) //Does the request already exist?
+        {
+            //If not, add a new request!
             $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' has requested to be your friend.');
         }
 
@@ -204,7 +215,6 @@ class DefaultController extends Controller
         $session = $this->getRequest()->getSession();
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
         $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
-        $friendshipRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
         
         $loggedInUserId = $session->get('user_id');
         $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
