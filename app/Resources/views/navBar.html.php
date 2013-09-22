@@ -2,7 +2,7 @@
 $wishlistUrl = $view['router']->generate('WishlistUserBundle_homepage');
 $shoppinglistUrl = $view['router']->generate('WishlistUserBundle_shoppinglist');
 $eventsUrl = $view['router']->generate('WishlistUserBundle_lifeEventsManager');
-$friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist', array('user_id' => $view['session']->get('user_id')));
+$friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
 ?>
 <html>
     <head>

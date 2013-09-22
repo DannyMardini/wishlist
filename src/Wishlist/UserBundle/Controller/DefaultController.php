@@ -80,20 +80,19 @@ class DefaultController extends Controller
                                                                                     'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
     }
     
-    public function showFriendpageAction(/*int*/ $user_id)
+    public function showFriendpageAction()
     {
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
         
-        try{
-            $wishlist_user = $userRepo->getUserWithId($user_id);
-            $friends = $userRepo->getFriendsOf($wishlist_user);
-        }catch(Exception $e){
-            $e->getTrace();
+        $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
+        $loggedInUser = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
+
+        if($loggedInUser)
+        {
+            return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $userRepo->getFriendsOf($loggedInUser), 'username' => $loggedInUser->getName()));
         }
-        
-        $username = $wishlist_user->getName();
-        
-        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $friends, 'username' => $username));
+
+        return new Response();
     }
     
     public function friendSearchAction()
