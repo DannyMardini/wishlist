@@ -53,4 +53,20 @@ class NotificationRepository extends EntityRepository
 
         return $notification;
     }
+
+    public function notificationExists(/*int*/ $userRequestedId, /*int*/ $targetId)
+    {
+        $q = $this->getEntityManager()
+            ->createQuery('SELECT n FROM WishlistCoreBundle:Notification n JOIN n.wishlistUser u WHERE u.wishlistuser_id = :targetId AND n.userRequested = :userRequestedId')
+            ->setParameters(array('targetId' => $targetId, 'userRequestedId' => $userRequestedId));
+
+        $qResults = $q->getResult();
+
+        if(count($qResults) <= 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }
