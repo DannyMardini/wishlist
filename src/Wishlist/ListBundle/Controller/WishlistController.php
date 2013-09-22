@@ -73,13 +73,31 @@ class WishlistController extends Controller
     
     public function getItemAction($itemId)
     {
+        try{
         $response = new Response();
         $wishlistItem = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem')->findOneBy(array('id' => $itemId));
         
-        $response->setContent($wishlistItem->exportData());
-        $response->headers->set('Content-Type', 'application/json');
+        if($wishlistItem)
+        {
+            $response->setContent($wishlistItem->exportData());
+            $response->headers->set('Content-Type', 'application/json');
+        }
+        else
+        {
+            $alert = array('error_message' => 'This item is no longer on your friends wishlist.');
+            $response->setContent(json_encode($alert));
+            $response->headers->set('Content-Type', 'application/json');
+        }
+        
         
         return $response;
+        
+        }
+        catch (\Exception $e)
+        {
+           $response  = new Response($e->getMessage());           
+           return $response;
+        }
     }
 
     /**

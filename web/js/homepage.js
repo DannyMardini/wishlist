@@ -88,7 +88,15 @@ function openDialog(wishlistItemId)
 {
     // using the item ID, grab the item's info and display in the dialog
     $.getJSON('/app_dev.php/wishlistitem/'+wishlistItemId, function (data) {
-      setupItemView(data);     
+        var alertMessage = data.error_message;
+        
+        if(alertMessage) // an issue occurred
+        {
+            popupMessage('Sorry!',alertMessage);
+        }
+        else {
+            setupItemView(data);
+        }
     }); 
 }
 
