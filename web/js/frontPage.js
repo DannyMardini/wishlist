@@ -24,12 +24,10 @@ $(document).ready(function()
      ); 
          
     $("#loginForm").ajaxSuccess(function(){
-        //alert("Success");
     });    
           
           
     $("#loginForm").ajaxComplete(function(){
-        //alert("Complete");
     }); 
     
           
