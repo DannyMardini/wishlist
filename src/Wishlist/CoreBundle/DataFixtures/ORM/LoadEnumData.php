@@ -6,6 +6,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Wishlist\CoreBundle\Entity\Enum;
 use Wishlist\CoreBundle\Entity\WishlistUpdate;
 use Wishlist\CoreBundle\Entity\Notification;
+use Wishlist\CoreBundle\Repository\WishlistUserRepository;
 use \DateTime;
 
 class LoadEnumData implements FixtureInterface
@@ -31,6 +32,8 @@ class LoadEnumData implements FixtureInterface
         
         $this->newEnum('Notification', 'STATE_UNREAD', Notification::STATE_UNREAD);
         $this->newEnum('Notification', 'STATE_READ', Notification::STATE_READ);
+
+        $this->newEnum('WishlistUserRepository', 'MAX_USERS', WishlistUserRepository::MAX_USERS);
          
         $manager->flush();
     }
