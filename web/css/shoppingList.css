@@ -27,13 +27,6 @@
     font-family: Satisfy, cursive;
 }
 
-.shoppinglist-header-label {
-    float: left;
-    display: inline-block;
-    width: 250px;
-    font-family: Satisfy, cursive;
-}
-
 .itemDetail {
     display: inline-block;
     font-size: 16px;

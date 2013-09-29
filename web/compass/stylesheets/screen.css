@@ -619,3 +619,10 @@ div.requestSentNotification {
   width: 27%;
   color: #b3b3b3;
 }
+
+/* line 139, ../sass/screen.scss */
+label.pageHeader {
+  float: left;
+  display: inline-block;
+  font-family: Satisfy, cursive;
+}

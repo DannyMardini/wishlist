@@ -9,7 +9,7 @@
     <body>
         <div class="eventsHeader">
             <?php $eventCount = count($events); ?>
-            <label class="event-header-label" id="event_count_<?php echo $eventCount ?>">Events ( <?php echo $eventCount ?> )</label>
+            <label class="pageHeader" id="event_count_<?php echo $eventCount ?>">Events ( <?php echo $eventCount ?> )</label>
             <button title="add event" id="addLifeEventButton"></button>
         </div>        
         <hr size="1" width="90%" color="grey">

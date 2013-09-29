@@ -135,3 +135,9 @@ div.requestSentNotification {
     width: 27%;
     color: lighten($font-color, 50%);
 }
+
+label.pageHeader {
+    float: left;
+    display: inline-block;
+    font-family: Satisfy, cursive;
+}
