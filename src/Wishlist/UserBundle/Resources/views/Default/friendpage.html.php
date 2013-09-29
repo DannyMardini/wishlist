@@ -2,10 +2,12 @@
 <?php $view->extend('::navBar.html.php') ?>
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/friendpage.js"></script>
-
+<div id="friendsHeader">
+    <label class="pageHeader">Friends ( <?php echo count($friends) ?> )</label>
+</div>
+<hr size="1" width="90%" color="grey">
 <div id="friendsContainer">
     <input id="friendSearch" type="text" placeholder="Find People..."/>
-    <!--<div id='friendlist'></div>-->
 <?php
     if(count($friends) > 0)
     {

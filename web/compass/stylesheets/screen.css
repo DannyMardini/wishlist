@@ -622,7 +622,11 @@ div.requestSentNotification {
 
 /* line 139, ../sass/screen.scss */
 label.pageHeader {
+  padding-top: 10px;
+  padding-left: 60px;
   float: left;
   display: inline-block;
   font-family: Satisfy, cursive;
+  font-size: 28px;
+  font-weight: bold;
 }
