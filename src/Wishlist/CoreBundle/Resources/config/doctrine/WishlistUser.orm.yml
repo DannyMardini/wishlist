@@ -8,6 +8,10 @@ Wishlist\CoreBundle\Entity\WishlistUser:
     friendships:
       targetEntity: Friendship
       mappedBy: wishlistUser
+    
+    friendInvites:
+      targetEntity: FriendInvite
+      mappedBy: userInvited
 
     events:
       targetEntity: Event

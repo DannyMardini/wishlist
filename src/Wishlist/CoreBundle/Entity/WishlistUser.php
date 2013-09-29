@@ -398,4 +398,29 @@ class WishlistUser {
     {
         return $this->notifications;
     }
+    /**
+     * @var Wishlist\CoreBundle\Entity\FriendInvite
+     */
+    private $friendInvites;
+
+
+    /**
+     * Add friendInvites
+     *
+     * @param Wishlist\CoreBundle\Entity\FriendInvite $friendInvites
+     */
+    public function addFriendInvite(\Wishlist\CoreBundle\Entity\FriendInvite $friendInvites)
+    {
+        $this->friendInvites[] = $friendInvites;
+    }
+
+    /**
+     * Get friendInvites
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getFriendInvites()
+    {
+        return $this->friendInvites;
+    }
 }
