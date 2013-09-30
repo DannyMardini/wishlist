@@ -16,6 +16,8 @@ use \DateTime;
  */
 class WishlistUserRepository extends EntityRepository
 {
+    const MAX_USERS = 100;
+
     public function getUser($fullname)
     {
         return $this->findOneBy(array('name' => $fullname));
