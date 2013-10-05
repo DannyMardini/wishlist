@@ -62,10 +62,35 @@ class DefaultController extends Controller
         }
         catch(Exception $e)
         {
-            $response = "Sorry about this! An issue occurred while validating your emal and password. Please refresh your browser and try again. <br /><br />-Wishlist Team";
+            $response = "Sorry about this! An issue occurred while validating your email and password. Please refresh your browser and try again. <br /><br />-Wishlist Team";
             return $this->renderText($response);
         }
 
 
+    }
+    
+    public function requestInviteAction()
+    {
+        try {
+            $response = "";
+            $email = $this->getRequest()->get('email');
+
+            if(!$email)
+            {
+                $response = "Sorry about this! The system could not read your email. Please refresh your browser and try again. <br /><br />-Wishlist Team";           
+            }
+            
+            // to do: make a database call to store the email in the invite queue
+            
+            //$userId = $this->getDoctrine()->getEntityManager()->
+              //      getRepository('WishlistCoreBundle:WishlistUser')->validateEmailAndPassword($email, $password);            
+            
+            // send email to the person letting them know that their request is in process and they should be contacted soon.
+        }
+        catch(Exception $e)
+        {
+            $response = "Sorry about this! An issue occurred while submitting your request. Please refresh your browser and try again. <br /><br />-Wishlist Team";
+            return $this->renderText($response);
+        }
     }
 }

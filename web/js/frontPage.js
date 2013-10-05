@@ -58,7 +58,7 @@ $(document).ready(function()
 
     $('#requestInviteForm').submit(function(e) {
         e.preventDefault();
-        
+
         $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
             displayMessage(data);             
         });
