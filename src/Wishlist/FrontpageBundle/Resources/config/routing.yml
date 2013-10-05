@@ -9,3 +9,7 @@ WishlistFrontpageBundle_navBarTest:
 Validate:
   pattern: /Frontpage/validateLogin
   defaults: { _controller: WishlistFrontpageBundle:Default:validateLogin }
+  
+WishlistFrontpageBundle_requestInvite:
+  pattern: /Frontpage/requestInvite
+  defaults: { _controller: WishlistFrontpageBundle:Default:requestInvite }  
