@@ -34,6 +34,6 @@
     <form id="friendInviteForm">
         <p><label>Name:</label><input name="name" id="newFriendName" type="text" placeholder="John Doe"></p>
         <p><label>Email:</label><input name="email" id="newFriendEmail" type="email" placeholder="johndoe@email.com"></p>
-        <input type="submit" name="submitFriend" value="Submit" />
+        <input id="friendInviteFormSubmit" type="submit" name="submitFriend" style="display: none" />
     </form>
 </div>
