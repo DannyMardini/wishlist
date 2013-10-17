@@ -8,6 +8,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Doctrine\ORM\NoResultException;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Services\PicService;
+use Wishlist\CoreBundle\Entity\FriendInvite;
 use \DateTime;
 
 
@@ -15,6 +16,7 @@ class DefaultController extends Controller
 {
     // STATUS CODES -- 
     const SC_OK = 200;
+    const SC_BAD_REQUEST = 400;
 
     // Private variables used by controller actions
     private $loggedInUserTest;
@@ -79,7 +81,8 @@ class DefaultController extends Controller
         return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user, 'wishlistItems' => $user->getWishlistItems(),
                                                                                     'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
     }
-    
+
+    //TODO: These friendpage actions should really go in their own separate controller.
     public function showFriendpageAction()
     {
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
@@ -181,6 +184,31 @@ class DefaultController extends Controller
             //If not, add a new request!
             $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' has requested to be your friend.');
         }
+
+        return new Response();
+    }
+    
+    public function friendInviteAction()
+    {
+        $request = $this->getRequest();
+        $session = $request->getSession();
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $email = $request->get('email');
+
+        if($email == '')
+        {
+            return new Response('', SC_BAD_REQUEST);
+        }
+        
+        $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
+        $userInvited = $userRepo->getUserWithId($session->get('user_id'));
+
+        $newInvite = new FriendInvite();
+        $newInvite->setEmail($email);
+        $newInvite->setUserInvited($userInvited);
+        $em->persist($newInvite);
+        $em->flush();
 
         return new Response();
     }

@@ -74,4 +74,8 @@ class FriendInvite
     {
         return $this->email;
     }
+    
+    public function sendInviteEmail()
+    {
+    }
 }

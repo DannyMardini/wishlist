@@ -22,6 +22,10 @@ WishlistUserBundle_friendAdd:
   pattern: /FriendAdd
   defaults: { _controller: WishlistUserBundle:Default:friendAdd }
 
+WishlistUserBundle_friendInvite:
+  pattern: /FriendInvite
+  defaults: { _controller: WishlistUserBundle:Default:friendInvite }
+
 WishlistUserBundle_acceptFriendRequest:
   pattern: /FriendRequestAccept/{notificationId}
   defaults: { _controller: WishlistUserBundle:Default:friendRequestAccept }

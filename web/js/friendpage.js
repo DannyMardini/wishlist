@@ -125,6 +125,28 @@ function createButtonLinks()
     });    
 }
 
+//todo: Get rid of name parameter, don't need this.
+function submitFriendInvite(name, email)
+{
+    var retval = false;
+    var inviteUrl = Routing.generate('WishlistUserBundle_friendInvite');
+
+    $.ajax({
+        type: 'POST',
+        url: inviteUrl,
+        data: {name: name, email: email},
+        success: function() {
+            retval = true;
+            $('#friendInviteDialog').dialog('close');
+        },
+        error: function() {
+            alert("Failure!");
+        },
+    });
+
+    return retval;
+}
+
 $(document).ready(function(){
     
     createButtonLinks();
@@ -147,6 +169,17 @@ $(document).ready(function(){
     
     $('#friendInviteForm').submit(function(e) {
         e.preventDefault();
+        
+        if(submitFriendInvite($('#newFriendName').val(), $('#newFriendEmail').val()))
+        {
+            //Display success.
+            console.log('Success!');
+        }
+        else
+        {
+            //Display error message.
+            console.log('Fail!');
+        }
     });
     
     $('#inviteFriendButton').click(function(){
