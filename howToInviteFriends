@@ -1,5 +1,0 @@
-1. Add a button to invite friends (skipped)
-2. Need a data structure to keep track of friend invites. (Done)
-    - Will this be a new data structure or one that I an already leverage
-        No, I have to create a new structure called FriendInvite.
-3. Need to send an email invite.
