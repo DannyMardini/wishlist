@@ -30,10 +30,11 @@
 ?>
 </div>
 
-<div id="friendInviteDialog" title="Invite a friend">
+<div id="friendInviteDialog" title="Invite a friend!">
     <form id="friendInviteForm">
-        <p><label>Name:</label><input name="name" id="newFriendName" type="text" placeholder="John Doe"></p>
+        <p>Want to invite a friend to help you shop for them?</p>
         <p><label>Email:</label><input name="email" id="newFriendEmail" type="email" placeholder="johndoe@email.com"></p>
         <input id="friendInviteFormSubmit" type="submit" name="submitFriend" style="display: none" />
     </form>
 </div>
+
