@@ -210,6 +210,17 @@ class DefaultController extends Controller
         $em->persist($newInvite);
         $em->flush();
 
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Help them shop for you!')
+            ->setFrom('wishthrowaway@gmail.com')
+            ->setTo($newInvite->getEmail())
+            ->setBody('Hey there! Help me shop for you!');
+
+        if (!$this->get('mailer')->send($message))
+        {
+            return new Response('', SC_BAD_REQUEST);
+        }
+
         return new Response();
     }
 
