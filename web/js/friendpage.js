@@ -139,9 +139,6 @@ function submitFriendInvite(email)
             retval = true;
             $('#friendInviteDialog').dialog('close');
         },
-        error: function() {
-            alert("Failure!");
-        },
     });
 
     return retval;

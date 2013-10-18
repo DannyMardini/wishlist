@@ -56,6 +56,10 @@ swiftmailer:
     host:      %mailer_host%
     username:  %mailer_user%
     password:  %mailer_password%
+    delivery_address: dannymardini@gmail.com
+    spool:
+        type: file
+        path: "/tmp/spool"
 
 jms_security_extra:
     secure_controllers:  true
