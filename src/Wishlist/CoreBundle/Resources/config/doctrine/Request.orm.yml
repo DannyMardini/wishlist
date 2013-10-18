@@ -1,0 +1,21 @@
+Wishlist\CoreBundle\Entity\Request:
+  type: entity
+  table: null
+  repositoryClass: Wishlist\CoreBundle\Repository\RequestRepository
+  manyToOne:
+    UserInvited:
+      targetEntity: WishlistUser
+      inversedBy: Requests
+      joinColumn:
+        name: invitedUserId
+        referencedColumnName: wishlistuser_id  
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    email:
+      type: string
+      length: '255'
+  lifecycleCallbacks: {  }

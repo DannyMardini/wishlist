@@ -15,11 +15,6 @@ class DefaultController extends Controller
         $session->set('user_id', '');
         $session->clear();
         
-//        Session.clear();//clear session
-//        Session.Abandon();//Abandon session
-//        Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
-//        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-//        Response.Cache.SetNoStore();
         return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');
     }
     
@@ -74,18 +69,16 @@ class DefaultController extends Controller
         try {
             $response = "";
             $email = $this->getRequest()->get('email');
-
+            
             if(!$email)
-            {
+            {   
                 $response = "Sorry about this! The system could not read your email. Please refresh your browser and try again. <br /><br />-Wishlist Team";           
             }
             
-            // to do: make a database call to store the email in the invite queue
+            // make a database call to store the email in the invite queue
+            $inviteRequest = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request')->addInviteToQueue($email, null);
             
-            //$userId = $this->getDoctrine()->getEntityManager()->
-              //      getRepository('WishlistCoreBundle:WishlistUser')->validateEmailAndPassword($email, $password);            
-            
-            // send email to the person letting them know that their request is in process and they should be contacted soon.
+            // to do: send email to the person letting them know that their request is in process and they should be contacted soon.
         }
         catch(Exception $e)
         {

@@ -57,11 +57,13 @@ $(document).ready(function()
     });
 
     $('#requestInviteForm').submit(function(e) {
-        e.preventDefault();
-
-        $.post('/frontpage/requestInvite', {email: $("#email_addr").val()}, function(data){
+        e.preventDefault();  // LEFT OFF HERE... THE PATH STILL DOESN"T SEEM TO WORK
+        var url = '/app_dev.php/Frontpage/requestInvite'; 
+        
+        $.post(url, {email: $("#email_addr").val()}, function(data){
             displayMessage(data);             
         });
+        
     });    
      
                  

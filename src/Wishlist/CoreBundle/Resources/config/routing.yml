@@ -1,6 +1,6 @@
-WishlistCoreBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: WishlistCoreBundle:Default:index }
+#WishlistCoreBundle_homepage:
+#    pattern:  /hello/{name}
+#    defaults: { _controller: WishlistCoreBundle:Default:index }
     
 WishlistCoreBundle_NotifyAdmin:
     pattern:  /Notify/Admin
@@ -10,6 +10,6 @@ WishlistCoreBundle_getItemInfo:
   pattern: /ItemInfo
   defaults: { _controller: WishlistCoreBundle:EntityServices:getItemInfo }
   
-WishlistCoreBundle_testPage:
-  pattern: /TestPage
-  defaults: { _controller: WishlistCoreBundle:Default:testPage }
+#WishlistCoreBundle_testPage:
+#  pattern: /TestPage
+#  defaults: { _controller: WishlistCoreBundle:Default:testPage }
