@@ -78,7 +78,9 @@ class DefaultController extends Controller
             // make a database call to store the email in the invite queue
             $inviteRequest = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request')->addInviteToQueue($email, null);
             
-            // to do: send email to the person letting them know that their request is in process and they should be contacted soon.
+            // todo: send email to the person letting them know that their request is in process and they should be contacted soon.
+            
+            return new Response($response);
         }
         catch(Exception $e)
         {

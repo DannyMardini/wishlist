@@ -7,6 +7,8 @@
         <link href="/css/black-tie/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 
         <link href="/css/main.css" rel="stylesheet" type="text/css" />
+        <script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>
+        <script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>        
     </head>
     <body>
         <link href="/css/frontPage.css" rel="stylesheet" type="text/css" />

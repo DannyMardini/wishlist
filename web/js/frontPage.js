@@ -57,8 +57,8 @@ $(document).ready(function()
     });
 
     $('#requestInviteForm').submit(function(e) {
-        e.preventDefault();  // LEFT OFF HERE... THE PATH STILL DOESN"T SEEM TO WORK
-        var url = '/app_dev.php/Frontpage/requestInvite'; 
+        e.preventDefault();
+        var url = Routing.generate('RequestInvite');
         
         $.post(url, {email: $("#email_addr").val()}, function(data){
             displayMessage(data);             
