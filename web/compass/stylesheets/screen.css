@@ -630,3 +630,8 @@ label.pageHeader {
   font-size: 28px;
   font-weight: bold;
 }
+
+/* line 149, ../sass/screen.scss */
+.wishenda-button {
+  cursor: hand;
+}

@@ -124,10 +124,55 @@ function createButtonLinks()
        window.location = $(this).find("a").attr("href");
     });    
 }
+function onInviteClickEvent()
+{
+    var form = $('#friendInviteForm')[0];
+    
+    if(form.checkValidity)
+    {
+        form.checkValidity();
+        $('#newFriendEmail')[0].checkValidity();
+        console.log("checkVality is there.");
+    }
+    else
+    {
+        console.log("checkValidity is NOT there.");
+    }
+    /*
+    var friendInvite = new Object();
+
+    friendInvite.name = $('#newFriendName').val();
+    friendInvite.email = $('#newFriendEmail').val();
+    */
+//function ajaxPost(data, url, callback, callBackParams)
+    
+    //$('#friendInviteDialog').dialog('close');
+}
 
 $(document).ready(function(){
     
     createButtonLinks();
     
     $('#friendSearch').keyup(keyTrigger);
+
+    $('#friendInviteDialog').dialog({
+            autoOpen: false,
+            position: 'center', 
+            resizable: false,
+            height:300,
+            width:500,
+            modal: true
+            /*
+            buttons: {
+                'Invite': onInviteClickEvent
+            }*/
+    });
+    
+    $('#friendInviteForm').submit(function(e) {
+        //e.preventDefault();
+    });
+    
+    $('#inviteFriendButton').click(function(){
+        $('#friendInviteDialog').dialog('open');
+    });
 });
