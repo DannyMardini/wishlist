@@ -126,7 +126,7 @@ function createButtonLinks()
 }
 
 //todo: Get rid of name parameter, don't need this.
-function submitFriendInvite(name, email)
+function submitFriendInvite(email)
 {
     var retval = false;
     var inviteUrl = Routing.generate('WishlistUserBundle_friendInvite');
@@ -134,7 +134,7 @@ function submitFriendInvite(name, email)
     $.ajax({
         type: 'POST',
         url: inviteUrl,
-        data: {name: name, email: email},
+        data: {email: email},
         success: function() {
             retval = true;
             $('#friendInviteDialog').dialog('close');
@@ -170,7 +170,7 @@ $(document).ready(function(){
     $('#friendInviteForm').submit(function(e) {
         e.preventDefault();
         
-        if(submitFriendInvite($('#newFriendName').val(), $('#newFriendEmail').val()))
+        if(submitFriendInvite($('#newFriendEmail').val()))
         {
             //Display success.
             console.log('Success!');
