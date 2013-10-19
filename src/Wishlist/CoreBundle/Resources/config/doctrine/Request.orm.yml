@@ -3,9 +3,9 @@ Wishlist\CoreBundle\Entity\Request:
   table: null
   repositoryClass: Wishlist\CoreBundle\Repository\RequestRepository
   manyToOne:
-    UserInvited:
+    userInvited:
       targetEntity: WishlistUser
-      inversedBy: Requests
+      inversedBy: friendsRequested
       joinColumn:
         name: invitedUserId
         referencedColumnName: wishlistuser_id  

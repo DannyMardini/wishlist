@@ -9,8 +9,8 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       targetEntity: Friendship
       mappedBy: wishlistUser
     
-    friendInvites:
-      targetEntity: FriendInvite
+    friendsRequested:
+      targetEntity: Request
       mappedBy: userInvited
 
     events:

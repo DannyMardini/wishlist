@@ -18,6 +18,11 @@ class Request
      * @var string $email
      */
     private $email;
+    
+    /**
+     * @var Wishlist\CoreBundle\Entity\WishlistUser
+     */
+    private $userInvited;
 
 
     /**
@@ -49,29 +54,24 @@ class Request
     {
         return $this->email;
     }
-    /**
-     * @var Wishlist\CoreBundle\Entity\WishlistUser
-     */
-    private $UserInvited;
-
 
     /**
-     * Set UserInvited
+     * Set userInvited
      *
      * @param Wishlist\CoreBundle\Entity\WishlistUser $userInvited
      */
     public function setUserInvited(\Wishlist\CoreBundle\Entity\WishlistUser $userInvited)
     {
-        $this->UserInvited = $userInvited;
+        $this->userInvited = $userInvited;
     }
 
     /**
-     * Get UserInvited
+     * Get userInvited
      *
      * @return Wishlist\CoreBundle\Entity\WishlistUser 
      */
     public function getUserInvited()
     {
-        return $this->UserInvited;
+        return $this->userInvited;
     }
 }

@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Doctrine\ORM\NoResultException;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Services\PicService;
-use Wishlist\CoreBundle\Entity\FriendInvite;
+use Wishlist\CoreBundle\Entity\Request;
 use \DateTime;
 
 
@@ -205,7 +205,7 @@ class DefaultController extends Controller
         $userInvited = $userRepo->getUserWithId($session->get('user_id'));
         $userInvitedName = $userInvited->getName();
 
-        $newInvite = new FriendInvite();
+        $newInvite = new Request();
         $newInvite->setEmail($email);
         $newInvite->setUserInvited($userInvited);
         $em->persist($newInvite);
