@@ -6,7 +6,11 @@
 <input type="hidden" id="eventManagerLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_lifeEventsManager') ?>" />
 
 <div id="header">
-    <div id="logoContainer">
+    <div id="socialMediaLinks">
+        <span class="socialMediaLink"><a href="https://www.facebook.com/pages/Wishenda/490657654383030" target="_blank"><img src="/images/facebook_32.png" alt border="0" ></a></span>
+        <span class="socialMediaLink"><a href="http://www.pinterest.com/wishenda/" target="_blank"><img src="/images/pinterest_32.png" alt  border="0" ></a></span>
+    </div>    
+    <div id="logoContainer">        
         <img id="logo" src="/images/gift.jpg"/>
         <div id="name">Wishlist</div>
     </div>

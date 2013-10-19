@@ -60,6 +60,16 @@ li a {
     float: left;
 }
 
+#socialMediaLinks {
+    float:left;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.socialMediaLink {
+     margin:3px;
+}
+
 #logoContainer #name {
     font-family: Satisfy, cursive;
     font-size: 40px;
