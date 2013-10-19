@@ -22,12 +22,30 @@ class RequestRepository extends EntityRepository {
      */
     public function addInviteToQueue(/*string*/ $theEmail, /*WishlistUser*/ $userInvited)
     {
-        $newInvite = new Request();
-        $newInvite->setEmail($theEmail);
-        $this->getEntityManager()->persist($newInvite);
-        $this->getEntityManager()->flush();
+        $newInvite = $this->findInvite($theEmail);
+        
+        if(!$newInvite){
+            $newInvite = new Request();
+            $newInvite->setEmail($theEmail);
+            $this->getEntityManager()->persist($newInvite);
+            $this->getEntityManager()->flush();
+        }
         
         return $newInvite;
+    }
+    
+    public function findInvite(/*string*/ $email)
+    {
+       $em = $this->getEntityManager();       
+        
+        $q = $em->createQuery('
+            SELECT i
+            FROM WishlistCoreBundle:Request i
+            WHERE i.email = :theEmail')
+                ->setParameters(array('theEmail' => $email));
+                      
+        $itemInDatabase = $q->getOneOrNullResult();  
+        return $itemInDatabase;        
     }
 }
 
