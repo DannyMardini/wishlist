@@ -34,7 +34,7 @@
     <form id="friendInviteForm">
         <p>Want to invite a friend to help you shop for them?</p>
         <p><label>Email:</label><input name="email" id="newFriendEmail" type="email" placeholder="johndoe@email.com"></p>
-        <input id="friendInviteFormSubmit" type="submit" name="submitFriend" style="display: none" />
+        <input id="friendInviteFormSubmit" type="submit" name="submitFriend" style="display: none" required>
     </form>
 </div>
 
