@@ -203,6 +203,7 @@ class DefaultController extends Controller
         
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
         $userInvited = $userRepo->getUserWithId($session->get('user_id'));
+        $userInvitedName = $userInvited->getName();
 
         $newInvite = new FriendInvite();
         $newInvite->setEmail($email);
@@ -210,11 +211,14 @@ class DefaultController extends Controller
         $em->persist($newInvite);
         $em->flush();
 
+        $htmlbody = $this->renderView('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
+        $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
         $message = \Swift_Message::newInstance()
-            ->setSubject('Help them shop for you!')
+            ->setSubject($userInvitedName.' doesn\'t know what to get you!')
             ->setFrom('wishthrowaway@gmail.com')
             ->setTo($newInvite->getEmail())
-            ->setBody('Hey there! Help me shop for you!');
+            ->setBody($htmlbody, 'text/html')
+            ->addPart($textbody, 'text/plain');
 
         if (!$this->get('mailer')->send($message))
         {
