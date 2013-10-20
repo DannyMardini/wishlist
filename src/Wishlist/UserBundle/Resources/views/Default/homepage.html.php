@@ -12,7 +12,7 @@
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
 
 <div id="updatesComponent">
-    <h2>Updates</h2>
+    <div class="updatesHeader">Updates</div>    
     
     <div id="updatesInnerComponent">
 

@@ -30,7 +30,6 @@ button.fg-button { width:auto; overflow:visible; }
 
 #wishlistBox {
     display: inline-block;
-/*    background-color: white;*/
     width: 67%;
     height: 80%;
     padding: 0px 3% 3% 3%;
@@ -39,6 +38,12 @@ button.fg-button { width:auto; overflow:visible; }
     margin-left: auto;
     background-repeat: no-repeat;
     background-size: contain;
+    
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
+    -ms-border-radius:5px;
+    border-radius:5px;    
 }
 
 #wishlistBox h3 {
@@ -233,4 +238,9 @@ li{
     width: 100px;
     padding-right: 50px;
     vertical-align: middle;
+}
+
+.updatesHeader {
+    font-size:20px;
+    font-weight: bold;
 }
