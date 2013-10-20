@@ -50,12 +50,15 @@ li a {
     border-radius: 0px 0px 5px 5px;
 }
 
-#navigationlist li:hover {    
+#navigationlist li a:hover {
+  color:grey;
+  -o-transition:1.5s;
+  -ms-transition:1.5s;
+  -moz-transition:1.5s;
+  -webkit-transition:1.5s;
+  transition:1.5s;
 }
 
-#navigationlist li a:hover {
-    color: grey;
-}
 /*
 #navigationlist li { 
     margin: -2px; 
