@@ -51,12 +51,12 @@ li a {
 }
 
 #navigationlist li a:hover {
-  color:grey;
-  -o-transition:1.5s;
-  -ms-transition:1.5s;
-  -moz-transition:1.5s;
-  -webkit-transition:1.5s;
-  transition:1.5s;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  color: #ffcccc;
 }
 
 /*
