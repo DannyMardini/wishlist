@@ -21,6 +21,11 @@ class WishlistItemRepository extends EntityRepository
         $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Item');
         $newItem = $itemRepo->addItem($name, $price, $link, $isPublic, $comment, $quantity, $wishlistUser);
         
+        if($quantity=="")
+        {
+            $quantity = 1; 
+        }
+        
         // check if this user already has this item as a wish
         $isWish = $this->checkUserWishlist($newItem, $wishlistUser);
         

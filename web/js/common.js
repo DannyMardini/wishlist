@@ -183,6 +183,7 @@ function parseDate(/*string*/ str)
 function confirm (confirmMessage) {
     var defer = $.Deferred(); 
     $('<div>' + confirmMessage + '</div>').dialog({
+            position: 'top',
             height: 300,
             width: 300,
             modal: true,
@@ -208,6 +209,7 @@ function confirm (confirmMessage) {
 function popupMessage(theTitle, message, callback)
 {    
     $('<div>' + message + '</div>').dialog({
+             position: 'top',
              autoOpen: true,
              close: function () {                  
                  $(this).dialog('destroy');

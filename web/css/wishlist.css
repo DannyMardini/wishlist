@@ -34,18 +34,8 @@
     background-color: gray;
 }
 
-#div_wishlist_div {
-    display: inline-block;
-    font-size: 12px;
-}
-
 #newWishBox {
     color: pink;
-}
-
-#submitNewWish {
-    width:80px;
-    margin-left: 45%;    
 }
 
 .newWishBox {

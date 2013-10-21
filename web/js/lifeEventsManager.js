@@ -31,6 +31,7 @@ function createGUIButtons()
 function createGUIDialogs()
 {
    $('#newEventPanel').dialog({
+       position: 'top',
         modal: true,
         autoOpen: false,
         title: 'New Event',
@@ -39,6 +40,7 @@ function createGUIDialogs()
     });
     
     $('#dialog-message').dialog({
+        position: 'top',
         autoOpen: false,
         resizable: false,
         height:230,
@@ -51,6 +53,7 @@ function createGUIDialogs()
     });
     
     $( "#dialog-confirm" ).dialog({
+        position: 'top',
         autoOpen: false,
         resizable: false,
         height:230,

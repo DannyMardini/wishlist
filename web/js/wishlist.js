@@ -40,7 +40,7 @@ function validateWish(wish)
     }
     
     var url_regexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/;
-    if(link.length <= 0 || !url_regexp.test(link))
+    if(link== null || link.length <= 0 || !url_regexp.test(link))
     {
         message += "<br />Link";
     }
@@ -111,35 +111,17 @@ function onCompleteAddToWishlistEvent(responseText, textStatus)
 
 function setupWishlist()
 {
-    $(wishlist_div).accordion({
-        collapsible: true,
-        active: false
-    });
-
-    $(wishlist_div).keyup(function(e) {
-        if(e.keyCode === 13 )
-        {            
-            e.preventDefault();
-            submitTheNewWish();
-        }
-    });
     
-    $('#submitNewWish').click(function(e){
-        e.preventDefault();
-        submitTheNewWish();               
-    })
+    $('#wishlist_bs_table').tablecloth({
+          theme: "default",
+          striped: true,
+          sortable: true,
+          bordered: true
+    }); 
 
-    $("h3 .ui-icon-close").click(function(){
-        var itemToDelete = escape($(this).next().text());
-        confirm("Are you sure you want to delete this wish?")
-        .then(function (answer) {
-            if(answer == 1)
-            {
-                $(wishlist_div).accordion( "option", "disabled", true);
-                var itemObj = {name: itemToDelete};
-                delFromWishlist(itemObj, setupWishlist);
-            }
-        });        
+    $('#addItemButton').click(function(e){
+        e.preventDefault();        
+        setupWishDialogView(null,1,1);
     });
     
     $('.purchaseBtn').on('click', clickedItem);
@@ -147,7 +129,7 @@ function setupWishlist()
     $('#confirmDialog').dialog(
         {
             autoOpen: false,
-            position: 'center',
+            position: 'top',
             modal: true,
             open: confirmDialogOpen,
             close: confirmDialogClose
@@ -157,8 +139,21 @@ function setupWishlist()
     $('#giftDateInput').datepicker();
 }
 
+function deleteLoadedItem()
+{
+        confirm("Are you sure you want to delete this wish?")
+        .then(function (answer) {
+            if(answer == 1)
+            {
+                var itemToDelete = $('#editItemDialog #name').val();
+                var itemObj = {name: itemToDelete};
+                delFromWishlist(itemObj, setupWishlist);
+            }
+        });       
+}
+
 function clickedItem()
-{ // LEFT OFF HERE: check why selected_itemId is overwritten later
+{ // TODO: check why selected_itemId is overwritten later
     selected_itemId = $(this).attr('id');
     getItemInfo(selected_itemId, function(itemInfo){
         openAddToShoppingListDialog(itemInfo); 
@@ -344,14 +339,14 @@ $(document).ready(function(){
     setupEvents();
 });
 
-function onGrantItClickEvent() {
+function onGrantItClickEvent(dialog) {
     // Ask them to confirm first
     confirm('Are you sure you want to add this item to your shopping list?')
     .then(function(answer){
         if(answer == 1)
         {
             // call the method that pops open the dialog for adding the item           
-            openAddToShoppingListDialog(getItemDialogObj());
+            openAddToShoppingListDialog(getItemDialogObj(dialog));
         }
     })
 }
@@ -366,47 +361,28 @@ function openAddToShoppingListDialog(item)
     $('#confirmDialog').dialog('open');    
 }
 
-function getItemDialogObj()
+function getItemDialogObj(dialog)
 {
     return {
-         id: $('#itemDialog #itemId').text(),
-         name: $('#itemDialog #name').html(), 
-         price: $('#itemDialog #price').html(), 
-         link: $($('#itemDialog #link').html()).attr('href'),
-         quantity: $('#itemDialog #quantity').html(),
-         comment: $('#itemDialog #notes').html(),
-         isprivate: $('#itemDialog #private').html()
+         id: $('#itemId', dialog).val(),
+         name: $('#name', dialog).val(), 
+         price: $('#price', dialog).val(), 
+         link: $('#link', dialog).val(),
+         quantity: $('#quantity', dialog).val(),
+         comment: $('#notes', dialog).val(),
+         isprivate: $('#private', dialog).val()
      };                
 }
 
 function onWantItClickEvent() {
-    var buttonPane = $('.ui-dialog-buttonpane');
-    
-    // Ask them to fill out the additional details first
-    confirm('Do you want to edit these first? <br /><br /> Quantity = 1 <br />Privacy = Public <br /> Notes = "" ')
-    .then(function (answer) {
-        if(answer == 1) // The user wants to fill out the details
-        {
-            // Display the div with the form fields for the user to fill out
-            $('#wishDetails').show();
-
-            // Hide the Grant Wish button and Change the text of the Want It button to Continue            
-            buttonPane.find('button').hide();
-            buttonPane.find('button:contains("Add Wish")').show();            
-        } 
-        else { // The user will just use the default values, continue adding the item
-            continueAddingItemToWishlist();
-            
-            // Close the dialog
-            $("#itemDialog").dialog('close');                
-        }
-    });    
+    openWishDialog($('#itemDialog #itemId').val(), 1, 1);
+    $("#itemDialog").dialog('close');  
 }
 
-function continueAddingItemToWishlist()
+function continueAddingItemToWishlist(dialog)
 {
     var buttonPane = $('.ui-dialog-buttonpane');
-    var itemObj = getItemDialogObj();
+    var itemObj = getItemDialogObj(dialog);
 
     submitTheNewWish(itemObj); // defined in wishlist.js 
 

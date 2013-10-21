@@ -152,7 +152,7 @@ $(document).ready(function(){
 
     $('#friendInviteDialog').dialog({
             autoOpen: false,
-            position: 'center', 
+            position: 'top', 
             resizable: false,
             height:300,
             width:500,

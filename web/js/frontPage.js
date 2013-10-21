@@ -113,6 +113,7 @@ function displayMessage(message)
 {
     $('#dialog-message').html(message);
     $( "#dialog-message" ).dialog({
+        position: 'top',
         modal: true,
         height:400,
         width:600,

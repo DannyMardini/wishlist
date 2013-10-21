@@ -23,31 +23,8 @@ button.fg-button { width:auto; overflow:visible; }
     
 }
 
-.mockup {
-    border-style: solid;
-    border-width: 1px;
-}
-
-#wishlistBox {
-    display: inline-block;
-    width: 67%;
-    height: 80%;
-    padding: 0px 3% 3% 3%;
-    min-height: 200px;
-    font-size: 14px;
-    margin-left: auto;
-    background-repeat: no-repeat;
-    background-size: contain;
-    
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    -o-border-radius:5px;
-    -ms-border-radius:5px;
-    border-radius:5px;    
-}
-
-#wishlistBox h3 {
-    text-align: center;
+#wishlist {
+    margin-right: 50px;
 }
 
 #wishlistContent {
@@ -64,15 +41,12 @@ ul.contentItem {
 #eventsComponent {
     float:left;
     display:block;
-/*    background-color:white;*/
     width:100%;
     min-height:100px;
 }
 
 #wishlistComponent {
-/*    background-color: white;*/
     width: 100%;
-   /* float: left;*/
     padding-bottom: 50px;
     min-height: 200px;
     font-size: 14px;
@@ -87,17 +61,11 @@ ul.contentItem {
 }
 
 #updatesComponent {
-/*    background-color: white;*/
     width: 23%;
-/*    min-height: 200px;*/
     float: right;
     margin-right: 1%;
 }
-/*
-li{
-    background-color: white;
-}
-*/
+
 #updatesInnerComponent{
     min-height: 300px;
 }
@@ -170,11 +138,7 @@ li{
 }
 
 #eventsInnerComponent .image {
-/*    display: inline-block;*/
     float: left;
-   
-    /*background-image: url(/images/default_avatar.gif);
-    background-size: 85%;*/
     background-repeat: no-repeat;
     background-position: left;
     margin-top: 15px;
@@ -188,7 +152,6 @@ li{
     text-align: center;
     font-size: 14px;
     padding-left: 5px;
-/*    float: right;*/
 }
 
 #eventsInnerComponent .message {

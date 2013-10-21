@@ -12,6 +12,15 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>
         <link href="/css/black-tie/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 
+        <script src="/js/bootstrap/bootstrap.js"></script>
+        <script src="/js/bootstrap/jquery.metadata.js"></script>
+        <script src="/js/bootstrap/jquery.tablesorter.min.js"></script>
+        <script src="/js/bootstrap/jquery.tablecloth.js"></script>     
+        <link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="/css/bootstrap/bootstrap-responsive.css" rel="stylesheet">
+        <link href="/css/bootstrap/tablecloth.css" rel="stylesheet">
+        <link href="/css/bootstrap/prettify.css" rel="stylesheet">         
+        
         <script type="text/javascript" src="/js/navBar.js"></script>
         <link href="/css/main.css" rel="stylesheet" type="text/css" />
         <link href="/css/navBar.css" rel="stylesheet" type="text/css" />

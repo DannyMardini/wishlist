@@ -629,6 +629,7 @@ label.pageHeader {
   font-family: Satisfy, cursive;
   font-size: 28px;
   font-weight: bold;
+  margin-right: 10px;
 }
 
 /* line 149, ../sass/screen.scss */
