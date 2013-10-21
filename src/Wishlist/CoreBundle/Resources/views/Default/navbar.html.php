@@ -12,7 +12,7 @@
     </div>    
     <div id="logoContainer">        
         <img id="logo" src="/images/gift.jpg"/>
-        <div id="name">Wishlist</div>
+        <div id="name">Wishenda</div>
     </div>
     <span id="linksContainer">
         <ul id="navigation">

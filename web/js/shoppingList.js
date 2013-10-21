@@ -1,6 +1,13 @@
 
 /* Add initialization of other controls here */
 $(document).ready(function(){
+    $('#shoppingList_bs_table').tablecloth({
+          theme: "default",
+          striped: true,
+          sortable: true,
+          bordered: true
+    });
+    
     createGUIButtons();
     createEventHandlers();
     toggleRetractButton(); // hide or show the 'cancel purchase' button

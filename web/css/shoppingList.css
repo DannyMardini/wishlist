@@ -13,28 +13,20 @@
     padding-left: 15%;
 }
 
-/*
-.listHeader{
-    font-size: 28px;
-    font-weight:bold;
-    padding-top: 10px;
-    padding-left: 60px;
-}
-*/
-
 .shoppinglistItem label{
     margin-left: 10px;
     margin-right: 3px;
     font-size: 20px;
-    font-family: Satisfy, cursive;
+    font-family: Satisfy, cursive;    
 }
 
 .itemDetail {
     display: inline-block;
     font-size: 16px;
     text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-left: 20px;
+    /*margin-top: 15px;
+    margin-bottom: 15px;    */
 }
 
 #shoppinglist .shoppinglistItem {
@@ -51,5 +43,5 @@
 }
 
 #retractPurchaseButton {
-    width: 1em;
+    /*width: 1em;*/
 }
