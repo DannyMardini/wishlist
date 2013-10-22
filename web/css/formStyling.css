@@ -34,6 +34,10 @@ input, select, textarea{
   border-radius:5px;
 }
 
+#userAccountButton {
+    height: 100%;
+}
+
 div.buttonClass {
   -webkit-border-radius:5px;
   -moz-border-radius:5px;

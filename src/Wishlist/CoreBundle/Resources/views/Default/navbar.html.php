@@ -18,9 +18,11 @@
         <ul id="navigation">
             <?php if($user!=null) { ?>
             <li style="padding-right:5px;">
-                <div class="buttonClass">
-                    <img class="tinyProfile" src="<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>"/>    
-                    <span id="homepageLink" class="ui-MenuLink"><?php echo $user->getName() ?></span>
+                <div class='UserMenu'>
+                    <div class="usernameLink">
+                        <span class="tinyProfile" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
+                        <span id='homepageLink' class="profileName"><?php echo $user->getName() ?></span>
+                    </div>
                 </div>
             </li><li>
                 <?php

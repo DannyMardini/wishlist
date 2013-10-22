@@ -20,7 +20,7 @@ li a {
 
 #logoContainer {
     display: inline-block;
-    height: 45px;
+    height: 40px;
 }
 
 #navigationlist {
@@ -80,7 +80,6 @@ li a {
     font-size: 40px;
     float: right;
     height: 65px;
-    /*background-color: white;*/
     padding-top:15px;
 }
 
@@ -149,8 +148,44 @@ li a {
 }
 
 .tinyProfile {
-    height: 70%;
-    padding-top: 5px;
+/*    height: 90%;
+    padding-top: 5px;*/
+border-radius: 3px 0 0 3px;
+box-shadow: 0 0 2px #616161 inset;
+background-size: cover;
+float: left;
+height: 30px;
+margin: -1px;
+width: 30px;
+}
+
+.profileName {
+    padding-right: 9px;
+}
+
+.usernameLink {
+    color: #888888;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.usernameLink .profileName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    height: 21px;
+    padding: 6px 0 1px 10px;
+}
+
+.UserMenu {
+    border-radius: 3px;
+    background-color: #f0f0f0;
+    border: 1px solid #cccccc;
+    color: #888888;
+    font-size: 13px
+        
 }
 
 #dropDownMenu{
