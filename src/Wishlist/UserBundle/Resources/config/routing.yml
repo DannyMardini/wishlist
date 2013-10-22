@@ -58,3 +58,11 @@ WishlistUserBundle_removeEvent:
   pattern: /RemoveEvent
   defaults: { _controller: WishlistUserBundle:Default:removeEvent }  
 
+WishlistUserBundle_newAccountUser:
+  pattern: /NewAccountUser
+  defaults: { _controller: WishlistUserBundle:Default:newAccountUser }
+
+WishlistUserBundle_newAccountFriend:
+  pattern: /NewAccountFriend
+  defaults: { _controller: WishlistUserBundle:Default:newAccountFriend }
+

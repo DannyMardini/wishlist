@@ -61,13 +61,13 @@ a img {
 body.bp {
   line-height: 1.5;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  color: #333333;
+  color: #303030;
   font-size: 75%;
 }
 /* line 51, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body.bp h1, body.bp h2, body.bp h3, body.bp h4, body.bp h5, body.bp h6 {
   font-weight: normal;
-  color: #222222;
+  color: #1f1f1f;
 }
 /* line 52, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body.bp h1 img, body.bp h2 img, body.bp h3 img, body.bp h4 img, body.bp h5 img, body.bp h6 img {
@@ -248,11 +248,11 @@ body.bp caption {
 }
 /* line 88, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body.bp .quiet {
-  color: #666666;
+  color: #636363;
 }
 /* line 89, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body.bp .loud {
-  color: #111111;
+  color: #0e0e0e;
 }
 /* line 9, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body.bp .clear {
@@ -545,7 +545,7 @@ body {
 /* line 71, ../sass/screen.scss */
 div.friendlist {
   text-decoration: none;
-  color: #333333;
+  color: #303030;
   font-size: 20px;
   border: 1px solid #999999;
   border-top-style: hidden;
@@ -617,7 +617,7 @@ div.requestSentNotification {
   padding-top: 12px;
   font-style: italic;
   width: 27%;
-  color: #b3b3b3;
+  color: #b0b0b0;
 }
 
 /* line 139, ../sass/screen.scss */
@@ -629,10 +629,127 @@ label.pageHeader {
   font-family: Satisfy, cursive;
   font-size: 28px;
   font-weight: bold;
-  margin-right: 10px;
 }
 
 /* line 149, ../sass/screen.scss */
 .wishenda-button {
   cursor: hand;
+}
+
+/* line 153, ../sass/screen.scss */
+#accountSettings {
+  margin: inherit;
+  text-align: center;
+  font-family: 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #303030;
+  -webkit-font-smoothing: antialiased;
+}
+/* line 162, ../sass/screen.scss */
+#accountSettings :invalid {
+  border-color: #e88;
+  -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 5px rbba(255, 0, 0, 0.8);
+  -o-box-shadow: 0 0 5px rbba(255, 0, 0, 0.8);
+  -ms-box-shadow: 0 0 5px rbba(255, 0, 0, 0.8);
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+}
+/* line 171, ../sass/screen.scss */
+#accountSettings :required {
+  border-color: #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+}
+/* line 180, ../sass/screen.scss */
+#accountSettings input, #accountSettings select, #accountSettings textarea {
+  border: 1px solid #ccc;
+  min-height: 30px;
+  display: block;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  outline: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 195, ../sass/screen.scss */
+#accountSettings form {
+  width: auto;
+}
+/* line 199, ../sass/screen.scss */
+#accountSettings input {
+  display: inline-block;
+  width: 30%;
+}
+/* line 204, ../sass/screen.scss */
+#accountSettings label {
+  color: #636363;
+}
+/* line 208, ../sass/screen.scss */
+#accountSettings label.mainLabel {
+  padding-right: 10px;
+  display: inline-block;
+  width: 40%;
+  text-align: right;
+  vertical-align: top;
+}
+/* line 216, ../sass/screen.scss */
+#accountSettings h1 {
+  font-size: 30px;
+}
+/* line 220, ../sass/screen.scss */
+#accountSettings ul {
+  list-style: none;
+}
+/* line 224, ../sass/screen.scss */
+#accountSettings div {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+}
+/* line 230, ../sass/screen.scss */
+#accountSettings #genderPicker {
+  width: 30%;
+  display: inline-block;
+}
+/* line 235, ../sass/screen.scss */
+#accountSettings #genderPicker li {
+  display: inline-block;
+  width: 25%;
+  padding-right: 10px;
+}
+/* line 241, ../sass/screen.scss */
+#accountSettings #genderPicker input {
+  display: block;
+}
+/* line 245, ../sass/screen.scss */
+#accountSettings #passwordInputs {
+  display: inline-block;
+  width: 30%;
+}
+/* line 249, ../sass/screen.scss */
+#accountSettings #passwordInputs input {
+  width: 100%;
+}
+/* line 254, ../sass/screen.scss */
+#accountSettings #saveChanges {
+  width: 10%;
+  background-color: #333333;
+  color: white;
+}
+/* line 261, ../sass/screen.scss */
+#accountSettings img.preview {
+  width: 200px;
+  border: solid 1px #dedede;
+  padding: 10px;
+}
+/* line 268, ../sass/screen.scss */
+#accountSettings div#preview {
+  text-align: center;
 }
