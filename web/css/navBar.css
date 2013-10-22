@@ -11,11 +11,9 @@ li a {
 
 #header {
     background-color: white;
-/*    width: 100%;*/
     height: 45px;
     border-top: 1px solid white;
     border-bottom: 1px solid #BEBDBD;
-    /*box-shadow: 0px 0px 15px red;*/
     padding-bottom: 5px;
     text-align: center;
 }
@@ -40,8 +38,6 @@ li a {
 #navigationlist li {
     display: inline-block;
     margin-right: 10px;
-/*    background-color: black;*/
-/*    color: white;*/
     padding: 5px;
     -webkit-border-radius: 0px 0px 5px 5px;
     -moz-border-radius: 0px 0px 5px 5px;
@@ -58,24 +54,6 @@ li a {
   transition:.5s;
   color: #ffcccc;
 }
-
-/*
-#navigationlist li { 
-    margin: -2px; 
-    border: 1px solid #eee; 
-    -webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.2); 
-    -moz-box-shadow: 4px 4px 4px rgba(0,0,0,0.2); 
-    box-shadow: 4px 4px 4px rgba(0,0,0,0.2); 
-    -webkit-transition: all 0.5s ease-out; 
-    -moz-transition: all 0.5s ease; 
-    -o-transition: all 0.5s ease; 
-}
-#navigationlist li:hover { 
-    -webkit-transform: rotate(-7deg); 
-    -moz-transform: rotate(-7deg); 
-    -o-transform: rotate(-7deg); 
-}
-*/
 
 #logo{
     display: inline-block;
@@ -101,8 +79,9 @@ li a {
     font-family: Satisfy, cursive;
     font-size: 40px;
     float: right;
-    height: 45px;
-    background-color: white;
+    height: 65px;
+    /*background-color: white;*/
+    padding-top:15px;
 }
 
 #linksContainer {
