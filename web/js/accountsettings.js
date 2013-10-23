@@ -5,10 +5,55 @@ function saveChanges()
     }
 }
 
+function displayInputError(currentInput, errorStr) {
+    var errorDisplay = $('#errorDisplay');
+
+    errorDisplay.html(errorStr);  //Is this the correct function?
+    errorDisplay.show(); //Is this the correct function?
+}
+
 function allFormsValid()
 {
-    Finish checking all the forms!
-    if ($('#fullname').val() 
+    try {
+        var currInput = $('#fullname');
+        //Check name to see if it's empty or it's missing a last name.
+        if (currInput.val().length <= 0) {
+            throw 'Please enter a name.';
+        }
+        else if (currInput.val().split(' ').length < 2) {
+            throw 'Please enter a first and last name.';
+        }
+
+        currInput = $('#email');
+        //Check Email to see if it's empty or it contains an @ symbol.
+        if (currInput.val().length <= 0) {
+            throw 'Please enter an email';
+        }
+        else if (!currInput.val().contains('@')) {
+            throw 'Please enter a valid email.';
+        }
+
+        currInput = $('input:checked');
+        //Check Gender to see if at least one is picked.
+        if (!currInput) {
+            currInput = $('#gender_1');
+            throw 'Please choose a gender.';
+        }
+
+        currInput = $('#Password1');
+        //Check Password1 and Password2 to ensure they are both not empty and they are both the same.
+        if (currInput.val().length <= 0) {
+            throw 'Please enter a password.';
+        }
+        else if (currInput.val() != $('#Password2').val())
+        {
+            throw 'Passwords do not match.';
+        }
+    }
+    catch(e) {
+        displayInputError(currInput, e);
+    }
+    
 }
 
 function sendFormValues()

@@ -47,7 +47,7 @@ if(isset($email))
     </span>
 </form>
 </div>
-<input id="saveChanges" type="submit" value="Create" class="inputField uiButtonConfirm uiButton" />
+<button id="saveChanges">Create</button>
 
 <!--
 <label class='leftColumn'>Email:</label><input type="text" class="trackChanges rightColumn" id="fullname" name="name" required>
@@ -95,7 +95,7 @@ if(isset($email))
     </div>
 </form>
 
-<input id="saveChanges" type="submit" value="Create" class="inputField uiButtonConfirm uiButton" />
+<button id="saveChanges">Create</button>
 -->
 </form>
 <script type="text/javascript" src="/js/QABundle.js"></script>
