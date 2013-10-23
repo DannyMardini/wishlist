@@ -1,5 +1,6 @@
 function saveChanges()
 {
+    $('#accountSettingsFormSubmit').click();
     if(allFormsValid()) {
         sendFormValues();
     }
@@ -81,6 +82,9 @@ function sendFormValues()
 $(document).ready(function(){
 
     $('#saveChanges').click(saveChanges);
+    $('#accountSettingsForm').submit(function(e) {
+        e.preventDefault();
+    });
     
     $('#photoimg').live('change', function()	
     { 

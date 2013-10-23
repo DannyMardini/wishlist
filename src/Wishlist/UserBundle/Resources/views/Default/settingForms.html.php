@@ -11,8 +11,9 @@ if(isset($email))
 
 <div>
 <form id="accountSettingsForm" action="/app_dev.php/SaveAccountSettings">
+<input id="accountSettingsFormSubmit" type="submit" style="display: none"/>
 <ul id='mainList'>
-<li><label class='mainLabel'>Name:</label><input type="text" class="trackChanges" id="fullname" name="name" required></li>
+<li><label class='mainLabel'>Name:</label><input type="text" class="trackChanges" id="fullname" name="name" required/></li>
 <li><label class='mainLabel'>Email:</label><input type="email" class="trackChanges" id="email" name="email" placeholder="email" required></li>
 <li><label class='mainLabel'>Gender:</label>
 <ul id='genderPicker'>
@@ -48,6 +49,7 @@ if(isset($email))
 </form>
 </div>
 <button id="saveChanges">Create</button>
+<p id="errorDisplay"></p>
 
 <!--
 <label class='leftColumn'>Email:</label><input type="text" class="trackChanges rightColumn" id="fullname" name="name" required>

@@ -645,9 +645,19 @@ label.pageHeader {
   font-weight: 300;
   color: #303030;
   -webkit-font-smoothing: antialiased;
+  /*
+      input:required {
+        border-color: #88a;
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+        -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+        -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+        -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+        box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+      }
+  */
 }
 /* line 162, ../sass/screen.scss */
-#accountSettings :invalid {
+#accountSettings input:invalid {
   border-color: #e88;
   -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
   -moz-box-shadow: 0 0 5px rbba(255, 0, 0, 0.8);
@@ -656,15 +666,15 @@ label.pageHeader {
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
 }
 /* line 171, ../sass/screen.scss */
-#accountSettings :required {
-  border-color: #88a;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
-  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
-  -o-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
-  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
-  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+#accountSettings input:valid {
+  border-color: #238500;
+  -webkit-box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  -o-box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  -ms-box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
-/* line 180, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 #accountSettings input, #accountSettings select, #accountSettings textarea {
   border: 1px solid #ccc;
   min-height: 30px;
@@ -678,20 +688,20 @@ label.pageHeader {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 195, ../sass/screen.scss */
+/* line 205, ../sass/screen.scss */
 #accountSettings form {
   width: auto;
 }
-/* line 199, ../sass/screen.scss */
+/* line 209, ../sass/screen.scss */
 #accountSettings input {
   display: inline-block;
   width: 30%;
 }
-/* line 204, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 #accountSettings label {
   color: #636363;
 }
-/* line 208, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 #accountSettings label.mainLabel {
   padding-right: 10px;
   display: inline-block;
@@ -699,57 +709,57 @@ label.pageHeader {
   text-align: right;
   vertical-align: top;
 }
-/* line 216, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 #accountSettings h1 {
   font-size: 30px;
 }
-/* line 220, ../sass/screen.scss */
+/* line 230, ../sass/screen.scss */
 #accountSettings ul {
   list-style: none;
 }
-/* line 224, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 #accountSettings div {
   width: 80%;
   margin: 0 auto;
   text-align: left;
 }
-/* line 230, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 #accountSettings #genderPicker {
   width: 30%;
   display: inline-block;
 }
-/* line 235, ../sass/screen.scss */
+/* line 245, ../sass/screen.scss */
 #accountSettings #genderPicker li {
   display: inline-block;
   width: 25%;
   padding-right: 10px;
 }
-/* line 241, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 #accountSettings #genderPicker input {
   display: block;
 }
-/* line 245, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 #accountSettings #passwordInputs {
   display: inline-block;
   width: 30%;
 }
-/* line 249, ../sass/screen.scss */
+/* line 259, ../sass/screen.scss */
 #accountSettings #passwordInputs input {
   width: 100%;
 }
-/* line 254, ../sass/screen.scss */
+/* line 264, ../sass/screen.scss */
 #accountSettings #saveChanges {
   width: 10%;
   background-color: #333333;
   color: white;
 }
-/* line 261, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 #accountSettings img.preview {
   width: 200px;
   border: solid 1px #dedede;
   padding: 10px;
 }
-/* line 268, ../sass/screen.scss */
+/* line 278, ../sass/screen.scss */
 #accountSettings div#preview {
   text-align: center;
 }
