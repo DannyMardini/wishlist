@@ -14,7 +14,7 @@
 }
 
 #addLifeEventButton, #removeLifeEventButton, #saveLifeEventButton {
-    width: 1em;
+    /*width: 1em;*/
 }
 
 #EventList .image {
@@ -77,7 +77,7 @@
     float: right; 
     padding: 0px;
     margin: 0px 0px 0px 5px;
-    width: 1.0em;
+/*    width: 1.0em;*/
 }
 
 #EventList .Event {

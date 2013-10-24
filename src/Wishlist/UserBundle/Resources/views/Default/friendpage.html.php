@@ -4,7 +4,9 @@
 <script type="text/javascript" src="/js/friendpage.js"></script>
 <div id="friendsHeader">
     <label class="pageHeader">Friends ( <?php echo count($friends) ?> )</label>
-    <span id="inviteFriendButton" class="wishenda-button">+</span>
+    <button title="add item" id="addItemButton">
+        <span id="inviteFriendButton" class="ui-icon ui-icon-plus wishenda-button"></span>
+    </button>
 </div>
 <hr size="1" width="90%" color="grey">
 <div id="friendsContainer">
