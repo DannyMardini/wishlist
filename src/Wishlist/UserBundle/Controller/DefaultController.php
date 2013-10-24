@@ -182,7 +182,7 @@ class DefaultController extends Controller
         else if(!($notificationRepo->notificationExists($loggedInUserId, $newFriendId))) //Does the request already exist?
         {
             //If not, add a new request!
-            $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' has requested to be your friend.');
+            $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' wants to be your friend.');
         }
 
         return new Response();

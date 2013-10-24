@@ -11,16 +11,11 @@ li a {
 
 #header {
     background-color: white;
-    height: 45px;
+    height: 40px;
     border-top: 1px solid white;
     border-bottom: 1px solid #BEBDBD;
     padding-bottom: 5px;
     text-align: center;
-}
-
-#logoContainer {
-    display: inline-block;
-    height: 40px;
 }
 
 #navigationlist {
@@ -75,12 +70,21 @@ li a {
      margin:3px;
 }
 
-#logoContainer #name {
+#logoContainer {
+    display: inline-block;
+    height: 30px;
+    margin-top: 15px;
+    margin-left: -90px;
+}
+
+#logoName {
     font-family: Satisfy, cursive;
-    font-size: 40px;
-    float: right;
-    height: 65px;
-    padding-top:15px;
+    font-size: 30px;
+    cursor: hand;   
+}
+
+#homepageLink {
+    cursor: hand;
 }
 
 #linksContainer {
@@ -122,6 +126,7 @@ li a {
 
 #navigation li span {
     margin-top: 0px;
+    margin-right: 5px;
 }
 
 #navigation .navLink {
@@ -148,15 +153,27 @@ li a {
 }
 
 .tinyProfile {
-/*    height: 90%;
-    padding-top: 5px;*/
-border-radius: 3px 0 0 3px;
-box-shadow: 0 0 2px #616161 inset;
-background-size: cover;
-float: left;
-height: 30px;
-margin: -1px;
-width: 30px;
+    border-radius: 3px 0 0 3px;
+    box-shadow: 0 0 2px #616161 inset;
+    background-size: cover;
+    float: left;
+    height: 30px;
+    margin: -1px;
+    width: 30px;
+}
+
+.menuIcon {
+    border-radius: 3px;
+    background-color: #f0f0f0;
+    border: 1px solid #cccccc;
+    color: #888888;
+    font-size: 13px;
+    margin-top: 4px;  
+    height: 31px;
+    width: 30px;
+    margin-left: -10px;
+    margin-right: 5px;   
+    cursor: pointer;
 }
 
 .profileName {
@@ -175,7 +192,7 @@ width: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
-    height: 21px;
+    height: 24px;
     padding: 6px 0 1px 10px;
 }
 
@@ -184,8 +201,8 @@ width: 30px;
     background-color: #f0f0f0;
     border: 1px solid #cccccc;
     color: #888888;
-    font-size: 13px
-        
+    font-size: 13px;
+    margin-top: 4px;
 }
 
 #dropDownMenu{

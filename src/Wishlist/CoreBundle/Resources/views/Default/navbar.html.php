@@ -11,8 +11,8 @@
         <span class="socialMediaLink"><a href="http://www.pinterest.com/wishenda/" target="_blank"><img src="/images/pinterest_32.png" alt  border="0" ></a></span>
     </div>    
     <div id="logoContainer">        
-        <img id="logo" src="/images/gift.jpg"/>
-        <div id="name">Wishenda</div>
+<!--        <img id="logo" src="/images/gift.jpg"/>-->
+        <div id="logoName">Wishenda</div>
     </div>
     <span id="linksContainer">
         <ul id="navigation">
@@ -21,30 +21,34 @@
                 <div class='UserMenu'>
                     <div class="usernameLink">
                         <span class="tinyProfile" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
-                        <span id='homepageLink' class="profileName"><?php echo $user->getName() ?></span>
+                        <span class="ui-MenuLink profileName" id='homepageLink' class=""><?php echo $user->getName() ?></span>
                     </div>
                 </div>
-            </li><li>
-                <?php
-                if(count($user->getNotifications()) > 0)
-                {
-                    echo "<div id='notificationDiv'><span id='openNotificationsButton'>!</span>\n";
-                    echo "<div id='notificationWindow'>\n";
-                    echo "<ul>\n";
-                    foreach($user->getNotifications() as $notification)
-                    {
-                        $notificationId = $notification->getId();
-                        echo "<li id='notification_".$notificationId."' class='notifications'>".$notification->getText()."    <a class='acceptFriend' href='#'>Accept</a>    <a class='ignoreFriend' href='#'>Ignore</a></li>\n";
-                    }
-                    echo "</ul>\n";
-                    echo "</div></div>\n";
-                }
-                ?>
             </li>
-            <li id="dropDownButton" class="navLink"><span class="ui-icon ui-icon-carat-1-s"></span></li>
+            <li id="dropDownButton" class="navLink menuIcon"><div style="height:60%;padding:7px;"><span class="ui-icon ui-icon-gear"></span></div></li>
             <?php } else { ?><li>
                 <a href="#">Sign-In</a>
             </li><?php } ?>
+            <?php
+            if(count($user->getNotifications()) > 0)
+            {             
+                echo "<li style='vertical-align:bottom;' class='navLink menuIcon'>";
+                echo "<div id='notificationDiv'><div id='openNotificationsButton' style='height:60%;padding:7px;'><span class='ui-icon ui-icon-notice'></span></div>\n";
+                echo "<div id='notificationWindow'>\n";
+                echo "<ul>\n";
+                foreach($user->getNotifications() as $notification)
+                {
+                    $notificationId = $notification->getId();
+                    echo "<li id='notification_".$notificationId."' style='height:30px;' class='notifications'>
+                        <span style='margin:0 10px 0 10px;'>".$notification->getText()."</span>
+                        <a class='acceptFriend' href='#'>Accept</a> or
+                        <a class='ignoreFriend' href='#'>Ignore</a>
+                        </li>\n";
+                }
+                echo "</ul>\n";
+                echo "</div></div>\n</li>";
+            }
+            ?>                    
         </ul>
     </span>
 </div>
