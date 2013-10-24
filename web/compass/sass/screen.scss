@@ -158,7 +158,7 @@ label.pageHeader {
     font-weight: 300;
     color: $font-color;
     -webkit-font-smoothing: antialiased;
-
+    
     input:invalid { 
       border-color: #e88;
       -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
@@ -167,16 +167,7 @@ label.pageHeader {
       -ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
       box-shadow:0 0 5px rgba(255, 0, 0, .8);
     }
- 
-    input:valid {
-      border-color: #238500;
-      -webkit-box-shadow: 0 0 5px rgba(0, 255, 0, .5);
-      -moz-box-shadow: 0 0 5px rgba(0, 255, 0, .5);
-      -o-box-shadow: 0 0 5px rgba(0, 255, 0, .5);
-      -ms-box-shadow: 0 0 5px rgba(0, 255, 0, .5);
-      box-shadow: 0 0 5px rgba(0, 255, 0, .5);
-    }
-/*
+    
     input:required {
       border-color: #88a;
       -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
@@ -185,7 +176,6 @@ label.pageHeader {
       -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
       box-shadow: 0 0 5px rgba(0, 0, 255, .5);
     }
-*/
 
     input, select, textarea{
         border:1px solid #ccc;

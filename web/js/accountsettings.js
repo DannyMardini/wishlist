@@ -1,6 +1,5 @@
 function saveChanges()
 {
-    $('#accountSettingsFormSubmit').click();
     if(allFormsValid()) {
         sendFormValues();
     }
@@ -30,23 +29,23 @@ function allFormsValid()
         if (currInput.val().length <= 0) {
             throw 'Please enter an email';
         }
-        else if (!currInput.val().contains('@')) {
+        else if (currInput.val().indexOf('@') == -1) {
             throw 'Please enter a valid email.';
         }
 
         currInput = $('input:checked');
         //Check Gender to see if at least one is picked.
-        if (!currInput) {
+        if (currInput.length <= 0) {
             currInput = $('#gender_1');
             throw 'Please choose a gender.';
         }
 
-        currInput = $('#Password1');
+        currInput = $('#new_password1');
         //Check Password1 and Password2 to ensure they are both not empty and they are both the same.
         if (currInput.val().length <= 0) {
             throw 'Please enter a password.';
         }
-        else if (currInput.val() != $('#Password2').val())
+        else if (currInput.val() != $('#new_password2').val())
         {
             throw 'Passwords do not match.';
         }
@@ -82,9 +81,6 @@ function sendFormValues()
 $(document).ready(function(){
 
     $('#saveChanges').click(saveChanges);
-    $('#accountSettingsForm').submit(function(e) {
-        e.preventDefault();
-    });
     
     $('#photoimg').live('change', function()	
     { 
@@ -101,16 +97,4 @@ $(document).ready(function(){
     $('#gender_'+gender).attr('checked',true);
     $('#fullname').val($('#orig_name').val());
     $('#email').val($('#orig_email').val());
-    /*    
-    $( "#newDatepicker" ).datepicker({
-            changeMonth: true,
-            changeYear: true
-    });
-    */
-
-    // add change event handlers
-    //$('.trackChanges').keyup(onEditInputEvent);
-
-    // Disable save button
-    //disableSaveButton();
 });
