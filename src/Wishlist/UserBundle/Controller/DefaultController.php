@@ -316,7 +316,7 @@ class DefaultController extends Controller
             }
             else {
                 // get the original user information to pre-populate the form
-                $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');        
+                $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
                 $user = $userRepo->getUserWithId($loggedInUserId);
                 $originalPassword = $user->getPassword();
                 $name = $user->getName();
@@ -361,13 +361,42 @@ class DefaultController extends Controller
             
             // TO DO 
             // get the user then compare the users info to the variables above to check for changes.
-
+            $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');;
             
-            
+            $updateSettings = false;        //Debug
+            if ($updateSettings)
+            {
+                $user = $userRepo->getUserWithId($loggedInUserId);
+                if (strlen($full_name) > 0 && $full_name !== $user->getFullName()) {
+                    $user->setFullName($full_name);
+                }
+                
+                if (strlen($email) > 0 && $email !== $user->getEmail() ) {
+                    $user->setEmail($email);
+                }
+                
+                if (strlen($new_password) > 0 && $new_password !== $user->getPassword()) {
+                    if ($old_password !== $user->getPassword()) {
+                        $response = "Incorrect old_password";
+                        throw new \Exception($response);
+                    }
+                    $user->setPassword($new_password);
+                }
+            }
+            else //newUser
+            {
+                if (strlen($full_name) > 0 && strlen($email) > 0 && strlen($new_password) > 0) {
+                    $birthdate = \DateTime::createFromFormat('Y-m-d', '2012-10-23');
+                    $gender = intval($this->getRequest()->get('gender'));
+                    $userRepo->addNewUser($full_name, $birthdate, $email, $gender, $new_password);
+                }
+            }
         }
         catch(Exception $e){
-            return new Response($response);
+            return new Response($response, SC_BAD_REQUEST);
         }
+        
+        return new Response('Success');
     }
     
     public function uploadUserImageAction()

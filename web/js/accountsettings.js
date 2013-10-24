@@ -52,16 +52,18 @@ function allFormsValid()
     }
     catch(e) {
         displayInputError(currInput, e);
+        return false;
     }
-    
+
+    return true;
 }
 
 function sendFormValues()
 {
     var url = $('#accountSettingsForm').attr('action');
     var genderVal = $('input:checked').val();
-
-    $.post( url, {fullname: $('#fullname').val() , email: $("#email_addr").val(), new_password: $('#new_password1').val(), 
+    
+    $.post( url, {fullname: $('#fullname').val() , email: $("#email").val(), new_password: $('#new_password1').val(), 
                     gender: genderVal},
         function(response){
             $dataArray = response.split(":"); 
@@ -74,8 +76,6 @@ function sendFormValues()
                 alert(response);
             }
     });
-
-
 }
 
 $(document).ready(function(){

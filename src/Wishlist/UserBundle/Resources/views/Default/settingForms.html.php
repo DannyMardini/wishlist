@@ -19,21 +19,20 @@ if(isset($email))
 <ul id='genderPicker'>
     <li><input type="radio" id="gender_1" name="Gender" value="1" /><label>Male</label></li>
     <li><input type="radio" id="gender_2" name="Gender" value="2" /><label>Female</label></li>
-    <li><input type="radio" id="gender_0" name="Gender" value="0" /><label>Unspecified</label></li>
 </ul>
 </li>
 
 <li><label class='mainLabel'>Password:</label><ul id='passwordInputs'>
 <?php if(isset($originalPassword)) { ?>
 <input type="password" id="old_password" name="old_password" placeholder="old password">
-<input type="password" class="trackChanges" id="new_password1" name="new_password1" placeholder="new password" required />
+<input type="password" class="trackChanges" id="new_password1" name="new_password" placeholder="new password" required />
 <input type="password" id="new_password2" name="new_password2" placeholder="repeat new password" required />
 <?php 
     }
     else
     {
 ?>
-<li><input type="password" class="trackChanges" id="new_password1" name="new_password1" placeholder="new password" required /></li>
+<li><input type="password" class="trackChanges" id="new_password1" name="new_password" placeholder="new password" required /></li>
 <li><input type="password" id="new_password2" name="new_password2" placeholder="repeat new password" required /></li>
 <?php } ?>
 </ul>
