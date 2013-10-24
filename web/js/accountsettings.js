@@ -1,130 +1,116 @@
-var changes = {};
-changes.count = 0;
-window.onbeforeunload = promptConfirmation;
+function saveChanges()
+{
+    $('#accountSettingsFormSubmit').click();
+    if(allFormsValid()) {
+        sendFormValues();
+    }
+}
 
-    function pushChange(elementId, newValue)
-    {
-        var key = elementId.toString();
-        var orig_value = $("#orig_"+key).val();
-        
-        // check if the new value equals the original value
-        if(newValue == orig_value)
+function displayInputError(currentInput, errorStr) {
+    var errorDisplay = $('#errorDisplay');
+
+    errorDisplay.html(errorStr);  //Is this the correct function?
+    errorDisplay.show(); //Is this the correct function?
+}
+
+function allFormsValid()
+{
+    try {
+        var currInput = $('#fullname');
+        //Check name to see if it's empty or it's missing a last name.
+        if (currInput.val().length <= 0) {
+            throw 'Please enter a name.';
+        }
+        else if (currInput.val().split(' ').length < 2) {
+            throw 'Please enter a first and last name.';
+        }
+
+        currInput = $('#email');
+        //Check Email to see if it's empty or it contains an @ symbol.
+        if (currInput.val().length <= 0) {
+            throw 'Please enter an email';
+        }
+        else if (!currInput.val().contains('@')) {
+            throw 'Please enter a valid email.';
+        }
+
+        currInput = $('input:checked');
+        //Check Gender to see if at least one is picked.
+        if (!currInput) {
+            currInput = $('#gender_1');
+            throw 'Please choose a gender.';
+        }
+
+        currInput = $('#Password1');
+        //Check Password1 and Password2 to ensure they are both not empty and they are both the same.
+        if (currInput.val().length <= 0) {
+            throw 'Please enter a password.';
+        }
+        else if (currInput.val() != $('#Password2').val())
         {
-            popChange(key);
-            return;
-        }
-        
-        if(!changes.hasOwnProperty(key))
-        {
-            changes.count++;
-        }
-        
-        changes[key] = newValue;
-    }
-    
-    function popChange(key)
-    {
-        delete changes[key];
-        changes.count--;
-    }
-    
-    function checkPassword(input) {
-        if (input.value != document.getElementById('new_password1').value) {
-            input.setCustomValidity('The two passwords must match.');
-        } 
-        else {
-            // input is valid -- reset the error message
-            input.setCustomValidity('');
-        }
-    }    
-    
-    function promptConfirmation()
-    {
-        if(changes.count > 0){
-            return "You have unsaved changes";
+            throw 'Passwords do not match.';
         }
     }
+    catch(e) {
+        displayInputError(currInput, e);
+    }
+    
+}
 
-    $(document).ready(function(){
-        
-        $('#saveChanges').click(function(){
-            var url = $('#accountSettingsForm').attr('action');
-            
-            $.post( url, {fullname: $('#fullname').val() , email: $("#email_addr").val(), 
-                old_password: $("#old_password").val(), new_password: $('#new_password1').val()},
-                function(response){
-                    $dataArray = response.split(":"); 
-                    if($dataArray[0].toLowerCase() == "success")
-                    {
-                        alert('Message sent.');
-                    }
-                    else
-                    {
-                        alert(response);
-                    }
+function sendFormValues()
+{
+    var url = $('#accountSettingsForm').attr('action');
+    var genderVal = $('input:checked').val();
 
-                    redirectToQAHome();
-            });
-        });
-        
-        $('#photoimg').live('change', function()	
-        { 
-            $("#preview").html('');
-            $("#preview").html('<img src="/images/loader.gif" alt="Uploading...."/>');
-            
-            $("#imageform").ajaxForm(
+    $.post( url, {fullname: $('#fullname').val() , email: $("#email_addr").val(), new_password: $('#new_password1').val(), 
+                    gender: genderVal},
+        function(response){
+            $dataArray = response.split(":"); 
+            if($dataArray[0].toLowerCase() == "success")
             {
-                target: '#preview'
-            }).submit();    
-        });     
-               
-        var gender = $('#orig_gender').val();
-        $('#gender_'+gender).attr('checked',true);
-        $('#fullname').val($('#orig_name').val());
-        $('#email').val($('#orig_email').val());
-        
-        $( "#newDatepicker" ).datepicker({
-                changeMonth: true,
-                changeYear: true
-        });
-       
-        // add change event handlers
-        $('.trackChanges').keyup(onEditInputEvent);
-        
-        // Disable save button
-        disableSaveButton();
+                alert('Message sent.');
+            }
+            else
+            {
+                alert(response);
+            }
+    });
+
+
+}
+
+$(document).ready(function(){
+
+    $('#saveChanges').click(saveChanges);
+    $('#accountSettingsForm').submit(function(e) {
+        e.preventDefault();
     });
     
-    function disableSaveButton()
-    {
-        $('#saveChanges').attr('disabled', 'true');
-        $('#saveChanges').addClass('disabledButton');
-    }
-    
-    function enableSaveButton()
-    {
-        $('#saveChanges').removeAttr('disabled').removeClass('disabledButton');
-        $('#saveChanges').addClass('enabledButton');
-    }
-    
-    function toggleSaveButton()
-    {
-        if(changes.count > 0)
+    $('#photoimg').live('change', function()	
+    { 
+        $("#preview").html('');
+        $("#preview").html('<img src="/images/loader.gif" alt="Uploading...."/>');
+
+        $("#imageform").ajaxForm(
         {
-            enableSaveButton();
-        }else
-        {
-            disableSaveButton();
-        }
-    }
-    
-    function onEditInputEvent()
-    {
-        pushChange($(this).attr('id'), $(this).val());
-        toggleSaveButton();
-    }
-    
-    function redirectToUserPage()
-    {
-        window.location = "/app_dev.php/Homepage/";
-    }
+            target: '#preview'
+        }).submit();    
+    });     
+
+    var gender = $('#orig_gender').val();
+    $('#gender_'+gender).attr('checked',true);
+    $('#fullname').val($('#orig_name').val());
+    $('#email').val($('#orig_email').val());
+    /*    
+    $( "#newDatepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true
+    });
+    */
+
+    // add change event handlers
+    //$('.trackChanges').keyup(onEditInputEvent);
+
+    // Disable save button
+    //disableSaveButton();
+});

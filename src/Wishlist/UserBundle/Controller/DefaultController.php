@@ -492,4 +492,14 @@ class DefaultController extends Controller
             return new Response('0');
         }
     }
+
+    public function newAccountUserAction()
+    {
+        return $this->render('WishlistUserBundle:Default:newAccountUser.html.php');
+    }
+    
+    public function newAccountFriendAction()
+    {
+        return $this->render('WishlistUserBundle:Default:newAccountFriend.html.php');
+    }
 }
