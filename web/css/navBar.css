@@ -50,7 +50,7 @@ li a {
   color: #ffcccc;
 }
 
-#logo{
+/*#logo{
     display: inline-block;
     height: 45px;
     background-image: url(/images/gift.jpg);
@@ -58,7 +58,7 @@ li a {
     background-repeat: no-repeat;
     background-position: right;
     float: left;
-}
+}*/
 
 #socialMediaLinks {
     float:left;
@@ -92,15 +92,6 @@ li a {
     position: absolute;
     right: 0px;
 }
-
-/*#linkList{
-    width: 100%;
-    height: 45px;
-    border: 0;
-    padding: 0;
-    background-color: white;
-    vertical-align: -15px;
-}*/
 
 #navigation {
     background-color:white;
@@ -141,7 +132,7 @@ li a {
     background-color: #efefff;
 }
 
-#userPicture{
+/*#userPicture{
     display: inline-block;
     width: 50%;
     height: 45px;
@@ -150,9 +141,9 @@ li a {
     background-repeat: no-repeat;
     background-position: right;
     float: left;
-}
+}*/
 
-.tinyProfile {
+.profilePicture {
     border-radius: 3px 0 0 3px;
     box-shadow: 0 0 2px #616161 inset;
     background-size: cover;

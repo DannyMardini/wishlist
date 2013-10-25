@@ -20,7 +20,7 @@
             <li style="padding-right:5px;">
                 <div class='UserMenu'>
                     <div class="usernameLink">
-                        <span class="tinyProfile" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
+                        <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
                         <span class="ui-MenuLink profileName" id='homepageLink' class=""><?php echo $user->getName() ?></span>
                     </div>
                 </div>
