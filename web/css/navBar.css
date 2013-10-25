@@ -196,6 +196,10 @@ li a {
     margin-top: 4px;
 }
 
+.usernameLink:hover {
+    background-color: #efefff;
+}
+
 #accountOptionsDropdown{
   float: right;
   display: none;

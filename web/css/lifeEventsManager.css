@@ -6,17 +6,6 @@
     margin-top: 2%;
 }
 
-.eventsHeader{
-    font-size: 28px;
-    font-weight:bold;
-    padding-top: 10px;
-    padding-left: 60px;
-}
-
-#addLifeEventButton, #removeLifeEventButton, #saveLifeEventButton {
-    /*width: 1em;*/
-}
-
 #EventList .image {
     float: left;
     background-repeat: no-repeat;
