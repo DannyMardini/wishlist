@@ -33,8 +33,8 @@
 
 <div id="friendInviteDialog" title="Invite a friend!">
     <form id="friendInviteForm">
-        <p>Want to invite a friend to help you shop for them?</p>
-        <p><label>Email:</label><input name="email" id="newFriendEmail" type="email" placeholder="johndoe@email.com"></p>
+        <p>Need to shop for a friend? Invite them to create their wishlist!</p>
+        <div class="inviteFriendInput"><label style="float:left;">Email:</label><input name="email" id="newFriendEmail" type="email" placeholder="johndoe@email.com"></div>
         <input id="friendInviteFormSubmit" type="submit" name="submitFriend" style="display: none" required>
     </form>
 </div>

@@ -584,6 +584,15 @@ img.friendIcon {
   width: 100%;
 }
 
+#newFriendEmail {
+    height: 30px;
+    width: 300px;
+}
+
+#friendInviteDialog .inviteFriendInput {
+    margin-top: 20px;
+}
+
 /* line 109, ../sass/screen.scss */
 #friendsContainer {
   width: 80%;

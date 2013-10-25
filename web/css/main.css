@@ -37,10 +37,12 @@ body {
 
 .addButton {
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 .removeButton {
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 .pageTitle {
