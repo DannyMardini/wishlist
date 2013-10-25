@@ -1,9 +1,9 @@
 .eventListDiv {
-    border: 1px solid black; 
     width: 80%;
     height: 50%;
     margin: 10%;
     margin-top: 2%;
+    overflow: scroll;
 }
 
 #EventList .image {
@@ -66,14 +66,9 @@
     float: right; 
     padding: 0px;
     margin: 0px 0px 0px 5px;
-/*    width: 1.0em;*/
 }
 
 #EventList .Event {
     padding: 5px;
     border-bottom: solid 1px #EFEFEF;
-}
-
-.eventListDiv {
-    overflow: scroll;
 }

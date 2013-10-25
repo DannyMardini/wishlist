@@ -1,6 +1,5 @@
 
 #shoppinglist {
-    border: 1px solid black; 
     width: 80%;
     height: 50%;
     margin: 10%;
@@ -25,8 +24,6 @@
     font-size: 16px;
     text-align: center;
     margin-left: 20px;
-    /*margin-top: 15px;
-    margin-bottom: 15px;    */
 }
 
 #shoppinglist .shoppinglistItem {
@@ -40,8 +37,4 @@
 
 .unfocusPurchase {
     background-color: gray;    
-}
-
-#retractPurchaseButton {
-    /*width: 1em;*/
 }
