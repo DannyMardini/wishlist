@@ -32,8 +32,8 @@
             <?php
             if(count($user->getNotifications()) > 0)
             {             
-                echo "<li style='vertical-align:bottom;' class='navLink menuIcon'>";
-                echo "<div id='notificationDiv'><div id='openNotificationsButton' style='height:60%;padding:7px;'><span class='ui-icon ui-icon-notice'></span></div>\n";
+                echo "<li id='notificationsDropDown' style='vertical-align:bottom;' class='navLink menuIcon'>";
+                echo "<div id='notificationDiv'><div id='viewNotificationsButton' style='height:60%;padding:7px;'><span class='ui-icon ui-icon-notice'></span></div>\n";
                 echo "<div id='notificationWindow'>\n";
                 echo "<ul>\n";
                 foreach($user->getNotifications() as $notification)

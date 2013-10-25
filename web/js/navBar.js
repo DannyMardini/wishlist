@@ -13,34 +13,14 @@ function noBack() {
 }
 
 $(document).ready(function(){
-    showOnlyMainProfileLink();
-    
     $('#logoutLink').click(onLogoutClickEvent);
 
     $('#dropDownButton').click(function(){
-        if( $(this).hasClass('selected') )
-        {
-            $('#dropDownMenu').hide();
-            $(this).removeClass('selected');
-        }
-        else
-        {
-            $('#dropDownMenu').show();
-            $(this).addClass('selected');
-        }
+        accountOptionsClickEvent(this);
     });
 
-    $('#openNotificationsButton').click(function(){
-        if( $(this).hasClass('selected') )
-        {
-            $('#notificationWindow').hide();
-            $(this).removeClass('selected');
-        }
-        else
-        {
-            $('#notificationWindow').show();
-            $(this).addClass('selected');
-        }
+    $('#viewNotificationsButton').click(function(){
+        viewNotificationsButtonClickEvent(this);
     });
 
     $("a.acceptFriend").click(acceptFriendClicked);
@@ -58,6 +38,33 @@ $(document).ready(function(){
         removeNotification($(this).parent());
     });
 });
+
+function viewNotificationsButtonClickEvent(obj){
+    if( $(obj).hasClass('selected') )
+    {
+        $('#notificationWindow').hide();
+        $(obj).removeClass('selected');
+    }
+    else
+    {
+        $('#notificationWindow').show();
+        $(obj).addClass('selected');
+    }    
+}
+
+function accountOptionsClickEvent(obj)
+{
+    if( $(obj).hasClass('selected') )
+    {
+        $('#dropDownMenu').hide();
+        $(obj).removeClass('selected');
+    }
+    else
+    {
+        $('#dropDownMenu').show();
+        $(obj).addClass('selected');
+    }    
+}
 
 function getNotificationNumber(notification)
 {
@@ -82,37 +89,30 @@ function ignoreFriendClicked()
     ajaxPost(null, Routing.generate('WishlistUserBundle_ignoreFriendRequest', {notificationId: num}), null, null);
 }
 
+/* Hide the notifications drop down once the user has responded to all of the notifications */
 function removeNotification(notification)
 {
     notification.fadeOut(400, function(){
         notification.remove();
-        removeNotifyDropCheck();
+        removeNotificationHelper();
     });
 }
 
-function removeNotifyDropCheck()
+/* Helper method for removeNotification */
+function removeNotificationHelper()
 {
     var notsRemaining = $('#notificationWindow li').size();
     if(notsRemaining <= 0)
     {
         $('#notificationDiv').fadeOut(400, function(){$(this).remove()});
+        $('#notificationsDropDown').remove();
     }
 }
 
-function noBack()
-{
-    window.history.forward()
-}
-
+/* Navigates to the frontpage and logs the user out */
 function onLogoutClickEvent()
 {
     navigate($('#frontpageLinkPath').val());
-}
-
-function showOnlyMainProfileLink()
-{
-   $("#linkList li").hide();
-   $("#mainProfileLink").show();
 }
 
 function navigate(path)
