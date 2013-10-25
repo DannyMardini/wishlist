@@ -15,7 +15,7 @@ function noBack() {
 $(document).ready(function(){
     $('#logoutLink').click(onLogoutClickEvent);
 
-    $('#dropDownButton').click(function(){
+    $('#accountOptionsDropdownButton').click(function(){
         accountOptionsClickEvent(this);
     });
 
@@ -25,10 +25,6 @@ $(document).ready(function(){
 
     $("a.acceptFriend").click(acceptFriendClicked);
     $("a.ignoreFriend").click(ignoreFriendClicked);
-
-    $("#userName").click(function(){
-        window.location = $('#userNameLink').attr('href');
-    });
 
     $('.ui-MenuLink').bind('click', function(){
         navigate($(["#", $(this).attr('id'), "Path"].join('')).val());
@@ -56,12 +52,12 @@ function accountOptionsClickEvent(obj)
 {
     if( $(obj).hasClass('selected') )
     {
-        $('#dropDownMenu').hide();
+        $('#accountOptionsDropdown').hide();
         $(obj).removeClass('selected');
     }
     else
     {
-        $('#dropDownMenu').show();
+        $('#accountOptionsDropdown').show();
         $(obj).addClass('selected');
     }    
 }

@@ -205,7 +205,7 @@ li a {
     margin-top: 4px;
 }
 
-#dropDownMenu{
+#accountOptionsDropdown{
   float: right;
   display: none;
   border-bottom: 1px solid;
@@ -216,7 +216,7 @@ li a {
   background: white;
 }
 
-#dropDownMenu ul{
+#accountOptionsDropdown ul{
     list-style: none;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
@@ -224,11 +224,11 @@ li a {
     width: 80px;
 }
 
-#dropDownMenu ul li {
+#accountOptionsDropdown ul li {
     padding: 10px 0px 5px 0px;
 }
 
-#dropDownMenu ul li :hover{
+#accountOptionsDropdown ul li :hover{
     font-weight: bolder;
     text-decoration: underline;
 }

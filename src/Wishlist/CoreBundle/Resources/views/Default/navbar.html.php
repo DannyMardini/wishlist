@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </li>
-            <li id="dropDownButton" class="navLink menuIcon"><div style="height:60%;padding:7px;"><span class="ui-icon ui-icon-gear"></span></div></li>
+            <li id="accountOptionsDropdownButton" class="navLink menuIcon"><div style="height:60%;padding:7px;"><span class="ui-icon ui-icon-gear"></span></div></li>
             <?php } else { ?><li>
                 <a href="#">Sign-In</a>
             </li><?php } ?>
@@ -53,7 +53,7 @@
     </span>
 </div>
 
-<div id="dropDownMenu">
+<div id="accountOptionsDropdown">
     <ul>
         <li><a id="accountSettingsLink" class="ui-MenuLink" href="#">Settings</a></li>
         <li><a id="helpLink" href="#" class="ui-MenuLink">Help</a></li>
