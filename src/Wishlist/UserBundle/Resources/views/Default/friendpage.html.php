@@ -2,9 +2,10 @@
 <?php $view->extend('::navBar.html.php') ?>
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/friendpage.js"></script>
-<div id="friendsHeader">
-    <label class="pageHeader">Friends ( <?php echo count($friends) ?> )</label>
+<div class="pageTitle">
+    <label class="pageHeader">Friends</label>
     <button class="addButton" title="add item" id="addItemButton"><span id="inviteFriendButton" class="ui-icon ui-icon-plus wishenda-button"></span></button>
+    <span class="itemCountSpan"><?php echo count($friends) ?> Item(s)</span>
 </div>
 <hr size="1" width="90%" color="grey">
 <div id="friendsContainer">

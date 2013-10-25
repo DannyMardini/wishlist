@@ -3,11 +3,12 @@
 
 $i = $wishlistItems->count();
 
-echo "<label class='pageHeader'>Wishlist ( ".$i." )</label>";
+echo "<label class='pageHeader'>Wishlist</label>";
     if ($selfWishlist)
     {    
         echo "<button class='addButton' title='add item' id='addItemButton'><span class='ui-icon ui-icon-plus'></span></button>";
     }
+    echo "<span class='itemCountSpan'>".$i." Item(s)</span>";
     echo "<hr size='1' width='100%' color='grey'> 
     <table id='wishlist_bs_table'>
     <thead><tr><th>Wish Item</th><th>Price</th><th>Promised by</th></tr></thead><tbody>";

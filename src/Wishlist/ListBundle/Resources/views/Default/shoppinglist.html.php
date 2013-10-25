@@ -2,10 +2,11 @@
 <script type="text/javascript" src="/js/shoppingList.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
 
-<div class="listHeader">     
+<div class="pageTitle">     
     <?php $shoppinglistCount = count($purchases); ?>
-    <label class="pageHeader" id="shoppinglist_count_<?php echo $shoppinglistCount ?>">Shopping List ( <?php echo $shoppinglistCount ?> )</label>    
+    <label class="pageHeader" id="shoppinglist_count_<?php echo $shoppinglistCount ?>">Shopping List </label>    
     <button class="removeButton" id='retractPurchaseButton' title='cancel selected item(s)' type='button'><span class='ui-icon ui-icon-minus'></span></button>
+    <span class="itemCountSpan"><?php echo $shoppinglistCount ?> Item(s)</span>   
 </div> 
 <hr size="1" width="90%" color="grey">
 

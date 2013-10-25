@@ -42,3 +42,9 @@ body {
 .removeButton {
     margin-left: 10px;
 }
+
+.pageTitle {
+    width: 90%;
+}
+
+.itemCountSpan { float:right; margin-top:10px; font-size:16px;font-style: italic; }

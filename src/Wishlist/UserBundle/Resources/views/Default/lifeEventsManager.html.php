@@ -7,10 +7,11 @@
         <script type="text/javascript" src="/js/common.js"></script>
     </head>
     <body>
-        <div class="eventsHeader">
+        <div class="pageTitle">
             <?php $eventCount = count($events); ?>
-            <label class="pageHeader" id="event_count_<?php echo $eventCount ?>">Events ( <?php echo $eventCount ?> )</label>
+            <label class="pageHeader" id="event_count_<?php echo $eventCount ?>">Events</label>
             <button class="addButton" title="add event" id="addLifeEventButton"><span class="ui-icon ui-icon-plus wishenda-button"></span></button>
+            <span class="itemCountSpan"><?php echo $eventCount ?> Item(s)</span>
         </div>        
         <hr size="1" width="90%" color="grey">
         <div id="EventList" class="eventListDiv">
