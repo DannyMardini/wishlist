@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Wishlist\ListBundle\WishlistListBundle(),
             new Wishlist\QABundle\WishlistQABundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Wishlist\DialogBundle\WishlistDialogBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

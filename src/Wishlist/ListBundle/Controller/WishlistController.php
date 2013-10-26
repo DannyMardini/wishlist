@@ -34,7 +34,8 @@ class WishlistController extends Controller
         return $this->render('WishlistListBundle:Default:wishlist.html.php', array( 'selfWishlist' => $selfWishlist, 
                                                                                     'wishlistItems' => $user->getWishlistItems(),
                                                                                     'events' => $user->getEvents(),
-                                                                                    'user' => $user));
+                                                                                    'user' => $user,
+                                                                                    'loggedInUserId' => $loggedInUserId));
     }
     
     public function newWishlistAction()

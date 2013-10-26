@@ -5,7 +5,6 @@
 <script type="text/javascript" src="/js/homepage.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/wishlist.js"></script>
-<link href="/css/wishlist.css" rel="stylesheet" type="text/css" />
 <link href="/css/formStyling.css" rel="stylesheet" type="text/css" />
   
 <input id="username" type="hidden" value="<?php echo $user->getName() ?>"/>
@@ -38,25 +37,17 @@
 </div>
 
 <div id="wishlistContent" class="mockup">
-    <?php echo $view['actions']->render('WishlistUserBundle:Default:wishlist'); ?>
+    
+    <?php
+    // This is calling the Default controller calling the action = wishlist
+    echo $view['actions']->render('WishlistUserBundle:Default:wishlist'); ?>
 </div>
-
-<div id='itemDialog' title='Wish' >  
+<?php
+echo  $view->render('WishlistDialogBundle:Default:showFriendsWishItem.html.php') ?>
+?>
+<!--<div id='itemDialog' title='Wish' >  
     <input type='hidden' id='itemId' /> 
     Name: <input disabled type='text' id='name' placeholder='Enter Name' /> 
     Price: <input disabled type='text' id='price' placeholder='Enter Price' />
     Link: <div id='link2'></div> <input type='hidden' id='link' />
-</div>
-
-
-<div id='editItemDialog' title='Edit Wish' >  
-    <input type='hidden' id='itemId' /> 
-    Name: <input type='text' id='name' placeholder='Enter Name' />
-    Price: <input type='text' id='price' placeholder='Enter Price' />
-    Link:  <input type='text' id='link' placeholder='Enter Link' />
-    Quantity: <input type='text' id='quantity' placeholder='Quantity (Default = 1)'/>
-    Notes: <input type='text' id='notes' placeholder='Notes (Optional)'/>    
-    <span style='display:inline-block;'>Keep this wish private:</span>
-    <input style='width:25%;display:inline-block;' type='checkbox' id='isPrivate' />
-    </span>
-</div>
+</div>-->

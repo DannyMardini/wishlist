@@ -1,0 +1,7 @@
+parameters:
+#    wishlist_dialog.example.class: Wishlist\DialogBundle\Example
+
+services:
+#    wishlist_dialog.example:
+#        class: %wishlist_dialog.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

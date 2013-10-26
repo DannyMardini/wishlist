@@ -43,13 +43,8 @@ class WishlistUpdateRepository extends EntityRepository
         }
 
         $message = $user->getName().
-                " added <a href='#' onclick='openDialog(".
-                $wishlistItem->getId().
-                ")'>".
-                $wishlistItem->getItem()->getName().
-                "</a> to ".
-                $gender_attribute.
-                " wishlist";
+                " added <a href='#' onclick='openWishDialog(".$wishlistItem->getId().", {selfWishlist: \"0\"}, setupItemView)'>".$wishlistItem->getItem()->getName().
+                "</a> to ".$gender_attribute." wishlist";
         
         $this->addNewUpdate(WishlistUpdate::TEMPLATE_TYPE_1,
                 WishlistUpdate::TYPE_ADD_ITEM,

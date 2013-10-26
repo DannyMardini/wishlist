@@ -70,4 +70,4 @@ services:
     class: Wishlist\CoreBundle\Services\PicService
 
 fos_js_routing:
-  routes_to_expose: [ WishlistUserBundle*, RequestInvite ]
+  routes_to_expose: [ WishlistUserBundle*, RequestInvite, WishlistListBundle* ]

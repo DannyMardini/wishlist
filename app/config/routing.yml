@@ -1,3 +1,7 @@
+WishlistDialogBundle:
+    resource: "@WishlistDialogBundle/Resources/config/routing.yml"
+    prefix:   /
+
 WishlistQABundle:
     resource: "@WishlistQABundle/Resources/config/routing.yml"
     prefix:   /

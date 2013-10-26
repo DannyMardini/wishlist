@@ -27,3 +27,7 @@ $selfWishlist = ($wishlist_user->getWishlistUserId() == $loggedInUserId)? true:f
     echo $view['actions']->render('WishlistListBundle:Wishlist:showWishlist', array('user' => $wishlist_user));
 ?>
 </div>
+
+<?php
+echo  $view->render('WishlistDialogBundle:Default:showFriendsWishItem.html.php') ?>
+?>
