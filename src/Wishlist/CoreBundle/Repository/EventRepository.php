@@ -92,9 +92,9 @@ class EventRepository extends EntityRepository
 
         $query = $this->_em->createNativeQuery("
             select * 
-            from event e left join wishlistuser u on u.wishlistuser_id = e.user_id  
+            from Event e left join WishlistUser u on u.wishlistuser_id = e.user_id  
             where  e.user_id in 
-                ( select f.friend_id  from friendship f  where f.user_id = ? )  
+                ( select f.friend_id  from Friendship f  where f.user_id = ? )  
             and  date_format(e.eventDate, '%c-%e') < date_format(date_add(now(), interval 1 MONTH),'%c-%e')
             and date_format(e.eventDate, '%c-%e') >= date_format(now(),'%c-%e')
             order by date_format(e.eventDate, '%c-%e') asc",
