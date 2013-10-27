@@ -180,7 +180,8 @@ class WishlistItem
                             'price' => $genericItem->getPrice(),
                             'link' => $genericItem->getLink(),
                             'comment' => $this->getComment(),
-                            'quantity' => $this->quantity);
+                            'quantity' => $this->quantity,
+                            'public' => $this->getIsPublic());
         
         return json_encode($exportVars);
     }

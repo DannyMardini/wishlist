@@ -539,6 +539,7 @@ function setupWishDialogView(data, options)
         $('#editItemDialog #quantity').val(data.quantity);
         var comment = (newitem == 1) ? "" : data.comment;
         $('#editItemDialog #notes').val(comment);
+        $('#editItemDialog #isPrivate').prop('checked', !data.public);
     }
     
     // TODO: return the privacy attribute in the object so it can be displayed
