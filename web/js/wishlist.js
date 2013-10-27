@@ -542,8 +542,6 @@ function setupWishDialogView(data, options)
         $('#editItemDialog #isPrivate').prop('checked', !data.public);
     }
     
-    // TODO: return the privacy attribute in the object so it can be displayed
-    
     if(edit == 0) // if not editable, disable the inputs
     {
         $('#editItemDialog input').prop('disabled', true);
