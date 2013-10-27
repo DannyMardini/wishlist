@@ -10,5 +10,5 @@
     <?php
         // This is including the settingForms.html.php template into this page
         echo  $view->render('WishlistUserBundle:Default:settingForms.html.php', array('gender' => $gender, 'name' => $name,
-        'email' => $email, 'profileImage' => $profileImage)) ?>
+        'email' => $email, 'profileImage' => $profileImage, 'originalPassword' => $originalPassword)) ?>
 </div>

@@ -584,18 +584,9 @@ img.friendIcon {
   width: 100%;
 }
 
-#newFriendEmail {
-    height: 30px;
-    width: 300px;
-}
-
-#friendInviteDialog .inviteFriendInput {
-    margin-top: 20px;
-}
-
 /* line 109, ../sass/screen.scss */
 #friendsContainer {
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
@@ -717,7 +708,7 @@ label.pageHeader {
   list-style: none;
 }
 /* line 224, ../sass/screen.scss */
-#accountSettings div {
+#accountSettings #mainDiv {
   width: 80%;
   margin: 0 auto;
   text-align: left;
@@ -752,13 +743,21 @@ label.pageHeader {
   background-color: #333333;
   color: white;
 }
-/* line 261, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 #accountSettings img.preview {
   width: 200px;
   border: solid 1px #dedede;
   padding: 10px;
 }
-/* line 268, ../sass/screen.scss */
+/* line 266, ../sass/screen.scss */
 #accountSettings div#preview {
   text-align: center;
+}
+/* line 270, ../sass/screen.scss */
+#accountSettings input.birthdate {
+  width: 2.5em;
+}
+/* line 274, ../sass/screen.scss */
+#accountSettings #birthYear {
+  width: 4.5em;
 }

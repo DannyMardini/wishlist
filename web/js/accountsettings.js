@@ -33,6 +33,11 @@ function allFormsValid()
             throw 'Please enter a valid email.';
         }
 
+        //Check to see if birthdate is valid.
+        if (!isValidDate($('#birthYear').val(), $('#birthMonth').val(), $('#birthDay').val())) {
+            throw 'Please enter a valid birth date.';
+        }
+
         currInput = $('input:checked');
         //Check Gender to see if at least one is picked.
         if (currInput.length <= 0) {
@@ -63,19 +68,27 @@ function sendFormValues()
     var url = $('#accountSettingsForm').attr('action');
     var genderVal = $('input:checked').val();
     
-    $.post( url, {fullname: $('#fullname').val() , email: $("#email").val(), new_password: $('#new_password1').val(), 
-                    gender: genderVal},
-        function(response){
-            $dataArray = response.split(":"); 
-            if($dataArray[0].toLowerCase() == "success")
-            {
-                alert('Message sent.');
-            }
-            else
-            {
-                alert(response);
-            }
-    });
+    $.post( url, 
+            {  
+                fullname: $('#fullname').val() , 
+                email: $("#email").val(), 
+                birthDay: $('#birthDay').val(),
+                birthMonth: $('#birthMonth').val(),
+                birthYear: $('#birthYear').val(),
+                new_password: $('#new_password1').val(), 
+                gender: genderVal
+            },
+            function(response){
+                $dataArray = response.split(":"); 
+                if($dataArray[0].toLowerCase() == "success")
+                {
+                    alert('Message sent.');
+                }
+                else
+                {
+                    alert(response);
+                }
+            });
 }
 
 $(document).ready(function(){
@@ -91,7 +104,13 @@ $(document).ready(function(){
         {
             target: '#preview'
         }).submit();    
-    });     
+    });
+/*
+    $('#birthdate').datepicker({
+        changeYear: true,
+        yearRange: '-100:+0'
+    });
+    */
 
     var gender = $('#orig_gender').val();
     $('#gender_'+gender).attr('checked',true);

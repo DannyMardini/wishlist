@@ -358,6 +358,8 @@ class DefaultController extends Controller
             $email = $this->getRequest()->get('email');
             $new_password = $this->getRequest()->get('new_password');
             $old_password = $this->getRequest()->get('old_password');
+            $birthdate = \DateTime::createFromFormat('Y-m-d', '2012-10-23');
+            $gender = intval($this->getRequest()->get('gender'));
             
             // TO DO 
             // get the user then compare the users info to the variables above to check for changes.
@@ -386,14 +388,12 @@ class DefaultController extends Controller
             else //newUser
             {
                 if (strlen($full_name) > 0 && strlen($email) > 0 && strlen($new_password) > 0) {
-                    $birthdate = \DateTime::createFromFormat('Y-m-d', '2012-10-23');
-                    $gender = intval($this->getRequest()->get('gender'));
                     $userRepo->addNewUser($full_name, $birthdate, $email, $gender, $new_password);
                 }
             }
         }
         catch(Exception $e){
-            return new Response($response, SC_BAD_REQUEST);
+            return new Response($response);
         }
         
         return new Response('Success');

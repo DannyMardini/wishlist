@@ -221,7 +221,7 @@ label.pageHeader {
         list-style: none;
     }
     
-    div {
+    #mainDiv {
         width: 80%;
         margin: 0 auto;
         text-align: left;
@@ -257,15 +257,21 @@ label.pageHeader {
         color: white;
     }
     
-    img.preview
-    {
+    img.preview {
         width:200px;
         border:solid 1px #dedede;
         padding:10px;
     }
 
-    div#preview
-    {
+    div#preview {
         text-align: center;
+    }
+
+    input.birthdate {
+        width: 2.5em;
+    }
+
+    #birthYear {
+        width: 4.5em;
     }
 }
