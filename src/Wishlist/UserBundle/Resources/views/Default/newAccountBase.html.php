@@ -28,6 +28,9 @@
 
         if(isset($profileImage))
             $formParams['profileImage'] = $profileImage;
+        
+        if(isset($originalPassword))
+            $formParams['originalPassword'] = $originalPassword;
 
         echo  $view->render('WishlistUserBundle:Default:settingForms.html.php', $formParams);
 ?>
