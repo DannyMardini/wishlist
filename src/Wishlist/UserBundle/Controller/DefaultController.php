@@ -192,7 +192,6 @@ class DefaultController extends Controller
     {
         $request = $this->getRequest();
         $session = $request->getSession();
-        $em = $this->getDoctrine()->getEntityManager();
 
         $email = $request->get('email');
 
@@ -201,31 +200,35 @@ class DefaultController extends Controller
             return new Response('', SC_BAD_REQUEST);
         }
         
-        $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
-        $userInvited = $userRepo->getUserWithId($session->get('user_id'));
-        $userInvitedName = $userInvited->getName();
+        try {
+            
+            $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
+            $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
+            $userInvited = $userRepo->getUserWithId($session->get('user_id'));
+            $userInvitedName = $userInvited->getName();
 
-        $newInvite = new Request();
-        $newInvite->setEmail($email);
-        $newInvite->setUserInvited($userInvited);
-        $em->persist($newInvite);
-        $em->flush();
+            $newInvite = $requestRepo->addInviteToQueue($email, $userInvited);
 
-        $htmlbody = $this->renderView('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
-        $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
-        $message = \Swift_Message::newInstance()
-            ->setSubject($userInvitedName.' doesn\'t know what to get you!')
-            ->setFrom('wishthrowaway@gmail.com')
-            ->setTo($newInvite->getEmail())
-            ->setBody($htmlbody, 'text/html')
-            ->addPart($textbody, 'text/plain');
+            $htmlbody = $this->renderView('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
+            $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
+            $message = \Swift_Message::newInstance()
+                ->setSubject($userInvitedName.' doesn\'t know what to get you!')
+                ->setFrom('wishthrowaway@gmail.com')
+                ->setTo($newInvite->getEmail())
+                ->setBody($htmlbody, 'text/html')
+                ->addPart($textbody, 'text/plain');
 
-        if (!$this->get('mailer')->send($message))
+            if (!$this->get('mailer')->send($message))
+            {
+                throw new Exception();
+            }
+        }
+        catch(Exception $e)
         {
-            return new Response('', SC_BAD_REQUEST);
+            return new Response('fail');
         }
 
-        return new Response();
+        return new Response('success');
     }
 
     public function friendRequestAcceptAction(/*int*/ $notificationId)
