@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Request
 {
+    const ACCEPT_STR_MAX_LENGTH = 10;
+    
     /**
      * @var integer $id
      */
@@ -73,5 +75,30 @@ class Request
     public function getUserInvited()
     {
         return $this->userInvited;
+    }
+    /**
+     * @var string $acceptString
+     */
+    private $acceptString;
+
+
+    /**
+     * Set acceptString
+     *
+     * @param string $acceptString
+     */
+    public function setAcceptString($acceptString)
+    {
+        $this->acceptString = $acceptString;
+    }
+
+    /**
+     * Get acceptString
+     *
+     * @return string 
+     */
+    public function getAcceptString()
+    {
+        return $this->acceptString;
     }
 }

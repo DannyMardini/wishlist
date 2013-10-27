@@ -20,13 +20,21 @@ class RequestRepository extends EntityRepository {
      /*
      * This function accepts either an event or a gift_date, but not both.
      */
-    public function addInviteToQueue(/*string*/ $theEmail, /*WishlistUser*/ $userInvited)
+    public function addInviteToQueue(/*string*/ $theEmail, /*WishlistUser*/ $userInvited=null)
     {
+        //todo: Have to generate a random "invite" number
+        $bytes = openssl_random_pseudo_bytes(Request::ACCEPT_STR_MAX_LENGTH, $cstrong);
+        $randHex = bin2hex($bytes);
+
         $newInvite = $this->findInvite($theEmail);
         
         if(!$newInvite){
             $newInvite = new Request();
             $newInvite->setEmail($theEmail);
+            if($userInvited) {
+                $newInvite->setUserInvited($userInvited);
+            }
+            $newInvite->setAcceptString($randHex);
             $this->getEntityManager()->persist($newInvite);
             $this->getEntityManager()->flush();
         }
