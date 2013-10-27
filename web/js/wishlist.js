@@ -13,9 +13,9 @@ $(document).ready(function(){
     initWishlistDialogs();  
 });
 
-function initWishlistDialogs()
+function editWishlistDialogInit()
 {
-    $( "#editItemDialog" ).dialog({
+   $( "#editItemDialog" ).dialog({
             autoOpen: false,
             position: 'top', 
             resizable: false,
@@ -42,7 +42,10 @@ function initWishlistDialogs()
                     }
             }
     });    
-    
+}
+
+function viewWishlistDialogInit()
+{
     $( "#itemDialog" ).dialog({
             autoOpen: false,
             position: 'top', 
@@ -55,7 +58,7 @@ function initWishlistDialogs()
                         onWantItClickEvent();
                     },
                     "Grant Wish": function() {                                            
-                        onGrantItClickEvent();                     
+                        onGrantItClickEvent(this);                     
                     },
                     "Add Wish": function() {
                         continueAddingItemToWishlist(this);
@@ -66,7 +69,13 @@ function initWishlistDialogs()
                 styleWishDialogButtons();                
                 $(this).scrollTop(0);
             }
-    });     
+    });    
+}
+
+function initWishlistDialogs()
+{
+    editWishlistDialogInit();
+    viewWishlistDialogInit();
 }
 
 function styleWishDialogButtons()
@@ -220,7 +229,6 @@ function onCompleteAddToWishlistEvent(responseText, textStatus)
 
 function setupWishlist()
 {
-    
     $('#wishlist_bs_table').tablecloth({
           theme: "default",
           striped: true,
@@ -246,6 +254,8 @@ function setupWishlist()
     );
         
     $('#giftDateInput').datepicker();
+    
+    editWishlistDialogInit();
 }
 
 function deleteLoadedItem()
@@ -462,7 +472,7 @@ function onGrantItClickEvent(dialog) {
 function openAddToShoppingListDialog(item)
 {
     populateDialogItemInfo(item);
-    if(selected_itemId <= -1)
+    if(selected_itemId <= -1 || selected_itemId == "")
     {
         selected_itemId = item.id;
     }
