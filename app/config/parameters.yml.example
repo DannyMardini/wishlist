@@ -1,0 +1,22 @@
+# These parameters can be imported into other config files
+# by enclosing the key with % (like %database_user%)
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port:
+    database_name: wishlist
+    database_user: root
+    database_password:
+
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user:
+    mailer_password:
+    mailer_encryption: null
+    mailer_auth_mode: null
+
+
+    locale: en
+
+    secret: ThisTokenIsNotSoSecretChangeIt
+
