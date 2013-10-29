@@ -68,6 +68,13 @@ body {
     background: linear-gradient(left, $gradientToColor, $gradientColor, $gradientToColor);
 }
 
+span#betaTag {
+    font-family: helvetica;
+    font-size: 0.4em;
+    font-weight: bold;
+    color: #FC6DC0;
+}
+
 div.friendlist {
     ul {
         list-style: none;
