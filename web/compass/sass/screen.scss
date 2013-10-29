@@ -283,4 +283,8 @@ label.pageHeader {
     #birthYear {
         width: 4.5em;
     }
+
+    input:disabled {
+        background: #EBEBEB;
+    }
 }

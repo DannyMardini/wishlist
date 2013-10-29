@@ -772,3 +772,7 @@ label.pageHeader {
 #accountSettings #birthYear {
   width: 4.5em;
 }
+/* line 278, ../sass/screen.scss */
+#accountSettings input:disabled {
+  background: #EBEBEB;
+}

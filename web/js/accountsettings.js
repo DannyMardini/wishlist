@@ -92,7 +92,6 @@ function sendFormValues()
 }
 
 $(document).ready(function(){
-
     $('#saveChanges').click(saveChanges);
     
     $('#photoimg').live('change', function()	
@@ -116,4 +115,5 @@ $(document).ready(function(){
     $('#gender_'+gender).attr('checked',true);
     $('#fullname').val($('#orig_name').val());
     $('#email').val($('#orig_email').val());
+    $('#email').prop('disabled', true);
 });
