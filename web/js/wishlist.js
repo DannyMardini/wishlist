@@ -7,11 +7,120 @@ var wishlist_div = "#div_wishlist_div";
 var selected_itemId = -1;
 var selected_eventId = -1;
 var wishlistAddItemPath = '/app_dev.php/wishlistnew';
+var wishlistUpdateItemPath = '/app_dev.php/wishlistupdate';
 var wishlistElement = '#wishlist';
 
 $(document).ready(function(){
-    initWishlistDialogs();  
+    initWishlistDialogs();
+    setupWishlist();
+    setupEvents();
 });
+
+function initWishlistDialogs()
+{
+    editWishlistDialogInit();
+    viewWishlistDialogInit();
+}
+
+function setupWishlist()
+{
+    $('#wishlist_bs_table').tablecloth({
+          theme: "default",
+          striped: true,
+          sortable: true,
+          bordered: true
+    }); 
+
+    $('#addItemButton').click(function(e){
+        e.preventDefault();        
+        setupWishDialogView(null,1,1);
+    });
+    
+    $('.purchaseBtn').on('click', clickedItem);
+    
+    $('#confirmDialog').dialog(
+        {
+            autoOpen: false,
+            position: 'top',
+            modal: true,
+            open: confirmDialogOpen,
+            close: confirmDialogClose
+        }
+    );
+        
+    $('#giftDateInput').datepicker();
+    
+    editWishlistDialogInit();
+}
+
+function confirmDialogClose()
+{
+    unselectEvent();
+    $('#confirmBtn').unbind('click');
+}
+
+function confirmDialogOpen()
+{
+    //Give the confirm button focus.
+    $('#confirmBtn').focus();
+    
+    //Set up purchase button
+    $('#confirmBtn').click(confirmOK);
+}
+
+function unselectEvent()
+{
+    clearEventHighlights();
+    selected_eventId = -1;
+}
+
+function confirmOK()
+{
+    var purchaseType = null;
+    var purchaseDue = null;
+    
+    try
+    {
+        var giftDate = parseDate($('#giftDateInput').attr('value'));
+    }catch(e)
+    {
+        giftDate = null;
+    }
+    
+    try
+    {
+        if(selected_itemId == null || selected_itemId <= 0)
+        {
+            throw('Item is invalid.')
+        }
+        
+        if((selected_eventId > 0) && (giftDate == null)){
+            purchaseType = 'Event';
+            purchaseDue = selected_eventId;            
+        }
+        else if((giftDate != null) && (selected_eventId < 0)){
+            purchaseType = 'Date';
+            purchaseDue = giftDate.toDateString();
+        }
+        
+        if(purchaseType == null || purchaseDue == null)
+        {
+            throw 'Please select either an event or a date.';
+        }
+        
+        item = {id: selected_itemId, purchaseData: purchaseDue, type: purchaseType};
+        ajaxPost(item, '/app_dev.php/purchaseItem', onCompleteAddItemToShoppingList, item.id);
+    }catch(e)
+    {
+        alert(e);
+        return;
+    }
+}
+
+function setupEvents()
+{
+    $('.confirmEvent').on('click', clickedEvent);
+}
 
 function editWishlistDialogInit()
 {
@@ -27,7 +136,8 @@ function editWishlistDialogInit()
                         onGrantItClickEvent(this); 
                     },
                     "Update": function() {
-                        alert('to do');
+                        onUpdateWishItemClick(this);
+                        $(this).dialog('close');
                     },
                     "Delete": function() {  
                         deleteLoadedItem();
@@ -70,12 +180,6 @@ function viewWishlistDialogInit()
                 $(this).scrollTop(0);
             }
     });    
-}
-
-function initWishlistDialogs()
-{
-    editWishlistDialogInit();
-    viewWishlistDialogInit();
 }
 
 function styleWishDialogButtons()
@@ -127,11 +231,6 @@ function setupItemView(data)
     $('#itemDialog').dialog('open');  
 }
 
-function setupEvents()
-{
-    $('.confirmEvent').on('click', clickedEvent);
-}
-
 function validateWish(wish)
 {
     var message = "";
@@ -168,11 +267,44 @@ function validateWish(wish)
                         : message;
 }
 
-function IsNumber(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
-}
+//function submitTheNewWish(/* optional wish object param */wish)
+//{        
+//    // if a pre-defined wish obj was passed in, use that
+//    if(wish == null) {
+//        var theName = $("#newWishName").val();
+//        var thePrice = $("#newWishPrice").val();
+//        var theLink = $("#newWishLink").val();
+//        var theQuantity = $("#newWishQuantity").val();
+//        var theNotes = $("#newWishNotes").val();
+//        var theIsPrivate = $("#isPrivate").attr('checked');
+//        
+//        wish = { name: escape(theName), 
+//                 price: thePrice, 
+//                 link: theLink, 
+//                 quantity: theQuantity, 
+//                 comment: theNotes, 
+//                 isprivate: theIsPrivate
+//             };
+//    }
+//    
+//    var invalidWishMessage = validateWish(wish); 
+//    
+//    if(invalidWishMessage.length > 0)
+//    {
+//        popupMessage('Uh Oh!', invalidWishMessage);
+//    }
+//    else
+//    {
+//        ajaxPageLoad(
+//            wishlistElement,                // jQuery wishlist element
+//            wishlistAddItemPath,            // Path to the backend controller for adding a wish
+//            wish,                           // Wish object
+//            onCompleteAddToWishlistEvent    // Handles events after adding a wish
+//        );
+//    }
+//}
 
-function submitTheNewWish(/* optional wish object param */wish)
+function submitTheWish(/* optional wish object param */wish, path, callback)
 {        
     // if a pre-defined wish obj was passed in, use that
     if(wish == null) {
@@ -202,9 +334,9 @@ function submitTheNewWish(/* optional wish object param */wish)
     {
         ajaxPageLoad(
             wishlistElement,                // jQuery wishlist element
-            wishlistAddItemPath,            // Path to the backend controller for adding a wish
+            path,                           // Path to the backend controller
             wish,                           // Wish object
-            onCompleteAddToWishlistEvent    // Handles events after adding a wish
+            callback                        // Handles events after the controller is finished
         );
     }
 }
@@ -225,37 +357,6 @@ function onCompleteAddToWishlistEvent(responseText, textStatus)
             location.reload();
             break;       
     }
-}
-
-function setupWishlist()
-{
-    $('#wishlist_bs_table').tablecloth({
-          theme: "default",
-          striped: true,
-          sortable: true,
-          bordered: true
-    }); 
-
-    $('#addItemButton').click(function(e){
-        e.preventDefault();        
-        setupWishDialogView(null,1,1);
-    });
-    
-    $('.purchaseBtn').on('click', clickedItem);
-    
-    $('#confirmDialog').dialog(
-        {
-            autoOpen: false,
-            position: 'top',
-            modal: true,
-            open: confirmDialogOpen,
-            close: confirmDialogClose
-        }
-    );
-        
-    $('#giftDateInput').datepicker();
-    
-    editWishlistDialogInit();
 }
 
 function deleteLoadedItem()
@@ -297,12 +398,6 @@ function clearEventHighlights()
 function highlightEvent(selected)
 {
     selected.css('background-color', '#999999');
-}
-
-function unselectEvent()
-{
-    clearEventHighlights();
-    selected_eventId = -1;
 }
 
 function selectEvent(selected)
@@ -358,49 +453,6 @@ function getItemInfo(itemId, callBackFunc)
     });
 }
 
-function confirmOK()
-{
-    var purchaseType = null;
-    var purchaseDue = null;
-    
-    try
-    {
-        var giftDate = parseDate($('#giftDateInput').attr('value'));
-    }catch(e)
-    {
-        giftDate = null;
-    }
-    
-    try
-    {
-        if(selected_itemId == null || selected_itemId <= 0)
-        {
-            throw('Item is invalid.')
-        }
-        
-        if((selected_eventId > 0) && (giftDate == null)){
-            purchaseType = 'Event';
-            purchaseDue = selected_eventId;            
-        }
-        else if((giftDate != null) && (selected_eventId < 0)){
-            purchaseType = 'Date';
-            purchaseDue = giftDate.toDateString();
-        }
-        
-        if(purchaseType == null || purchaseDue == null)
-        {
-            throw 'Please select either an event or a date.';
-        }
-        
-        item = {id: selected_itemId, purchaseData: purchaseDue, type: purchaseType};
-        ajaxPost(item, '/app_dev.php/purchaseItem', onCompleteAddItemToShoppingList, item.id);
-    }catch(e)
-    {
-        alert(e);
-        return;
-    }
-}
-
 function onCompleteAddItemToShoppingList(responseMessage, responseObj, itemId){
     $('h3[id=' + itemId + ']').addClass('purchased');
     $('#confirmDialog').dialog('close');        
@@ -415,15 +467,6 @@ function onCompleteAddItemToShoppingList(responseMessage, responseObj, itemId){
     else { // display the error if any occurred        
         popupMessage('Sorry!','<p>'+responseObj.responseText+'</p>');
     }
-}
-
-function confirmDialogOpen()
-{
-    //Give the confirm button focus.
-    $('#confirmBtn').focus();
-    
-    //Set up purchase button
-    $('#confirmBtn').click(confirmOK);
 }
 
 function populateDialogItemInfo(itemInfo)
@@ -444,18 +487,12 @@ function populateDialogItemInfo(itemInfo)
     var item = (type == "String") ? JSON.parse(itemInfo) : itemInfo;        
     
     $('#confirmName').html(item.name);
+    
+    if(selected_itemId <= -1 || selected_itemId == "")
+    {
+        selected_itemId = item.id;
+    }    
 }
-
-function confirmDialogClose()
-{
-    unselectEvent();
-    $('#confirmBtn').unbind('click');
-}
-
-$(document).ready(function(){
-    setupWishlist();
-    setupEvents();
-});
 
 function onGrantItClickEvent(dialog) {
     // Ask them to confirm first
@@ -466,16 +503,48 @@ function onGrantItClickEvent(dialog) {
             // call the method that pops open the dialog for adding the item           
             openAddToShoppingListDialog(getItemDialogObj(dialog));
         }
-    })
+    });
+}
+
+function onUpdateWishItemClick(dialog){
+    // Ask them to confirm first
+    confirm('Are you sure you want to save these changes?')
+    .then(function(answer){
+        if(answer == 1)
+        {
+            // pass the item to the backend and save the changes
+            var item = getItemDialogObj(dialog);
+            
+            // pass the item to the backend
+            submitTheWish(item, wishlistUpdateItemPath, onCompleteUpdateItemEvent);
+            
+            // todo: I think it would make sense to reload the wishlist afterwards... 
+        }
+    });    
+}
+
+function onCompleteUpdateItemEvent(responseText, textStatus)
+{
+   switch(textStatus.toLowerCase())
+    {
+//        case "notmodified":
+//            popupMessage('Oh!','The item could not be updated. Please try again later.');    
+//            break;
+        case "success":
+            setupWishlist();
+            popupMessage('Yay!','The item has been updated!');
+            break;
+        default:
+            popupMessage('Sorry!', 'The item could not be updated. Please try again later.');
+            location.reload();
+            break;       
+    }    
 }
 
 function openAddToShoppingListDialog(item)
 {
     populateDialogItemInfo(item);
-    if(selected_itemId <= -1 || selected_itemId == "")
-    {
-        selected_itemId = item.id;
-    }
+    
     $('#confirmDialog').dialog('open');    
 }
 
@@ -502,9 +571,10 @@ function continueAddingItemToWishlist(dialog)
     var buttonPane = $('.ui-dialog-buttonpane');
     var itemObj = getItemDialogObj(dialog);
 
-    submitTheNewWish(itemObj); // defined in wishlist.js 
+    //submitTheNewWish(itemObj); // defined in wishlist.js 
+    submitTheWish(itemObj, wishlistAddItemPath, onCompleteAddToWishlistEvent);
 
-    // Hide the add wish button now that we are done adding it
+    // Hide the add wish button now that we are done adding the item
     buttonPane.find('button').show();
     buttonPane.find('button:contains("Add Wish")').hide();   
 }

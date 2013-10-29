@@ -252,3 +252,7 @@ function whatIsIt(object) {
         return "don't know";
     }
 }
+
+function IsNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}

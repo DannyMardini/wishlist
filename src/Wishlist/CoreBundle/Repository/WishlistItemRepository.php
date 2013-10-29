@@ -16,10 +16,44 @@ use Wishlist\CoreBundle\Entity\WishlistUser;
  */
 class WishlistItemRepository extends EntityRepository
 {
+    public function updateWish($id, $name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
+    {
+        $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Item');
+        $item = $itemRepo->addItem($name, $price, $link); // $isPublic, $comment, $quantity, $wishlistUser);
+        
+        // don't permit name, price or link changes (they would have to add a new item for that)
+        
+        if($quantity=="") // set a default value for the quantity
+        {
+            $quantity = 1; 
+        }
+        
+        // check if this user already has this item as a wish
+        $wish = $this->checkUserWishlist($item, $wishlistUser);
+        
+        if(!isset($wish))
+        {
+            // the wish doesn't exist for this user, return false since there 
+            // is no wish to update
+            return false;
+        }
+        
+        // update the wish
+        $wish->setIsPublic($isPublic);
+        $wish->setComment($comment);
+        $wish->setQuantity($quantity);
+        $wish->setWishlistUser($wishlistUser);
+        $wish->setIsActive(true); // todo: allow users to deactivate?
+        $this->getEntityManager()->persist($wish);
+        $this->getEntityManager()->flush(); 
+        
+        return true;
+    }    
+    
     public function makeWish($name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
     {
         $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Item');
-        $newItem = $itemRepo->addItem($name, $price, $link, $isPublic, $comment, $quantity, $wishlistUser);
+        $newItem = $itemRepo->addItem($name, $price, $link); //, $isPublic, $comment, $quantity, $wishlistUser);
         
         if($quantity=="")
         {

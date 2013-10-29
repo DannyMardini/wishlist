@@ -576,6 +576,17 @@ img.friendIcon {
 }
 
 /* line 101, ../sass/screen.scss */
+.inviteFriendInput #newFriendEmail {
+  height: 30px;
+  width: 400px;
+}
+
+/* line 106, ../sass/screen.scss */
+.inviteFriendInput {
+  margin-top: 20px;
+}
+
+/* line 110, ../sass/screen.scss */
 #friendSearch {
   height: 50px;
   border-style: solid;
@@ -584,35 +595,35 @@ img.friendIcon {
   width: 100%;
 }
 
-/* line 109, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 #friendsContainer {
   width: 100%;
   margin: auto;
 }
 
-/* line 114, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 div.listSeparator {
   background-color: #efefef;
 }
 
-/* line 118, ../sass/screen.scss */
+/* line 127, ../sass/screen.scss */
 div.userButton {
   display: inline-block;
   width: 70%;
 }
 
-/* line 123, ../sass/screen.scss */
+/* line 132, ../sass/screen.scss */
 div.addFriendButtonDiv {
   float: right;
   margin-top: 10px;
   width: 30%;
 }
-/* line 124, ../sass/screen.scss */
+/* line 133, ../sass/screen.scss */
 div.addFriendButtonDiv .ui-button-text {
   font-size: 0.8em;
 }
 
-/* line 132, ../sass/screen.scss */
+/* line 141, ../sass/screen.scss */
 div.requestSentNotification {
   padding-top: 12px;
   font-style: italic;
@@ -620,7 +631,7 @@ div.requestSentNotification {
   color: #b0b0b0;
 }
 
-/* line 139, ../sass/screen.scss */
+/* line 148, ../sass/screen.scss */
 label.pageHeader {
   padding-top: 10px;
   padding-left: 60px;
@@ -631,12 +642,12 @@ label.pageHeader {
   font-weight: bold;
 }
 
-/* line 149, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 .wishenda-button {
   cursor: hand;
 }
 
-/* line 153, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 #accountSettings {
   margin: inherit;
   text-align: center;
@@ -646,7 +657,7 @@ label.pageHeader {
   color: #303030;
   -webkit-font-smoothing: antialiased;
 }
-/* line 162, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 #accountSettings input:invalid {
   border-color: #e88;
   -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
@@ -655,7 +666,7 @@ label.pageHeader {
   -ms-box-shadow: 0 0 5px rbba(255, 0, 0, 0.8);
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
 }
-/* line 171, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 #accountSettings input:required {
   border-color: #88a;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
@@ -664,7 +675,7 @@ label.pageHeader {
   -ms-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
-/* line 180, ../sass/screen.scss */
+/* line 189, ../sass/screen.scss */
 #accountSettings input, #accountSettings select, #accountSettings textarea {
   border: 1px solid #ccc;
   min-height: 30px;
@@ -678,20 +689,20 @@ label.pageHeader {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 195, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 #accountSettings form {
   width: auto;
 }
-/* line 199, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 #accountSettings input {
   display: inline-block;
   width: 30%;
 }
-/* line 204, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 #accountSettings label {
   color: #636363;
 }
-/* line 208, ../sass/screen.scss */
+/* line 217, ../sass/screen.scss */
 #accountSettings label.mainLabel {
   padding-right: 10px;
   display: inline-block;
@@ -699,65 +710,65 @@ label.pageHeader {
   text-align: right;
   vertical-align: top;
 }
-/* line 216, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 #accountSettings h1 {
   font-size: 30px;
 }
-/* line 220, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 #accountSettings ul {
   list-style: none;
 }
-/* line 224, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 #accountSettings #mainDiv {
   width: 80%;
   margin: 0 auto;
   text-align: left;
 }
-/* line 230, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 #accountSettings #genderPicker {
   width: 30%;
   display: inline-block;
 }
-/* line 235, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 #accountSettings #genderPicker li {
   display: inline-block;
   width: 25%;
   padding-right: 10px;
 }
-/* line 241, ../sass/screen.scss */
+/* line 250, ../sass/screen.scss */
 #accountSettings #genderPicker input {
   display: block;
 }
-/* line 245, ../sass/screen.scss */
+/* line 254, ../sass/screen.scss */
 #accountSettings #passwordInputs {
   display: inline-block;
   width: 30%;
 }
-/* line 249, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 #accountSettings #passwordInputs input {
   width: 100%;
 }
-/* line 254, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 #accountSettings #saveChanges {
   width: 10%;
   background-color: #333333;
   color: white;
 }
-/* line 260, ../sass/screen.scss */
+/* line 269, ../sass/screen.scss */
 #accountSettings img.preview {
   width: 200px;
   border: solid 1px #dedede;
   padding: 10px;
 }
-/* line 266, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 #accountSettings div#preview {
   text-align: center;
 }
-/* line 270, ../sass/screen.scss */
+/* line 279, ../sass/screen.scss */
 #accountSettings input.birthdate {
   width: 2.5em;
 }
-/* line 274, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 #accountSettings #birthYear {
   width: 4.5em;
 }

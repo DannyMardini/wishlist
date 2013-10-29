@@ -1,6 +1,10 @@
 WishlistListBundle_wishlistNew:
   pattern: /wishlistnew
   defaults: { _controller: WishlistListBundle:Wishlist:newWishlist }
+  
+WishlistListBundle_wishlistUpdate:
+  pattern: /wishlistupdate
+  defaults: { _controller: WishlistListBundle:Wishlist:updateWishlist }  
 
 WishlistListBundle_wishlistItem:
   pattern: /wishlistitem/{itemId}

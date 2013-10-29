@@ -72,6 +72,43 @@ class WishlistController extends Controller
         return $this->showWishlistAction($user);
     }
     
+    public function updateWishlistAction()
+    {
+        $session = $this->getRequest()->getSession();
+        $id = $this->getRequest()->get('id');
+        $name = urldecode($this->getRequest()->get('name'));
+        $price = $this->getRequest()->get('price');
+        $link = $this->getRequest()->get('link');
+        $quantity = $this->getRequest()->get('quantity');
+        $comment = $this->getRequest()->get('comment');
+        $isPrivate = ($this->getRequest()->get('isprivate') == "checked");
+        $loggedInUserId = $session->get('user_id');
+        $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
+        
+        if( !isset ($id) || ($id == "")
+          || !isset ($name) || ($name == "") 
+          || !isset ($price) || ($price == "") 
+          || !isset ($link) || ($link == ""))
+        {
+            // The item was not fully defined.            
+            return new Response("", WishlistController::SC_INTERNALSERVERERROR);
+        }
+        
+        $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+        $updated = $wishRepo->updateWish($id, $name, $price, $link, $isPrivate, $comment, $quantity, $user);
+        
+        if(!$updated){   
+            // The item was not updated
+            $response  = new Response();
+            $response->setContent($this->showWishlistAction($user));
+            $response->setStatusCode(WishlistController::SC_NOTMODIFIED);
+            return $response;
+        }
+        
+        return $this->showWishlistAction($user);        
+        
+    }
+    
     public function getItemAction($itemId)
     {
         try{
