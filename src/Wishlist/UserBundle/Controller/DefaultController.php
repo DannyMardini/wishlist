@@ -527,7 +527,17 @@ class DefaultController extends Controller
 
     public function newAccountUserAction()
     {
-        return $this->render('WishlistUserBundle:Default:newAccountUser.html.php');
+        $requestRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Request');
+        $acceptIdQuery = $this->getRequest()->query->get('acceptId');
+
+        if(!isset($acceptIdQuery)) 
+        {
+            return new Response('failure', SC_BAD_REQUEST);
+        }
+
+        $requestInvite = $requestRepo->findOneByAcceptString($acceptIdQuery);
+
+        return $this->render('WishlistUserBundle:Default:newAccountUser.html.php', array('email' => $requestInvite->getEmail()));
     }
     
     public function newAccountFriendAction()
