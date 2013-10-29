@@ -82,11 +82,14 @@ function sendFormValues()
                 $dataArray = response.split(":"); 
                 if($dataArray[0].toLowerCase() == "success")
                 {
-                    alert('Success!');
+                    popupMessage('Success', 'Congratulations, you have just created a new account on wishenda.com! Click OK to continue to the log in screen.',
+                                    function() {
+                                        window.location = '/app_dev.php/Frontpage';
+                                    });
                 }
                 else
                 {
-                    alert(response);
+                    popupMessage('Failure', 'Unfortunately there was a problem with your request. Please try again in a few moments.');
                 }
             });
 }

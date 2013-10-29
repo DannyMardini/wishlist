@@ -347,6 +347,7 @@ class DefaultController extends Controller
     {
         $response = 'could not save changes. please try again later.';
         try{
+            //throw new \Exception($response);
             $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
             
             $updateSettings = false;
@@ -423,7 +424,7 @@ class DefaultController extends Controller
                 }
             }
         }
-        catch(Exception $e){
+        catch(\Exception $e){
             return new Response($response);
         }
         
