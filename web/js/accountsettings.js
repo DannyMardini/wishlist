@@ -104,12 +104,6 @@ $(document).ready(function(){
             target: '#preview'
         }).submit();    
     });
-/*
-    $('#birthdate').datepicker({
-        changeYear: true,
-        yearRange: '-100:+0'
-    });
-    */
 
     var gender = $('#orig_gender').val();
     $('#gender_'+gender).attr('checked',true);
