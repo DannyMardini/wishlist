@@ -55,6 +55,14 @@ class RequestRepository extends EntityRepository {
         $itemInDatabase = $q->getOneOrNullResult();  
         return $itemInDatabase;        
     }
+    
+    public function removeInvite(Request $request)
+    {
+        $em = $this->getEntityManager();
+        
+        $em->remove($request);
+        $em->flush();
+    }
 }
 
 ?>

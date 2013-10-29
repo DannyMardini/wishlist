@@ -347,7 +347,10 @@ class DefaultController extends Controller
     {
         $response = 'could not save changes. please try again later.';
         try{
-            $loggedInUserId = $this->getRequest()->getSession()->get('user_id');            
+            $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
+            
+            $updateSettings = false;
+            $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
             $slashlessImagePath = "images/temp/".$loggedInUserId;
             $foundDir = is_dir($slashlessImagePath);
 
@@ -356,9 +359,32 @@ class DefaultController extends Controller
             {
                 // TO DO
             }
+
+            if(!isset($loggedInUserId))
+            {
+                $updateSettings = false;
+                
+                $acceptIdQuery = $this->getRequest()->query->get('acceptId');
+                if(!isset($acceptIdQuery))
+                {
+                    throw new \Exception($response);
+                }
+
+                $requestInvite = $requestRepo->findOneByAcceptString($acceptIdQuery); //Check to see if this is not found.
+                if(!isset($requestInvite))
+                {
+                    throw new \Exception($response);
+                }
+                
+                $email = $requestInvite->getEmail();
+            }
+            else
+            {
+                $updateSettings = true;
+            }
             
             $full_name = $this->getRequest()->get('fullname');
-            $email = $this->getRequest()->get('email');
+            //$email = $this->getRequest()->get('email');
             $new_password = $this->getRequest()->get('new_password');
             $old_password = $this->getRequest()->get('old_password');
             $birthdate = \DateTime::createFromFormat('Y-m-d', '2012-10-23');
@@ -368,7 +394,6 @@ class DefaultController extends Controller
             // get the user then compare the users info to the variables above to check for changes.
             $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');;
             
-            $updateSettings = false;        //Debug
             if ($updateSettings)
             {
                 $user = $userRepo->getUserWithId($loggedInUserId);
@@ -376,9 +401,11 @@ class DefaultController extends Controller
                     $user->setFullName($full_name);
                 }
                 
+                /* Don't allow users to update their emails just yet.
                 if (strlen($email) > 0 && $email !== $user->getEmail() ) {
                     $user->setEmail($email);
                 }
+                */
                 
                 if (strlen($new_password) > 0 && $new_password !== $user->getPassword()) {
                     if ($old_password !== $user->getPassword()) {
@@ -392,6 +419,7 @@ class DefaultController extends Controller
             {
                 if (strlen($full_name) > 0 && strlen($email) > 0 && strlen($new_password) > 0) {
                     $userRepo->addNewUser($full_name, $birthdate, $email, $gender, $new_password);
+                    $requestRepo->removeInvite($requestInvite);
                 }
             }
         }
@@ -528,14 +556,18 @@ class DefaultController extends Controller
     public function newAccountUserAction()
     {
         $requestRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Request');
+        
         $acceptIdQuery = $this->getRequest()->query->get('acceptId');
-
         if(!isset($acceptIdQuery)) 
         {
-            return new Response('failure', SC_BAD_REQUEST);
+            return new Response('failure', DefaultController::SC_BAD_REQUEST);
         }
 
         $requestInvite = $requestRepo->findOneByAcceptString($acceptIdQuery);
+        if(!isset($requestInvite)) 
+        {
+            return new Response('failure', DefaultController::SC_BAD_REQUEST);
+        }
 
         return $this->render('WishlistUserBundle:Default:newAccountUser.html.php', array('email' => $requestInvite->getEmail()));
     }
