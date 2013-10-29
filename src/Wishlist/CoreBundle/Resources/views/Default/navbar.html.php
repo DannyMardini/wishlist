@@ -53,7 +53,7 @@
     </span>
 </div>
 
-<div id="accountOptionsDropdown">
+<div id="accountOptionsDropdown" class="positionModuleFixed">
     <ul>
         <li><a id="accountSettingsLink" class="ui-MenuLink" href="#">Settings</a></li>
         <li><a id="helpLink" href="#" class="ui-MenuLink">Help</a></li>

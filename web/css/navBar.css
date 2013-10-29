@@ -9,6 +9,48 @@ li a {
     color: black;
 }
 
+#accountOptionsDropdown li a {
+    text-decoration: none;
+    color: #888888;
+}
+
+#accountOptionsDropdown li:hover {
+    background:#f1f1f1;
+    color:#333333;
+    font-weight: bolder;
+}
+
+#accountOptionsDropdown li {
+    text-decoration: none;
+    padding: 10px 0px 5px 0px;
+}
+
+#accountOptionsDropdown{
+  float: right;
+  display: none;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-color: #BEBDBD;
+  position: absolute;
+  right: 4px;
+  background: white;
+  top: 38px;
+  width: 145px;
+}
+
+#accountOptionsDropdown ul{
+    list-style: none;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    text-align: center;    
+}
+
+.positionModuleFixed {
+    position: fixed;
+    z-index: 686;
+}
+
 #header {
     background-color: white;
     height: 40px;
@@ -198,34 +240,6 @@ li a {
 
 .usernameLink:hover {
     background-color: #efefff;
-}
-
-#accountOptionsDropdown{
-  float: right;
-  display: none;
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-  border-color: #BEBDBD;
-  position: absolute;
-  right: 0px;
-  background: white;
-}
-
-#accountOptionsDropdown ul{
-    list-style: none;
-    padding: 0px 0px 0px 0px;
-    margin: 0px 0px 0px 0px;
-    text-align: center;
-    width: 80px;
-}
-
-#accountOptionsDropdown ul li {
-    padding: 10px 0px 5px 0px;
-}
-
-#accountOptionsDropdown ul li :hover{
-    font-weight: bolder;
-    text-decoration: underline;
 }
 
 #notificationDiv {
