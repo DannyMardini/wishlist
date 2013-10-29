@@ -65,7 +65,7 @@ function allFormsValid()
 
 function sendFormValues()
 {
-    var url = $('#accountSettingsForm').attr('action');
+    var url = $('#accountSettingsForm').attr('action') + '?acceptId=' + getUrlVars()['acceptId'];
     var genderVal = $('input:checked').val();
     
     $.post( url, 
@@ -82,7 +82,7 @@ function sendFormValues()
                 $dataArray = response.split(":"); 
                 if($dataArray[0].toLowerCase() == "success")
                 {
-                    alert('Message sent.');
+                    alert('Success!');
                 }
                 else
                 {
@@ -92,7 +92,6 @@ function sendFormValues()
 }
 
 $(document).ready(function(){
-
     $('#saveChanges').click(saveChanges);
     
     $('#photoimg').live('change', function()	
@@ -116,4 +115,5 @@ $(document).ready(function(){
     $('#gender_'+gender).attr('checked',true);
     $('#fullname').val($('#orig_name').val());
     $('#email').val($('#orig_email').val());
+    $('#email').prop('disabled', true);
 });

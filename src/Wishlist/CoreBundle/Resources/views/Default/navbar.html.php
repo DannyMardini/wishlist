@@ -12,7 +12,7 @@
     </div>    
     <div id="logoContainer">        
 <!--        <img id="logo" src="/images/gift.jpg"/>-->
-        <div id="logoName">Wishenda</div>
+        <div id="logoName">Wishenda<span id='betaTag'>beta</span></div>
     </div>
     <span id="linksContainer">
         <ul id="navigation">
