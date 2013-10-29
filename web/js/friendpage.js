@@ -125,23 +125,39 @@ function createButtonLinks()
     });    
 }
 
-//todo: Get rid of name parameter, don't need this.
+function displayFriendInviteStatus(inviteStatus)
+{
+    var title = '';
+    var message = '';
+
+    if(true == inviteStatus) {
+        title = 'Success';
+        message = 'Your friend has been invited to Wishenda!';
+    }
+    else {
+        title = 'Failure';
+        message = 'A problem occurred, is your friend already a member of Wishenda?';
+    }
+    
+    popupMessage(title, message);
+}
+
 function submitFriendInvite(email)
 {
     var retval = false;
     var inviteUrl = Routing.generate('WishlistUserBundle_friendInvite');
 
-    $.ajax({
-        type: 'POST',
-        url: inviteUrl,
-        data: {email: email},
-        success: function() {
+    ajaxPost({email: email}, inviteUrl, function(responseText) {
+        if (responseText.toLowerCase() == 'success') {
             retval = true;
-            $('#friendInviteDialog').dialog('close');
-        },
+        }
+        else {
+            retval = false;
+        }
+        
+        displayFriendInviteStatus(retval);
+        $('#friendInviteDialog').dialog('close');
     });
-
-    return retval;
 }
 
 $(document).ready(function(){
@@ -167,16 +183,7 @@ $(document).ready(function(){
     $('#friendInviteForm').submit(function(e) {
         e.preventDefault();
         
-        if(submitFriendInvite($('#newFriendEmail').val()))
-        {
-            //Display success.
-            console.log('Success!');
-        }
-        else
-        {
-            //Display error message.
-            console.log('Fail!');
-        }
+        submitFriendInvite($('#newFriendEmail').val());
     });
     
     $('#inviteFriendButton').click(function(){

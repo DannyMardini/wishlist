@@ -18,4 +18,6 @@ Wishlist\CoreBundle\Entity\Request:
     email:
       type: string
       length: '255'
+    acceptString:
+      type: string
   lifecycleCallbacks: {  }
