@@ -15,7 +15,7 @@
     $createDateLink = "<a href='#'>Set a gift date!</a>";
     
     echo "<table id='shoppingList_bs_table' class='shoppinglistItem'>
-        <tr><th></th><th>Item</th><th>For</th><th>Date Due</th></tr>";
+        <tr><th>Select</th><th>Item</th><th>For</th><th>Date Due</th></tr>";
     
     foreach($purchases as $purchase)
     {

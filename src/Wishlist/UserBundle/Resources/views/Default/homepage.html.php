@@ -11,7 +11,7 @@
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
 
 <div id="updatesComponent">
-    <div class="updatesHeader">Updates</div>    
+    <div class="updatesHeader">Recent Friend Activity</div>    
     
     <div id="updatesInnerComponent">
 

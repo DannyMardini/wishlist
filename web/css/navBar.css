@@ -36,7 +36,8 @@ li a {
   right: 4px;
   background: white;
   top: 38px;
-  width: 145px;
+/*  width: 145px;*/
+  width: 15%;
 }
 
 #accountOptionsDropdown ul{
