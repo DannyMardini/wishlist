@@ -24,8 +24,14 @@ class AcceptUserCommand extends ContainerAwareCommand
         $email = $input->getArgument('email');
         $requestRepo = $this->getContainer()->get('doctrine')->getRepository('WishlistCoreBundle:Request');
 
-        $request = $requestRepo->findOnByEmail($email);
+        $request = $requestRepo->findOneByEmail($email);
+        if(!$request)
+        {
+            $output->writeln('<error>Email '.$email.' was not found!</error>');
+            return;
+        }
 
         $output->writeln('This is where we would invite '.$request->getId());
+        //Get the email sending service and send the accept email to the user.
     }
 }
