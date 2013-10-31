@@ -25,31 +25,11 @@ li a {
     padding: 10px 0px 5px 0px;
 }
 
-#accountOptionsDropdown{
-  float: right;
-  display: none;
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-  border-right: 1px solid;
-  border-color: #BEBDBD;
-  position: absolute;
-  right: 4px;
-  background: white;
-  top: 38px;
-/*  width: 145px;*/
-  width: 15%;
-}
-
 #accountOptionsDropdown ul{
     list-style: none;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
     text-align: center;    
-}
-
-.positionModuleFixed {
-    position: fixed;
-    z-index: 686;
 }
 
 #header {
@@ -140,10 +120,9 @@ li a {
     background-color:white;
     border:0px;
     margin: 0px;
-
     list-style-type: none;
     text-align: right;
-    height: 45px;
+/*    height: 45px;*/
     background: white;
     margin: 0px;
     font-family: Verdana, Arial, sans-serif;
@@ -270,3 +249,113 @@ li a {
     font-weight: bold;
 }
 
+
+
+.Header .headerContainer{
+    -webkit-transform: translateZ(0);
+    display: block;
+    height: 50px;
+    overflow: visible;
+    padding: 5px 0 0;
+    position: fixed;
+    z-index: 680;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+/* Using CSS3 media queries to handle window resizing */
+@media screen and (min-width: 1200px) {
+    .centeredWithinWrapper {
+        width: 1100px;
+    }
+    
+    #accountOptionsDropdown{
+      right: 100px;
+    }
+}
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+    .centeredWithinWrapper {
+        width: 1000px;
+    }
+    
+    #accountOptionsDropdown{
+      right: 81px;
+    }
+}
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    .centeredWithinWrapper {
+        width: 700px;
+    }
+        
+    #accountOptionsDropdown{
+      right: 51px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .centeredWithinWrapper {
+        width: 600px;
+    }
+
+    #accountOptionsDropdown{
+      right: 31px;
+    }
+}
+
+.centeredWithinWrapper {
+    margin: 0 auto;
+}
+
+.header .headerBackground {
+    box-shadow: 0 2px 2px 0;
+    -webkit-transform: translateZ(0);
+    background-color: #ffffff;
+    height: 50px;
+    position:fixed;
+    z-index: 670;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+.Header .headerContainer .leftHeaderContent {
+    float: left;
+    width: 236px;
+}
+
+.Header .headerContainer .rightHeaderContent {
+    float: right;
+    width: 236px;
+}
+
+.Header .logo {
+    left: 50%;
+    margin-left: -52px;
+    position: absolute;
+}
+
+.logo {
+    width: 104px;
+    height: 26px;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    text-shadow: none;    
+}
+
+.positionModuleFixed {
+    position: fixed;
+    z-index: 686;
+}
+
+#accountOptionsDropdown{
+  display: none;
+  border-radius: 3px 3px 0 0;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  background: white;
+  top: 38px;
+  width: 174px;
+}
