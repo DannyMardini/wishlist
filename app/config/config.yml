@@ -68,6 +68,10 @@ jms_security_extra:
 services:
   pic_service:
     class: Wishlist\CoreBundle\Services\PicService
+  mailer_service:
+    class: Wishlist\CoreBundle\Services\MailerService
+    arguments: ["@mailer"]
+  
 
 fos_js_routing:
   routes_to_expose: [ WishlistUserBundle*, RequestInvite, WishlistListBundle* ]

@@ -23,6 +23,8 @@ class AcceptUserCommand extends ContainerAwareCommand
     {
         $email = $input->getArgument('email');
         $requestRepo = $this->getContainer()->get('doctrine')->getRepository('WishlistCoreBundle:Request');
+        $templating = $this->getContainer()->get('templating');
+        $mailer = $this->getContainer()->get('mailer_service');
 
         $request = $requestRepo->findOneByEmail($email);
         if(!$request)
@@ -31,7 +33,22 @@ class AcceptUserCommand extends ContainerAwareCommand
             return;
         }
 
-        $output->writeln('This is where we would invite '.$request->getId());
-        //Get the email sending service and send the accept email to the user.
+        $userInvited = $request->getUserInvited();
+        if($userInvited)
+        {
+            $userInvitedName = $userInvited->getName();
+        }
+        else
+        {
+            $userInvitedName = 'TESTUSER';
+        }
+
+        try {
+            $mailer->sendMail('dannymardini@gmail.com', 'hoho', $templating->render('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName)), 'ohmergerdtext');
+        }
+        catch(Exception $ex)
+        {
+            $output->writeln('<error>could not send mail</error>');
+        }
     }
 }
