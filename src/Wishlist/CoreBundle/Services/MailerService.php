@@ -8,11 +8,13 @@ class MailerService
 {
     protected $mailer;
     protected $templating;
+    protected $doctrine;
 
-    function __construct($mailer, $templating)
+    function __construct($mailer, $templating, $doctrine)
     {
         $this->mailer = $mailer;
         $this->templating = $templating;
+        $this->doctrine = $doctrine;
     }
 
     public function sendInvite(Request $request)
@@ -39,6 +41,10 @@ class MailerService
 
             $this->sendMail($request->getEmail(), $this->getStandardInviteSubject(), $htmlbody, $textbody);
         }
+
+        $em = $this->doctrine->getEntityManager();
+        $request->setDateLastInvited(new \DateTime('now'));
+        $em->flush();
     }
 
     public function sendMail($to, $subject, $htmlBody, $textBody)
