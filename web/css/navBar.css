@@ -227,8 +227,9 @@ li a {
     display: none;
     border-radius: 3px 3px 0 0;
     border-bottom: 1px solid;
-    top: 42px;
+    top: 41px;
     width: 174px;
+    border-top-width: 0px;
 }
 
 .menuIcon {
