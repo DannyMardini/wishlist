@@ -20,4 +20,7 @@ Wishlist\CoreBundle\Entity\Request:
       length: '255'
     acceptString:
       type: string
+    dateLastInvited:
+      type: datetime
+      nullable: true
   lifecycleCallbacks: {  }
