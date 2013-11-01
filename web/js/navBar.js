@@ -12,6 +12,10 @@ function noBack() {
     window.history.forward(); 
 }
 
+$( window ).resize(function() {
+  resizeHeaderDropDownContainer();
+});
+
 $(document).ready(function(){
     $('#logoutLink').click(onLogoutClickEvent);
 
@@ -48,8 +52,16 @@ function viewNotificationsButtonClickEvent(obj){
     }    
 }
 
-function accountOptionsClickEvent(obj)
+function resizeHeaderDropDownContainer()
 {
+    // the drop down options container should be positioned to 
+    // the same position as the drop down button 
+    var buttonLeftPosition = $('#accountOptionsDropdownButton').offset().left;
+    $('#accountOptionsDropdown').css('left', buttonLeftPosition - 144);    
+}
+
+function accountOptionsClickEvent(obj)
+{    
     if( $(obj).hasClass('selected') )
     {
         $('#accountOptionsDropdown').hide();
@@ -57,6 +69,7 @@ function accountOptionsClickEvent(obj)
     }
     else
     {
+        resizeHeaderDropDownContainer();
         $('#accountOptionsDropdown').show();
         $(obj).addClass('selected');
     }    
