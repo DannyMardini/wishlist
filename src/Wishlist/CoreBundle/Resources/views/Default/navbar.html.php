@@ -9,28 +9,22 @@
     <div class="headerBackground"></div>
     <div class="headerContainer centeredWithinWrapper">
         <div class="leftHeaderContent">
-<!--            <div id="socialMediaLinks">-->
-                <span class="socialMediaLink"><a href="https://www.facebook.com/pages/Wishenda/490657654383030" target="_blank"><img src="/images/facebook_32.png" alt border="0" ></a></span>
-                <span class="socialMediaLink"><a href="http://www.pinterest.com/wishenda/" target="_blank"><img src="/images/pinterest_32.png" alt  border="0" ></a></span>
-<!--            </div>             -->
+            <span class="socialMediaLink"><a href="https://www.facebook.com/pages/Wishenda/490657654383030" target="_blank"><img src="/images/facebook_32.png" alt border="0" ></a></span>
+            <span class="socialMediaLink"><a href="http://www.pinterest.com/wishenda/" target="_blank"><img src="/images/pinterest_32.png" alt  border="0" ></a></span>
         </div>
         <div style="float:left">
             <div id="logoContainer">        
-<!--                 <img id="logo" src="/images/gift.jpg"/>-->
                 <div id="logoname" class="logo">Wishenda<span id='betaTag'>beta</span></div>
             </div>
-<!--            <a href="/" id="logoname" class="logo" data-force-refresh="1">Wishenda</a><span id='betaTag'>beta</span>-->
         </div>
         <div class="rightHeaderContent">
             <span id="linksContainer">
                 <ul id="navigation">
                     <?php if($user!=null) { ?>
                     <li style="padding-right:5px;">
-                        <div class='UserMenu'>
-                            <div class="usernameLink">
-                                <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
-                                <span class="ui-MenuLink profileName" id='homepageLink' class=""><?php echo $user->getName() ?></span>
-                            </div>
+                        <div class="usernameLink">
+                            <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
+                            <span class="ui-MenuLink profileName" id='homepageLink' class=""><?php echo $user->getName() ?></span>
                         </div>
                     </li>
                     <li id="accountOptionsDropdownButton" class="navLink menuIcon"><div style="height:60%;padding:7px;"><span class="ui-icon ui-icon-gear"></span></div></li>
@@ -60,55 +54,12 @@
                 </ul>
             </span>
         </div>
-    </div>
-</div>  
-
-<div id="header">
-   
-
-    <span id="linksContainer">
-        <ul id="navigation">
-            <?php if($user!=null) { ?>
-            <li style="padding-right:5px;">
-                <div class='UserMenu'>
-                    <div class="usernameLink">
-                        <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
-                        <span class="ui-MenuLink profileName" id='homepageLink' class=""><?php echo $user->getName() ?></span>
-                    </div>
-                </div>
-            </li>
-            <li id="accountOptionsDropdownButton" class="navLink menuIcon"><div style="height:60%;padding:7px;"><span class="ui-icon ui-icon-gear"></span></div></li>
-            <?php } else { ?><li>
-                <a href="#">Sign-In</a>
-            </li><?php } ?>
-            <?php
-            if(count($user->getNotifications()) > 0)
-            {             
-                echo "<li id='notificationsDropDown' style='vertical-align:bottom;' class='navLink menuIcon'>";
-                echo "<div id='notificationDiv'><div id='viewNotificationsButton' style='height:60%;padding:7px;'><span class='ui-icon ui-icon-notice'></span></div>\n";
-                echo "<div id='notificationWindow'>\n";
-                echo "<ul>\n";
-                foreach($user->getNotifications() as $notification)
-                {
-                    $notificationId = $notification->getId();
-                    echo "<li id='notification_".$notificationId."' style='height:30px;' class='notifications'>
-                        <span style='margin:0 10px 0 10px;'>".$notification->getText()."</span>
-                        <a class='acceptFriend' href='#'>Accept</a> or
-                        <a class='ignoreFriend' href='#'>Ignore</a>
-                        </li>\n";
-                }
-                echo "</ul>\n";
-                echo "</div></div>\n</li>";
-            }
-            ?>                    
+    </div>    
+    <div id="accountOptionsDropdown" class="positionModuleFixed">
+        <ul>
+            <li><a id="accountSettingsLink" class="ui-MenuLink" href="#">Settings</a></li>
+            <li><a id="helpLink" href="#" class="ui-MenuLink">Help</a></li>
+            <li><a id="logoutLink" href="#" class="ui-MenuLink">Log Out</a></li>
         </ul>
-    </span>
-</div>
-
-<div id="accountOptionsDropdown" class="positionModuleFixed">
-    <ul>
-        <li><a id="accountSettingsLink" class="ui-MenuLink" href="#">Settings</a></li>
-        <li><a id="helpLink" href="#" class="ui-MenuLink">Help</a></li>
-        <li><a id="logoutLink" href="#" class="ui-MenuLink">Log Out</a></li>
-    </ul>
+    </div>    
 </div>
