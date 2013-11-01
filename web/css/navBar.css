@@ -4,20 +4,26 @@ root {
     display: block;
 }
 
+ul {
+    list-style-type: none;    
+}
+
 li a {
     text-decoration: none;
     color: black;
 }
 
+.font-style {
+    font-family: Verdana, Arial, sans-serif;
+}
+
 #navigationlist {
     position: fixed;
     z-index: 600;
-    top: 50;
-    list-style-type: none;
+    top: 50;    
     margin: 0px;
     padding: 0px;
-    text-align: center;
-    font-family: Verdana, Arial, sans-serif;
+    text-align: center;    
     border-top: 1px solid #cccccc;
     margin-bottom: 10px;
     background-color: #ffffff;
@@ -46,14 +52,9 @@ li a {
 }
 
 #navigation {
-    background-color:white;
     border:0px;
     margin: 0px;
-    list-style-type: none;
     text-align: right;
-    background: white;
-    margin: 0px;
-    font-family: Verdana, Arial, sans-serif;
     padding: 0px;
 }
 
@@ -138,6 +139,10 @@ li a {
     padding: 6px 0 1px 10px;
 }
 
+.usernameLink:hover {
+    background-color: #efefff;
+}
+
 .UserMenu {
     border-radius: 3px;
     background-color: #f0f0f0;
@@ -145,10 +150,6 @@ li a {
     color: #888888;
     font-size: 13px;
     margin-top: 4px;
-}
-
-.usernameLink:hover {
-    background-color: #efefff;
 }
 
 #notificationDiv {

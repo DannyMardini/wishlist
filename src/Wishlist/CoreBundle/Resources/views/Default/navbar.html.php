@@ -19,7 +19,7 @@
         </div>
         <div class="rightHeaderContent">
             <span id="linksContainer">
-                <ul id="navigation">
+                <ul id="navigation" class="font-style">
                     <?php if($user!=null) { ?>
                     <li style="padding-right:5px;">
                         <div class="usernameLink headerUserMenuIcons">
