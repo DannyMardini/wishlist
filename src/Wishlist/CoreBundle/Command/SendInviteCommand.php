@@ -33,22 +33,14 @@ class SendInviteCommand extends ContainerAwareCommand
             return;
         }
 
-        $userInvited = $request->getUserInvited();
-        if($userInvited)
-        {
-            $userInvitedName = $userInvited->getName();
-        }
-        else
-        {
-            $userInvitedName = 'TESTUSER';
-        }
-
         try {
-            $mailer->sendMail('dannymardini@gmail.com', 'hoho', $templating->render('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName)), 'ohmergerdtext');
+            $mailer->sendInvite($request);
         }
         catch(Exception $ex)
         {
             $output->writeln('<error>could not send mail</error>');
         }
+
+        $output->writeln('Successfully sent email to '.$email);
     }
 }
