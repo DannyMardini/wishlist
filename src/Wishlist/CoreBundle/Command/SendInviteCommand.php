@@ -9,14 +9,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AcceptUserCommand extends ContainerAwareCommand
+class SendInviteCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('wishenda:acceptuser')
-            ->setDescription('Accept a user who has requested an invite')
-            ->addArgument('email', InputArgument::REQUIRED, 'Email address of user to accept');
+            ->setName('wishenda:sendinvite')
+            ->setDescription('Send invite email to user who has requested an invite')
+            ->addArgument('email', InputArgument::REQUIRED, 'Email address of user to send invite');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -33,22 +33,14 @@ class AcceptUserCommand extends ContainerAwareCommand
             return;
         }
 
-        $userInvited = $request->getUserInvited();
-        if($userInvited)
-        {
-            $userInvitedName = $userInvited->getName();
-        }
-        else
-        {
-            $userInvitedName = 'TESTUSER';
-        }
-
         try {
-            $mailer->sendMail('dannymardini@gmail.com', 'hoho', $templating->render('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName)), 'ohmergerdtext');
+            $mailer->sendInvite($request);
         }
         catch(Exception $ex)
         {
             $output->writeln('<error>could not send mail</error>');
         }
+
+        $output->writeln('Successfully sent email to '.$email);
     }
 }

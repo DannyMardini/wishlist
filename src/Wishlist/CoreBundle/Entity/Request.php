@@ -101,4 +101,29 @@ class Request
     {
         return $this->acceptString;
     }
+    /**
+     * @var datetime $dateLastInvited
+     */
+    private $dateLastInvited;
+
+
+    /**
+     * Set dateLastInvited
+     *
+     * @param datetime $dateLastInvited
+     */
+    public function setDateLastInvited($dateLastInvited)
+    {
+        $this->dateLastInvited = $dateLastInvited;
+    }
+
+    /**
+     * Get dateLastInvited
+     *
+     * @return datetime 
+     */
+    public function getDateLastInvited()
+    {
+        return $this->dateLastInvited;
+    }
 }

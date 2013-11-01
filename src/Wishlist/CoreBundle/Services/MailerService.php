@@ -2,16 +2,52 @@
 
 namespace Wishlist\CoreBundle\Services;
 
+use Wishlist\CoreBundle\Entity\Request;
+
 class MailerService
 {
     protected $mailer;
+    protected $templating;
+    protected $doctrine;
 
-    function __construct($mailer)
+    function __construct($mailer, $templating, $doctrine)
     {
         $this->mailer = $mailer;
+        $this->templating = $templating;
+        $this->doctrine = $doctrine;
     }
 
-    function sendMail($to, $subject, $htmlBody, $textBody)
+    public function sendInvite(Request $request)
+    {
+        //Get Which User invited this person.
+        $userInvited = $request->getUserInvited();
+
+        if($userInvited)
+        {
+            //If this person was invited by someone, send the friend invite email.
+
+            $userInvitedName = $userInvited->getName();
+            $htmlbody = $this->templating->render('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
+            $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
+            
+            $this->sendMail($request->getEmail(), $this->getFriendInviteSubject(), $htmlbody, $textbody);
+        }
+        else
+        {
+            //Else send the person a standard invite email.
+
+            $htmlbody = $this->templating->render('WishlistUserBundle:Email:standardinvite.html.php');
+            $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
+
+            $this->sendMail($request->getEmail(), $this->getStandardInviteSubject(), $htmlbody, $textbody);
+        }
+
+        $em = $this->doctrine->getEntityManager();
+        $request->setDateLastInvited(new \DateTime('now'));
+        $em->flush();
+    }
+
+    public function sendMail($to, $subject, $htmlBody, $textBody)
     {
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
@@ -26,4 +62,13 @@ class MailerService
         }
     }
 
+    public function getStandardInviteSubject()
+    {
+        return "You've been invited to Wishenda!";
+    }
+
+    public function getFriendInviteSubject()
+    {
+        return "Someone wants help figuring out what to get you!";
+    }
 }

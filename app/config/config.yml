@@ -70,7 +70,7 @@ services:
     class: Wishlist\CoreBundle\Services\PicService
   mailer_service:
     class: Wishlist\CoreBundle\Services\MailerService
-    arguments: ["@mailer"]
+    arguments: ["@mailer", "@templating", "@doctrine"]
   
 
 fos_js_routing:
