@@ -22,12 +22,12 @@
                 <ul id="navigation">
                     <?php if($user!=null) { ?>
                     <li style="padding-right:5px;">
-                        <div class="usernameLink">
+                        <div class="usernameLink headerUserMenuIcons">
                             <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
                             <span class="ui-MenuLink profileName" id='homepageLink' class=""><?php echo $user->getName() ?></span>
                         </div>
                     </li>
-                    <li id="accountOptionsDropdownButton" class="navLink menuIcon"><div style="height:60%;padding:7px;"><span class="ui-icon ui-icon-gear"></span></div></li>
+                    <li id="accountOptionsDropdownButton" class="navLink menuIcon headerUserMenuIcons"><div style="height:60%;padding:7px;"><span class="ui-icon ui-icon-gear"></span></div></li>
                     <?php } else { ?><li>
                         <a href="#">Sign-In</a>
                     </li><?php } ?>

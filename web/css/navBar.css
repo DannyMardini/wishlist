@@ -238,7 +238,6 @@ li a {
     color: #888888;
     font-size: 13px;
     margin-top: 4px;  
-    height: 31px;
     width: 30px;
     margin-left: -10px;
     margin-right: 5px;   
@@ -328,4 +327,8 @@ li a {
 .positionModuleFixed {
     position: fixed;
     z-index: 686;
+}
+
+.headerUserMenuIcons {
+    height: 30px;
 }
