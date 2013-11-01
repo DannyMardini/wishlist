@@ -9,14 +9,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AcceptUserCommand extends ContainerAwareCommand
+class SendInviteCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('wishenda:acceptuser')
-            ->setDescription('Accept a user who has requested an invite')
-            ->addArgument('email', InputArgument::REQUIRED, 'Email address of user to accept');
+            ->setName('wishenda:sendinvite')
+            ->setDescription('Send invite email to user who has requested an invite')
+            ->addArgument('email', InputArgument::REQUIRED, 'Email address of user to send invite');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
