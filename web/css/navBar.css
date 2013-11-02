@@ -102,10 +102,6 @@ li a {
     right: 0px;
 }
 
-.selected {
-    background-color: #efefff;
-}
-
 .profilePicture {
     border-radius: 3px 0 0 3px;
     box-shadow: 0 0 2px #616161 inset;
@@ -168,15 +164,22 @@ li a {
     width: 430px;
     border-width: 0px 1px 1px 1px;
     border-style: solid;
-    border-color: #BEBDBD;
+    border-color: #f7f7f7;
+    border: 1px solid #cccccc;
     background: white;
-    font-size: 12px;
+    font-size: 13px;
     text-align: left;
+    background:linear-gradient(#ffffff,#f0f0f0);
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: normal;
+    top: 20px;
 }
 
 #notificationWindow a {
     color: #00008F;
     font-weight: bold;
+    cursor: hand;
 }
 
 .Header .headerContainer{
@@ -333,4 +336,9 @@ li a {
 
 .headerUserMenuIcons {
     height: 30px;
+}
+
+.selected {
+    background-color: #efefff;
+    background: #efefff;
 }

@@ -20,10 +20,12 @@ $(document).ready(function(){
     $('#logoutLink').click(onLogoutClickEvent);
 
     $('#accountOptionsDropdownButton').click(function(){
+        hideOpenDropDowns();
         accountOptionsClickEvent(this);
     });
 
     $('#viewNotificationsButton').click(function(){
+        hideOpenDropDowns();
         viewNotificationsButtonClickEvent(this);
     });
 
@@ -58,6 +60,11 @@ function resizeHeaderDropDownContainer()
     // the same position as the drop down button 
     var buttonLeftPosition = $('#accountOptionsDropdownButton').offset().left;
     $('#accountOptionsDropdown').css('left', buttonLeftPosition - 144);    
+}
+
+function hideOpenDropDowns(){
+    $('#accountOptionsDropdown').hide();
+    $('#notificationWindow').hide();
 }
 
 function accountOptionsClickEvent(obj)
