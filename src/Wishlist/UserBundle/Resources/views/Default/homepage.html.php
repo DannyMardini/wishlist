@@ -44,7 +44,6 @@
 </div>
 <?php
 echo  $view->render('WishlistDialogBundle:Default:showFriendsWishItem.html.php') ?>
-?>
 <!--<div id='itemDialog' title='Wish' >  
     <input type='hidden' id='itemId' /> 
     Name: <input disabled type='text' id='name' placeholder='Enter Name' /> 
