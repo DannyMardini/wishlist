@@ -15,8 +15,6 @@ echo "<span class='itemCountSpan'>".$i." Item(s)</span>";
 echo "<hr size='1' width='100%' color='grey'> 
     <table id='wishlist_bs_table'>
     <thead><tr><th>Wish Item</th><th>Price</th><th>Promised by</th></tr></thead><tbody>";
-    
-$purchasedCell = "";
 
 while($i > 0)
 {
@@ -26,6 +24,7 @@ while($i > 0)
     $itemPurchased = $currItem->isPurchased();
     $itemPurchaser = $itemPurchased ? $currItem->getPurchase()->getWishlistUser() : null;
     $purchaserIsLoggedInUser = $itemPurchaser ? ($itemPurchaser->getWishlistuserId() == $loggedInUserId) : null;
+    $purchasedCell = "";
     
     if($purchaserIsLoggedInUser) // Display a flag for the items you've promised to purchase
     {
@@ -65,14 +64,6 @@ echo "</tbody></table>";
 <div id="confirmDialog" title="Purchase">
     <p>Purchase <span id="confirmName">Name</span> for event:</p>
     <div id="confirmEventContainer">
-    <?php 
-    if(isset($events))
-    {
-        foreach ($events as $event){
-            echo "<div id='event_".$event->getId()."' class='confirmEvent'>".$event->getName()."</div>\n";
-        }
-    }
-    ?>
     </div>
     <div id="confirmCreateEvent"><p>or enter a date!</p><input id="giftDateInput" type="text" tabindex="-1" placeholder="mm/dd/yyyy"/></div>
     <span id="confirmBtn">Ok</span>

@@ -450,11 +450,21 @@ function populateDialogItemInfo(itemInfo)
     var item = (type == "String") ? JSON.parse(itemInfo) : itemInfo;        
     
     $('#confirmName').html(item.name);
+    getUserEvents(item.id);
     
     if(selected_itemId <= -1 || selected_itemId == "")
     {
         selected_itemId = item.id;
     }    
+}
+
+function getUserEvents(itemId) {
+    var url = Routing.generate('WishlistListBundle_eventlist');
+    ajaxPost({itemId: itemId}, url, function(response, textStatus) {
+        $('#confirmEventContainer').html(textStatus.responseText);
+        setupEvents();
+        $('#confirmDialog').dialog('open');
+    });
 }
 
 function onGrantItClickEvent(dialog) {
@@ -504,8 +514,6 @@ function onCompleteUpdateItemEvent(responseText, textStatus)
 function openAddToShoppingListDialog(item)
 {
     populateDialogItemInfo(item);
-    
-    $('#confirmDialog').dialog('open');    
 }
 
 function getItemDialogObj(dialog)
