@@ -32,8 +32,8 @@ function setupWishlist()
     }); 
 
     $('#addItemButton').click(function(e){
-        e.preventDefault();        
-        setupWishDialogView(null,1,1);
+        e.preventDefault();
+        setupWishDialogView(null,{edit:"1", newItem:"1"});
     });
     
     $('.purchaseBtn').on('click', clickedItem);
@@ -267,43 +267,6 @@ function validateWish(wish)
                         : message;
 }
 
-//function submitTheNewWish(/* optional wish object param */wish)
-//{        
-//    // if a pre-defined wish obj was passed in, use that
-//    if(wish == null) {
-//        var theName = $("#newWishName").val();
-//        var thePrice = $("#newWishPrice").val();
-//        var theLink = $("#newWishLink").val();
-//        var theQuantity = $("#newWishQuantity").val();
-//        var theNotes = $("#newWishNotes").val();
-//        var theIsPrivate = $("#isPrivate").attr('checked');
-//        
-//        wish = { name: escape(theName), 
-//                 price: thePrice, 
-//                 link: theLink, 
-//                 quantity: theQuantity, 
-//                 comment: theNotes, 
-//                 isprivate: theIsPrivate
-//             };
-//    }
-//    
-//    var invalidWishMessage = validateWish(wish); 
-//    
-//    if(invalidWishMessage.length > 0)
-//    {
-//        popupMessage('Uh Oh!', invalidWishMessage);
-//    }
-//    else
-//    {
-//        ajaxPageLoad(
-//            wishlistElement,                // jQuery wishlist element
-//            wishlistAddItemPath,            // Path to the backend controller for adding a wish
-//            wish,                           // Wish object
-//            onCompleteAddToWishlistEvent    // Handles events after adding a wish
-//        );
-//    }
-//}
-
 function submitTheWish(/* optional wish object param */wish, path, callback)
 {        
     // if a pre-defined wish obj was passed in, use that
@@ -527,9 +490,6 @@ function onCompleteUpdateItemEvent(responseText, textStatus)
 {
    switch(textStatus.toLowerCase())
     {
-//        case "notmodified":
-//            popupMessage('Oh!','The item could not be updated. Please try again later.');    
-//            break;
         case "success":
             setupWishlist();
             popupMessage('Yay!','The item has been updated!');
@@ -571,7 +531,6 @@ function continueAddingItemToWishlist(dialog)
     var buttonPane = $('.ui-dialog-buttonpane');
     var itemObj = getItemDialogObj(dialog);
 
-    //submitTheNewWish(itemObj); // defined in wishlist.js 
     submitTheWish(itemObj, wishlistAddItemPath, onCompleteAddToWishlistEvent);
 
     // Hide the add wish button now that we are done adding the item
@@ -635,6 +594,11 @@ function setupWishDialogView(data, options)
         buttonPane.find('button:contains("Delete")').hide();
         buttonPane.find('button:contains("Grant")').hide();
         buttonPane.find('button:contains("Save")').show();
+        
+        $('#name').prop('disabled', false);
+        $('#price').prop('disabled', false);
+        $('#link').prop('disabled', false);
+        
         $('#editItemDialog').dialog('option', 'title', 'Save Wish');
     }
     
