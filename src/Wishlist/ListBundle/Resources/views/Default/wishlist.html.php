@@ -64,14 +64,6 @@ echo "</tbody></table>";
 <div id="confirmDialog" title="Purchase">
     <p>Purchase <span id="confirmName">Name</span> for event:</p>
     <div id="confirmEventContainer">
-    <?php 
-    if(isset($events))
-    {
-        foreach ($events as $event){
-            echo "<div id='event_".$event->getId()."' class='confirmEvent'>".$event->getName()."</div>\n";
-        }
-    }
-    ?>
     </div>
     <div id="confirmCreateEvent"><p>or enter a date!</p><input id="giftDateInput" type="text" tabindex="-1" placeholder="mm/dd/yyyy"/></div>
     <span id="confirmBtn">Ok</span>
