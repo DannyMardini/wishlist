@@ -67,7 +67,7 @@ class DefaultController extends Controller
     public function requestInviteAction()
     {
         try {
-            $response = "The request has been sent!";
+            $response = "The invite request has been submitted! We will contact you when we are ready for you to join!";
             $email = $this->getRequest()->get('email');
             
             if(!$email)
@@ -77,13 +77,6 @@ class DefaultController extends Controller
             
             // make a database call to store the email in the invite queue
             $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request')->addInviteToQueue($email, null);           
-            
-            // send email to the person letting them know that their request is in process and they should be contacted soon.
-            $mailerService = $this->get('mailer_service');
-            $mailerService->sendMail($email, 
-                    "Your invite request to Wishenda has been accepted!", 
-                    "Click here to register your new account with Wishenda!", 
-                    "Click here to register your new account with Wishenda!");
             
             return new Response($response);
         }
