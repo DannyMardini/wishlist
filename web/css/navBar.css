@@ -236,18 +236,22 @@ li a {
     border-top-width: 0px;
 }
 
-.menuIcon {
+#navigation .navcenter {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.navButtons {
+    vertical-align: top;
     background:linear-gradient(#ffffff,#f0f0f0);
-    background-color: #f7f7f7; 
+    background-color: #f7f7f7;
     border: 1px solid #cccccc;
     border-radius: 3px;
     color: #888888;
     font-size: 13px;
-    margin-top: 4px;  
-    width: 30px;
-    margin-left: -10px;
-    margin-right: 5px;   
+    margin-top: 4px;
     cursor: pointer;
+    height: 30px;
 }
 
 .menuIcon:hover, .usernameLink:hover {
