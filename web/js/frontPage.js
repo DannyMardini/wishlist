@@ -113,10 +113,11 @@ function displayMessage(message)
 {
     $('#dialog-message').html(message);
     $( "#dialog-message" ).dialog({
+        title: 'Alert',
         position: 'top',
         modal: true,
         height:400,
-        width:600,
+        width:400,
         buttons: {
                 Ok: function() {
                         $( this ).dialog( "close" );

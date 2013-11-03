@@ -597,7 +597,7 @@ function setupWishDialogView(data, options)
     
     if(newitem == 1) // if this is a new item, show the save button
     {
-        // hide the update button and display a save button        
+        // hide the update button and display a save button
         buttonPane.find('button:contains("Update")').hide();
         buttonPane.find('button:contains("Delete")').hide();
         buttonPane.find('button:contains("Grant")').hide();
