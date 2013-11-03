@@ -1,3 +1,4 @@
+
 /*TODO: This all needs to be done in compass, particularly site-wide things like border color.*/
 
 root { 
@@ -158,9 +159,9 @@ li a {
 
 #notificationWindow {
     display: none;
-    margin-top: 12px;
+    margin-top: 5px;
     position: absolute;
-    right: 0px;
+    right: -1px;
     width: 430px;
     border-width: 0px 1px 1px 1px;
     border-style: solid;
@@ -235,18 +236,26 @@ li a {
     border-top-width: 0px;
 }
 
-.menuIcon {
+#navigation .navcenter {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+#navigation .smallNavButtons {
+    width: 25px;
+}
+
+.navButtons {
+    vertical-align: top;
     background:linear-gradient(#ffffff,#f0f0f0);
-    background-color: #f7f7f7; 
+    background-color: #f7f7f7;
     border: 1px solid #cccccc;
     border-radius: 3px;
     color: #888888;
     font-size: 13px;
-    margin-top: 4px;  
-    width: 30px;
-    margin-left: -10px;
-    margin-right: 5px;   
+    margin-top: 4px;
     cursor: pointer;
+    height: 30px;
 }
 
 .menuIcon:hover, .usernameLink:hover {
@@ -258,7 +267,7 @@ li a {
 /* Using CSS3 media queries to handle window resizing */
 @media screen and (min-width: 1200px) {
     .centeredWithinWrapper {
-        width: 1100px;
+        width: 1200px;
     }
     
     #accountOptionsDropdown{

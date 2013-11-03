@@ -20,22 +20,16 @@
         <div class="rightHeaderContent">
             <span id="linksContainer">
                 <ul id="navigation" class="font-style">
-                    <?php if($user!=null) { ?>
-                    <li style="padding-right:5px;">
-                        <div class="usernameLink headerUserMenuIcons">
+                    <li class="navButtons">
                             <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
-                            <span class="ui-MenuLink profileName" id='homepageLink' class=""><?php echo $user->getName() ?></span>
-                        </div>
-                    </li>
-                    <li id="accountOptionsDropdownButton" class="navLink menuIcon headerUserMenuIcons"><div style="height:60%;padding:7px;"><span class="ui-icon ui-icon-gear"></span></div></li>
-                    <?php } else { ?><li>
-                        <a href="#">Sign-In</a>
-                    </li><?php } ?>
+                            <span id='homepageLink' class="navcenter"><?php echo $user->getName() ?></span>
+                    </li><li id="accountOptionsDropdownButton"class="navButtons smallNavButtons"><span class="ui-icon ui-icon-gear navcenter"></span>
                     <?php
                     if(count($user->getNotifications()) > 0)
-                    {             
-                        echo "<li id='notificationsDropDown' style='vertical-align:bottom;' class='navLink menuIcon headerUserMenuIcons'>";
-                        echo "<div id='notificationDiv'><div id='viewNotificationsButton' style='height:60%;padding:7px;'><span class='ui-icon ui-icon-notice'></span></div>\n";
+                    {
+                        //Note, there cannot be any white-space between li's if you want them to show up right next to each other.
+                        echo "</li><li id='notificationsDropDown' class='navButtons smallNavButtons'>";
+                        echo "<div id='notificationDiv' class='navcenter'><div id='viewNotificationsButton'><span class='ui-icon ui-icon-notice'></span></div>\n";
                         echo "<div id='notificationWindow'>\n";
                         echo "<ul>\n";
                         foreach($user->getNotifications() as $notification)
@@ -49,6 +43,11 @@
                         }
                         echo "</ul>\n";
                         echo "</div></div>\n</li>";
+                    }
+                    else
+                    {
+                        //Note, there cannot be any white-space between li's if you want them to show up right next to each other.
+                        echo "</li>";
                     }
                     ?>                    
                 </ul>
