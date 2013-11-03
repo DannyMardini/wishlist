@@ -12,14 +12,21 @@
 
 <div id="shoppinglist">
     <?php
-    $createDateLink = "<a href='#'>Set a gift date!</a>";
-    
     echo "<table id='shoppingList_bs_table' class='shoppinglistItem'>
         <tr><th>Select</th><th>Item</th><th>For</th><th>Date Due</th></tr>";
     
     foreach($purchases as $purchase)
     {
         $giftDate = $purchase->getGiftDate();
+        $event = $purchase->getEvent();
+
+        if(isset($giftDate)) {
+            $dateDisplay = $giftDate->format('m/d/Y');
+        }
+        else {
+            $dateDisplay = $event->getEventDate()->format('m/d/Y');
+        }
+
         $purchasedWishlistItem = $purchase->getItem();
         $purchasedItem = $purchasedWishlistItem->getItem();
         $giftUser = $purchasedWishlistItem->getWishlistUser();
@@ -29,7 +36,7 @@
         echo "<tr><td><input id='".$giftId."' class='selectItem' type='checkbox' /></td>
             <td>".$giftName."</td>
             <td>".$giftUser->getName()."</td>
-            <td>".(isset($giftDate)? $giftDate->format('d/m/Y'):$createDateLink)."</td>
+            <td>".$dateDisplay."</td>
             </tr>";
     }
     
