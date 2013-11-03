@@ -12,6 +12,8 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>
         <link href="/css/black-tie/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 
+        <link href="/css/main.css" rel="stylesheet" type="text/css" />
+        
         <script src="/js/bootstrap/bootstrap.js"></script>
         <script src="/js/bootstrap/jquery.metadata.js"></script>
         <script src="/js/bootstrap/jquery.tablesorter.min.js"></script>
@@ -22,7 +24,6 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <link href="/css/bootstrap/prettify.css" rel="stylesheet">         
         
         <script type="text/javascript" src="/js/navBar.js"></script>
-        <link href="/css/main.css" rel="stylesheet" type="text/css" />
         <link href="/css/navBar.css" rel="stylesheet" type="text/css" />
         <link href="/compass/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="/compass/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />

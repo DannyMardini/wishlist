@@ -784,3 +784,8 @@ label.pageHeader {
 #accountSettings input:disabled {
   background: #EBEBEB;
 }
+
+/* line 299, ../sass/screen.scss */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
