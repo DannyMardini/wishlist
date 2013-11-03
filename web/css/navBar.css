@@ -241,6 +241,10 @@ li a {
     margin-top: 5px;
 }
 
+#navigation .smallNavButtons {
+    width: 25px;
+}
+
 .navButtons {
     vertical-align: top;
     background:linear-gradient(#ffffff,#f0f0f0);
