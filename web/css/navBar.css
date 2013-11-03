@@ -1,3 +1,4 @@
+
 /*TODO: This all needs to be done in compass, particularly site-wide things like border color.*/
 
 root { 
@@ -258,7 +259,7 @@ li a {
 /* Using CSS3 media queries to handle window resizing */
 @media screen and (min-width: 1200px) {
     .centeredWithinWrapper {
-        width: 1100px;
+        width: 1200px;
     }
     
     #accountOptionsDropdown{
