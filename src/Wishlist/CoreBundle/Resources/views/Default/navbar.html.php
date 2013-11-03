@@ -23,12 +23,13 @@
                     <li class="navButtons">
                             <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
                             <span id='homepageLink' class="navcenter"><?php echo $user->getName() ?></span>
-                    </li><li id="accountOptionsDropdownButton"class="navButtons"><span class="ui-icon ui-icon-gear navcenter"></span></li>
+                    </li><li id="accountOptionsDropdownButton"class="navButtons"><span class="ui-icon ui-icon-gear navcenter"></span>
                     <?php
                     if(count($user->getNotifications()) > 0)
-                    {             
-                        echo "<li id='notificationsDropDown' style='vertical-align:bottom;' class='navLink menuIcon headerUserMenuIcons'>";
-                        echo "<div id='notificationDiv'><div id='viewNotificationsButton' style='height:60%;padding:7px;'><span class='ui-icon ui-icon-notice'></span></div>\n";
+                    {
+                        //Note, there cannot be any white-space between li's if you want them to show up right next to each other.
+                        echo "</li><li id='notificationsDropDown' class='navButtons'>";
+                        echo "<div id='notificationDiv' class='navcenter'><div id='viewNotificationsButton'><span class='ui-icon ui-icon-notice'></span></div>\n";
                         echo "<div id='notificationWindow'>\n";
                         echo "<ul>\n";
                         foreach($user->getNotifications() as $notification)
@@ -42,6 +43,11 @@
                         }
                         echo "</ul>\n";
                         echo "</div></div>\n</li>";
+                    }
+                    else
+                    {
+                        //Note, there cannot be any white-space between li's if you want them to show up right next to each other.
+                        echo "</li>";
                     }
                     ?>                    
                 </ul>
