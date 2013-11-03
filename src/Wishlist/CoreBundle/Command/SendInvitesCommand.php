@@ -25,7 +25,7 @@ class SendInvitesCommand extends ContainerAwareCommand
         $requestRepo = $this->getContainer()->get('doctrine')->getRepository('WishlistCoreBundle:Request');
         $mailer = $this->getContainer()->get('mailer_service');
 
-        $query = $requestRepo->createQueryBuilder('r')->getQuery();
+        $query = $requestRepo->createQueryBuilder('r')->where('r.dateLastInvited is NULL')->getQuery();
 
         $requests = $query->setMaxResults($numUsers)->getResult();
 
