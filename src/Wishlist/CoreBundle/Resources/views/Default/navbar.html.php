@@ -20,14 +20,10 @@
         <div class="rightHeaderContent">
             <span id="linksContainer">
                 <ul id="navigation" class="font-style">
-                    <?php if($user!=null) { ?>
                     <li class="navButtons">
                             <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
                             <span id='homepageLink' class="navcenter"><?php echo $user->getName() ?></span>
                     </li><li id="accountOptionsDropdownButton"class="navButtons"><span class="ui-icon ui-icon-gear navcenter"></span></li>
-                    <?php } else { ?><li>
-                        <a href="#">Sign-In</a>
-                    </li><?php } ?>
                     <?php
                     if(count($user->getNotifications()) > 0)
                     {             
