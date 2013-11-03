@@ -12,22 +12,22 @@ body {
 }
 
 .content {
-    background-color: white;
-    width: 95%;
-    margin: 10px;
+    margin: 20px;
 }
 
 .contentMenu {
     height: 100%;
-    width: 30%;
+    width: 100%;
     float: left;
     border-right: black;
     border-right-width: 1px;
     border-right-style: solid;
+    display: inline-block;
 }
 
 .contentInfo {
-    width: 100%;
+    width: 68%;
+    display: inline-block;
 }
 
 .contentInfoTopic{
@@ -47,12 +47,10 @@ body {
     display: none;
     font-size: 16px;    
     line-height: 38px;    
-    padding-left: 33%;
-    padding-top: 15px;    
 }
 
 .displayContentInfo{
-    display:block;
+    display:inline-block;
 }
 
 .goBackDiv{
