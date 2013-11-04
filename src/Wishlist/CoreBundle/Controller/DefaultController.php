@@ -51,10 +51,7 @@ class DefaultController extends Controller
             else
             {
                 $full_message = ' from: ' . $fullname . '  email: ' . $email . '  message: ' . $message;
-                $headers = 'MIME-Version: 1.0' . '\r\n';
-                $headers .= 'Content-type: text/html; charset=iso-8859-1' . '\r\n';
-                $headers .= 'From: contactsupport@wishlist.com' . '\r\n';
-                mail('andreacoba@gmail.com',$subject,$full_message,$headers);             
+                $this->get("Mailer_Service")->sendMail("wishthrowaway@gmail.com", "User Inquiry", $full_message, $full_message);
                 $response = 'success';
             }
             
