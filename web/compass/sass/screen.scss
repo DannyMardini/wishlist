@@ -299,3 +299,74 @@ label.pageHeader {
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+div#updatesComponent {
+    width: 23%;
+    position: absolute;
+    right: 10px;
+    display: none;
+    /*padding: 10px 30px 10px 30px;*/
+    color: lighten($font-color, 10%);
+    border: 1px solid rgba(100, 100, 100, .4);
+    background: linear-gradient(#ffffff,#f0f0f0);
+    -webkit-border-radius: 3px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+
+    .Update{
+        padding: 10px 30px 0px 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .updatesHeader {
+        padding: 10px 30px 0px 5px;
+        font-weight: bold;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+#updatesInnerComponent{
+    min-height: 300px;
+}
+
+#updatesInnerComponent .image {
+    float: left;
+    background-repeat: no-repeat;
+    background-position: left;
+    margin-top: 15px;
+    margin-right: 3px;
+}
+
+#updatesInnerComponent .name {
+    margin-top: 15px;
+    font-weight: bolder;
+    display: inline-block;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+#updatesInnerComponent .message {
+    display: block;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+#updatesInnerComponent .timestamp {
+    margin-top: 5px;
+    color: gray;
+    display: block;
+    font-size:12px;
+}
+
+#selectable {
+  margin: 0px;
+}
+
+#updatesInnerComponent a {
+    cursor: pointer;
+    color: darkblue;
+    text-decoration: none;
+}
+
+#updatesInnerComponent a:hover {
+    text-decoration: underline;
+}

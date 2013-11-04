@@ -10,14 +10,6 @@
 <input id="username" type="hidden" value="<?php echo $user->getName() ?>"/>
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
 
-<div id="updatesComponent">
-    <div class="updatesHeader">Recent Friend Activity</div>    
-    
-    <div id="updatesInnerComponent">
-        <?php echo $view->render('WishlistListBundle:Default:updatelist.html.php', array('updates' => $friendUpdates)); ?>
-    </div>
-</div>
-
 <div id="wishlistContent" class="mockup">
     
     <?php

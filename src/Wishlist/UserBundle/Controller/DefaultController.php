@@ -69,17 +69,9 @@ class DefaultController extends Controller
         }
 
         $user = $userRepo->getUserWithEmail($email);
-
-        try {
-            $friendUpdates =  $updateRepo->getFriendsUpdates($user->getWishlistuserId());
-            $friendEvents = $eventRepo->getFriendEvents($user->getWishlistuserId());
-        }catch(Exception $e){
-            $e->getTrace();
-        }       
         
         //TODO: Re-evaluate this, I'm not sure I need wishlisteItems.
-        return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user, 'wishlistItems' => $user->getWishlistItems(),
-                                                                                    'friendUpdates' => $friendUpdates, 'friendEvents' => $friendEvents));
+        return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user));
     }
 
     //TODO: These friendpage actions should really go in their own separate controller.
@@ -576,5 +568,14 @@ class DefaultController extends Controller
     public function newAccountFriendAction()
     {
         return $this->render('WishlistUserBundle:Default:newAccountFriend.html.php');
+    }
+    
+    public function updatesAction()
+    {
+        $updateRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
+        
+        $friendUpdates =  $updateRepo->getFriendsUpdates($this->getLoggedInUserId());
+        
+        return $this->render('WishlistListBundle:Default:updatelist.html.php', array('updates' => $friendUpdates));
     }
 }

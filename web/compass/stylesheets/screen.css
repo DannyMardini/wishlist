@@ -789,3 +789,83 @@ label.pageHeader {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+/* line 303, ../sass/screen.scss */
+div#updatesComponent {
+  width: 23%;
+  position: absolute;
+  right: 10px;
+  display: none;
+  /*padding: 10px 30px 10px 30px;*/
+  color: #4a4a4a;
+  border: 1px solid rgba(100, 100, 100, 0.4);
+  background: linear-gradient(#ffffff, #f0f0f0);
+  -webkit-border-radius: 3px;
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+/* line 315, ../sass/screen.scss */
+div#updatesComponent .Update {
+  padding: 10px 30px 0px 20px;
+  border-bottom: 1px solid #ddd;
+}
+/* line 320, ../sass/screen.scss */
+div#updatesComponent .updatesHeader {
+  padding: 10px 30px 0px 5px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 327, ../sass/screen.scss */
+#updatesInnerComponent {
+  min-height: 300px;
+}
+
+/* line 331, ../sass/screen.scss */
+#updatesInnerComponent .image {
+  float: left;
+  background-repeat: no-repeat;
+  background-position: left;
+  margin-top: 15px;
+  margin-right: 3px;
+}
+
+/* line 339, ../sass/screen.scss */
+#updatesInnerComponent .name {
+  margin-top: 15px;
+  font-weight: bolder;
+  display: inline-block;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+/* line 347, ../sass/screen.scss */
+#updatesInnerComponent .message {
+  display: block;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+/* line 353, ../sass/screen.scss */
+#updatesInnerComponent .timestamp {
+  margin-top: 5px;
+  color: gray;
+  display: block;
+  font-size: 12px;
+}
+
+/* line 360, ../sass/screen.scss */
+#selectable {
+  margin: 0px;
+}
+
+/* line 364, ../sass/screen.scss */
+#updatesInnerComponent a {
+  cursor: pointer;
+  color: darkblue;
+  text-decoration: none;
+}
+
+/* line 370, ../sass/screen.scss */
+#updatesInnerComponent a:hover {
+  text-decoration: underline;
+}
