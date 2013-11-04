@@ -15,6 +15,14 @@ body {
     margin: 20px;
 }
 
+.contentMenuContainer {
+    height:100%;
+    width:30%;
+    display:inline-block;
+    float:left;
+    margin-right: 10px;
+}
+
 .contentMenu {
     height: 100%;
     width: 100%;

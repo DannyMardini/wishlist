@@ -12,7 +12,7 @@
             How can we help you?
         </header>
         <div class="content">
-            <div style="height:100%;width:30%;display:inline-block;float:left;margin-right: 10px;">
+            <div class='contentMenuContainer'>
                 <div class="contentMenu">
                     <?php echo $view->render('WishlistQABundle:Default:QAMenu.html.php', array('selectedOptionIndex' => 0)); ?>
                 </div>
