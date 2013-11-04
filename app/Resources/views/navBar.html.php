@@ -41,6 +41,15 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
             <li><a href="<?php echo $eventsUrl ?>">Events</a></li>
             <li><a href="<?php echo $friendsUrl ?>">Friends</a></li>
         </ul>
+
+        <div id="updatesComponent" class="positionmodulefixed">
+            <div class="updatesHeader">Recent Friend Activity</div>    
+
+            <div id="updatesInnerComponent">
+                <?php echo $view['actions']->render('WishlistUserBundle:Default:updates'); ?>
+            </div>
+        </div>
+
         <div id="content" class="clearfix">
         <?php $view['slots']->output('_content'); ?>
         </div>

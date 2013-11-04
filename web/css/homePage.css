@@ -60,63 +60,6 @@ ul.contentItem {
     padding-left: 10px;
 }
 
-#updatesComponent {
-    width: 23%;
-    float: right;
-    margin-right: 1%;
-}
-
-#updatesInnerComponent{
-    min-height: 300px;
-}
-
-#updatesInnerComponent .image {
-    float: left;
-    background-repeat: no-repeat;
-    background-position: left;
-    margin-top: 15px;
-    margin-right: 3px;
-}
-
-#updatesInnerComponent .name {
-    margin-top: 15px;
-    font-weight: bolder;
-    display: inline-block;
-    text-align: center;
-    vertical-align: bottom;
-}
-
-#updatesInnerComponent .message {
-    display: block;
-    margin-top: 10px;
-    margin-left: 15px;
-}
-
-#updatesInnerComponent .timestamp {
-    margin-top: 5px;
-    color: gray;
-    display: block;
-    font-size:12px;
-}
-
-.Update{
-    border-bottom: 1px solid gray;
-}
-
-#selectable {
-  margin: 0px;
-}
-
-#updatesInnerComponent a {
-    cursor: pointer;
-    color: darkblue;
-    text-decoration: none;
-}
-
-#updatesInnerComponent a:hover {
-    text-decoration: underline;
-}
-
 #itemDialog div {
     margin-left: 10%;
     font-size: 14px;
@@ -201,9 +144,4 @@ ul.contentItem {
     width: 100px;
     padding-right: 50px;
     vertical-align: middle;
-}
-
-.updatesHeader {
-    font-size:20px;
-    font-weight: bold;
 }

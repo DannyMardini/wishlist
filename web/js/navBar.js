@@ -26,7 +26,12 @@ $(document).ready(function(){
 
     $('#viewNotificationsButton').click(function(){
         hideOpenDropDowns();
-        viewNotificationsButtonClickEvent(this);
+        dialogButtonClickEvent(this,'#notificationWindow');
+    });
+    
+    $('#updatesWindowButton').click(function(){
+        hideOpenDropDowns();
+        dialogButtonClickEvent(this, '#updatesComponent');
     });
 
     $("a.acceptFriend").click(acceptFriendClicked);
@@ -41,18 +46,19 @@ $(document).ready(function(){
     });
 });
 
-function viewNotificationsButtonClickEvent(obj){
+function dialogButtonClickEvent(obj, id){
     if( $(obj).hasClass('selected') )
     {
-        $('#notificationWindow').hide();
+        $(id).hide();
         $(obj).removeClass('selected');
     }
     else
     {
-        $('#notificationWindow').show();
+        $(id).show();
         $(obj).addClass('selected');
     }    
 }
+
 
 function resizeHeaderDropDownContainer()
 {
@@ -65,6 +71,7 @@ function resizeHeaderDropDownContainer()
 function hideOpenDropDowns(){
     $('#accountOptionsDropdown').hide();
     $('#notificationWindow').hide();
+    $('#updatesComponent').hide();
 }
 
 function accountOptionsClickEvent(obj)

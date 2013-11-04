@@ -29,5 +29,5 @@ $selfWishlist = ($wishlist_user->getWishlistUserId() == $loggedInUserId)? true:f
 </div>
 
 <?php
-echo  $view->render('WishlistDialogBundle:Default:showFriendsWishItem.html.php') ?>
+echo  $view->render('WishlistDialogBundle:Default:showFriendsWishItem.html.php');
 ?>
