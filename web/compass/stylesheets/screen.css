@@ -801,27 +801,28 @@ div#updatesComponent {
   color: #4a4a4a;
   border: 1px solid rgba(100, 100, 100, 0.4);
   background: linear-gradient(#ffffff, #f0f0f0);
+  background-color: #F7F7F7;
   -webkit-border-radius: 3px;
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
-/* line 316, ../sass/screen.scss */
+/* line 319, ../sass/screen.scss */
 div#updatesComponent .Update {
   padding: 10px 30px 0px 20px;
   border-bottom: 1px solid #ddd;
 }
-/* line 321, ../sass/screen.scss */
+/* line 324, ../sass/screen.scss */
 div#updatesComponent .updatesHeader {
   padding: 10px 30px 0px 5px;
   font-weight: bold;
   border-bottom: 1px solid #ddd;
 }
 
-/* line 328, ../sass/screen.scss */
+/* line 331, ../sass/screen.scss */
 #updatesInnerComponent {
   min-height: 300px;
 }
 
-/* line 332, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 #updatesInnerComponent .image {
   float: left;
   background-repeat: no-repeat;
@@ -830,7 +831,7 @@ div#updatesComponent .updatesHeader {
   margin-right: 3px;
 }
 
-/* line 340, ../sass/screen.scss */
+/* line 343, ../sass/screen.scss */
 #updatesInnerComponent .name {
   margin-top: 15px;
   font-weight: bolder;
@@ -839,14 +840,14 @@ div#updatesComponent .updatesHeader {
   vertical-align: bottom;
 }
 
-/* line 348, ../sass/screen.scss */
+/* line 351, ../sass/screen.scss */
 #updatesInnerComponent .message {
   display: block;
   margin-top: 10px;
   margin-left: 15px;
 }
 
-/* line 354, ../sass/screen.scss */
+/* line 357, ../sass/screen.scss */
 #updatesInnerComponent .timestamp {
   margin-top: 5px;
   color: gray;
@@ -854,19 +855,19 @@ div#updatesComponent .updatesHeader {
   font-size: 12px;
 }
 
-/* line 361, ../sass/screen.scss */
+/* line 364, ../sass/screen.scss */
 #selectable {
   margin: 0px;
 }
 
-/* line 365, ../sass/screen.scss */
+/* line 368, ../sass/screen.scss */
 #updatesInnerComponent a {
   cursor: pointer;
   color: darkblue;
   text-decoration: none;
 }
 
-/* line 371, ../sass/screen.scss */
+/* line 374, ../sass/screen.scss */
 #updatesInnerComponent a:hover {
   text-decoration: underline;
 }
