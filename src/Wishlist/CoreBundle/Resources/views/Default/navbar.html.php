@@ -56,9 +56,9 @@
     </div>    
     <div id="accountOptionsDropdown" class="positionModuleFixed">
         <ul>
-            <li><a id="accountSettingsLink" class="ui-MenuLink" href="#">Settings</a></li>
-            <li><a id="helpLink" href="#" class="ui-MenuLink">Help</a></li>
-            <li><a id="logoutLink" href="#" class="ui-MenuLink">Log Out</a></li>
+            <li id="accountSettingsLink" class="ui-MenuLink"><a href="#">Settings</a></li>
+            <li id="helpLink" class="ui-MenuLink"><a href="#">Help</a></li>
+            <li id="logoutLink" class="ui-MenuLink"><a href="#">Log Out</a></li>
         </ul>
     </div>    
 </div>

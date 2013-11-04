@@ -13,5 +13,5 @@
 </div>
 <div class="contentInfoTopic">Account Settings</div>
 <div class="contentInfoDetails">
-    To DO<br />
+    To edit your profile image, or any other user information, go to the account settings page. It is accessible from the top menu by clicking 'Settings'<br />
 </div>

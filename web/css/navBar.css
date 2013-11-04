@@ -263,12 +263,6 @@ li a {
     color:#333333;
 }
 
-/*.menuIcon:hover, .usernameLink:hover {
-    background:#f1f1f1;
-    color:#333333;
-    font-weight: bolder;    
-}*/
-
 /* Using CSS3 media queries to handle window resizing */
 @media screen and (min-width: 1200px) {
     .centeredWithinWrapper {
@@ -348,11 +342,11 @@ li a {
     z-index: 686;
 }
 
-/*.headerUserMenuIcons {
-    height: 30px;
-}*/
-
 .selected {
     background-color: #efefff;
     background: #efefff;
+}
+
+.ui-MenuLink {
+    cursor: hand;
 }
