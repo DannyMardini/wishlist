@@ -7,6 +7,7 @@ use Doctrine\ORM\NoResultException;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Doctrine\ORM\Query\ResultSetMapping;
 use \DateTime;
+use Wishlist\CoreBundle\Library\StoPasswordHash;
 
 /**
  * WishlistUserRepository
@@ -53,25 +54,22 @@ class WishlistUserRepository extends EntityRepository
     {
         try
         {                                                    
-            $q = $this->getEntityManager()
-                    ->createQuery('SELECT w FROM WishlistCoreBundle:WishlistUser w WHERE w.email = :email AND w.password = :password')
-                    ->setParameter('email', $email)
-                    ->setParameter('password', $password);
-            
-            $userQueryResults = $q->getResult();
-            
-            $userId = 0;
-                        
-            foreach ($userQueryResults as $user)
+            $user = $this->findOneByEmail($email);
+            if(!$user)
             {
-                $userId = $user->getWishlistuserId();
-            }        
-            
-            return $userId;
+                return 0;
+            }
+
+            if(StoPasswordHash::verifyPassword($password, $user->getPassword()))
+            {
+                return $user->getWishlistUserId();
+            }
         }catch(Exception $e)
         {
             return 0;
         }
+
+        return 0;
     }
     
     public function getUserWithEmail( /*string*/ $email )
