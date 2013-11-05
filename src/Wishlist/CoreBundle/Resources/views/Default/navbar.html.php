@@ -24,7 +24,7 @@
                             <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
                             <span id='homepageLink' class="navcenter"><?php echo $user->getName() ?></span>
                     </li><li id="updatesWindowButton" class="navButtons smallNavButtons" title="Updates">
-                        <span class="navcenter">U</span>
+                        <span class="ui-icon ui-icon-star navcenter"></span>
                     </li><li id="accountOptionsDropdownButton" class="navButtons smallNavButtons"><span class="ui-icon ui-icon-gear navcenter"></span>
                     <?php
                     if(count($user->getNotifications()) > 0)

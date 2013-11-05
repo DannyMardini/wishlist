@@ -242,7 +242,8 @@ li a {
 }
 
 #navigation .smallNavButtons {
-    width: 25px;
+    width: 26px;
+    height: 30px;
 }
 
 .navButtons {
