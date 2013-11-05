@@ -22,7 +22,7 @@
                 <ul id="navigation" class="font-style">
                     <li class="navButtons">
                             <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
-                            <span id='homepageLink' class="navcenter"><?php echo $user->getName() ?></span>
+                            <span id='homepageLink' class="navcenter ui-MenuLink"><?php echo $user->getName() ?></span>
                     </li><li id="updatesWindowButton" class="navButtons smallNavButtons" title="Updates">
                         <span class="ui-icon ui-icon-star navcenter"></span>
                     </li><li id="accountOptionsDropdownButton" class="navButtons smallNavButtons"><span class="ui-icon ui-icon-gear navcenter"></span>
