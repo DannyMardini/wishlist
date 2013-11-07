@@ -95,7 +95,7 @@ function continueRemovingItems()
     ajaxPost(purchaseData, '/app_dev.php/retractPurchases', finishRetractPurchaseEvent, selectedPurchaseDivs);    
 }
 
-function finishRetractPurchaseEvent(response, selectedPurchaseDivs){
+function finishRetractPurchaseEvent(response, textStatus, jqXHR, selectedPurchaseDivs){
     if(response == null) return;
     
     // if an empty string was returned it means that no errors occurred.

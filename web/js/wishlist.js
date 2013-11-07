@@ -416,7 +416,7 @@ function getItemInfo(itemId, callBackFunc)
     });
 }
 
-function onCompleteAddItemToShoppingList(responseMessage, responseObj, itemId){
+function onCompleteAddItemToShoppingList(responseMessage, textStatus, responseObj, itemId){
     $('h3[id=' + itemId + ']').addClass('purchased');
     $('#confirmDialog').dialog('close');        
 
@@ -461,7 +461,7 @@ function populateDialogItemInfo(itemInfo)
 function getUserEvents(itemId) {
     var url = Routing.generate('WishlistListBundle_eventlist');
     ajaxPost({itemId: itemId}, url, function(response, textStatus) {
-        $('#confirmEventContainer').html(textStatus.responseText);
+        $('#confirmEventContainer').html(response);
         setupEvents();
         $('#confirmDialog').dialog('open');
     });
