@@ -187,27 +187,33 @@ class DefaultController extends Controller
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
         $friendRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
 
-        $loggedInUserId = $session->get('user_id');
-        $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
-        
-        $unfriendId = $request->get('userid');
-        if(!$unfriendId)
+        try {
+            $loggedInUserId = $session->get('user_id');
+            $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
+
+            $unfriendId = $request->get('userid');
+            if(!$unfriendId)
+            {
+                return new Response('fail');
+            }
+
+            $userToUnfriend = $userRepo->getUserWithId($unfriendId);
+            if(!$userToUnfriend)
+            {
+                return new Response('fail');
+            }
+
+            if(!WishlistUser::areFriends($loggedInUser, $userToUnfriend))
+            {
+                return new Response('fail');
+            }
+
+            $friendRepo->removeFriendship($loggedInUser, $userToUnfriend);
+        }
+        catch(Exception $e)
         {
             return new Response('fail');
         }
-        
-        $userToUnfriend = $userRepo->getUserWithId($unfriendId);
-        if(!$userToUnfriend)
-        {
-            return new Response('fail');
-        }
-        
-        if(!WishlistUser::areFriends($loggedInUser, $userToUnfriend))
-        {
-            return new Response('fail');
-        }
-        
-        $friendRepo->removeFriendship($loggedInUser, $userToUnfriend);
         
         return new Response('success');
     }
