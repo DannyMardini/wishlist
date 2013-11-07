@@ -1,12 +1,15 @@
 <?php
 $view->extend('::navBar.html.php');
 
-$selfWishlist = ($wishlist_user->getWishlistUserId() == $loggedInUserId)? true:false;
+$userId = $wishlist_user->getWishlistUserId();
+$selfWishlist = ($userId == $loggedInUserId)? true:false;
 ?>
 <script type="text/javascript" src="/js/common.js"></script>
 <link href='/css/userPage.css' rel='stylesheet' />
 <link href='/css/wishlist.css' rel='stylesheet' />
 <script type="text/javascript" src="/js/wishlist.js"></script>
+<script type="text/javascript" src="/js/userpage.js"></script>
+<input id="userId" type="hidden" value="<?php echo $userId ?>"/>
 
 <div id="div_left_panel">
     <h1><?php echo $wishlist_user->getName() ?></h1>
@@ -20,6 +23,7 @@ $selfWishlist = ($wishlist_user->getWishlistUserId() == $loggedInUserId)? true:f
         <p><label>Gender: <?php echo $wishlist_user->getGenderString() ?></label></p>
         <p><label>Email: <?php echo $wishlist_user->getEmail() ?></label></p>
     </div>
+    <span id='unfriendButton'>Unfriend</span>
 </div>
 
 <div id="div_right_panel">

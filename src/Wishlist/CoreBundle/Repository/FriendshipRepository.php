@@ -32,6 +32,30 @@ class FriendshipRepository extends EntityRepository
         $this->getEntityManager()->persist($friendship);
     }
     
+    public function removeFriendship(WishlistUser $userA, WishlistUser $userB)
+    {
+        $this->deleteFriendLink($userA, $userB);
+        $this->deleteFriendLink($userB, $userA);
+        $this->getEntityManager()->flush();
+    }
+    
+    private function deleteFriendLink(WishlistUser $userA, WishlistUser $userB)
+    {
+        $q = $this->getEntityManager()->createQuery('
+            SELECT f
+            FROM WishlistCoreBundle:Friendship f
+            WHERE f.wishlistUser = :uida AND f.friend_id = :uidb')
+                ->setParameter('uida', $userA)
+                ->setParameter('uidb', $userB->getWishlistuserId());
+        
+        $friendship = $q->getSingleResult();
+        if(isset($friendship))
+        {
+            $this->getEntityManager()->remove($friendship);
+        }
+        
+    }
+    
     public function searchFriends(WishlistUser $user, /*string*/ $searchTerm)
     {
         $userRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');

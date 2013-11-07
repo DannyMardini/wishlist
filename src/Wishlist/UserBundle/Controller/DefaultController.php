@@ -179,6 +179,38 @@ class DefaultController extends Controller
 
         return new Response();
     }
+
+    public function unfriendAction()
+    {
+        $request = $this->getRequest();
+        $session = $request->getSession();
+        $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $friendRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
+
+        $loggedInUserId = $session->get('user_id');
+        $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
+        
+        $unfriendId = $request->get('userid');
+        if(!$unfriendId)
+        {
+            return new Response('fail');
+        }
+        
+        $userToUnfriend = $userRepo->getUserWithId($unfriendId);
+        if(!$userToUnfriend)
+        {
+            return new Response('fail');
+        }
+        
+        if(!WishlistUser::areFriends($loggedInUser, $userToUnfriend))
+        {
+            return new Response('fail');
+        }
+        
+        $friendRepo->removeFriendship($loggedInUser, $userToUnfriend);
+        
+        return new Response('success');
+    }
     
     public function friendInviteAction()
     {
