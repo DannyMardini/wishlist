@@ -225,7 +225,7 @@ class DefaultController extends Controller
 
         $email = $request->get('email');
 
-        if($email == '')
+        if(!isset($email) || $email == '')
         {
             return new Response('', SC_BAD_REQUEST);
         }
@@ -234,6 +234,14 @@ class DefaultController extends Controller
             
             $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
             $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
+            
+            $userExists = $userRepo->findOneByEmail($email);
+            if(isset($userExists))
+            {
+                //Can't invite a user which already exists.
+                throw new Exception();
+            }
+            
             $userInvited = $userRepo->getUserWithId($session->get('user_id'));
             $userInvitedName = $userInvited->getName();
 
