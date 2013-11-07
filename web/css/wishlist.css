@@ -82,3 +82,9 @@ h3.purchased {
 #itemDialog label {
     display: inline;
 }
+
+#wishlist_bs_table {
+    width: 80%;
+    margin: 10%;
+    margin-top: 2%;    
+}
