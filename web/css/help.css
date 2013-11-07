@@ -3,12 +3,12 @@ root {
 }
 
 header {
-    font-size:30px;
+    font-size:20px;
     font-weight: bolder;
 }
 
 body {
-    font-family: Gruppo, arial;
+    font-family: Verdana, Arial, sans-serif
 }
 
 .content {
@@ -39,7 +39,7 @@ body {
 }
 
 .contentInfoTopic{
-    font-size: 22px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 38px;    
     padding-left: 33%;
