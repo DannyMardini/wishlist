@@ -75,6 +75,13 @@ class DefaultController extends Controller
                 $response = "Sorry about this! The system could not read your email. Please refresh your browser and try again. <br /><br />-Wishlist Team";           
             }
             
+            $userExists = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->findOneByEmail($email);
+            
+            if($userExists)
+            {
+                return new Response('It seems you are already a member of wishlist, please log in!');
+            }
+            
             // make a database call to store the email in the invite queue
             $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request')->addInviteToQueue($email, null);           
             
