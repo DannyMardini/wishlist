@@ -39,16 +39,16 @@ function ajaxPost(data, url, callback, callBackParams)
         type: 'POST',
         url: url,
         data: data,
-        success: function(context, responseText, textStatus) { 
+        success: function(data, textStatus, jqXHR) { 
             if(callback)
             {
-                callback.call(null, responseText, textStatus, callBackParams);
+                callback.call(null, data, textStatus, jqXHR, callBackParams);
             }
         },
-        error: function(response, responseText, textStatus) {
+        error: function(jqXHR, textStatus, errorThrown) {
             if(callback)
             {
-                callback.call(null, response, responseText, textStatus, callBackParams);
+                callback.call(null, jqXHR.responseText, textStatus, jqXHR, callBackParams);
             }
         }
     });    
