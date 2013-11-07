@@ -89,13 +89,14 @@ function retractPurchaseEvent()
 
 function continueRemovingItems()
 {
-    var selectedPurchaseDivs = $('.selected','#shoppinglist'); 
-    var selectedPurchaseIds = selectedPurchaseDivs.map(function() { return this.id; }).get();
+    var itemsToRemove = $('.selected', '#shoppinglist');
+    var rowsToRemove = itemsToRemove.parents('tr'); 
+    var selectedPurchaseIds = itemsToRemove.map(function() { return this.id; }).get();
     var purchaseData = { purchaseIds: selectedPurchaseIds};
-    ajaxPost(purchaseData, '/app_dev.php/retractPurchases', finishRetractPurchaseEvent, selectedPurchaseDivs);    
+    ajaxPost(purchaseData, '/app_dev.php/retractPurchases', finishRetractPurchaseEvent, rowsToRemove);    
 }
 
-function finishRetractPurchaseEvent(response, textStatus, jqXHR, selectedPurchaseDivs){
+function finishRetractPurchaseEvent(response, textStatus, jqXHR, rowsToRemove){
     if(response == null) return;
     
     // if an empty string was returned it means that no errors occurred.
@@ -104,7 +105,7 @@ function finishRetractPurchaseEvent(response, textStatus, jqXHR, selectedPurchas
     if(response.length <= 0){
         
         // remove divs
-        selectedPurchaseDivs.remove();
+        rowsToRemove.remove();
         
         // update count
         updateItemCount();
