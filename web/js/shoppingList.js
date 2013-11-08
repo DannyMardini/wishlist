@@ -12,7 +12,16 @@ $(document).ready(function(){
     createEventHandlers();
     toggleRetractButton(); // hide or show the 'cancel purchase' button
     updateList(); // displays a special message if the shopping list is empty
+    checkCompleted();
 });
+
+function checkCompleted()
+{
+    var completedPurchases = $('#completePurchases');
+    if(completedPurchases.length > 0) {
+        confirm('Hey, you have wishes you should have fulfilled by now, would you like to remove them from your shopping list?');
+    }
+}
 
 function createGUIButtons(){
     // click event handler for the 'cancel purchase' aka:'retract' button
