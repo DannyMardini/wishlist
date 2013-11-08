@@ -119,7 +119,7 @@ function removeEvent()
         $('#dialog-message').attr('title','An issue occurred!').html('<p>'+couldNotRemoveEventMessage+'</p>').dialog('open');
     }
     
-    ajaxCall('/app_dev.php/RemoveEvent', {id:selectedEventId}, removeEventCallback);        
+    ajaxCall(Routing.generate('WishlistUserBundle_removeEvent'), {id:selectedEventId}, removeEventCallback);
     
 }
 
@@ -171,7 +171,7 @@ function saveNewEvent()
     var newDatepicker = $('#newDatepicker').val();
     var newEventType = $('#newEventType option:selected').val();                
     
-    ajaxCall('/app_dev.php/SaveEvent', {name: newEventname, date: newDatepicker, type:newEventType}, saveNewEventCallback);  
+    ajaxCall(Routing.generate('WishlistUserBundle_saveEvent'), {name: newEventname, date: newDatepicker, type:newEventType}, saveNewEventCallback);
 }
 
 function saveNewEventCallback(data)

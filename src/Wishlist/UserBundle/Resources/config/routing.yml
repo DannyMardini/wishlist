@@ -70,3 +70,6 @@ WishlistUserBundle_newAccountFriend:
   pattern: /NewAccountFriend
   defaults: { _controller: WishlistUserBundle:Default:newAccountFriend }
 
+WishlistUserBundle_uploadUserImage:
+  pattern: /UploadUserImage
+  defaults: { _controller: WishlistUserBundle:Default:uploadUserImage }

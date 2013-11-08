@@ -6,8 +6,8 @@
 var wishlist_div = "#div_wishlist_div";
 var selected_itemId = -1;
 var selected_eventId = -1;
-var wishlistAddItemPath = '/app_dev.php/wishlistnew';
-var wishlistUpdateItemPath = '/app_dev.php/wishlistupdate';
+var wishlistAddItemPath = Routing.generate('WishlistListBundle_wishlistNew');
+var wishlistUpdateItemPath = Routing.generate('WishlistListBundle_wishlistUpdate');
 var wishlistElement = '#wishlist';
 
 $(document).ready(function(){

@@ -624,4 +624,9 @@ class DefaultController extends Controller
         
         return $this->render('WishlistListBundle:Default:updatelist.html.php', array('updates' => $friendUpdates));
     }
+    
+    public function uploadUserImage()
+    {
+        return new Response();
+    }
 }

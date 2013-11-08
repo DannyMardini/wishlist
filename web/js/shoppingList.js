@@ -93,7 +93,7 @@ function continueRemovingItems()
     var rowsToRemove = itemsToRemove.parents('tr'); 
     var selectedPurchaseIds = itemsToRemove.map(function() { return this.id; }).get();
     var purchaseData = { purchaseIds: selectedPurchaseIds};
-    ajaxPost(purchaseData, '/app_dev.php/retractPurchases', finishRetractPurchaseEvent, rowsToRemove);    
+    ajaxPost(purchaseData, Routing.generate('WishlistListBundle_retractPurchases'), finishRetractPurchaseEvent, rowsToRemove);
 }
 
 function finishRetractPurchaseEvent(response, textStatus, jqXHR, rowsToRemove){
