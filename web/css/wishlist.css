@@ -42,6 +42,7 @@
     height: 100px;
 }
 
+/*Is purchaseBtn even used anymore?*/
 .purchaseBtn {
     cursor: hand;
     height: 25px;
@@ -55,24 +56,6 @@
 .purchaseBtn:hover {
     background-color: white;
     font-color: black;
-}
-
-#confirmEventContainer {
-    border-style: solid;
-    border-width: 1px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    min-height: 1em;
-    max-height: 3em;
-}
-
-div.confirmEvent:hover {
-    background-color: #efefef;
-    cursor: hand;
-}
-
-#confirmBtn:hover {
-    cursor: hand;
 }
 
 h3.purchased {

@@ -27,6 +27,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <link href="/css/navBar.css" rel="stylesheet" type="text/css" />
         <link href="/compass/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="/compass/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+        <link href="/css/formStyling.css" rel="stylesheet" type="text/css" />
         <!--[if IE]>
             <link href="/compass/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <![endif]-->
@@ -53,5 +54,11 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <div id="content" class="clearfix">
         <?php $view['slots']->output('_content'); ?>
         </div>
+        <?php 
+echo $view->render('WishlistDialogBundle:Default:showFriendsWishItem.html.php');
+echo $view->render('WishlistDialogBundle:Default:editItemDialog.html.php');
+echo $view->render('WishlistDialogBundle:Default:confirmPurchaseDialog.html.php');
+        ?>
+        <script type="text/javascript" src="/js/common.js"></script>
     </body>
 </html>
