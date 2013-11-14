@@ -95,7 +95,7 @@ class PurchaseRepository extends EntityRepository
         return $q->getResult();
     }
 
-    public function getCompletePurchases(/*int*/ $uid)
+    public function getExpiredPurchases(/*int*/ $uid)
     {
         //Just do the dates for now, worry about the events afterwards.
         $em = $this->getEntityManager();
