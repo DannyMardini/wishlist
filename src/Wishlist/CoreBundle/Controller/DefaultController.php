@@ -42,7 +42,7 @@ class DefaultController extends Controller
             $subject = $this->getRequest()->get('subject');
             $email = $this->getRequest()->get('email');
             $fullname = $this->getRequest()->get('fullname');
-            $message = $this->getRequest()->get('message');
+            $message = urldecode($this->getRequest()->get('message'));
             
             if(!$email || !$fullname || !$message || !$subject)
             {
