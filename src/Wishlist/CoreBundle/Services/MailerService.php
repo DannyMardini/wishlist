@@ -49,6 +49,9 @@ class MailerService
 
     public function sendMail($to, $subject, $htmlBody, $textBody)
     {
+        $textBody = urldecode($textBody);
+        $htmlBody = urldecode($htmlBody);
+        
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom('wishthrowaway@gmail.com')
