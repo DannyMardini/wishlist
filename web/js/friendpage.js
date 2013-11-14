@@ -8,7 +8,7 @@ function searchFriends()
     //make the ajax call to search for friends.
     $.ajax({
         type: 'POST',
-        url: '/app_dev.php/FriendSearch',
+        url: Routing.generate('WishlistUserBundle_friendSearch'),
         data: {searchTerm: searchTerm},
         success: function(data, textStatus, jqXHR) {
             updateFriendList(jQuery.parseJSON(data));
@@ -27,7 +27,7 @@ function timerRestart()
     timer = window.setTimeout(searchFriends, searchTimeout*1000);
 }
 
-function modifyAddButton(response, textStatus, row)
+function modifyAddButton(response, textStatus, jqXHR, row)
 {
     console.log('Promoting friend!');    
     $('.addFriendButtonDiv',row).fadeOut(400, function(){
@@ -39,7 +39,7 @@ function modifyAddButton(response, textStatus, row)
 function addFriend(personId)
 {
     var row = $("input.userId[value|='"+ personId + "']").parent();
-    ajaxPost({personId: personId}, '/app_dev.php/FriendAdd', modifyAddButton, row);
+    ajaxPost({personId: personId}, Routing.generate('WishlistUserBundle_friendAdd'), modifyAddButton, row);
 }
 
 function updateFriendList(results)

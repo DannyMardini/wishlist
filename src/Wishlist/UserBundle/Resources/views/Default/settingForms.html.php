@@ -49,7 +49,7 @@ if(isset($birthdate))
 </ul>
 </form>
 <?php if(isset($originalPassword)) { ?>
-<form id="imageform" method="post" enctype="multipart/form-data" action='/app_dev.php/UploadUserImage'>
+<form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $view['router']->generate('WishlistUserBundle_uploadUserImage'); ?>'>
     <label class='mainLabel'>Upload image:</label>
     <span>
         <input type="file" name="photoimg" id="photoimg" />

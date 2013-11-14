@@ -14,6 +14,7 @@
 namespace Wishlist\CoreBundle\Entity;
 
 use Wishlist\CoreBundle\Services\PicService;
+use Wishlist\CoreBundle\Library\StoPasswordHash;
 
 class WishlistUser {
     protected $gender = 1;
@@ -119,7 +120,7 @@ class WishlistUser {
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = StoPasswordHash::hashBcrypt($password);
     }
 
     /**

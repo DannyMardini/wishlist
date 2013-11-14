@@ -84,7 +84,7 @@ function sendFormValues()
                 {
                     popupMessage('Success', 'Congratulations, you have just created a new account on wishenda.com! Click OK to continue to the log in screen.',
                                     function() {
-                                        window.location = '/app_dev.php/Frontpage';
+                                        window.location = Routing.generate('WishlistFrontpageBundle_homepage');
                                     });
                 }
                 else

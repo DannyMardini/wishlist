@@ -12,7 +12,16 @@ $(document).ready(function(){
     createEventHandlers();
     toggleRetractButton(); // hide or show the 'cancel purchase' button
     updateList(); // displays a special message if the shopping list is empty
+    checkCompleted();
 });
+
+function checkCompleted()
+{
+    var completedPurchases = $('#completePurchases');
+    if(completedPurchases.length > 0) {
+        confirm('Hey, you have wishes you should have fulfilled by now, would you like to remove them from your shopping list?');
+    }
+}
 
 function createGUIButtons(){
     // click event handler for the 'cancel purchase' aka:'retract' button
@@ -89,13 +98,14 @@ function retractPurchaseEvent()
 
 function continueRemovingItems()
 {
-    var selectedPurchaseDivs = $('.selected','#shoppinglist'); 
-    var selectedPurchaseIds = selectedPurchaseDivs.map(function() { return this.id; }).get();
+    var itemsToRemove = $('.selected', '#shoppinglist');
+    var rowsToRemove = itemsToRemove.parents('tr'); 
+    var selectedPurchaseIds = itemsToRemove.map(function() { return this.id; }).get();
     var purchaseData = { purchaseIds: selectedPurchaseIds};
-    ajaxPost(purchaseData, '/app_dev.php/retractPurchases', finishRetractPurchaseEvent, selectedPurchaseDivs);    
+    ajaxPost(purchaseData, Routing.generate('WishlistListBundle_retractPurchases'), finishRetractPurchaseEvent, rowsToRemove);
 }
 
-function finishRetractPurchaseEvent(response, selectedPurchaseDivs){
+function finishRetractPurchaseEvent(response, textStatus, jqXHR, rowsToRemove){
     if(response == null) return;
     
     // if an empty string was returned it means that no errors occurred.
@@ -104,7 +114,7 @@ function finishRetractPurchaseEvent(response, selectedPurchaseDivs){
     if(response.length <= 0){
         
         // remove divs
-        selectedPurchaseDivs.remove();
+        rowsToRemove.remove();
         
         // update count
         updateItemCount();

@@ -43,3 +43,15 @@
     echo "</table>";
     ?>
 </div>
+
+<?php
+    if(isset($completePurchases))
+    {
+        echo "<div id='completePurchases' style='display: none'>\n";
+        foreach($completePurchases as $purchase)
+        {
+            echo "<div>".$purchase->getItem()->getItem()->getName()."</div>\n";
+        }
+        echo "</div>\n";
+    } 
+?>

@@ -1,5 +1,4 @@
 <link href="/css/wishlist.css" rel="stylesheet" type="text/css" />
-<link href="/css/formStyling.css" rel="stylesheet" type="text/css" />
 
 <?php
 //Helper functions
@@ -60,24 +59,3 @@ echo "</tbody></table>";
 
 </div>
 
-
-<div id="confirmDialog" title="Purchase">
-    <p>Purchase <span id="confirmName">Name</span> for event:</p>
-    <div id="confirmEventContainer">
-    </div>
-    <div id="confirmCreateEvent"><p>or enter a date!</p><input id="giftDateInput" type="text" tabindex="-1" placeholder="mm/dd/yyyy"/></div>
-    <span id="confirmBtn">Ok</span>
-</div>
-
-
-<div id='editItemDialog' title='Edit Wish' >  
-    <input type='hidden' id='itemId' /> 
-    Name: <input disabled type='text' id='name' placeholder='Enter Name' />
-    Price: <input disabled type='text' id='price' placeholder='Enter Price' />
-    Link:  <input disabled type='text' id='link' placeholder='Enter Link' />
-    Quantity: <input type='text' id='quantity' placeholder='Quantity (Default = 1)'/>
-    Notes: <input type='text' id='notes' placeholder='Notes (Optional)'/>    
-    <span style='display:inline-block;'>Keep this wish private:</span>
-    <input style='width:25%;display:inline-block;' type='checkbox' id='isPrivate' />
-    </span>
-</div>

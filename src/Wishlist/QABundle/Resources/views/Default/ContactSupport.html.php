@@ -1,4 +1,4 @@
-<form id="contactSupportForm" method="POST" action="/app_dev.php/Notify/Admin">
+<form id="contactSupportForm" method="POST" action="<?php echo $view['router']->generate('WishlistQABundle_help') ?>">
 
 <!--  <label>Regarding:</label>
   <select>
@@ -64,7 +64,7 @@
     
     function redirectToQAHome()
     {
-        window.location = "/app_dev.php/help";
+        window.location = Routing.generate('WishlistQABundle_help');
     }
     
     

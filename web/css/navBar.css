@@ -90,7 +90,6 @@ li a {
 #logoName {
     font-family: Satisfy, cursive;
     font-size: 30px;
-    cursor: hand;   
 }
 
 #homepageLink {
@@ -350,3 +349,22 @@ li a {
 .ui-MenuLink {
     cursor: hand;
 }
+
+#confirmEventContainer {
+    border-style: solid;
+    border-width: 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 1em;
+    max-height: 3em;
+}
+
+div.confirmEvent:hover {
+    background-color: #efefef;
+    cursor: hand;
+}
+
+#confirmBtn:hover {
+    cursor: hand;
+}
+

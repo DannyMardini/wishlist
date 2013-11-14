@@ -33,8 +33,9 @@ class ShoppinglistController extends Controller
     {
         $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
         $purchases = $purchaseRepo->getPurchasesById($userId);
+        $completePurchases = $purchaseRepo->getCompletePurchases($userId);
         
-        return $this->render('WishlistListBundle:Default:shoppinglist.html.php', array('purchases' => $purchases));        
+        return $this->render('WishlistListBundle:Default:shoppinglist.html.php', array('purchases' => $purchases, 'completePurchases' => $completePurchases));
     }
 }
 ?>

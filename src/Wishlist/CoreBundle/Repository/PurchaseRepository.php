@@ -94,6 +94,20 @@ class PurchaseRepository extends EntityRepository
         
         return $q->getResult();
     }
+
+    public function getCompletePurchases(/*int*/ $uid)
+    {
+        //Just do the dates for now, worry about the events afterwards.
+        $em = $this->getEntityManager();
+        $q = $em->createQuery('
+            SELECT p 
+            FROM WishlistCoreBundle:Purchase p
+            LEFT JOIN p.wishlistUser usr
+            where usr.wishlistuser_id = :uid and p.gift_date < CURRENT_DATE()')
+            ->setParameter('uid', $uid);
+
+        return $q->getResult();
+    }
     
     public function getPurchaseByItemId(/*int*/ $itemId)
     {

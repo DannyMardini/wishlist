@@ -305,6 +305,7 @@ body {
 div#updatesComponent {
     width: 23%;
     position: absolute;
+    z-index: 300;
     right: 10px;
     display: none;
     /*padding: 10px 30px 10px 30px;*/

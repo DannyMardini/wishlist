@@ -22,6 +22,10 @@ WishlistUserBundle_friendAdd:
   pattern: /FriendAdd
   defaults: { _controller: WishlistUserBundle:Default:friendAdd }
 
+WishlistUserBundle_unfriend:
+  pattern: /Unfriend
+  defaults: { _controller: WishlistUserBundle:Default:unfriend }
+
 WishlistUserBundle_friendInvite:
   pattern: /FriendInvite
   defaults: { _controller: WishlistUserBundle:Default:friendInvite }
@@ -66,3 +70,6 @@ WishlistUserBundle_newAccountFriend:
   pattern: /NewAccountFriend
   defaults: { _controller: WishlistUserBundle:Default:newAccountFriend }
 
+WishlistUserBundle_uploadUserImage:
+  pattern: /UploadUserImage
+  defaults: { _controller: WishlistUserBundle:Default:uploadUserImage }

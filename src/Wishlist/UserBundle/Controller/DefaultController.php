@@ -179,6 +179,44 @@ class DefaultController extends Controller
 
         return new Response();
     }
+
+    public function unfriendAction()
+    {
+        $request = $this->getRequest();
+        $session = $request->getSession();
+        $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $friendRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
+
+        try {
+            $loggedInUserId = $session->get('user_id');
+            $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
+
+            $unfriendId = $request->get('userid');
+            if(!$unfriendId)
+            {
+                return new Response('fail');
+            }
+
+            $userToUnfriend = $userRepo->getUserWithId($unfriendId);
+            if(!$userToUnfriend)
+            {
+                return new Response('fail');
+            }
+
+            if(!WishlistUser::areFriends($loggedInUser, $userToUnfriend))
+            {
+                return new Response('fail');
+            }
+
+            $friendRepo->removeFriendship($loggedInUser, $userToUnfriend);
+        }
+        catch(Exception $e)
+        {
+            return new Response('fail');
+        }
+        
+        return new Response('success');
+    }
     
     public function friendInviteAction()
     {
@@ -187,7 +225,7 @@ class DefaultController extends Controller
 
         $email = $request->get('email');
 
-        if($email == '')
+        if(!isset($email) || $email == '')
         {
             return new Response('', SC_BAD_REQUEST);
         }
@@ -196,6 +234,14 @@ class DefaultController extends Controller
             
             $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
             $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
+            
+            $userExists = $userRepo->findOneByEmail($email);
+            if(isset($userExists))
+            {
+                //Can't invite a user which already exists.
+                throw new Exception();
+            }
+            
             $userInvited = $userRepo->getUserWithId($session->get('user_id'));
             $userInvitedName = $userInvited->getName();
 
@@ -577,5 +623,10 @@ class DefaultController extends Controller
         $friendUpdates =  $updateRepo->getFriendsUpdates($this->getLoggedInUserId());
         
         return $this->render('WishlistListBundle:Default:updatelist.html.php', array('updates' => $friendUpdates));
+    }
+    
+    public function uploadUserImage()
+    {
+        return new Response();
     }
 }
