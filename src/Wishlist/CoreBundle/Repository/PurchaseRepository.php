@@ -95,6 +95,44 @@ class PurchaseRepository extends EntityRepository
         return $q->getResult();
     }
 
+    public function getPurchases($purchaseIds)
+    {
+        if(!isset($purchaseIds))
+        {
+            return null;
+        }
+
+        $em = $this->getEntityManager();
+
+        $q = $em->createQuery('
+            SELECT p
+            FROM WishlistCoreBundle:Purchase p
+            WHERE p.id IN (:purchaseIds)')
+            ->setParameter('purchaseIds', $purchaseIds);
+
+        return $q->getResult();
+    }
+
+    public function completePurchase($purchase)
+    {
+        $em = $this->getEntityManager();
+        $wishlistItemRepo = $em->getRepository('WishlistCoreBundle:WishlistItem');
+        $wishlistItemRepo->grantWish($purchase->getItem(), $purchase->getWishlistUser());
+        $em->remove($purchase);
+    }
+
+    public function completePurchases($purchases)
+    {
+        $em = $this->getEntityManager();
+
+        foreach($purchases as $purchase)
+        {
+            $this->completePurchase($purchase);
+        }
+
+        $em->flush();
+    }
+
     public function getExpiredPurchases(/*int*/ $uid)
     {
         //Just do the dates for now, worry about the events afterwards.

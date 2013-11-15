@@ -629,4 +629,24 @@ class DefaultController extends Controller
     {
         return new Response();
     }
+
+    public function completePurchases()
+    {
+        $session = $this->getRequest()->getSession();
+        $purchaseRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Purchase');
+
+        try
+        {
+            $purchaseIds = $session->get('purchaseIds');
+            $purchases = $purchaseRepo->getPurchases($purchaseIds);
+
+            $purchaseRepo->completePurchases($purchases);
+        }
+        catch(\Exception $e)
+        {
+            return new Response('failure');
+        }
+
+        return new Response('success');
+    }
 }

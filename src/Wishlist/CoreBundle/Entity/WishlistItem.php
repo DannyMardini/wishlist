@@ -264,4 +264,54 @@ class WishlistItem
     {
         return $this->is_active;
     }
+    /**
+     * @var boolean $granted
+     */
+    private $granted;
+
+
+    /**
+     * Set granted
+     *
+     * @param boolean $granted
+     */
+    public function setGranted($granted)
+    {
+        $this->granted = $granted;
+    }
+
+    /**
+     * Get granted
+     *
+     * @return boolean 
+     */
+    public function getGranted()
+    {
+        return $this->granted;
+    }
+    /**
+     * @var boolean $grantedNotified
+     */
+    private $grantedNotified;
+
+
+    /**
+     * Set grantedNotified
+     *
+     * @param boolean $grantedNotified
+     */
+    public function setGrantedNotified($grantedNotified)
+    {
+        $this->grantedNotified = $grantedNotified;
+    }
+
+    /**
+     * Get grantedNotified
+     *
+     * @return boolean 
+     */
+    public function getGrantedNotified()
+    {
+        return $this->grantedNotified;
+    }
 }

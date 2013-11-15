@@ -17,10 +17,34 @@ $(document).ready(function(){
 
 function checkCompleted()
 {
-    var completedPurchases = $('#completePurchases');
-    if(completedPurchases.length > 0) {
-        confirm('Hey, you have wishes you should have fulfilled by now, would you like to remove them from your shopping list?');
+    var expiredPurchases = getExpiredPurchases();
+    if(expiredPurchases.length > 0) {
+        confirm('Hey, you have wishes you should have fulfilled by now, would you like to remove them from your shopping list?')
+        .then(function (answer) {
+            if(answer == 1) {
+                var url = Routing.generate('WishlistListBundle_completeShoppingListItems');
+                ajaxPost({expiredPurchases: expiredPurchases}, url, function(data, textStatus) {
+                    if(data.toLowerCase() == 'success') {
+                        alert('Success!');
+                    }
+                    else {
+                        alert('Fail!');
+                    }
+                });
+            }
+        });
     }
+}
+
+function getExpiredPurchases()
+{
+    var expiredPurchases = [];
+    
+    $('#expiredPurchases div').each(function(index, element) {
+        expiredPurchases.push(element.id);
+    });
+
+    return expiredPurchases;
 }
 
 function createGUIButtons(){

@@ -2,8 +2,7 @@
 
 <?php
 //Helper functions
-
-$i = $wishlistItems->count();
+$i = count($wishlistItems);
 
 echo "<label class='pageHeader'>Wishlist</label>";
 if ($selfWishlist)

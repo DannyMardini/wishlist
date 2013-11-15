@@ -76,12 +76,22 @@ class WishlistItemRepository extends EntityRepository
         $newWish->setQuantity($quantity);
         $newWish->setWishlistUser($wishlistUser);
         $newWish->setIsActive(true);
+        $newWish->setGranted(false);
+        $newWish->setGrantedNotified(false);
         $this->getEntityManager()->persist($newWish);
         $this->getEntityManager()->flush(); 
         
         $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
         $updateRepo->addNewItem($wishlistUser, $newWish); 
         return true;
+    }
+
+    public function grantWish(WishlistItem $wishItem)
+    {
+        $em = $this->getEntityManager();
+        $wishItem->setGranted(true);
+        $wishItem->setGrantedNotified(false);
+        $em->flush();
     }
     
     public function checkUserWishlist($item, $user)
