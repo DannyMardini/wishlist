@@ -23,14 +23,7 @@ function checkCompleted()
         .then(function (answer) {
             if(answer == 1) {
                 var url = Routing.generate('WishlistListBundle_completeShoppingListItems');
-                ajaxPost({expiredPurchases: expiredPurchases}, url, function(data, textStatus) {
-                    if(data.toLowerCase() == 'success') {
-                        alert('Success!');
-                    }
-                    else {
-                        alert('Fail!');
-                    }
-                });
+                ajaxPost({expiredPurchases: expiredPurchases}, url);
             }
         });
     }

@@ -102,14 +102,7 @@ function checkGranted()
 
         popupMessage('Wishes Granted', message, function() {
             var url = Routing.generate('WishlistListBundle_grantedItemNotified');
-            ajaxPost({notifiedItems: grantedWishes}, url, function(data, textStatus) {
-                if(data.toLowerCase() == 'success') {
-                    alert('Success!');
-                }
-                else {
-                    alert('Fail!');
-                }
-            });
+            ajaxPost({notifiedItems: grantedWishes}, url);
         });
     }
 }
