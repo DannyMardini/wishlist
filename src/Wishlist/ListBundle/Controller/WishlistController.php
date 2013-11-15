@@ -30,10 +30,17 @@ class WishlistController extends Controller
         
         $userId = $user->getWishlistuserId();
         
+        //Only want to notify granted items to the logged in user.
+        $nonNotifiedGranted = null;
+        if($userId == $loggedInUserId)
+        {
+            $nonNotifiedGranted = $user->getNonNotifiedGrantedItems();
+        }
+        
         $selfWishlist = ($loggedInUserId == $userId ) ? true : false;
         return $this->render('WishlistListBundle:Default:wishlist.html.php', array( 'selfWishlist' => $selfWishlist, 
                                                                                     'wishlistItems' => $user->getUngrantedItems(),
-                                                                                    'nonNotifiedGranted' => $user->getNonNotifiedGrantedItems(),
+                                                                                    'nonNotifiedGranted' => $nonNotifiedGranted,
                                                                                     'events' => $user->getEvents(),
                                                                                     'user' => $user,
                                                                                     'loggedInUserId' => $loggedInUserId));
