@@ -52,7 +52,7 @@ function getItemInfo(itemId, callBackFunc)
 {
     $.ajax({
         type: 'POST',
-        url: '/app_dev.php/ItemInfo',
+        url: Routing.generate('WishlistCoreBundle_getItemInfo'),
         data: {id: itemId}
     }).success(function(data){
         if(data)

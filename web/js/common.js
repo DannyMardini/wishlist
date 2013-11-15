@@ -99,7 +99,7 @@ function confirmOK()
         }
         
         item = {id: selected_itemId, purchaseData: purchaseDue, type: purchaseType};
-        ajaxPost(item, '/app_dev.php/purchaseItem', onCompleteAddItemToShoppingList, item.id);
+        ajaxPost(item, Routing.generate('WishlistListBundle_purchaseItem'), onCompleteAddItemToShoppingList, item.id);
     }catch(e)
     {
         alert(e);
