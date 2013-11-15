@@ -33,6 +33,7 @@ class WishlistController extends Controller
         $selfWishlist = ($loggedInUserId == $userId ) ? true : false;
         return $this->render('WishlistListBundle:Default:wishlist.html.php', array( 'selfWishlist' => $selfWishlist, 
                                                                                     'wishlistItems' => $user->getUngrantedItems(),
+                                                                                    'nonNotifiedGranted' => $user->getNonNotifiedGrantedItems(),
                                                                                     'events' => $user->getEvents(),
                                                                                     'user' => $user,
                                                                                     'loggedInUserId' => $loggedInUserId));
@@ -200,6 +201,29 @@ class WishlistController extends Controller
         }
         
         return new Response();
+    }
+
+    public function grantedItemNotifiedAction()
+    {
+        $request = $this->getRequest()->request;
+        $wishItemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+
+        try
+        {
+            $notifiedItemIds = $request->get('notifiedItems');
+            if(!isset($notifiedItemIds))
+            {
+                throw new \Exception();
+            }
+            $notifiedItems = $wishItemRepo->getWishlistItems($notifiedItemIds);
+            $wishItemRepo->grantWishesNotified($notifiedItems);
+        }
+        catch(\Exception $e)
+        {
+            return new Response('failure');
+        }
+
+        return new Response('success');
     }
 }
 ?>

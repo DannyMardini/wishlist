@@ -804,3 +804,15 @@ function onCompleteAddItemToShoppingList(responseMessage, textStatus, responseOb
     }
 }
 
+function getIds(elements)
+{
+    var expiredPurchases = [];
+    
+    elements.each(function(index, element) {
+        expiredPurchases.push(element.id);
+    });
+
+    return expiredPurchases;
+}
+
+

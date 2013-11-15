@@ -17,7 +17,7 @@ $(document).ready(function(){
 
 function checkCompleted()
 {
-    var expiredPurchases = getExpiredPurchases();
+    var expiredPurchases = getIds($('#expiredPurchases div'));
     if(expiredPurchases.length > 0) {
         confirm('Hey, you have wishes you should have fulfilled by now, would you like to remove them from your shopping list?')
         .then(function (answer) {
@@ -34,17 +34,6 @@ function checkCompleted()
             }
         });
     }
-}
-
-function getExpiredPurchases()
-{
-    var expiredPurchases = [];
-    
-    $('#expiredPurchases div').each(function(index, element) {
-        expiredPurchases.push(element.id);
-    });
-
-    return expiredPurchases;
 }
 
 function createGUIButtons(){

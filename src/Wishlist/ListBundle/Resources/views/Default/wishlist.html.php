@@ -53,8 +53,16 @@ while($i > 0)
     $i--;
 }
 
-echo "</tbody></table>";
-?>
+echo "</tbody></table>\n";
 
-</div>
+if(isset($nonNotifiedGranted))
+{
+    echo "<div id='grantedWishes' style='display: none'>\n";
+    foreach($nonNotifiedGranted as $granted)
+    {
+        echo "<div id='".$granted->getId()."'>".$granted->getItem()->getName()."</div>\n";
+    }
+    echo "</div>\n";
+}
+?>
 

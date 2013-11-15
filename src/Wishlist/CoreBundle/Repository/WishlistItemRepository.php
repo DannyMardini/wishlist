@@ -93,6 +93,23 @@ class WishlistItemRepository extends EntityRepository
         $wishItem->setGrantedNotified(false);
         $em->flush();
     }
+
+    public function grantWishNotified(WishlistItem $wishItem)
+    {
+        if($wishItem->getGranted())
+        {
+            $wishItem->setGrantedNotified(true);
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function grantWishesNotified($wishItems)
+    {
+        foreach($wishItems as $wishItem)
+        {
+            $this->grantWishNotified($wishItem);
+        }
+    }
     
     public function checkUserWishlist($item, $user)
     {
@@ -156,5 +173,23 @@ class WishlistItemRepository extends EntityRepository
         
         $em->remove($wishToDelete);
         $em->flush();
+    }
+
+    public function getWishlistItems($wishItemIds)
+    {
+        if(!isset($wishItemIds))
+        {
+            return null;
+        }
+
+        $em = $this->getEntityManager();
+
+        $q = $em->createQuery('
+            SELECT w
+            FROM WishlistCoreBundle:WishlistItem w
+            WHERE w.id IN (:wishItemIds)')
+            ->setParameter('wishItemIds', $wishItemIds);
+
+        return $q->getResult();
     }
 }

@@ -7,6 +7,7 @@ var wishlist_div = "#div_wishlist_div";
 
 $(document).ready(function(){
     setupWishlist();
+    checkGranted();
 });
 
 function setupWishlist()
@@ -91,3 +92,24 @@ function onCompleteUpdateItemEvent(responseText, textStatus)
     }    
 }
 
+function checkGranted()
+{
+    var grantedWishes = getIds($('#grantedWishes div'));
+    if(grantedWishes.length > 0) {
+        var message = 'Your wishes have been granted! The following items have been removed from your wishlist:';
+
+        message += $('#grantedWishes').html();
+
+        popupMessage('Wishes Granted', message, function() {
+            var url = Routing.generate('WishlistListBundle_grantedItemNotified');
+            ajaxPost({notifiedItems: grantedWishes}, url, function(data, textStatus) {
+                if(data.toLowerCase() == 'success') {
+                    alert('Success!');
+                }
+                else {
+                    alert('Fail!');
+                }
+            });
+        });
+    }
+}

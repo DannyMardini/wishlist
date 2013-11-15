@@ -312,6 +312,22 @@ class WishlistUser {
         return $items;
     }
 
+    public function getNonNotifiedGrantedItems()
+    {
+        $items = array();
+        $grantedItems = $this->getGrantedItems();
+
+        foreach($grantedItems as $grantedItem)
+        {
+            if($grantedItem->getGrantedNotified() != true)
+            {
+                $items[] = $grantedItem;
+            }
+        }
+
+        return $items;
+    }
+
     /**
      * Add wishlistItems
      *
