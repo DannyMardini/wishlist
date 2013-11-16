@@ -1,6 +1,6 @@
-/* line 4, ../sass/formStyling.scss */
-:invalid {
-  border-color: #e88;
+/* line 3, ../sass/partials/_sharedStyles.scss */
+.invalid-form-input, :invalid {
+  border: 3px solid #e88;
   -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
   -moz-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
   -o-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
@@ -8,9 +8,9 @@
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
 }
 
-/* line 9, ../sass/formStyling.scss */
-:required {
-  border-color: #88a;
+/* line 8, ../sass/partials/_sharedStyles.scss */
+.required-form-input, :required {
+  border: 1px solid #88a;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
   -o-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
@@ -18,7 +18,7 @@
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
 
-/* line 14, ../sass/formStyling.scss */
+/* line 13, ../sass/formStyling.scss */
 .formInputSelectTextareaStyling, input, select, textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: 1px solid #ccc;
@@ -31,7 +31,7 @@
   outline: none;
 }
 
-/* line 26, ../sass/formStyling.scss */
+/* line 25, ../sass/formStyling.scss */
 input, select, textarea {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -40,12 +40,12 @@ input, select, textarea {
   border-radius: 5px;
 }
 
-/* line 31, ../sass/formStyling.scss */
+/* line 30, ../sass/formStyling.scss */
 #userAccountButton {
   height: 100%;
 }
 
-/* line 35, ../sass/formStyling.scss */
+/* line 34, ../sass/formStyling.scss */
 div.buttonClass {
   vertical-align: center;
   text-align: center;
@@ -55,7 +55,7 @@ div.buttonClass {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 40, ../sass/formStyling.scss */
+/* line 39, ../sass/formStyling.scss */
 div.buttonClass:hover {
   cursor: hand;
   border-color: #88a;
@@ -66,12 +66,12 @@ div.buttonClass:hover {
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
 
-/* line 48, ../sass/formStyling.scss */
+/* line 47, ../sass/formStyling.scss */
 input[type=submit] {
   background: none;
   padding: 10px;
 }
-/* line 52, ../sass/formStyling.scss */
+/* line 51, ../sass/formStyling.scss */
 input[type=submit]:hover {
   cursor: hand;
   font-weight: bold;
@@ -83,7 +83,7 @@ input[type=submit]:hover {
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
 
-/* line 60, ../sass/formStyling.scss */
+/* line 59, ../sass/formStyling.scss */
 form {
   width: 650px;
   margin: 20px auto;
@@ -98,7 +98,7 @@ form {
   horizontal-align: center;
 }
 
-/* line 70, ../sass/formStyling.scss */
+/* line 69, ../sass/formStyling.scss */
 .formButtonStyling, .uiButton.uiButtonConfirm, .uiButton.uiButtonConfirm.disabledButton, .uiButton.uiButtonConfirm.disabledButton:active, .uiButton.uiButtonConfirm.disabledButton:focus, .uiButton.uiButtonConfirm.disabledButton:hover {
   background: #cccccc;
   border-color: #94A2BF;
@@ -107,13 +107,13 @@ form {
   cursor: auto;
 }
 
-/* line 79, ../sass/formStyling.scss */
+/* line 78, ../sass/formStyling.scss */
 .uiButton.uiButtonConfirm {
   background: white url(custom-theme/images/ui-bg_inset-hard_50_030202_1x100.png) 50% 50% repeat-x;
   color: #FFFFFF;
   font-weight: lighter;
 }
-/* line 88, ../sass/formStyling.scss */
+/* line 87, ../sass/formStyling.scss */
 .uiButton.uiButtonConfirm.disabledButton:hover {
   font-weight: bold;
 }

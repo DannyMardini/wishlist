@@ -1,14 +1,13 @@
 @import 'partials/globalvariables';
 @import 'partials/globalmixins';
+@import 'partials/sharedStyles';
 
 :invalid {
-    border-color: #e88;
-    @include box-shadow(0 0 5px rgba(255, 0, 0, .8));
+    @extend .invalid-form-input;
 }
 
 :required {
-    border-color: #88a;
-    @include box-shadow(0 0 5px rgba(0, 0, 255, .5));
+    @extend .required-form-input;
 }
 
 .formInputSelectTextareaStyling {

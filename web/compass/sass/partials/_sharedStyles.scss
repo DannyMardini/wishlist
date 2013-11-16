@@ -1,0 +1,11 @@
+@import 'partials/globalmixins';
+
+.invalid-form-input {
+    border: 3px solid #e88;
+    @include box-shadow(0 0 5px rgba(255, 0, 0, .8));
+}
+
+.required-form-input {
+    border: 1px solid #88a;
+    @include box-shadow(0 0 5px rgba(0, 0, 255, .5));
+}

@@ -16,7 +16,6 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <link href="/css/navBar.css" rel="stylesheet" type="text/css" />
         <link href="/compass/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="/compass/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
-<!--        <link href="/css/formStyling.css" rel="stylesheet" type="text/css" />-->
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/formStyling.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         
         <script type="text/javascript" src="/js/jquery-1.8.2.js"></script>

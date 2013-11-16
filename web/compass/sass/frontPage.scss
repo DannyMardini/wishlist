@@ -1,0 +1,142 @@
+@import 'partials/sharedStyles';
+@import 'partials/globalmixins';
+@import 'partials/globalvariables';
+
+:invalid {
+    @extend .invalid-form-input;
+}
+
+:required {
+    @extend .required-form-input;
+}
+
+body {
+    background-color: black;
+    margin: 10px 10px 10px 10px;
+    position: relative;
+}
+
+#login, #registrationContainer, article, footer, address, #imageContainer {
+        display: block;
+}
+
+#loginContainer {
+    background-color: white;
+    height: 20px;
+    text-align: right;
+    width: 100%;
+}
+
+#registrationContainer {
+    background-color: white;
+    width: 100%;
+}
+
+#imageContainer{
+    width: 35%;
+    background-color: white;
+    float:left;
+    background-image: url(/images/dandelion.png);
+    background-size: 88%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#registrationContainer, #imageContainer {
+    height: 500px;
+}
+
+footer {
+    background-color: black;
+    height: 20px;
+    width: 100%;
+}
+
+#footerDetails {
+    text-align: center;
+    vertical-align: bottom;
+    padding-top: 10px;
+}
+
+.frontpageLink {
+    &:visited, &:link, &:active {
+        color: gray;
+        text-decoration: none;        
+    }
+
+    &:hover {
+        color: silver;
+    }
+}
+
+#logoContainer {
+    height: 35%;
+    background-color: white;
+    width: 100%;
+}
+
+#registrationForm {
+    height: 55%;
+}
+
+#name {
+    font-family: $global-main-font-family; // 'Satisfy', cursive; 
+    font-size: 78px;
+}
+
+#catchphrase {
+    font-family: 'Gruppo', sans-serif; 
+    font-size: 28px;
+    text-indent: 30px;
+}
+
+.toggler { 
+    width: 80%;
+    padding-top: 15px;
+    padding-left: 35%;
+    height: 88%; 
+}
+
+#requestInviteToggleWindow, #loginToggleWindow { 
+    width: 500px;
+    height: 90%;
+    padding: 0.4em; 
+    position: relative;
+    background-color: white;
+}
+
+#requestInviteButton, #loginButton { 
+    padding: .5em 1em; 
+    text-decoration: none; 
+}
+
+#requestInviteToggleWindow h3, #loginToggleWindow h3 { 
+    margin: 0; 
+    padding: 0.4em; 
+    text-align: center; 
+}
+
+input {
+    display: block;
+    width: 300px;
+    height: 30px;
+    font-size: 15px;
+}
+
+#submitLogin, #submitRequestInvite {    
+    width: 200px;
+    @include border-radius(5px);
+}
+
+label {
+    display: block;
+    font-weight:bolder;
+    width: 200px;
+}
+
+.forgotPassword {
+    color: black;
+    &:hover {
+        color: gray;
+    }
+}
