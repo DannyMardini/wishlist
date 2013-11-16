@@ -99,7 +99,7 @@ function confirmOK()
         }
         
         item = {id: selected_itemId, purchaseData: purchaseDue, type: purchaseType};
-        ajaxPost(item, '/app_dev.php/purchaseItem', onCompleteAddItemToShoppingList, item.id);
+        ajaxPost(item, Routing.generate('WishlistListBundle_purchaseItem'), onCompleteAddItemToShoppingList, item.id);
     }catch(e)
     {
         alert(e);
@@ -803,4 +803,16 @@ function onCompleteAddItemToShoppingList(responseMessage, textStatus, responseOb
         popupMessage('Sorry!','<p>'+responseObj.responseText+'</p>');
     }
 }
+
+function getIds(elements)
+{
+    var expiredPurchases = [];
+    
+    elements.each(function(index, element) {
+        expiredPurchases.push(element.id);
+    });
+
+    return expiredPurchases;
+}
+
 

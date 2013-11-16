@@ -2,8 +2,7 @@
 
 <?php
 //Helper functions
-
-$i = $wishlistItems->count();
+$i = count($wishlistItems);
 
 echo "<label class='pageHeader'>Wishlist</label>";
 if ($selfWishlist)
@@ -54,8 +53,16 @@ while($i > 0)
     $i--;
 }
 
-echo "</tbody></table>";
-?>
+echo "</tbody></table>\n";
 
-</div>
+if(isset($nonNotifiedGranted))
+{
+    echo "<div id='grantedWishes' style='display: none'>\n";
+    foreach($nonNotifiedGranted as $granted)
+    {
+        echo "<div id='".$granted->getId()."'>".$granted->getItem()->getName()."</div>\n";
+    }
+    echo "</div>\n";
+}
+?>
 

@@ -30,9 +30,17 @@ class WishlistController extends Controller
         
         $userId = $user->getWishlistuserId();
         
+        //Only want to notify granted items to the logged in user.
+        $nonNotifiedGranted = null;
+        if($userId == $loggedInUserId)
+        {
+            $nonNotifiedGranted = $user->getNonNotifiedGrantedItems();
+        }
+        
         $selfWishlist = ($loggedInUserId == $userId ) ? true : false;
         return $this->render('WishlistListBundle:Default:wishlist.html.php', array( 'selfWishlist' => $selfWishlist, 
-                                                                                    'wishlistItems' => $user->getWishlistItems(),
+                                                                                    'wishlistItems' => $user->getUngrantedItems(),
+                                                                                    'nonNotifiedGranted' => $nonNotifiedGranted,
                                                                                     'events' => $user->getEvents(),
                                                                                     'user' => $user,
                                                                                     'loggedInUserId' => $loggedInUserId));
@@ -200,6 +208,29 @@ class WishlistController extends Controller
         }
         
         return new Response();
+    }
+
+    public function grantedItemNotifiedAction()
+    {
+        $request = $this->getRequest()->request;
+        $wishItemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
+
+        try
+        {
+            $notifiedItemIds = $request->get('notifiedItems');
+            if(!isset($notifiedItemIds))
+            {
+                throw new \Exception();
+            }
+            $notifiedItems = $wishItemRepo->getWishlistItems($notifiedItemIds);
+            $wishItemRepo->grantWishesNotified($notifiedItems);
+        }
+        catch(\Exception $e)
+        {
+            return new Response('failure');
+        }
+
+        return new Response('success');
     }
 }
 ?>

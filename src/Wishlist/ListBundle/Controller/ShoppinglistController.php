@@ -28,14 +28,36 @@ class ShoppinglistController extends Controller
         
         return new Response($message);
     }
+
+    public function completeShoppingListItemsAction()
+    {
+        $request = $this->getRequest()->request;
+        $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
+
+        try
+        {
+            $completedIds = $request->get('expiredPurchases');
+            if(!isset($completedIds))
+            {
+                throw new \Exception();
+            }
+            $purchases = $purchaseRepo->getPurchases($completedIds);
+            $purchaseRepo->completePurchases($purchases);
+        }
+        catch(\Exception $e)
+        {
+            return new Response('failure');
+        }
+        return new Response('success');
+    }
     
     public function shoppinglistAction(/*int*/ $userId)
     {
         $purchaseRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Purchase');
         $purchases = $purchaseRepo->getPurchasesById($userId);
-        $completePurchases = $purchaseRepo->getCompletePurchases($userId);
+        $expiredPurchases = $purchaseRepo->getExpiredPurchases($userId);
         
-        return $this->render('WishlistListBundle:Default:shoppinglist.html.php', array('purchases' => $purchases, 'completePurchases' => $completePurchases));
+        return $this->render('WishlistListBundle:Default:shoppinglist.html.php', array('purchases' => $purchases, 'expiredPurchases' => $expiredPurchases));
     }
 }
 ?>

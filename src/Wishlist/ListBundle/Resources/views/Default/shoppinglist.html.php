@@ -45,12 +45,12 @@
 </div>
 
 <?php
-    if(isset($completePurchases))
+    if(isset($expiredPurchases))
     {
-        echo "<div id='completePurchases' style='display: none'>\n";
-        foreach($completePurchases as $purchase)
+        echo "<div id='expiredPurchases' style='display: none'>\n";
+        foreach($expiredPurchases as $purchase)
         {
-            echo "<div>".$purchase->getItem()->getItem()->getName()."</div>\n";
+            echo "<div id='".$purchase->getId()."'>".$purchase->getItem()->getItem()->getName()."</div>\n";
         }
         echo "</div>\n";
     } 

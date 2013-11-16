@@ -26,6 +26,15 @@ WishlistListBundle_retractPurchases:
   pattern: /retractPurchases
   defaults: { _controller: WishlistListBundle:Shoppinglist:retractPurchases }
 
+WishlistListBundle_completeShoppingListItems:
+  pattern: /completeShoppingListItems
+  defaults: { _controller: WishlistListBundle:Shoppinglist:completeShoppingListItems }
+
 WishlistListBundle_eventlist:
   pattern: /eventlist
   defaults: { _controller: WishlistListBundle:Eventlist:eventlist }
+
+WishlistListBundle_grantedItemNotified:
+  pattern: /grantedItemNotified
+  defaults: { _controller: WishlistListBundle:Wishlist:grantedItemNotified }
+

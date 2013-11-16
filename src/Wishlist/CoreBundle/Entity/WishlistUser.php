@@ -282,6 +282,52 @@ class WishlistUser {
         return $this->wishlistItems;
     }
 
+    public function getUngrantedItems()
+    {
+        $items = array();
+
+        foreach($this->wishlistItems as $wishlistItem)
+        {
+            if($wishlistItem->getGranted() != true)
+            {
+                $items[] = $wishlistItem;
+            }
+        }
+
+        return $items;
+    }
+
+    public function getGrantedItems()
+    {
+        $items = array();
+
+        foreach($this->wishlistItems as $wishlistItem)
+        {
+            if($wishlistItem->getGranted() == true)
+            {
+                $items[] = $wishlistItem;
+            }
+        }
+
+        return $items;
+    }
+
+    public function getNonNotifiedGrantedItems()
+    {
+        $items = array();
+        $grantedItems = $this->getGrantedItems();
+
+        foreach($grantedItems as $grantedItem)
+        {
+            if($grantedItem->getGrantedNotified() != true)
+            {
+                $items[] = $grantedItem;
+            }
+        }
+
+        return $items;
+    }
+
     /**
      * Add wishlistItems
      *
