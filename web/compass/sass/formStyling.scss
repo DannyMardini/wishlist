@@ -1,0 +1,104 @@
+@import 'partials/globalvariables';
+@import 'partials/globalmixins';
+
+:invalid {
+    border-color: #e88;
+    @include box-shadow(0 0 5px rgba(255, 0, 0, .8));
+}
+
+:required {
+    border-color: #88a;
+    @include box-shadow(0 0 5px rgba(0, 0, 255, .5));
+}
+
+.formInputSelectTextareaStyling {
+    font-family: $global-font-family;
+    border:1px solid #ccc;
+    font-size:12px;
+    width:100%;
+    min-height:30px;
+    display:block;
+    margin-bottom:15px;
+    margin-top:5px;
+    outline: none;
+}
+
+input, select, textarea {
+    @extend .formInputSelectTextareaStyling;
+    @include border-radius(5px);
+}
+
+#userAccountButton {
+    height: 100%;
+}
+
+div.buttonClass {
+    vertical-align: center;
+    text-align: center;
+    @include border-radius(5px);
+
+    &:hover {
+        cursor: hand;
+        border-color: #88a;
+        @include box-shadow(0 0 5px rgba(0, 0, 255, .5));
+
+    }
+}
+
+input[type=submit] {
+    background: none;
+    padding: 10px;
+
+    &:hover {
+        cursor: hand;
+        font-weight: bold;
+        border-color: #88a;
+        @include box-shadow(0 0 5px rgba(0, 0, 255, .5));
+    }
+}
+
+form {
+    width:650px;
+    margin: 20px auto;
+    color: #8C7E7E;
+    @include text-shadow(0 1px rgba(255, 255, 255, 0.9));
+    font-weight: 300;
+    vertical-align: center;
+    horizontal-align: center;
+}
+
+.formButtonStyling {
+    background:#cccccc;
+    border-color: #94A2BF;
+    font-weight: bold;
+    box-shadow: none;
+    cursor: auto; 
+}
+
+.uiButton {
+    &.uiButtonConfirm{
+        @extend .formButtonStyling;
+        background: white url(custom-theme/images/ui-bg_inset-hard_50_030202_1x100.png) 50% 50% repeat-x;
+        color:#FFFFFF;
+        font-weight: lighter;
+    }
+    &.uiButtonConfirm {
+        &.disabledButton{
+            @extend .formButtonStyling;
+        }
+    }
+    &.uiButtonConfirm {
+        &.disabledButton{
+            &:active, &:focus, &:hover {
+               @extend .formButtonStyling;         
+            }
+        }
+    }
+    &.uiButtonConfirm {
+        &.disabledButton{
+            &:hover {
+               font-weight: bold;      
+            }
+        }
+    }
+}
