@@ -1,8 +1,5 @@
 <html>
     <head>
-        <!--
-        <link href="<?php echo $view['assets']->getUrl('css/accountsettings.css') ?>" rel="stylesheet" type="text/css" />
-        -->
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/screen.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/print.css') ?>" media="print" rel="stylesheet" type="text/css" />
         <link href="<?php echo $view['assets']->getUrl('css/black-tie/jquery-ui-1.8.23.custom.css') ?>" rel="stylesheet" type="text/css" />

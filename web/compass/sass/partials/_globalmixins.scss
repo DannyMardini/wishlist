@@ -1,3 +1,34 @@
+@mixin box-style-flexbox($orient, $pack, $align){
+    -webkit-box-orient: $orient;
+    -webkit-box-pack: $pack;
+    -webkit-box-align: $align;
+    -moz-box-orient: $orient;
+    -moz-box-pack: $pack; 
+    -moz-box-align: $align; 
+    -o-box-orient: $orient;
+    -o-box-pack: $pack; 
+    -o-box-align: $align; 
+    -ms-box-orient: $orient;
+    -ms-box-pack: $pack; 
+    -ms-box-align: $align; 
+    box-orient: $orient;
+    box-pack: $pack; 
+    box-align: $align; 
+    display: -webkit-box;
+    display: -moz-box;
+    display: -o-box;
+    display: -ms-box;
+    display: box;
+}
+
+@mixin padding-start($pad){
+    -webkit-padding-start: $pad;
+    -moz-padding-start: $pad;
+    -o-padding-start: $pad;
+    -ms-padding-start: $pad;
+    padding-start: $pad;
+}
+
 @mixin text-shadow($shadow)
 {
     -webkit-text-shadow: $shadow;
