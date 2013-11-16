@@ -1,13 +1,5 @@
 <form id="contactSupportForm" method="POST" action="<?php echo $view['router']->generate('WishlistQABundle_help') ?>">
 
-<!--  <label>Regarding:</label>
-  <select>
-  <option value>-</option>
-  <option value="deactivate_activate_account">Deactivate/Activate account</option>
-  <option value="report_attack">Report attack</option>
-  <option value="missing_data">My wishlist information is missing</option>
-  <option value="something_else">My issue is not in this list</option>
-  </select>-->
   <input type="hidden" id="subject" value="Support Contacted -Needs Attention"
   
   <label>Full name:</label>
