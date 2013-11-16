@@ -5,6 +5,7 @@
 
 var userName;
 var userID;
+var dropDowns = ['#accountOptionsDropdown', '#notificationWindow', '#updatesComponent'];
 
 window.history.forward();
 
@@ -20,18 +21,16 @@ $(document).ready(function(){
     $('#logoutLink').click(onLogoutClickEvent);
 
     $('#accountOptionsDropdownButton').click(function(){
-        hideOpenDropDowns();
-        accountOptionsClickEvent(this);
+        navButtonClicked(this, '#accountOptionsDropdown');
+        resizeHeaderDropDownContainer();
     });
 
     $('#viewNotificationsButton').click(function(){
-        hideOpenDropDowns();
-        dialogButtonClickEvent(this,'#notificationWindow');
+        navButtonClicked(this,'#notificationWindow');
     });
     
     $('#updatesWindowButton').click(function(){
-        hideOpenDropDowns();
-        dialogButtonClickEvent(this, '#updatesComponent');
+        navButtonClicked(this, '#updatesComponent');
     });
 
     $("a.acceptFriend").click(acceptFriendClicked);
@@ -46,19 +45,17 @@ $(document).ready(function(){
     });
 });
 
-function dialogButtonClickEvent(obj, id){
-    if( $(obj).hasClass('selected') )
-    {
-        $(id).hide();
+function navButtonClicked(obj, id){
+    if($(obj).hasClass('selected')) {
+        $(id).hide()
         $(obj).removeClass('selected');
     }
-    else
-    {
+    else {
+        hideOpenDropDowns();
         $(id).show();
         $(obj).addClass('selected');
-    }    
+    }
 }
-
 
 function resizeHeaderDropDownContainer()
 {
@@ -72,21 +69,7 @@ function hideOpenDropDowns(){
     $('#accountOptionsDropdown').hide();
     $('#notificationWindow').hide();
     $('#updatesComponent').hide();
-}
-
-function accountOptionsClickEvent(obj)
-{    
-    if( $(obj).hasClass('selected') )
-    {
-        $('#accountOptionsDropdown').hide();
-        $(obj).removeClass('selected');
-    }
-    else
-    {
-        resizeHeaderDropDownContainer();
-        $('#accountOptionsDropdown').show();
-        $(obj).addClass('selected');
-    }    
+    $('#navigation li.selected').removeClass('selected');
 }
 
 function getNotificationNumber(notification)
