@@ -117,8 +117,8 @@ class PurchaseRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
         $wishlistItemRepo = $em->getRepository('WishlistCoreBundle:WishlistItem');
-        $wishlistItemRepo->grantWish($purchase->getItem(), $purchase->getWishlistUser());
         $em->remove($purchase);
+        $wishlistItemRepo->grantWish($purchase->getItem(), $purchase->getWishlistUser());
     }
 
     public function completePurchases($purchases)
@@ -137,11 +137,24 @@ class PurchaseRepository extends EntityRepository
     {
         //Just do the dates for now, worry about the events afterwards.
         $em = $this->getEntityManager();
+
+        /*
+        $q = $em->createQuery('
+            SELECT p 
+            FROM WishlistCoreBundle:Purchase p
+            JOIN p.wishlistUser usr
+            JOIN p.event e
+            where usr.wishlistuser_id = :uid AND (e.eventDate < CURRENT_DATE())')
+            ->setParameter('uid', $uid);
+         * 
+         */
+        
         $q = $em->createQuery('
             SELECT p 
             FROM WishlistCoreBundle:Purchase p
             LEFT JOIN p.wishlistUser usr
-            where usr.wishlistuser_id = :uid and p.gift_date < CURRENT_DATE()')
+            LEFT JOIN p.event e
+            where usr.wishlistuser_id = :uid AND (p.gift_date < CURRENT_DATE() OR e.eventDate < CURRENT_DATE())')
             ->setParameter('uid', $uid);
 
         return $q->getResult();
