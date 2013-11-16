@@ -5,12 +5,13 @@ function runEffect(togglerWindow) {
 };  
 
 $(document).ready(function()
-{    
+{ 
+    intializeResetPasswordLink();
+    
     $.ajaxSetup ({
         cache: false
     });   
       
-
     setupCSS();    
     
     // hide toggle windows
@@ -156,6 +157,11 @@ function hideToggleWindows()
     $('#loginToggleWindow').hide();        
 }
 
+function intializeResetPasswordLink()
+{
+    var url = Routing.generate('WishlistCoreBundle_forgotpassword');
+    $('#forgotPassword').attr('href',url);
+}
 
    
 

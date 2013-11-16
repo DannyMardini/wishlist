@@ -6,9 +6,7 @@
     <body>
         <?php $view->extend('::navBar.html.php') ?>
 <!--        <span id="goBack" class="goBackDiv"><img src="/images/goback.jpeg" /></span>-->
-        <header>
-            How can we help you?
-        </header>
+        <header>How can we help you?</header>
         <div class="content">
             <div class='contentMenuContainer'>
                 <div class="contentMenu">

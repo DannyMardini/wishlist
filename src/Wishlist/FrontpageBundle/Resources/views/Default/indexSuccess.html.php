@@ -51,6 +51,7 @@
                             <input type="password" id="password" name="password" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" required />
                             <br />
                             <input type="submit" id="submitLogin" name="submitLogin" value="Login" />
+                            <a href="" id="forgotPassword" target="_blank" class="forgotPassword">Forgot your password?</a>
                         </form>
                     </div>
                 </div>

@@ -64,8 +64,8 @@ class DefaultController extends Controller
         }
     }
     
-    public function testPageAction()
+    public function ResetPasswordAction()
     {
-        return $this->render('WishlistCoreBundle:default:testpage.html.php');
+        return $this->render('WishlistCoreBundle:default:resetpassword.html.php');
     }
 }

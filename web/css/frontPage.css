@@ -6,13 +6,7 @@
         Purpose of the stylesheet follows.
 */
 
-/* 
-   TODO customize this sample style
-   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
-*/
-
 :invalid {
-  /*border: 2px solid #ff0000;*/
   border: 3px solid #e88;
   -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
   -moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
@@ -31,7 +25,6 @@
 }
 
 body {
-    /*background-image: url(/images/black-white-stripes.gif);*/
     background-color: black;
     margin: 10px 10px 10px 10px;
     position: relative;
@@ -145,7 +138,6 @@ input {
 
 #submitLogin, #submitRequestInvite {    
     width: 200px;
-    
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     -o-border-radius:5px;
@@ -159,4 +151,10 @@ label {
     width: 200px;
 }
 
+.forgotPassword {
+    color: black;
+}
 
+.forgotPassword:hover {
+    color: gray;
+}
