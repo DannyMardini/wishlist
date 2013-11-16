@@ -19,6 +19,7 @@ class LoadPurchaseData implements FixtureInterface,OrderedFixtureInterface
         $itemRepo = $manager->getRepository('WishlistCoreBundle:Item');
         $purchaseRepo = $manager->getRepository('WishlistCoreBundle:Purchase');
         $wishlistItemRepo = $manager->getRepository('WishlistCoreBundle:WishlistItem');
+        $eventRepo = $manager->getRepository('WishlistCoreBundle:Event');
         $dummyDate = DateTime::createFromFormat('m/d/Y', '1/1/2013');
         
         $danny = $userRepo->getUser('Danny Mardini');
@@ -26,11 +27,24 @@ class LoadPurchaseData implements FixtureInterface,OrderedFixtureInterface
         
         $nerfGun = $itemRepo->findOneByName('Nerf gun');
         $purse = $itemRepo->findOneByName('purse');
+        $bouncyBall = $itemRepo->findOneByName('Bouncy ball');
+        $macbook = $itemRepo->findOneByName('Macbook');
+        $Bug = $itemRepo->findOneByName('Bug');
         
         $dannysWish = $wishlistItemRepo->getWishlistItemForUser($nerfGun, $danny);
         $andreasWish = $wishlistItemRepo->getWishlistItemForUser($purse, $andrea);
+        $andreasBall = $wishlistItemRepo->getWishlistItemForUser($bouncyBall, $andrea);
+        $andreasMacbook = $wishlistItemRepo->getWishlistItemForUser($macbook, $andrea);
+        $andreasBug = $wishlistItemRepo->getWishlistItemForUser($Bug, $andrea);
+        
+        $events = $eventRepo->getAllUserEvents($andrea->getWishlistUserId());
+        $event = $events[0];
 
         $purchaseRepo->newPurchase($danny, $dannysWish, NULL, $dummyDate);
+        $purchaseRepo->newPurchase($danny, $andreasBall, $event, NULL);
+        $purchaseRepo->newPurchase($danny, $andreasMacbook, $event, NULL);
+        $purchaseRepo->newPurchase($danny, $andreasBug, $event, NULL);
+        
         $purchaseRepo->newPurchase($andrea, $andreasWish, NULL, $dummyDate);
    }
     
