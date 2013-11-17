@@ -61,6 +61,8 @@ function getItemInfo(itemId, callBackFunc)
 }
 
 function onUpdateWishItemClick(dialog){
+    var wishlistUpdateItemPath = Routing.generate('WishlistListBundle_wishlistUpdate');
+
     // Ask them to confirm first
     confirm('Are you sure you want to save these changes?')
     .then(function(answer){

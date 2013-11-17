@@ -1,5 +1,3 @@
-var wishlistAddItemPath = Routing.generate('WishlistListBundle_wishlistNew');
-var wishlistUpdateItemPath = Routing.generate('WishlistListBundle_wishlistUpdate');
 var wishlistElement = '#wishlist';
 var selected_itemId = -1;
 var selected_eventId = -1;
@@ -344,6 +342,7 @@ function onGrantItClickEvent(dialog) {
 
 function continueAddingItemToWishlist(dialog)
 {
+    var wishlistAddItemPath = Routing.generate('WishlistListBundle_wishlistNew');
     var buttonPane = $('.ui-dialog-buttonpane');
     var itemObj = getItemDialogObj(dialog);
 
