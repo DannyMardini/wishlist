@@ -64,6 +64,14 @@
     margin-bottom: $margin;
 }
 
+@mixin linear-gradient2($g1, $g2)
+{
+    background-image: -webkit-linear-gradient($g1, $g2);
+    background-image: -moz-linear-gradient($g1, $g2);
+    background-image: -ms-linear-gradient($g1, $g2);
+    background-image: -o-linear-gradient($g1, $g2);
+    background-image: linear-gradient($g1, $g2);
+}
 
 @mixin linear-gradient($g1, $g2, $g3, $g4, $g5)
 {
@@ -81,4 +89,22 @@
     -ms-font-smoothing: $smoothing; 
     -o-font-smoothing: $smoothing; 
     font-smoothing: $smoothing;    
+}
+
+@mixin transition($trans)
+{
+    -o-transition: $trans;
+    -ms-transition: $trans;
+    -moz-transition: $trans;
+    -webkit-transition: $trans;
+    transition: $trans;
+}
+
+@mixin transform($trans)
+{
+    -o-transform: $trans;
+    -ms-transform: $trans;
+    -moz-transform: $trans;
+    -webkit-transform: $trans;
+    transform: $trans;
 }

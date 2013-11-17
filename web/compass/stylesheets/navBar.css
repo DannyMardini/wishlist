@@ -1,0 +1,452 @@
+/* line 4, ../sass/navBar.scss */
+root {
+  display: block;
+}
+
+/* line 8, ../sass/navBar.scss */
+ul {
+  list-style-type: none;
+}
+/* line 11, ../sass/navBar.scss */
+ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 17, ../sass/navBar.scss */
+.font-style {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* line 21, ../sass/navBar.scss */
+#navigationlist {
+  position: fixed;
+  z-index: 600;
+  top: 50;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  border-top: 1px solid #cccccc;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  width: 100%;
+  -webkit-box-shadow: 0 2px 2px 0 #cccccc;
+  -moz-box-shadow: 0 2px 2px 0 #cccccc;
+  -o-box-shadow: 0 2px 2px 0 #cccccc;
+  -ms-box-shadow: 0 2px 2px 0 #cccccc;
+  box-shadow: 0 2px 2px 0 #cccccc;
+}
+/* line 34, ../sass/navBar.scss */
+#navigationlist li {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 5px;
+  -webkit-border-radius: 0px 0px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
+  -o-border-radius: 0px 0px 5px 5px;
+  -ms-border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 5px 5px;
+}
+/* line 40, ../sass/navBar.scss */
+#navigationlist li a:hover {
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  color: #ffcccc;
+}
+
+/* line 47, ../sass/navBar.scss */
+#navigation {
+  border: 0px;
+  margin: 0px;
+  text-align: right;
+  padding: 0px;
+}
+/* line 53, ../sass/navBar.scss */
+#navigation li {
+  display: inline-block;
+}
+/* line 56, ../sass/navBar.scss */
+#navigation li span {
+  margin-top: 0px;
+  margin-right: 5px;
+}
+/* line 62, ../sass/navBar.scss */
+#navigation .navLink {
+  vertical-align: bottom;
+}
+/* line 65, ../sass/navBar.scss */
+#navigation .navLink img {
+  padding: 0px 0px 0px 0px;
+}
+
+/* line 71, ../sass/navBar.scss */
+.socialMediaLink {
+  margin: 3px;
+}
+
+/* line 75, ../sass/navBar.scss */
+#logoContainer {
+  display: inline-block;
+  height: 30px;
+  margin-top: 15px;
+  margin-left: -90px;
+}
+
+/* line 82, ../sass/navBar.scss */
+#logoName {
+  font-family: "Satisfy", cursive;
+  font-size: 30px;
+}
+
+/* line 87, ../sass/navBar.scss */
+#homepageLink {
+  cursor: hand;
+}
+
+/* line 91, ../sass/navBar.scss */
+#linksContainer {
+  height: 45px;
+  position: absolute;
+  right: 0px;
+}
+
+/* line 97, ../sass/navBar.scss */
+.profilePicture {
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  -o-border-radius: 3px 0 0 3px;
+  -ms-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+  -webkit-box-shadow: 0 0 2px #616161 inset;
+  -moz-box-shadow: 0 0 2px #616161 inset;
+  -o-box-shadow: 0 0 2px #616161 inset;
+  -ms-box-shadow: 0 0 2px #616161 inset;
+  box-shadow: 0 0 2px #616161 inset;
+  background-size: cover;
+  float: left;
+  height: 30px;
+  margin: -1px;
+  width: 30px;
+}
+
+/*
+.profileName {
+    padding-right: 9px;
+}*/
+/*
+.usernameLink {
+    color: #888888;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    background:linear-gradient(#ffffff,#f0f0f0);
+    background-color: #f7f7f7; 
+    border: 1px solid #cccccc;
+
+    .profileName {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        height: 24px;
+        padding: 6px 0 1px 10px;        
+    } 
+
+    &:hover {
+        background-color: #efefff;        
+    }
+} */
+/*
+.UserMenu {
+    border-radius: 3px;
+    background-color: #f0f0f0;
+    border: 1px solid #cccccc;
+    color: #888888;
+    font-size: 13px;
+    margin-top: 4px;
+} */
+/* line 146, ../sass/navBar.scss */
+#notificationDiv {
+  position: relative;
+}
+/* line 149, ../sass/navBar.scss */
+#notificationDiv:hover {
+  cursor: hand;
+}
+
+/* line 154, ../sass/navBar.scss */
+#notificationWindow {
+  display: none;
+  margin-top: 5px;
+  position: absolute;
+  right: -1px;
+  width: 430px;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #f7f7f7;
+  border: 1px solid #cccccc;
+  background: white;
+  font-size: 13px;
+  text-align: left;
+  background-image: -webkit-linear-gradient(white, #f0f0f0);
+  background-image: -moz-linear-gradient(white, #f0f0f0);
+  background-image: -ms-linear-gradient(white, #f0f0f0);
+  background-image: -o-linear-gradient(white, #f0f0f0);
+  background-image: linear-gradient(#ffffff, #f0f0f0);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: normal;
+  top: 20px;
+}
+/* line 173, ../sass/navBar.scss */
+#notificationWindow a {
+  color: #00008F;
+  font-weight: bold;
+  cursor: hand;
+}
+
+/* line 180, ../sass/navBar.scss */
+.Header .headerContainer {
+  -o-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  display: block;
+  height: 50px;
+  overflow: visible;
+  padding: 5px 0 0;
+  position: fixed;
+  z-index: 680;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+/* line 193, ../sass/navBar.scss */
+.centeredWithinWrapper {
+  margin: 0 auto;
+  width: 800px;
+}
+
+/* line 198, ../sass/navBar.scss */
+#accountOptionsDropdown {
+  background-image: -webkit-linear-gradient(white, #f0f0f0);
+  background-image: -moz-linear-gradient(white, #f0f0f0);
+  background-image: -ms-linear-gradient(white, #f0f0f0);
+  background-image: -o-linear-gradient(white, #f0f0f0);
+  background-image: linear-gradient(#ffffff, #f0f0f0);
+  background-color: #f7f7f7;
+  border: 1px solid #cccccc;
+  display: none;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 1px solid;
+  top: 41px;
+  width: 174px;
+  border-top-width: 0px;
+}
+/* line 200, ../sass/navBar.scss */
+#accountOptionsDropdown li {
+  text-decoration: none;
+  padding: 10px 0px 5px 0px;
+}
+/* line 201, ../sass/navBar.scss */
+#accountOptionsDropdown li a {
+  text-decoration: none;
+  color: #888888;
+}
+/* line 206, ../sass/navBar.scss */
+#accountOptionsDropdown li:hover {
+  color: #333333;
+  font-weight: bolder;
+  background-image: -webkit-linear-gradient(white, #f0f0f0);
+  background-image: -moz-linear-gradient(white, #f0f0f0);
+  background-image: -ms-linear-gradient(white, #f0f0f0);
+  background-image: -o-linear-gradient(white, #f0f0f0);
+  background-image: linear-gradient(#ffffff, #f0f0f0);
+}
+/* line 216, ../sass/navBar.scss */
+#accountOptionsDropdown ul {
+  list-style: none;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+}
+
+/* line 235, ../sass/navBar.scss */
+#navigation .navcenter {
+  display: inline-block;
+  margin-top: 5px;
+}
+/* line 240, ../sass/navBar.scss */
+#navigation .smallNavButtons {
+  width: 26px;
+  height: 30px;
+}
+
+/* line 246, ../sass/navBar.scss */
+.navButtons {
+  vertical-align: top;
+  background-image: -webkit-linear-gradient(white, #f0f0f0);
+  background-image: -moz-linear-gradient(white, #f0f0f0);
+  background-image: -ms-linear-gradient(white, #f0f0f0);
+  background-image: -o-linear-gradient(white, #f0f0f0);
+  background-image: linear-gradient(#ffffff, #f0f0f0);
+  background-color: #f7f7f7;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  color: #888888;
+  margin-top: 4px;
+  cursor: pointer;
+  height: 30px;
+}
+/* line 257, ../sass/navBar.scss */
+.navButtons:hover {
+  background: #f1f1f1;
+  color: #333333;
+}
+
+/* Using CSS3 media queries to handle window resizing */
+@media screen and (min-width: 1200px) {
+  /* line 265, ../sass/navBar.scss */
+  .centeredWithinWrapper {
+    width: 1200px;
+  }
+
+  /* line 269, ../sass/navBar.scss */
+  #accountOptionsDropdown {
+    right: 100px;
+  }
+}
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+  /* line 274, ../sass/navBar.scss */
+  .centeredWithinWrapper {
+    width: 1000px;
+  }
+
+  /* line 278, ../sass/navBar.scss */
+  #accountOptionsDropdown {
+    right: 81px;
+  }
+}
+@media screen and (min-width: 700px) and (max-width: 900px) {
+  /* line 283, ../sass/navBar.scss */
+  .centeredWithinWrapper {
+    width: 700px;
+  }
+
+  /* line 287, ../sass/navBar.scss */
+  #accountOptionsDropdown {
+    right: 51px;
+  }
+}
+@media screen and (max-width: 700px) {
+  /* line 292, ../sass/navBar.scss */
+  .centeredWithinWrapper {
+    width: 600px;
+  }
+
+  /* line 296, ../sass/navBar.scss */
+  #accountOptionsDropdown {
+    right: 31px;
+  }
+}
+/* line 302, ../sass/navBar.scss */
+.header .headerBackground {
+  -o-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  background-color: #ffffff;
+  height: 50px;
+  position: fixed;
+  z-index: 670;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+/* line 315, ../sass/navBar.scss */
+.Header .headerContainer .leftHeaderContent {
+  float: left;
+  width: 236px;
+}
+/* line 319, ../sass/navBar.scss */
+.Header .headerContainer .rightHeaderContent {
+  float: right;
+  width: 236px;
+}
+/* line 325, ../sass/navBar.scss */
+.Header .logo {
+  left: 50%;
+  margin-left: -52px;
+  position: absolute;
+}
+
+/* line 332, ../sass/navBar.scss */
+.logo {
+  width: 104px;
+  height: 26px;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  -webkit-text-shadow: none;
+  -moz-text-shadow: none;
+  -o-text-shadow: none;
+  -ms-text-shadow: none;
+  text-shadow: none;
+}
+
+/* line 342, ../sass/navBar.scss */
+.positionModuleFixed {
+  position: fixed;
+  z-index: 686;
+}
+
+/* line 347, ../sass/navBar.scss */
+.selected {
+  background-color: #efefff;
+  background: #efefff;
+}
+
+/* line 352, ../sass/navBar.scss */
+.ui-MenuLink {
+  cursor: hand;
+}
+
+/* line 356, ../sass/navBar.scss */
+#confirmEventContainer {
+  border-style: solid;
+  border-width: 1px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 1em;
+  max-height: 3em;
+}
+
+/* line 365, ../sass/navBar.scss */
+div.confirmEvent:hover {
+  background-color: #efefef;
+  cursor: hand;
+}
+
+/* line 370, ../sass/navBar.scss */
+#confirmBtn:hover {
+  cursor: hand;
+}

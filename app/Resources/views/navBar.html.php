@@ -13,7 +13,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <link href="/css/bootstrap/bootstrap-responsive.css" rel="stylesheet">
         <link href="/css/bootstrap/tablecloth.css" rel="stylesheet">
         <link href="/css/bootstrap/prettify.css" rel="stylesheet">                
-        <link href="/css/navBar.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/navBar.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />        
         <link href="/compass/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="/compass/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/formStyling.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
