@@ -1,5 +1,4 @@
 <link href="/css/QAMenu.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/js/jquery-1.8.2.js"></script>
 <input type="hidden" id="selectedOptionIndex" value="<?php echo $selectedOptionIndex; ?>" />
 <div>
     <ul>

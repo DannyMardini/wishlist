@@ -25,7 +25,6 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <script src="/js/bootstrap/jquery.tablesorter.min.js"></script>
         <script src="/js/bootstrap/jquery.tablecloth.js"></script>             
         <script type="text/javascript" src="/js/navBar.js"></script>        
-        <script type="text/javascript" src="/js/common.js"></script>
         
         <script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>
         <script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>
