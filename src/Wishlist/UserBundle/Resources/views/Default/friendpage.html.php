@@ -1,6 +1,5 @@
 <!-- TODO: This page must not be viewable to those that aren't currently logged in. -->
 <?php $view->extend('::navBar.html.php') ?>
-<script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/friendpage.js"></script>
 <div class="pageTitle">
     <label class="pageHeader">Friends</label>

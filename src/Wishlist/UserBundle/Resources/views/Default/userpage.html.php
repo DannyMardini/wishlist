@@ -4,7 +4,6 @@ $view->extend('::navBar.html.php');
 $userId = $wishlist_user->getWishlistUserId();
 $selfWishlist = ($userId == $loggedInUserId)? true:false;
 ?>
-<script type="text/javascript" src="/js/common.js"></script>
 <link href='/css/userPage.css' rel='stylesheet' />
 <link href='/css/wishlist.css' rel='stylesheet' />
 <script type="text/javascript" src="/js/wishlist.js"></script>

@@ -55,5 +55,6 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
             echo $view->render('WishlistDialogBundle:Default:editItemDialog.html.php');
             echo $view->render('WishlistDialogBundle:Default:confirmPurchaseDialog.html.php');
         ?>
+        <script type="text/javascript" src="/js/common.js"></script>
     </body>
 </html>

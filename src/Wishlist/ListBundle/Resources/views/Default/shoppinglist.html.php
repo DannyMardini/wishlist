@@ -1,6 +1,5 @@
 <link href="/css/shoppingList.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/shoppingList.js"></script>
-<script type="text/javascript" src="/js/common.js"></script>
 
 <div class="pageTitle">     
     <?php $shoppinglistCount = count($purchases); ?>
