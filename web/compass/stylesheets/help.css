@@ -1,0 +1,90 @@
+/* line 3, ../sass/help.scss */
+root {
+  display: block;
+}
+
+/* line 7, ../sass/help.scss */
+header {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+/* line 12, ../sass/help.scss */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* line 16, ../sass/help.scss */
+.content {
+  margin: 20px;
+}
+
+/* line 20, ../sass/help.scss */
+.contentMenuContainer {
+  height: 100%;
+  width: 30%;
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+}
+
+/* line 28, ../sass/help.scss */
+.contentMenu {
+  height: 100%;
+  width: 100%;
+  float: left;
+  border-right: black;
+  border-right-width: 1px;
+  border-right-style: solid;
+  display: inline-block;
+}
+
+/* line 38, ../sass/help.scss */
+.contentInfo {
+  width: 68%;
+  display: inline-block;
+}
+
+/* line 43, ../sass/help.scss */
+.contentInfoTopic {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 38px;
+  padding-left: 33%;
+  padding-top: 15px;
+}
+
+/* line 51, ../sass/help.scss */
+.contentInfoTopic:hover {
+  cursor: hand;
+  text-decoration: underline;
+}
+
+/* line 56, ../sass/help.scss */
+.contentInfoDetails {
+  display: none;
+  font-size: 16px;
+  line-height: 38px;
+}
+
+/* line 62, ../sass/help.scss */
+.displayContentInfo {
+  display: inline-block;
+}
+
+/* line 66, ../sass/help.scss */
+.goBackDiv {
+  margin-left: 5px;
+  margin-right: 20px;
+  font-size: 15px;
+  vertical-align: center;
+  margin-top: 15px;
+  float: left;
+  width: 100px;
+}
+/* line 75, ../sass/help.scss */
+.goBackDiv:hover {
+  text-decoration: underline;
+  cursor: hand;
+  font-weight: bolder;
+}

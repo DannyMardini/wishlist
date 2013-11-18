@@ -11,7 +11,7 @@
         <script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>        
     </head>
     <body>
-        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/frontPage.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />        
+        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/frontPage.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="/js/frontPage.js"></script>
 
         <input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />
