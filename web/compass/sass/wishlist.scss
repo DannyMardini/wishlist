@@ -1,0 +1,46 @@
+.itemName {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.ItemBody{
+    font-size: 12px;
+    text-align: center;
+    p {
+        margin-left: 5px;
+    }
+    label{
+        font-weight: bold;
+    }
+    div{
+        width: 100%;
+        background-color: gray;
+    }
+}
+
+#newWishBox {
+    color: pink;
+}
+
+.newWishBox {
+    height: 100px;
+}
+
+.purchaseBtn:hover {
+    background-color: white;
+    font-color: black;
+}
+
+h3.purchased {
+    background: #333 url(/css/black-tie/images/ui-bg_diagonals-thick_8_333333_40x40.png) 50% 50% repeat;
+}
+
+#itemDialog label {
+    display: inline;
+}
+
+#wishlist_bs_table {
+    width: 80%;
+    margin: 10%;
+    margin-top: 2%;    
+}

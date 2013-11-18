@@ -1,4 +1,4 @@
-<link href="/css/wishlist.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/wishlist.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
 
 <?php
 //Helper functions

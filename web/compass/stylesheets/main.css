@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'Satisfy';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Satisfy"), url("fonts/Satisfy-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Gruppo';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Gruppo"), url("fonts/Gruppo-Regular.ttf");
+}
+
+/* line 14, ../sass/main.scss */
+root {
+  display: block;
+}
+
+/* line 18, ../sass/main.scss */
+body {
+  margin: 10px 10px 10px 10px;
+  position: relative;
+  font-family: helvetica;
+}
+
+/* line 24, ../sass/main.scss */
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+
+/* line 34, ../sass/main.scss */
+#content {
+  width: 981px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+/* line 40, ../sass/main.scss */
+.addButton {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+/* line 45, ../sass/main.scss */
+.removeButton {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+/* line 50, ../sass/main.scss */
+.pageTitle {
+  width: 90%;
+}
+
+/* line 54, ../sass/main.scss */
+.itemCountSpan {
+  float: right;
+  margin-top: 10px;
+  font-size: 16px;
+  font-style: italic;
+}

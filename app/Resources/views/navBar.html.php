@@ -8,7 +8,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
     <head>
         <link rel="shortcut icon" href="/images/favicon.ico" />
         <link href="/css/black-tie/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
-        <link href="/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/main.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/css/bootstrap/bootstrap-responsive.css" rel="stylesheet">
         <link href="/css/bootstrap/tablecloth.css" rel="stylesheet">

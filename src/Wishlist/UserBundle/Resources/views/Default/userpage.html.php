@@ -4,8 +4,8 @@ $view->extend('::navBar.html.php');
 $userId = $wishlist_user->getWishlistUserId();
 $selfWishlist = ($userId == $loggedInUserId)? true:false;
 ?>
-<link href='/css/userPage.css' rel='stylesheet' />
-<link href='/css/wishlist.css' rel='stylesheet' />
+<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/userPage.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/wishlist.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/wishlist.js"></script>
 <script type="text/javascript" src="/js/userpage.js"></script>
 <input id="userId" type="hidden" value="<?php echo $userId ?>"/>

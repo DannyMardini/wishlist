@@ -1,0 +1,80 @@
+/* line 4, ../sass/userPage.scss */
+body {
+  direction: ltr;
+}
+
+/* line 8, ../sass/userPage.scss */
+p {
+  margin: 0px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* line 13, ../sass/userPage.scss */
+h1 {
+  font-family: "Satisfy", cursive;
+  font-size: 30px;
+}
+
+/* line 18, ../sass/userPage.scss */
+#div_user_container {
+  display: inline-block;
+  border-style: solid;
+}
+
+/* line 23, ../sass/userPage.scss */
+#div_profile_pic {
+  float: left;
+  max-width: 150px;
+  overflow: hidden;
+}
+
+/* line 29, ../sass/userPage.scss */
+#div_profile_pic img {
+  max-width: 150px;
+}
+
+/* line 33, ../sass/userPage.scss */
+#div_left_panel {
+  display: inline-block;
+  float: left;
+  margin: 10px 60px 0px 10px;
+}
+
+/* line 39, ../sass/userPage.scss */
+#div_right_panel {
+  display: inline-block;
+  width: 50%;
+}
+
+/* line 44, ../sass/userPage.scss */
+#div_user_info {
+  padding-top: 20px;
+}
+
+/* line 48, ../sass/userPage.scss */
+#unfriendButton {
+  display: inline-block;
+  color: #888;
+  background-image: -webkit-linear-gradient(white, #f0f0f0);
+  background-image: -moz-linear-gradient(white, #f0f0f0);
+  background-image: -ms-linear-gradient(white, #f0f0f0);
+  background-image: -o-linear-gradient(white, #f0f0f0);
+  background-image: linear-gradient(#ffffff, #f0f0f0);
+  background-color: #f7f7f7;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  margin-top: 4px;
+  cursor: pointer;
+  padding: 0px 5px 0px 5px;
+  margin-top: 5px;
+}
+
+/* line 61, ../sass/userPage.scss */
+#unfriendButton:hover {
+  background: #f1f1f1;
+  color: #333;
+}
