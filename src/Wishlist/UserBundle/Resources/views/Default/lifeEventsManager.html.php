@@ -51,5 +51,5 @@
 </div>
 
 <div id="dialog-message" title="Message"></div>
-<link href="/css/lifeEventsManager.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/lifeEventsManager.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/lifeEventsManager.js"></script>
