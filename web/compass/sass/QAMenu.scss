@@ -5,6 +5,14 @@ root {
 .content ul {
     list-style-type: none;
     padding:0; margin:0;
+
+    li:hover {
+        cursor: hand;
+        text-decoration: underline;
+        border-bottom-color:#EFEFEF;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
 }
 
 .topic {
@@ -15,14 +23,6 @@ root {
     padding-left: 10px;
     padding-top: 10px;
     text-decoration: none;
-}
-
-.content li:hover {
-    cursor: hand;
-    text-decoration: underline;
-    border-bottom-color:#EFEFEF;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
 }
 
 .subTopic {        

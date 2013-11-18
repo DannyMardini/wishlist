@@ -1,4 +1,4 @@
-<link href="/css/QAMenu.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/QAMenu.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
 <input type="hidden" id="selectedOptionIndex" value="<?php echo $selectedOptionIndex; ?>" />
 <div>
     <ul>
