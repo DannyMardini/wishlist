@@ -74,4 +74,4 @@ services:
   
 
 fos_js_routing:
-  routes_to_expose: [ WishlistUserBundle*, RequestInvite, WishlistListBundle*, WishlistCoreBundle*]
+  routes_to_expose: [ WishlistUserBundle*, RequestInvite, WishlistListBundle*, WishlistCoreBundle*, WishlistQABundle*]

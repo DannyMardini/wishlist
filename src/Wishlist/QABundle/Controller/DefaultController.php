@@ -26,4 +26,9 @@ class DefaultController extends Controller
     {
         return $this->render('WishlistQABundle:Default:ContactSupport.html.php');
     }
+    
+    public function sendResetPasswordEmail()
+    {
+        return $this->render('WishlistQABundle:Default:ContactSupport.html.php');
+    }    
 }

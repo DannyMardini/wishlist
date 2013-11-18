@@ -1,4 +1,4 @@
-<form id="contactSupportForm" method="POST" action="<?php echo $view['router']->generate('WishlistQABundle_help') ?>">
+<form id="contactSupportForm" method="POST" action="<?php echo $view['router']->generate('WishlistCoreBundle_NotifyAdmin') ?>">
 
   <input type="hidden" id="subject" value="Support Contacted -Needs Attention"
   

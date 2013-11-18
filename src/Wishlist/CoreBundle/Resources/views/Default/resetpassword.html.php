@@ -8,7 +8,7 @@
     </head>
     <body>
         <header>Reset Password</header>
-        <form id="reset-password">        
+        <form id="reset-password" method="POST" action="<?php echo $view['router']->generate('WishlistQABundle__resetpasswordrequest') ?>">        
         <article id='getPasswordResetInstructions'>
             <label class="instructions">Enter your email address and we will send you instructions.</label>            
             <label class="form-input-label">Email</label>
