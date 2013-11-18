@@ -1,16 +1,14 @@
-
 #shoppinglist {
     width: 80%;
-/*    height: 50%;*/
     margin: 10%;
     margin-top: 2%;
-} 
 
-#shoppinglist ul
-{
-    list-style: none;
-    padding-left: 15%;
-}
+    ul
+    {
+        list-style: none;
+        padding-left: 15%;
+    }
+} 
 
 .shoppinglistItem label{
     margin-left: 10px;

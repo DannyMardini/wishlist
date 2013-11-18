@@ -1,4 +1,4 @@
-<link href="/css/shoppingList.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/shoppingList.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/shoppingList.js"></script>
 
 <div class="pageTitle">     
