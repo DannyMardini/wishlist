@@ -1,7 +1,7 @@
 
 <?php $view->extend('::navBar.html.php') ?>
 
-<link href='/css/homePage.css' rel='stylesheet' type="text/css" />
+<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/homePage.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/homepage.js"></script>
 <script type="text/javascript" src="/js/wishlist.js"></script>
   
