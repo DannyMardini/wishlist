@@ -13,7 +13,7 @@ WishlistQABundle_help:
 WishlistQABundle_contactSupport:
     pattern:  /contactSupport
     defaults: { _controller: WishlistQABundle:Default:contactSupport }
-
+    
 WishlistQABundle_resetpasswordrequest:
     pattern:  /resetpasswordrequest
-    defaults: { _controller: WishlistQABundle:Default:sendResetPasswordEmail }
+    defaults: { _controller: WishlistQABundle:Default:resetpasswordrequest }    
