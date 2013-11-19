@@ -54,7 +54,7 @@ class WishlistController extends Controller
         $link = $this->getRequest()->get('link');
         $quantity = $this->getRequest()->get('quantity');
         $comment = $this->getRequest()->get('comment');
-        $isPrivate = ($this->getRequest()->get('isprivate') == "checked");
+        $isPrivate = false;     //($this->getRequest()->get('isprivate') == "checked");
         $loggedInUserId = $session->get('user_id');
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
                 
@@ -89,7 +89,7 @@ class WishlistController extends Controller
         $link = $this->getRequest()->get('link');
         $quantity = $this->getRequest()->get('quantity');
         $comment = $this->getRequest()->get('comment');
-        $isPrivate = ($this->getRequest()->get('isprivate') == "checked");
+        $isPrivate = false;     //($this->getRequest()->get('isprivate') == "checked");
         $loggedInUserId = $session->get('user_id');
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
         

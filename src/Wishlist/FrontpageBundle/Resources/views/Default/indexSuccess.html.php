@@ -15,11 +15,6 @@
         <script type="text/javascript" src="/js/frontPage.js"></script>
 
         <input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />
-        <div id="loginContainer">
-            <a class="aboutLink frontpageLink" href="#">About</a>
-            <img src="/images/silverdot.gif" width="10" height="10" />
-            <a id="loginLink" class="frontpageLink" href="#">Login</a>
-        </div>
         <div id="imageContainer"></div>
         <div id="registrationContainer">
             <div id="logoContainer">
@@ -60,8 +55,6 @@
         <footer>
             <div id="footerDetails">
                 <a class="aboutLink frontpageLink" href="#">ABOUT</a>
-                <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="frontpageLink" href="<?php echo $view['router']->generate('WishlistQABundle_help')?>">HELP</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
                 <a class="termsLink frontpageLink" href="#">TERMS</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />

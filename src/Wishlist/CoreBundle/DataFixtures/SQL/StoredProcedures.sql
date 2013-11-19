@@ -1,7 +1,7 @@
 # Stored Procedure notes:
 # To show all stored procedures: SHOW PROCEDURE STATUS
 
-use wishlist;
+use wishenda;
 
  DROP PROCEDURE selectPurchase;
  DROP PROCEDURE PurchaseItem;
