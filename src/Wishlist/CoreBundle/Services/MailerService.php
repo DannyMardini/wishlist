@@ -27,7 +27,7 @@ class MailerService
             //If this person was invited by someone, send the friend invite email.
 
             $userInvitedName = $userInvited->getName();
-            $htmlbody = $this->templating->render('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
+            $htmlbody = $this->templating->render('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName, 'acceptId' => $request->getAcceptString()));
             $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
             
             $this->sendMail($request->getEmail(), $this->getFriendInviteSubject(), $htmlbody, $textbody);
@@ -36,7 +36,7 @@ class MailerService
         {
             //Else send the person a standard invite email.
 
-            $htmlbody = $this->templating->render('WishlistUserBundle:Email:standardinvite.html.php');
+            $htmlbody = $this->templating->render('WishlistUserBundle:Email:standardinvite.html.php', array('acceptId' => $request->getAcceptString()));
             $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
 
             $this->sendMail($request->getEmail(), $this->getStandardInviteSubject(), $htmlbody, $textbody);
