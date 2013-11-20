@@ -3,6 +3,7 @@
 namespace Wishlist\QABundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class DefaultController extends Controller
@@ -27,13 +28,14 @@ class DefaultController extends Controller
         return $this->render('WishlistQABundle:Default:ContactSupport.html.php');
     }
     
-    public function resetPasswordRequestAction()
+    public function resetpasswordrequestAction()
     {
         try
         {
             $response = "";
             $email = $this->getRequest()->get('email');
             $link = "";
+            $user = null;
             
             if(!$email)
             {
@@ -42,13 +44,23 @@ class DefaultController extends Controller
             else
             {
                 $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
-                $user = $userRepo->getUserWithEmail($email);
                 
-                if(!isset($user))
+                try {
+                    $user = $userRepo->getUserWithEmail($email);
+                }
+                catch(\Doctrine\ORM\NoResultException $e)
                 {
-                    return new Response ('The email does not pertain to a user. Please retry with the correct email.');
+                    return new Response ('Error: The email does not pertain to a user. Please retry with the correct email.');                    
                 }
                 
+                // Set a flag in the user table so we know that they are waiting to change their password
+                $resetpassword_on = 1;
+                $user->setResetpassword($resetpassword_on);
+                $em = $this->getEntityManager();
+                $em->persist($user);
+                $em->flush();
+                
+                // 
                 $full_message = 'Hello ' . $user->getName() . ' We received a request to reset your password. ' . 
                             ' If you did not submit this request please contact our Support Team immediately by emailing wishendasupport@wishnda.com ' .
                             ' Otherwise please click the following link to reset your password: ' . $link;
@@ -70,4 +82,9 @@ class DefaultController extends Controller
             return $this->renderText($response);
         }        
     }
+    
+    public function ResetPasswordAction()
+    {
+        return $this->render('WishlistQABundle:default:resetpassword.html.php');
+    }    
 }

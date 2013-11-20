@@ -157,7 +157,7 @@ function hideToggleWindows()
 
 function intializeResetPasswordLink()
 {
-    var url = Routing.generate('WishlistCoreBundle_forgotpassword');
+    var url = Routing.generate('WishlistQABundle_forgotpassword');
     $('#forgotPassword').attr('href',url);
 }
 

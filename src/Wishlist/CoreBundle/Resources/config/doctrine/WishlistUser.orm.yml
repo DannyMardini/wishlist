@@ -49,3 +49,5 @@ Wishlist\CoreBundle\Entity\WishlistUser:
       type: string
     gender:
       type: integer
+    resetpassword:
+      type: integer      

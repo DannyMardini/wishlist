@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script type="text/javascript" src="/js/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="/js/resetpassword_request.js"></script>
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/resetpassword.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="/images/favicon.ico">
@@ -18,36 +20,3 @@
         </form>
     </body>
 </html>
-
-<script>
-    $(document).ready(function(){
-        $("#reset-password").submit(function(e){
-            e.preventDefault();
-            var url = $(this).attr('action');            
-
-            $.post( url, {email: $("#email").val()}, function(response){            
-
-                $dataArray = response.split(":"); 
-
-                if($dataArray[0].toLowerCase() == "success")
-                {
-                    alert('Message sent.');
-                }
-                else
-                {
-                    alert(response);
-                }
-                
-                redirectToQAHome();
-            });
-        });        
-    });
-    
-    
-    function redirectToQAHome()
-    {
-        window.location = Routing.generate('WishlistFrontpageBundle_homepage');
-    }
-    
-    
-</script>

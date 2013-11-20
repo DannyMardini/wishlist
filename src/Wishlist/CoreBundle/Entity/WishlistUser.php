@@ -26,6 +26,9 @@ class WishlistUser {
     
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
+    
+    const RESET_PASSWORD_PENDING_OFF = 0;
+    const RESET_PASSWORD_PENDING = 1;
 
     /**
      * Get wishlistuser_id
@@ -469,5 +472,30 @@ class WishlistUser {
     public function getFriendsRequested()
     {
         return $this->friendsRequested;
+    }
+    /**
+     * @var integer $resetpassword
+     */
+    private $resetpassword = WishlistUser::RESET_PASSWORD_PENDING_OFF;
+
+
+    /**
+     * Set resetpassword
+     *
+     * @param integer $resetpassword
+     */
+    public function setResetpassword($resetpassword)
+    {
+        $this->resetpassword = $resetpassword;
+    }
+
+    /**
+     * Get resetpassword
+     *
+     * @return integer 
+     */
+    public function getResetpassword()
+    {
+        return $this->resetpassword;
     }
 }
