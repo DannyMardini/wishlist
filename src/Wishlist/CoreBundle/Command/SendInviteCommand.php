@@ -34,6 +34,11 @@ class SendInviteCommand extends ContainerAwareCommand
         }
 
         try {
+            //Set Request context
+            $context = $this->getContainer()->get('router')->getContext();
+            $context->setHost('wishenda.com');
+            $context->setScheme('http');
+
             $mailer->sendInvite($request);
         }
         catch(Exception $ex)

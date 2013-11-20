@@ -28,6 +28,11 @@ class SendInvitesCommand extends ContainerAwareCommand
         $query = $requestRepo->createQueryBuilder('r')->where('r.dateLastInvited is NULL')->getQuery();
 
         $requests = $query->setMaxResults($numUsers)->getResult();
+        
+        //Set Request context
+        $context = $this->getContainer()->get('router')->getContext();
+        $context->setHost('wishenda.com');
+        $context->setScheme('http');
 
         $successCount = 0;
         foreach ($requests as $request)
