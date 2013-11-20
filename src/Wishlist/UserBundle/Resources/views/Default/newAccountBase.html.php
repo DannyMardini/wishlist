@@ -3,8 +3,6 @@
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/screen.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/print.css') ?>" media="print" rel="stylesheet" type="text/css" />
         <link href="<?php echo $view['assets']->getUrl('css/black-tie/jquery-ui-1.8.23.custom.css') ?>" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/jquery-1.8.2.js') ?>></script>
-        <script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/jquery-ui-1.8.23.custom.min.js') ?>></script>
         <link href="/css/black-tie/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
         <title><?php $view['slots']->output('title', 'New Account Base') ?></title>
     </head>
@@ -30,5 +28,13 @@
 
         echo  $view->render('WishlistUserBundle:Default:settingForms.html.php', $formParams);
 ?>
+        <script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>
+        <script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>
+        <script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/jquery-1.8.2.js') ?>></script>
+        <script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/jquery-ui-1.8.23.custom.min.js') ?>></script>
+        <script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/common.js') ?>></script>
+        <script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/QABundle.js') ?>></script>
+        <script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/jquery.form.js') ?>></script>
+        <script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/accountsettings.js') ?>></script>
     </body>
 </html>

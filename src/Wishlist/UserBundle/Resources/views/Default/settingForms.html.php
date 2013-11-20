@@ -61,6 +61,3 @@ if(isset($birthdate))
 <button id="saveChanges">Create</button>
 <p id="errorDisplay"></p>
 </form>
-<script type="text/javascript" src="/js/QABundle.js"></script>
-<script type="text/javascript" src="/js/jquery.form.js"></script>
-<script type="text/javascript" src="/js/accountsettings.js"></script>
