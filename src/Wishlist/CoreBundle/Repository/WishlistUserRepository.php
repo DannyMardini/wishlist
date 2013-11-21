@@ -131,7 +131,7 @@ class WishlistUserRepository extends EntityRepository
         }
         $sql = rtrim($sql, "AND");
         
-        $sql .= ") AND u.wishlistuser_id not in ( select f.friend_id from friendship f where f.user_id = ".$user->getWishlistuserId().") and u.wishlistuser_id != ".$user->getWishlistuserId();
+        $sql .= ") AND u.wishlistuser_id not in ( select f.friend_id from Friendship f where f.user_id = ".$user->getWishlistuserId().") and u.wishlistuser_id != ".$user->getWishlistuserId();
         
         $q = $this->getEntityManager()->createNativeQuery($sql, $rsm);
         
