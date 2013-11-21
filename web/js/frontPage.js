@@ -67,7 +67,8 @@ $(document).ready(function()
      
                  
     // set effect from log in or request invite buttons
-    $("#requestInviteButton, #loginButton, #loginLink").click(function() {
+    $("#requestInviteButton, #loginButton, #loginLink").click(function(e) {
+        e.preventDefault();
         var thisId = $(this).attr('id');
         var activeToggler_SelectorId = "";
         var hiddenToggler_SelectorId = "";

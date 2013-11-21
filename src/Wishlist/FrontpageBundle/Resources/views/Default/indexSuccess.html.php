@@ -23,8 +23,8 @@
             </div>
             <div id="registrationForm">
                 <br /><br />
-                <a href="#" id="requestInviteButton">Request Invite</a>
-                <a href="#" id="loginButton">Login</a>
+                <a href="" id="requestInviteButton">Request Invite</a>
+                <a href="" id="loginButton">Login</a>
                 <br />
                 <div class="toggler">
                     <div id="requestInviteToggleWindow"> 
@@ -54,13 +54,13 @@
         </div>
         <footer>
             <div id="footerDetails">
-                <a class="aboutLink frontpageLink" href="#">ABOUT</a>
+                <a class="aboutLink frontpageLink" href="">ABOUT</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="termsLink frontpageLink" href="#">TERMS</a>
+                <a class="termsLink frontpageLink" href="">TERMS</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="privacyLink frontpageLink" href="#">PRIVACY</a>
+                <a class="privacyLink frontpageLink" href="">PRIVACY</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="joinLink frontpageLink" href="#">JOIN OUR TEAM</a>
+                <a class="joinLink frontpageLink" href="">JOIN OUR TEAM</a>
             </div>
         </footer>
         <div id="dialog-message" title=""></div>
