@@ -58,6 +58,6 @@ if(isset($birthdate))
 </form>
 <?php } ?>
 </div>
-<button id="saveChanges">Create</button>
+<button id="saveChanges"><?php echo (isset($originalPassword) ? 'Save' : 'Create') ?></button>
 <p id="errorDisplay"></p>
 </form>
