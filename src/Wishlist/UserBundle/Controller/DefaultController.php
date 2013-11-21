@@ -10,6 +10,7 @@ use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Services\PicService;
 use Wishlist\CoreBundle\Entity\Request;
 use \DateTime;
+use Wishlist\CoreBundle\Library\StoPasswordHash;
 
 
 class DefaultController extends Controller
@@ -359,15 +360,14 @@ class DefaultController extends Controller
                 // get the original user information to pre-populate the form
                 $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
                 $user = $userRepo->getUserWithId($loggedInUserId);
-                $originalPassword = $user->getPassword();
                 $name = $user->getName();
                 $email = $user->getEmail();
+                $birthdate = $user->getBirthdate()->format('m-d-Y');
                 $gender = $user->getGender();
                 $profileImage = "<img id='user_image' src='" . PicService::getProfileUrl($loggedInUserId) . "'  class='preview'>";
                 
                 return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId, 'name' => $name,
-                    'email' => $email, 'originalPassword' => $originalPassword,
-                    'gender' => $gender, 'profileImage' => $profileImage));
+                    'email' => $email, 'birthdate' => $birthdate, 'gender' => $gender, 'profileImage' => $profileImage));
             }
             
         }catch(NoResultException $e)
@@ -436,8 +436,8 @@ class DefaultController extends Controller
             if ($updateSettings)
             {
                 $user = $userRepo->getUserWithId($loggedInUserId);
-                if (strlen($full_name) > 0 && $full_name !== $user->getFullName()) {
-                    $user->setFullName($full_name);
+                if (strlen($full_name) > 0 && $full_name !== $user->getName()) {
+                    $user->setName($full_name);
                 }
                 
                 /* Don't allow users to update their emails just yet.
@@ -447,11 +447,12 @@ class DefaultController extends Controller
                 */
                 
                 if (strlen($new_password) > 0 && $new_password !== $user->getPassword()) {
-                    if ($old_password !== $user->getPassword()) {
+                    if (!StoPasswordHash::verifyPassword($old_password, $user->getPassword())) {
                         $response = "Incorrect old_password";
                         throw new \Exception($response);
                     }
                     $user->setPassword($new_password);
+                    $this->getDoctrine()->getEntityManager()->flush();
                 }
             }
             else //newUser

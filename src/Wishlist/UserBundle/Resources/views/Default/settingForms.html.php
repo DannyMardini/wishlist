@@ -32,7 +32,7 @@ if(isset($birthdate))
 </li>
 
 <li><label class='mainLabel'>Password:</label><ul id='passwordInputs'>
-<?php if(isset($originalPassword)) { ?>
+<?php if(isset($name)) { ?>
 <input type="password" id="old_password" name="old_password" placeholder="old password">
 <input type="password" class="trackChanges" id="new_password1" name="new_password" placeholder="new password" required />
 <input type="password" id="new_password2" name="new_password2" placeholder="repeat new password" required />
@@ -48,7 +48,7 @@ if(isset($birthdate))
 </li>
 </ul>
 </form>
-<?php if(isset($originalPassword)) { ?>
+<?php if(isset($name)) { ?>
 <form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $view['router']->generate('WishlistUserBundle_uploadUserImage'); ?>'>
     <label class='mainLabel'>Upload image:</label>
     <span>
@@ -58,6 +58,6 @@ if(isset($birthdate))
 </form>
 <?php } ?>
 </div>
-<button id="saveChanges"><?php echo (isset($originalPassword) ? 'Save' : 'Create') ?></button>
+<button id="saveChanges"><?php echo (isset($name) ? 'Save' : 'Create') ?></button>
 <p id="errorDisplay"></p>
 </form>

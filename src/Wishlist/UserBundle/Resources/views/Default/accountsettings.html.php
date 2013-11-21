@@ -5,5 +5,6 @@
     <?php
         // This is including the settingForms.html.php template into this page
         echo  $view->render('WishlistUserBundle:Default:settingForms.html.php', array('gender' => $gender, 'name' => $name,
-        'email' => $email, 'profileImage' => $profileImage, 'originalPassword' => $originalPassword)) ?>
+        'email' => $email, 'birthdate' => $birthdate, 'profileImage' => $profileImage)) ?>
 </div>
+<script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/accountsettings.js') ?>></script>

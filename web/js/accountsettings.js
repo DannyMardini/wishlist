@@ -1,3 +1,5 @@
+var updatingSettings = false;
+
 function saveChanges()
 {
     if(allFormsValid()) {
@@ -75,6 +77,7 @@ function sendFormValues()
                 birthDay: $('#birthDay').val(),
                 birthMonth: $('#birthMonth').val(),
                 birthYear: $('#birthYear').val(),
+                old_password: $('#old_password').val(),
                 new_password: $('#new_password1').val(), 
                 gender: genderVal
             },
@@ -82,10 +85,16 @@ function sendFormValues()
                 $dataArray = response.split(":"); 
                 if($dataArray[0].toLowerCase() == "success")
                 {
-                    popupMessage('Success', 'Congratulations, you have just created a new account on wishenda.com! Click OK to continue to the log in screen.',
+                    if(updatingSettings) {
+                        popupMessage('Success', 'Settings updated!');
+                        
+                    }
+                    else {
+                        popupMessage('Success', 'Congratulations, you have just created a new account on wishenda.com! Click OK to continue to the log in screen.',
                                     function() {
                                         window.location = Routing.generate('WishlistFrontpageBundle_homepage');
                                     });
+                    }
                 }
                 else
                 {
@@ -95,6 +104,11 @@ function sendFormValues()
 }
 
 $(document).ready(function(){
+    //If old password input exists we must be updating our settings.
+    if(('#old_password').length > 0 ) {
+        updatingSettings = true;
+    }
+    
     $('#saveChanges').click(saveChanges);
     
     $('#photoimg').live('change', function()	
@@ -113,4 +127,11 @@ $(document).ready(function(){
     $('#fullname').val($('#orig_name').val());
     $('#email').val($('#orig_email').val());
     $('#email').prop('disabled', true);
+
+    var birthDate = $('#orig_birthdate').val().split('-');
+    if(birthDate.length == 3) {
+        $('#birthMonth').val(birthDate[0]);
+        $('#birthDay').val(birthDate[1]);
+        $('#birthYear').val(birthDate[2]);
+    }
 });
