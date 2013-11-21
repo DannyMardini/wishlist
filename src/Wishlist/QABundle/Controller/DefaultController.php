@@ -4,6 +4,8 @@ namespace Wishlist\QABundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Wishlist\CoreBundle\Entity\Request;
+use Wishlist\CoreBundle\Entity\Token;
 
 
 class DefaultController extends Controller
@@ -34,8 +36,8 @@ class DefaultController extends Controller
         {
             $response = "";
             $email = $this->getRequest()->get('email');
-            $link = "";
             $user = null;
+            $token = null;
             
             if(!$email)
             {
@@ -43,9 +45,8 @@ class DefaultController extends Controller
             }
             else
             {
-                $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
-                
                 try {
+                    $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
                     $user = $userRepo->getUserWithEmail($email);
                 }
                 catch(\Doctrine\ORM\NoResultException $e)
@@ -53,25 +54,16 @@ class DefaultController extends Controller
                     return new Response ('Error: The email does not pertain to a user. Please retry with the correct email.');                    
                 }
                 
-                // Set a flag in the user table so we know that they are waiting to change their password
-                $resetpassword_on = 1;
-                $user->setResetpassword($resetpassword_on);
-                $em = $this->getEntityManager();
-                $em->persist($user);
-                $em->flush();
+                $tokenRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Token');
                 
-                // 
-                $full_message = 'Hello ' . $user->getName() . ' We received a request to reset your password. ' . 
-                            ' If you did not submit this request please contact our Support Team immediately by emailing wishendasupport@wishnda.com ' .
-                            ' Otherwise please click the following link to reset your password: ' . $link;
-                $this->get("Mailer_Service")->sendMail("wishthrowaway@gmail.com", "User Inquiry", $full_message, $full_message);
-                $response = 'success';
+                // Add reset-password token to the Token table for this user and send an email to the user
                 
-                // the link has to pass in the user ID so that we can know what user is changing their password
-                // also set a flag in the DB to let us know that the user is waiting to change their password
-                // only change it if this flag is set in the DB, else don't do anything.
+                $bytes = openssl_random_pseudo_bytes(Request::ACCEPT_STR_MAX_LENGTH, $cstrong);
+                $randTokenId = bin2hex($bytes);
                 
-                
+                $token = $tokenRepo->addNewToken($randTokenId, TOKEN::RESET_PASSWORD_REQUEST, $user); // 1: reset password token type
+                $this->get("Mailer_Service")->sendResetPasswordEmail($token);
+                $response = 'Success:You will receive an email shortly!';
             }
             
             return new Response($response);
@@ -83,7 +75,60 @@ class DefaultController extends Controller
         }        
     }
     
-    public function ResetPasswordAction()
+    public function SaveNewPasswordAction()
+    {
+        // check if the user with this email has a token pending for reset password
+        $tokenRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Token');
+        
+        $tokenId = $this->getRequest()->query->get('token');
+        $email = $this->getRequest()->query->get('email');
+        if(!isset($tokenId) || !isset($email)) 
+        {
+            return new Response('Error:The request could not be processed. Please submit a new password reset request and try again with the new link that is emailed to you.', DefaultController::SC_BAD_REQUEST);
+        }
+        
+        $userToken = $tokenRepo->findOneByToken($tokenId);
+        if(!isset($userToken)) 
+        {
+            return new Response('Error:The request could not be processed. Please submit a new password reset request and try again with the new link that is emailed to you.', DefaultController::SC_BAD_REQUEST);
+        }
+        
+        if( $userToken->getUser()->getEmail() != $email )
+        {
+            return new Response('Error:The request could not be processed. Please submit a new password reset request and try again with the new link that is emailed to you.', DefaultController::SC_BAD_REQUEST);
+        }
+        
+        $password1 = $this->getRequest()->get('new_password1');
+        $password2 = $this->getRequest()->get('new_password2');
+        if($password1 != $password2)
+        {
+            return new Response('Error:The request could not be completed because the passwords did not match. Please make sure the passwords match and try again. ');
+        }
+        
+        // if yes, save the new password 
+        $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
+        $user = $userRepo->getUserWithEmail($email);
+        
+        if(!isset($user))
+        {
+            return new Response('Error:The request could not be processed. Please submit a new password reset request and try again with the new link that is emailed to you.', DefaultController::SC_BAD_REQUEST);
+        }
+        
+        $userRepo->updatePassword($password1, $user);        
+        
+        // remove the token from the token table
+        $tokenRepo->removeToken($userToken);        
+        
+        // send back a success message
+        return new Response("Success:Password was successfully changed!");
+    }
+
+    public function SubmitNewPasswordAction()
+    {
+        return $this->render('WishlistQABundle:default:submitnewpassword.html.php');
+    }     
+    
+    public function ForgotPasswordAction()
     {
         return $this->render('WishlistQABundle:default:resetpassword.html.php');
     }    

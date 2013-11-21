@@ -1,0 +1,23 @@
+Wishlist\CoreBundle\Entity\Token:
+  type: entity
+  table: null
+  repositoryClass: Wishlist\CoreBundle\Repository\TokenRepository
+  manyToOne:
+    user:
+      targetEntity: WishlistUser
+      inversedBy: tokens
+      joinColumn:
+        name: userId
+        referencedColumnName: wishlistuser_id
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    token:
+      type: string
+    tokenType:
+      type: integer
+  lifecycleCallbacks: {  }
+  

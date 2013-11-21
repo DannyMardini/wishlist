@@ -95,6 +95,13 @@ class WishlistUserRepository extends EntityRepository
         return $user;
     }
     
+    public function updatePassword($password, $user)
+    {
+        $user->setPassword($password);
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
+    }
+    
     public function getFriendsOf(WishlistUser $user)
     {
         $friendships = $user->getFriendships();

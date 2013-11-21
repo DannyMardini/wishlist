@@ -15,9 +15,18 @@ WishlistQABundle_contactSupport:
     defaults: { _controller: WishlistQABundle:Default:contactSupport }
     
 WishlistQABundle__resetpasswordrequest:
-    pattern:  /resetpasswordrequest
+    pattern:  /password/resetrequest
     defaults: { _controller: WishlistQABundle:Default:resetpasswordrequest }  
     
 WishlistQABundle_forgotpassword:
+  pattern: /password/forgotpassword/
+  defaults: { _controller: WishlistQABundle:Default:ForgotPassword }
+  
+WishlistQABundle__savenewpassword:
+  pattern: /password/save/
+  defaults: { _controller: WishlistQABundle:Default:SaveNewPassword }
+  
+WishlistQABundle__submitnewpassword:
   pattern: /password/reset/
-  defaults: { _controller: WishlistQABundle:Default:ResetPassword }
+  defaults: { _controller: WishlistQABundle:Default:SubmitNewPassword }  
+  

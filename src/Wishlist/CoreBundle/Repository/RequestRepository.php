@@ -22,7 +22,6 @@ class RequestRepository extends EntityRepository {
      */
     public function addInviteToQueue(/*string*/ $theEmail, /*WishlistUser*/ $userInvited=null)
     {
-        //todo: Have to generate a random "invite" number
         $bytes = openssl_random_pseudo_bytes(Request::ACCEPT_STR_MAX_LENGTH, $cstrong);
         $randHex = bin2hex($bytes);
 

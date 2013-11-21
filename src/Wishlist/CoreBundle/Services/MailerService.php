@@ -3,6 +3,7 @@
 namespace Wishlist\CoreBundle\Services;
 
 use Wishlist\CoreBundle\Entity\Request;
+use Wishlist\CoreBundle\Entity\Token;
 
 class MailerService
 {
@@ -46,6 +47,17 @@ class MailerService
         $request->setDateLastInvited(new \DateTime('now'));
         $em->flush();
     }
+    
+    public function sendResetPasswordEmail(Token $token)
+    {
+        $userEmail = $token->getUser()->getEmail();
+        $htmlbody = $this->templating->render('WishlistUserBundle:Email:submitNewPassword.html.php', 
+                array('token' => $token->getToken(), 'username' => $token->getUser()->getName(), 'email' => $userEmail));
+        $textbody = strip_tags($htmlbody).'http://wishenda.com/password/submitnewview/';
+        $this->sendMail($userEmail, "Reset your password on Wishenda", $htmlbody, $textbody);
+        $em = $this->doctrine->getEntityManager();
+        $em->flush();
+    }    
 
     public function sendMail($to, $subject, $htmlBody, $textBody)
     {
