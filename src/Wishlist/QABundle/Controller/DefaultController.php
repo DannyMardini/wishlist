@@ -57,7 +57,6 @@ class DefaultController extends Controller
                 $tokenRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Token');
                 
                 // Add reset-password token to the Token table for this user and send an email to the user
-                
                 $bytes = openssl_random_pseudo_bytes(Request::ACCEPT_STR_MAX_LENGTH, $cstrong);
                 $randTokenId = bin2hex($bytes);
                 
@@ -77,25 +76,26 @@ class DefaultController extends Controller
     
     public function SaveNewPasswordAction()
     {
+        $error_message = 'Error:The request could not be processed. Please submit a new password reset request and try again with the new link that is emailed to you.';
+        
         // check if the user with this email has a token pending for reset password
         $tokenRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Token');
-        
         $tokenId = $this->getRequest()->query->get('token');
         $email = $this->getRequest()->query->get('email');
         if(!isset($tokenId) || !isset($email)) 
         {
-            return new Response('Error:The request could not be processed. Please submit a new password reset request and try again with the new link that is emailed to you.', DefaultController::SC_BAD_REQUEST);
+            return new Response($error_message, DefaultController::SC_BAD_REQUEST);
         }
         
         $userToken = $tokenRepo->findOneByToken($tokenId);
         if(!isset($userToken)) 
         {
-            return new Response('Error:The request could not be processed. Please submit a new password reset request and try again with the new link that is emailed to you.', DefaultController::SC_BAD_REQUEST);
+            return new Response($error_message, DefaultController::SC_BAD_REQUEST);
         }
         
         if( $userToken->getUser()->getEmail() != $email )
         {
-            return new Response('Error:The request could not be processed. Please submit a new password reset request and try again with the new link that is emailed to you.', DefaultController::SC_BAD_REQUEST);
+            return new Response($error_message, DefaultController::SC_BAD_REQUEST);
         }
         
         $password1 = $this->getRequest()->get('new_password1');
