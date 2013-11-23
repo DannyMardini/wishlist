@@ -5,6 +5,13 @@ $(document).ready(function(){
     
     $("#submit-new-password").submit(function(e){
         e.preventDefault();
+        
+        if(!passwordValidation())
+        {
+            alert('The passwords do not match. Please re-type them and try again.');
+            return;
+        }        
+        
         var urlVars = getUrlVars();
         var url = $(this).attr('action') + '?token=' + urlVars['token'] + '&email=' + urlVars['email'];
 
@@ -29,7 +36,12 @@ $(document).ready(function(){
             $('#message').html(message);
         });
     });        
-});   
+});
+
+function passwordValidation()
+{
+    return $("#new_password1").val() === $("#new_password2").val();
+}
 
 function closeView()
 {
