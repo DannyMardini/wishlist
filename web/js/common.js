@@ -37,11 +37,18 @@ $(document).ready(function(){
     initWishlistDialogs();
     setupEvents();
     setupConfirmDialog();
-    $('#giftDateInput').datepicker();
+    
+    if($('#giftDateInput').length > 0)
+    {
+        $('#giftDateInput').datepicker();
+    }
 });
 
 function setupConfirmDialog()
 {
+    if($('#confirmDialog').length == 0)
+        return;
+    
     $('#confirmDialog').dialog(
         {
             autoOpen: false,
@@ -376,6 +383,9 @@ function styleWishDialogButtons()
 
 function viewWishlistDialogInit()
 {
+    if($( "#itemDialog" ).length == 0)
+        return;
+    
     $( "#itemDialog" ).dialog({
             autoOpen: false,
             position: 'top', 
@@ -404,6 +414,9 @@ function viewWishlistDialogInit()
 
 function editWishlistDialogInit()
 {
+    if($( "#editItemDialog" ).length == 0 )
+        return;
+    
    $( "#editItemDialog" ).dialog({
             autoOpen: false,
             position: 'top', 
