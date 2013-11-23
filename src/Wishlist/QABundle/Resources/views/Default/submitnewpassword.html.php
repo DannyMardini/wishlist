@@ -15,9 +15,9 @@
         <article id='getPasswordResetInstructions'>
             <label class="instructions">Enter the new password below</label>
             <div class="submit-new-password"><label class="form-input-label">New password</label></div>
-            <input id='new_password1' type="text"></input><br />
+            <input type="password" id="new_password1" name="new_password1" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" required /><br />
             <div class="submit-new-password"><label class="form-input-label">Type it again</label></div>
-            <input id='new_password2' type="text"></input>
+            <input type="password" id="new_password2" name="new_password2" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" required /><br />
             <button type='submit'>Submit</button>
         </article>
         </form>
