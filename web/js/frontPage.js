@@ -6,8 +6,6 @@ function runEffect(togglerWindow) {
 
 $(document).ready(function()
 { 
-    intializeResetPasswordLink();
-    
     $.ajaxSetup ({
         cache: false
     });   
@@ -155,12 +153,3 @@ function hideToggleWindows()
     $('#requestInviteToggleWindow').hide();
     $('#loginToggleWindow').hide();        
 }
-
-function intializeResetPasswordLink()
-{
-    var url = Routing.generate('WishlistQABundle_forgotpassword');
-    $('#forgotPassword').attr('href',url);
-}
-
-   
-
