@@ -1,27 +1,54 @@
 #!/bin/bash
 #This script will refresh your database fixture and entities.
 set -e
+
+destructive=false
+
+ShowUsage()
+{
+    cat << EOF
+    usage: $0 [-d]
+
+    Update database with changes using Doctrine.
+
+    OPTIONS:
+        -d  Destructive refresh. *CAUTION* This option will drop the database
+            and reload data fixtures.
+EOF
+}
+
+while getopts ":dh" OPTION
+do
+    case $OPTION in
+        d)
+            destructive=true
+            ;;
+        h)
+            ShowUsage
+            exit
+            ;;
+        ?)
+            echo "Unknown option - $OPTION"
+            ShowUsage
+            exit
+            ;;
+    esac
+done
+
 echo "Generating entities..."
 php app/console generate:doctrine:entities Wishlist
 
-echo "Dropping Database..."
-php app/console doctrine:schema:drop --force
+if [ $destructive = true ]; then
+    echo "Dropping Database..."
+    php app/console doctrine:schema:drop --force
+fi
 
 echo "Updating Database..."
 php app/console doctrine:schema:update --force
 
-if [ ! $? ]; then
-    echo "Error updating database."
-    exit 1
-fi
-
-
-echo "Loading Fixtures..."
-php app/console doctrine:fixtures:load
-
-if [ ! $? ]; then
-    echo "Error loading fixtures."
-    exit 1
+if [ $destructive = true ]; then
+    echo "Loading Fixtures..."
+    php app/console doctrine:fixtures:load
 fi
 
 exit 0
