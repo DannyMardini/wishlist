@@ -383,6 +383,7 @@ class DefaultController extends Controller
     
     public function saveAccountSettingsAction()
     {
+        $request = $this->getRequest();
         $response = 'could not save changes. please try again later.';
         try{
             //throw new \Exception($response);
@@ -422,11 +423,14 @@ class DefaultController extends Controller
                 $updateSettings = true;
             }
             
-            $full_name = $this->getRequest()->get('fullname');
+            $full_name = $request->get('fullname');
             //$email = $this->getRequest()->get('email');
-            $new_password = $this->getRequest()->get('new_password');
-            $old_password = $this->getRequest()->get('old_password');
-            $birthdate = \DateTime::createFromFormat('Y-m-d', '2012-10-23');
+            $new_password = $request->get('new_password');
+            $birthDay = $request->get('birthDay');
+            $birthMonth = $request->get('birthMonth');
+            $birthYear = $request->get('birthYear');
+            $old_password = $request->get('old_password');
+            $birthdate = \DateTime::createFromFormat('Y-m-d', $birthYear.'-'.$birthMonth.'-'.$birthDay);
             $gender = intval($this->getRequest()->get('gender'));
             
             // TO DO 
@@ -446,14 +450,24 @@ class DefaultController extends Controller
                 }
                 */
                 
+                if(isset($gender))
+                {
+                    $user->setGender($gender);
+                }
+                
+                if (isset($birthdate) && $birthdate != $user->getBirthdate())
+                {
+                    $user->setBirthdate($birthdate);
+                }
+                
                 if (strlen($new_password) > 0 && $new_password !== $user->getPassword()) {
                     if (!StoPasswordHash::verifyPassword($old_password, $user->getPassword())) {
                         $response = "Incorrect old_password";
                         throw new \Exception($response);
                     }
                     $user->setPassword($new_password);
-                    $this->getDoctrine()->getEntityManager()->flush();
                 }
+                $this->getDoctrine()->getEntityManager()->flush();
             }
             else //newUser
             {
