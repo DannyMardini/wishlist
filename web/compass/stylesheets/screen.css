@@ -659,7 +659,6 @@ label.pageHeader {
 
 /* line 171, ../sass/screen.scss */
 #accountSettings {
-  margin: inherit;
   text-align: center;
   font-family: 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
   font-size: 20px;
@@ -667,7 +666,7 @@ label.pageHeader {
   color: #303030;
   -webkit-font-smoothing: antialiased;
 }
-/* line 180, ../sass/screen.scss */
+/* line 179, ../sass/screen.scss */
 #accountSettings input:invalid {
   border-color: #e88;
   -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
@@ -676,7 +675,7 @@ label.pageHeader {
   -ms-box-shadow: 0 0 5px rbba(255, 0, 0, 0.8);
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
 }
-/* line 189, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 #accountSettings input:required {
   border-color: #88a;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
@@ -685,7 +684,7 @@ label.pageHeader {
   -ms-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
-/* line 198, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 #accountSettings input, #accountSettings select, #accountSettings textarea {
   border: 1px solid #ccc;
   min-height: 30px;
@@ -699,20 +698,20 @@ label.pageHeader {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 213, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 #accountSettings form {
   width: auto;
 }
-/* line 217, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 #accountSettings input {
   display: inline-block;
   width: 30%;
 }
-/* line 222, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 #accountSettings label {
   color: #636363;
 }
-/* line 226, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 #accountSettings label.mainLabel {
   padding-right: 10px;
   display: inline-block;
@@ -720,79 +719,79 @@ label.pageHeader {
   text-align: right;
   vertical-align: top;
 }
-/* line 234, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 #accountSettings h1 {
   font-size: 30px;
 }
-/* line 238, ../sass/screen.scss */
+/* line 237, ../sass/screen.scss */
 #accountSettings ul {
   list-style: none;
 }
-/* line 242, ../sass/screen.scss */
+/* line 241, ../sass/screen.scss */
 #accountSettings #mainDiv {
   width: 80%;
   margin: 0 auto;
   text-align: left;
 }
-/* line 248, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 #accountSettings #genderPicker {
   width: 30%;
   display: inline-block;
 }
-/* line 253, ../sass/screen.scss */
+/* line 252, ../sass/screen.scss */
 #accountSettings #genderPicker li {
   display: inline-block;
   width: 25%;
   padding-right: 10px;
 }
-/* line 259, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 #accountSettings #genderPicker input {
   display: block;
 }
-/* line 263, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 #accountSettings #passwordInputs {
   display: inline-block;
   width: 30%;
 }
-/* line 267, ../sass/screen.scss */
+/* line 266, ../sass/screen.scss */
 #accountSettings #passwordInputs input {
   width: 100%;
 }
-/* line 272, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 #accountSettings #saveChanges {
   width: 10%;
   background-color: #333333;
   color: white;
 }
-/* line 278, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 #accountSettings img.preview {
   width: 200px;
   border: solid 1px #dedede;
   padding: 10px;
 }
-/* line 284, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 #accountSettings div#preview {
   text-align: center;
 }
-/* line 288, ../sass/screen.scss */
+/* line 287, ../sass/screen.scss */
 #accountSettings input.birthdate {
   width: 2.5em;
 }
-/* line 292, ../sass/screen.scss */
+/* line 291, ../sass/screen.scss */
 #accountSettings #birthYear {
   width: 4.5em;
 }
-/* line 296, ../sass/screen.scss */
+/* line 295, ../sass/screen.scss */
 #accountSettings input:disabled {
   background: #EBEBEB;
 }
 
-/* line 301, ../sass/screen.scss */
+/* line 300, ../sass/screen.scss */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 305, ../sass/screen.scss */
+/* line 304, ../sass/screen.scss */
 div#updatesComponent {
   width: 23%;
   position: absolute;
