@@ -105,16 +105,24 @@ function updateFriendList(results)
 
 function keyTrigger(e)
 {
-    if( (e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode == 8 )
+    if( (e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 8 || e.keyCode === 16)
     {
         //if it was a normal character just restart the timer for the search.
         timerRestart();
     }
-    else if( e.keyCode == 13 )
+    else if( e.keyCode === 13 )
     {
         //If enter was pressed cancel the timer and search for friends.
         timerEnd();
         searchFriends();
+    }
+    else {
+        var val = $(e.srcElement).val();
+        var regex = /["\<\>\*\@\.\#\$\%\^\(\)\,\/\!\?\"\'\:\;\}\{\|\\\+\=\_\-\~\[\]\`\&]/g;
+        if(val.match(regex)){
+            val = val.replace(regex, "");
+        }
+        $(e.srcElement).val(val);
     }
 }
 
