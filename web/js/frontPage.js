@@ -34,33 +34,30 @@ $(document).ready(function()
     }); 
     $("#loginForm").submit(function(e){
         // validate user via ajax call
-        e.preventDefault();
-        var url = $(this).attr('action');
+        e.preventDefault();        
+        var url = Routing.generate('Validate');
+        var info = {email: $("#login_email_addr").val(), password: $("#password").val()};
         
-        $.post( url, {email: $("#login_email_addr").val(), password: $("#password").val()}, function(data){            
-            
+        ajaxPost(info, url, function(data){
             $dataArray = data.split(","); 
-            
-            if($dataArray[0].toLowerCase() == "continue")
+            if($dataArray[0].toLowerCase() === "continue")
             {
-                // redirect to home page
-                redirectToHomePage();           
+                redirectToHomePage(); // redirect to home page
             }
             else
             {
-                displayMessage($dataArray[0]);            
+                displayMessage(data);            
             }
-        });
+        }, null);
     });
 
     $('#requestInviteForm').submit(function(e) {
         e.preventDefault();
         var url = Routing.generate('RequestInvite');
-        
-        $.post(url, {email: $("#email_addr").val()}, function(data){
+        var info = {email: $("#email_addr").val()};
+        ajaxPost(info, url, function(data){
             displayMessage(data);             
-        });
-        
+        }, null);
     });    
      
                  

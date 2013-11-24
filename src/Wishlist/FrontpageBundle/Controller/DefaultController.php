@@ -4,6 +4,7 @@ namespace Wishlist\FrontpageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\ORM\NoResultException;
 
 class DefaultController extends Controller
 {
@@ -30,6 +31,7 @@ class DefaultController extends Controller
             $response = "";
             $email = $this->getRequest()->get('email');
             $password = $this->getRequest()->get('password');
+            $userId = null;
 
             if(!$email || !$password)
             {
@@ -37,19 +39,22 @@ class DefaultController extends Controller
             }
             else
             {
-                $userId = $this->getDoctrine()->getEntityManager()->
+                try {
+                    $userId = $this->getDoctrine()->getEntityManager()->
                         getRepository('WishlistCoreBundle:WishlistUser')->validateEmailAndPassword($email, $password);
-
+                }
+                catch(\Exception $e)
+                {
+                    $msg = $e->getMessage();
+                    $response = $msg;
+                }
+                
                 if($userId)
                 {
                     $session = $this->getRequest()->getSession();
                     $session->set('email_addr', $email);
                     $session->set('user_id', $userId);
                     $response = "continue";
-                }
-                else
-                {
-                    $response = "The member could not be found, please check your email and password and try again. <br /><br />-Wishlist Team";              
                 }
             }
             
@@ -60,8 +65,6 @@ class DefaultController extends Controller
             $response = "Sorry about this! An issue occurred while validating your email and password. Please refresh your browser and try again. <br /><br />-Wishlist Team";
             return $this->renderText($response);
         }
-
-
     }
     
     public function requestInviteAction()

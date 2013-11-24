@@ -4,6 +4,7 @@
 
         <script type="text/javascript" src="/js/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>
+        <script type="text/javascript" src="/js/common.js"></script>        
         <link href="/css/black-tie/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/main.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -38,7 +39,7 @@
                     </div>
                     <div id="loginToggleWindow">
                         <br /><br />
-                        <form id="loginForm" method="POST" action="<?php echo $view['router']->generate('Validate') ?>">
+                        <form id="loginForm">
                             <label class="label">EMAIL:</label>
                             <input type="email" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address or username" required />
                             <br />

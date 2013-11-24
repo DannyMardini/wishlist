@@ -55,21 +55,24 @@ class WishlistUserRepository extends EntityRepository
         try
         {                                                    
             $user = $this->findOneByEmail($email);
+            
             if(!$user)
             {
-                return 0;
+                throw new \Exception("The email did not match any users in our system. <br /><br />-Wishlist Team");
             }
 
             if(StoPasswordHash::verifyPassword($password, $user->getPassword()))
             {
                 return $user->getWishlistUserId();
             }
+            else {
+                throw new \Exception("Wrong password! Check it and try again. <br /><br />-Wishlist Team");
+            }
+            
         }catch(Exception $e)
         {
-            return 0;
+            throw new \Exception("The system could not validate your login information. Please try again. <br /><br />-Wishlist Team");
         }
-
-        return 0;
     }
     
     public function getUserWithEmail( /*string*/ $email )
