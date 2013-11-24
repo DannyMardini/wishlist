@@ -290,28 +290,28 @@ class WishlistItem
         return $this->granted;
     }
     /**
-     * @var boolean $grantedNotified
+     * @var boolean $concluded
      */
-    private $grantedNotified;
+    private $concluded;
 
 
     /**
-     * Set grantedNotified
+     * Set concluded
      *
-     * @param boolean $grantedNotified
+     * @param boolean $concluded
      */
-    public function setGrantedNotified($grantedNotified)
+    public function setConcluded($concluded)
     {
-        $this->grantedNotified = $grantedNotified;
+        $this->concluded = $concluded;
     }
 
     /**
-     * Get grantedNotified
+     * Get concluded
      *
      * @return boolean 
      */
-    public function getGrantedNotified()
+    public function getConcluded()
     {
-        return $this->grantedNotified;
+        return $this->concluded;
     }
 }
