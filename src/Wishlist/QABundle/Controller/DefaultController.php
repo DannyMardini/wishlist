@@ -125,11 +125,11 @@ class DefaultController extends Controller
 
     public function SubmitNewPasswordAction()
     {
-        return $this->render('WishlistQABundle:default:submitnewpassword.html.php');
+        return $this->render('WishlistQABundle:Default:submitnewpassword.html.php');
     }     
     
     public function ForgotPasswordAction()
     {
-        return $this->render('WishlistQABundle:default:resetpassword.html.php');
+        return $this->render('WishlistQABundle:Default:resetpassword.html.php');
     }    
 }
