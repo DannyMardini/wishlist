@@ -3,6 +3,7 @@
     <head>
         <script type="text/javascript" src="/js/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="/js/resetpassword_request.js"></script>
+        <script type="text/javascript" src="/js/common.js"></script>        
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/resetpassword.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="/images/favicon.ico">

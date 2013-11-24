@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    $('#message').html('');
+    $('#close-window').hide();
+    
     $('#reset-password').show();
     
     $('#close-window').click(closeView);
@@ -14,29 +17,28 @@ $(document).ready(function(){
         
         var urlVars = getUrlVars();
         var url = $(this).attr('action') + '?token=' + urlVars['token'] + '&email=' + urlVars['email'];
+        var data = {new_password1: $("#new_password1").val(), new_password2: $("#new_password2").val()};
 
-        $.post( url, {new_password1: $("#new_password1").val(),
-            new_password2: $("#new_password2").val()},
-            function(response){
-            $('#submit-new-password').hide();
-            var dataArray = response.split(":"); 
-            var message = dataArray[1];
-            $('#message').html(message);
-        });
+        ajaxPost(data, url, displayMessage, $('#submit-new-password'));
     });       
     
     $("#reset-password").submit(function(e){
         e.preventDefault();
         var url = $(this).attr('action');            
-
-        $.post( url, {email: $("#email").val()}, function(response){            
-            $('#reset-password').hide();
-            var dataArray = response.split(":"); 
-            var message = dataArray[1];
-            $('#message').html(message);
-        });
+        var data = {email: $("#email").val()};
+        
+        ajaxPost(data, url, displayMessage, $('#reset-password'));
     });        
 });
+
+function displayMessage(response, textStatus, jqXHR, formId)
+{
+    formId.hide();
+    var dataArray = response.split(":"); 
+    var message = dataArray[1];
+    $('#message').html(message);
+    $('#close-window').show();    
+}
 
 function passwordValidation()
 {
