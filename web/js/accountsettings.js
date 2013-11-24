@@ -49,10 +49,8 @@ function allFormsValid()
 
         currInput = $('#new_password1');
         //Check Password1 and Password2 to ensure they are both not empty and they are both the same.
-        if (currInput.val().length <= 0) {
-            throw 'Please enter a password.';
-        }
-        else if (currInput.val() != $('#new_password2').val())
+
+        if (currInput.val() != $('#new_password2').val())
         {
             throw 'Passwords do not match.';
         }
