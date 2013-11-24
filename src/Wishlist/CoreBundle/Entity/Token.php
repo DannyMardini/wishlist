@@ -9,6 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Token
 {
+    /**
+     * Token CONST Types:
+     */
     const RESET_PASSWORD_REQUEST = 1;
     
     /**
@@ -100,5 +103,30 @@ class Token
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * @var datetime $lastUpdated
+     */
+    private $lastUpdated;
+
+
+    /**
+     * Set lastUpdated
+     *
+     * @param datetime $lastUpdated
+     */
+    public function setLastUpdated($lastUpdated)
+    {
+        $this->lastUpdated = $lastUpdated;
+    }
+
+    /**
+     * Get lastUpdated
+     *
+     * @return datetime 
+     */
+    public function getLastUpdated()
+    {
+        return $this->lastUpdated;
     }
 }

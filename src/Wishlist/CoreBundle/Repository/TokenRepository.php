@@ -29,6 +29,7 @@ class TokenRepository extends EntityRepository
         $t->setToken($token);
         $t->setTokenType($tokenType);
         $t->setUser($user);
+        $t->setLastUpdated(new \DateTime('now'));
 
         if(!isset($t))
         {

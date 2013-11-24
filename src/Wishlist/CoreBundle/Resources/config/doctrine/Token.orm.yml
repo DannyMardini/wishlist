@@ -19,5 +19,7 @@ Wishlist\CoreBundle\Entity\Token:
       type: string
     tokenType:
       type: integer
+    lastUpdated:
+      type: datetime            
   lifecycleCallbacks: {  }
   
