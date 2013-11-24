@@ -319,7 +319,7 @@ class WishlistUser {
 
         foreach($grantedItems as $grantedItem)
         {
-            if($grantedItem->getGrantedNotified() != true)
+            if($grantedItem->getConcluded() != true)
             {
                 $items[] = $grantedItem;
             }

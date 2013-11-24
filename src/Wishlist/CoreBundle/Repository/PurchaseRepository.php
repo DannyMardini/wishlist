@@ -138,17 +138,6 @@ class PurchaseRepository extends EntityRepository
         //Just do the dates for now, worry about the events afterwards.
         $em = $this->getEntityManager();
 
-        /*
-        $q = $em->createQuery('
-            SELECT p 
-            FROM WishlistCoreBundle:Purchase p
-            JOIN p.wishlistUser usr
-            JOIN p.event e
-            where usr.wishlistuser_id = :uid AND (e.eventDate < CURRENT_DATE())')
-            ->setParameter('uid', $uid);
-         * 
-         */
-        
         $q = $em->createQuery('
             SELECT p 
             FROM WishlistCoreBundle:Purchase p

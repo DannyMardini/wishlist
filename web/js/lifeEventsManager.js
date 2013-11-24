@@ -133,11 +133,12 @@ function removeEventCallback(response)
     
     // remove the event from the table view.
     $('#event_'+response).remove();
-    var eventCount = resetEventCount('minus');
+    var eventCount = getEventCount();
     if(eventCount == 0)
     {
         $('#EventList').html("You haven't added any events yet.");
     }
+    updateEventCountSpan();
     $('#dialog-message').dialog('open');
     $('#dialog-message').attr('title','Event removed!').html('<p>The event was permanently removed.</p>');
     
@@ -184,6 +185,8 @@ function saveNewEventCallback(data)
     
     renderNewEvent(data);
     
+    updateEventCountSpan();
+    
     $('#dialog-message').attr('title','Event saved!').html('<p>The event was saved.</p>').dialog('open');
 }
  
@@ -193,22 +196,22 @@ function validateNewEventInputs()
     && $("#newEventType option:selected").val()!=-1);
 }
 
-function resetEventCount(type)
+function getEventCount()
 {
-    // reset the total event count and check if this is the first event added
-    var eventCount = parseInt($('.event-header-label').attr('id').split('_')[2]);
-    type == 'plus' ? eventCount++ : eventCount--;
-    $('.event-header-label').html('Events ('+eventCount+')');
-    $('.event-header-label').attr('id', 'event_count_'+eventCount);
-    return eventCount;
+    return $('div.Event').length;
+}
+
+function updateEventCountSpan()
+{
+    $('#eventCount').html(getEventCount());
 }
 
 function renderNewEvent(id)
 {
-    var eventCount = resetEventCount('plus');    
-    if(eventCount==1){
+    var eventCount = getEventCount();
+    if(eventCount==0) { //Clear out "You haven't added any events yet." message
         $('#EventList').html('');
-    }
+    }   
     
     var newEventType = $('#newEventType').val();
     var newEventName = $('#newEventname').val();
@@ -216,7 +219,7 @@ function renderNewEvent(id)
     var dateArr = $('#newDatepicker').val().split('-');
     var dateObj = parseDate(dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0]);
     var day = dateObj.getDay();
-    var newEvent = ["<div class='Event' id='event_",id,"'><button id='remove_event_", id, "' class='remove' title='remove event'></button>",
+    var newEvent = ["<div class='Event' id='event_",id,"'><button id='remove_event_", id, "' class='remove' title='remove event'><span class='ui-icon ui-icon-minus wishenda-button'></span></button>",
                    ,"<div class='image' title='", newEventName, "'><img src='", newImage,"' height='30' width='30' /></div>",
                    ,"<div class='name' title ='", newEventName, "'>", newEventName,"</div>",
                    ,"<div class='timestamp' title='", newEventName, "'>-- ", month[dateObj.getMonth()]," ",day,get_nth_suffix(day),"</div></div>"].join('');
@@ -231,4 +234,4 @@ function renderNewEvent(id)
     setupRemoveEventButtons($('#remove_event_'+id));
     applyEventHoverHandler($('#event_'+id));
 }
-    
+

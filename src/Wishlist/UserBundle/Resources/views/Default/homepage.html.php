@@ -10,8 +10,6 @@
 
 <div id="wishlistContent" class="mockup">
     
-    <?php
-    // This is calling the Default controller calling the action = wishlist
-    echo $view['actions']->render('WishlistUserBundle:Default:wishlist'); ?>
+    <?php echo $view['actions']->render('WishlistListBundle:Wishlist:showWishlist', array('user' => $user)); ?>
 </div>
 

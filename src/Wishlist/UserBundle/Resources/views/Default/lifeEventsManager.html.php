@@ -3,7 +3,7 @@
     <?php $eventCount = count($events); ?>
     <label class="pageHeader" id="event_count_<?php echo $eventCount ?>">Events</label>
     <button class="addButton" title="add event" id="addLifeEventButton"><span class="ui-icon ui-icon-plus wishenda-button"></span></button>
-    <span class="itemCountSpan"><?php echo $eventCount ?> Event(s)</span>
+    <span class="itemCountSpan"><span id='eventCount'><?php echo $eventCount ?></span> Event(s)</span>
 </div>        
 <hr size="1" width="90%" color="grey">
 <div id="EventList" class="eventListDiv">

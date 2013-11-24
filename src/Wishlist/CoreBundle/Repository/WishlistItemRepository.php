@@ -77,7 +77,7 @@ class WishlistItemRepository extends EntityRepository
         $newWish->setWishlistUser($wishlistUser);
         $newWish->setIsActive(true);
         $newWish->setGranted(false);
-        $newWish->setGrantedNotified(false);
+        $newWish->setConcluded(false);
         $this->getEntityManager()->persist($newWish);
         $this->getEntityManager()->flush(); 
         
@@ -90,7 +90,7 @@ class WishlistItemRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
         $wishItem->setGranted(true);
-        $wishItem->setGrantedNotified(false);
+        $wishItem->setConcluded(false);
         $em->flush();
     }
 
@@ -98,7 +98,7 @@ class WishlistItemRepository extends EntityRepository
     {
         if($wishItem->getGranted())
         {
-            $wishItem->setGrantedNotified(true);
+            $wishItem->setConcluded(true);
             $this->getEntityManager()->flush();
         }
     }

@@ -46,7 +46,7 @@ Wishlist\CoreBundle\Entity\WishlistItem:
       length: null
     granted:
       type: boolean
-    grantedNotified:
+    concluded:
       type: boolean
   lifecycleCallbacks: {  }
   
