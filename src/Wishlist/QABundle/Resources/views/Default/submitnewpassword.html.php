@@ -21,5 +21,7 @@
             <button type='submit'>Submit</button>
         </article>
         </form>
+        <article id="message"></article>
+        <button id="close-window">Close</button>        
     </body>
 </html>

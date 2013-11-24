@@ -18,7 +18,7 @@ $(document).ready(function(){
         $.post( url, {new_password1: $("#new_password1").val(),
             new_password2: $("#new_password2").val()},
             function(response){
-            $('#reset-password').hide();
+            $('#submit-new-password').hide();
             var dataArray = response.split(":"); 
             var message = dataArray[1];
             $('#message').html(message);
