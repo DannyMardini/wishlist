@@ -78,13 +78,19 @@ $(document).ready(function()
             hiddenToggler_SelectorId = "#requestInviteToggleWindow";
         }
                                                 
-        $(hiddenToggler_SelectorId).hide(); 
-        runEffect(activeToggler_SelectorId);        
+        $(hiddenToggler_SelectorId).hide();
+        runEffect(activeToggler_SelectorId);
     }); 
     
     
-    $(".aboutLink").click(function(){eval('displayMessageDialog(aboutMessage, "What is Wishlist?")')});
-    $(".termsLink").click(function(){eval('displayMessageDialog(termsMessage, "Terms and Conditions?")')});
+    $(".aboutLink").click(function(e){
+        e.preventDefault();
+        eval('displayMessageDialog(aboutMessage, "What is Wishlist?")');
+    });
+    $(".termsLink").click(function(e){
+        e.preventDefault();
+        eval('displayMessageDialog(termsMessage, "Terms and Conditions?")');
+    });
     
     // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
     $( "#dialog:ui-dialog" ).dialog( "destroy" );

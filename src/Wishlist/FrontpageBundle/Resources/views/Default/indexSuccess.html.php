@@ -58,10 +58,6 @@
                 <a class="aboutLink frontpageLink" href="">ABOUT</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
                 <a class="termsLink frontpageLink" href="">TERMS</a>
-                <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="privacyLink frontpageLink" href="">PRIVACY</a>
-                <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="joinLink frontpageLink" href="">JOIN OUR TEAM</a>
             </div>
         </footer>
         <div id="dialog-message" title=""></div>
