@@ -46,7 +46,7 @@ $(document).ready(function()
             }
             else
             {
-                displayMessage(data);            
+                displayMessage(data, "Alert");            
             }
         }, null);
     });
@@ -56,7 +56,7 @@ $(document).ready(function()
         var url = Routing.generate('RequestInvite');
         var info = {email: $("#email_addr").val()};
         ajaxPost(info, url, function(data){
-            displayMessage(data);             
+            displayMessage(data, "Alert");             
         }, null);
     });    
      
@@ -89,7 +89,7 @@ $(document).ready(function()
     });
     $(".termsLink").click(function(e){
         e.preventDefault();
-        eval('displayMessageDialog(termsMessage, "Terms and Conditions?")');
+        eval('displayMessageDialog(termsMessage, "Terms and Conditions")');
     });
     
     // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
@@ -106,15 +106,15 @@ var termsMessage = "<b><u>Terms:</u></b><i> TO DO";
 
 function displayMessageDialog(msg, title)
 {    
-    $( "#dialog-message" ).attr('title',title);    
-    displayMessage(msg);
+    //$( "#dialog-message" ).attr('title',title);    
+    displayMessage(msg, title);
 }
 
-function displayMessage(message)
+function displayMessage(message, title)
 {
     $('#dialog-message').html(message);
     $( "#dialog-message" ).dialog({
-        title: 'Alert',
+        title: title,
         position: 'top',
         modal: true,
         height:400,
