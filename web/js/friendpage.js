@@ -117,11 +117,7 @@ function keyTrigger(e)
         searchFriends();
     }
     else {
-        var val = $(e.srcElement).val();
-        var regex = /["\<\>\*\@\.\#\$\%\^\(\)\,\/\!\?\"\'\:\;\}\{\|\\\+\=\_\-\~\[\]\`\&]/g;
-        if(val.match(regex)){
-            val = val.replace(regex, "");
-        }
+        var val = removeSpecialChars($(e.srcElement).val());
         $(e.srcElement).val(val);
     }
 }

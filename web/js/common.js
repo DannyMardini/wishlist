@@ -827,4 +827,14 @@ function getIds(elements)
     return expiredPurchases;
 }
 
+function removeSpecialChars(val)
+{    
+    var regex = /["\<\>\*\@\.\#\$\%\^\(\)\,\/\!\?\"\'\:\;\}\{\|\\\+\=\_\-\~\[\]\`\&]/g;
+    if(val.match(regex)){
+        val = val.replace(regex, "");
+    }
+    
+    return val;
+}
+
 
