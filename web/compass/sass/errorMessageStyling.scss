@@ -1,0 +1,17 @@
+@import 'partials/globalvariables';
+
+#error_image {
+    img {
+        width: 600px;
+        height: 400px;
+    }
+}
+
+#message {
+    font-family: $global-font-family;
+    text-align: center;
+    width: 90%;
+    font-size: 30px;
+    color: $global-color4;
+    padding-left: 20px;
+}

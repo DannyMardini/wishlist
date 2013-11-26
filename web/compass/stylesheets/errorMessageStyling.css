@@ -1,0 +1,15 @@
+/* line 4, ../sass/errorMessageStyling.scss */
+#error_image img {
+  width: 600px;
+  height: 400px;
+}
+
+/* line 10, ../sass/errorMessageStyling.scss */
+#message {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  width: 90%;
+  font-size: 30px;
+  color: #777777;
+  padding-left: 20px;
+}

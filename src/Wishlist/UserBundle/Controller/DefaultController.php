@@ -584,17 +584,24 @@ class DefaultController extends Controller
     public function newAccountUserAction()
     {
         $requestRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Request');
+        $error_message = "";
+        $error_message_invalidkey = 'Sorry about this, the link to setup your account is no longer valid! Please try requesting another invite: <a href="http://www.wishenda.com" target="_blank" >Wishenda</a>';
         
         $acceptIdQuery = $this->getRequest()->query->get('acceptId');
         if(!isset($acceptIdQuery)) 
         {
-            return new Response('Sorry the link was invalid. Please try resubmitting a request.', DefaultController::SC_BAD_REQUEST);
+            $error_message = $error_message_invalidkey;
         }
 
         $requestInvite = $requestRepo->findOneByAcceptString($acceptIdQuery);
         if(!isset($requestInvite)) 
         {
-            return new Response('failure', DefaultController::SC_BAD_REQUEST);
+            $error_message = $error_message_invalidkey;
+        }
+        
+        if(count($error_message) > 0)
+        {
+            return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $error_message));
         }
 
         return $this->render('WishlistUserBundle:Default:newAccountUser.html.php', array('email' => $requestInvite->getEmail()));
