@@ -441,6 +441,14 @@ class DefaultController extends Controller
                     }
                     $user->setPassword($new_password);
                 }
+                
+                if(PicService::tempProfilePicExists($loggedInUserId))
+                {
+                    if(!PicService::persistTempProfilePic($loggedInUserId))
+                    {
+                        throw new \Exception('Could not save new profile picture');
+                    }
+                }
                 $this->getDoctrine()->getEntityManager()->flush();
             }
             else //newUser
@@ -460,22 +468,16 @@ class DefaultController extends Controller
     
     public function uploadUserImageAction()
     {
+        $request = $this->getRequest();
         try{
             $response = 'Image cannot be shown';
-            $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
-            $path = "images/temp/".$loggedInUserId."/";
+            $loggedInUserId = $request->getSession()->get('user_id');
             $slashlessPath = "images/temp/".$loggedInUserId;
-            
-            $foundDir = is_dir($slashlessPath);
-            
-            if(!$foundDir) // add the user directory before saving the temp image
-            {
-                mkdir($slashlessPath, 0777);
-            }
             
             // continue on to save the image in the user directory
             $valid_formats = array("jpg", "png", "gif", "bmp");
-            if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
+            
+            if($request->getMethod() === 'POST')
             {
                 $name = $_FILES['photoimg']['name'];
                 $size = $_FILES['photoimg']['size'];
@@ -487,28 +489,29 @@ class DefaultController extends Controller
                     {
                         if($size<(1024*1024))
                         {                  
-                            $actual_image_name = time().substr(str_replace(" ", "_", $txt), 5).".".$ext;
-                            $actual_image_name = "profile.".$ext;
-                            
                             $tmp = $_FILES['photoimg']['tmp_name'];
                             
+                            $image_loc = PicService::uploadTempProfilePic($loggedInUserId, $ext, $tmp);
+                            
+                            $response = "<img id='user_image' src='/".$image_loc."'  class='preview'>";
+                            /*
                             if(move_uploaded_file($tmp, $path . $actual_image_name))
                             {
                                 //mysql_query("UPDATE users SET profile_image='$actual_image_name' WHERE uid='$session_id'");                                
-                                $response = "<img id='user_image' src='/".$path.$actual_image_name."'  class='preview'>";
+                                $response = "<img id='user_image' src='/".$image_loc."'  class='preview'>";
                             }
-                            else
-                                $response = "failed";
+                             * 
+                             */
                         }
                     }
                 }
             }    
-            
-           return new Response($response);
         }
         catch(Exception $e){
             return new Response("An issue occurred, please try again later or try a different image");
         }
+        
+        return new Response($response);
     }
 
     public function showLifeEventsManagerAction()
