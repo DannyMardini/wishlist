@@ -56,7 +56,7 @@ $(document).ready(function()
         var url = Routing.generate('RequestInvite');
         var info = {email: $("#email_addr").val()};
         ajaxPost(info, url, function(data){
-            displayMessage(data, "Alert");             
+            displayMessage(data, "Request Submitted");             
         }, null);
     });    
      

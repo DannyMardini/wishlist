@@ -367,11 +367,9 @@ class DefaultController extends Controller
     public function saveAccountSettingsAction()
     {
         $request = $this->getRequest();
-        $response = 'could not save changes. please try again later.';
+        $response = 'The settings could not be saved, please try again later.';
         try{
-            //throw new \Exception($response);
             $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
-            
             $updateSettings = false;
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
             $slashlessImagePath = "images/temp/".$loggedInUserId;
@@ -380,7 +378,7 @@ class DefaultController extends Controller
             // save image to user page if user uploaded a new image
             if($foundDir) // move image to official user image and remove temp folder
             {
-                // TO DO
+                // TODO
             }
 
             if(!isset($loggedInUserId))
@@ -407,7 +405,6 @@ class DefaultController extends Controller
             }
             
             $full_name = $request->get('fullname');
-            //$email = $this->getRequest()->get('email');
             $new_password = $request->get('new_password');
             $birthDay = $request->get('birthDay');
             $birthMonth = $request->get('birthMonth');
@@ -426,12 +423,6 @@ class DefaultController extends Controller
                 if (strlen($full_name) > 0 && $full_name !== $user->getName()) {
                     $user->setName($full_name);
                 }
-                
-                /* Don't allow users to update their emails just yet.
-                if (strlen($email) > 0 && $email !== $user->getEmail() ) {
-                    $user->setEmail($email);
-                }
-                */
                 
                 if(isset($gender))
                 {
@@ -597,7 +588,7 @@ class DefaultController extends Controller
         $acceptIdQuery = $this->getRequest()->query->get('acceptId');
         if(!isset($acceptIdQuery)) 
         {
-            return new Response('failure', DefaultController::SC_BAD_REQUEST);
+            return new Response('Sorry the link was invalid. Please try resubmitting a request.', DefaultController::SC_BAD_REQUEST);
         }
 
         $requestInvite = $requestRepo->findOneByAcceptString($acceptIdQuery);

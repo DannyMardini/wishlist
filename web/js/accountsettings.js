@@ -81,55 +81,59 @@ function sendFormValues()
             },
             function(response){
                 $dataArray = response.split(":"); 
-                if($dataArray[0].toLowerCase() == "success")
+                if($dataArray[0].toLowerCase() === "success")
                 {
                     if(updatingSettings) {
-                        popupMessage('Success', 'Settings updated!');
+                        popupMessage('Success', 'Your settings have been updated!',rerouteToHomepage);
                         
                     }
                     else {
-                        popupMessage('Success', 'Congratulations, you have just created a new account on wishenda.com! Click OK to continue to the log in screen.',
-                                    function() {
-                                        window.location = Routing.generate('WishlistFrontpageBundle_homepage');
-                                    });
+                        popupMessage(
+                                'Success', 
+                                'Congratulations, you have just created a new account on wishenda.com! Click OK to continue to the log in screen.',
+                                rerouteToHomepage);
                     }
                 }
                 else
                 {
-                    popupMessage('Failure', 'Unfortunately there was a problem with your request. Please try again in a few moments.');
+                    popupMessage('Uh oh!', 'Unfortunately there was a problem with your request. Please try again in a few moments.');
                 }
             });
 }
 
+function rerouteToHomepage()
+{
+    window.location = Routing.generate('WishlistFrontpageBundle_homepage');
+}
+
+function onClickPhotoImage()
+{
+    $("#preview").html('<img src="/images/loader.gif" alt="Uploading...."/>');
+
+    $("#imageform").ajaxForm(
+    {
+        target: '#preview'
+    }).submit();
+}
+ 
 $(document).ready(function(){
-    //If old password input exists we must be updating our settings.
-    if(('#old_password').length > 0 ) {
-        updatingSettings = true;
-    }
+    //If old password input exists, the user is updating their existing settings.
+    updatingSettings = ($('#old_password').length > 0);
     
     $('#saveChanges').click(saveChanges);
-    
-    $('#photoimg').live('change', function()	
-    { 
-        $("#preview").html('');
-        $("#preview").html('<img src="/images/loader.gif" alt="Uploading...."/>');
-
-        $("#imageform").ajaxForm(
-        {
-            target: '#preview'
-        }).submit();    
-    });
+    $('#photoimg').live('change', onClickPhotoImage);
 
     var gender = $('#orig_gender').val();
     $('#gender_'+gender).attr('checked',true);
     $('#fullname').val($('#orig_name').val());
-    $('#email').val($('#orig_email').val());
-    $('#email').prop('disabled', true);
+    $('#email').val($('#orig_email').val()).prop('disabled', true);
 
-    var birthDate = $('#orig_birthdate').val().split('-');
-    if(birthDate.length == 3) {
-        $('#birthMonth').val(birthDate[0]);
-        $('#birthDay').val(birthDate[1]);
-        $('#birthYear').val(birthDate[2]);
+    if(updatingSettings){
+        var birthDate = $('#orig_birthdate').val().split('-');
+        if(birthDate.length === 3) {
+            $('#birthMonth').val(birthDate[0]);
+            $('#birthDay').val(birthDate[1]);
+            $('#birthYear').val(birthDate[2]);
+        }
     }
 });

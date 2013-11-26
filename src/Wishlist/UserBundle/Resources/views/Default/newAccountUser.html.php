@@ -5,5 +5,5 @@ $view['slots']->set('title', 'New Wishlist User Account');
 
 $view['slots']->set('heading', 'New User Account');
 
-$view['slots']->set('greeting', 'Hey there and congratulations on being invited to Wishenda!');
+$view['slots']->set('greeting', 'Hey, there! Congratulations on being invited to Wishenda!');
 ?>
