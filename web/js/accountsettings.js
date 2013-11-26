@@ -84,12 +84,12 @@ function sendFormValues()
                 if($dataArray[0].toLowerCase() === "success")
                 {
                     if(updatingSettings) {
-                        popupMessage('Success', 'Your settings have been updated!',rerouteToHomepage);
+                        popupMessage('Success!', 'Your settings have been updated!');
                         
                     }
                     else {
                         popupMessage(
-                                'Success', 
+                                'Success!', 
                                 'Congratulations, you have just created a new account on wishenda.com! Click OK to continue to the log in screen.',
                                 rerouteToHomepage);
                     }
