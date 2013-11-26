@@ -121,7 +121,28 @@ $(document).ready(function(){
     updatingSettings = ($('#old_password').length > 0);
     
     $('#saveChanges').click(saveChanges);
-    $('#photoimg').live('change', onClickPhotoImage);
+    
+    $('#photoimg').on('change', function()	
+    { 
+        $("#preview").html('');
+        $("#preview").html('<img src="/images/loader.gif" alt="Uploading...."/>');
+        
+        $("#imageform").ajaxForm(
+        {
+            target: '#preview'
+        }).submit();
+        /*
+        $.post(Routing.generate('WishlistUserBundle_uploadUserImage'), {photoimg: $('#photoimg').serialize()}, function(data, textStatus, jqXHR) {
+            alert("success");
+            
+        });
+        //*/
+
+        /*
+        $("#imageform").submit();
+        $
+        //*/
+    });
 
     var gender = $('#orig_gender').val();
     $('#gender_'+gender).attr('checked',true);

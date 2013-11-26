@@ -7,4 +7,5 @@
         echo  $view->render('WishlistUserBundle:Default:settingForms.html.php', array('gender' => $gender, 'name' => $name,
         'email' => $email, 'birthdate' => $birthdate, 'profileImage' => $profileImage)) ?>
 </div>
+<script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/jquery.form.js') ?>></script>
 <script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/accountsettings.js') ?>></script>

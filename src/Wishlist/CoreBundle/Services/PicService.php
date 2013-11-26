@@ -14,11 +14,11 @@ class PicService
     
     public static function getProfileUrl(/*int*/ $wishlistUserId)
     {
-        $pic_url = "images/user/".$wishlistUserId."/profile.jpg";
+        $matched = glob("images/user/".PicService::hashProfileFname($wishlistUserId).".*");
         
-        if(file_exists($pic_url))
+        if(count($matched))
         {
-            return '/'.$pic_url;
+            return '/'.$matched[0];
         }
         
         return PicService::defaultProfilePic;
@@ -34,6 +34,43 @@ class PicService
         }
         
         return PicService::defaultProfileThumb;
+    }
+    
+    public static function uploadTempProfilePic(/*int*/$userId, /*string*/$ext, /*string*/$tmp)
+    {
+        $hashedFname = PicService::hashProfileFname($userId);
+        $finalFname = 'images/temp/'.$hashedFname.'.'.$ext;
+        if(!move_uploaded_file($tmp, $finalFname))
+        {
+            throw new \Exception('Upload failed');
+        }
+        
+        return $finalFname;
+    }
+    
+    public static function tempProfilePicExists(/*int*/$userId)
+    {
+        $hashedFname = PicService::hashProfileFname($userId);
+        $matched = glob('images/temp/'.$hashedFname.'.*');
+        return count($matched);
+    }
+    
+    public static function persistTempProfilePic(/*int*/$userId)
+    {
+        $hashedFname = PicService::hashProfileFname($userId);
+        $matched = glob('images/temp/'.$hashedFname.'.*');
+        if(count($matched) == 1)
+        {
+            $fname = basename($matched[0]);
+            return rename('images/temp/'.$fname, 'images/user/'.$fname);
+        }
+        
+        return false;
+    }
+    
+    private static function hashProfileFname(/*int*/$userId)
+    {
+        return hash('sha1', $userId.'profile');
     }
 }
 
