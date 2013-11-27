@@ -26,11 +26,12 @@ class PicService
     
     public static function getProfileThumb(/*int*/ $wishlistUserId)
     {
-        $pic_url = "images/user/".$wishlistUserId."/profile_thumb.jpg";
+        //$pic_url = "images/user/".$wishlistUserId."/profile_thumb.jpg";
+        $matched = glob("images/user/".PicService::hashProfileThumbFname($wishlistUserId).".*");
         
-        if(file_exists($pic_url))
+        if(count($matched))
         {
-            return '/'.$pic_url;
+            return '/'.$matched[0];
         }
         
         return PicService::defaultProfileThumb;
@@ -57,20 +58,59 @@ class PicService
     
     public static function persistTempProfilePic(/*int*/$userId)
     {
+        $ret = false;
         $hashedFname = PicService::hashProfileFname($userId);
         $matched = glob('images/temp/'.$hashedFname.'.*');
         if(count($matched) == 1)
         {
             $fname = basename($matched[0]);
-            return rename('images/temp/'.$fname, 'images/user/'.$fname);
+            $ret = rename('images/temp/'.$fname, 'images/user/'.$fname);
+            if(true == $ret) //if rename was successful.
+            {
+                //Create a thumbnail of the profile.
+                $ret = PicService::createProfileThumb($userId, 'images/user/'.$fname);
+            }
         }
         
+        return $ret;
+    }
+
+    private static function createProfileThumb(/*int*/$userId, $profilePic)
+    {
+        $size = getimagesize($profilePic);
+        switch($size['mime'])
+        {
+        case 'image/jpeg':
+            $image = imagecreatefromjpeg($profilePic);
+            break;
+        case 'image/gif':
+            $image = imagecreatefromgif($profilePic);
+            break;
+        case 'image/png':
+            $image = imagecreatefrompng($profilePic);
+            break;
+        default:
+            return false;
+        }
+
+        $thumbImg = ImageCreateTrueColor(30, 30);
+        
+        if(imageCopyResampled($thumbImg, $image, 0, 0, 0, 0, 30, 30, imagesx($image), imagesy($image)))
+        {
+            return imagejpeg($thumbImg, 'images/user/'.PicService::hashProfileThumbFname($userId).'.jpg');
+        }
+
         return false;
     }
     
     private static function hashProfileFname(/*int*/$userId)
     {
         return hash('sha1', $userId.'profile');
+    }
+
+    private static function hashProfileThumbFname(/*int*/$userId)
+    {
+        return hash('sha1', $userId.'profile_thumb');
     }
 }
 

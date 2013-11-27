@@ -494,14 +494,6 @@ class DefaultController extends Controller
                             $image_loc = PicService::uploadTempProfilePic($loggedInUserId, $ext, $tmp);
                             
                             $response = "<img id='user_image' src='/".$image_loc."'  class='preview'>";
-                            /*
-                            if(move_uploaded_file($tmp, $path . $actual_image_name))
-                            {
-                                //mysql_query("UPDATE users SET profile_image='$actual_image_name' WHERE uid='$session_id'");                                
-                                $response = "<img id='user_image' src='/".$image_loc."'  class='preview'>";
-                            }
-                             * 
-                             */
                         }
                     }
                 }
