@@ -61,7 +61,7 @@ ul li a {
   -moz-transition: 0.5s;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  color: #888888;
+  color: #333333;
 }
 
 /* line 54, ../sass/navBar.scss */

@@ -46,7 +46,7 @@ ul {
 
         a:hover {
             @include transition(.5s);
-            color: $global-button-text-color;
+            color: $global-button-hover-text-color;
         }
     }
 }
