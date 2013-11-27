@@ -1,6 +1,13 @@
 @import 'partials/globalvariables';
 @import 'partials/globalmixins';
 
+
+.link-styling {
+    color: $global-button-text-color;
+    font-weight: bold;
+    cursor: hand;
+}
+
 root {
     display: block;
 }
@@ -10,7 +17,7 @@ ul {
 
     li a {
         text-decoration: none;
-        color: black;
+        color: $global-button-text-color;
     }
 }
 
@@ -25,11 +32,11 @@ ul {
     margin: 0px;
     padding: 0px;
     text-align: center;    
-    border-top: 1px solid #cccccc;
+    border-top: $global-button-border;
     margin-bottom: 10px;
-    background-color: #ffffff;
+    background-color: $global-color5;
     width: 100%;
-    @include box-shadow(0 2px 2px 0 #cccccc);
+    @include box-shadow(0 2px 2px 0 $global-color6);
 
     li {
         display: inline-block;
@@ -39,7 +46,7 @@ ul {
 
         a:hover {
             @include transition(.5s);
-            color: #ffcccc;
+            color: $global-button-text-color;
         }
     }
 }
@@ -74,14 +81,11 @@ ul {
 
 #logoContainer {
     display: inline-block;
-    height: 30px;
     margin-top: 15px;
-    margin-left: -90px;
 }
 
 #logoName {
     font-family: $global-main-font-family;
-    font-size: 30px;
 }
 
 #homepageLink {
@@ -96,52 +100,13 @@ ul {
 
 .profilePicture {
     @include border-radius(3px 0 0 3px);
-    @include box-shadow(0 0 2px #616161 inset);
+    @include box-shadow(0 0 2px $global-color6 inset);
     background-size: cover;
     float: left;
     height: 30px;
     margin: -1px;
     width: 30px;
 }
-
-/*
-.profileName {
-    padding-right: 9px;
-}*/
-
-/*
-.usernameLink {
-    color: #888888;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: bold;
-    background:linear-gradient(#ffffff,#f0f0f0);
-    background-color: #f7f7f7; 
-    border: 1px solid #cccccc;
-
-    .profileName {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: block;
-        height: 24px;
-        padding: 6px 0 1px 10px;        
-    } 
-
-    &:hover {
-        background-color: #efefff;        
-    }
-} */
-
-/*
-.UserMenu {
-    border-radius: 3px;
-    background-color: #f0f0f0;
-    border: 1px solid #cccccc;
-    color: #888888;
-    font-size: 13px;
-    margin-top: 4px;
-} */
 
 #notificationDiv {
     position: relative;
@@ -159,21 +124,19 @@ ul {
     width: 430px;
     border-width: 0px 1px 1px 1px;
     border-style: solid;
-    border-color: #f7f7f7;
-    border: 1px solid #cccccc;
+    border-color: $global-button-bg-color;
+    border: $global-button-border;
     background: white;
     font-size: 13px;
     text-align: left;
-    @include linear-gradient2(#ffffff,#f0f0f0);
-    @include border-radius(3px);
+    @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
+    @include border-radius($global-button-radius);
     cursor: pointer;
     font-weight: normal;
     top: 20px;
 
     a {
-        color: #00008F;
-        font-weight: bold;
-        cursor: hand;        
+        @extend .link-styling;
     }
 }
 
@@ -200,13 +163,13 @@ ul {
     li {
         a {
             text-decoration: none;
-            color: #888888;
+            color: $global-button-text-color;
         }
 
         &:hover {
-            color:#333333;
+            color: $global-color2;
             font-weight: bolder;
-            @include linear-gradient2(#ffffff,#f0f0f0);
+            @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
         }
 
         text-decoration: none;
@@ -220,9 +183,9 @@ ul {
         text-align: center;    
     }
 
-    @include linear-gradient2(#ffffff,#f0f0f0);
-    background-color: #f7f7f7; 
-    border: 1px solid #cccccc;
+    @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
+    background-color: $global-button-bg-color; 
+    border: $global-button-border;
     display: none;
     @include border-radius(3px 3px 0 0);
     border-bottom: 1px solid;
@@ -245,24 +208,24 @@ ul {
 
 .navButtons {
     vertical-align: top;
-    @include linear-gradient2(#ffffff,#f0f0f0);
-    background-color: #f7f7f7;
-    border: 1px solid #cccccc;
-    @include border-radius(3px);
-    color: #888888;
+    @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
+    background-color: $global-button-bg-color;
+    border: $global-button-border;
+    @include border-radius($global-button-radius);
+    color: $global-button-text-color;
     margin-top: 4px;
     cursor: pointer;
     height: 30px;
 
     &:hover {
-        background:#f1f1f1;
-        color:#333333;
+        background: $global-button-hover-color;
+        color: $global-button-hover-text-color;
     }
 }
 
 .header .headerBackground {
     @include transform(translateZ(0));
-    background-color: #ffffff;
+    background-color: $global-color5;
     height: 50px;
     position:fixed;
     z-index: 670;
@@ -274,31 +237,19 @@ ul {
 .Header {
     .headerContainer { 
         .leftHeaderContent {
-            float: left;
-            /*width: 236px;*/
+            float: left;            
         }
         .rightHeaderContent {
             float: right;
             width: 236px;
         }
     }
-
-    .logo {
-        left: 50%;
-        margin-left: -52px;
-        position: absolute;
-    }
 }
 
-.logo {
-    width: 104px;
-    height: 26px;
-    display: inline-block;
-    vertical-align: middle;
-    zoom: 1;
-    @include text-shadow(none);
+@mixin logo-dynamic-style($left, $font-size){
+    left: $left;
+    font-size: $font-size;
 }
-
 
 .positionModuleFixed {
     position: fixed;
@@ -306,8 +257,8 @@ ul {
 }
 
 .selected {
-    background-color: #efefff;
-    background: #efefff;
+    background-color: $global-button-hover-color;
+    background: $global-button-hover-color;
 }
 
 .ui-MenuLink {
@@ -332,76 +283,39 @@ div.confirmEvent:hover {
     cursor: hand;
 }
 
+.styling-logo {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+    width: 104px;
+    height: 26px;
+    zoom: 1;
+    @include text-shadow(none);
+}
+
+.logo {
+    @extend .styling-logo;        
+}
+
+$header-width: 70em;
+
 /* Using CSS3 media queries to handle window resizing */
 @media screen and (min-width: 75em) {
-    .centeredWithinWrapper {
-        width: 70em;
-    }
-    
-    #accountOptionsDropdown{
-      right: 6.25em;
-    }
+    .centeredWithinWrapper { width: $header-width; }
+    .logo { @include logo-dynamic-style(45%, 30px); }
 }
+
 @media screen and (min-width: 56.25em) and (max-width: 75em) {
-    .centeredWithinWrapper {
-        width: 56.5em;
-    }
-    
-    #accountOptionsDropdown{
-      right: 5.063em;
-    }
+    .centeredWithinWrapper { width: $header-width - 20em; }
+    .logo { @include logo-dynamic-style(45%, 30px); }
 }
+
 @media screen and (min-width: 43.75em) and (max-width: 56.25em) {
-    .centeredWithinWrapper {
-        width: 43.75em;
-    }
-        
-    #accountOptionsDropdown{
-      right: 3.188em;
-    }
-}
-@media screen and (min-width: 26.75em) and (max-width: 43.75em) {
-    .centeredWithinWrapper {
-        width: 35.75em;
-    }
-
-    #logoname {
-        font-size: 25px;
-    }
-
-    .Header {
-        .headerContainer { 
-            .leftHeaderContent {
-                float: left;
-                width: 5.750em;
-            }
-        }
-    }
-
-    #accountOptionsDropdown{
-      right: 0.5em;
-    }
+    .centeredWithinWrapper { width: $header-width - 25em; }
+    .logo { @include logo-dynamic-style(40%, 30px); }
 }
 
-@media screen and (max-width: 26.75em) {
-    .centeredWithinWrapper {
-        width: 24.75em;
-    }
-
-    .Header {
-        .headerContainer { 
-            .leftHeaderContent {
-                float: left;
-                width: 2.750em;
-            }
-        }
-    }
-
-    #logoname {
-        font-size: 20px;
-    }
-
-    #accountOptionsDropdown{
-      right: 0.5em;
-    }
+@media screen and (max-width: 43.75em) {
+    .centeredWithinWrapper { width: $header-width - 35em; }
+    .logo { @include logo-dynamic-style(30%, 25px); }
 }

@@ -1,24 +1,31 @@
-/* line 4, ../sass/navBar.scss */
+/* line 5, ../sass/navBar.scss */
+.link-styling, #notificationWindow a {
+  color: #888888;
+  font-weight: bold;
+  cursor: hand;
+}
+
+/* line 11, ../sass/navBar.scss */
 root {
   display: block;
 }
 
-/* line 8, ../sass/navBar.scss */
+/* line 15, ../sass/navBar.scss */
 ul {
   list-style-type: none;
 }
-/* line 11, ../sass/navBar.scss */
+/* line 18, ../sass/navBar.scss */
 ul li a {
   text-decoration: none;
-  color: black;
+  color: #888888;
 }
 
-/* line 17, ../sass/navBar.scss */
+/* line 24, ../sass/navBar.scss */
 .font-style {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 21, ../sass/navBar.scss */
+/* line 28, ../sass/navBar.scss */
 #navigationlist {
   position: fixed;
   z-index: 600;
@@ -28,7 +35,7 @@ ul li a {
   text-align: center;
   border-top: 1px solid #cccccc;
   margin-bottom: 10px;
-  background-color: #ffffff;
+  background-color: white;
   width: 100%;
   -webkit-box-shadow: 0 2px 2px 0 #cccccc;
   -moz-box-shadow: 0 2px 2px 0 #cccccc;
@@ -36,7 +43,7 @@ ul li a {
   -ms-box-shadow: 0 2px 2px 0 #cccccc;
   box-shadow: 0 2px 2px 0 #cccccc;
 }
-/* line 34, ../sass/navBar.scss */
+/* line 41, ../sass/navBar.scss */
 #navigationlist li {
   display: inline-block;
   margin-right: 10px;
@@ -47,84 +54,81 @@ ul li a {
   -ms-border-radius: 0px 0px 5px 5px;
   border-radius: 0px 0px 5px 5px;
 }
-/* line 40, ../sass/navBar.scss */
+/* line 47, ../sass/navBar.scss */
 #navigationlist li a:hover {
   -o-transition: 0.5s;
   -ms-transition: 0.5s;
   -moz-transition: 0.5s;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  color: #ffcccc;
+  color: #888888;
 }
 
-/* line 47, ../sass/navBar.scss */
+/* line 54, ../sass/navBar.scss */
 #navigation {
   border: 0px;
   margin: 0px;
   text-align: right;
   padding: 0px;
 }
-/* line 53, ../sass/navBar.scss */
+/* line 60, ../sass/navBar.scss */
 #navigation li {
   display: inline-block;
 }
-/* line 56, ../sass/navBar.scss */
+/* line 63, ../sass/navBar.scss */
 #navigation li span {
   margin-top: 0px;
   margin-right: 5px;
 }
-/* line 62, ../sass/navBar.scss */
+/* line 69, ../sass/navBar.scss */
 #navigation .navLink {
   vertical-align: bottom;
 }
-/* line 65, ../sass/navBar.scss */
+/* line 72, ../sass/navBar.scss */
 #navigation .navLink img {
   padding: 0px 0px 0px 0px;
 }
 
-/* line 71, ../sass/navBar.scss */
+/* line 78, ../sass/navBar.scss */
 .socialMediaLink {
   margin: 3px;
 }
 
-/* line 75, ../sass/navBar.scss */
+/* line 82, ../sass/navBar.scss */
 #logoContainer {
   display: inline-block;
-  height: 30px;
   margin-top: 15px;
-  margin-left: -90px;
-}
-
-/* line 82, ../sass/navBar.scss */
-#logoName {
-  font-family: "Satisfy", cursive;
-  font-size: 30px;
 }
 
 /* line 87, ../sass/navBar.scss */
+#logoName {
+  font-family: "Satisfy", cursive;
+}
+
+/* line 91, ../sass/navBar.scss */
 #homepageLink {
   cursor: hand;
 }
 
-/* line 91, ../sass/navBar.scss */
+/* line 95, ../sass/navBar.scss */
 #linksContainer {
   height: 45px;
   position: absolute;
   right: 0px;
 }
 
-/* line 97, ../sass/navBar.scss */
+/* line 101, ../sass/navBar.scss */
 .profilePicture {
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   -o-border-radius: 3px 0 0 3px;
   -ms-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
-  -webkit-box-shadow: 0 0 2px #616161 inset;
-  -moz-box-shadow: 0 0 2px #616161 inset;
-  -o-box-shadow: 0 0 2px #616161 inset;
-  -ms-box-shadow: 0 0 2px #616161 inset;
-  box-shadow: 0 0 2px #616161 inset;
+  -webkit-box-shadow: 0 0 2px #cccccc inset;
+  -moz-box-shadow: 0 0 2px #cccccc inset;
+  -o-box-shadow: 0 0 2px #cccccc inset;
+  -ms-box-shadow: 0 0 2px #cccccc inset;
+  box-shadow: 0 0 2px #cccccc inset;
   background-size: cover;
   float: left;
   height: 30px;
@@ -132,52 +136,16 @@ ul li a {
   width: 30px;
 }
 
-/*
-.profileName {
-    padding-right: 9px;
-}*/
-/*
-.usernameLink {
-    color: #888888;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: bold;
-    background:linear-gradient(#ffffff,#f0f0f0);
-    background-color: #f7f7f7; 
-    border: 1px solid #cccccc;
-
-    .profileName {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: block;
-        height: 24px;
-        padding: 6px 0 1px 10px;        
-    } 
-
-    &:hover {
-        background-color: #efefff;        
-    }
-} */
-/*
-.UserMenu {
-    border-radius: 3px;
-    background-color: #f0f0f0;
-    border: 1px solid #cccccc;
-    color: #888888;
-    font-size: 13px;
-    margin-top: 4px;
-} */
-/* line 146, ../sass/navBar.scss */
+/* line 111, ../sass/navBar.scss */
 #notificationDiv {
   position: relative;
 }
-/* line 149, ../sass/navBar.scss */
+/* line 114, ../sass/navBar.scss */
 #notificationDiv:hover {
   cursor: hand;
 }
 
-/* line 154, ../sass/navBar.scss */
+/* line 119, ../sass/navBar.scss */
 #notificationWindow {
   display: none;
   margin-top: 5px;
@@ -205,14 +173,8 @@ ul li a {
   font-weight: normal;
   top: 20px;
 }
-/* line 173, ../sass/navBar.scss */
-#notificationWindow a {
-  color: #00008F;
-  font-weight: bold;
-  cursor: hand;
-}
 
-/* line 180, ../sass/navBar.scss */
+/* line 143, ../sass/navBar.scss */
 .Header .headerContainer {
   -o-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -230,13 +192,13 @@ ul li a {
   right: 0;
 }
 
-/* line 193, ../sass/navBar.scss */
+/* line 156, ../sass/navBar.scss */
 .centeredWithinWrapper {
   margin: 0 auto;
   width: 800px;
 }
 
-/* line 198, ../sass/navBar.scss */
+/* line 161, ../sass/navBar.scss */
 #accountOptionsDropdown {
   background-image: -webkit-linear-gradient(white, #f0f0f0);
   background-image: -moz-linear-gradient(white, #f0f0f0);
@@ -256,17 +218,17 @@ ul li a {
   width: 174px;
   border-top-width: 0px;
 }
-/* line 200, ../sass/navBar.scss */
+/* line 163, ../sass/navBar.scss */
 #accountOptionsDropdown li {
   text-decoration: none;
   padding: 10px 0px 5px 0px;
 }
-/* line 201, ../sass/navBar.scss */
+/* line 164, ../sass/navBar.scss */
 #accountOptionsDropdown li a {
   text-decoration: none;
   color: #888888;
 }
-/* line 206, ../sass/navBar.scss */
+/* line 169, ../sass/navBar.scss */
 #accountOptionsDropdown li:hover {
   color: #333333;
   font-weight: bolder;
@@ -276,7 +238,7 @@ ul li a {
   background-image: -o-linear-gradient(white, #f0f0f0);
   background-image: linear-gradient(#ffffff, #f0f0f0);
 }
-/* line 216, ../sass/navBar.scss */
+/* line 179, ../sass/navBar.scss */
 #accountOptionsDropdown ul {
   list-style: none;
   padding: 0px 0px 0px 0px;
@@ -284,18 +246,18 @@ ul li a {
   text-align: center;
 }
 
-/* line 235, ../sass/navBar.scss */
+/* line 198, ../sass/navBar.scss */
 #navigation .navcenter {
   display: inline-block;
   margin-top: 5px;
 }
-/* line 240, ../sass/navBar.scss */
+/* line 203, ../sass/navBar.scss */
 #navigation .smallNavButtons {
   width: 26px;
   height: 30px;
 }
 
-/* line 246, ../sass/navBar.scss */
+/* line 209, ../sass/navBar.scss */
 .navButtons {
   vertical-align: top;
   background-image: -webkit-linear-gradient(white, #f0f0f0);
@@ -315,20 +277,20 @@ ul li a {
   cursor: pointer;
   height: 30px;
 }
-/* line 257, ../sass/navBar.scss */
+/* line 220, ../sass/navBar.scss */
 .navButtons:hover {
   background: #f1f1f1;
   color: #333333;
 }
 
-/* line 263, ../sass/navBar.scss */
+/* line 226, ../sass/navBar.scss */
 .header .headerBackground {
   -o-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  background-color: #ffffff;
+  background-color: white;
   height: 50px;
   position: fixed;
   z-index: 670;
@@ -337,55 +299,34 @@ ul li a {
   right: 0;
 }
 
-/* line 276, ../sass/navBar.scss */
+/* line 239, ../sass/navBar.scss */
 .Header .headerContainer .leftHeaderContent {
   float: left;
-  /*width: 236px;*/
 }
-/* line 280, ../sass/navBar.scss */
+/* line 242, ../sass/navBar.scss */
 .Header .headerContainer .rightHeaderContent {
   float: right;
   width: 236px;
 }
-/* line 286, ../sass/navBar.scss */
-.Header .logo {
-  left: 50%;
-  margin-left: -52px;
-  position: absolute;
-}
 
-/* line 293, ../sass/navBar.scss */
-.logo {
-  width: 104px;
-  height: 26px;
-  display: inline-block;
-  vertical-align: middle;
-  zoom: 1;
-  -webkit-text-shadow: none;
-  -moz-text-shadow: none;
-  -o-text-shadow: none;
-  -ms-text-shadow: none;
-  text-shadow: none;
-}
-
-/* line 303, ../sass/navBar.scss */
+/* line 254, ../sass/navBar.scss */
 .positionModuleFixed {
   position: fixed;
   z-index: 686;
 }
 
-/* line 308, ../sass/navBar.scss */
+/* line 259, ../sass/navBar.scss */
 .selected {
-  background-color: #efefff;
-  background: #efefff;
+  background-color: #f1f1f1;
+  background: #f1f1f1;
 }
 
-/* line 313, ../sass/navBar.scss */
+/* line 264, ../sass/navBar.scss */
 .ui-MenuLink {
   cursor: hand;
 }
 
-/* line 317, ../sass/navBar.scss */
+/* line 268, ../sass/navBar.scss */
 #confirmEventContainer {
   border-style: solid;
   border-width: 1px;
@@ -395,92 +336,78 @@ ul li a {
   max-height: 3em;
 }
 
-/* line 326, ../sass/navBar.scss */
+/* line 277, ../sass/navBar.scss */
 div.confirmEvent:hover {
   background-color: #efefef;
   cursor: hand;
 }
 
-/* line 331, ../sass/navBar.scss */
+/* line 282, ../sass/navBar.scss */
 #confirmBtn:hover {
   cursor: hand;
 }
 
+/* line 286, ../sass/navBar.scss */
+.styling-logo, .logo {
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  width: 104px;
+  height: 26px;
+  zoom: 1;
+  -webkit-text-shadow: none;
+  -moz-text-shadow: none;
+  -o-text-shadow: none;
+  -ms-text-shadow: none;
+  text-shadow: none;
+}
+
 /* Using CSS3 media queries to handle window resizing */
 @media screen and (min-width: 75em) {
-  /* line 337, ../sass/navBar.scss */
+  /* line 304, ../sass/navBar.scss */
   .centeredWithinWrapper {
     width: 70em;
   }
 
-  /* line 341, ../sass/navBar.scss */
-  #accountOptionsDropdown {
-    right: 6.25em;
+  /* line 305, ../sass/navBar.scss */
+  .logo {
+    left: 45%;
+    font-size: 30px;
   }
 }
 @media screen and (min-width: 56.25em) and (max-width: 75em) {
-  /* line 346, ../sass/navBar.scss */
+  /* line 309, ../sass/navBar.scss */
   .centeredWithinWrapper {
-    width: 56.5em;
+    width: 50em;
   }
 
-  /* line 350, ../sass/navBar.scss */
-  #accountOptionsDropdown {
-    right: 5.063em;
+  /* line 310, ../sass/navBar.scss */
+  .logo {
+    left: 45%;
+    font-size: 30px;
   }
 }
 @media screen and (min-width: 43.75em) and (max-width: 56.25em) {
-  /* line 355, ../sass/navBar.scss */
+  /* line 314, ../sass/navBar.scss */
   .centeredWithinWrapper {
-    width: 43.75em;
+    width: 45em;
   }
 
-  /* line 359, ../sass/navBar.scss */
-  #accountOptionsDropdown {
-    right: 3.188em;
+  /* line 315, ../sass/navBar.scss */
+  .logo {
+    left: 40%;
+    font-size: 30px;
   }
 }
-@media screen and (min-width: 26.75em) and (max-width: 43.75em) {
-  /* line 364, ../sass/navBar.scss */
+@media screen and (max-width: 43.75em) {
+  /* line 319, ../sass/navBar.scss */
   .centeredWithinWrapper {
-    width: 35.75em;
+    width: 35em;
   }
 
-  /* line 368, ../sass/navBar.scss */
-  #logoname {
+  /* line 320, ../sass/navBar.scss */
+  .logo {
+    left: 30%;
     font-size: 25px;
-  }
-
-  /* line 374, ../sass/navBar.scss */
-  .Header .headerContainer .leftHeaderContent {
-    float: left;
-    width: 5.750em;
-  }
-
-  /* line 381, ../sass/navBar.scss */
-  #accountOptionsDropdown {
-    right: 0.5em;
-  }
-}
-@media screen and (max-width: 26.75em) {
-  /* line 387, ../sass/navBar.scss */
-  .centeredWithinWrapper {
-    width: 24.75em;
-  }
-
-  /* line 393, ../sass/navBar.scss */
-  .Header .headerContainer .leftHeaderContent {
-    float: left;
-    width: 2.750em;
-  }
-
-  /* line 400, ../sass/navBar.scss */
-  #logoname {
-    font-size: 20px;
-  }
-
-  /* line 404, ../sass/navBar.scss */
-  #accountOptionsDropdown {
-    right: 0.5em;
   }
 }
