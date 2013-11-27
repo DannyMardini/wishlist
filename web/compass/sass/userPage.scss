@@ -47,11 +47,11 @@ h1 {
 
 #unfriendButton {
     display: inline-block;
-    color: #888;
-    @include linear-gradient2(#ffffff,#f0f0f0);
-    background-color: #f7f7f7;
-    border: 1px solid #cccccc;
-    @include border-radius(3px);
+    color: $global-button-text-color;
+    @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
+    background-color: $global-button-bg-color;
+    border: $global-button-border;
+    @include border-radius($global-button-radius);
     margin-top: 4px;
     cursor: pointer;
     padding: 0px 5px 0px 5px;
@@ -59,6 +59,6 @@ h1 {
 }
 
 #unfriendButton:hover {
-    background:#f1f1f1;
-    color:#333;
+    background: $global-button-hover-color;
+    color: $global-button-hover-text-color;
 }

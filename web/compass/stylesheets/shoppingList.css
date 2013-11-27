@@ -1,21 +1,41 @@
-/* line 1, ../sass/shoppingList.scss */
+/* line 3, ../sass/partials/_sharedStyles.scss */
+.invalid-form-input {
+  border: 3px solid #e88;
+  -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -o-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -ms-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+}
+
+/* line 8, ../sass/partials/_sharedStyles.scss */
+.required-form-input {
+  border: 1px solid #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+}
+
+/* line 13, ../sass/partials/_sharedStyles.scss */
+.page-header-label-style, .shoppinglistItem label {
+  margin-left: 10px;
+  margin-right: 3px;
+  font-size: 20px;
+  font-family: "Satisfy", cursive;
+}
+
+/* line 4, ../sass/shoppingList.scss */
 #shoppinglist {
   width: 80%;
   margin: 10%;
   margin-top: 2%;
 }
-/* line 7, ../sass/shoppingList.scss */
+/* line 10, ../sass/shoppingList.scss */
 #shoppinglist ul {
   list-style: none;
   padding-left: 15%;
-}
-
-/* line 13, ../sass/shoppingList.scss */
-.shoppinglistItem label {
-  margin-left: 10px;
-  margin-right: 3px;
-  font-size: 20px;
-  font-family: Satisfy, cursive;
 }
 
 /* line 20, ../sass/shoppingList.scss */
@@ -24,20 +44,4 @@
   font-size: 16px;
   text-align: center;
   margin-left: 20px;
-}
-
-/* line 27, ../sass/shoppingList.scss */
-#shoppinglist .shoppinglistItem {
-  padding: 5px;
-  border-bottom: solid 1px #EFEFEF;
-}
-
-/* line 32, ../sass/shoppingList.scss */
-.focusPurchase {
-  background-color: #EFEFEF;
-}
-
-/* line 36, ../sass/shoppingList.scss */
-.unfocusPurchase {
-  background-color: gray;
 }

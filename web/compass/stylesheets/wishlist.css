@@ -1,55 +1,54 @@
-/* line 1, ../sass/wishlist.scss */
+/* line 3, ../sass/wishlist.scss */
 .itemName {
   font-size: 20px;
   font-weight: bolder;
 }
 
-/* line 6, ../sass/wishlist.scss */
+/* line 8, ../sass/wishlist.scss */
 .ItemBody {
   font-size: 12px;
   text-align: center;
 }
-/* line 9, ../sass/wishlist.scss */
+/* line 11, ../sass/wishlist.scss */
 .ItemBody p {
   margin-left: 5px;
 }
-/* line 12, ../sass/wishlist.scss */
+/* line 14, ../sass/wishlist.scss */
 .ItemBody label {
   font-weight: bold;
 }
-/* line 15, ../sass/wishlist.scss */
+/* line 17, ../sass/wishlist.scss */
 .ItemBody div {
   width: 100%;
   background-color: gray;
 }
 
-/* line 21, ../sass/wishlist.scss */
+/*
 #newWishBox {
-  color: pink;
-}
-
-/* line 25, ../sass/wishlist.scss */
+    color: pink;
+}*/
+/* line 27, ../sass/wishlist.scss */
 .newWishBox {
   height: 100px;
 }
 
-/* line 29, ../sass/wishlist.scss */
+/* line 31, ../sass/wishlist.scss */
 .purchaseBtn:hover {
-  background-color: white;
-  font-color: black;
+  background-color: #f1f1f1;
+  font-color: #333333;
 }
 
-/* line 34, ../sass/wishlist.scss */
+/* line 36, ../sass/wishlist.scss */
 h3.purchased {
   background: #333333 url(/css/black-tie/images/ui-bg_diagonals-thick_8_333333_40x40.png) 50% 50% repeat;
 }
 
-/* line 38, ../sass/wishlist.scss */
+/* line 40, ../sass/wishlist.scss */
 #itemDialog label {
   display: inline;
 }
 
-/* line 42, ../sass/wishlist.scss */
+/* line 44, ../sass/wishlist.scss */
 #wishlist_bs_table {
   width: 80%;
   margin: 10%;

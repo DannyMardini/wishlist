@@ -12,19 +12,19 @@
   src: local("Gruppo"), url("fonts/Gruppo-Regular.ttf");
 }
 
-/* line 14, ../sass/main.scss */
+/* line 16, ../sass/main.scss */
 root {
   display: block;
 }
 
-/* line 18, ../sass/main.scss */
+/* line 20, ../sass/main.scss */
 body {
   margin: 10px 10px 10px 10px;
   position: relative;
-  font-family: helvetica;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 24, ../sass/main.scss */
+/* line 26, ../sass/main.scss */
 .clearfix:after {
   clear: both;
   content: ".";
@@ -35,31 +35,31 @@ body {
   visibility: hidden;
 }
 
-/* line 34, ../sass/main.scss */
+/* line 36, ../sass/main.scss */
 #content {
   width: 981px;
   margin: auto;
   margin-top: 100px;
 }
 
-/* line 40, ../sass/main.scss */
+/* line 42, ../sass/main.scss */
 .addButton {
   margin-left: 10px;
   margin-top: 5px;
 }
 
-/* line 45, ../sass/main.scss */
+/* line 47, ../sass/main.scss */
 .removeButton {
   margin-left: 10px;
   margin-top: 5px;
 }
 
-/* line 50, ../sass/main.scss */
+/* line 52, ../sass/main.scss */
 .pageTitle {
   width: 90%;
 }
 
-/* line 54, ../sass/main.scss */
+/* line 56, ../sass/main.scss */
 .itemCountSpan {
   float: right;
   margin-top: 10px;

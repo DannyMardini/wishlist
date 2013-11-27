@@ -54,7 +54,7 @@ h1 {
 /* line 48, ../sass/userPage.scss */
 #unfriendButton {
   display: inline-block;
-  color: #888;
+  color: #888888;
   background-image: -webkit-linear-gradient(white, #f0f0f0);
   background-image: -moz-linear-gradient(white, #f0f0f0);
   background-image: -ms-linear-gradient(white, #f0f0f0);
@@ -76,5 +76,5 @@ h1 {
 /* line 61, ../sass/userPage.scss */
 #unfriendButton:hover {
   background: #f1f1f1;
-  color: #333;
+  color: #333333;
 }

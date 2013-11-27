@@ -1,25 +1,25 @@
-/* line 1, ../sass/lifeEventsManager.scss */
+/* line 3, ../sass/lifeEventsManager.scss */
 .eventListDiv {
   width: 80%;
   margin: 10%;
   margin-top: 2%;
 }
 
-/* line 8, ../sass/lifeEventsManager.scss */
+/* line 10, ../sass/lifeEventsManager.scss */
 #EventList .image {
   float: left;
   background-repeat: no-repeat;
   background-position: left;
   margin-top: 15px;
 }
-/* line 14, ../sass/lifeEventsManager.scss */
+/* line 16, ../sass/lifeEventsManager.scss */
 #EventList .checkbox {
   margin-top: 15px;
   float: left;
   margin-right: 10px;
   margin-left: 10px;
 }
-/* line 20, ../sass/lifeEventsManager.scss */
+/* line 22, ../sass/lifeEventsManager.scss */
 #EventList .name {
   margin-top: 15px;
   font-weight: bolder;
@@ -29,41 +29,42 @@
   font-size: 14px;
   padding-left: 5px;
 }
-/* line 29, ../sass/lifeEventsManager.scss */
+/* line 31, ../sass/lifeEventsManager.scss */
 #EventList .message {
   display: block;
   padding-top: 5px;
   padding-left: 11px;
 }
-/* line 34, ../sass/lifeEventsManager.scss */
+/* line 36, ../sass/lifeEventsManager.scss */
 #EventList .timestamp {
   margin-top: 5px;
   color: gray;
   display: block;
   font-size: 12px;
 }
-/* line 40, ../sass/lifeEventsManager.scss */
+/* line 42, ../sass/lifeEventsManager.scss */
 #EventList a {
   cursor: pointer;
-  color: darkblue;
+  color: #888888;
   text-decoration: none;
 }
-/* line 45, ../sass/lifeEventsManager.scss */
+/* line 47, ../sass/lifeEventsManager.scss */
 #EventList a:hover {
   text-decoration: underline;
+  color: #333333;
 }
 
-/* line 51, ../sass/lifeEventsManager.scss */
+/* line 54, ../sass/lifeEventsManager.scss */
 .focusEvent {
   background-color: #EFEFEF;
 }
 
-/* line 55, ../sass/lifeEventsManager.scss */
+/* line 58, ../sass/lifeEventsManager.scss */
 .focusEventRemove {
   background-color: gray;
 }
 
-/* line 59, ../sass/lifeEventsManager.scss */
+/* line 62, ../sass/lifeEventsManager.scss */
 #EventList .Event .remove, #EventList .Event .edit {
   display: none;
   float: right;
@@ -71,7 +72,7 @@
   margin: 0px 0px 0px 5px;
 }
 
-/* line 66, ../sass/lifeEventsManager.scss */
+/* line 69, ../sass/lifeEventsManager.scss */
 #EventList .Event {
   padding: 5px;
   border-bottom: solid 1px #EFEFEF;

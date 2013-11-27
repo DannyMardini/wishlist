@@ -1,3 +1,6 @@
+@import 'partials/globalvariables';
+@import 'partials/sharedStyles';
+
 #shoppinglist {
     width: 80%;
     margin: 10%;
@@ -11,10 +14,7 @@
 } 
 
 .shoppinglistItem label{
-    margin-left: 10px;
-    margin-right: 3px;
-    font-size: 20px;
-    font-family: Satisfy, cursive;    
+    @extend .page-header-label-style;   
 }
 
 .itemDetail {
@@ -22,17 +22,4 @@
     font-size: 16px;
     text-align: center;
     margin-left: 20px;
-}
-
-#shoppinglist .shoppinglistItem {
-    padding: 5px;
-    border-bottom: solid 1px #EFEFEF;
-}
-
-.focusPurchase {
-    background-color:#EFEFEF;
-}
-
-.unfocusPurchase {
-    background-color: gray;    
 }

@@ -9,3 +9,10 @@
     border: 1px solid #88a;
     @include box-shadow(0 0 5px rgba(0, 0, 255, .5));
 }
+
+.page-header-label-style {
+    margin-left: 10px;
+    margin-right: 3px;
+    font-size: $global-label-size-large;
+    font-family: $global-main-font-family; 
+}

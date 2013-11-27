@@ -18,6 +18,14 @@
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
 
+/* line 13, ../sass/partials/_sharedStyles.scss */
+.page-header-label-style {
+  margin-left: 10px;
+  margin-right: 3px;
+  font-size: 20px;
+  font-family: "Satisfy", cursive;
+}
+
 /* line 13, ../sass/formStyling.scss */
 .formInputSelectTextareaStyling, input, select, textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

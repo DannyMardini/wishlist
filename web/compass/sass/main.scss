@@ -1,3 +1,5 @@
+@import 'partials/globalvariables';
+
 @font-face {
                 font-family: 'Satisfy';
                 font-style: normal;
@@ -18,7 +20,7 @@ root {
 body {
     margin: 10px 10px 10px 10px;
     position: relative;
-    font-family: helvetica;
+    font-family: $global-font-family;
 }
 
 .clearfix:after {

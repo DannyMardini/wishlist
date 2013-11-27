@@ -45,9 +45,6 @@ function createEventHandlers(){
     $('.selectItem').click(function(e){
         toggleSelectedItem(this);
     });
-
-    
-    applyItemHoverHandler($('.shoppinglistItem'));
 }
 
 function toggleSelectedItem(obj)
@@ -72,24 +69,6 @@ function updateList()
     {
         $('#shoppinglist').html('Your shoppinglist is empty! Browse your friends wishlists to see what they want!');
     }
-}
-
-function applyItemHoverHandler(selector){
-    $(selector).hover(function(){
-        onEventHoverHandler(this);
-    }, function(){
-        onEventHoverOutHandler(this);        
-    });    
-}
-
-function onEventHoverOutHandler(obj)
-{
-    $(obj).removeClass('focusPurchase');
-}
-
-function onEventHoverHandler(obj)
-{
-    $(obj).addClass('focusPurchase');
 }
 
 function retractPurchaseEvent()

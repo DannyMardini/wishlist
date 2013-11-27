@@ -1,3 +1,5 @@
+@import 'partials/globalvariables';
+
 .eventListDiv {
     width: 80%;
     margin: 10%;
@@ -39,11 +41,12 @@
     }
     a {
         cursor: pointer;
-        color: darkblue;
+        color: $global-button-text-color;
         text-decoration: none;
 
         &:hover {
             text-decoration: underline;
+            color: $global-button-hover-text-color;
         }
     }
 }

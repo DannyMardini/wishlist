@@ -96,18 +96,19 @@ ul.contentItem {
     }
     a {
         cursor: pointer;
-        color: darkblue;
+        color: $global-button-text-color;
         text-decoration: none;
 
         &:hover {
             text-decoration: underline;
+            color: $global-button-hover-text-color;
         }
     }
 }
 
 .gbItem {
     &:hover {
-        background-color: #f1f9f9;
+        background-color: $global-button-hover-color; //#f1f9f9;
         cursor: hand;
     }
     label {

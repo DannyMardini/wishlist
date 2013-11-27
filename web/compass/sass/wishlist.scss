@@ -1,3 +1,5 @@
+@import 'partials/globalvariables';
+
 .itemName {
     font-size: 20px;
     font-weight: bolder;
@@ -17,18 +19,18 @@
         background-color: gray;
     }
 }
-
+/*
 #newWishBox {
     color: pink;
-}
+}*/
 
 .newWishBox {
     height: 100px;
 }
 
 .purchaseBtn:hover {
-    background-color: white;
-    font-color: black;
+    background-color: $global-button-hover-color;
+    font-color: $global-button-hover-text-color;
 }
 
 h3.purchased {
