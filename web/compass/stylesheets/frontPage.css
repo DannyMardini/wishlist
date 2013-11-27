@@ -1,90 +1,182 @@
-/*
-Syntax error: Undefined variable: "$global-label-size-large".
-        on line 16 of /Users/andeecoba/Sites/wishlist/web/compass/sass/partials/_sharedStyles.scss
-        from line 1 of /Users/andeecoba/Sites/wishlist/web/compass/sass/frontPage.scss
+/* line 4, ../sass/partials/_sharedStyles.scss */
+.invalid-form-input, :invalid {
+  border: 3px solid #e88;
+  -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -o-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -ms-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+}
 
-Backtrace:
-/Users/andeecoba/Sites/wishlist/web/compass/sass/partials/_sharedStyles.scss:16
-/Users/andeecoba/Sites/wishlist/web/compass/sass/frontPage.scss:1
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/script/variable.rb:49:in `_perform'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/script/node.rb:40:in `perform'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:298:in `visit_prop'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:320:in `visit_rule'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:227:in `map'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:227:in `visit_import'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:128:in `visit_root'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/root_node.rb:20:in `render'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/engine.rb:315:in `_render'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/engine.rb:262:in `render'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `compile'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `compile'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `run'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `run'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
-/Library/Ruby/Site/1.8/rubygems/core_ext/kernel_require.rb:55:in `to_proc'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `call'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `run_callback'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/path.rb:55:in `callback_action'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/path.rb:35:in `update'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/state/directory.rb:39:in `modified'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `each'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `modified'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/state/directory.rb:18:in `refresh'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `each'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `loop'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/monitor.rb:26:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm.rb:70:in `monitor'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:30
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:44:in `call'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:44
-/usr/bin/compass:23:in `load'
-/usr/bin/compass:23
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$global-label-size-large\".\A         on line 16 of /Users/andeecoba/Sites/wishlist/web/compass/sass/partials/_sharedStyles.scss\A         from line 1 of /Users/andeecoba/Sites/wishlist/web/compass/sass/frontPage.scss"; }
+/* line 9, ../sass/partials/_sharedStyles.scss */
+.required-form-input, :required {
+  border: 1px solid #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+}
+
+/* line 14, ../sass/partials/_sharedStyles.scss */
+.page-header-label-style {
+  margin-left: 10px;
+  margin-right: 3px;
+  font-size: 20px;
+  font-family: "Satisfy", cursive;
+}
+
+/* line 13, ../sass/frontPage.scss */
+body {
+  background-color: black;
+  margin: 10px 10px 10px 10px;
+  position: relative;
+}
+
+/* line 19, ../sass/frontPage.scss */
+#login, #registrationContainer, article, footer, address, #imageContainer {
+  display: block;
+}
+
+/* line 23, ../sass/frontPage.scss */
+#loginContainer {
+  background-color: white;
+  height: 20px;
+  text-align: right;
+  width: 100%;
+}
+
+/* line 30, ../sass/frontPage.scss */
+#registrationContainer {
+  background-color: white;
+  width: 100%;
+}
+
+/* line 35, ../sass/frontPage.scss */
+#imageContainer {
+  width: 35%;
+  background-color: white;
+  float: left;
+  background-image: url(/images/dandelion.png);
+  background-size: 88%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* line 45, ../sass/frontPage.scss */
+#registrationContainer, #imageContainer {
+  height: 500px;
+}
+
+/* line 49, ../sass/frontPage.scss */
+footer {
+  background-color: black;
+  height: 20px;
+  width: 100%;
+}
+
+/* line 55, ../sass/frontPage.scss */
+#footerDetails {
+  text-align: center;
+  vertical-align: bottom;
+  padding-top: 10px;
+}
+
+/* line 62, ../sass/frontPage.scss */
+.frontpageLink:visited, .frontpageLink:link, .frontpageLink:active {
+  color: #888888;
+  text-decoration: none;
+}
+/* line 67, ../sass/frontPage.scss */
+.frontpageLink:hover {
+  color: #f1f1f1;
+}
+
+/* line 72, ../sass/frontPage.scss */
+#logoContainer {
+  height: 35%;
+  background-color: white;
+  width: 100%;
+}
+
+/* line 78, ../sass/frontPage.scss */
+#registrationForm {
+  height: 55%;
+}
+
+/* line 82, ../sass/frontPage.scss */
+#name {
+  font-family: "Satisfy", cursive;
+  font-size: 78px;
+}
+
+/* line 87, ../sass/frontPage.scss */
+#catchphrase {
+  font-family: 'Gruppo', sans-serif;
+  font-size: 28px;
+  text-indent: 30px;
+}
+
+/* line 93, ../sass/frontPage.scss */
+.toggler {
+  width: 80%;
+  padding-top: 15px;
+  padding-left: 35%;
+  height: 88%;
+}
+
+/* line 100, ../sass/frontPage.scss */
+#requestInviteToggleWindow, #loginToggleWindow {
+  width: 500px;
+  height: 90%;
+  padding: 0.4em;
+  position: relative;
+  background-color: white;
+}
+
+/* line 108, ../sass/frontPage.scss */
+#requestInviteButton, #loginButton {
+  padding: .5em 1em;
+  text-decoration: none;
+}
+
+/* line 113, ../sass/frontPage.scss */
+#requestInviteToggleWindow h3, #loginToggleWindow h3 {
+  margin: 0;
+  padding: 0.4em;
+  text-align: center;
+}
+
+/* line 119, ../sass/frontPage.scss */
+input {
+  display: block;
+  width: 300px;
+  height: 30px;
+  font-size: 15px;
+}
+
+/* line 126, ../sass/frontPage.scss */
+#submitLogin, #submitRequestInvite {
+  width: 200px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 131, ../sass/frontPage.scss */
+label {
+  display: block;
+  font-weight: bolder;
+  width: 200px;
+}
+
+/* line 137, ../sass/frontPage.scss */
+.forgotPassword {
+  color: #888888;
+}
+/* line 139, ../sass/frontPage.scss */
+.forgotPassword:hover {
+  color: #f1f1f1;
+}

@@ -60,12 +60,12 @@ footer {
 
 .frontpageLink {
     &:visited, &:link, &:active {
-        color: gray;
+        color: $global-button-text-color;
         text-decoration: none;        
     }
 
     &:hover {
-        color: silver;
+        color: $global-button-hover-color;
     }
 }
 
@@ -80,7 +80,7 @@ footer {
 }
 
 #name {
-    font-family: $global-main-font-family; // 'Satisfy', cursive; 
+    font-family: $global-main-font-family;
     font-size: 78px;
 }
 
@@ -135,8 +135,8 @@ label {
 }
 
 .forgotPassword {
-    color: black;
+    color: $global-button-text-color;
     &:hover {
-        color: gray;
+        color: $global-button-hover-color;
     }
 }

@@ -1,4 +1,4 @@
-/* line 3, ../sass/partials/_sharedStyles.scss */
+/* line 4, ../sass/partials/_sharedStyles.scss */
 .invalid-form-input {
   border: 3px solid #e88;
   -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
@@ -8,7 +8,7 @@
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
 }
 
-/* line 8, ../sass/partials/_sharedStyles.scss */
+/* line 9, ../sass/partials/_sharedStyles.scss */
 .required-form-input {
   border: 1px solid #88a;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
@@ -18,7 +18,7 @@
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
 
-/* line 13, ../sass/partials/_sharedStyles.scss */
+/* line 14, ../sass/partials/_sharedStyles.scss */
 .page-header-label-style, .shoppinglistItem label {
   margin-left: 10px;
   margin-right: 3px;
