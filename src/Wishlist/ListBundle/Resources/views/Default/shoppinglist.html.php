@@ -20,10 +20,10 @@
         $event = $purchase->getEvent();
 
         if(isset($giftDate)) {
-            $dateDisplay = $giftDate->format('m/d/Y');
+            $dateDisplay = $giftDate->format('F jS');
         }
         else {
-            $dateDisplay = $event->getEventDate()->format('m/d/Y');
+            $dateDisplay = $event->getEventDate()->format('F jS');
         }
 
         $purchasedWishlistItem = $purchase->getItem();
