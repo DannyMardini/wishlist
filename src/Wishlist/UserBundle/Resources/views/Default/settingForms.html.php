@@ -30,7 +30,6 @@ if(isset($birthdate))
     <li><input type="radio" id="gender_2" name="Gender" value="2" /><label>Female</label></li>
 </ul>
 </li>
-
 <li><label class='mainLabel'>Password:</label><ul id='passwordInputs'>
 <?php if(isset($name)) { ?>
 <input type="password" id="old_password" name="old_password" placeholder="old password">
@@ -57,6 +56,9 @@ if(isset($birthdate))
     </span>
 </form>
 <?php } ?>
+
+<label class='mainLabel'>By creating an account, I accept Wishlist's <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms of Service</a> and <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy Policy</a>.</label>
+
 </div>
 <button id="saveChanges"><?php echo (isset($name) ? 'Save' : 'Create') ?></button>
 <p id="errorDisplay"></p>

@@ -1,0 +1,30 @@
+/* line 1, ../sass/terms.scss */
+label {
+  font-size: 30px;
+}
+
+/* line 6, ../sass/terms.scss */
+div label {
+  font-size: 20px;
+  display: block;
+  margin: 20px;
+}
+
+/* line 14, ../sass/terms.scss */
+li .section {
+  font-size: 20px;
+}
+/* line 17, ../sass/terms.scss */
+li div {
+  margin: 10px;
+}
+
+/* line 22, ../sass/terms.scss */
+.intro {
+  margin: 25px;
+}
+
+/* line 26, ../sass/terms.scss */
+.details {
+  margin: 45px;
+}

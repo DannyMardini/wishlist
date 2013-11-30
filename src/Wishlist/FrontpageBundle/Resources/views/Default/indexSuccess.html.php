@@ -57,7 +57,9 @@
             <div id="footerDetails">
                 <a class="aboutLink frontpageLink" href="">ABOUT</a>
                 <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="termsLink frontpageLink" href="">TERMS</a>
+                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">TERMS</a>
+                <img src="/images/silverdot.gif" width="10" height="10" />
+                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">PRIVACY</a>                
             </div>
         </footer>
         <div id="dialog-message" title=""></div>

@@ -87,10 +87,10 @@ $(document).ready(function()
         e.preventDefault();
         eval('displayMessageDialog(aboutMessage, "What is Wishlist?")');
     });
-    $(".termsLink").click(function(e){
-        e.preventDefault();
-        eval('displayMessageDialog(termsMessage, "Terms and Conditions")');
-    });
+//    $(".termsLink").click(function(e){
+//        e.preventDefault();
+//        eval('displayMessageDialog(termsMessage, "Terms and Conditions")');
+//    });
     
     // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
     $( "#dialog:ui-dialog" ).dialog( "destroy" );

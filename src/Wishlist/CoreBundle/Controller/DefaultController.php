@@ -63,4 +63,14 @@ class DefaultController extends Controller
             return $this->renderText($response);
         }
     }
+    
+    public function termsAction()
+    {
+        return $this->render('WishlistCoreBundle:Default:terms.html.php');
+    }
+    
+    public function privacypolicyAction()
+    {
+        return $this->render('WishlistCoreBundle:Default:privacypolicy.html.php');
+    }    
 }

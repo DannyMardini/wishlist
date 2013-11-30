@@ -1,7 +1,15 @@
 WishlistCoreBundle_NotifyAdmin:
     pattern:  /Notify/Admin
-    defaults: { _controller: WishlistCoreBundle:Default:NotifyAdmin }    
+    defaults: { _controller: WishlistCoreBundle:Default:NotifyAdmin }
 
 WishlistCoreBundle_getItemInfo:
   pattern: /ItemInfo
   defaults: { _controller: WishlistCoreBundle:EntityServices:getItemInfo }
+  
+WishlistCoreBundle_Terms:
+    pattern:  /Terms
+    defaults: { _controller: WishlistCoreBundle:Default:terms }
+    
+WishlistCoreBundle_PrivacyPolicy:
+    pattern:  /PrivacyPolicy
+    defaults: { _controller: WishlistCoreBundle:Default:privacypolicy }
