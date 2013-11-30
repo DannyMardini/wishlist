@@ -579,7 +579,7 @@ class DefaultController extends Controller
     public function newAccountUserAction()
     {
         $requestRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Request');
-        $error_message = "";
+        $error_message = null;
         $error_message_invalidkey = 'Sorry about this, the link to setup your account is no longer valid! Please try requesting another invite: <a href="http://www.wishenda.com" target="_blank" >Wishenda</a>';
         
         $acceptIdQuery = $this->getRequest()->query->get('acceptId');
