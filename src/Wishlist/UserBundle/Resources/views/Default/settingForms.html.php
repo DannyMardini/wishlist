@@ -57,7 +57,7 @@ if(isset($birthdate))
 </form>
 <?php } ?>
 
-<label class='mainLabel'>By creating an account, I accept Wishlist's <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms of Service</a> and <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy Policy</a>.</label>
+<label class="termsAndpolicy">By creating an account, I accept Wishlist's <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms of Service</a> and <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy Policy</a>.</label>
 
 </div>
 <button id="saveChanges"><?php echo (isset($name) ? 'Save' : 'Create') ?></button>

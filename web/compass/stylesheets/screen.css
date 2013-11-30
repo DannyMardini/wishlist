@@ -720,78 +720,86 @@ label.pageHeader {
   vertical-align: top;
 }
 /* line 233, ../sass/screen.scss */
+#accountSettings .termsAndpolicy {
+  margin-left: 100px;
+}
+/* line 237, ../sass/screen.scss */
 #accountSettings h1 {
   font-size: 30px;
 }
-/* line 237, ../sass/screen.scss */
+/* line 241, ../sass/screen.scss */
 #accountSettings ul {
   list-style: none;
 }
-/* line 241, ../sass/screen.scss */
+/* line 245, ../sass/screen.scss */
 #accountSettings #mainDiv {
   width: 80%;
   margin: 0 auto;
   text-align: left;
 }
-/* line 247, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 #accountSettings #genderPicker {
   width: 30%;
   display: inline-block;
 }
-/* line 252, ../sass/screen.scss */
+/* line 256, ../sass/screen.scss */
 #accountSettings #genderPicker li {
   display: inline-block;
   width: 25%;
   padding-right: 10px;
 }
-/* line 258, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 #accountSettings #genderPicker input {
   display: block;
 }
-/* line 262, ../sass/screen.scss */
+/* line 266, ../sass/screen.scss */
 #accountSettings #passwordInputs {
   display: inline-block;
   width: 30%;
 }
-/* line 266, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 #accountSettings #passwordInputs input {
   width: 100%;
 }
-/* line 271, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 #accountSettings #saveChanges {
   width: 10%;
   background-color: #333333;
   color: white;
 }
-/* line 277, ../sass/screen.scss */
+/* line 281, ../sass/screen.scss */
+#accountSettings #saveChanges:hover {
+  cursor: hand;
+}
+/* line 285, ../sass/screen.scss */
 #accountSettings img.preview {
   width: 200px;
   border: solid 1px #dedede;
   padding: 10px;
 }
-/* line 283, ../sass/screen.scss */
+/* line 291, ../sass/screen.scss */
 #accountSettings div#preview {
   text-align: center;
 }
-/* line 287, ../sass/screen.scss */
+/* line 295, ../sass/screen.scss */
 #accountSettings input.birthdate {
   width: 2.5em;
 }
-/* line 291, ../sass/screen.scss */
+/* line 299, ../sass/screen.scss */
 #accountSettings #birthYear {
   width: 4.5em;
 }
-/* line 295, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 #accountSettings input:disabled {
   background: #EBEBEB;
 }
 
-/* line 300, ../sass/screen.scss */
+/* line 308, ../sass/screen.scss */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 304, ../sass/screen.scss */
+/* line 312, ../sass/screen.scss */
 div#updatesComponent {
   width: 23%;
   position: absolute;
@@ -806,24 +814,24 @@ div#updatesComponent {
   -webkit-border-radius: 3px;
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
-/* line 320, ../sass/screen.scss */
+/* line 328, ../sass/screen.scss */
 div#updatesComponent .Update {
   padding: 10px 30px 0px 20px;
   border-bottom: 1px solid #ddd;
 }
-/* line 325, ../sass/screen.scss */
+/* line 333, ../sass/screen.scss */
 div#updatesComponent .updatesHeader {
   padding: 10px 30px 0px 5px;
   font-weight: bold;
   border-bottom: 1px solid #ddd;
 }
 
-/* line 332, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 #updatesInnerComponent {
   min-height: 300px;
 }
 
-/* line 336, ../sass/screen.scss */
+/* line 344, ../sass/screen.scss */
 #updatesInnerComponent .image {
   float: left;
   background-repeat: no-repeat;
@@ -832,7 +840,7 @@ div#updatesComponent .updatesHeader {
   margin-right: 3px;
 }
 
-/* line 344, ../sass/screen.scss */
+/* line 352, ../sass/screen.scss */
 #updatesInnerComponent .name {
   margin-top: 15px;
   font-weight: bolder;
@@ -841,14 +849,14 @@ div#updatesComponent .updatesHeader {
   vertical-align: bottom;
 }
 
-/* line 352, ../sass/screen.scss */
+/* line 360, ../sass/screen.scss */
 #updatesInnerComponent .message {
   display: block;
   margin-top: 10px;
   margin-left: 15px;
 }
 
-/* line 358, ../sass/screen.scss */
+/* line 366, ../sass/screen.scss */
 #updatesInnerComponent .timestamp {
   margin-top: 5px;
   color: gray;
@@ -856,19 +864,19 @@ div#updatesComponent .updatesHeader {
   font-size: 12px;
 }
 
-/* line 365, ../sass/screen.scss */
+/* line 373, ../sass/screen.scss */
 #selectable {
   margin: 0px;
 }
 
-/* line 369, ../sass/screen.scss */
+/* line 377, ../sass/screen.scss */
 #updatesInnerComponent a {
   cursor: pointer;
   color: darkblue;
   text-decoration: none;
 }
 
-/* line 375, ../sass/screen.scss */
+/* line 383, ../sass/screen.scss */
 #updatesInnerComponent a:hover {
   text-decoration: underline;
 }

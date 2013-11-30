@@ -220,7 +220,7 @@ label.pageHeader {
  
     label {
         color: lighten($font-color, 20%);
-    }
+    }    
 
     label.mainLabel {
         padding-right: 10px;
@@ -228,6 +228,10 @@ label.pageHeader {
         width: 40%;
         text-align: right;
         vertical-align: top;
+    }
+
+    .termsAndpolicy {
+        margin-left: 100px;
     }
 
     h1 {
@@ -272,6 +276,10 @@ label.pageHeader {
         width: 10%;
         background-color: #333333;
         color: white;
+    }
+
+    #saveChanges:hover {
+        cursor: hand;
     }
     
     img.preview {
