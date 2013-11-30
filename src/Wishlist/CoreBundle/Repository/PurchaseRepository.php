@@ -10,7 +10,6 @@ use Wishlist\CoreBundle\Entity\PurchaseEventTypes;
 use Wishlist\CoreBundle\Entity\Event;
 use Doctrine\ORM\Query\ResultSetMapping;
 
-
 /**
  * PurchaseRepository
  *
@@ -32,21 +31,33 @@ class PurchaseRepository extends EntityRepository
         $rsm->addMetaResult('p', 'user_id', 'user');
         $rsm->addMetaResult('p', 'event_id', 'event');
         $rsm->addFieldResult('p', 'gift_date', 'gift_date');
+
+        $date = 'NULL';
+        $eventId = 'NULL';
         
         if( isset($gift_date) )
         {
             $date = '\''.$gift_date->format('Y-m-d').'\'';
-        }else
-        {
-            $date = 'NULL';
         }
-        
-        if( isset($event) )
+        else if( isset($event) )
         {
             $eventId = $event->getId();
-        }else
+            //Make a temp date using the event month/day + this year.
+            $currentDate = getdate();
+            $eventDate = getdate($event->getEventDate()->getTimestamp());
+            $tmpDate = \DateTime::createFromFormat('Y-m-d', $currentDate['year'].'-'.$eventDate['mon'].'-'.$eventDate['mday']);
+            
+            //If the date has already passed, must have meant for next year.
+            if($tmpDate->getTimestamp() < time())
+            {
+                $tmpDate->add(new \DateInterval('P1Y'));
+            }
+
+            $date = '\''.$tmpDate->format('Y-m-d').'\'';
+        }
+        else
         {
-            $eventId = 'NULL';
+            throw new \Exception('Must enter a date or event.');
         }
         
         $genericItem = $wishlistItem->getItem();
@@ -143,7 +154,7 @@ class PurchaseRepository extends EntityRepository
             FROM WishlistCoreBundle:Purchase p
             LEFT JOIN p.wishlistUser usr
             LEFT JOIN p.event e
-            where usr.wishlistuser_id = :uid AND (p.gift_date < CURRENT_DATE() OR e.eventDate < CURRENT_DATE())')
+            where usr.wishlistuser_id = :uid AND p.gift_date < CURRENT_DATE()')
             ->setParameter('uid', $uid);
 
         return $q->getResult();
