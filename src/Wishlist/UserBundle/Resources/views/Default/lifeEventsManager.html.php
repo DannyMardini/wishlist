@@ -36,8 +36,8 @@
    ?>            
 </div>
 <div style="display:none;" id="newEventPanel">            
-    <input id="newEventname" type="text" required placeholder="Name" />
-    <input id="newDatepicker" type="date" required placeholder="Date" />
+    <input id="newEventname" type="text" placeholder="Name" required />
+    <input id="newEventMonth" type="number" placeholder="M" required /> / <input id="newEventDay" type="number" placeholder="D" required />
     <select id="newEventType"><option value="-1">Select Type</option>
         <option value="1">Birthday</option>
         <option value="2">Anniversary</option>

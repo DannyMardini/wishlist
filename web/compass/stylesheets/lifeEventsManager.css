@@ -77,3 +77,9 @@
   padding: 5px;
   border-bottom: solid 1px #EFEFEF;
 }
+
+/* line 75, ../sass/lifeEventsManager.scss */
+#newEventPanel input[type="number"] {
+  display: inline-block;
+  width: 20%;
+}
