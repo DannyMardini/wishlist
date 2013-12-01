@@ -169,10 +169,11 @@ function onClickSaveEventHandler(e)
 function saveNewEvent()
 {
     var newEventname = $('#newEventname').val();
-    var newDatepicker = $('#newDatepicker').val();
+    var newEventMonth = $('#newEventMonth').val();
+    var newEventDay = $('#newEventDay').val();
     var newEventType = $('#newEventType option:selected').val();                
     
-    ajaxCall(Routing.generate('WishlistUserBundle_saveEvent'), {name: newEventname, date: newDatepicker, type:newEventType}, saveNewEventCallback);
+    ajaxPost({name: newEventname, month: newEventMonth, day: newEventDay, type:newEventType}, Routing.generate('WishlistUserBundle_saveEvent'), saveNewEventCallback);
 }
 
 function saveNewEventCallback(data)
@@ -216,9 +217,10 @@ function renderNewEvent(id)
     var newEventType = $('#newEventType').val();
     var newEventName = $('#newEventname').val();
     var newImage = newEventType == 1 ? "/images/birthday1.png" : (newEventType == 2 ? "/images/anniversary4.gif" : "/images/otherEvent.jpeg");    
-    var dateArr = $('#newDatepicker').val().split('-');
-    var dateObj = parseDate(dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0]);
-    var day = dateObj.getDay();
+    var eventMonth = $('#newEventMonth').val();
+    var eventDay = $('#newEventDay').val();
+    var dateObj = parseDate(eventMonth + "/" + eventDay + "/" + 2004);
+    var day = dateObj.getDate();
     var newEvent = ["<div class='Event' id='event_",id,"'><button id='remove_event_", id, "' class='remove' title='remove event'><span class='ui-icon ui-icon-minus wishenda-button'></span></button>",
                    ,"<div class='image' title='", newEventName, "'><img src='", newImage,"' height='30' width='30' /></div>",
                    ,"<div class='name' title ='", newEventName, "'>", newEventName,"</div>",

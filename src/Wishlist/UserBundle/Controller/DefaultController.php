@@ -540,17 +540,44 @@ class DefaultController extends Controller
     {
         try {
            $name = stripslashes($this->getRequest()->get('name'));
-           $time = $this->getRequest()->get('date');
+           $month= $this->getRequest()->get('month');
+           $day = $this->getRequest()->get('day');
            $type = $this->getRequest()->get('type');
+
+           if(!isset($name))
+           {
+               throw new \Exception('Name was not given');
+           }
+           if(!isset($month))
+           {
+               throw new \Exception('Month was not given');
+           }
+           if(!isset($day))
+           {
+               throw new \Exception('Day was not given');
+           }
+           if(!isset($type))
+           {
+               throw new \Exception('Type was not even');
+           }
+
+           //2004 is my graduation date and a leap year so feb 29 would be true if someone chooses
+           //Feb 29.
+           if(!checkdate($month, $day, 2004))
+           {
+               throw new Exception('Date was not valid');
+           }
            
            $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
            $wishlistUser = $userRepo->getUserWithId($this->getRequest()->getSession()->get('user_id'));
            
            $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
-           $newId = $eventRepo->addEvent( $name, intval($type), new DateTime($time), $wishlistUser);
+           $eventDate = new DateTime();
+           $eventDate->setDate(2004, $month, $day);
+           $newId = $eventRepo->addEvent( $name, intval($type), $eventDate, $wishlistUser);
            return new Response($newId);
         } 
-        catch(Exception $e){
+        catch(\Exception $e){
             $message = "An issue has occurred. Contact the wishlist support for assistance. Message:".$e->getMessage();
             return new Response($message);
         }
