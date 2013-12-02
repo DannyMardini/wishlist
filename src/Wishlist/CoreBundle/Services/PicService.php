@@ -40,7 +40,7 @@ class PicService
     public static function uploadTempProfilePic(/*int*/$userId, /*string*/$ext, /*string*/$tmp)
     {
         $hashedFname = PicService::hashProfileFname($userId);
-        $finalFname = 'images/temp/'.$hashedFname.'.'.$ext;
+        $finalFname = strtolower('images/temp/'.$hashedFname.'.'.$ext);
         if(!move_uploaded_file($tmp, $finalFname))
         {
             throw new \Exception('Upload failed');
