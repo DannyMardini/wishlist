@@ -17,3 +17,10 @@
     font-size: $global-label-size-large;
     font-family: $global-main-font-family; 
 }
+
+.messageStyle {
+    font-size: 16px;
+    color: gray;
+    display: block;
+    @include set-spacing(20px);
+}

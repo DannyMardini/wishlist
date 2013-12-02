@@ -1,9 +1,9 @@
-<!-- TODO: This page must not be viewable to those that aren't currently logged in. -->
 <?php $view->extend('::navBar.html.php') ?>
 <script type="text/javascript" src="/js/friendpage.js"></script>
+<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/screen.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
 <div class="pageTitle">
     <label class="pageHeader">Friends</label>
-    <button class="addButton" title="add item" id="addItemButton"><span id="inviteFriendButton" class="ui-icon ui-icon-plus wishenda-button"></span></button>
+    <button class="addButton" title="invite friends" id="addItemButton"><span id="inviteFriendButton" class="wishenda-button">Invite Friends</span></button>
     <span class="itemCountSpan"><?php echo count($friends) ?> Friend(s)</span>
 </div>
 <hr size="1" width="90%" color="grey">
@@ -30,11 +30,7 @@
 ?>
 </div>
 
-<div id="friendInviteDialog" title="Invite a friend!">
-    <form id="friendInviteForm">
-        <p>Need to shop for a friend? Invite them to create their wishlist!</p>
-        <div class="inviteFriendInput"><label style="float:left;">Email:</label><input name="email" id="newFriendEmail" type="email" placeholder="johndoe@email.com"></div>
-        <input id="friendInviteFormSubmit" type="submit" name="submitFriend" style="display: none" required>
-    </form>
-</div>
+<?php 
+    echo $view->render('WishlistDialogBundle:Default:friendInviteDialog.html.php');
+?>
 

@@ -26,6 +26,17 @@
   font-family: "Satisfy", cursive;
 }
 
+/* line 21, ../sass/partials/_sharedStyles.scss */
+.messageStyle {
+  font-size: 16px;
+  color: gray;
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
 /* line 4, ../sass/shoppingList.scss */
 #shoppinglist {
   width: 80%;

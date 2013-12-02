@@ -57,7 +57,46 @@ a img {
   border: none;
 }
 
-/* line 20, ../sass/screen.scss */
+/* line 4, ../sass/partials/_sharedStyles.scss */
+.invalid-form-input {
+  border: 3px solid #e88;
+  -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -o-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  -ms-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+}
+
+/* line 9, ../sass/partials/_sharedStyles.scss */
+.required-form-input {
+  border: 1px solid #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+}
+
+/* line 14, ../sass/partials/_sharedStyles.scss */
+.page-header-label-style {
+  margin-left: 10px;
+  margin-right: 3px;
+  font-size: 20px;
+  font-family: "Satisfy", cursive;
+}
+
+/* line 21, ../sass/partials/_sharedStyles.scss */
+.messageStyle, #message {
+  font-size: 16px;
+  color: gray;
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+/* line 22, ../sass/screen.scss */
 body.bp {
   line-height: 1.5;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -492,14 +531,14 @@ form.bp form.inline p {
   margin-bottom: 0;
 }
 
-/* line 37, ../sass/screen.scss */
+/* line 39, ../sass/screen.scss */
 body.two-col #container {
   width: 950px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 40, ../sass/screen.scss */
+/* line 42, ../sass/screen.scss */
 body.two-col #header, body.two-col #footer {
   display: inline;
   float: left;
@@ -510,7 +549,7 @@ body.two-col #header, body.two-col #footer {
 * html body.two-col #header, * html body.two-col #footer {
   overflow-x: hidden;
 }
-/* line 43, ../sass/screen.scss */
+/* line 45, ../sass/screen.scss */
 body.two-col #sidebar {
   display: inline;
   float: left;
@@ -521,7 +560,7 @@ body.two-col #sidebar {
 * html body.two-col #sidebar {
   overflow-x: hidden;
 }
-/* line 48, ../sass/screen.scss */
+/* line 50, ../sass/screen.scss */
 body.two-col #content {
   display: inline;
   float: left;
@@ -533,7 +572,7 @@ body.two-col #content {
   overflow-x: hidden;
 }
 
-/* line 63, ../sass/screen.scss */
+/* line 65, ../sass/screen.scss */
 body {
   background: -webkit-linear-gradient(left, #f7f7f7, white, #f7f7f7);
   background: -moz-linear-gradient(left, #f7f7f7, white, #f7f7f7);
@@ -542,7 +581,7 @@ body {
   background: linear-gradient(left, #f7f7f7, #ffffff, #f7f7f7);
 }
 
-/* line 71, ../sass/screen.scss */
+/* line 73, ../sass/screen.scss */
 span#betaTag {
   font-family: helvetica;
   font-size: 0.4em;
@@ -550,7 +589,7 @@ span#betaTag {
   color: #FC6DC0;
 }
 
-/* line 78, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 div.friendlist {
   text-decoration: none;
   color: #303030;
@@ -558,7 +597,7 @@ div.friendlist {
   border: 1px solid #999999;
   border-top-style: hidden;
 }
-/* line 79, ../sass/screen.scss */
+/* line 81, ../sass/screen.scss */
 div.friendlist ul {
   list-style: none;
   padding: 0;
@@ -566,35 +605,35 @@ div.friendlist ul {
   margin-left: 80px;
   width: 80%;
 }
-/* line 87, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 div.friendlist li {
   margin-bottom: 5px;
 }
-/* line 90, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 div.friendlist li:hover {
   background-color: #efefef;
   cursor: hand;
 }
 
-/* line 102, ../sass/screen.scss */
+/* line 104, ../sass/screen.scss */
 img.friendIcon {
   width: 50px;
   height: 50px;
   padding-right: 50px;
 }
 
-/* line 108, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 .inviteFriendInput #newFriendEmail {
   height: 30px;
   width: 400px;
 }
 
-/* line 113, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 .inviteFriendInput {
   margin-top: 20px;
 }
 
-/* line 117, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 #friendSearch {
   height: 50px;
   border-style: solid;
@@ -604,36 +643,36 @@ img.friendIcon {
   margin-bottom: 0px;
 }
 
-/* line 126, ../sass/screen.scss */
+/* line 132, ../sass/screen.scss */
 #friendsContainer {
   width: 80%;
   margin: 10%;
   margin-top: 2%;
 }
 
-/* line 132, ../sass/screen.scss */
+/* line 138, ../sass/screen.scss */
 div.listSeparator {
   background-color: #efefef;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 div.userButton {
   display: inline-block;
   width: 70%;
 }
 
-/* line 141, ../sass/screen.scss */
+/* line 147, ../sass/screen.scss */
 div.addFriendButtonDiv {
   float: right;
   margin-top: 10px;
   width: 30%;
 }
-/* line 142, ../sass/screen.scss */
+/* line 148, ../sass/screen.scss */
 div.addFriendButtonDiv .ui-button-text {
   font-size: 0.8em;
 }
 
-/* line 150, ../sass/screen.scss */
+/* line 156, ../sass/screen.scss */
 div.requestSentNotification {
   padding-top: 12px;
   font-style: italic;
@@ -641,7 +680,7 @@ div.requestSentNotification {
   color: #b0b0b0;
 }
 
-/* line 157, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 label.pageHeader {
   padding-top: 10px;
   padding-left: 60px;
@@ -652,12 +691,12 @@ label.pageHeader {
   font-weight: bold;
 }
 
-/* line 167, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 .wishenda-button {
   cursor: hand;
 }
 
-/* line 171, ../sass/screen.scss */
+/* line 177, ../sass/screen.scss */
 #accountSettings {
   text-align: center;
   font-family: 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
@@ -666,7 +705,7 @@ label.pageHeader {
   color: #303030;
   -webkit-font-smoothing: antialiased;
 }
-/* line 179, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 #accountSettings input:invalid {
   border-color: #e88;
   -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
@@ -675,7 +714,7 @@ label.pageHeader {
   -ms-box-shadow: 0 0 5px rbba(255, 0, 0, 0.8);
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
 }
-/* line 188, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 #accountSettings input:required {
   border-color: #88a;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
@@ -684,7 +723,7 @@ label.pageHeader {
   -ms-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
-/* line 197, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 #accountSettings input, #accountSettings select, #accountSettings textarea {
   border: 1px solid #ccc;
   min-height: 30px;
@@ -698,20 +737,20 @@ label.pageHeader {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 212, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 #accountSettings form {
   width: auto;
 }
-/* line 216, ../sass/screen.scss */
+/* line 222, ../sass/screen.scss */
 #accountSettings input {
   display: inline-block;
   width: 30%;
 }
-/* line 221, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 #accountSettings label {
   color: #636363;
 }
-/* line 225, ../sass/screen.scss */
+/* line 231, ../sass/screen.scss */
 #accountSettings label.mainLabel {
   padding-right: 10px;
   display: inline-block;
@@ -719,87 +758,87 @@ label.pageHeader {
   text-align: right;
   vertical-align: top;
 }
-/* line 233, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 #accountSettings .termsAndpolicy {
   margin-left: 100px;
 }
-/* line 237, ../sass/screen.scss */
+/* line 243, ../sass/screen.scss */
 #accountSettings h1 {
   font-size: 30px;
 }
-/* line 241, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 #accountSettings ul {
   list-style: none;
 }
-/* line 245, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 #accountSettings #mainDiv {
   width: 80%;
   margin: 0 auto;
   text-align: left;
 }
-/* line 251, ../sass/screen.scss */
+/* line 257, ../sass/screen.scss */
 #accountSettings #genderPicker {
   width: 30%;
   display: inline-block;
 }
-/* line 256, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 #accountSettings #genderPicker li {
   display: inline-block;
   width: 25%;
   padding-right: 10px;
 }
-/* line 262, ../sass/screen.scss */
+/* line 268, ../sass/screen.scss */
 #accountSettings #genderPicker input {
   display: block;
 }
-/* line 266, ../sass/screen.scss */
+/* line 272, ../sass/screen.scss */
 #accountSettings #passwordInputs {
   display: inline-block;
   width: 30%;
 }
-/* line 270, ../sass/screen.scss */
+/* line 276, ../sass/screen.scss */
 #accountSettings #passwordInputs input {
   width: 100%;
 }
-/* line 275, ../sass/screen.scss */
+/* line 281, ../sass/screen.scss */
 #accountSettings #saveChanges {
   width: 10%;
   background-color: #333333;
   color: white;
 }
-/* line 281, ../sass/screen.scss */
+/* line 287, ../sass/screen.scss */
 #accountSettings #saveChanges:hover {
   cursor: hand;
 }
-/* line 285, ../sass/screen.scss */
+/* line 291, ../sass/screen.scss */
 #accountSettings img.preview {
   width: 200px;
   border: solid 1px #dedede;
   padding: 10px;
 }
-/* line 291, ../sass/screen.scss */
+/* line 297, ../sass/screen.scss */
 #accountSettings div#preview {
   text-align: center;
 }
-/* line 295, ../sass/screen.scss */
+/* line 301, ../sass/screen.scss */
 #accountSettings input.birthdate {
   width: 2.5em;
 }
-/* line 299, ../sass/screen.scss */
+/* line 305, ../sass/screen.scss */
 #accountSettings #birthYear {
   width: 4.5em;
 }
-/* line 303, ../sass/screen.scss */
+/* line 309, ../sass/screen.scss */
 #accountSettings input:disabled {
   background: #EBEBEB;
 }
 
-/* line 308, ../sass/screen.scss */
+/* line 314, ../sass/screen.scss */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 312, ../sass/screen.scss */
+/* line 318, ../sass/screen.scss */
 div#updatesComponent {
   width: 23%;
   position: absolute;
@@ -814,24 +853,24 @@ div#updatesComponent {
   -webkit-border-radius: 3px;
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
-/* line 328, ../sass/screen.scss */
+/* line 334, ../sass/screen.scss */
 div#updatesComponent .Update {
   padding: 10px 30px 0px 20px;
   border-bottom: 1px solid #ddd;
 }
-/* line 333, ../sass/screen.scss */
+/* line 339, ../sass/screen.scss */
 div#updatesComponent .updatesHeader {
   padding: 10px 30px 0px 5px;
   font-weight: bold;
   border-bottom: 1px solid #ddd;
 }
 
-/* line 340, ../sass/screen.scss */
+/* line 346, ../sass/screen.scss */
 #updatesInnerComponent {
   min-height: 300px;
 }
 
-/* line 344, ../sass/screen.scss */
+/* line 350, ../sass/screen.scss */
 #updatesInnerComponent .image {
   float: left;
   background-repeat: no-repeat;
@@ -840,7 +879,7 @@ div#updatesComponent .updatesHeader {
   margin-right: 3px;
 }
 
-/* line 352, ../sass/screen.scss */
+/* line 358, ../sass/screen.scss */
 #updatesInnerComponent .name {
   margin-top: 15px;
   font-weight: bolder;
@@ -849,14 +888,14 @@ div#updatesComponent .updatesHeader {
   vertical-align: bottom;
 }
 
-/* line 360, ../sass/screen.scss */
+/* line 366, ../sass/screen.scss */
 #updatesInnerComponent .message {
   display: block;
   margin-top: 10px;
   margin-left: 15px;
 }
 
-/* line 366, ../sass/screen.scss */
+/* line 372, ../sass/screen.scss */
 #updatesInnerComponent .timestamp {
   margin-top: 5px;
   color: gray;
@@ -864,19 +903,29 @@ div#updatesComponent .updatesHeader {
   font-size: 12px;
 }
 
-/* line 373, ../sass/screen.scss */
+/* line 379, ../sass/screen.scss */
 #selectable {
   margin: 0px;
 }
 
-/* line 377, ../sass/screen.scss */
+/* line 383, ../sass/screen.scss */
 #updatesInnerComponent a {
   cursor: pointer;
   color: darkblue;
   text-decoration: none;
 }
 
-/* line 383, ../sass/screen.scss */
+/* line 389, ../sass/screen.scss */
 #updatesInnerComponent a:hover {
   text-decoration: underline;
+}
+
+/* line 393, ../sass/screen.scss */
+label {
+  float: left;
+}
+
+/* line 397, ../sass/screen.scss */
+.narrow-box {
+  width: 450px;
 }

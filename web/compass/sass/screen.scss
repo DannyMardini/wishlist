@@ -10,6 +10,8 @@
 // Import the non-default scaffolding module.
 @import "blueprint/scaffolding";
 
+@import 'partials/sharedStyles';
+
 // To generate css equivalent to the blueprint css but with your
 // configuration applied, uncomment:
 // @include blueprint
@@ -108,6 +110,10 @@ img.friendIcon {
 .inviteFriendInput #newFriendEmail{
     height: 30px;
     width: 400px;
+}
+
+#message {
+    @extend .messageStyle;
 }
 
 .inviteFriendInput {
@@ -382,4 +388,12 @@ div#updatesComponent {
 
 #updatesInnerComponent a:hover {
     text-decoration: underline;
+}
+
+label {
+    float:left;
+}
+
+.narrow-box {
+    width: 450px;
 }
