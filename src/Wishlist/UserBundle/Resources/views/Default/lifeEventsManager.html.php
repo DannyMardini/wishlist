@@ -8,14 +8,12 @@
 <hr size="1" width="90%" color="grey">
 <div id="EventList" class="eventListDiv">
     <?php  
-    if($eventCount > 0)
-    {
-        foreach ($events as $event) {
-                $eventId = $event->getId();
-                $eventImage = $event->getEventImage();
-                $eventName = $event->getName();
-                $eventDate = $event->getFormattedTimestamp();
-                $timestamp = " -- ".$eventDate;
+    foreach ($events as $event) {
+            $eventId = $event->getId();
+            $eventImage = $event->getEventImage();
+            $eventName = $event->getName();
+            $eventDate = $event->getFormattedTimestamp();
+            $timestamp = " -- ".$eventDate;
    ?>  
             <div class="Event" id="event_<?php echo $eventId ?>">
                 <button class="remove" id="remove_event_<?php echo $eventId ?>" title="remove event">
@@ -25,13 +23,7 @@
                 <div class="name" title ="<?php echo $eventName ?>"><?php echo $eventName ?></div>
                 <div class="timestamp" title="<?php echo $eventName ?>"><?php echo $timestamp ?></div>
             </div>
-   <?php 
-
-        } 
-    }
-    else 
-    { 
-       echo "You haven't added any events yet.";
+   <?php
     }
    ?>            
 </div>

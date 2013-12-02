@@ -1,4 +1,5 @@
 var selectedEventId = null;
+var eventListEmptyMessage = '<p class="message">You don\'t have any events! To add an event click the (+) button above!<br/>Examples include your birthday and anniversary.</p>';
 var couldNotRemoveEventMessage = 'Event could not be removed. Contact the Wishlist support if the issue persists.';
 var couldNotSaveEventMessage = 'The save could not be processed. Contact the wishlist support if the issue persists.';
 
@@ -6,6 +7,7 @@ $(document).ready(function(){
     createGUIButtons();
     createGUIDialogs();
     setupEventHandlers();
+    checkIfEmptyMessageRequired();
 });
 
 function setupEventHandlers()
@@ -123,6 +125,15 @@ function removeEvent()
     
 }
 
+function checkIfEmptyMessageRequired()
+{
+    var eventCount = getEventCount();
+    if(eventCount == 0)
+    {
+        $('#EventList').html(eventListEmptyMessage);
+    }
+}
+
 function removeEventCallback(response)
 {
     if(response == '0')
@@ -133,11 +144,7 @@ function removeEventCallback(response)
     
     // remove the event from the table view.
     $('#event_'+response).remove();
-    var eventCount = getEventCount();
-    if(eventCount == 0)
-    {
-        $('#EventList').html("You haven't added any events yet.");
-    }
+    checkIfEmptyMessageRequired();
     updateEventCountSpan();
     $('#dialog-message').dialog('open');
     $('#dialog-message').attr('title','Event removed!').html('<p>The event was permanently removed.</p>');
