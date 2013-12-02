@@ -27,6 +27,11 @@
         echo "</div>";
         echo "</div>";
     }
+    else {
+        echo "<div class='message'>You haven't added any friends yet, you can: <br /><br />            
+            1. Search for friends by typing a name in the text box, or <br /><br />
+            2. Invite friends to join wishenda by clicking 'Invite Friends' above.</div>";
+    }
 ?>
 </div>
 

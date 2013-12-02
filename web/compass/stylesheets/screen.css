@@ -86,7 +86,7 @@ a img {
 }
 
 /* line 21, ../sass/partials/_sharedStyles.scss */
-.messageStyle, #message {
+.messageStyle, .message {
   font-size: 16px;
   color: gray;
   display: block;
@@ -921,11 +921,14 @@ div#updatesComponent .updatesHeader {
 }
 
 /* line 393, ../sass/screen.scss */
-label {
+.form-label {
   float: left;
+  margin-right: 10px;
+  font-size: 16px;
+  color: gray;
 }
 
-/* line 397, ../sass/screen.scss */
+/* line 400, ../sass/screen.scss */
 .narrow-box {
   width: 450px;
 }

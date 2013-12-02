@@ -112,7 +112,7 @@ img.friendIcon {
     width: 400px;
 }
 
-#message {
+.message {
     @extend .messageStyle;
 }
 
@@ -390,8 +390,11 @@ div#updatesComponent {
     text-decoration: underline;
 }
 
-label {
+.form-label {
     float:left;
+    margin-right: 10px;
+    font-size: 16px;
+    color: gray;
 }
 
 .narrow-box {

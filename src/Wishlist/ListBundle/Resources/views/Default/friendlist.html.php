@@ -1,5 +1,6 @@
 <div id='div_friendlist_div'>
 <?php
+if(count($friends) > 0){
 echo "<ul>";
 foreach($friends as $friend)
 {
@@ -7,5 +8,9 @@ foreach($friends as $friend)
             .$friend->getName()."</a></li>\n";
 }
 echo "</ul>";
+}
+else {
+    echo "test test";
+}
 ?>
 </div>
