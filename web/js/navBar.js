@@ -118,7 +118,9 @@ function removeNotificationHelper()
 /* Navigates to the frontpage and logs the user out */
 function onLogoutClickEvent()
 {
-    navigate($('#frontpageLinkPath').val());
+    ajaxPost({}, Routing.generate('WishlistFrontpageBundle_logout'), function(data, textStatus){
+        navigate($('#frontpageLinkPath').val());
+    });
 }
 
 function navigate(path)

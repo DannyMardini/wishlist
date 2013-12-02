@@ -5,11 +5,15 @@ WishlistFrontpageBundle_homepage:
 WishlistFrontpageBundle_navBarTest:
   pattern: /navBar/{username}
   defaults: { _controller: WishlistFrontpageBundle:Default:navBar }
-  
+
+WishlistFrontpageBundle_logout:
+  pattern: /logout
+  defaults: { _controller: WishlistFrontpageBundle:Default:logout }
+
 Validate:
   pattern: /Frontpage/validateLogin
   defaults: { _controller: WishlistFrontpageBundle:Default:validateLogin }
   
 RequestInvite:
   pattern: /Frontpage/requestInvite
-  defaults: { _controller: WishlistFrontpageBundle:Default:requestInvite }  
+  defaults: { _controller: WishlistFrontpageBundle:Default:requestInvite }

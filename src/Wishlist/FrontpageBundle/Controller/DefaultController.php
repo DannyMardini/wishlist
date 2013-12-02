@@ -11,17 +11,22 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
-        $session = $this->getRequest()->getSession();
-        $session->set('email_addr', '');
-        $session->set('user_id', '');
-        $session->clear();
-        
         return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');
     }
     
     public function navBarAction($username)
     {
         return $this->render('WishlistFrontpageBundle:Default:navBarTest.html.php', array('username' => $username));
+    }
+
+    public function logoutAction()
+    {
+        $session = $this->getRequest()->getSession();
+        $session->set('email_addr', '');
+        $session->set('user_id', '');
+        $session->clear();
+
+        return new Response('success');
     }
     
     public function validateLoginAction()
