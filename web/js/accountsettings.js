@@ -96,7 +96,7 @@ function sendFormValues()
                 }
                 else
                 {
-                    popupMessage('Uh oh!', 'Unfortunately there was a problem with your request. Please try again in a few moments.');
+                    popupMessage('Uh oh!', response);
                 }
             });
 }

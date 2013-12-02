@@ -436,7 +436,7 @@ class DefaultController extends Controller
                 
                 if (strlen($new_password) > 0 && $new_password !== $user->getPassword()) {
                     if (!StoPasswordHash::verifyPassword($old_password, $user->getPassword())) {
-                        $response = "Incorrect old_password";
+                        $response = "The old password was not correct. Please fix it and try again.";
                         throw new \Exception($response);
                     }
                     $user->setPassword($new_password);
