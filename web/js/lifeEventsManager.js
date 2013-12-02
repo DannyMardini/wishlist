@@ -178,17 +178,23 @@ function saveNewEvent()
 
 function saveNewEventCallback(data)
 {
-    // insert the new event into the My Events section
-    if(data.toLowerCase().indexOf('issue') > -1){        
-        $('#dialog-message').attr('title','An issue occurred!').html('<p>'+couldNotSaveEventMessage+'</p>').dialog('open');
-        return;
+    try
+    {
+        // insert the new event into the My Events section
+        if(data.toLowerCase().indexOf('issue') > -1){
+            throw couldNotSaveEventMessage;
+        }
+    
+        renderNewEvent(data);
+    
+        updateEventCountSpan();
+    
+        $('#dialog-message').attr('title','Event saved!').html('<p>The event was saved.</p>').dialog('open');
     }
-    
-    renderNewEvent(data);
-    
-    updateEventCountSpan();
-    
-    $('#dialog-message').attr('title','Event saved!').html('<p>The event was saved.</p>').dialog('open');
+    catch(e)
+    {
+        $('#dialog-message').attr('title','An issue occurred!').html('<p>'+e+'</p>').dialog('open');
+    }
 }
  
 function validateNewEventInputs()
