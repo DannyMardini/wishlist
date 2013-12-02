@@ -10,8 +10,8 @@ function saveChanges()
 function displayInputError(currentInput, errorStr) {
     var errorDisplay = $('#errorDisplay');
 
-    errorDisplay.html(errorStr);  //Is this the correct function?
-    errorDisplay.show(); //Is this the correct function?
+    errorDisplay.html(errorStr);
+    errorDisplay.show(); 
 }
 
 function allFormsValid()
@@ -36,7 +36,8 @@ function allFormsValid()
         }
 
         //Check to see if birthdate is valid.
-        if (!isValidDate($('#birthYear').val(), $('#birthMonth').val(), $('#birthDay').val())) {
+        var specialMonth = $('#birthMonth').val() - 1; // the validator checks months between 0 to 11 so we need to subtract 1 here
+        if (!isValidDate($('#birthYear').val(), specialMonth, $('#birthDay').val())) {
             throw 'Please enter a valid birth date.';
         }
 
@@ -84,7 +85,9 @@ function sendFormValues()
                 if($dataArray[0].toLowerCase() === "success")
                 {
                     if(updatingSettings) {
-                        popupMessage('Success!', 'Your settings have been updated!');
+                        popupMessage('Success!', 'Your settings have been updated!', function(){
+                            location.reload();
+                        });
                         
                     }
                     else {
@@ -131,17 +134,6 @@ $(document).ready(function(){
         {
             target: '#preview'
         }).submit();
-        /*
-        $.post(Routing.generate('WishlistUserBundle_uploadUserImage'), {photoimg: $('#photoimg').serialize()}, function(data, textStatus, jqXHR) {
-            alert("success");
-            
-        });
-        //*/
-
-        /*
-        $("#imageform").submit();
-        $
-        //*/
     });
 
     var gender = $('#orig_gender').val();

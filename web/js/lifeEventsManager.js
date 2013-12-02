@@ -232,7 +232,7 @@ function renderNewEvent(id)
     var newImage = newEventType == 1 ? "/images/birthday1.png" : (newEventType == 2 ? "/images/anniversary4.gif" : "/images/otherEvent.jpeg");    
     var eventMonth = $('#newEventMonth').val();
     var eventDay = $('#newEventDay').val();
-    var dateObj = parseDate(eventMonth + "/" + eventDay + "/" + 2004);
+    var dateObj = parseDate(eventMonth + "/" + eventDay + "/" + 2004); // the year is hard coded it's just a dummy year, because the year isn't being tracked anyway
     var day = dateObj.getDate();
     var newEvent = ["<div class='Event' id='event_",id,"'><button id='remove_event_", id, "' class='remove' title='remove event'><span class='ui-icon ui-icon-minus wishenda-button'></span></button>",
                    ,"<div class='image' title='", newEventName, "'><img src='", newImage,"' height='30' width='30' /></div>",

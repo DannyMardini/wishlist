@@ -934,3 +934,10 @@ div#updatesComponent .updatesHeader {
 .narrow-box {
   width: 450px;
 }
+
+/* line 406, ../sass/screen.scss */
+#errorDisplay {
+  margin: 30px;
+  color: red;
+  font-weight: bold;
+}

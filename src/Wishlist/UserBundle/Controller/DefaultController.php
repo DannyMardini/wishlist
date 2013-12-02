@@ -434,6 +434,25 @@ class DefaultController extends Controller
                     $user->setBirthdate($birthdate);
                 }
                 
+                // validate that the user is older than or exactly 13
+                $today = getdate();
+                $day = $today["mday"];
+                $month = $today["mon"];
+                $year = $today["year"];
+                $thirteenYearsAgo = $today["year"]-13;
+                $iBirthYear = (int)$birthYear;
+                $iBirthMonth = (int)$birthMonth;
+                $iBirthDay = (int)$birthDay;
+                $isYoungerThan13 = $iBirthYear > $thirteenYearsAgo ||
+                                $iBirthYear >= $thirteenYearsAgo && $iBirthMonth > $month ||
+                                $iBirthYear >= $thirteenYearsAgo && $iBirthMonth >= $month &&  $iBirthDay > $day; // $birthDay <= $day && $birthMonth <= $month && $birthYear <= $thirteenYearsAgo;
+                
+                if($isYoungerThan13)
+                {
+                    $response = "You must be 13 year or older to join Wishenda.";
+                    throw new \Exception($response);
+                }
+                
                 if (strlen($new_password) > 0 && $new_password !== $user->getPassword()) {
                     if (!StoPasswordHash::verifyPassword($old_password, $user->getPassword())) {
                         $response = "The old password was not correct. Please fix it and try again.";
