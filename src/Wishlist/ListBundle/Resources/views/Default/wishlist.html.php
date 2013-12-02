@@ -4,6 +4,11 @@
 //Helper functions
 $i = count($wishlistItems);
 
+if($i <= 0)
+{
+    echo "test test";
+}
+
 echo "<label class='pageHeader'>Wishlist</label>";
 if ($selfWishlist)
 {    

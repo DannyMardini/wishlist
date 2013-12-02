@@ -485,7 +485,7 @@ function ajaxPageLoad(element, path, itemObj, callback)
 function delFromWishlist(itemObj, callback)
 {
     var wishlistItemURL = Routing.generate('WishlistListBundle_wishlistDelete');
-    $( "#wishlist" ).load(wishlistItemURL, itemObj, callback);
+    $("#wishlistContent").load(wishlistItemURL, itemObj, callback);
 }
 
 // paramsObj {tags: "cat", tagmode: "any", format: "json"}
