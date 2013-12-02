@@ -11,35 +11,45 @@
 
 <div id="shoppinglist">
     <?php
-    echo "<table id='shoppingList_bs_table' class='shoppinglistItem'>
-        <tr><th>Select</th><th>Item</th><th>For</th><th>Date Due</th></tr>";
-    
-    foreach($purchases as $purchase)
-    {
-        $giftDate = $purchase->getGiftDate();
-        $event = $purchase->getEvent();
+    if(count($purchases) > 0){
+        echo "<table id='shoppingList_bs_table' class='shoppinglistItem'>
+            <tr><th>Select</th><th>Item</th><th>For</th><th>Date Due</th></tr>";
 
-        if(isset($giftDate)) {
-            $dateDisplay = $giftDate->format('F jS');
-        }
-        else {
-            $dateDisplay = $event->getEventDate()->format('F jS');
+        foreach($purchases as $purchase)
+        {
+            $giftDate = $purchase->getGiftDate();
+            $event = $purchase->getEvent();
+
+            if(isset($giftDate)) {
+                $dateDisplay = $giftDate->format('F jS');
+            }
+            else {
+                $dateDisplay = $event->getEventDate()->format('F jS');
+            }
+
+            $purchasedWishlistItem = $purchase->getItem();
+            $purchasedItem = $purchasedWishlistItem->getItem();
+            $giftUser = $purchasedWishlistItem->getWishlistUser();
+            $giftId = $purchase->getId();
+            $giftName = $purchasedItem->getName();
+
+            echo "<tr><td><input id='".$giftId."' class='selectItem' type='checkbox' /></td>
+                <td>".$giftName."</td>
+                <td>".$giftUser->getName()."</td>
+                <td>".$dateDisplay."</td>
+                </tr>";
         }
 
-        $purchasedWishlistItem = $purchase->getItem();
-        $purchasedItem = $purchasedWishlistItem->getItem();
-        $giftUser = $purchasedWishlistItem->getWishlistUser();
-        $giftId = $purchase->getId();
-        $giftName = $purchasedItem->getName();
-        
-        echo "<tr><td><input id='".$giftId."' class='selectItem' type='checkbox' /></td>
-            <td>".$giftName."</td>
-            <td>".$giftUser->getName()."</td>
-            <td>".$dateDisplay."</td>
-            </tr>";
+        echo "</table>";
     }
-    
-    echo "</table>";
+    else {
+        echo "<div class='message'>Your shopping list is empty! Browse your friends wishlists to see what they want. <br /><br />
+            1. Find an item on your friends wishlist <br />
+            2. Grant the wish for them <br />
+            3. Then it will show up on your shopping list here<br /><br />
+            This list should help you track what you need to buy and for who!
+            </div>";
+    }
     ?>
 </div>
 

@@ -1,5 +1,5 @@
 var selectedEventId = null;
-var eventListEmptyMessage = '<p class="message">You don\'t have any events! To add an event click the (+) button above!<br/>Examples include your birthday and anniversary.</p>';
+var eventListEmptyMessage = '<p class="message">You don\'t have any events! To add an event click the (+) button above!<br/><br />Event examples: your birthday, an anniversary, christmas, etc</p>';
 var couldNotRemoveEventMessage = 'Event could not be removed. Contact the Wishlist support if the issue persists.';
 var couldNotSaveEventMessage = 'The save could not be processed. Contact the wishlist support if the issue persists.';
 

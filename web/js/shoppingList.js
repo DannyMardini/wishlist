@@ -11,7 +11,6 @@ $(document).ready(function(){
     createGUIButtons();
     createEventHandlers();
     toggleRetractButton(); // hide or show the 'cancel purchase' button
-    updateList(); // displays a special message if the shopping list is empty
     checkCompleted();
 });
 
@@ -63,14 +62,6 @@ function toggleRetractButton()
     selectedDivs.length <= 0 ? retractButton.hide() : retractButton.show();    
 }
 
-function updateList()
-{
-    if($('.shoppinglistitem').length <= 0)
-    {
-        $('#shoppinglist').html('Your shoppinglist is empty! Browse your friends wishlists to see what they want!');
-    }
-}
-
 function retractPurchaseEvent()
 {
     // confirm that this is what the user wants to do
@@ -105,8 +96,6 @@ function finishRetractPurchaseEvent(response, textStatus, jqXHR, rowsToRemove){
         
         // update count
         updateItemCount();
-        
-        updateList();
         
         // update the 'cancel items' button
         toggleRetractButton();
