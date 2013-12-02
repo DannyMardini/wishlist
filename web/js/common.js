@@ -1,4 +1,4 @@
-var wishlistElement = '#wishlist';
+var wishlistElement = '#wishlistContent';
 var selected_itemId = -1;
 var selected_eventId = -1;
 

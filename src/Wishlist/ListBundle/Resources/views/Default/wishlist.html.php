@@ -67,7 +67,7 @@ if(isset($nonNotifiedGranted))
     echo "</div>\n";
 }
 
-if($i <= 0)
+if(count($wishlistItems) <= 0)
 {
     echo "<div class='message'> Your list is empty! In order for your friends to see what YOU WANT, start adding items to your list! <br /><br />
         Click the (+) button above to add your first item.<br /><br /></div>";
