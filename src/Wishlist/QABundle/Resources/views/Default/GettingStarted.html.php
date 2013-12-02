@@ -1,17 +1,19 @@
 
-<div class="contentInfoTopic">What is Wishenda?</div>
+<div class="contentInfoTopic">Wishenda</div>
 <div class="contentInfoDetails">
-    Are you tired of getting that ugly sweater from your aunt on Christmas? Yes, you know what we're talking about!
-    What about being clueless about what to get your boyfriend? Or the nightmare it was when you forgot your sisters birthday!<br />
-    
-    If so, you've come to the right place! We guarantee that Wishenda will make all of these problems a thing of the past!<br /><br />
-    
-    Wishenda helps you keep track of your wishes, see what your friends want, and keep a shopping list of things you plan to get your friends.<br />
-    Your friends can see when your birthday, anniversary or any other life event is coming up and grant you a wish from your wishlist without you knowing.<br />
-    You have access to a shopping list where you can keep track of wishes you plan on granting to your friends. Once a gift is given, it is taken off your shopping list and off your friends wishlist.<br /><br />
     <b><u>Our Goal:</u></b><i> to make your life easier by providing a centralized location where you can take care of all of your shopping needs in just a click!</i><br /><br />
+    Join Wishenda and get your shopping done effortlessly! <br />
+    With Wishenda you know what all of your friends want and they know what you want, shopping for each other has never been easier!    
+    <br /><br />
+    Quickly find what your friends want for their birthdays, the holidays, or any other special occasion!
+    <br /><br />
+    Wishenda keeps track of items that you want as gifts from your friends, using your wish list.
+    You can keep track of items that you plan to get for your friends using your shopping list. 
+    Your friends will see when your birthday, anniversary or any other life event is coming up and grant you a wish from your wishlist without you knowing.
+    Items in your shopping list will be taken off the list automatically once the date that you promised to buy them by has passed.<br /><br />
 </div>
 <div class="contentInfoTopic">Account Settings</div>
 <div class="contentInfoDetails">
-    To edit your profile image, or any other user information, go to the account settings page. It is accessible from the top menu by clicking 'Settings'<br />
+    Your account settings can be accessed by clicking on the wrench icon and going to 'Settings'. <br />
+    Once there, you can edit any of the information except your email. <br />
 </div>

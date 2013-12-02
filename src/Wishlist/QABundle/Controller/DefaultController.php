@@ -24,6 +24,26 @@ class DefaultController extends Controller
     {
         return $this->render('WishlistQABundle:Default:WishlistHelp.html.php');
     }
+
+    public function shoppinglistHelpAction()
+    {
+        return $this->render('WishlistQABundle:Default:ShoppinglistHelp.html.php');
+    }
+
+    public function eventsHelpAction()
+    {
+        return $this->render('WishlistQABundle:Default:EventsHelp.html.php');
+    }    
+
+    public function friendsHelpAction()
+    {
+        return $this->render('WishlistQABundle:Default:FriendsHelp.html.php');
+    }
+    
+    public function updatesHelpAction()
+    {
+        return $this->render('WishlistQABundle:Default:UpdatesHelp.html.php');
+    }
     
     public function contactSupportAction()
     {

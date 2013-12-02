@@ -1,3 +1,6 @@
+<div>The wish list is used to track items that you would like your family and friends to buy for you.
+Add items to this list so that your friends know exactly what you want for your birthday, christmas, etc.</div>
+
 <div class="contentInfoTopic">Adding Wishes</div>
 <div class="contentInfoDetails">
     1. To add a new item to your wishlist, click on the plus icon next to the Wishlist header. <br /><br />

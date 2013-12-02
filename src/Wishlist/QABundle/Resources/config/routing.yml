@@ -4,8 +4,24 @@ WishlistQABundle_gettingStarted:
 
 WishlistQABundle_wishlistHelp:
     pattern:  /wishlistHelp
-    defaults: { _controller: WishlistQABundle:Default:wishlistHelp }    
+    defaults: { _controller: WishlistQABundle:Default:wishlistHelp }
+    
+WishlistQABundle_shoppinglistHelp:
+    pattern:  /shoppinglistHelp
+    defaults: { _controller: WishlistQABundle:Default:shoppinglistHelp }
 
+WishlistQABundle_eventsHelp:
+    pattern:  /eventsHelp
+    defaults: { _controller: WishlistQABundle:Default:eventsHelp }
+    
+WishlistQABundle_friendsHelp:
+    pattern:  /friendsHelp
+    defaults: { _controller: WishlistQABundle:Default:friendsHelp }
+
+WishlistQABundle_updatesHelp:
+    pattern:  /updatesHelp
+    defaults: { _controller: WishlistQABundle:Default:updatesHelp }
+    
 WishlistQABundle_help:
     pattern:  /help
     defaults: { _controller: WishlistQABundle:Default:help }
