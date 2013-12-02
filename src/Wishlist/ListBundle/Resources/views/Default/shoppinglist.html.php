@@ -45,8 +45,8 @@
     else {
         echo "<div class='message'>Your shopping list is empty! Browse your friends wishlists to see what they want. <br /><br />
             1. Find an item on your friends wishlist <br />
-            2. Grant the wish for them <br />
-            3. Then it will show up on your shopping list here<br /><br />
+            2. Click 'Grant Wish' <br />
+            3. The item will then show up in your shopping list<br /><br />
             This list should help you track what you need to buy and for who!
             </div>";
     }
