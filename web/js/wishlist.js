@@ -73,8 +73,6 @@ function onUpdateWishItemClick(dialog){
             
             // pass the item to the backend
             submitTheWish(item, wishlistUpdateItemPath, onCompleteUpdateItemEvent);
-            
-            // todo: I think it would make sense to reload the wishlist afterwards... 
         }
     });    
 }

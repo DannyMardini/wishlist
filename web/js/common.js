@@ -153,8 +153,8 @@ function validateWish(wish)
         message += "<br />Price";
     }
     
-    var url_regexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/;
-    if(link== null || link.length <= 0 || !url_regexp.test(link))
+    var url_regexp = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/;
+    if(link == null || link.length <= 0 || !url_regexp.test(link))
     {
         message += "<br />Link";
     }
