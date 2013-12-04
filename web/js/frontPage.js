@@ -87,10 +87,6 @@ $(document).ready(function()
         e.preventDefault();
         eval('displayMessageDialog(aboutMessage, "What is Wishlist?")');
     });
-//    $(".termsLink").click(function(e){
-//        e.preventDefault();
-//        eval('displayMessageDialog(termsMessage, "Terms and Conditions")');
-//    });
     
     // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
     $( "#dialog:ui-dialog" ).dialog( "destroy" );
@@ -98,15 +94,18 @@ $(document).ready(function()
     
 });
 
-var aboutMessage = "Our Goal is to make your life easier by never having to worry about giving \n\
-    or receiving a bad gift again. View your friends and families wishlists and even share your own.<br /><br /> \n\
-    Gift giving has never been simpler!";
+var aboutMessage = "The founders of Wishenda came up with the idea of making this site in hopes that it would help \n\
+                    their friends and family out during holidays, birthdays, and any other special occasion. <br /><br /> \n\
+                    Message from the founders:<br /> \n\
+                    'Every year for christmas we would write up our wish lists and wanted an easy way to share it with our close friends and family so that they would know what we want. \n\
+                    This gave us the idea to make this site and hope that other people would be able to use it to do the same.' <br /><br />\n\
+                    With Wishenda you know what all of your friends want and they know what you want.<br /> \n\
+                    Shopping for each other has never been easier!";
 
 var termsMessage = "<b><u>Terms:</u></b><i> TO DO";
 
 function displayMessageDialog(msg, title)
-{    
-    //$( "#dialog-message" ).attr('title',title);    
+{  
     displayMessage(msg, title);
 }
 
