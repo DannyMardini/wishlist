@@ -2,11 +2,9 @@
 
 namespace Wishlist\CoreBundle\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class SendInvitesCommand extends ContainerAwareCommand
@@ -15,7 +13,7 @@ class SendInvitesCommand extends ContainerAwareCommand
     {
         $this
             ->setName('wishenda:sendinvites')
-            ->setDescription('Send invite email to multiple users')
+            ->setDescription('Add multiple emails to the queue to be sent to users')
             ->addArgument('N', InputArgument::REQUIRED, 'Number of users to send invite to');
     }
 
@@ -48,7 +46,7 @@ class SendInvitesCommand extends ContainerAwareCommand
             }
         }
 
-        $successMessage = 'Successfully sent '.$successCount.' email';
+        $successMessage = 'Successfully queued '.$successCount.' email';
         if($successMessage > 1) {
             $successMessage .= 's.';
         }

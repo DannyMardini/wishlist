@@ -4,6 +4,7 @@ namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\Token;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
  * TokenRepository
@@ -47,5 +48,38 @@ class TokenRepository extends EntityRepository
     {
         $this->getEntityManager()->remove($token);
         $this->getEntityManager()->flush();        
+    }
+    
+    public function recycleOverdueTokens()
+    {
+        $rsm = new ResultSetMapping;
+        $rsm->addEntityResult('Wishlist\CoreBundle\Entity\Token', 'e');
+        $rsm->addFieldResult('e', 'id', 'id');
+        $rsm->addFieldResult('e', 'token', 'token');
+        $rsm->addFieldResult('e', 'tokenType', 'tokenType');
+        $rsm->addFieldResult('e', 'lastUpdated', 'lastUpdated');
+        
+        // get all of the tokens for resetting password that have been in the database over 24 hours
+        $q = $this->_em->createNativeQuery("
+            SELECT *
+            FROM Token e
+            WHERE e.lastUpdated > date_add(now(), interval 1 DAY)", $rsm);
+                      
+        $tokens = $q->getResult();
+        
+        $tokenCount = 0;
+        
+        // remove them all
+        if(isset($tokens))
+        {
+            $tokenCount = count($tokens);
+            
+            foreach($tokens as $token)
+            {
+                $this->removeToken($token);
+            }            
+        }
+        
+        return $tokenCount;
     }
 }

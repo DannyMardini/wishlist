@@ -2,11 +2,9 @@
 
 namespace Wishlist\CoreBundle\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class SendInviteCommand extends ContainerAwareCommand
@@ -15,7 +13,7 @@ class SendInviteCommand extends ContainerAwareCommand
     {
         $this
             ->setName('wishenda:sendinvite')
-            ->setDescription('Send invite email to user who has requested an invite')
+            ->setDescription('Add email to a queue that will be sent to the user who has requested an invite')
             ->addArgument('email', InputArgument::REQUIRED, 'Email address of user to send invite');
     }
 
@@ -23,7 +21,6 @@ class SendInviteCommand extends ContainerAwareCommand
     {
         $email = $input->getArgument('email');
         $requestRepo = $this->getContainer()->get('doctrine')->getRepository('WishlistCoreBundle:Request');
-        $templating = $this->getContainer()->get('templating');
         $mailer = $this->getContainer()->get('mailer_service');
 
         $request = $requestRepo->findOneByEmail($email);
@@ -46,6 +43,6 @@ class SendInviteCommand extends ContainerAwareCommand
             $output->writeln('<error>could not send mail</error>');
         }
 
-        $output->writeln('Successfully sent email to '.$email);
+        $output->writeln('Successfully queued email: '.$email);
     }
 }

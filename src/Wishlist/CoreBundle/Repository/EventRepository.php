@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\Event;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Doctrine\ORM\Query\ResultSetMapping;
-use Doctrine\ORM\Query\ResultSetMappingBuilder;
 
 /**
  * EventRepository
