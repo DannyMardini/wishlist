@@ -79,11 +79,11 @@ class MailerService
 
     public function getStandardInviteSubject()
     {
-        return "You've been invited to Wishenda!";
+        return "Create your account on Wishenda!";
     }
 
     public function getFriendInviteSubject()
     {
-        return "Someone wants help figuring out what to get you!";
+        return "Your friend needs help figuring out what to get you!";
     }
 }
