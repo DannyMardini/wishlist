@@ -55,9 +55,14 @@ if(isset($birthdate))
         <?php if(isset($profileImage)) echo '<div id="preview">'.$profileImage.'</div>'; ?>
     </span>
 </form>
-<?php } ?>
-
-<label class="termsAndpolicy">By creating an account, I accept Wishlist's <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms of Service</a> and <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy Policy</a>.</label>
+<?php
+}
+else { 
+    ?>
+<p class="termsAndpolicy">By creating an account, I accept Wishlist's <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms of Service</a> and <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy Policy</a>.</p>
+<?php
+}
+?>
 
 </div>
 <p id="errorDisplay"></p>
