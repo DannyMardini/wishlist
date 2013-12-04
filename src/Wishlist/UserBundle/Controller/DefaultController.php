@@ -54,24 +54,20 @@ class DefaultController extends Controller
 
         $user = $userRepo->getUserWithEmail($email);
         
-        //TODO: Re-evaluate this, I'm not sure I need wishlisteItems.
         return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user));
     }
-
-    //TODO: These friendpage actions should really go in their own separate controller.
+    
     public function showFriendpageAction()
     {
-        $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
-        
+        $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');        
         $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
         $loggedInUser = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
 
-        if($loggedInUser)
-        {
-            return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $userRepo->getFriendsOf($loggedInUser), 'username' => $loggedInUser->getName()));
-        }
-
-        return new Response();
+        if(!$loggedInUser){
+            return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');            
+        }        
+        
+        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $userRepo->getFriendsOf($loggedInUser), 'username' => $loggedInUser->getName()));
     }
     
     public function friendSearchAction()
@@ -299,6 +295,7 @@ class DefaultController extends Controller
     public function showUserpageAction(/*int*/ $user_id)
     {
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $loggedInUserId;
         
         try
         {
@@ -309,9 +306,14 @@ class DefaultController extends Controller
         }catch(NoResultException $e)
         {
             if(!isset($loggedInUserId))
-                throw $this->createNotFoundException('Please to go the Frontpage to sign on');
+            {
+                return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');                
+            }
             else
-                throw $this->createNotFoundException('Could not find user');
+            {
+                $message = 'The system encountered an issue finding this user. Please refresh the page and try again later.';
+                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));                
+            }
         }
         
         if(!($loggedInUserId == $user_id) && !WishlistUser::areFriends($wishlist_user, $loggedIn_user))
@@ -325,6 +327,10 @@ class DefaultController extends Controller
     public function showShoppinglistPageAction()
     {
         $loggedInId = $this->getRequest()->getSession()->get('user_id');
+        
+        if(!isset($loggedInId)){
+            return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');
+        }
 
         return $this->render('WishlistUserBundle:Default:shoppinglistPage.html.php', array('userId' => $loggedInId));
     }
@@ -335,11 +341,12 @@ class DefaultController extends Controller
             
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
             
-            if(!isset($loggedInUserId)){
-                $message = 'Please go to the frontpage to sign in.';
-                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));
+            if(!isset($loggedInUserId))
+            {
+                return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');
             }
-            else {
+            else 
+            {
                 // get the original user information to pre-populate the form
                 $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
                 $user = $userRepo->getUserWithId($loggedInUserId);
@@ -528,16 +535,14 @@ class DefaultController extends Controller
     public function showLifeEventsManagerAction()
     {
        try{
-            
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
             
-            if(!isset($loggedInUserId)){
-                $message = 'Please to go the Frontpage to sign in';
-                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));                
+            if(!isset($loggedInUserId))
+            {
+                return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');                
             }
             else {
                 // get the original user information to pre-populate the form
-                $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
                 $eventRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Event');
                 $events = $eventRepo->getAllUserEvents($loggedInUserId);
                 
@@ -547,7 +552,7 @@ class DefaultController extends Controller
         }catch(NoResultException $e)
         {
             if(!isset($loggedInUserId)){
-                throw $this->createNotFoundException('Please to go the Frontpage to sign in');
+                return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');                
             }
             else {
                 throw $this->createNotFoundException('Could not find user');
