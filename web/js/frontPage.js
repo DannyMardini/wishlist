@@ -99,10 +99,7 @@ var aboutMessage = "The founders of Wishenda came up with the idea of making thi
                     Message from the founders:<br /> \n\
                     'Every year for christmas we would write up our wish lists and wanted an easy way to share it with our close friends and family so that they would know what we want. \n\
                     This gave us the idea to make this site and hope that other people would be able to use it to do the same.' <br /><br />\n\
-                    With Wishenda you know what all of your friends want and they know what you want.<br /> \n\
-                    Shopping for each other has never been easier!";
-
-var termsMessage = "<b><u>Terms:</u></b><i> TO DO";
+                    With Wishenda you know what all of your friends want and they know what you want. Shopping for each other has never been easier!";
 
 function displayMessageDialog(msg, title)
 {  
