@@ -26,7 +26,7 @@ class ItemSearchCommand extends ContainerAwareCommand
         $amazonService = $this->getContainer()->get('amazon_search_service');
 
         $response = $amazonService->itemSearch($searchIndex, $keywords);
+
         print_r($response);
-        //$output->writeln($response);
     }
 }
