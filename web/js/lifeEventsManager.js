@@ -146,8 +146,9 @@ function removeEventCallback(response)
     $('#event_'+response).remove();
     checkIfEmptyMessageRequired();
     updateEventCountSpan();
+    $('#dialog-message').dialog('option', 'title', 'Event Removed!');
     $('#dialog-message').dialog('open');
-    $('#dialog-message').attr('title','Event removed!').html('<p>The event was permanently removed.</p>');
+    $('#dialog-message').html('<p>The event was permanently removed.</p>');
     
     selectedEventId = null;
 }

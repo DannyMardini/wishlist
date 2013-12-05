@@ -774,7 +774,8 @@ function setupWishDialogView(data, options)
         $('#editItemDialog').dialog('option', 'title', 'Save Wish');
     }
     
-    $('#editItemDialog').dialog('open'); 
+    $('#editItemDialog').dialog('option', 'height', '500');
+    $('#editItemDialog').dialog('open');
 }
 
 function setupItemView(data)
