@@ -72,7 +72,7 @@ function onUpdateWishItemClick(dialog){
             var item = getItemDialogObj(dialog);
             
             // pass the item to the backend
-            submitTheWish(item, wishlistUpdateItemPath, onCompleteUpdateItemEvent);
+            submitTheWish(item, wishlistUpdateItemPath, onCompleteUpdateItemEvent, dialog);
         }
     });    
 }
@@ -86,8 +86,7 @@ function onCompleteUpdateItemEvent(responseText, textStatus)
             popupMessage('Yay!','The item has been updated!');
             break;
         default:
-            popupMessage('Sorry!', 'The item could not be updated. Please try again later.');
-            location.reload();
+            popupMessage('Sorry!', 'The item could not be updated. Please try again later.');            
             break;       
     }    
 }

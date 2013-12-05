@@ -164,7 +164,7 @@ function validateWish(wish)
                         : message;
 }
 
-function submitTheWish(/* optional wish object param */wish, path, callback)
+function submitTheWish(/* optional wish object param */wish, path, callback, dialog)
 {        
     // if a pre-defined wish obj was passed in, use that
     if(wish == null) {
@@ -198,6 +198,8 @@ function submitTheWish(/* optional wish object param */wish, path, callback)
             wish,                           // Wish object
             callback                        // Handles events after the controller is finished
         );
+            
+        $(dialog).dialog('close');            
     }
 }
 
@@ -350,14 +352,8 @@ function onGrantItClickEvent(dialog) {
 function continueAddingItemToWishlist(dialog)
 {
     var wishlistAddItemPath = Routing.generate('WishlistListBundle_wishlistNew');
-    var buttonPane = $('.ui-dialog-buttonpane');
     var itemObj = getItemDialogObj(dialog);
-
-    submitTheWish(itemObj, wishlistAddItemPath, onCompleteAddToWishlistEvent);
-
-    // Hide the add wish button now that we are done adding the item
-    buttonPane.find('button').show();
-    buttonPane.find('button:contains("Add Wish")').hide();   
+    submitTheWish(itemObj, wishlistAddItemPath, onCompleteAddToWishlistEvent, dialog); 
 }
 
 function styleWishDialogButtons()
@@ -430,7 +426,7 @@ function editWishlistDialogInit()
                     },
                     "Update": function() {
                         onUpdateWishItemClick(this);
-                        $(this).dialog('close');
+                        //$(this).dialog('close');
                     },
                     "Delete": function() {  
                         deleteLoadedItem();
@@ -438,7 +434,7 @@ function editWishlistDialogInit()
                     },
                     "Save": function() {
                         continueAddingItemToWishlist(this);
-                        $(this).dialog('close');
+                        //$(this).dialog('close');
                     },                            
                     "Close": function() {
                         $(this).dialog('close');
@@ -532,12 +528,9 @@ function ajaxFunction(queryString){
     // Create a function that will receive data sent from the server
     ajaxRequest.onreadystatechange = function(){
             if(ajaxRequest.readyState == 4){
-                    //var ajaxDisplay = document.getElementById('ajaxDiv');
-                    //ajaxDisplay.innerHTML = ajaxRequest.responseText;
             }
     }
     
-    //var queryString = "?age=" + age + "&wpm=" + wpm + "&sex=" + sex;
     ajaxRequest.open("GET", "ajax-example.php" + queryString, true);
     ajaxRequest.send(null); 
 }
@@ -729,7 +722,10 @@ function setupWishDialogView(data, options)
     $('#editItemDialog #price').val('');
     $('#editItemDialog #link').val('');
     $('#editItemDialog #quantity').val('');
-    $('#editItemDialog #notes').val('');    
+    $('#editItemDialog #notes').val('');  
+    $('#name').prop('disabled', true);
+    $('#price').prop('disabled', true);
+    $('#link').prop('disabled', true);
     
     if(data){
         $('#editItemDialog').dialog('option', 'title', 'Edit Wish');
