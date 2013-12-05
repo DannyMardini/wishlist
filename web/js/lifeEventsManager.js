@@ -19,15 +19,22 @@ function setupEventHandlers()
 function createGUIButtons()
 {
     $('#addLifeEventButton').button({
-            icons: {
-                primary: "ui-icon-plusthick"
-            },
+            icons: { primary: "ui-icon-plusthick" },
             text: false
     }).click(function(){
+        clearNewEventPanel();
         $('#newEventPanel').dialog('open');
     });
     
     setupRemoveEventButtons($('.remove'));
+}
+
+function clearNewEventPanel()
+{
+    $('#newEventname').val('');
+    $('#newEventMonth').val('');
+    $('#newEventDay').val('');
+    $('#newEventType').val('-1');
 }
 
 function createGUIDialogs()
