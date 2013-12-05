@@ -43,9 +43,6 @@ class DefaultController extends Controller
     {
         $session = $this->getRequest()->getSession();
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
-        $updateRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
-        $eventRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Event');
-        
         $email = $session->get('email_addr');
         
         if(!$email){

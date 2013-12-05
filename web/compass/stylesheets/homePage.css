@@ -1,93 +1,176 @@
-/*
-Syntax error: Undefined variable: "$global-button-text-color".
-        on line 99 of /Users/andeecoba/Sites/wishlist/web/compass/sass/homePage.scss
+/* line 3, ../sass/homePage.scss */
+.fg-button-icon-left {
+  padding-left: 2.1em;
+}
 
-Backtrace:
-/Users/andeecoba/Sites/wishlist/web/compass/sass/homePage.scss:99
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/script/variable.rb:49:in `_perform'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/script/node.rb:40:in `perform'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:298:in `visit_prop'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:320:in `visit_rule'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:320:in `visit_rule'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:128:in `visit_root'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/tree/root_node.rb:20:in `render'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/engine.rb:315:in `_render'
-/Library/Ruby/Gems/1.8/gems/sass-3.2.12/lib/sass/../sass/engine.rb:262:in `render'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `compile'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `compile'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `run'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `run'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
-/Library/Ruby/Site/1.8/rubygems/core_ext/kernel_require.rb:55:in `to_proc'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `call'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `run_callback'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/path.rb:55:in `callback_action'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/path.rb:35:in `update'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/state/directory.rb:39:in `modified'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `each'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `modified'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/state/directory.rb:18:in `refresh'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `each'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `loop'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm/monitor.rb:26:in `run'
-/Library/Ruby/Gems/1.8/gems/fssm-0.2.10/lib/fssm.rb:70:in `monitor'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:30
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:44:in `call'
-/Library/Ruby/Gems/1.8/gems/compass-0.12.2/bin/compass:44
-/usr/bin/compass:23:in `load'
-/usr/bin/compass:23
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$global-button-text-color\".\A         on line 99 of /Users/andeecoba/Sites/wishlist/web/compass/sass/homePage.scss"; }
+/* line 4, ../sass/homePage.scss */
+.fg-button {
+  outline: 0;
+  margin: 0 4px 0 0;
+  padding: .4em 1em;
+  text-decoration: none !important;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  zoom: 1;
+}
+
+/* line 5, ../sass/homePage.scss */
+.fg-button .ui-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  left: 50%;
+  margin-left: -8px;
+}
+
+/* line 6, ../sass/homePage.scss */
+button.fg-button {
+  width: auto;
+  overflow: visible;
+}
+
+/* line 8, ../sass/homePage.scss */
+#footer {
+  background-color: purple;
+  width: 100%;
+  height: 30px;
+}
+
+/* line 15, ../sass/homePage.scss */
+#wishlist {
+  margin-right: 50px;
+}
+
+/* line 19, ../sass/homePage.scss */
+#wishlistContent {
+  margin-top: -5px;
+  width: 90%;
+  border-top-style: none;
+  overflow: auto;
+}
+
+/* line 26, ../sass/homePage.scss */
+ul.contentItem {
+  list-style: none;
+  padding: 0px 30px 0px 30px;
+  margin: 0px;
+}
+
+/* line 32, ../sass/homePage.scss */
+#eventsComponent {
+  float: left;
+  display: block;
+  width: 100%;
+  min-height: 100px;
+}
+
+/* line 39, ../sass/homePage.scss */
+#wishlistComponent {
+  width: 100%;
+  padding-bottom: 50px;
+  min-height: 200px;
+  font-size: 14px;
+  border-right-style: solid;
+  border-width: 1px;
+}
+
+/* line 48, ../sass/homePage.scss */
+#wishlistComponent h1, #eventsComponent h1 {
+  font-size: 16px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+/* line 55, ../sass/homePage.scss */
+#itemDialog div {
+  margin-left: 10%;
+  font-size: 14px;
+}
+/* line 59, ../sass/homePage.scss */
+#itemDialog label {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* line 66, ../sass/homePage.scss */
+.itemDialogButton {
+  height: 100%;
+  width: 100%;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+/* line 75, ../sass/homePage.scss */
+#eventsInnerComponent .image {
+  float: left;
+  background-repeat: no-repeat;
+  background-position: left;
+  margin-top: 15px;
+}
+/* line 81, ../sass/homePage.scss */
+#eventsInnerComponent .name {
+  margin-top: 15px;
+  font-weight: bolder;
+  display: inline-block;
+  height: 15px;
+  text-align: center;
+  font-size: 14px;
+  padding-left: 5px;
+}
+/* line 90, ../sass/homePage.scss */
+#eventsInnerComponent .message {
+  display: block;
+  padding-top: 5px;
+  padding-left: 11px;
+}
+/* line 95, ../sass/homePage.scss */
+#eventsInnerComponent .timestamp {
+  margin-top: 5px;
+  color: gray;
+  display: block;
+  font-size: 12px;
+}
+/* line 101, ../sass/homePage.scss */
+#eventsInnerComponent a {
+  cursor: pointer;
+  color: #888888;
+  text-decoration: none;
+}
+/* line 106, ../sass/homePage.scss */
+#eventsInnerComponent a:hover {
+  text-decoration: underline;
+  color: #333333;
+}
+
+/* line 114, ../sass/homePage.scss */
+.gbItem:hover {
+  background-color: #f1f1f1;
+  cursor: hand;
+}
+/* line 118, ../sass/homePage.scss */
+.gbItem label {
+  cursor: hand;
+}
+
+/* line 123, ../sass/homePage.scss */
+.deleteButton {
+  visibility: hidden;
+  float: right;
+}
+
+/* line 128, ../sass/homePage.scss */
+.hoverButton {
+  visibility: visible;
+  line-height: 100px;
+}
+
+/* line 133, ../sass/homePage.scss */
+.itemThumb {
+  height: 100px;
+  width: 100px;
+  padding-right: 50px;
+  vertical-align: middle;
+}

@@ -8,8 +8,7 @@
 <input id="username" type="hidden" value="<?php echo $user->getName() ?>"/>
 <input id="id" type="hidden" value="<?php echo $user->getWishlistuserId() ?>"/>
 
-<div id="wishlistContent" class="mockup">
-    
+<div id="wishlistContent">
     <?php echo $view['actions']->render('WishlistListBundle:Wishlist:showWishlist', array('user' => $user)); ?>
 </div>
 

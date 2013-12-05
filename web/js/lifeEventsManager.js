@@ -129,7 +129,6 @@ function removeEvent()
     }
     
     ajaxCall(Routing.generate('WishlistUserBundle_removeEvent'), {id:selectedEventId}, removeEventCallback);
-    
 }
 
 function checkIfEmptyMessageRequired()
