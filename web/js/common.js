@@ -54,19 +54,20 @@ function setupConfirmDialog()
             autoOpen: false,
             position: 'top',
             modal: true,
-            open: confirmDialogOpen,
+            resizable: false,
+            height:500,
+            width:400,
+            buttons: {
+                'Ok': function(){
+                    confirmOK();                    
+                },
+                'Cancel': function(){
+                    $(this).dialog('close');
+                }
+            },
             close: confirmDialogClose
         }
     );
-}
-
-function confirmDialogOpen()
-{
-    //Give the confirm button focus.
-    $('#confirmBtn').focus();
-    
-    //Set up purchase button
-    $('#confirmBtn').click(confirmOK);
 }
 
 function confirmOK()
@@ -86,7 +87,7 @@ function confirmOK()
     {
         if(selected_itemId == null || selected_itemId <= 0)
         {
-            throw('Item is invalid.')
+            throw('An issue occurred! Refresh the browser and try again.')
         }
         
         if((selected_eventId > 0) && (giftDate == null)){
@@ -107,8 +108,7 @@ function confirmOK()
         ajaxPost(item, Routing.generate('WishlistListBundle_purchaseItem'), onCompleteAddItemToShoppingList, item.id);
     }catch(e)
     {
-        alert(e);
-        return;
+        popupMessage('Uh Oh!', e);
     }
 }
 
@@ -271,8 +271,7 @@ function unselectEvent()
 
 function confirmDialogClose()
 {
-    unselectEvent();
-    $('#confirmBtn').unbind('click');
+    unselectEvent();    
 }
 
 function toggleSelectEvent(selected)
@@ -300,8 +299,15 @@ function setupEvents()
 function getUserEvents(itemId) {
     var url = Routing.generate('WishlistListBundle_eventlist');
     ajaxPost({itemId: itemId}, url, function(response, textStatus) {
-        $('#confirmEventContainer').html(response);
-        setupEvents();
+        if(response){
+            $('#confirmEventContainer').removeClass('message');
+            $('#confirmEventContainer').html(response);
+            setupEvents();
+        }
+        else {
+            $('#confirmEventContainer').html('No events available.');
+            $('#confirmEventContainer').addClass('message');
+        }
         $('#confirmDialog').dialog('open');
     });
 }
@@ -315,15 +321,13 @@ function populateDialogItemInfo(itemInfo)
     }
     
     var type = whatIsIt(itemInfo);
-    
     if(type == "null" || type == "undefined")
     {
         return;
     }
     
-    var item = (type == "String") ? JSON.parse(itemInfo) : itemInfo;        
-    
-    $('#confirmName').html(item.name);
+    var item = (type == "String") ? JSON.parse(itemInfo) : itemInfo;
+    //$('#confirmName').html(item.name);
     getUserEvents(item.id);
     
     if(selected_itemId <= -1 || selected_itemId == "")
@@ -338,15 +342,8 @@ function openAddToShoppingListDialog(item)
 }
 
 function onGrantItClickEvent(dialog) {
-    // Ask them to confirm first
-    confirm('Are you sure you want to add this item to your shopping list?')
-    .then(function(answer){
-        if(answer == 1)
-        {
-            // call the method that pops open the dialog for adding the item           
-            openAddToShoppingListDialog(getItemDialogObj(dialog));
-        }
-    });
+    // call the method that pops open the dialog for adding the item           
+    openAddToShoppingListDialog(getItemDialogObj(dialog));
 }
 
 function continueAddingItemToWishlist(dialog)

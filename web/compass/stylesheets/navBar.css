@@ -329,25 +329,37 @@ ul li a {
 /* line 268, ../sass/navBar.scss */
 #confirmEventContainer {
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
+  border: 1px solid #cccccc;
   overflow-y: auto;
   overflow-x: hidden;
   min-height: 1em;
-  max-height: 3em;
+  max-height: 4em;
 }
 
-/* line 277, ../sass/navBar.scss */
-div.confirmEvent:hover {
-  background-color: #efefef;
-  cursor: hand;
+/* line 278, ../sass/navBar.scss */
+div.confirmEvent {
+  color: #888888;
 }
 
 /* line 282, ../sass/navBar.scss */
-#confirmBtn:hover {
+div.confirmEvent:hover {
+  background-image: -webkit-linear-gradient(white, #f0f0f0);
+  background-image: -moz-linear-gradient(white, #f0f0f0);
+  background-image: -ms-linear-gradient(white, #f0f0f0);
+  background-image: -o-linear-gradient(white, #f0f0f0);
+  background-image: linear-gradient(#ffffff, #f0f0f0);
+  background-color: #f7f7f7;
+  border: 1px solid #cccccc;
   cursor: hand;
 }
 
-/* line 286, ../sass/navBar.scss */
+/* line 289, ../sass/navBar.scss */
+#confirmEventContainer {
+  margin: 10px;
+}
+
+/* line 293, ../sass/navBar.scss */
 .styling-logo, .logo {
   position: absolute;
   display: inline-block;
@@ -364,48 +376,48 @@ div.confirmEvent:hover {
 
 /* Using CSS3 media queries to handle window resizing */
 @media screen and (min-width: 75em) {
-  /* line 304, ../sass/navBar.scss */
+  /* line 311, ../sass/navBar.scss */
   .centeredWithinWrapper {
     width: 70em;
   }
 
-  /* line 305, ../sass/navBar.scss */
+  /* line 312, ../sass/navBar.scss */
   .logo {
     left: 45%;
     font-size: 30px;
   }
 }
 @media screen and (min-width: 56.25em) and (max-width: 75em) {
-  /* line 309, ../sass/navBar.scss */
+  /* line 316, ../sass/navBar.scss */
   .centeredWithinWrapper {
     width: 50em;
   }
 
-  /* line 310, ../sass/navBar.scss */
+  /* line 317, ../sass/navBar.scss */
   .logo {
     left: 45%;
     font-size: 30px;
   }
 }
 @media screen and (min-width: 43.75em) and (max-width: 56.25em) {
-  /* line 314, ../sass/navBar.scss */
+  /* line 321, ../sass/navBar.scss */
   .centeredWithinWrapper {
     width: 45em;
   }
 
-  /* line 315, ../sass/navBar.scss */
+  /* line 322, ../sass/navBar.scss */
   .logo {
     left: 40%;
     font-size: 30px;
   }
 }
 @media screen and (max-width: 43.75em) {
-  /* line 319, ../sass/navBar.scss */
+  /* line 326, ../sass/navBar.scss */
   .centeredWithinWrapper {
     width: 35em;
   }
 
-  /* line 320, ../sass/navBar.scss */
+  /* line 327, ../sass/navBar.scss */
   .logo {
     left: 30%;
     font-size: 25px;

@@ -267,20 +267,27 @@ ul {
 
 #confirmEventContainer {
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
+    border: $global-button-border;
     overflow-y: auto;
     overflow-x: hidden;
     min-height: 1em;
-    max-height: 3em;
+    max-height: 4em;
+}
+
+div.confirmEvent {
+    color: $global-button-text-color;
 }
 
 div.confirmEvent:hover {
-    background-color: #efefef;
+    @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
+    background-color: $global-button-bg-color;
+    border: $global-button-border;
     cursor: hand;
 }
 
-#confirmBtn:hover {
-    cursor: hand;
+#confirmEventContainer{
+    margin: 10px;
 }
 
 .styling-logo {
