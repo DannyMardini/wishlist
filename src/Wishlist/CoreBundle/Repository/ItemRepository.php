@@ -19,7 +19,7 @@ class ItemRepository extends EntityRepository
         $newItem = new Item();
         $newItem->setName($name);
         $newItem->setPrice($price);
-        $newItem->setLink($link);       
+        $newItem->setLink($link);
         
         // check if item exists in the Item table. If not, add it                
         $itemExists = $this->checkItemExists($newItem);
@@ -40,8 +40,10 @@ class ItemRepository extends EntityRepository
         $q = $em->createQuery('
             SELECT i
             FROM WishlistCoreBundle:Item i
-            WHERE i.name = :itemName')
-                ->setParameters(array('itemName' => $item->getName()));
+            WHERE i.name = :itemName and i.price = :itemPrice and i.link = :itemLink')
+                ->setParameters(array('itemName' => $item->getName(),
+                                      'itemPrice' => $item->getPrice(),
+                                      'itemLink' => $item->getLink()));
                       
         $itemInDatabase = $q->getOneOrNullResult();  
         return $itemInDatabase;
