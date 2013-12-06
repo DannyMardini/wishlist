@@ -124,6 +124,7 @@ function parseEventId(idString)
 
 function initWishlistDialogs()
 {
+    amazonSearchDialogInit();
     editWishlistDialogInit();
     viewWishlistDialogInit();
 }
@@ -409,16 +410,49 @@ function fillResults(data, textStatus, jqXHR)
     $('#resultsArea').html(data);
 }
 
-function editWishlistDialogInit()
+function amazonSearchDialogInit()
 {
-    if($( "#editItemDialog" ).length == 0 )
-        return;
-    
-    $('#editItemDialog #name').keyup(function(e) {
+    $('#amazonSearchDialog #name').keyup(function(e) {
         if(e.keyCode === 13) {
             ajaxPost({keywords: $(this).val()}, Routing.generate("WishlistCoreBundle_itemSearch"), fillResults);
         }
     });
+    
+    $( "#amazonSearchDialog" ).dialog({
+            autoOpen: false,
+            position: 'top', 
+            resizable: false,
+//            height:300,
+//            width:500,
+            modal: true,
+            title: 'Amazon Search',
+            buttons: {
+//                    "Grant": function() {
+//                        onGrantItClickEvent(this); 
+//                    },
+//                    "Update": function() {
+//                        onUpdateWishItemClick(this);
+//                        //$(this).dialog('close');
+//                    },
+//                    "Delete": function() {  
+//                        deleteLoadedItem();
+//                        $(this).dialog('close');
+//                    },
+                    "Save": function() {
+                        continueAddingItemToWishlist(this);
+                        //$(this).dialog('close');
+                    },                            
+                    "Close": function() {
+                        $(this).dialog('close');
+                    }
+            }
+    });
+}
+
+function editWishlistDialogInit()
+{
+    if($( "#editItemDialog" ).length == 0 )
+        return;
     
    $( "#editItemDialog" ).dialog({
             autoOpen: false,
@@ -774,7 +808,7 @@ function setupWishDialogView(data, options)
         $('#price').prop('disabled', false);
         $('#link').prop('disabled', false);
         
-        $('#editItemDialog').dialog('option', 'title', 'Search Amazon');
+        $('#editItemDialog').dialog('option', 'title', 'Save Wish');
     }
     
     $('#editItemDialog').dialog('option', 'height', '500');
