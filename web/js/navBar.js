@@ -2,47 +2,54 @@ var userName;
 var userID;
 var dropDowns = ['#accountOptionsDropdown', '#notificationWindow', '#updatesComponent'];
 
-//window.history.forward();
-
-//function noBack() { 
-//    window.history.forward(); 
-//}
-
-$( window ).resize(function() {
+$(window).resize(function () {
   resizeHeaderDropDownContainer();
 });
 
-$(document).ready(function(){
-    $('#logoutLink').click(onLogoutClickEvent);
+/* Helper method for removeNotification */
+function removeNotificationHelper()
+{
+    var notsRemaining = $('#notificationWindow li').size();
+    if(notsRemaining <= 0)
+    {
+        $('#notificationDiv').fadeOut(400, function(){$(this).remove()});
+        $('#notificationsDropDown').remove();
+    }
+}
 
-    $('#accountOptionsDropdownButton').click(function(){
-        navButtonClicked(this, '#accountOptionsDropdown');
-        resizeHeaderDropDownContainer();
+/* Hide the notifications drop down once the user has responded to all of the notifications */
+function removeNotification(notification)
+{
+    notification.fadeOut(400, function(){
+        notification.remove();
+        removeNotificationHelper();
     });
+}
 
-    $('#viewNotificationsButton').click(function(){
-        navButtonClicked(this,'#notificationWindow');
+function ignoreFriendClicked()
+{
+    var parentLi = $(this).parent();
+    var num = getNotificationNumber(parentLi);
+    ajaxPost(null, Routing.generate('WishlistUserBundle_ignoreFriendRequest', {notificationId: num}), null, null);
+}
+
+function acceptFriendClicked()
+{
+    var parentLi = $(this).parent();
+    var num = getNotificationNumber(parentLi);
+    ajaxPost(null, Routing.generate('WishlistUserBundle_acceptFriendRequest', {notificationId: num}), null, null);
+}
+
+/* Navigates to the frontpage and logs the user out */
+function onLogoutClickEvent() {
+    ajaxPost({}, Routing.generate('WishlistFrontpageBundle_logout'), function(data, textStatus){
+        navigate($('#frontpageLinkPath').val());
     });
-    
-    $('#updatesWindowButton').click(function(){
-        navButtonClicked(this, '#updatesComponent');
-    });
+}
 
-    $("a.acceptFriend").click(acceptFriendClicked);
-    $("a.ignoreFriend").click(ignoreFriendClicked);
-
-    $('.ui-MenuLink').bind('click', function(){
-        navigate($(["#", $(this).attr('id'), "Path"].join('')).val());
-    });
-
-    $(".notifications a").click(function(){
-        removeNotification($(this).parent());
-    });
-});
-
-function navButtonClicked(obj, id){
+function navButtonClicked(obj, id) {
     if($(obj).hasClass('selected')) {
-        $(id).hide()
+        $(id).hide();
         $(obj).removeClass('selected');
     }
     else {
@@ -57,8 +64,36 @@ function resizeHeaderDropDownContainer()
     // the drop down options container should be positioned to 
     // the same position as the drop down button 
     var buttonLeftPosition = $('#accountOptionsDropdownButton').offset().left;
-    $('#accountOptionsDropdown').css('left', buttonLeftPosition - 144);    
+    $('#accountOptionsDropdown').css('left', buttonLeftPosition - 144);
 }
+
+$(document).ready(function () {
+    $('#logoutLink').click(onLogoutClickEvent);
+
+    $('#accountOptionsDropdownButton').click(function () {
+        navButtonClicked(this, '#accountOptionsDropdown');
+        resizeHeaderDropDownContainer();
+    });
+
+    $('#viewNotificationsButton').click(function () {
+        navButtonClicked(this, '#notificationWindow');
+    });
+    
+    $('#updatesWindowButton').click(function () {
+        navButtonClicked(this, '#updatesComponent');
+    });
+
+    $("a.acceptFriend").click(acceptFriendClicked);
+    $("a.ignoreFriend").click(ignoreFriendClicked);
+
+    $('.ui-MenuLink').bind('click', function () {
+        navigate($(["#", $(this).attr('id'), "Path"].join('')).val());
+    });
+
+    $(".notifications a").click(function () {
+        removeNotification($(this).parent());
+    });
+});
 
 function hideOpenDropDowns(){
     $('#accountOptionsDropdown').hide();
@@ -74,48 +109,6 @@ function getNotificationNumber(notification)
     {
         return stringArray[1];
     }
-}
-
-function acceptFriendClicked()
-{
-    var parentLi = $(this).parent();
-    var num = getNotificationNumber(parentLi);
-    ajaxPost(null, Routing.generate('WishlistUserBundle_acceptFriendRequest', {notificationId: num}), null, null);
-}
-
-function ignoreFriendClicked()
-{
-    var parentLi = $(this).parent();
-    var num = getNotificationNumber(parentLi);
-    ajaxPost(null, Routing.generate('WishlistUserBundle_ignoreFriendRequest', {notificationId: num}), null, null);
-}
-
-/* Hide the notifications drop down once the user has responded to all of the notifications */
-function removeNotification(notification)
-{
-    notification.fadeOut(400, function(){
-        notification.remove();
-        removeNotificationHelper();
-    });
-}
-
-/* Helper method for removeNotification */
-function removeNotificationHelper()
-{
-    var notsRemaining = $('#notificationWindow li').size();
-    if(notsRemaining <= 0)
-    {
-        $('#notificationDiv').fadeOut(400, function(){$(this).remove()});
-        $('#notificationsDropDown').remove();
-    }
-}
-
-/* Navigates to the frontpage and logs the user out */
-function onLogoutClickEvent()
-{
-    ajaxPost({}, Routing.generate('WishlistFrontpageBundle_logout'), function(data, textStatus){
-        navigate($('#frontpageLinkPath').val());
-    });
 }
 
 function navigate(path)

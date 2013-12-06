@@ -2,19 +2,402 @@ var wishlistElement = '#wishlistContent';
 var selected_itemId = -1;
 var selected_eventId = -1;
 
-var month=new Array();
-month[0]="January";
-month[1]="February";
-month[2]="March";
-month[3]="April";
-month[4]="May";
-month[5]="June";
-month[6]="July";
-month[7]="August";
-month[8]="September";
-month[9]="October";
-month[10]="November";
-month[11]="December";
+var month = [];
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+
+function submitTheWish(/* optional wish object param */wish, path, callback, dialog) {        
+    // if a pre-defined wish obj was passed in, use that
+    if (wish === null) {
+        var theName = $("#newWishName").val();
+        var thePrice = $("#newWishPrice").val();
+        var theLink = $("#newWishLink").val();
+        var theQuantity = $("#newWishQuantity").val();
+        var theNotes = $("#newWishNotes").val();
+        var theIsPrivate = $("#isPrivate").attr('checked');
+        
+        wish = { name: escape(theName), 
+                 price: thePrice, 
+                 link: theLink, 
+                 quantity: theQuantity, 
+                 comment: theNotes, 
+                 isprivate: theIsPrivate
+             };
+    }
+    
+    var invalidWishMessage = validateWish(wish); 
+    
+    if(invalidWishMessage.length > 0)
+    {
+        popupMessage('Uh Oh!', invalidWishMessage);
+    }
+    else
+    {
+        ajaxPageLoad(
+            wishlistElement,                // jQuery wishlist element
+            path,                           // Path to the backend controller
+            wish,                           // Wish object
+            callback                        // Handles events after the controller is finished
+        );
+            
+        $(dialog).dialog('close');            
+    }
+}
+
+function getItemDialogObj(dialog)
+{
+    return {
+         id: $('#itemId', dialog).val(),
+         name: $('#name', dialog).val(), 
+         price: $('#price', dialog).val(), 
+         link: $('#link', dialog).val(),
+         quantity: $('#quantity', dialog).val(),
+         comment: $('#notes', dialog).val(),
+         isprivate: $('#private', dialog).val()
+     };                
+}
+
+function onGrantItClickEvent(dialog) {
+    // call the method that pops open the dialog for adding the item           
+    openAddToShoppingListDialog(getItemDialogObj(dialog));
+}
+
+function continueAddingItemToWishlist(dialog)
+{
+    var wishlistAddItemPath = Routing.generate('WishlistListBundle_wishlistNew');
+    var itemObj = getItemDialogObj(dialog);
+    submitTheWish(itemObj, wishlistAddItemPath, onCompleteAddToWishlistEvent, dialog); 
+}
+
+function highlightEvent(selected)
+{
+    selected.css('background-color', '#999999');
+}
+
+function clearEventHighlights()
+{
+    $('.confirmEvent').css('background-color', '');
+}
+
+function parseEventId(idString)
+{
+    var split_str = idString.split('_');
+    
+    if(split_str.length !== 2){
+        return -1;  //Return an invalid event id if we couldn't parse
+    }
+    
+    return parseInt(split_str[1]);
+}
+
+function selectEvent(selected)
+{
+    var eventId = parseEventId(selected.attr('id'));
+    
+    if(eventId < 0){
+        return;
+    }
+    
+    selected_eventId = eventId;
+    clearEventHighlights();
+    highlightEvent(selected);
+}
+
+function isSelectedEvent(selected)
+{
+    var eventId = parseEventId(selected.attr('id'));
+    
+    if( eventId === selected_eventId )
+    {
+        return true;
+    }
+    
+    return false;
+}
+
+// ** Date Validation Functions ****************************
+function isValidDate(year, month, day)
+{
+    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate(); },
+    char_year = year.toString(),
+    d = new Date(), 
+    curr_year = d.getFullYear();
+
+    if(char_year.length !== 4 || year > (curr_year+200)){
+        return false;
+    }
+    if(month < 0 || month > 11){
+        return false;
+    }
+    if(day < 0 || day > daysInMonth(year, month)){
+        return false;
+    }
+    
+    return true;
+}
+
+function popupMessage(theTitle, message, callback)
+{    
+    $('<div>' + message + '</div>').dialog({
+             position: 'top',
+             autoOpen: true,
+             close: function () {                  
+                 $(this).dialog('destroy');
+             },
+             title: theTitle,
+             buttons: {
+                 "Ok": function() {   
+                    if(callback!==null)
+                    {
+                        callback();
+                    }
+                    $( this ).dialog( "close" );
+                 }
+             }
+         });    
+}
+
+function onCompleteAddItemToShoppingList(responseMessage, textStatus, responseObj, itemId){
+    $('h3[id=' + itemId + ']').addClass('purchased');
+    $('#confirmDialog').dialog('close');        
+
+    // if an empty string was returned it means that no errors occurred.
+    if(responseObj.responseText.length <= 0){
+        popupMessage('Done!', 'The item was successfully added to your shopping list.', 
+            function(){
+                location.reload();
+            });
+    }
+    else { // display the error if any occurred        
+        popupMessage('Sorry!','<p>'+responseObj.responseText+'</p>');
+    }
+}
+
+function viewWishlistDialogInit()
+{
+    if($( "#itemDialog" ).length === 0)
+        return;
+    
+    $( "#itemDialog" ).dialog({
+            autoOpen: false,
+            position: 'top', 
+            resizable: false,
+            height:300,
+            width:500,
+            modal: true,
+            buttons: {
+                    "Want This": function() {
+                        onWantItClickEvent();
+                    },
+                    "Grant Wish": function() {                                            
+                        onGrantItClickEvent(this);                     
+                    },
+                    "Add Wish": function() {
+                        continueAddingItemToWishlist(this);
+                        $(this).dialog('close');
+                    }
+            },
+            open: function(event, ui) { 
+                styleWishDialogButtons();                
+                $(this).scrollTop(0);
+            }
+    });    
+}
+
+function parseDate(/*string*/ str)
+{
+    var dtCh = "/",
+    retDate = new Date(),
+    pos1=str.indexOf(dtCh),
+    pos2=str.indexOf(dtCh,pos1+1),
+    str_arr = null;
+    
+    if(str === ""){
+        //string is not defined        
+        throw "Invalid date.";
+    }
+    
+    if (pos1===-1 || pos2===-1)
+    {
+        throw "Invalid date.";
+    }
+    else
+    {
+        str_arr = str.split("/");
+    }
+    
+    var month = parseInt(str_arr[0], 10),
+    day = parseInt(str_arr[1], 10),
+    year = parseInt(str_arr[2], 10);
+    
+    //This is quite stupid as monthValue is the only value that begins with an
+    //index of zero, subtract one to fix it.
+    month--;
+    
+    if(!isValidDate(year, month, day))
+    {
+        throw "Invalid date.";
+    }
+    
+    retDate.setFullYear(year, month, day);
+    
+    return retDate;
+}
+
+function unselectEvent()
+{
+    clearEventHighlights();
+    selected_eventId = -1;
+}
+
+function toggleSelectEvent(selected)
+{
+    if( isSelectedEvent(selected) )
+    {
+        unselectEvent();
+    }
+    else 
+    {
+        selectEvent(selected);
+    }
+}
+
+function editWishlistDialogInit()
+{
+    if($( "#editItemDialog" ).length === 0 ) {
+        return;
+    }
+    
+   $( "#editItemDialog" ).dialog({
+            autoOpen: false,
+            position: 'top', 
+            resizable: false,
+            height:300,
+            width:500,
+            modal: true,
+            buttons: {
+                    "Grant": function() {
+                        onGrantItClickEvent(this); 
+                    },
+                    "Update": function() {
+                        onUpdateWishItemClick(this);
+                        //$(this).dialog('close');
+                    },
+                    "Delete": function() {  
+                        deleteLoadedItem();
+                        $(this).dialog('close');
+                    },
+                    "Save": function() {
+                        continueAddingItemToWishlist(this);
+                        //$(this).dialog('close');
+                    },                            
+                    "Close": function() {
+                        $(this).dialog('close');
+                    }
+            }
+    });    
+}
+
+function clickedEvent()
+{   
+    toggleSelectEvent($(this));
+}
+
+function confirmDialogClose()
+{
+    unselectEvent();    
+}
+
+function confirmOK()
+{
+    var purchaseType = null,
+    purchaseDue = null,
+    giftDate = null;
+    
+    try
+    {
+        giftDate = parseDate($('#giftDateInput').attr('value'));
+    }catch(e)
+    {
+        giftDate = null;
+    }
+    
+    try
+    {
+        if(selected_itemId == null || selected_itemId <= 0)
+        {
+            throw('An issue occurred! Refresh the browser and try again.');
+        }
+        
+        if((selected_eventId > 0) && (giftDate === null)){
+            purchaseType = 'Event';
+            purchaseDue = selected_eventId;            
+        }
+        else if((giftDate !== null) && (selected_eventId < 0)){
+            purchaseType = 'Date';
+            purchaseDue = giftDate.toDateString();
+        }
+        
+        if(purchaseType === null || purchaseDue === null)
+        {
+            throw 'Please select either an event or a date.';
+        }
+        
+        item = {id: selected_itemId, purchaseData: purchaseDue, type: purchaseType};
+        ajaxPost(item, Routing.generate('WishlistListBundle_purchaseItem'), onCompleteAddItemToShoppingList, item.id);
+    }catch(e)
+    {
+        popupMessage('Uh Oh!', e);
+    }
+}
+
+function setupConfirmDialog()
+{
+    if($('#confirmDialog').length === 0) {
+        return;
+    }
+    
+    $('#confirmDialog').dialog(
+        {
+            autoOpen: false,
+            position: 'top',
+            modal: true,
+            resizable: false,
+            height:500,
+            width:400,
+            buttons: {
+                'Ok': function(){
+                    confirmOK();                    
+                },
+                'Cancel': function(){
+                    $(this).dialog('close');
+                }
+            },
+            close: confirmDialogClose
+        }
+    );
+}
+
+function setupEvents()
+{
+    $('.confirmEvent').on('click', clickedEvent);
+}
+
+function initWishlistDialogs()
+{
+    editWishlistDialogInit();
+    viewWishlistDialogInit();
+}
 
 function get_nth_suffix(date) {
   switch (date) {
@@ -43,90 +426,6 @@ $(document).ready(function(){
         $('#giftDateInput').datepicker();
     }
 });
-
-function setupConfirmDialog()
-{
-    if($('#confirmDialog').length == 0)
-        return;
-    
-    $('#confirmDialog').dialog(
-        {
-            autoOpen: false,
-            position: 'top',
-            modal: true,
-            resizable: false,
-            height:500,
-            width:400,
-            buttons: {
-                'Ok': function(){
-                    confirmOK();                    
-                },
-                'Cancel': function(){
-                    $(this).dialog('close');
-                }
-            },
-            close: confirmDialogClose
-        }
-    );
-}
-
-function confirmOK()
-{
-    var purchaseType = null;
-    var purchaseDue = null;
-    
-    try
-    {
-        var giftDate = parseDate($('#giftDateInput').attr('value'));
-    }catch(e)
-    {
-        giftDate = null;
-    }
-    
-    try
-    {
-        if(selected_itemId == null || selected_itemId <= 0)
-        {
-            throw('An issue occurred! Refresh the browser and try again.')
-        }
-        
-        if((selected_eventId > 0) && (giftDate == null)){
-            purchaseType = 'Event';
-            purchaseDue = selected_eventId;            
-        }
-        else if((giftDate != null) && (selected_eventId < 0)){
-            purchaseType = 'Date';
-            purchaseDue = giftDate.toDateString();
-        }
-        
-        if(purchaseType == null || purchaseDue == null)
-        {
-            throw 'Please select either an event or a date.';
-        }
-        
-        item = {id: selected_itemId, purchaseData: purchaseDue, type: purchaseType};
-        ajaxPost(item, Routing.generate('WishlistListBundle_purchaseItem'), onCompleteAddItemToShoppingList, item.id);
-    }catch(e)
-    {
-        popupMessage('Uh Oh!', e);
-    }
-}
-
-function parseEventId(idString)
-{
-    var split_str = idString.split('_');
-    
-    if(split_str.length != 2)
-        return -1;  //Return an invalid event id if we couldn't parse
-    
-    return parseInt(split_str[1]);
-}
-
-function initWishlistDialogs()
-{
-    editWishlistDialogInit();
-    viewWishlistDialogInit();
-}
 
 function validateWish(wish)
 {
@@ -164,45 +463,6 @@ function validateWish(wish)
                         : message;
 }
 
-function submitTheWish(/* optional wish object param */wish, path, callback, dialog)
-{        
-    // if a pre-defined wish obj was passed in, use that
-    if(wish == null) {
-        var theName = $("#newWishName").val();
-        var thePrice = $("#newWishPrice").val();
-        var theLink = $("#newWishLink").val();
-        var theQuantity = $("#newWishQuantity").val();
-        var theNotes = $("#newWishNotes").val();
-        var theIsPrivate = $("#isPrivate").attr('checked');
-        
-        wish = { name: escape(theName), 
-                 price: thePrice, 
-                 link: theLink, 
-                 quantity: theQuantity, 
-                 comment: theNotes, 
-                 isprivate: theIsPrivate
-             };
-    }
-    
-    var invalidWishMessage = validateWish(wish); 
-    
-    if(invalidWishMessage.length > 0)
-    {
-        popupMessage('Uh Oh!', invalidWishMessage);
-    }
-    else
-    {
-        ajaxPageLoad(
-            wishlistElement,                // jQuery wishlist element
-            path,                           // Path to the backend controller
-            wish,                           // Wish object
-            callback                        // Handles events after the controller is finished
-        );
-            
-        $(dialog).dialog('close');            
-    }
-}
-
 function onCompleteAddToWishlistEvent(responseText, textStatus, jqXHR)
 {    
     switch(textStatus.toLowerCase())
@@ -227,73 +487,6 @@ function onCompleteAddToWishlistEvent(responseText, textStatus, jqXHR)
 function onWantItClickEvent() {
     openWishDialog($('#itemDialog #itemId').val(), {edit:"1",newItem:"1"}, setupWishDialogView);
     $("#itemDialog").dialog('close');  
-}
-
-function isSelectedEvent(selected)
-{
-    var eventId = parseEventId(selected.attr('id'));
-    
-    if( eventId == selected_eventId )
-    {
-        return true;
-    }
-    
-    return false;
-}
-
-function clearEventHighlights()
-{
-    $('.confirmEvent').css('background-color', '');
-}
-
-function highlightEvent(selected)
-{
-    selected.css('background-color', '#999999');
-}
-
-function selectEvent(selected)
-{
-    var eventId = parseEventId(selected.attr('id'));
-    
-    if(eventId < 0)
-        return;
-    
-    selected_eventId = eventId;
-    clearEventHighlights();
-    highlightEvent(selected)
-}
-
-function unselectEvent()
-{
-    clearEventHighlights();
-    selected_eventId = -1;
-}
-
-function confirmDialogClose()
-{
-    unselectEvent();    
-}
-
-function toggleSelectEvent(selected)
-{
-    if( isSelectedEvent(selected) )
-    {
-        unselectEvent();
-    }
-    else 
-    {
-        selectEvent(selected);
-    }
-}
-
-function clickedEvent()
-{   
-    toggleSelectEvent($(this));
-}
-
-function setupEvents()
-{
-    $('.confirmEvent').on('click', clickedEvent);
 }
 
 function getUserEvents(itemId) {
@@ -338,18 +531,6 @@ function populateDialogItemInfo(itemInfo)
 function openAddToShoppingListDialog(item)
 {
     populateDialogItemInfo(item);
-}
-
-function onGrantItClickEvent(dialog) {
-    // call the method that pops open the dialog for adding the item           
-    openAddToShoppingListDialog(getItemDialogObj(dialog));
-}
-
-function continueAddingItemToWishlist(dialog)
-{
-    var wishlistAddItemPath = Routing.generate('WishlistListBundle_wishlistNew');
-    var itemObj = getItemDialogObj(dialog);
-    submitTheWish(itemObj, wishlistAddItemPath, onCompleteAddToWishlistEvent, dialog); 
 }
 
 function styleWishDialogButtons()
@@ -542,66 +723,6 @@ function ajaxFunction(queryString){
     ajaxRequest.send(null); 
 }
 
-
-// ** Date Validation Functions ****************************
-function isValidDate(year, month, day)
-{
-    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate(); };
-    var char_year = year.toString();    
-    var d = new Date(); var curr_year = d.getFullYear();
-
-    if(char_year.length != 4 || year > (curr_year+200))
-        return false;
-    
-    if(month < 0 || month > 11)
-        return false;
-    
-    if(day < 0 || day > daysInMonth(year, month))
-        return false;
-    
-    return true;
-}
-
-function parseDate(/*string*/ str)
-{
-    var dtCh = "/";
-    var retDate = new Date();
-    var pos1=str.indexOf(dtCh);
-    var pos2=str.indexOf(dtCh,pos1+1);
-    var str_arr = null;
-    
-    if(str == ""){
-        //string is not defined        
-        throw "Invalid date.";
-    }
-    
-    if (pos1==-1 || pos2==-1)
-    {
-        throw "Invalid date.";
-    }
-    else
-    {
-        str_arr = str.split("/");
-    }
-    
-    var month = parseInt(str_arr[0], 10);
-    var day = parseInt(str_arr[1], 10);
-    var year = parseInt(str_arr[2], 10);
-    
-    //This is quite stupid as monthValue is the only value that begins with an
-    //index of zero, subtract one to fix it.
-    month--;
-    
-    if(!isValidDate(year, month, day))
-    {
-        throw "Invalid date.";
-    }
-    
-    retDate.setFullYear(year, month, day);
-    
-    return retDate;
-}
-
 // ** Date Validation Functions ****************************
 
 function confirm (confirmMessage) {
@@ -628,27 +749,6 @@ function confirm (confirmMessage) {
             }
         });
     return defer.promise(); //important to return the deferred promise
-}
-
-function popupMessage(theTitle, message, callback)
-{    
-    $('<div>' + message + '</div>').dialog({
-             position: 'top',
-             autoOpen: true,
-             close: function () {                  
-                 $(this).dialog('destroy');
-             },
-             title: theTitle,
-             buttons: {
-                 "Ok": function() {   
-                    if(callback!=null)
-                    {
-                        callback();
-                    }
-                    $( this ).dialog( "close" );
-                 }
-             }
-         });    
 }
 
 function whatIsIt(object) {
@@ -789,35 +889,6 @@ function setupItemView(data)
     $('#itemDialog #link2').html('<a target="_blank" href="http://'+data.link+'">webpage</a>');
     $('#itemDialog #link').val(data.link);
     $('#itemDialog').dialog('open');  
-}
-
-function getItemDialogObj(dialog)
-{
-    return {
-         id: $('#itemId', dialog).val(),
-         name: $('#name', dialog).val(), 
-         price: $('#price', dialog).val(), 
-         link: $('#link', dialog).val(),
-         quantity: $('#quantity', dialog).val(),
-         comment: $('#notes', dialog).val(),
-         isprivate: $('#private', dialog).val()
-     };                
-}
-
-function onCompleteAddItemToShoppingList(responseMessage, textStatus, responseObj, itemId){
-    $('h3[id=' + itemId + ']').addClass('purchased');
-    $('#confirmDialog').dialog('close');        
-
-    // if an empty string was returned it means that no errors occurred.
-    if(responseObj.responseText.length <= 0){
-        popupMessage('Done!', 'The item was successfully added to your shopping list.', 
-            function(){
-                location.reload();
-            });
-    }
-    else { // display the error if any occurred        
-        popupMessage('Sorry!','<p>'+responseObj.responseText+'</p>');
-    }
 }
 
 function getIds(elements)
