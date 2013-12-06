@@ -939,3 +939,24 @@ div#updatesComponent .updatesHeader {
   color: red;
   font-weight: bold;
 }
+
+/* line 411, ../sass/screen.scss */
+#resultsArea table {
+  border-collapse: separate;
+  border-spacing: 0px 15px;
+}
+/* line 416, ../sass/screen.scss */
+#resultsArea tr:hover {
+  background-image: -webkit-linear-gradient(white, #f0f0f0);
+  background-image: -moz-linear-gradient(white, #f0f0f0);
+  background-image: -ms-linear-gradient(white, #f0f0f0);
+  background-image: -o-linear-gradient(white, #f0f0f0);
+  background-image: linear-gradient(#ffffff, #f0f0f0);
+  background-color: #f7f7f7;
+  border: 1px solid #cccccc;
+  cursor: hand;
+}
+/* line 427, ../sass/screen.scss */
+#resultsArea td {
+  vertical-align: top;
+}

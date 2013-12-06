@@ -1,7 +1,8 @@
 <?php
-
+echo "<table>\n";
 foreach($items as $item) {
-    echo "<div><a href='".$item->getLink()."'>".$item->getName()."</a>".$item->getPrice()."</div>";
+    echo "<tr><td><a target='_blank' href='".$item->getLink()."'>".$item->getName()."</a></td><td>$".($item->getPrice() / 100)."</td></tr>\n";
 }
+echo "</table>\n";
 
 ?>

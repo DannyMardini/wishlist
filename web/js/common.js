@@ -774,7 +774,7 @@ function setupWishDialogView(data, options)
         $('#price').prop('disabled', false);
         $('#link').prop('disabled', false);
         
-        $('#editItemDialog').dialog('option', 'title', 'Save Wish');
+        $('#editItemDialog').dialog('option', 'title', 'Search Amazon');
     }
     
     $('#editItemDialog').dialog('option', 'height', '500');

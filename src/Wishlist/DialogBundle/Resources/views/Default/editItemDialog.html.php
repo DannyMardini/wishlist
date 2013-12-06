@@ -1,7 +1,7 @@
 <div id='editItemDialog' title='Edit Wish' >  
     <input type='hidden' id='itemId' /> 
     Item: <input disabled type='text' id='name' placeholder='Enter Item Name' />
-    <span id='resultsArea'></span>
+    <span id='resultsArea' class='message'></span>
 <!--
     Item: <input disabled type='text' id='name' placeholder='Enter Item Name' />
     Price: <input disabled type='text' id='price' placeholder='Enter Item Price' />
