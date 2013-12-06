@@ -29,7 +29,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>
         <script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>
     </head>
-    <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+    <body>
         <?php echo $view['actions']->render('WishlistCoreBundle:Default:navBar'); ?>
         <ul id="navigationlist" class="font-style">
             <li><a href="<?php echo $wishlistUrl ?>">Wishlist</a></li>

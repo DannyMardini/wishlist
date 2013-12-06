@@ -327,7 +327,6 @@ function populateDialogItemInfo(itemInfo)
     }
     
     var item = (type == "String") ? JSON.parse(itemInfo) : itemInfo;
-    //$('#confirmName').html(item.name);
     getUserEvents(item.id);
     
     if(selected_itemId <= -1 || selected_itemId == "")

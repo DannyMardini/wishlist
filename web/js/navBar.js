@@ -1,17 +1,12 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 var userName;
 var userID;
 var dropDowns = ['#accountOptionsDropdown', '#notificationWindow', '#updatesComponent'];
 
-window.history.forward();
+//window.history.forward();
 
-function noBack() { 
-    window.history.forward(); 
-}
+//function noBack() { 
+//    window.history.forward(); 
+//}
 
 $( window ).resize(function() {
   resizeHeaderDropDownContainer();
