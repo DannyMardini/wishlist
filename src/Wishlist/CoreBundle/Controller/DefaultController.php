@@ -73,4 +73,50 @@ class DefaultController extends Controller
     {
         return $this->render('WishlistCoreBundle:Default:privacypolicy.html.php');
     }
+
+    public function itemSearchAction()
+    {
+        $request = $this->getRequest()->request;
+        $amazonSearch = $this->get('amazon_search_service');
+
+        $keywords = $request->get('keywords');
+        if(!isset($keywords))
+        {
+            return new Response();
+        }
+
+        //replace all white space with single + characters.
+        $keywords = implode("+", explode(" ", $keywords));
+        
+        $searchResults = $amazonSearch->itemSearch("All", $keywords);
+        return $this->render('WishlistDialogBundle:Default:itemSearchResults.html.php', array('items' => $searchResults));
+    }
+
+    public function itemSelectAction()
+    {
+        $request = $this->getRequest()->request;
+        $amazonSearch = $this->get('amazon_search_service');
+        $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
+
+        $asin = $request->get('ASIN');
+        if(!isset($asin))
+        {
+            return new Response('failure');
+        }
+
+        $item = $amazonSearch->itemLookup($keywords);
+        if(!isset($item))
+        {
+            return new Response('failure');
+        }
+
+        $item = $itemRepo->addItem($item);
+        if(isset($item))
+        {
+            //if this function returned the new item then it was persisted.
+            return new Response('success');
+        }
+
+        return new Response('failure');
+    }
 }

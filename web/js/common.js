@@ -404,10 +404,21 @@ function viewWishlistDialogInit()
     });    
 }
 
+function fillResults(data, textStatus, jqXHR)
+{
+    $('#resultsArea').html(data);
+}
+
 function editWishlistDialogInit()
 {
     if($( "#editItemDialog" ).length == 0 )
         return;
+    
+    $('#editItemDialog #name').keyup(function(e) {
+        if(e.keyCode === 13) {
+            ajaxPost({keywords: $(this).val()}, Routing.generate("WishlistCoreBundle_itemSearch"), fillResults);
+        }
+    });
     
    $( "#editItemDialog" ).dialog({
             autoOpen: false,
