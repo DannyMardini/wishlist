@@ -78,3 +78,6 @@ services:
 
 fos_js_routing:
   routes_to_expose: [ WishlistUserBundle*, RequestInvite, Validate, WishlistListBundle*, WishlistCoreBundle*, WishlistQABundle*, WishlistFrontpageBundle*]
+  
+parameters:
+  maximum_total_users_allowed: 18

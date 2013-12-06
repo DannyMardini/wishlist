@@ -72,5 +72,5 @@ class DefaultController extends Controller
     public function privacypolicyAction()
     {
         return $this->render('WishlistCoreBundle:Default:privacypolicy.html.php');
-    }    
+    }
 }

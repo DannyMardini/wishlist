@@ -17,8 +17,12 @@ use Wishlist\CoreBundle\Library\StoPasswordHash;
  */
 class WishlistUserRepository extends EntityRepository
 {
-    const MAX_USERS = 100;
-
+    public function getTotalUserCount()
+    {
+        $query = $this->getEntityManager()->createQuery('SELECT COUNT(u) FROM WishlistCoreBundle:WishlistUser u');
+        return $query->getSingleScalarResult(); 
+    }
+    
     public function getUser($fullname)
     {
         return $this->findOneBy(array('name' => $fullname));

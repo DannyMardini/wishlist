@@ -33,8 +33,6 @@ class LoadEnumData implements FixtureInterface
         $this->newEnum('Notification', 'STATE_UNREAD', Notification::STATE_UNREAD);
         $this->newEnum('Notification', 'STATE_READ', Notification::STATE_READ);
 
-        $this->newEnum('WishlistUserRepository', 'MAX_USERS', WishlistUserRepository::MAX_USERS);
-         
         $manager->flush();
     }
     

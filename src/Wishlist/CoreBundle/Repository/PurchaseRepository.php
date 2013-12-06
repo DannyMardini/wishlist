@@ -60,10 +60,7 @@ class PurchaseRepository extends EntityRepository
             throw new \Exception('Must enter a date or event.');
         }
         
-        $genericItem = $wishlistItem->getItem();
         $purchasePromised = $wishlistItem->getPurchase();
-        $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistItem');
-        //$selfPurchaseItem = $itemRepo->getWishlistItemForUser($genericItem, $user); //This is a problem, it's getting an entirely different wishlistItem
         $selfPurchaseItem = ($wishlistItem->getWishlistUser() == $user);
         
         if(isset($purchasePromised) && !$selfPurchaseItem )
