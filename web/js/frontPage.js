@@ -1,8 +1,51 @@
+function displayMessage(message, title)
+{
+    $('#dialog-message').html(message);
+    $( "#dialog-message" ).dialog({
+        title: title,
+        position: 'top',
+        modal: true,
+        height:400,
+        width:400,
+        buttons: {
+                Ok: function() {
+                        $( this ).dialog( "close" );
+                }
+        }
+    }); 
+}
 
 // run the currently selected effect
 function runEffect(togglerWindow) {        
         $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
-};  
+}
+
+function displayMessageDialog(msg, title)
+{  
+    displayMessage(msg, title);
+}
+
+function redirectToHomePage()
+{
+    // redirect to the logged in user's home page
+    window.location = $('#homepageLinkPath').val();
+}
+
+function setupCSS()
+{
+    $(':input').addClass("ui-state-default");
+    $(':input').addClass("ui-corner-all");
+    
+    $('#requestInviteButton, #loginButton').addClass("ui-state-default");
+    $('#requestInviteButton, #loginButton').addClass("ui-corner-all");
+}
+
+// hide the toggle windows
+function hideToggleWindows()
+{
+    $('#requestInviteToggleWindow').hide();
+    $('#loginToggleWindow').hide();        
+}
 
 $(document).ready(function()
 { 
@@ -68,7 +111,7 @@ $(document).ready(function()
         var activeToggler_SelectorId = "";
         var hiddenToggler_SelectorId = "";
 
-        if(thisId == "requestInviteButton")
+        if(thisId === "requestInviteButton")
         {
             activeToggler_SelectorId = "#requestInviteToggleWindow";
             hiddenToggler_SelectorId = "#loginToggleWindow";
@@ -101,54 +144,7 @@ var aboutMessage = "The founders of Wishenda came up with the idea of making thi
                     This gave us the idea to make this site and hope that other people would be able to use it to do the same.' <br /><br />\n\
                     With Wishenda you know what all of your friends want and they know what you want. Shopping for each other has never been easier!";
 
-function displayMessageDialog(msg, title)
-{  
-    displayMessage(msg, title);
-}
-
-function displayMessage(message, title)
-{
-    $('#dialog-message').html(message);
-    $( "#dialog-message" ).dialog({
-        title: title,
-        position: 'top',
-        modal: true,
-        height:400,
-        width:400,
-        buttons: {
-                Ok: function() {
-                        $( this ).dialog( "close" );
-                }
-        }
-    }); 
-}
-
-
-function redirectToHomePage()
-{
-    // redirect to the logged in user's home page
-    window.location = $('#homepageLinkPath').val();
-}
-
 // run the currently selected effect
 function runEffect(togglerWindow) {        
     $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
-} 
-
-
-function setupCSS()
-{
-    $(':input').addClass("ui-state-default");
-    $(':input').addClass("ui-corner-all");
-    
-    $('#requestInviteButton, #loginButton').addClass("ui-state-default");
-    $('#requestInviteButton, #loginButton').addClass("ui-corner-all");
-}
-
-
-// hide the toggle windows
-function hideToggleWindows()
-{
-    $('#requestInviteToggleWindow').hide();
-    $('#loginToggleWindow').hide();        
 }
