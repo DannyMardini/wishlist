@@ -17,7 +17,7 @@
    ?>  
             <div class="Event" id="event_<?php echo $eventId ?>">
                 <button class="remove" id="remove_event_<?php echo $eventId ?>" title="remove event">
-                    <span class="ui-icon ui-icon-minus wishenda-button"></span>
+                    <span class="ui-icon ui-icon-close wishenda-button"></span>
                 </button>
                 <div class="image" title="<?php echo $eventName ?>"><img src="<?php echo $eventImage ?>" height="30" width="30" /></div>
                 <div class="name" title ="<?php echo $eventName ?>"><?php echo $eventName ?></div>
