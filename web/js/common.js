@@ -554,6 +554,83 @@ function styleWishDialogButtons()
     }
 }
 
+function viewWishlistDialogInit()
+{
+    if($( "#itemDialog" ).length == 0)
+        return;
+    
+    $( "#itemDialog" ).dialog({
+            autoOpen: false,
+            position: 'top', 
+            resizable: false,
+            height:300,
+            width:500,
+            modal: true,
+            buttons: {
+                    "Want This": function() {
+                        onWantItClickEvent();
+                    },
+                    "Grant Wish": function() {                                            
+                        onGrantItClickEvent(this);                     
+                    },
+                    "Add Wish": function() {
+                        continueAddingItemToWishlist(this);
+                        $(this).dialog('close');
+                    }
+            },
+            open: function(event, ui) { 
+                styleWishDialogButtons();                
+                $(this).scrollTop(0);
+            }
+    });    
+}
+
+function fillResults(data, textStatus, jqXHR)
+{
+    $('#resultsArea').html(data);
+}
+
+function editWishlistDialogInit()
+{
+    if($( "#editItemDialog" ).length == 0 )
+        return;
+    
+    $('#editItemDialog #name').keyup(function(e) {
+        if(e.keyCode === 13) {
+            ajaxPost({keywords: $(this).val()}, Routing.generate("WishlistCoreBundle_itemSearch"), fillResults);
+        }
+    });
+    
+   $( "#editItemDialog" ).dialog({
+            autoOpen: false,
+            position: 'top', 
+            resizable: false,
+            height:300,
+            width:500,
+            modal: true,
+            buttons: {
+                    "Grant": function() {
+                        onGrantItClickEvent(this); 
+                    },
+                    "Update": function() {
+                        onUpdateWishItemClick(this);
+                        //$(this).dialog('close');
+                    },
+                    "Delete": function() {  
+                        deleteLoadedItem();
+                        $(this).dialog('close');
+                    },
+                    "Save": function() {
+                        continueAddingItemToWishlist(this);
+                        //$(this).dialog('close');
+                    },                            
+                    "Close": function() {
+                        $(this).dialog('close');
+                    }
+            }
+    });    
+}
+
 /* POST: ajax call
  * TO DO: have other ajax call this generic method instead
  * */

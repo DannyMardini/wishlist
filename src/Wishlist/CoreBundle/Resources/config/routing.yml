@@ -13,3 +13,12 @@ WishlistCoreBundle_Terms:
 WishlistCoreBundle_PrivacyPolicy:
     pattern:  /PrivacyPolicy
     defaults: { _controller: WishlistCoreBundle:Default:privacypolicy }
+
+WishlistCoreBundle_itemSearch:
+    pattern: /ItemSearch
+    defaults: { _controller: WishlistCoreBundle:Default:itemSearch }
+
+WishlistCoreBundle_itemSelect:
+    pattern: /ItemSelect
+    defaults: { _controller: WishlistCoreBundle:Default:itemSelect }
+

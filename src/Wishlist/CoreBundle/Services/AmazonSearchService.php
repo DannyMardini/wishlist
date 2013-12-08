@@ -18,7 +18,7 @@ class AmazonSearchService
         $this->associateTag = $associateTag;
     }
     
-    protected function createRequest($operation, $searchIndex, $keywords)
+    protected function createRequestBase($operation, $params)
     {
         $request=
              "http://webservices.amazon.com/onca/xml"
@@ -27,15 +27,30 @@ class AmazonSearchService
            . "&AWSAccessKeyId=" . $this->accessId
            . "&Operation=" . $operation
            . "&Version=" . AmazonSearchService::VERSION
-           . "&SearchIndex=" . $searchIndex
-           . "&Keywords=" . strtr( $keywords, array('+' => '%20') )
            . "&ResponseGroup=" . AmazonSearchService::ResponseGroup
-           . "&Timestamp=" . gmdate("Y-m-d\TH:i:s\Z");
+           . "&Timestamp=" . gmdate("Y-m-d\TH:i:s\Z")
+           . $params;
 
         $strToSign = $this->createStringToSign($request);
         $request .= "&Signature=" . strtr( base64_encode(hash_hmac("sha256", $strToSign, $this->accessKey, true)), array('+' => '%2B', '=' => '%3D') );
 
         return $request;
+    }
+
+    protected function createItemSearchRequest($searchIndex, $keywords)
+    {
+        $params = 
+             "&SearchIndex=" . $searchIndex
+           . "&Keywords=" . strtr( $keywords, array('+' => '%20') );
+
+        return $this->createRequestBase("ItemSearch", $params);
+    }
+
+    protected function createItemLookupRequest($asin)
+    {
+        $params = "&ItemId=" . $asin;
+
+        return $this->createRequestBase("ItemLookup", $params);
     }
     
     protected function CreateStringToSign($request) 
@@ -77,7 +92,18 @@ class AmazonSearchService
 
     public function itemSearch($searchIndex, $keywords)
     {
-        $request = $this->createRequest( "ItemSearch", $searchIndex, $keywords);
+        $request = $this->createItemSearchRequest($searchIndex, $keywords);
+        return $this->sendRequest($request);
+    }
+
+    public function itemLookup($asin)
+    {
+        $request = $this->createItemLookupRequest($asin);
+        return $this->sendRequest($request);
+    }
+
+    protected function sendRequest($request)
+    {
         $response = file_get_contents($request);
         $response = simplexml_load_string($response);
         if($response->Items->Request->IsValid != True) {
