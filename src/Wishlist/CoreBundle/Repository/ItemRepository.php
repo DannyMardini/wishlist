@@ -14,7 +14,7 @@ use Wishlist\CoreBundle\Entity\Item;
  */
 class ItemRepository extends EntityRepository
 {
-    public function addItem($name, $price, $link)
+    public function newItem($name, $price, $link)
     {        
         $newItem = new Item();
         $newItem->setName($name);
