@@ -16,6 +16,7 @@ month[9] = "October";
 month[10] = "November";
 month[11] = "December";
 
+
 function submitTheWish(/* optional wish object param */wish, path, callback, dialog) {        
     // if a pre-defined wish obj was passed in, use that
     if (wish === null) {
@@ -814,7 +815,7 @@ function openWishDialog(wishlistItemId, options, callback)
 // newitem (1) means it's a new item
 function setupWishDialogView(data, options)
 {
-    var edit = options.edit;
+ var edit = options.edit;
     var newitem = options.newItem;
     var buttonPane = $('.ui-dialog-buttonpane');
     
@@ -843,9 +844,8 @@ function setupWishDialogView(data, options)
         $('#editItemDialog #quantity').val(data.quantity);
         var comment = (newitem == 1) ? "" : data.comment;
         $('#editItemDialog #notes').val(comment);
-        $('#editItemDialog #isPrivate').prop('checked', !data.public);
     }
-    
+        
     if(edit == 0) // if not editable, disable the inputs
     {
         $('#editItemDialog input').prop('disabled', true);
@@ -911,5 +911,3 @@ function removeSpecialChars(val)
     
     return val;
 }
-
-
