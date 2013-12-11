@@ -24,7 +24,7 @@ function setupWishlist()
                 primary: "ui-icon-plusthick"
             },
             text: false
-    }).click(function(){
+    }).click(function(e){
         e.preventDefault();
         //setupWishDialogView(null,{edit:"1", newItem:"1"});        
         $('#amazonSearchDialog').dialog('open');
