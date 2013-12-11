@@ -1,11 +1,11 @@
 <?php $view->extend('::navBar.html.php') ?>
-<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/screen.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
-<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/print.css') ?>" media="print" rel="stylesheet" type="text/css" />
+<?php foreach ($view['assetic']->javascripts(array('js/jquery.form.js', 'js/accountsettings.js'), array('yui_js')) as $url): ?>
+<script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+<?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/screen.css', 'compass/stylesheets/print.css'), array('yui_css')) as $url): ?>
+<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
 <div id='accountSettings'>
     <?php
         // This is including the settingForms.html.php template into this page
         echo  $view->render('WishlistUserBundle:Default:settingForms.html.php', array('gender' => $gender, 'name' => $name,
         'email' => $email, 'birthdate' => $birthdate, 'profileImage' => $profileImage)) ?>
 </div>
-<script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/jquery.form.js') ?>></script>
-<script type="text/javascript" src=<?php echo $view['assets']->getUrl('/js/accountsettings.js') ?>></script>

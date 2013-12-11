@@ -4,10 +4,12 @@ $view->extend('::navBar.html.php');
 $userId = $wishlist_user->getWishlistUserId();
 $selfWishlist = ($userId == $loggedInUserId)? true:false;
 ?>
-<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/userPage.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
-<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/wishlist.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/js/wishlist.js"></script>
-<script type="text/javascript" src="/js/userpage.js"></script>
+
+<?php foreach ($view['assetic']->javascripts(array('js/wishlist.js', 'js/userpage.js'), array('yui_js')) as $url): ?>
+<script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+<?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/userPage.css', 'compass/stylesheets/wishlist.css'), array('yui_css')) as $url): ?>
+<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
+
 <input id="userId" type="hidden" value="<?php echo $userId ?>"/>
 
 <div id="div_left_panel">

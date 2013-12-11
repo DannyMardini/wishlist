@@ -1,9 +1,8 @@
 <html>
     <head>
-        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/screen.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
-        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/print.css') ?>" media="print" rel="stylesheet" type="text/css" />
+        <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/screen.css', 'compass/stylesheets/print.css'), array('yui_css')) as $url): ?>
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>        
         <link href="<?php echo $view['assets']->getUrl('css/black-tie/jquery-ui-1.8.23.custom.css') ?>" rel="stylesheet" type="text/css" />
-        <link href="/css/black-tie/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
         <title><?php $view['slots']->output('title', 'New Account Base') ?></title>
     </head>
     <body id='accountSettings'>

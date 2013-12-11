@@ -19,7 +19,7 @@ class WishlistItemRepository extends EntityRepository
     public function updateWish($id, $name, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
     {
         $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Item');
-        $item = $itemRepo->newItem($name, $price, $link); // $isPublic, $comment, $quantity, $wishlistUser);
+        $item = $itemRepo->newItem($name, $price, $link);
         
         // don't permit name, price or link changes (they would have to add a new item for that)
         

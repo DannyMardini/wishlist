@@ -1,6 +1,10 @@
 <?php $view->extend('::navBar.html.php') ?>
-<script type="text/javascript" src="/js/friendpage.js"></script>
-<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/screen.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<?php foreach ($view['assetic']->javascripts(array('js/friendpage.js'), array('yui_js')) as $url): ?>
+<script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+<?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/screen.css'), array('yui_css')) as $url): ?>
+<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
+
 <div class="pageTitle">
     <label class="pageHeader">Friends</label>
     <button class="addButton" title="invite friends" id="addItemButton"><span id="inviteFriendButton" class="wishenda-button">Invite Friends</span></button>
