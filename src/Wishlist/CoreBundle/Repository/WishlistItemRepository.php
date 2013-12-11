@@ -162,7 +162,7 @@ class WishlistItemRepository extends EntityRepository
         
         if(!isset($wishToDelete))
         {
-            throw new Exception("Wishlist Item could not be found.");            
+            throw new \Exception("Wishlist Item could not be found.");
         }
         
         // search for and remove the promised purchase of this wish (if it exists)

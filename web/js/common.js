@@ -159,7 +159,7 @@ function popupMessage(theTitle, message, callback)
              title: theTitle,
              buttons: {
                  "Ok": function() {   
-                    if(callback!==null)
+                    if(callback!==undefined)
                     {
                         callback();
                     }
