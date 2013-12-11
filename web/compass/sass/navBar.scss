@@ -257,8 +257,8 @@ ul {
 }
 
 .selected {
-    background-color: $global-button-hover-color;
-    background: $global-button-hover-color;
+    background-color: darken($global-button-hover-color, 10%);
+    background: darken($global-button-hover-color, 10%);
 }
 
 .ui-MenuLink {

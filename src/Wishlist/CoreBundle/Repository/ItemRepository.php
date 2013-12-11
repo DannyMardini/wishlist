@@ -14,12 +14,16 @@ use Wishlist\CoreBundle\Entity\Item;
  */
 class ItemRepository extends EntityRepository
 {
-    public function newItem($name, $price, $link)
+    public function newItem($name, $price, $link, $asin=null)
     {        
         $newItem = new Item();
         $newItem->setName($name);
         $newItem->setPrice($price);
         $newItem->setLink($link);
+        if(isset($asin))
+        {
+            $newItem->setAsin($asin);
+        }
 
         return $this->addItem($newItem);
     }

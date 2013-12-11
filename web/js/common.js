@@ -1,6 +1,7 @@
 var wishlistElement = '#wishlistContent';
 var selected_itemId = -1;
 var selected_eventId = -1;
+var selected_amazonItem = -1;
 
 var month = [];
 month[0] = "January";
@@ -465,6 +466,46 @@ function validateWish(wish)
                         : message;
 }
 
+function submitTheWish(/* optional wish object param */wish, path, callback, dialog)
+{        
+    // if a pre-defined wish obj was passed in, use that
+    if(wish == null) {
+        var theName = $("#newWishName").val();
+        var thePrice = $("#newWishPrice").val();
+        var theLink = $("#newWishLink").val();
+        var theQuantity = $("#newWishQuantity").val();
+        var theNotes = $("#newWishNotes").val();
+        var theIsPrivate = $("#isPrivate").attr('checked');
+        
+        wish = {name: escape(theName), 
+                 price: thePrice, 
+                 link: theLink, 
+                 quantity: theQuantity, 
+                 comment: theNotes, 
+                 isprivate: theIsPrivate
+             };
+    }
+    
+    var invalidWishMessage = validateWish(wish); 
+    
+    if(invalidWishMessage.length > 0)
+    {
+        popupMessage('Uh Oh!', invalidWishMessage);
+    }
+    else
+    {
+        ajaxPageLoad(
+            wishlistElement,                // jQuery wishlist element
+            path,                           // Path to the backend controller
+            wish,                           // Wish object
+            callback                        // Handles events after the controller is finished
+        );
+            
+        $(dialog).dialog('close');            
+    }
+}
+
+//todo: Need to fix this, should be using responseText.
 function onCompleteAddToWishlistEvent(responseText, textStatus, jqXHR)
 {    
     switch(textStatus.toLowerCase())
@@ -590,13 +631,41 @@ function viewWishlistDialogInit()
 function fillResults(data, textStatus, jqXHR)
 {
     $('#resultsArea').html(data);
+    $('#resultsArea td.searchResultItemName').click(function() {
+        if($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+            selected_amazonItem = -1;
+        }
+        else {
+            $('#resultsArea td.searchResultItemName').removeClass('selected');
+            $(this).addClass('selected');
+            selected_amazonItem = $(this).parent().attr('id');
+        }
+    });
+}
+
+function addAmazonItemToWishlist()
+{
+    if(selected_amazonItem != -1) {
+        //Get tr with id selected, use jQuery( "[attribute*='value']" )
+        var rowCells = $("tr[id*='" + selected_amazonItem + "']").children('td');
+        
+        //extract data from rows
+        var data = {}
+        data.asin  = selected_amazonItem;
+        data.link  = $(rowCells[0]).children('a').attr('href');
+        data.name  = $(rowCells[1]).html();
+        data.price = $(rowCells[2]).children('span.searchResultItemPrice').html();
+        
+        setupWishDialogView(data, {edit: 1, newItem: 1});
+    }
 }
 
 function amazonSearchDialogInit()
 {
     $('#amazonSearchDialog #name').keyup(function(e) {
         if(e.keyCode === 13) {
-            ajaxPost({keywords: $(this).val()}, Routing.generate("WishlistCoreBundle_itemSearch"), fillResults);
+            ajaxPost({keywords: $(this).val()}, Routing.generate("WishlistListBundle_itemSearch"), fillResults);
         }
     });
     
@@ -605,7 +674,7 @@ function amazonSearchDialogInit()
             position: 'top', 
             resizable: false,
 //            height:300,
-//            width:500,
+            width:500,
             modal: true,
             title: 'Amazon Search',
             buttons: {
@@ -620,9 +689,8 @@ function amazonSearchDialogInit()
 //                        deleteLoadedItem();
 //                        $(this).dialog('close');
 //                    },
-                    "Save": function() {
-                        continueAddingItemToWishlist(this);
-                        //$(this).dialog('close');
+                    "Select": function() {
+                        addAmazonItemToWishlist();
                     },                            
                     "Close": function() {
                         $(this).dialog('close');
@@ -658,6 +726,9 @@ function editWishlistDialogInit()
                     "Save": function() {
                         continueAddingItemToWishlist(this);
                         //$(this).dialog('close');
+                        
+                        //close amazon search dialog if it is open.
+                        $( "#amazonSearchDialog" ).dialog('close');
                     },                            
                     "Close": function() {
                         $(this).dialog('close');
@@ -758,6 +829,69 @@ function ajaxFunction(queryString){
     ajaxRequest.send(null); 
 }
 
+<<<<<<< HEAD
+=======
+
+// ** Date Validation Functions ****************************
+function isValidDate(year, month, day)
+{
+    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate();};
+    var char_year = year.toString();    
+    var d = new Date();var curr_year = d.getFullYear();
+
+    if(char_year.length != 4 || year > (curr_year+200))
+        return false;
+    
+    if(month < 0 || month > 11)
+        return false;
+    
+    if(day < 0 || day > daysInMonth(year, month))
+        return false;
+    
+    return true;
+}
+
+function parseDate(/*string*/ str)
+{
+    var dtCh = "/";
+    var retDate = new Date();
+    var pos1=str.indexOf(dtCh);
+    var pos2=str.indexOf(dtCh,pos1+1);
+    var str_arr = null;
+    
+    if(str == ""){
+        //string is not defined        
+        throw "Invalid date.";
+    }
+    
+    if (pos1==-1 || pos2==-1)
+    {
+        throw "Invalid date.";
+    }
+    else
+    {
+        str_arr = str.split("/");
+    }
+    
+    var month = parseInt(str_arr[0], 10);
+    var day = parseInt(str_arr[1], 10);
+    var year = parseInt(str_arr[2], 10);
+    
+    //This is quite stupid as monthValue is the only value that begins with an
+    //index of zero, subtract one to fix it.
+    month--;
+    
+    if(!isValidDate(year, month, day))
+    {
+        throw "Invalid date.";
+    }
+    
+    retDate.setFullYear(year, month, day);
+    
+    return retDate;
+}
+
+>>>>>>> amazonSearch
 // ** Date Validation Functions ****************************
 
 function confirm (confirmMessage) {
