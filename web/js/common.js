@@ -663,32 +663,26 @@ function addAmazonItemToWishlist()
 
 function amazonSearchDialogInit()
 {
-    $('#amazonSearchDialog #name').keyup(function(e) {
+    var amazonDialog = $( "#amazonSearchDialog" );
+    if(amazonDialog.length <= 0)
+    {
+        return; // the dialog does not exist
+    }
+    
+    $('#name',amazonDialog).keyup(function(e) {
         if(e.keyCode === 13) {
             ajaxPost({keywords: $(this).val()}, Routing.generate("WishlistListBundle_itemSearch"), fillResults);
         }
     });
     
-    $( "#amazonSearchDialog" ).dialog({
+    amazonDialog.dialog({
             autoOpen: false,
             position: 'top', 
             resizable: false,
-//            height:300,
             width:500,
             modal: true,
             title: 'Amazon Search',
-            buttons: {
-//                    "Grant": function() {
-//                        onGrantItClickEvent(this); 
-//                    },
-//                    "Update": function() {
-//                        onUpdateWishItemClick(this);
-//                        //$(this).dialog('close');
-//                    },
-//                    "Delete": function() {  
-//                        deleteLoadedItem();
-//                        $(this).dialog('close');
-//                    },
+            buttons: {            
                     "Select": function() {
                         addAmazonItemToWishlist();
                     },                            
@@ -696,6 +690,11 @@ function amazonSearchDialogInit()
                         $(this).dialog('close');
                     }
             }
+    });
+    
+    $('#otherItem',amazonDialog).click(function(){
+        amazonDialog.dialog('close');
+        setupWishDialogView(null,{edit:"1", newItem:"1"});
     });
 }
 
@@ -717,7 +716,6 @@ function editWishlistDialogInit()
                     },
                     "Update": function() {
                         onUpdateWishItemClick(this);
-                        //$(this).dialog('close');
                     },
                     "Delete": function() {  
                         deleteLoadedItem();
@@ -725,7 +723,6 @@ function editWishlistDialogInit()
                     },
                     "Save": function() {
                         continueAddingItemToWishlist(this);
-                        //$(this).dialog('close');
                         
                         //close amazon search dialog if it is open.
                         $( "#amazonSearchDialog" ).dialog('close');
@@ -979,35 +976,37 @@ function openWishDialog(wishlistItemId, options, callback)
 // newitem (1) means it's a new item
 function setupWishDialogView(data, options)
 {
- var edit = options.edit;
+    var edit = options.edit;
     var newitem = options.newItem;
     var buttonPane = $('.ui-dialog-buttonpane');
+    var editItemDialog = $('#editItemDialog');
+    var updateButton = buttonPane.find('button:contains("Update")');
+    var deleteButton = buttonPane.find('button:contains("Delete")');
+    var grantButton = buttonPane.find('button:contains("Grant")');
+    var saveButton = buttonPane.find('button:contains("Save")');
     
-    buttonPane.find('button:contains("Update")').show();
-    buttonPane.find('button:contains("Delete")').show();
-    buttonPane.find('button:contains("Grant")').show();
-    buttonPane.find('button:contains("Save")').show();
+    updateButton.show(); deleteButton.show(); grantButton.show(); saveButton.show();
+    
+    var name = $('#name',editItemDialog);
+    var price = $('#price',editItemDialog);
+    var link = $('#link',editItemDialog);
+    var id = $('#itemId',editItemDialog);
+    var quantity = $('#quantity',editItemDialog);
+    var notes = $('#notes',editItemDialog);
     
     // clear everything out first
-    $('#editItemDialog #itemId').val(''); // is this the item or wish ID? 
-    $('#editItemDialog #name').val('');
-    $('#editItemDialog #price').val('');
-    $('#editItemDialog #link').val('');
-    $('#editItemDialog #quantity').val('');
-    $('#editItemDialog #notes').val('');  
-    $('#name').prop('disabled', true);
-    $('#price').prop('disabled', true);
-    $('#link').prop('disabled', true);
+    id.val(''); quantity.val(''); notes.val('');
+    name.prop('disable', true); price.prop('disable', true); link.prop('disable', true);
     
     if(data){
-        $('#editItemDialog').dialog('option', 'title', 'Edit Wish');
-        $('#editItemDialog #itemId').val(data.id); // is this the item or wish ID? 
-        $('#editItemDialog #name').val(data.name);
-        $('#editItemDialog #price').val(data.price);
-        $('#editItemDialog #link').val(data.link);
-        $('#editItemDialog #quantity').val(data.quantity);
+        editItemDialog.dialog('option', 'title', 'Edit Wish');
+        id.val(data.id); // is this the item or wish ID? 
+        name.val(data.name);
+        price.val(data.price);
+        link.val(data.link);
+        quantity.val(data.quantity);
         var comment = (newitem == 1) ? "" : data.comment;
-        $('#editItemDialog #notes').val(comment);
+        notes.val(comment);
     }
         
     if(edit == 0) // if not editable, disable the inputs
@@ -1015,34 +1014,25 @@ function setupWishDialogView(data, options)
         $('#editItemDialog input').prop('disabled', true);
         
         // hide the update button and display a save button
-        buttonPane.find('button:contains("Update")').hide();
-        buttonPane.find('button:contains("Delete")').hide();
-        buttonPane.find('button:contains("Grant")').show();
-        buttonPane.find('button:contains("Save")').hide();
-        $('#editItemDialog').dialog('option', 'title', 'View Wish');
+        updateButton.hide(); deleteButton.hide(); saveButton.hide();
+        $(grantButton).show();
+        editItemDialog.dialog('option', 'title', 'View Wish');
     }
     else 
     {
-        buttonPane.find('button:contains("Save")').hide();
+        saveButton.hide();
     }
     
     if(newitem == 1) // if this is a new item, show the save button
     {
         // hide the update button and display a save button
-        buttonPane.find('button:contains("Update")').hide();
-        buttonPane.find('button:contains("Delete")').hide();
-        buttonPane.find('button:contains("Grant")').hide();
-        buttonPane.find('button:contains("Save")').show();
-        
-        $('#name').prop('disabled', false);
-        $('#price').prop('disabled', false);
-        $('#link').prop('disabled', false);
-        
-        $('#editItemDialog').dialog('option', 'title', 'Save Wish');
+        updateButton.hide(); deleteButton.hide(); grantButton.hide();
+        $(saveButton).show();        
+        name.prop('disabled', false); price.prop('disabled', false); link.prop('disabled', false);
+        editItemDialog.dialog('option', 'title', 'Save Wish');
     }
     
-    $('#editItemDialog').dialog('option', 'height', '500');
-    $('#editItemDialog').dialog('open');
+    editItemDialog.dialog('option', 'height', '500').dialog('open');
 }
 
 function setupItemView(data)

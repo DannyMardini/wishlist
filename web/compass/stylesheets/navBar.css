@@ -423,3 +423,17 @@ div.confirmEvent:hover {
     font-size: 25px;
   }
 }
+/* line 330, ../sass/navBar.scss */
+.subtext {
+  font-size: 11px;
+}
+/* line 332, ../sass/navBar.scss */
+.subtext:hover {
+  cursor: hand;
+}
+
+/* line 338, ../sass/navBar.scss */
+#otherItem.subtext {
+  font-weight: bold;
+  font-size: 12px;
+}

@@ -26,7 +26,6 @@ function setupWishlist()
             text: false
     }).click(function(e){
         e.preventDefault();
-        //setupWishDialogView(null,{edit:"1", newItem:"1"});        
         $('#amazonSearchDialog').dialog('open');
     });
     

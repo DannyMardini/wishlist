@@ -326,3 +326,17 @@ $header-width: 70em;
     .centeredWithinWrapper { width: $header-width - 35em; }
     .logo { @include logo-dynamic-style(30%, 25px); }
 }
+
+.subtext {
+	 font-size: 11px;
+	 &:hover {
+	 	 cursor:hand;	 
+	 }
+}
+
+#otherItem {
+	   &.subtext {
+	   	    font-weight: bold;
+		    font-size: 12px;
+	   }
+}
