@@ -3,7 +3,6 @@
 namespace Wishlist\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Wishlist\CoreBundle\Entity\WishlistUser;
 use Wishlist\CoreBundle\Entity\Item;
 
 /**
