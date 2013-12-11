@@ -18,12 +18,19 @@ function setupWishlist()
           sortable: true,
           bordered: true
     }); 
-
-    $('#addItemButton').click(function(e){
+    
+    $('#addItemButton').button({
+            icons: {
+                primary: "ui-icon-plusthick"
+            },
+            text: false
+    }).click(function(){
         e.preventDefault();
-        //setupWishDialogView(null,{edit:"1", newItem:"1"});
+        //setupWishDialogView(null,{edit:"1", newItem:"1"});        
         $('#amazonSearchDialog').dialog('open');
     });
+    
+    $('#addItemButton').css('height', '25');
     
     $('.purchaseBtn').on('click', clickedItem);
 }

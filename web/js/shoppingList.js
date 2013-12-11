@@ -38,6 +38,8 @@ function createGUIButtons(){
             },
             text: false
     }).click(retractPurchaseEvent);
+    
+    $('#retractPurchaseButton').css('height', '25');
 }
 
 function createEventHandlers(){

@@ -126,7 +126,10 @@ function createButtonLinks()
 {
     $('.userButton').click(function(){
        window.location = $(this).find("a").attr("href");
-    });    
+    });
+    
+    $('#addFriendButton').button();    
+    $('#addFriendButton').css('height', '30').css('font-size','10');    
 }
 
 function displayFriendInviteStatus(inviteStatus)

@@ -26,6 +26,8 @@ function createGUIButtons()
         $('#newEventPanel').dialog('open');
     });
     
+    $('#addLifeEventButton').css('height','25');
+    
     setupRemoveEventButtons($('.remove'));
 }
 
@@ -87,6 +89,8 @@ function setupRemoveEventButtons(selector)
         },
         text: false
     }).click(onClickRemoveEventHandler); 
+    
+    selector.css('height', '55').css('width', '45');
 }
 
 function applyEventHoverHandler(selector)
