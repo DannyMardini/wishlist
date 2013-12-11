@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Wishlist\FrontpageBundle\WishlistFrontpageBundle(),
             new Wishlist\CoreBundle\WishlistCoreBundle(),
-            new Wishlist\FriendlistBundle\WishlistFriendlistBundle(),
+            //new Wishlist\FriendlistBundle\WishlistFriendlistBundle(),
             new Wishlist\UserBundle\WishlistUserBundle(),
             new Wishlist\ListBundle\WishlistListBundle(),
             new Wishlist\QABundle\WishlistQABundle(),

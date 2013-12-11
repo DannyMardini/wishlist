@@ -17,9 +17,9 @@ WishlistUserBundle:
 WishlistCoreBundle:
     resource: "@WishlistCoreBundle/Resources/config/routing.yml"
 
-WishlistFriendlistBundle:
-    resource: "@WishlistFriendlistBundle/Resources/config/routing.yml"
-    prefix:   /
+#WishlistFriendlistBundle:
+#    resource: "@WishlistFriendlistBundle/Resources/config/routing.yml"
+#    prefix:   /
 
 WishlistFrontpageBundle:
     resource: "@WishlistFrontpageBundle/Resources/config/routing.yml"
