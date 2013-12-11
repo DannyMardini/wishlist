@@ -1,6 +1,6 @@
 <html>
     <head>
-        <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/screen.css', 'compass/stylesheets/print.css'), array('yui_css')) as $url): ?>
+        <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/screen.css', 'compass/stylesheets/print.css'), array('?yui_css')) as $url): ?>
         <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>        
         <link href="<?php echo $view['assets']->getUrl('css/black-tie/jquery-ui-1.8.23.custom.css') ?>" rel="stylesheet" type="text/css" />
         <title><?php $view['slots']->output('title', 'New Account Base') ?></title>

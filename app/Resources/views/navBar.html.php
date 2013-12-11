@@ -16,7 +16,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
             'compass/stylesheets/navBar.css',
             'compass/stylesheets/screen.css',
             'compass/stylesheets/print.css',
-            'compass/stylesheets/formStyling.css'), array('yui_css')) as $url): ?>
+            'compass/stylesheets/formStyling.css'), array('?yui_css')) as $url): ?>
         <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/fonts.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -25,7 +25,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
             'js/bootstrap/bootstrap.js',
             'js/bootstrap/jquery.metadata.js',
             'js/bootstrap/jquery.tablecloth.js',
-            'js/navBar.js'), array('yui_js')) as $url): ?>
+            'js/navBar.js'), array('?yui_js')) as $url): ?>
         <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
         <script src="/js/jquery-ui-1.8.23.custom.min.js"></script>
         <script src="/js/bootstrap/jquery.tablesorter.min.js"></script>

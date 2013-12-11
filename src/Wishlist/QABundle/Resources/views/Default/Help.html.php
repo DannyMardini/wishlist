@@ -1,8 +1,8 @@
 <html>
     <head>
-        <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/help.css'), array('yui_css')) as $url): ?>
+        <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/help.css'), array('?yui_css')) as $url): ?>
         <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
-        <?php foreach ($view['assetic']->javascripts(array('js/QABundle.js'), array('yui_js')) as $url): ?>
+        <?php foreach ($view['assetic']->javascripts(array('js/QABundle.js'), array('?yui_js')) as $url): ?>
         <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
     </head>
     <body>

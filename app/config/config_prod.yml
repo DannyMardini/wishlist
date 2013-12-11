@@ -7,6 +7,23 @@ imports:
 #        result_cache_driver: apc
 #        query_cache_driver: apc
 
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    read_from:      %kernel.root_dir%/../web
+    # java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        # closure:
+        #     jar: %kernel.root_dir%/java/compiler.jar
+        # yui_css:
+        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
+        yui_css:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.8.jar"
+        yui_js:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.8.jar"  
+
 monolog:
     handlers:
         main:
