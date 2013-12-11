@@ -1,6 +1,7 @@
 var wishlistElement = '#wishlistContent';
 var selected_itemId = -1;
 var selected_eventId = -1;
+var selected_amazonItem = -1;
 
 var month=new Array();
 month[0]="January";
@@ -176,7 +177,7 @@ function submitTheWish(/* optional wish object param */wish, path, callback, dia
         var theNotes = $("#newWishNotes").val();
         var theIsPrivate = $("#isPrivate").attr('checked');
         
-        wish = { name: escape(theName), 
+        wish = {name: escape(theName), 
                  price: thePrice, 
                  link: theLink, 
                  quantity: theQuantity, 
@@ -204,6 +205,7 @@ function submitTheWish(/* optional wish object param */wish, path, callback, dia
     }
 }
 
+//todo: Need to fix this, should be using responseText.
 function onCompleteAddToWishlistEvent(responseText, textStatus, jqXHR)
 {    
     switch(textStatus.toLowerCase())
@@ -408,13 +410,41 @@ function viewWishlistDialogInit()
 function fillResults(data, textStatus, jqXHR)
 {
     $('#resultsArea').html(data);
+    $('#resultsArea td.searchResultItemName').click(function() {
+        if($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+            selected_amazonItem = -1;
+        }
+        else {
+            $('#resultsArea td.searchResultItemName').removeClass('selected');
+            $(this).addClass('selected');
+            selected_amazonItem = $(this).parent().attr('id');
+        }
+    });
+}
+
+function addAmazonItemToWishlist()
+{
+    if(selected_amazonItem != -1) {
+        //Get tr with id selected, use jQuery( "[attribute*='value']" )
+        var rowCells = $("tr[id*='" + selected_amazonItem + "']").children('td');
+        
+        //extract data from rows
+        var data = {}
+        data.asin  = selected_amazonItem;
+        data.link  = $(rowCells[0]).children('a').attr('href');
+        data.name  = $(rowCells[1]).html();
+        data.price = $(rowCells[2]).children('span.searchResultItemPrice').html();
+        
+        setupWishDialogView(data, {edit: 1, newItem: 1});
+    }
 }
 
 function amazonSearchDialogInit()
 {
     $('#amazonSearchDialog #name').keyup(function(e) {
         if(e.keyCode === 13) {
-            ajaxPost({keywords: $(this).val()}, Routing.generate("WishlistCoreBundle_itemSearch"), fillResults);
+            ajaxPost({keywords: $(this).val()}, Routing.generate("WishlistListBundle_itemSearch"), fillResults);
         }
     });
     
@@ -423,7 +453,7 @@ function amazonSearchDialogInit()
             position: 'top', 
             resizable: false,
 //            height:300,
-//            width:500,
+            width:500,
             modal: true,
             title: 'Amazon Search',
             buttons: {
@@ -438,9 +468,8 @@ function amazonSearchDialogInit()
 //                        deleteLoadedItem();
 //                        $(this).dialog('close');
 //                    },
-                    "Save": function() {
-                        continueAddingItemToWishlist(this);
-                        //$(this).dialog('close');
+                    "Select": function() {
+                        addAmazonItemToWishlist();
                     },                            
                     "Close": function() {
                         $(this).dialog('close');
@@ -476,6 +505,9 @@ function editWishlistDialogInit()
                     "Save": function() {
                         continueAddingItemToWishlist(this);
                         //$(this).dialog('close');
+                        
+                        //close amazon search dialog if it is open.
+                        $( "#amazonSearchDialog" ).dialog('close');
                     },                            
                     "Close": function() {
                         $(this).dialog('close');
@@ -580,9 +612,9 @@ function ajaxFunction(queryString){
 // ** Date Validation Functions ****************************
 function isValidDate(year, month, day)
 {
-    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate(); };
+    var daysInMonth = function (y, m) {return 32-new Date(y, m, 32).getDate();};
     var char_year = year.toString();    
-    var d = new Date(); var curr_year = d.getFullYear();
+    var d = new Date();var curr_year = d.getFullYear();
 
     if(char_year.length != 4 || year > (curr_year+200))
         return false;

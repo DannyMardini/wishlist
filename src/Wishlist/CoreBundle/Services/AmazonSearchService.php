@@ -74,7 +74,8 @@ class AmazonSearchService
 
             if( !isset($current->ItemAttributes->Title) || 
                 !isset($current->ItemAttributes->ListPrice->Amount) || 
-                !isset($current->DetailPageURL) ) 
+                !isset($current->DetailPageURL) || 
+                !isset($current->ASIN) ) 
             {
                 //If any of the required info is not present skip this item.
                 continue;
@@ -84,6 +85,7 @@ class AmazonSearchService
             $item->setName((string)$current->ItemAttributes->Title);
             $item->setPrice(intval((string)$current->ItemAttributes->ListPrice->Amount));
             $item->setLink((string)$current->DetailPageURL);
+            $item->setAsin((string)$current->ASIN);
             $array[] = $item;
         }
 

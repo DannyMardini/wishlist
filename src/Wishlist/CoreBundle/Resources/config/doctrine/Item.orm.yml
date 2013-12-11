@@ -25,5 +25,8 @@ Wishlist\CoreBundle\Entity\Item:
       length: null
     link:
       type: string
-      length: '255'    
+      length: '255'
+    asin:
+      type: integer
+      nullable: true
   lifecycleCallbacks: {  }

@@ -154,4 +154,29 @@ class Item
     {
         return $this->wishlistItems;
     }
+    /**
+     * @var integer $asin
+     */
+    private $asin;
+
+
+    /**
+     * Set asin
+     *
+     * @param integer $asin
+     */
+    public function setAsin($asin)
+    {
+        $this->asin = $asin;
+    }
+
+    /**
+     * Get asin
+     *
+     * @return integer 
+     */
+    public function getAsin()
+    {
+        return $this->asin;
+    }
 }

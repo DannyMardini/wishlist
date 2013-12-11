@@ -407,20 +407,22 @@ div#updatesComponent {
     font-weight: bold;
 }
 
+$resultsHoverDark: darken($global-button-hover-color, 10%);
+
 #resultsArea {
     table {
         border-collapse: separate;
-        border-spacing: 0px 15px;
+        border-spacing: 10px 15px;
     }
 
-    tr:hover {
-        background-image: -webkit-linear-gradient(white, #f0f0f0);
-        background-image: -moz-linear-gradient(white, #f0f0f0);
-        background-image: -ms-linear-gradient(white, #f0f0f0);
-        background-image: -o-linear-gradient(white, #f0f0f0);
-        background-image: linear-gradient(#ffffff, #f0f0f0);
-        background-color: #f7f7f7;
-        border: 1px solid #cccccc;
+    td.searchResultItemLink:hover, td.searchResultItemName:hover{
+        background-image: -webkit-linear-gradient(white, $resultsHoverDark);
+        background-image: -moz-linear-gradient(white, $resultsHoverDark);
+        background-image: -ms-linear-gradient(white, $resultsHoverDark);
+        background-image: -o-linear-gradient(white, $resultsHoverDark);
+        background-image: linear-gradient(#ffffff, $resultsHoverDark);
+        background-color: $resultsHoverDark;
+        /*border: 1px solid #cccccc;*/
         cursor: hand;
     }
 
