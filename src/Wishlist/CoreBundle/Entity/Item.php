@@ -82,7 +82,8 @@ class Item
      */
     public function setPrice($price)
     {
-        $this->price = $price;
+        //Store price in cents.
+        $this->price = (100 * $price);
     }
 
     /**
@@ -92,7 +93,8 @@ class Item
      */
     public function getPrice()
     {
-        return $this->price;
+        //return price in dollars.
+        return ($this->price / 100);
     }
 
     /**
