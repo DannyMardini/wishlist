@@ -1,1 +1,0 @@
-<?php $view->extend('::navBar.html.php'); ?>

@@ -19,45 +19,45 @@
 </form>
 
 <script>
-    function check(input) {
-        if (input.value != document.getElementById('email_addr').value) {
-            input.setCustomValidity('The two email addresses must match.');
-        } 
-        else {
-            // input is valid -- reset the error message
-            input.setCustomValidity('');
-        }
+function check(input) {
+    if (input.value != document.getElementById('email_addr').value) {
+        input.setCustomValidity('The two email addresses must match.');
+    } 
+    else {
+        // input is valid -- reset the error message
+        input.setCustomValidity('');
     }
+}
 
-    $(document).ready(function(){
-        $("#contactSupportForm").submit(function(e){
-            e.preventDefault();
-            var url = $(this).attr('action');
-            var encoded_message = escape($("#message").val());
+$(document).ready(function(){
+    $("#contactSupportForm").submit(function(e){
+        e.preventDefault();
+        var url = $(this).attr('action');
+        var encoded_message = escape($("#message").val());
 
-            $.post( url, {subject: $('#subject').val() , fullname: $("#full_name").val(), email: $("#email_addr").val(), message: encoded_message}, function(response){            
+        $.post( url, {subject: $('#subject').val() , fullname: $("#full_name").val(), email: $("#email_addr").val(), message: encoded_message}, function(response){            
 
-                $dataArray = response.split(":"); 
+            $dataArray = response.split(":"); 
 
-                if($dataArray[0].toLowerCase() == "success")
-                {
-                    alert('Message sent.');
-                }
-                else
-                {
-                    alert(response);
-                }
-                
-                redirectToQAHome();
-            });
-        });        
-    });
-    
-    
-    function redirectToQAHome()
-    {
-        window.location = Routing.generate('WishlistQABundle_help');
-    }
+            if($dataArray[0].toLowerCase() == "success")
+            {
+                alert('Message sent.');
+            }
+            else
+            {
+                alert(response);
+            }
+
+            redirectToQAHome();
+        });
+    });        
+});
+
+
+function redirectToQAHome()
+{
+    window.location = Routing.generate('WishlistQABundle_help');
+}    
     
     
 </script>

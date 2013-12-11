@@ -1,27 +1,16 @@
 <html>
     <head>
         <?php foreach ($view['assetic']->javascripts(
-                array(
-                    'js/jquery-1.8.2.js',                    
-                    'js/frontPage.js',
-                    'js/common.js'), 
-                array('yui_js')) as $url): ?>
-        <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+              array('js/jquery-1.8.2.js','js/frontPage.js','js/common.js'), array('yui_js')) as $url): ?>
+              <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
         
         <?php foreach ($view['assetic']->stylesheets(
-            array(
-                'css/black-tie/jquery-ui-1.8.23.custom.css',
-                'compass/stylesheets/frontPage.css',
-                'compass/stylesheets/main.css'
-                ),
-            array('yui_css')
-        ) as $url): ?>
-            <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" />
-        <?php endforeach; ?>        
-        
+            array('compass/stylesheets/frontPage.css', 'compass/stylesheets/main.css'), array('yui_css')) as $url): ?>
+            <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
+
+        <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="/images/favicon.ico">        
         <script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>
-        <script type="text/javascript" src="/js/common.js"></script>
         <script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>
         <script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/fonts.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />

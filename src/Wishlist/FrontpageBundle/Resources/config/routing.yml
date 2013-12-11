@@ -2,10 +2,6 @@ WishlistFrontpageBundle_homepage:
     pattern: /
     defaults: { _controller: WishlistFrontpageBundle:Default:index }
 
-WishlistFrontpageBundle_navBarTest:
-  pattern: /navBar/{username}
-  defaults: { _controller: WishlistFrontpageBundle:Default:navBar }
-
 WishlistFrontpageBundle_logout:
   pattern: /logout
   defaults: { _controller: WishlistFrontpageBundle:Default:logout }

@@ -8,15 +8,9 @@ use Doctrine\ORM\NoResultException;
 
 class DefaultController extends Controller
 {
-    
     public function indexAction()
     {
         return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');
-    }
-    
-    public function navBarAction($username)
-    {
-        return $this->render('WishlistFrontpageBundle:Default:navBarTest.html.php', array('username' => $username));
     }
 
     public function logoutAction()

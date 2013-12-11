@@ -1,5 +1,7 @@
-<link href="<?php echo $view['assets']->getUrl('compass/stylesheets/shoppingList.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/js/shoppingList.js"></script>
+<?php foreach ($view['assetic']->javascripts(array('js/shoppingList.js'), array('yui_js')) as $url): ?>
+<script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+<?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/shoppingList.css'), array('yui_css')) as $url): ?>
+<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
 
 <div class="pageTitle">     
     <?php $shoppinglistCount = count($purchases); ?>

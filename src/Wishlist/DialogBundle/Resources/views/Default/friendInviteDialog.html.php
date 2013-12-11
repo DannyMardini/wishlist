@@ -1,5 +1,3 @@
-
-
 <div id="friendInviteDialog" title="Invite a friend!">
     <form id="friendInviteForm" style="width:inherit;">
         <div class="message narrow-box">Need to shop for a friend? Invite them to create their wishlist!</div>

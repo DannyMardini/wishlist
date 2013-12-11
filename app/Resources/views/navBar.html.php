@@ -7,25 +7,28 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
 <html>
     <head>
         <link rel="shortcut icon" href="/images/favicon.ico" />
-        <link href="/css/black-tie/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
-        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/main.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
-        <link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
-        <link href="/css/bootstrap/bootstrap-responsive.css" rel="stylesheet">
-        <link href="/css/bootstrap/tablecloth.css" rel="stylesheet">
-        <link href="/css/bootstrap/prettify.css" rel="stylesheet">                
-        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/navBar.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />        
-        <link href="/compass/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-        <link href="/compass/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
-        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/formStyling.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
-        
-        <script type="text/javascript" src="/js/jquery-1.8.2.js"></script>
-        <script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>        
-        <script src="/js/bootstrap/bootstrap.js"></script>
-        <script src="/js/bootstrap/jquery.metadata.js"></script>
+        <?php foreach ($view['assetic']->stylesheets(array(            
+            'compass/stylesheets/main.css',
+            'css/bootstrap/bootstrap.css',
+            'css/bootstrap/bootstrap-responsive.css',
+            'css/bootstrap/tablecloth.css',
+            'css/bootstrap/prettify.css',
+            'compass/stylesheets/navBar.css',
+            'compass/stylesheets/screen.css',
+            'compass/stylesheets/print.css',
+            'compass/stylesheets/formStyling.css'), array('yui_css')) as $url): ?>
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
+        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/fonts.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
+        <?php foreach ($view['assetic']->javascripts(array(
+            'js/jquery-1.8.2.js',
+            'js/bootstrap/bootstrap.js',
+            'js/bootstrap/jquery.metadata.js',
+            'js/bootstrap/jquery.tablecloth.js',
+            'js/navBar.js'), array('yui_js')) as $url): ?>
+        <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+        <script src="/js/jquery-ui-1.8.23.custom.min.js"></script>
         <script src="/js/bootstrap/jquery.tablesorter.min.js"></script>
-        <script src="/js/bootstrap/jquery.tablecloth.js"></script>             
-        <script type="text/javascript" src="/js/navBar.js"></script>        
-        
         <script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>
         <script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>
     </head>

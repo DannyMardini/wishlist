@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script type="text/javascript" src="/js/jquery-1.8.2.js"></script>
-        <script type="text/javascript" src="/js/resetpassword_request.js"></script>
-        <script type="text/javascript" src="/js/common.js"></script>        
-        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/resetpassword.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
+        <?php foreach ($view['assetic']->javascripts(array('js/jquery-1.8.2.js', 'js/resetpassword_request.js', 'js/common.js'), array('yui_js')) as $url): ?>
+        <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+        <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/resetpassword.css'), array('yui_css')) as $url): ?>
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="/images/favicon.ico">
         <title>Reset Password</title>

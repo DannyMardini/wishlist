@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/terms.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
+        <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/terms.css'), array('yui_css')) as $url): ?>
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
         <title>Privacy Policy</title>
     </head>
     <body>
