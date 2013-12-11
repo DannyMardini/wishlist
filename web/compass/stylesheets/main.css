@@ -1,30 +1,16 @@
-@font-face {
-  font-family: 'Satisfy';
-  font-style: normal;
-  font-weight: 400;
-  src: local("Satisfy"), url("fonts/Satisfy-Regular.ttf");
-}
-
-@font-face {
-  font-family: 'Gruppo';
-  font-style: normal;
-  font-weight: 400;
-  src: local("Gruppo"), url("fonts/Gruppo-Regular.ttf");
-}
-
-/* line 16, ../sass/main.scss */
+/* line 3, ../sass/main.scss */
 root {
   display: block;
 }
 
-/* line 20, ../sass/main.scss */
+/* line 7, ../sass/main.scss */
 body {
   margin: 10px 10px 10px 10px;
   position: relative;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 26, ../sass/main.scss */
+/* line 13, ../sass/main.scss */
 .clearfix:after {
   clear: both;
   content: ".";
@@ -35,31 +21,31 @@ body {
   visibility: hidden;
 }
 
-/* line 36, ../sass/main.scss */
+/* line 23, ../sass/main.scss */
 #content {
   width: 981px;
   margin: auto;
   margin-top: 100px;
 }
 
-/* line 42, ../sass/main.scss */
+/* line 29, ../sass/main.scss */
 .addButton {
   margin-left: 10px;
   margin-top: 5px;
 }
 
-/* line 47, ../sass/main.scss */
+/* line 34, ../sass/main.scss */
 .removeButton {
   margin-left: 10px;
   margin-top: 5px;
 }
 
-/* line 52, ../sass/main.scss */
+/* line 39, ../sass/main.scss */
 .pageTitle {
   width: 90%;
 }
 
-/* line 56, ../sass/main.scss */
+/* line 43, ../sass/main.scss */
 .itemCountSpan {
   float: right;
   margin-top: 10px;
