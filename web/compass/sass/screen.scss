@@ -406,3 +406,25 @@ div#updatesComponent {
     color: red;
     font-weight: bold;
 }
+
+#resultsArea {
+    table {
+        border-collapse: separate;
+        border-spacing: 0px 15px;
+    }
+
+    tr:hover {
+        background-image: -webkit-linear-gradient(white, #f0f0f0);
+        background-image: -moz-linear-gradient(white, #f0f0f0);
+        background-image: -ms-linear-gradient(white, #f0f0f0);
+        background-image: -o-linear-gradient(white, #f0f0f0);
+        background-image: linear-gradient(#ffffff, #f0f0f0);
+        background-color: #f7f7f7;
+        border: 1px solid #cccccc;
+        cursor: hand;
+    }
+
+    td {
+        vertical-align: top;
+    }
+}

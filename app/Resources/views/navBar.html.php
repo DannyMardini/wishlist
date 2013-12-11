@@ -53,6 +53,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <?php $view['slots']->output('_content'); ?>
         </div>
         <?php 
+            echo $view->render('WishlistDialogBundle:Default:amazonSearchDialog.html.php');
             echo $view->render('WishlistDialogBundle:Default:showFriendsWishItem.html.php');
             echo $view->render('WishlistDialogBundle:Default:editItemDialog.html.php');
             echo $view->render('WishlistDialogBundle:Default:confirmPurchaseDialog.html.php');

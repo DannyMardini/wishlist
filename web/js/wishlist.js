@@ -21,7 +21,8 @@ function setupWishlist()
 
     $('#addItemButton').click(function(e){
         e.preventDefault();
-        setupWishDialogView(null,{edit:"1", newItem:"1"});
+        //setupWishDialogView(null,{edit:"1", newItem:"1"});
+        $('#amazonSearchDialog').dialog('open');
     });
     
     $('.purchaseBtn').on('click', clickedItem);
