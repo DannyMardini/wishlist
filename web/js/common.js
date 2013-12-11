@@ -829,9 +829,6 @@ function ajaxFunction(queryString){
     ajaxRequest.send(null); 
 }
 
-<<<<<<< HEAD
-=======
-
 // ** Date Validation Functions ****************************
 function isValidDate(year, month, day)
 {
@@ -891,7 +888,6 @@ function parseDate(/*string*/ str)
     return retDate;
 }
 
->>>>>>> amazonSearch
 // ** Date Validation Functions ****************************
 
 function confirm (confirmMessage) {
