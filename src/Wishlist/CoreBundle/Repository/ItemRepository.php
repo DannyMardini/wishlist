@@ -17,7 +17,7 @@ class ItemRepository extends EntityRepository
     {        
         $newItem = new Item();
         $newItem->setName($name);
-        $newItem->setPrice($price);
+        $newItem->setPrice($price, Item::CURRENCY_UNIT_DOLLAR);
         $newItem->setLink($link);
         if(isset($asin))
         {

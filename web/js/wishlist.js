@@ -40,8 +40,8 @@ function deleteLoadedItem()
         .then(function (answer) {
             if(answer == 1)
             {
-                var itemToDelete = $('#editItemDialog #name').val();
-                var itemObj = {name: itemToDelete};
+                var itemToDelete = $('#editItemDialog #itemId').val();
+                var itemObj = {itemId: itemToDelete};
                 delFromWishlist(itemObj, setupWishlist);
             }
         });       

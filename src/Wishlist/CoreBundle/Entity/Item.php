@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Item
 {
+    const CURRENCY_UNIT_CENT = 0;
+    const CURRENCY_UNIT_DOLLAR = 1;
     /**
      * @var integer $id
      */
@@ -80,10 +82,16 @@ class Item
      *
      * @param integer $price
      */
-    public function setPrice($price)
+    public function setPrice($price, $unit=Item::CURRENCY_UNIT_CENT)
     {
-        //Store price in cents.
-        $this->price = (100 * $price);
+        //Store price in cents. If the floor of the price does not equal
+        //the price then it must have a decimal in it.
+        if($unit === Item::CURRENCY_UNIT_CENT) {
+            $this->price = $price;
+        }
+        else if($unit === Item::CURRENCY_UNIT_DOLLAR){ 
+            $this->price = (100 * $price);
+        }
     }
 
     /**
@@ -91,10 +99,14 @@ class Item
      *
      * @return integer 
      */
-    public function getPrice()
+    public function getPrice($unit=Item::CURRENCY_UNIT_CENT)
     {
-        //return price in dollars.
-        return ($this->price / 100);
+        if($unit === Item::CURRENCY_UNIT_CENT) {
+            return $this->price;
+        }
+        else if($unit === Item::CURRENCY_UNIT_DOLLAR){ 
+            return ($this->price / 100);
+        }    
     }
 
     /**

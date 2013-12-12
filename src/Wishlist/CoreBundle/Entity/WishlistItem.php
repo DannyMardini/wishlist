@@ -177,7 +177,7 @@ class WishlistItem
         $genericItem = $this->getItem();
         $exportVars = array('id' => $this->id,
                             'name' => $genericItem->getName(),
-                            'price' => $genericItem->getPrice(),
+                            'price' => $genericItem->getPrice(Item::CURRENCY_UNIT_DOLLAR),
                             'link' => $genericItem->getLink(),
                             'comment' => $this->getComment(),
                             'quantity' => $this->quantity,
