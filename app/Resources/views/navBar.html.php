@@ -25,6 +25,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
             'js/bootstrap/bootstrap.js',
             'js/bootstrap/jquery.metadata.js',
             'js/bootstrap/jquery.tablecloth.js',
+            'js/common.js',
             'js/navBar.js'), array('?yui_js')) as $url): ?>
         <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
         <script src="/js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -58,6 +59,5 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
             echo $view->render('WishlistDialogBundle:Default:editItemDialog.html.php');
             echo $view->render('WishlistDialogBundle:Default:confirmPurchaseDialog.html.php');
         ?>
-        <script type="text/javascript" src="/js/common.js"></script>
     </body>
 </html>
