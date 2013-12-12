@@ -33,7 +33,7 @@ class WishlistItemRepository extends EntityRepository
         
         if(!isset($wish))
         {
-            // the wish doesn't exist for this user, return false since there 
+            // the wish doesn't exist for this user, add it to their wishlist return false since there 
             // is no wish to update
             return false;
         }
@@ -67,7 +67,14 @@ class WishlistItemRepository extends EntityRepository
         {
             return false; // item is already a wish
         }
+                        
+        $newWish = $this->generateWish($newItem, $isPublic, $comment, $quantity, $wishlistUser);
+        $this->associateUserToWish($newWish, $wishlistUser);
         
+        return true;
+    }
+    
+    public function generateWish($newItem, $isPublic, $comment, $quantity, $wishlistUser){
         // associating the user to an item
         $newWish = new WishlistItem();
         $newWish->setItem($newItem);
@@ -79,11 +86,14 @@ class WishlistItemRepository extends EntityRepository
         $newWish->setGranted(false);
         $newWish->setConcluded(false);
         $this->getEntityManager()->persist($newWish);
-        $this->getEntityManager()->flush(); 
-        
+        $this->getEntityManager()->flush();
+        return $newWish;
+    }
+    
+    public function associateUserToWish($newWish, $wishlistUser)
+    {
         $updateRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
-        $updateRepo->addNewItem($wishlistUser, $newWish); 
-        return true;
+        $updateRepo->addNewItem($wishlistUser, $newWish);
     }
 
     public function grantWish(WishlistItem $wishItem)

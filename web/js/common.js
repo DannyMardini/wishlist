@@ -996,9 +996,9 @@ function setupWishDialogView(data, options)
     
     // clear everything out first
     id.val(''); quantity.val(''); notes.val('');
-    name.prop('disable', true).val(''); 
-    price.prop('disable', true).val(''); 
-    link.prop('disable', true).val('');
+    name.prop('disabled', false).val(''); 
+    price.prop('disabled', false).val(''); 
+    link.prop('disabled', false).val('');
     
     if(data){
         editItemDialog.dialog('option', 'title', 'Edit Wish');
