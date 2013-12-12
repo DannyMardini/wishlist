@@ -153,7 +153,7 @@ class WishlistItemRepository extends EntityRepository
     /*
      * Method called when a user removes an item from their wishlist
      */
-    public function deleteWish( $deletedWishName, WishlistUser $wishlistUser)
+    public function deleteWish( $deletedWishId, WishlistUser $wishlistUser)
     {
         // remove the wish from the users wishlist
         $em = $this->getEntityManager();  
@@ -164,9 +164,8 @@ class WishlistItemRepository extends EntityRepository
             SELECT i 
             FROM WishlistCoreBundle:WishlistItem i 
             LEFT JOIN i.wishlistUser usr 
-            LEFT JOIN i.item itm 
-            WHERE itm.name = :itemName AND usr.wishlistuser_id = :userId')
-            ->setParameters(array('itemName' => $deletedWishName, 'userId' => $userId));
+            WHERE i.id = :itemId AND usr.wishlistuser_id = :userId')
+            ->setParameters(array('itemId' => $deletedWishId, 'userId' => $userId));
 
         $wishToDelete = $q->getOneOrNullResult();
         

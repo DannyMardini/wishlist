@@ -83,7 +83,7 @@ class AmazonSearchService
 
             $item = new Item();
             $item->setName((string)$current->ItemAttributes->Title);
-            $item->setPrice(intval((string)$current->ItemAttributes->ListPrice->Amount));
+            $item->setPrice(intval((string)$current->ItemAttributes->ListPrice->Amount), Item::CURRENCY_UNIT_CENT);
             $item->setLink((string)$current->DetailPageURL);
             $item->setAsin((string)$current->ASIN);
             $array[] = $item;

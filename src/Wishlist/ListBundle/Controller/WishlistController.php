@@ -199,12 +199,12 @@ class WishlistController extends Controller
     public function deleteWishlistAction()
     {        
         $session = $this->getRequest()->getSession();
-        $deletedItemName = urldecode($this->getRequest()->get('name'));
+        $deletedItemId = $this->getRequest()->get('itemId');
         $loggedInUserId = $session->get('user_id');
         
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
         $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
-        $wishRepo->deleteWish($deletedItemName, $user);        
+        $wishRepo->deleteWish($deletedItemId, $user);        
         
         $selfWishlist = ($user->getWishlistUserId() == $loggedInUserId)? true:false;
         

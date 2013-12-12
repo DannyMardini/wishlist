@@ -1,4 +1,7 @@
-<?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/wishlist.css'), array('?yui_css')) as $url): ?>
+<?php 
+use Wishlist\CoreBundle\Entity\Item;
+
+foreach ($view['assetic']->stylesheets(array('compass/stylesheets/wishlist.css'), array('?yui_css')) as $url): ?>
 <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
 
 <?php
@@ -48,7 +51,7 @@ if($i > 0){
 
         echo "<tr>
             <td><a href='#' onclick='".$wishItemDialog."'>".$item->getName()."</a></td>
-            <td>".$item->getPrice()."</td>
+            <td>".$item->getPrice(Item::CURRENCY_UNIT_DOLLAR)."</td>
             <td>".$purchasedCell."</td>
             </tr>";
 
