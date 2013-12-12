@@ -34,9 +34,10 @@
             $giftUser = $purchasedWishlistItem->getWishlistUser();
             $giftId = $purchase->getId();
             $giftName = $purchasedItem->getName();
+            $giftLink = $purchasedItem->getLink();
 
             echo "<tr><td><input id='".$giftId."' class='selectItem' type='checkbox' /></td>
-                <td>".$giftName."</td>
+                <td><a href='".$giftLink."' target='_blank'>".$giftName."</a></td>
                 <td>".$giftUser->getName()."</td>
                 <td>".$dateDisplay."</td>
                 </tr>";
