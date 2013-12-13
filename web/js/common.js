@@ -1009,6 +1009,10 @@ function setupWishDialogView(data, options)
         quantity.val(data.quantity);
         var comment = (newitem == 1) ? "" : data.comment;
         notes.val(comment);
+        
+        name.prop('disabled', true); 
+        price.prop('disabled', true); 
+        link.prop('disabled', true);        
     }
         
     if(edit == 0) // if not editable, disable the inputs
