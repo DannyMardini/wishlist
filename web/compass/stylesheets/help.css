@@ -56,7 +56,7 @@ body {
 
 /* line 51, ../sass/help.scss */
 .contentInfoTopic:hover {
-  cursor: hand;
+  cursor: pointer;
   text-decoration: underline;
 }
 
@@ -85,6 +85,6 @@ body {
 /* line 75, ../sass/help.scss */
 .goBackDiv:hover {
   text-decoration: underline;
-  cursor: hand;
+  cursor: pointer;
   font-weight: bolder;
 }

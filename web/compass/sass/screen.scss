@@ -91,7 +91,7 @@ div.friendlist {
         
         &:hover {
             background-color: #efefef;
-            cursor: hand;
+            cursor: pointer;
         }
     }
     text-decoration: none;
@@ -171,7 +171,7 @@ label.pageHeader {
 }
 
 .wishenda-button {
-    cursor: hand;
+    cursor: pointer;
 }
 
 #accountSettings {
@@ -285,7 +285,7 @@ label.pageHeader {
     }
 
     #saveChanges:hover {
-        cursor: hand;
+        cursor: pointer;
     }
     
     img.preview {
@@ -423,7 +423,7 @@ $resultsHoverDark: darken($global-button-hover-color, 10%);
         background-image: linear-gradient(#ffffff, $resultsHoverDark);
         background-color: $resultsHoverDark;
         /*border: 1px solid #cccccc;*/
-        cursor: hand;
+        cursor: pointer;
     }
 
     td {

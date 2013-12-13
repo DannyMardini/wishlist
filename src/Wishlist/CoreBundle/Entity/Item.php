@@ -87,10 +87,10 @@ class Item
         //Store price in cents. If the floor of the price does not equal
         //the price then it must have a decimal in it.
         if($unit === Item::CURRENCY_UNIT_CENT) {
-            $this->price = $price;
+            $this->price = floor($price);
         }
         else if($unit === Item::CURRENCY_UNIT_DOLLAR){ 
-            $this->price = (100 * $price);
+            $this->price = floor((100 * $price));
         }
     }
 

@@ -76,7 +76,7 @@ div.buttonClass {
 }
 /* line 39, ../sass/formStyling.scss */
 div.buttonClass:hover {
-  cursor: hand;
+  cursor: pointer;
   border-color: #88a;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
@@ -92,7 +92,7 @@ input[type=submit] {
 }
 /* line 51, ../sass/formStyling.scss */
 input[type=submit]:hover {
-  cursor: hand;
+  cursor: pointer;
   font-weight: bold;
   border-color: #88a;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);

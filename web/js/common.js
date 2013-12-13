@@ -470,45 +470,6 @@ function validateWish(wish)
                         : message;
 }
 
-function submitTheWish(/* optional wish object param */wish, path, callback, dialog)
-{        
-    // if a pre-defined wish obj was passed in, use that
-    if(wish == null) {
-        var theName = $("#newWishName").val();
-        var thePrice = $("#newWishPrice").val();
-        var theLink = $("#newWishLink").val();
-        var theQuantity = $("#newWishQuantity").val();
-        var theNotes = $("#newWishNotes").val();
-        var theIsPrivate = $("#isPrivate").attr('checked');
-        
-        wish = {name: escape(theName), 
-                 price: thePrice, 
-                 link: theLink, 
-                 quantity: theQuantity, 
-                 comment: theNotes, 
-                 isprivate: theIsPrivate
-             };
-    }
-    
-    var invalidWishMessage = validateWish(wish); 
-    
-    if(invalidWishMessage.length > 0)
-    {
-        popupMessage('Uh Oh!', invalidWishMessage);
-    }
-    else
-    {
-        ajaxPageLoad(
-            wishlistElement,                // jQuery wishlist element
-            path,                           // Path to the backend controller
-            wish,                           // Wish object
-            callback                        // Handles events after the controller is finished
-        );
-            
-        $(dialog).dialog('close');            
-    }
-}
-
 //todo: Need to fix this, should be using responseText.
 function onCompleteAddToWishlistEvent(responseText, textStatus, jqXHR)
 {    

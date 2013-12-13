@@ -49,7 +49,7 @@ body {
 }
 
 .contentInfoTopic:hover {
-    cursor: hand;
+    cursor: pointer;
     text-decoration: underline;
 }
 
@@ -74,7 +74,7 @@ body {
 
     &:hover{
         text-decoration: underline;
-        cursor: hand;
+        cursor: pointer;
         font-weight: bolder;
     }
 }

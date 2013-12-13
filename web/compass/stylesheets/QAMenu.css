@@ -11,7 +11,7 @@ root {
 }
 /* line 9, ../sass/QAMenu.scss */
 .content ul li:hover {
-  cursor: hand;
+  cursor: pointer;
   text-decoration: underline;
   border-bottom-color: #EFEFEF;
   border-bottom-style: solid;

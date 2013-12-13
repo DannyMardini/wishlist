@@ -2,7 +2,7 @@
 .link-styling, #notificationWindow a {
   color: #888888;
   font-weight: bold;
-  cursor: hand;
+  cursor: pointer;
 }
 
 /* line 11, ../sass/navBar.scss */
@@ -107,7 +107,7 @@ ul li a {
 
 /* line 91, ../sass/navBar.scss */
 #homepageLink {
-  cursor: hand;
+  cursor: pointer;
 }
 
 /* line 95, ../sass/navBar.scss */
@@ -142,7 +142,7 @@ ul li a {
 }
 /* line 114, ../sass/navBar.scss */
 #notificationDiv:hover {
-  cursor: hand;
+  cursor: pointer;
 }
 
 /* line 119, ../sass/navBar.scss */
@@ -323,7 +323,7 @@ ul li a {
 
 /* line 264, ../sass/navBar.scss */
 .ui-MenuLink {
-  cursor: hand;
+  cursor: pointer;
 }
 
 /* line 268, ../sass/navBar.scss */
@@ -351,7 +351,7 @@ div.confirmEvent:hover {
   background-image: linear-gradient(#ffffff, #f0f0f0);
   background-color: #cccccc;
   border: 1px solid #cccccc;
-  cursor: hand;
+  cursor: pointer;
 }
 
 /* line 289, ../sass/navBar.scss */
@@ -429,7 +429,7 @@ div.confirmEvent:hover {
 }
 /* line 332, ../sass/navBar.scss */
 .subtext:hover {
-  cursor: hand;
+  cursor: pointer;
 }
 
 /* line 338, ../sass/navBar.scss */
