@@ -58,7 +58,13 @@ class PicService
     
     public static function persistTempProfilePic(/*int*/$userId)
     {
-        $ret = false;
+        //delete old profile pic
+        if(!PicService::deleteProfilePic($userId))
+        {
+            return false;
+        }
+        
+        $ret = false;        
         $hashedFname = PicService::hashProfileFname($userId);
         $matched = glob('images/temp/'.$hashedFname.'.*');
         if(count($matched) == 1)
@@ -73,6 +79,21 @@ class PicService
         }
         
         return $ret;
+    }
+    
+    private static function deleteProfilePic($userId)
+    {
+        $hashedFname = PicService::hashProfileFname($userId);
+        $matched = glob('images/user/'.$hashedFname.'.*');
+        
+        foreach($matched as $match)
+        {
+            if(false === unlink($match))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static function createProfileThumb(/*int*/$userId, $profilePic)

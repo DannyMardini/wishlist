@@ -498,7 +498,7 @@ class DefaultController extends Controller
             $slashlessPath = "images/temp/".$loggedInUserId;
             
             // continue on to save the image in the user directory
-            $valid_formats = array("jpg", "png", "gif", "bmp");
+            $valid_formats = array("jpg", "jpeg", "png", "gif", "bmp");
             
             if($request->getMethod() === 'POST')
             {
