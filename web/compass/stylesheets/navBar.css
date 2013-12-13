@@ -317,8 +317,8 @@ ul li a {
 
 /* line 259, ../sass/navBar.scss */
 .selected {
-  background-color: #d7d7d7;
-  background: #d7d7d7;
+  background-color: #ececec;
+  background: #ececec;
 }
 
 /* line 264, ../sass/navBar.scss */
@@ -349,7 +349,7 @@ div.confirmEvent:hover {
   background-image: -ms-linear-gradient(white, #f0f0f0);
   background-image: -o-linear-gradient(white, #f0f0f0);
   background-image: linear-gradient(#ffffff, #f0f0f0);
-  background-color: #f7f7f7;
+  background-color: #cccccc;
   border: 1px solid #cccccc;
   cursor: hand;
 }

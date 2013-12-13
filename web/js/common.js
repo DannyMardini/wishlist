@@ -83,12 +83,12 @@ function continueAddingItemToWishlist(dialog)
 
 function highlightEvent(selected)
 {
-    selected.css('background-color', '#999999');
+    selected.css('background-color', '#CCCCCC').css('font-weight','bold');
 }
 
 function clearEventHighlights()
 {
-    $('.confirmEvent').css('background-color', '');
+    $('.confirmEvent').css('background-color', '').css('font-weight','normal');
 }
 
 function parseEventId(idString)
@@ -113,6 +113,8 @@ function selectEvent(selected)
     selected_eventId = eventId;
     clearEventHighlights();
     highlightEvent(selected);
+    // disable the date 
+    $('#giftDateInput').val('').prop('disabled',true);
 }
 
 function isSelectedEvent(selected)
@@ -260,6 +262,8 @@ function unselectEvent()
 {
     clearEventHighlights();
     selected_eventId = -1;
+    // activate the date field
+    $('#giftDateInput').prop('disabled',false);
 }
 
 function toggleSelectEvent(selected)

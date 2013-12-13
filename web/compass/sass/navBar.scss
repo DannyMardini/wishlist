@@ -257,8 +257,8 @@ ul {
 }
 
 .selected {
-    background-color: darken($global-button-hover-color, 10%);
-    background: darken($global-button-hover-color, 10%);
+    background-color: darken($global-button-hover-color, 2%);
+    background: darken($global-button-hover-color, 2%);
 }
 
 .ui-MenuLink {
@@ -281,7 +281,7 @@ div.confirmEvent {
 
 div.confirmEvent:hover {
     @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
-    background-color: $global-button-bg-color;
+    background-color: $global-button-bg-color2;
     border: $global-button-border;
     cursor: hand;
 }
