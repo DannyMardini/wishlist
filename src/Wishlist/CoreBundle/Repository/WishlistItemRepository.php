@@ -191,7 +191,7 @@ class WishlistItemRepository extends EntityRepository
             return null;
         }
 
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager();                
 
         $q = $em->createQuery('
             SELECT w
@@ -200,5 +200,5 @@ class WishlistItemRepository extends EntityRepository
             ->setParameter('wishItemIds', $wishItemIds);
 
         return $q->getResult();
-    }
+    }  
 }

@@ -116,10 +116,14 @@ function onEventHoverHandler(obj)
     $('.edit',$(obj)).show();
 }
 
-function onClickRemoveEventHandler(e)
+function onClickRemoveEventHandler(e, i)
 {   
-    // get the event ID
-    selectedEventId = $(e.target).parent()[0].id.split('_')[2];
+    selectedEventId = e.currentTarget.id.split('_')[2];    
+    
+    if(selectedEventId === undefined)
+    {
+        return false;
+    }
     
     // confirm deletion before continuing
     $('#dialog-confirm').dialog('open');

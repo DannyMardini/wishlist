@@ -143,7 +143,6 @@ class PurchaseRepository extends EntityRepository
 
     public function getExpiredPurchases(/*int*/ $uid)
     {
-        //Just do the dates for now, worry about the events afterwards.
         $em = $this->getEntityManager();
 
         $q = $em->createQuery('
@@ -180,6 +179,18 @@ class PurchaseRepository extends EntityRepository
     {
         return $this->getPurchaseByItemId($item->getId());
     }
+
+    public function deletePurchasesByPurchases($purchases, $event_type)
+    {
+        $em = $this->getEntityManager();
+        
+        foreach ($purchases as $p)
+        {
+            $this->deletePurchase($p, $event_type);
+        }
+        
+        $em->flush();
+    }    
     
     public function deletePurchases($purchaseIds, $event_type)
     {
@@ -203,40 +214,28 @@ class PurchaseRepository extends EntityRepository
         $em->remove($purchase);
         $em->flush();
 
-        $this->purchaseEventNotification($event_type);
+        //$this->get("Mailer_Service")->purchaseEventNotification($event_type, $purchase);
         
-        return true; // on_success
+        return true;
     }
-
-    // TO DO: send notification to user. Explaining why the item was removed from 
-    // their purchase list. It could be one of 2 reasons:
-    // The user removed it themselves OR the item was auto removed by the system because
-    // the friend removed the wish from their wishlist    
-    private function purchaseEventNotification($event_type)
+    
+    public function getPurchasesForEvent($eventId)
     {
-        $success = false;        
-        
-        switch($event_type)
-        {        
-            case PurchaseEventTypes::RemovedFromWishlist :
-                /* TO DO:
-                 * send alert
-                 * SUBJECT: "Wishlist Notification: An Item has been removed from your shopping list",
-                MESSAGE: "The following item was removed from your shopping list because your friend has removed it from their wishlist",
-                EMAILS: "andreacoba@gmail.com;dannymardini@gmail.com"
-                 */
-                break;
-            case PurchaseEventTypes::RemovedFromShoppingList :
-                break;            
-            case PurchaseEventTypes::Purchased :
-                break;
-            case PurchaseEventTypes::Added :
-                break;
-            default :
-                break;
+        if(!isset($eventId))
+        {
+            return null;
         }
+
+        $em = $this->getEntityManager();
         
-        return $success;
-    }
+        $q = $em->createQuery('
+            SELECT p 
+            FROM WishlistCoreBundle:Purchase p            
+            LEFT JOIN p.event e
+            where e.id = :eId')
+            ->setParameter('eId', $eventId);
+
+        return $q->getResult();        
+    }      
 }
 

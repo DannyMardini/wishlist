@@ -4,6 +4,8 @@ namespace Wishlist\CoreBundle\Services;
 
 use Wishlist\CoreBundle\Entity\Request;
 use Wishlist\CoreBundle\Entity\Token;
+use Wishlist\CoreBundle\Entity\Purchase;
+use Wishlist\CoreBundle\Entity\PurchaseEventTypes;
 
 class MailerService
 {
@@ -81,9 +83,76 @@ class MailerService
     {
         return "Create your account on Wishenda!";
     }
+    
+    public function getStandardUpdatePurchaseSubject()
+    {
+        return "A shopping list item has been updated on Wishenda!";
+    }    
 
     public function getFriendInviteSubject()
     {
         return "Your friend needs help figuring out what to get you!";
     }
+    
+    // TO DO: send notification to user. Explaining why the item was removed from 
+    // their purchase list. It could be one of 2 reasons:
+    // The user removed it themselves OR the item was auto removed by the system because
+    // the friend removed the wish from their wishlist    
+    private function purchaseEventNotification($event_type, $purchase)
+    {
+        $success = false;
+        
+        if(!isset($purchase))
+        {
+            return $success;
+        }
+        
+        $itemName = $purchase->getItem()->getName();
+        $userFullName = $purchase->getWishlistUser()->getName();
+        $userFirstName = $purchase->getWishlistUser()->getFirstName();
+        $thePurchaserEmail = $purchase->getUser()->getEmail();
+        $htmlbody = null;
+        $textbody = null;
+        
+        switch($event_type)
+        {        
+            case PurchaseEventTypes::RemovedFromWishlist :
+                $htmlbody = "Hello! <br /><br />The following item: " + $itemName + " which you planned to purchase for " + 
+                    $userFullName + " has been removed from your shopping list! <br />" + $userFirstName + 
+                    " removed it from their wish list.";                
+                $textbody = strip_tags($htmlbody);
+                break;
+            case PurchaseEventTypes::RemovedFromShoppingList :
+                // not necessary to email the users since they already got a confirmation message in the GUI 
+                // when they remove an item from their own shopping list
+                break;            
+            case PurchaseEventTypes::Purchased :
+                $htmlbody = "Hello! <br /><br />The following item: " + $itemName + " which you planned to purchase for " + 
+                    $userFullName + " has been removed from your shopping list! <br />" +
+                    " You should have already purchased it and surprised your friend with the gift by now!<br /> " +
+                    " If not, HURRY and do it! As of today, the item was removed from " + $userFullName + "'s wish list, " +
+                    " and they know that one of their friends bought it for them!! ";
+                $textbody = strip_tags($htmlbody);                
+                break;
+            case PurchaseEventTypes::Added :
+                // not necessary to email the users since they already got a confirmation message in the GUI 
+                // when they remove an item from their own shopping list                
+                break;
+            case PurchaseEventTypes::EventRemoved :
+                $htmlbody = "Hello! <br /><br />The following item: " + $itemName + " which you planned to purchase for " + 
+                    $userFullName + " has been removed from your shopping list! <br />" +
+                    " The event that you were going to get the gift for was canceled/removed from Wishenda by your friend.";
+                $textbody = strip_tags($htmlbody);
+                break;            
+            default :
+                break;
+        }
+        
+        if(isset($htmlbody) && isset($textbody))
+        {
+            $this->sendMail($thePurchaserEmail, $this->getStandardUpdatePurchaseSubject(), $htmlbody, $textbody);
+        }
+        
+        return $success;
+    }    
 }

@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use Wishlist\CoreBundle\Entity\Event;
 use Wishlist\CoreBundle\Entity\WishlistUser;
 use Doctrine\ORM\Query\ResultSetMapping;
+use Wishlist\CoreBundle\Entity\PurchaseEventTypes;
 
 /**
  * EventRepository
@@ -36,6 +37,16 @@ class EventRepository extends EntityRepository
             return 'false';
         }
         
+        // If the event has purchases attached, remove the purchase associations first
+        $purchaseRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Purchase');
+        $purchases = $purchaseRepo->getPurchasesForEvent($id);
+        
+        if(isset($purchases))
+        {
+            $purchaseRepo->deletePurchasesByPurchases($purchases, PurchaseEventTypes::EventRemoved);
+        }
+        
+        // remove the event
         $em = $this->getEntityManager();
         $em->remove($event);
         $em->flush();

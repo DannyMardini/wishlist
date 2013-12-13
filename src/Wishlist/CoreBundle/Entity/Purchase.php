@@ -10,6 +10,7 @@ class PurchaseEventTypes
     const RemovedFromShoppingList = 1;  // The user removed the purchase from their shopping list
     const RemovedFromWishlist = 2;      // The friend removed the wish from their wishlist
     const Added = 3;                    // A Wish Item was added to the shopping list
+    const EventRemoved  = 4;            // The event that the purchase was associated to got deleted
     // etc.
 }  
 
