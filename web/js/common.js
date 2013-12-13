@@ -659,6 +659,9 @@ function addAmazonItemToWishlist()
         
         setupWishDialogView(data, {edit: 1, newItem: 1});
     }
+    else {
+        popupMessage('Oops', 'You forgot to select an item!');
+    }
 }
 
 function amazonSearchDialogInit()
