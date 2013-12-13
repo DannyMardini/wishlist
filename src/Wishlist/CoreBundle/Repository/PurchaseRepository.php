@@ -72,7 +72,10 @@ class PurchaseRepository extends EntityRepository
         // if user is purchasing for themselves, remove the existing purchase promise
         if(isset($selfPurchaseItem) && isset($purchasePromised))
         {            
-            $this->deletePurchase($purchasePromised, PurchaseEventTypes::RemovedFromWishlist);
+            $this->deletePurchase($purchasePromised);
+            // TO DO: another idea is to flag the purchase, and display something in the GUI
+            // indicating that the purchase is no longer valid
+            //TO DO send email with this message: PurchaseEventTypes::RemovedFromWishlist);
         }
         
         // Add the item to the users shopping list
@@ -180,41 +183,39 @@ class PurchaseRepository extends EntityRepository
         return $this->getPurchaseByItemId($item->getId());
     }
 
-    public function deletePurchasesByPurchases($purchases, $event_type)
+    public function deletePurchasesByPurchases($purchases)
     {
         $em = $this->getEntityManager();
         
         foreach ($purchases as $p)
         {
-            $this->deletePurchase($p, $event_type);
+            $this->deletePurchase($p);
         }
         
         $em->flush();
     }    
     
-    public function deletePurchases($purchaseIds, $event_type)
+    public function deletePurchases($purchaseIds)
     {
         $em = $this->getEntityManager();
         
         foreach ($purchaseIds as $purchaseId)
         {
-            $this->deletePurchase($this->find($purchaseId), $event_type);
+            $this->deletePurchase($this->find($purchaseId));
         }
         
         $em->flush();
     }
     
-    public function deletePurchase($purchase, $event_type)
+    public function deletePurchase($purchase)
     {
-        if(!isset($event_type) || !isset($purchase)){
+        if(!isset($purchase)){
             return false; // on_error
         }
         
         $em = $this->getEntityManager();
         $em->remove($purchase);
-        $em->flush();
-
-        //$this->get("Mailer_Service")->purchaseEventNotification($event_type, $purchase);
+        $em->flush();        
         
         return true;
     }

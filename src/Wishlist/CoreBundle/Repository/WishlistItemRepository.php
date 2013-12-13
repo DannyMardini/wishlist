@@ -178,7 +178,8 @@ class WishlistItemRepository extends EntityRepository
         $purchaseRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Purchase');   
         $thisPurchase = $wishToDelete->getPurchase();
         $thisEventType = \Wishlist\CoreBundle\Entity\PurchaseEventTypes::RemovedFromWishlist;
-        $purchaseRepo->deletePurchase($thisPurchase, $thisEventType);
+        $purchaseRepo->deletePurchase($thisPurchase);
+        // TO DO send email with this message: $thisEventType);
         
         $em->remove($wishToDelete);
         $em->flush();

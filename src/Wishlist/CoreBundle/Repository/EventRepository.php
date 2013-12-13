@@ -43,7 +43,8 @@ class EventRepository extends EntityRepository
         
         if(isset($purchases))
         {
-            $purchaseRepo->deletePurchasesByPurchases($purchases, PurchaseEventTypes::EventRemoved);
+            $purchaseRepo->deletePurchasesByPurchases($purchases);
+            // TO DO send email with this message: PurchaseEventTypes::EventRemoved);
         }
         
         // remove the event

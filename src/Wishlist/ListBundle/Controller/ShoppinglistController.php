@@ -18,7 +18,8 @@ class ShoppinglistController extends Controller
         try{
             if(isset($retractPurchases))
             {            
-                $purchaseRepo->deletePurchases($retractPurchases, PurchaseEventTypes::RemovedFromShoppingList);
+                $purchaseRepo->deletePurchases($retractPurchases);
+                // TO DO send email with this message: PurchaseEventTypes::RemovedFromShoppingList);
             }
         }
         catch(Exception $e)
