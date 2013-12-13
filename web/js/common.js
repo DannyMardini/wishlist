@@ -152,15 +152,15 @@ function isValidDate(year, month, day)
 
 function popupMessage(theTitle, message, callback)
 {    
-    $('<div>' + message + '</div>').dialog({
-             position: 'top',
+    $('<div id="popupMessageDiv">' + message + '</div>').dialog({
+             position: 'top',             
              autoOpen: true,
-             close: function () {                  
+             close: function () {            
                  $(this).dialog('destroy');
              },
              title: theTitle,
              buttons: {
-                 "Ok": function() {   
+                 "Ok": function() {
                     if(callback!==undefined)
                     {
                         callback();
@@ -689,6 +689,13 @@ function amazonSearchDialogInit()
             width:500,
             modal: true,
             title: 'Amazon Search',
+            close: function(){
+                var popup = $('#popupMessageDiv');
+                if(popup.length > 0)
+                {
+                    popup.dialog('close');
+                }
+            },
             buttons: {            
                     "Select": function() {
                         addAmazonItemToWishlist();
