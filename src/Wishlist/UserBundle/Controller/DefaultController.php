@@ -507,7 +507,8 @@ class DefaultController extends Controller
 			
                 if(strlen($name))
                 {
-                    list($txt, $ext) = explode(".", $name);
+                    $txt = substr($name, 0, strrpos($name, "."));
+                    $ext = ltrim(strrchr($name, "."), ".");
                     if(in_array(strtolower($ext),$valid_formats))
                     {
                         if($size<(1024*1024))
