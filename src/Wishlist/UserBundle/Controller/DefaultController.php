@@ -652,7 +652,9 @@ class DefaultController extends Controller
     
     public function newAccountFriendAction()
     {
-        return $this->render('WishlistUserBundle:Default:newAccountFriend.html.php');
+        return $this->newAccountUserAction();
+        //This is not working right now.
+        //return $this->render('WishlistUserBundle:Default:newAccountFriend.html.php');
     }
     
     public function updatesAction()
