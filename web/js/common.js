@@ -1049,7 +1049,7 @@ function setupItemView(data)
     $('#itemDialog #itemId').val(data.id);
     $('#itemDialog #name').val(data.name);
     $('#itemDialog #price').val(data.price);
-    $('#itemDialog #link2').html('<a target="_blank" href="http://'+data.link+'">webpage</a>');
+    $('#itemDialog #link2').html('<a target="_blank" href="'+data.link+'">webpage</a>');
     $('#itemDialog #link').val(data.link);
     $('#itemDialog').dialog('open');  
 }
