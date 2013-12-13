@@ -612,7 +612,7 @@ div.friendlist li {
 /* line 92, ../sass/screen.scss */
 div.friendlist li:hover {
   background-color: #efefef;
-  cursor: hand;
+  cursor: pointer;
 }
 
 /* line 104, ../sass/screen.scss */
@@ -693,7 +693,7 @@ label.pageHeader {
 
 /* line 173, ../sass/screen.scss */
 .wishenda-button {
-  cursor: hand;
+  cursor: pointer;
 }
 
 /* line 177, ../sass/screen.scss */
@@ -808,7 +808,7 @@ label.pageHeader {
 }
 /* line 287, ../sass/screen.scss */
 #accountSettings #saveChanges:hover {
-  cursor: hand;
+  cursor: pointer;
 }
 /* line 291, ../sass/screen.scss */
 #accountSettings img.preview {
@@ -954,7 +954,7 @@ div#updatesComponent .updatesHeader {
   background-image: linear-gradient(#ffffff, #d7d7d7);
   background-color: #d7d7d7;
   /*border: 1px solid #cccccc;*/
-  cursor: hand;
+  cursor: pointer;
 }
 /* line 429, ../sass/screen.scss */
 #resultsArea td {

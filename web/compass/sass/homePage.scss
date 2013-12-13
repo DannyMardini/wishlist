@@ -113,10 +113,10 @@ ul.contentItem {
 .gbItem {
     &:hover {
         background-color: $global-button-hover-color; //#f1f9f9;
-        cursor: hand;
+        cursor: pointer;
     }
     label {
-        cursor: hand;
+        cursor: pointer;
     }
 }
 

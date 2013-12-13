@@ -5,7 +5,7 @@
 .link-styling {
     color: $global-button-text-color;
     font-weight: bold;
-    cursor: hand;
+    cursor: pointer;
 }
 
 root {
@@ -89,7 +89,7 @@ ul {
 }
 
 #homepageLink {
-    cursor: hand;
+    cursor: pointer;
 }
 
 #linksContainer {
@@ -112,7 +112,7 @@ ul {
     position: relative;
 
     &:hover {
-        cursor: hand;
+        cursor: pointer;
     }
 }
 
@@ -262,7 +262,7 @@ ul {
 }
 
 .ui-MenuLink {
-    cursor: hand;
+    cursor: pointer;
 }
 
 #confirmEventContainer {
@@ -283,7 +283,7 @@ div.confirmEvent:hover {
     @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
     background-color: $global-button-bg-color2;
     border: $global-button-border;
-    cursor: hand;
+    cursor: pointer;
 }
 
 #confirmEventContainer{
@@ -330,7 +330,7 @@ $header-width: 70em;
 .subtext {
 	 font-size: 11px;
 	 &:hover {
-	 	 cursor:hand;	 
+	 	 cursor:pointer;	 
 	 }
 }
 

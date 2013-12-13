@@ -148,11 +148,11 @@ ul.contentItem {
 /* line 114, ../sass/homePage.scss */
 .gbItem:hover {
   background-color: #f1f1f1;
-  cursor: hand;
+  cursor: pointer;
 }
 /* line 118, ../sass/homePage.scss */
 .gbItem label {
-  cursor: hand;
+  cursor: pointer;
 }
 
 /* line 123, ../sass/homePage.scss */
