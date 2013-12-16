@@ -89,9 +89,44 @@ class MailerService
         return "A shopping list item has been updated on Wishenda!";
     }    
 
+    public function getStandardFriendConfirmationSubject()
+    {
+        return "You have a new friend on Wishenda!";
+    }     
+    
     public function getFriendInviteSubject()
     {
         return "Your friend needs help figuring out what to get you!";
+    }
+    
+    public function sendFriendConfirmation($userA, $userB)
+    {
+        $success = false;
+        $htmlbody = null; 
+        $textbody = null;
+        
+        if(!isset($userA) || !isset($userB))
+        {
+            return $success;
+        }
+        
+        $htmlbody = $this->templating->render('WishlistUserBundle:Email:friendConfirmation.html.php', 
+                array('name' => $userA->getName(), 'friendname' => $userB->getName()));
+        $textbody = strip_tags($htmlbody);
+        if(isset($htmlbody) && isset($textbody))
+        {
+            $this->sendMail($userA->getEmail(), $this->getStandardFriendConfirmationSubject(), $htmlbody, $textbody);
+        }
+        
+        $htmlbody = $this->templating->render('WishlistUserBundle:Email:friendConfirmation.html.php', 
+                array('name' => $userB->getName(), 'friendname' => $userA->getName()));
+        $textbody = strip_tags($htmlbody);
+        if(isset($htmlbody) && isset($textbody))
+        {
+            $this->sendMail($userB->getEmail(), $this->getStandardFriendConfirmationSubject(), $htmlbody, $textbody);            
+        }        
+        
+        return $success;
     }
     
     // TO DO: send notification to user. Explaining why the item was removed from 

@@ -111,8 +111,6 @@ class DefaultController extends Controller
         $results = rtrim($results, ",");
         $results .="]}";
         
-        //Return results.
-        
         return new Response($results);
     }
     
@@ -147,11 +145,13 @@ class DefaultController extends Controller
             //add friend
             $friendshipRepo->addNewFriendship($loggedInUser, $newFriend);
             $notificationRepo->removeNotification($complementNotification);
+            $this->get("Mailer_Service")->sendFriendConfirmation($loggedInUser, $newFriend);            
         }
         else if(!($notificationRepo->notificationExists($loggedInUserId, $newFriendId))) //Does the request already exist?
         {
             //If not, add a new request!
             $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' wants to be your friend.');
+            // Send email to A letting them know that B wants to be their friend
         }
 
         return new Response();
