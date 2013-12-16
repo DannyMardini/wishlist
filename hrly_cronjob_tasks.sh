@@ -1,9 +1,12 @@
 #!/bin/bash
 # This script contains all of the tasks that need to be run by cron jobs hourly
 set -e
+touch /home/ubuntu/cronttest
 
-app/console wishenda:recycle-password-tokens #remove reset password tokens after 24 hours
+cd /var/www/wishenda/
 
-app/console wishenda:sendinvites 10 # add emails to the queue to be sent
+php app/console --env=prod wishenda:recycle-password-tokens #remove reset password tokens after 24 hours
 
-app/console swiftmailer:spool:send # this sends emails waiting to be sent
+php app/console --env=prod wishenda:sendinvites 10 # add emails to the queue to be sent
+
+php app/console --env=prod swiftmailer:spool:send # this sends emails waiting to be sent
