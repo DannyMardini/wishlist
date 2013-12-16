@@ -7,7 +7,7 @@
 
 <div class="pageTitle">
     <label class="pageHeader">Friends</label>
-    <button class="addButton" title="invite friends" id="addFriendButton"><span id="inviteFriendButton" class="wishenda-button">Invite Friends</span></button>
+    <button class="addButton" title="invite friends" id="inviteFriendButton"><span class="wishenda-button">Invite Friends</span></button>
     <span class="itemCountSpan"><?php echo count($friends) ?> Friend(s)</span>
 </div>
 <hr size="1" width="90%" color="grey">

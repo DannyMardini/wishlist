@@ -129,7 +129,10 @@ function createButtonLinks()
     });
     
     $('#addFriendButton').button();    
-    $('#addFriendButton').css('height', '30').css('font-size','10');    
+    $('#addFriendButton').css('height', '30').css('font-size','10');
+    
+    $('#inviteFriendButton').button();    
+    $('#inviteFriendButton').css('height', '30').css('font-size','10');    
 }
 
 function displayFriendInviteStatus(inviteStatus)

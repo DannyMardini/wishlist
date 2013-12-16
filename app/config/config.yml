@@ -44,7 +44,7 @@ swiftmailer:
     host:      %mailer_host%
     username:  %mailer_user%
     password:  %mailer_password%
-    #delivery_address: dannymardini@gmail.com
+    #delivery_address: andreacoba@gmail.com
     spool:
         type: file
         path: "/tmp/spool"
@@ -68,4 +68,4 @@ fos_js_routing:
   routes_to_expose: [ WishlistUserBundle*, RequestInvite, Validate, WishlistListBundle*, WishlistCoreBundle*, WishlistQABundle*, WishlistFrontpageBundle*]
   
 parameters:
-  maximum_total_users_allowed: 18
+  maximum_total_users_allowed: 100

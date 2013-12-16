@@ -110,6 +110,7 @@ img.friendIcon {
 .inviteFriendInput #newFriendEmail{
     height: 30px;
     width: 400px;
+    font-size: 11px;
 }
 
 .message {
@@ -118,6 +119,7 @@ img.friendIcon {
 
 .inviteFriendInput {
     margin-top: 20px;
+    margin-left: 40px;
 }
 
 #friendSearch {
@@ -321,7 +323,6 @@ div#updatesComponent {
     z-index: 300;
     right: 10px;
     display: none;
-    /*padding: 10px 30px 10px 30px;*/
     color: lighten($font-color, 10%);
     border: 1px solid rgba(100, 100, 100, .4);
 
@@ -422,11 +423,24 @@ $resultsHoverDark: darken($global-button-hover-color, 10%);
         background-image: -o-linear-gradient(white, $resultsHoverDark);
         background-image: linear-gradient(#ffffff, $resultsHoverDark);
         background-color: $resultsHoverDark;
-        /*border: 1px solid #cccccc;*/
         cursor: pointer;
     }
 
     td {
         vertical-align: top;
     }
+}
+
+.container {
+    width: 450px;
+    height: 350px;
+    background-color: white;
+    text-align: center;
+    border: 1px solid rgba(100, 100, 100, .4);
+    background: linear-gradient(#ffffff,#f0f0f0);
+}
+
+.lead {
+    display: inline-block;
+    margin-right: 10px;
 }
