@@ -145,13 +145,13 @@ class DefaultController extends Controller
             //add friend
             $friendshipRepo->addNewFriendship($loggedInUser, $newFriend);
             $notificationRepo->removeNotification($complementNotification);
-            $this->get("Mailer_Service")->sendFriendConfirmation($loggedInUser, $newFriend);            
+            $this->get("Mailer_Service")->sendFriendConfirmation($loggedInUser, $newFriend);
         }
         else if(!($notificationRepo->notificationExists($loggedInUserId, $newFriendId))) //Does the request already exist?
         {
             //If not, add a new request!
-            $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' wants to be your friend.');
-            // Send email to A letting them know that B wants to be their friend
+            $notification = $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' wants to be your friend.');
+            $this->get("Mailer_Service")->sendFriendRequest($loggedInUser, $newFriend, $notification->getId());           
         }
 
         return new Response();
@@ -245,14 +245,37 @@ class DefaultController extends Controller
 
         return new Response('success');
     }
+    
+    public function friendRequestEmailAcceptAction(/*int*/ $notificationId)
+    {
+        $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
+        $notification = $notificationRepo->getNotificationWithId($notificationId);        
+        $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');        
+        $newFriend = $userRepo->getUserWithId($notification->getUserRequested());
+        $thisUser = $notification->getWishlistUser();        
+        $this->createNewFriendship($thisUser, $newFriend, $notification);
+        
+        $message = 'You have successfully accepted the friend request!';
+        return $this->render('WishlistCoreBundle:Default:friendlyMessageNotification.html.php', array('message' => $message));
+    }
+    
+    public function createNewFriendship($userA, $userB, $notification)
+    {
+        $friendshipRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
+        $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
+        
+        if(isset($userA) && isset($userB) && isset($notification))
+        {
+            $friendshipRepo->addNewFriendship($userA, $userB);
+            $notificationRepo->removeNotification($notification);
+        }        
+    }
 
     public function friendRequestAcceptAction(/*int*/ $notificationId)
     {
         $session = $this->getRequest()->getSession();
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
         $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
-        $friendshipRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
-        
         $loggedInUserId = $session->get('user_id');
         $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
         $notification = $notificationRepo->getNotificationWithId($notificationId);
@@ -261,11 +284,7 @@ class DefaultController extends Controller
         if($loggedInUser == $notification->getWishlistUser())
         {
             $newFriend = $userRepo->getUserWithId($notification->getUserRequested());
-            if(isset($newFriend))
-            {
-                $friendshipRepo->addNewFriendship($loggedInUser, $newFriend);
-                $notificationRepo->removeNotification($notification);
-            }
+            $this->createNewFriendship($loggedInUser, $newFriend, $notification);            
         }
 
         return new Response();
@@ -309,13 +328,14 @@ class DefaultController extends Controller
             else
             {
                 $message = 'The system encountered an issue finding this user. Please refresh the page and try again later.';
-                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));                
+                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));
             }
         }
         
         if(!($loggedInUserId == $user_id) && !WishlistUser::areFriends($wishlist_user, $loggedIn_user))
         {
-            throw new AccessDeniedHttpException('You cannot view this page since you are not a friend.');
+            $message = 'You and this user are not friends! Search for them in Wishenda and add them as a friend.';
+            return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));
         }
 
         return $this->render('WishlistUserBundle:Default:userpage.html.php', array('wishlist_user' => $wishlist_user, 'loggedInUserId' => $loggedInUserId));
