@@ -19,5 +19,9 @@ monolog:
             type:  firephp
             level: info
 
+doctrine:
+    dbal:
+        dbname:   %database_name_dev%
+
 assetic:
     use_controller: true
