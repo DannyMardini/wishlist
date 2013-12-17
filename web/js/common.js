@@ -506,7 +506,7 @@ function getUserEvents(itemId) {
             setupEvents();
         }
         else {
-            $('#confirmEventContainer').html('No events available.');
+            $('#confirmEventContainer').html('User has not created any events.');
             $('#confirmEventContainer').addClass('message');
         }
         $('#confirmDialog').dialog('open');
