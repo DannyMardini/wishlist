@@ -75,6 +75,7 @@ class DefaultController extends Controller
         $friendshipRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Friendship');
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
         $user = $userRepo->getUserWithId($session->get('user_id'));
+        $picService = $this->get('pic_service');
         
         //Get the search term from the request object
         $searchTerm = $request->get('searchTerm');
@@ -91,7 +92,7 @@ class DefaultController extends Controller
         foreach ($friends as $friend)
         {
             //$results[] = $friend->toJSON();
-            $results .= $friend->toJSON().",";
+            $results .= $friend->toJSON($picService).",";
         }
         
         $results = rtrim($results, ",");
@@ -105,7 +106,7 @@ class DefaultController extends Controller
             //TODO: Remove this check once I have replaced the sql query string.
             if(!WishlistUser::areFriends($user, $person))
             {
-                $results .= $person->toJSON().",";
+                $results .= $person->toJSON($picService).",";
             }
         }
         
