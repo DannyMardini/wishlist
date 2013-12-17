@@ -982,3 +982,8 @@ div#updatesComponent .updatesHeader {
   display: inline-block;
   margin-right: 10px;
 }
+
+/* line 453, ../sass/screen.scss */
+.ui-icon.blue {
+  background-image: url(/css/ui-darkness/images/ui-icons_a83300_256x240.png);
+}

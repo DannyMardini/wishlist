@@ -31,7 +31,7 @@
                     {
                         //Note, there cannot be any white-space between li's if you want them to show up right next to each other.
                         echo "</li><li id='notificationsDropDown' class='navButtons smallNavButtons'>";
-                        echo "<div id='notificationDiv' class='navcenter'><div id='viewNotificationsButton'><span class='ui-icon ui-icon-notice'></span></div>\n";
+                        echo "<div id='notificationDiv' class='navcenter'><div id='viewNotificationsButton'><span class='ui-icon ui-icon-notice blue'></span></div>\n";
                         echo "<div id='notificationWindow'>\n";
                         echo "<ul>\n";
                         foreach($user->getNotifications() as $notification)
