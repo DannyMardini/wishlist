@@ -222,22 +222,21 @@ class DefaultController extends Controller
             
             $userInvited = $userRepo->getUserWithId($session->get('user_id'));
             $userInvitedName = $userInvited->getName();
-
             $newInvite = $requestRepo->addInviteToQueue($email, $userInvited);
 
-            $htmlbody = $this->renderView('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
-            $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
-            $message = \Swift_Message::newInstance()
-                ->setSubject($userInvitedName.' doesn\'t know what to get you!')
-                ->setFrom('wishthrowaway@gmail.com')
-                ->setTo($newInvite->getEmail())
-                ->setBody($htmlbody, 'text/html')
-                ->addPart($textbody, 'text/plain');
-
-            if (!$this->get('mailer')->send($message))
-            {
-                throw new Exception();
-            }
+//            $htmlbody = $this->renderView('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
+//            $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
+//            $message = \Swift_Message::newInstance()
+//                ->setSubject($userInvitedName.' doesn\'t know what to get you!')
+//                ->setFrom('wishthrowaway@gmail.com')
+//                ->setTo($newInvite->getEmail())
+//                ->setBody($htmlbody, 'text/html')
+//                ->addPart($textbody, 'text/plain');
+//
+//            if (!$this->get('mailer')->send($message))
+//            {
+//                throw new Exception();
+//            }
         }
         catch(Exception $e)
         {

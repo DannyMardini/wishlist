@@ -101,7 +101,7 @@ class MailerService
     
     public function getFriendInviteSubject()
     {
-        return "Your friend needs help figuring out what to get you!";
+        return "Your friend has invited you to join Wishenda!";
     }
     
     public function sendFriendConfirmation($userA, $userB)

@@ -71,7 +71,7 @@ function updateFriendList(results)
     
     if( persons.length >= 1) {
         var personRowArray = [];
-        friendlist.append('<div id="peopleSeparator" class="listSeparator">People</div><div id="div_personlist_div"><ul></ul></div>');
+        friendlist.append('<div id="peopleSeparator" class="listSeparator">People on Wishenda</div><div id="div_personlist_div"><ul></ul></div>');
         
         persons.forEach(function(person) {
             personRowArray.push("<li>" 

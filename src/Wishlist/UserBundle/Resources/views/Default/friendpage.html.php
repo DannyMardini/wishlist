@@ -12,7 +12,7 @@
 </div>
 <hr size="1" width="90%" color="grey">
 <div id="friendsContainer">
-    <input id="friendSearch" type="text" placeholder="Find People..."/>
+    <input id="friendSearch" type="text" placeholder="Find People on Wishenda..."/>
 <?php
     if(count($friends) > 0)
     {

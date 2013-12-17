@@ -80,15 +80,14 @@ span#betaTag {
 div.friendlist {
     ul {
         list-style: none;
-        padding: 0;
-        margin: 0px;
-        margin-left: 80px;
-        width: 80%;
+        padding: 0;        
+        width: 95%;
+        margin-left: 10px;
+        margin-top:5px;
     }
 
     li {
-        margin-bottom: 5px;
-        
+        margin-bottom: 5px;        
         &:hover {
             background-color: #efefef;
             cursor: pointer;
@@ -97,8 +96,9 @@ div.friendlist {
     text-decoration: none;
     color: $font-color;
     font-size: 20px;
-    border: 1px solid $borderColor;
-    border-top-style: hidden;
+    margin-top: 30px;
+    border: 1px solid rgba(100, 100, 100, .4);
+    background: linear-gradient(#ffffff,#f0f0f0);
 }
 
 img.friendIcon {
@@ -129,6 +129,7 @@ img.friendIcon {
     border-color: $borderColor;
     width: 100%;
     margin-bottom: 0px;
+    font-size: 14px;
 }
 
 #friendsContainer {
@@ -139,6 +140,10 @@ img.friendIcon {
 
 div.listSeparator {
     background-color: $separatorColor;
+    font-weight:bold;
+    font-size: 20px;
+    height: 30px;
+    padding: 2px;
 }
 
 div.userButton {
