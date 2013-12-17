@@ -355,11 +355,11 @@ class WishlistUser {
      * protected members because json_encode will not encode protected and private
      * class members on it's own.
      */    
-    public function toJSON()
+    public function toJSON($picService)
     {
         $exportvars = array('wishlistuser_id' => $this->wishlistuser_id,
                             'name' => $this->name,
-                            'profileUrl' => $this->getProfileUrl());
+                            'profileUrl' => $this->getProfileUrl($picService));
         
         return json_encode($exportvars);
     }
