@@ -33,8 +33,8 @@
     }
     else {
         echo "<div class='message'>You haven't added any friends yet, you can: <br /><br />            
-            1. Search for friends by typing a name in the text box, or <br /><br />
-            2. Invite friends to join wishenda by clicking 'Invite Friends' above.</div>";
+            1. Search for people to add to your friends list by typing a name in the search box, or <br /><br />
+            2. Invite friends to join Wishenda by clicking 'Invite Friends' above.</div>";
     }
 ?>
 </div>
