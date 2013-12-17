@@ -59,12 +59,13 @@ class DefaultController extends Controller
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');        
         $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
         $loggedInUser = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
+        $picService = $this->get('pic_service');
 
         if(!$loggedInUser){
             return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');            
         }        
         
-        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $userRepo->getFriendsOf($loggedInUser), 'username' => $loggedInUser->getName()));
+        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $userRepo->getFriendsOf($loggedInUser), 'username' => $loggedInUser->getName(), 'picService' => $picService));
     }
     
     public function friendSearchAction()
@@ -111,8 +112,6 @@ class DefaultController extends Controller
         $results = rtrim($results, ",");
         $results .="]}";
         
-        //Return results.
-        
         return new Response($results);
     }
     
@@ -147,11 +146,14 @@ class DefaultController extends Controller
             //add friend
             $friendshipRepo->addNewFriendship($loggedInUser, $newFriend);
             $notificationRepo->removeNotification($complementNotification);
+            $this->get("Mailer_Service")->sendFriendConfirmation($loggedInUser, $newFriend);
+            $this->get("Mailer_Service")->sendFriendConfirmation($newFriend, $loggedInUser);
         }
         else if(!($notificationRepo->notificationExists($loggedInUserId, $newFriendId))) //Does the request already exist?
         {
             //If not, add a new request!
-            $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' wants to be your friend.');
+            $notification = $notificationRepo->addNotification($newFriend, $loggedInUser->getWishlistuserId(), $loggedInUser->getName().' wants to be your friend.');
+            $this->get("Mailer_Service")->sendFriendRequest($loggedInUser, $newFriend, $notification->getId());           
         }
 
         return new Response();
@@ -221,22 +223,21 @@ class DefaultController extends Controller
             
             $userInvited = $userRepo->getUserWithId($session->get('user_id'));
             $userInvitedName = $userInvited->getName();
-
             $newInvite = $requestRepo->addInviteToQueue($email, $userInvited);
 
-            $htmlbody = $this->renderView('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
-            $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
-            $message = \Swift_Message::newInstance()
-                ->setSubject($userInvitedName.' doesn\'t know what to get you!')
-                ->setFrom('wishthrowaway@gmail.com')
-                ->setTo($newInvite->getEmail())
-                ->setBody($htmlbody, 'text/html')
-                ->addPart($textbody, 'text/plain');
-
-            if (!$this->get('mailer')->send($message))
-            {
-                throw new Exception();
-            }
+//            $htmlbody = $this->renderView('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
+//            $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
+//            $message = \Swift_Message::newInstance()
+//                ->setSubject($userInvitedName.' doesn\'t know what to get you!')
+//                ->setFrom('wishthrowaway@gmail.com')
+//                ->setTo($newInvite->getEmail())
+//                ->setBody($htmlbody, 'text/html')
+//                ->addPart($textbody, 'text/plain');
+//
+//            if (!$this->get('mailer')->send($message))
+//            {
+//                throw new Exception();
+//            }
         }
         catch(Exception $e)
         {
@@ -245,14 +246,48 @@ class DefaultController extends Controller
 
         return new Response('success');
     }
+    
+    public function friendRequestEmailAcceptAction(/*int*/ $notificationId)
+    {
+        $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
+        $notification = $notificationRepo->getNotificationWithId($notificationId);        
+        $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');        
+        $newFriend = $userRepo->getUserWithId($notification->getUserRequested());
+        $thisUser = $notification->getWishlistUser();        
+        $this->createNewFriendship($thisUser, $newFriend, $notification);
+        
+        $message = 'You have successfully accepted the friend request!';
+        return $this->render('WishlistCoreBundle:Default:friendlyMessageNotification.html.php', array('message' => $message));
+    }
+    
+    public function createNewFriendship($userA, $userB, $notification)
+    {
+        $friendshipRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
+        $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
+        
+        if(isset($userA) && isset($userB) && isset($notification))
+        {
+            $friendshipRepo->addNewFriendship($userA, $userB);
+            
+            $response = $this->get("Mailer_Service")->sendFriendConfirmation($userA, $userB);
+            
+            if($response == true)
+            {
+                $response = $this->get("Mailer_Service")->sendFriendConfirmation($userB, $userA);
+            }
+            
+            if($response == true)
+            {
+                $notificationRepo->removeNotification($notification);
+            }
+        }        
+    }
 
     public function friendRequestAcceptAction(/*int*/ $notificationId)
     {
         $session = $this->getRequest()->getSession();
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
         $notificationRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Notification');
-        $friendshipRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Friendship');
-        
         $loggedInUserId = $session->get('user_id');
         $loggedInUser = $userRepo->getUserWithId($loggedInUserId);
         $notification = $notificationRepo->getNotificationWithId($notificationId);
@@ -261,11 +296,7 @@ class DefaultController extends Controller
         if($loggedInUser == $notification->getWishlistUser())
         {
             $newFriend = $userRepo->getUserWithId($notification->getUserRequested());
-            if(isset($newFriend))
-            {
-                $friendshipRepo->addNewFriendship($loggedInUser, $newFriend);
-                $notificationRepo->removeNotification($notification);
-            }
+            $this->createNewFriendship($loggedInUser, $newFriend, $notification);            
         }
 
         return new Response();
@@ -292,6 +323,7 @@ class DefaultController extends Controller
     public function showUserpageAction(/*int*/ $user_id)
     {
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $picService = $this->get('pic_service');
         $loggedInUserId;
         
         try
@@ -309,16 +341,17 @@ class DefaultController extends Controller
             else
             {
                 $message = 'The system encountered an issue finding this user. Please refresh the page and try again later.';
-                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));                
+                return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));
             }
         }
         
         if(!($loggedInUserId == $user_id) && !WishlistUser::areFriends($wishlist_user, $loggedIn_user))
         {
-            throw new AccessDeniedHttpException('You cannot view this page since you are not a friend.');
+            $message = 'You and this user are not friends! Search for them in Wishenda and add them as a friend.';
+            return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));
         }
 
-        return $this->render('WishlistUserBundle:Default:userpage.html.php', array('wishlist_user' => $wishlist_user, 'loggedInUserId' => $loggedInUserId));
+        return $this->render('WishlistUserBundle:Default:userpage.html.php', array('wishlist_user' => $wishlist_user, 'loggedInUserId' => $loggedInUserId, 'picService' => $picService));
     }
     
     public function showShoppinglistPageAction()
@@ -351,7 +384,7 @@ class DefaultController extends Controller
                 $email = $user->getEmail();
                 $birthdate = $user->getBirthdate()->format('m-d-Y');
                 $gender = $user->getGender();
-                $profileImage = "<img id='user_image' src='" . PicService::getProfileUrl($loggedInUserId) . "'  class='preview'>";
+                $profileImage = "<img id='user_image' src='" . $this->get('pic_service')->getProfileUrl($loggedInUserId) . "'  class='preview'>";
                 
                 return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId, 'name' => $name,
                     'email' => $email, 'birthdate' => $birthdate, 'gender' => $gender, 'profileImage' => $profileImage));
@@ -373,6 +406,7 @@ class DefaultController extends Controller
         $request = $this->getRequest();
         $response = 'The settings could not be saved, please try again later.';
         try{
+            $picService = $this->get('pic_service');
             $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
             $updateSettings = false;
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
@@ -465,9 +499,9 @@ class DefaultController extends Controller
                     $user->setPassword($new_password);
                 }
                 
-                if(PicService::tempProfilePicExists($loggedInUserId))
+                if($picService->tempProfilePicExists($loggedInUserId))
                 {
-                    if(!PicService::persistTempProfilePic($loggedInUserId))
+                    if(!$picService->persistTempProfilePic($loggedInUserId))
                     {
                         throw new \Exception('Could not save new profile picture');
                     }
@@ -496,6 +530,7 @@ class DefaultController extends Controller
             $response = 'Image cannot be shown';
             $loggedInUserId = $request->getSession()->get('user_id');
             $slashlessPath = "images/temp/".$loggedInUserId;
+            $picService = $this->get('pic_service');
             
             // continue on to save the image in the user directory
             $valid_formats = array("jpg", "jpeg", "png", "gif", "bmp");
@@ -515,7 +550,7 @@ class DefaultController extends Controller
                         {                  
                             $tmp = $_FILES['photoimg']['tmp_name'];
                             
-                            $image_loc = PicService::uploadTempProfilePic($loggedInUserId, $ext, $tmp);
+                            $image_loc = $picService->uploadTempProfilePic($loggedInUserId, $ext, $tmp);
                             
                             $response = "<img id='user_image' src='/".$image_loc."'  class='preview'>";
                         }
@@ -667,8 +702,10 @@ class DefaultController extends Controller
         $updateRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
         
         $friendUpdates =  $updateRepo->getFriendsUpdates($this->getLoggedInUserId());
+
+        $picService = $this->get('pic_service');
         
-        return $this->render('WishlistListBundle:Default:updatelist.html.php', array('updates' => $friendUpdates));
+        return $this->render('WishlistListBundle:Default:updatelist.html.php', array('updates' => $friendUpdates, 'picService' => $picService));
     }
     
     public function uploadUserImage()

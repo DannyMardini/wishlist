@@ -1017,13 +1017,24 @@ function setupWishDialogView(data, options)
 }
 
 function setupItemView(data)
-{    
-    $('#itemDialog #itemId').val(data.id);
-    $('#itemDialog #name').val(data.name);
-    $('#itemDialog #price').val(data.price);
-    $('#itemDialog #link2').html('<a target="_blank" href="'+data.link+'">webpage</a>');
-    $('#itemDialog #link').val(data.link);
-    $('#itemDialog').dialog('open');  
+{   
+    var itemDialog = $('#itemDialog');
+    var link = data.link;
+    
+    $('#linkButton',itemDialog).button({
+        icons: { primary: "ui-icon-link" }
+    }).click(function(){
+        window.open(link,'_blank');
+    });
+    
+    $('#itemId', itemDialog).val(data.id);
+    $('#name', itemDialog).html(data.name);
+    $('#price', itemDialog).html(data.price);
+    $('#link', itemDialog).html(data.link);
+    $('#itemDetails2', itemDialog).html(data.comment);
+    $('#quantity2', itemDialog).html(data.quantity);
+
+    itemDialog.dialog('option', 'height', '500').dialog('open');
 }
 
 function getIds(elements)

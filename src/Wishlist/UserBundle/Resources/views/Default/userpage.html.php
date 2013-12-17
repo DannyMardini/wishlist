@@ -16,7 +16,7 @@ $selfWishlist = ($userId == $loggedInUserId)? true:false;
     <h1><?php echo $wishlist_user->getName() ?></h1>
     <div id="div_user_container">
         <div id="div_profile_pic">
-            <img src="<?php echo $wishlist_user->getProfileUrl() ?>"/>
+            <img src="<?php echo $wishlist_user->getProfileUrl($picService) ?>"/>
         </div>
     </div>
     <div id="div_user_info">

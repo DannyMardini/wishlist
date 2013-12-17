@@ -80,15 +80,14 @@ span#betaTag {
 div.friendlist {
     ul {
         list-style: none;
-        padding: 0;
-        margin: 0px;
-        margin-left: 80px;
-        width: 80%;
+        padding: 0;        
+        width: 95%;
+        margin-left: 10px;
+        margin-top:5px;
     }
 
     li {
-        margin-bottom: 5px;
-        
+        margin-bottom: 5px;        
         &:hover {
             background-color: #efefef;
             cursor: pointer;
@@ -97,8 +96,9 @@ div.friendlist {
     text-decoration: none;
     color: $font-color;
     font-size: 20px;
-    border: 1px solid $borderColor;
-    border-top-style: hidden;
+    margin-top: 30px;
+    border: 1px solid rgba(100, 100, 100, .4);
+    background: linear-gradient(#ffffff,#f0f0f0);
 }
 
 img.friendIcon {
@@ -110,6 +110,7 @@ img.friendIcon {
 .inviteFriendInput #newFriendEmail{
     height: 30px;
     width: 400px;
+    font-size: 11px;
 }
 
 .message {
@@ -118,6 +119,7 @@ img.friendIcon {
 
 .inviteFriendInput {
     margin-top: 20px;
+    margin-left: 40px;
 }
 
 #friendSearch {
@@ -127,6 +129,7 @@ img.friendIcon {
     border-color: $borderColor;
     width: 100%;
     margin-bottom: 0px;
+    font-size: 14px;
 }
 
 #friendsContainer {
@@ -137,6 +140,10 @@ img.friendIcon {
 
 div.listSeparator {
     background-color: $separatorColor;
+    font-weight:bold;
+    font-size: 20px;
+    height: 30px;
+    padding: 2px;
 }
 
 div.userButton {
@@ -321,7 +328,6 @@ div#updatesComponent {
     z-index: 300;
     right: 10px;
     display: none;
-    /*padding: 10px 30px 10px 30px;*/
     color: lighten($font-color, 10%);
     border: 1px solid rgba(100, 100, 100, .4);
 
@@ -422,7 +428,6 @@ $resultsHoverDark: darken($global-button-hover-color, 10%);
         background-image: -o-linear-gradient(white, $resultsHoverDark);
         background-image: linear-gradient(#ffffff, $resultsHoverDark);
         background-color: $resultsHoverDark;
-        /*border: 1px solid #cccccc;*/
         cursor: pointer;
     }
 
@@ -430,3 +435,19 @@ $resultsHoverDark: darken($global-button-hover-color, 10%);
         vertical-align: top;
     }
 }
+
+.container {
+    width: 450px;
+    height: 350px;
+    background-color: white;
+    text-align: center;
+    border: 1px solid rgba(100, 100, 100, .4);
+    background: linear-gradient(#ffffff,#f0f0f0);
+}
+
+.lead {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.ui-icon.blue { background-image: url(/css/ui-darkness/images/ui-icons_a83300_256x240.png); }

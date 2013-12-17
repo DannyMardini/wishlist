@@ -237,14 +237,14 @@ class WishlistUser {
         return $this->events;
     }
     
-    public function getProfileUrl()
+    public function getProfileUrl($picService)
     {
-        return PicService::getProfileUrl($this->wishlistuser_id);
+        return $picService->getProfileUrl($this->wishlistuser_id);
     }
     
-    public function getProfileThumb()
+    public function getProfileThumb($picService)
     {
-        return PicService::getProfileThumb($this->wishlistuser_id);
+        return $picService->getProfileThumb($this->wishlistuser_id);
     }
     /**
      * @var Wishlist\CoreBundle\Entity\Item

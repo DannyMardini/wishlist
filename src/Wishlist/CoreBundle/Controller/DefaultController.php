@@ -30,8 +30,10 @@ class DefaultController extends Controller
         {
             throw $this->createNotFoundException('Please to go the Frontpage to sign on');
         }
+
+        $profileThumb = $user->getProfileThumb($this->get('pic_service'));
         
-        return $this->render('WishlistCoreBundle:Default:navbar.html.php', array('user' => $user));
+        return $this->render('WishlistCoreBundle:Default:navbar.html.php', array('user' => $user, 'profileThumb' => $profileThumb));
     }
     
     public function NotifyAdminAction()

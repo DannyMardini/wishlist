@@ -21,7 +21,7 @@
             <span id="linksContainer">
                 <ul id="navigation" class="font-style">
                     <li class="navButtons">
-                            <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
+                            <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($profileThumb) : ""; ?>)"></span>
                             <span id='homepageLink' class="navcenter ui-MenuLink"><?php echo $user->getName() ?></span>
                     </li><li id="updatesWindowButton" class="navButtons smallNavButtons" title="Updates">
                         <span class="ui-icon ui-icon-star navcenter"></span>
@@ -31,7 +31,7 @@
                     {
                         //Note, there cannot be any white-space between li's if you want them to show up right next to each other.
                         echo "</li><li id='notificationsDropDown' class='navButtons smallNavButtons'>";
-                        echo "<div id='notificationDiv' class='navcenter'><div id='viewNotificationsButton'><span class='ui-icon ui-icon-notice'></span></div>\n";
+                        echo "<div id='notificationDiv' class='navcenter'><div id='viewNotificationsButton'><span class='ui-icon ui-icon-notice blue'></span></div>\n";
                         echo "<div id='notificationWindow'>\n";
                         echo "<ul>\n";
                         foreach($user->getNotifications() as $notification)

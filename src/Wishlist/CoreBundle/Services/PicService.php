@@ -7,14 +7,24 @@ class PicService
     const defaultProfilePic = "/images/default_avatar.gif";
     const defaultProfileThumb = "/images/default_avatar_thumb.gif";
 
+    protected $envFolder;
+    protected $kernel;
 
-    function __construct()
+    function __construct($kernel)
     {
+        $this->kernel = $kernel;
+        
+        if ($kernel->getEnvironment() === 'prod') {
+            $this->envFolder = 'prod/';
+        }
+        else {
+            $this->envFolder = 'dev/';
+        }
     }
     
-    public static function getProfileUrl(/*int*/ $wishlistUserId)
+    public function getProfileUrl(/*int*/ $wishlistUserId)
     {
-        $matched = glob("images/user/".PicService::hashProfileFname($wishlistUserId).".*");
+        $matched = glob("images/".$this->envFolder."user/".PicService::hashProfileFname($wishlistUserId).".*");
         
         if(count($matched))
         {
@@ -24,10 +34,10 @@ class PicService
         return PicService::defaultProfilePic;
     }
     
-    public static function getProfileThumb(/*int*/ $wishlistUserId)
+    public function getProfileThumb(/*int*/ $wishlistUserId)
     {
         //$pic_url = "images/user/".$wishlistUserId."/profile_thumb.jpg";
-        $matched = glob("images/user/".PicService::hashProfileThumbFname($wishlistUserId).".*");
+        $matched = glob("images/".$this->envFolder."user/".PicService::hashProfileThumbFname($wishlistUserId).".*");
         
         if(count($matched))
         {
@@ -37,10 +47,10 @@ class PicService
         return PicService::defaultProfileThumb;
     }
     
-    public static function uploadTempProfilePic(/*int*/$userId, /*string*/$ext, /*string*/$tmp)
+    public function uploadTempProfilePic(/*int*/$userId, /*string*/$ext, /*string*/$tmp)
     {
         $hashedFname = PicService::hashProfileFname($userId);
-        $finalFname = strtolower('images/temp/'.$hashedFname.'.'.$ext);
+        $finalFname = strtolower('images/'.$this->envFolder.'temp/'.$hashedFname.'.'.$ext);
         if(!move_uploaded_file($tmp, $finalFname))
         {
             throw new \Exception('Upload failed');
@@ -49,14 +59,14 @@ class PicService
         return $finalFname;
     }
     
-    public static function tempProfilePicExists(/*int*/$userId)
+    public function tempProfilePicExists(/*int*/$userId)
     {
         $hashedFname = PicService::hashProfileFname($userId);
-        $matched = glob('images/temp/'.$hashedFname.'.*');
+        $matched = glob('images/'.$this->envFolder.'temp/'.$hashedFname.'.*');
         return count($matched);
     }
     
-    public static function persistTempProfilePic(/*int*/$userId)
+    public function persistTempProfilePic(/*int*/$userId)
     {
         //delete old profile pic
         if(!PicService::deleteProfilePic($userId))
@@ -66,25 +76,25 @@ class PicService
         
         $ret = false;        
         $hashedFname = PicService::hashProfileFname($userId);
-        $matched = glob('images/temp/'.$hashedFname.'.*');
+        $matched = glob('images/'.$this->envFolder.'temp/'.$hashedFname.'.*');
         if(count($matched) == 1)
         {
             $fname = basename($matched[0]);
-            $ret = rename('images/temp/'.$fname, 'images/user/'.$fname);
+            $ret = rename('images/'.$this->envFolder.'temp/'.$fname, 'images/'.$this->envFolder.'user/'.$fname);
             if(true == $ret) //if rename was successful.
             {
                 //Create a thumbnail of the profile.
-                $ret = PicService::createProfileThumb($userId, 'images/user/'.$fname);
+                $ret = PicService::createProfileThumb($userId, 'images/'.$this->envFolder.'user/'.$fname);
             }
         }
         
         return $ret;
     }
     
-    private static function deleteProfilePic($userId)
+    private function deleteProfilePic($userId)
     {
         $hashedFname = PicService::hashProfileFname($userId);
-        $matched = glob('images/user/'.$hashedFname.'.*');
+        $matched = glob('images/'.$this->envFolder.'user/'.$hashedFname.'.*');
         
         foreach($matched as $match)
         {
@@ -96,7 +106,7 @@ class PicService
         return true;
     }
 
-    private static function createProfileThumb(/*int*/$userId, $profilePic)
+    private function createProfileThumb(/*int*/$userId, $profilePic)
     {
         $size = getimagesize($profilePic);
         switch($size['mime'])
@@ -118,18 +128,18 @@ class PicService
         
         if(imageCopyResampled($thumbImg, $image, 0, 0, 0, 0, 30, 30, imagesx($image), imagesy($image)))
         {
-            return imagejpeg($thumbImg, 'images/user/'.PicService::hashProfileThumbFname($userId).'.jpg');
+            return imagejpeg($thumbImg, 'images/'.$this->envFolder.'user/'.PicService::hashProfileThumbFname($userId).'.jpg');
         }
 
         return false;
     }
     
-    private static function hashProfileFname(/*int*/$userId)
+    private function hashProfileFname(/*int*/$userId)
     {
         return hash('sha1', $userId.'profile');
     }
 
-    private static function hashProfileThumbFname(/*int*/$userId)
+    private function hashProfileThumbFname(/*int*/$userId)
     {
         return hash('sha1', $userId.'profile_thumb');
     }

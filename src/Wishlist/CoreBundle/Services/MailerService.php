@@ -89,9 +89,68 @@ class MailerService
         return "A shopping list item has been updated on Wishenda!";
     }    
 
+    public function getStandardFriendConfirmationSubject()
+    {
+        return "You have a new friend on Wishenda!";
+    }
+
+    public function getStandardFriendRequestSubject()
+    {
+        return "You have a friend request on Wishenda!";
+    }    
+    
     public function getFriendInviteSubject()
     {
-        return "Your friend needs help figuring out what to get you!";
+        return "Your friend has invited you to join Wishenda!";
+    }
+    
+    public function sendFriendConfirmation($userA, $userB)
+    {
+        $success = false;
+        $htmlbody = null; 
+        $textbody = null;
+        
+        if(!isset($userA) || !isset($userB))
+        {
+            return $success;
+        }
+        
+        $htmlbody = $this->templating->render('WishlistUserBundle:Email:friendConfirmation.html.php', 
+                array('name' => $userA->getFirstName(), 'friendname' => $userB->getName()));
+        $textbody = strip_tags($htmlbody);
+        if(isset($htmlbody) && isset($textbody))
+        {
+            $this->sendMail($userA->getEmail(), $this->getStandardFriendConfirmationSubject(), $htmlbody, $textbody);
+            $success = true;
+        }
+        
+        return $success;        
+    }
+    
+    public function sendFriendRequest($requester, $friend, $notificationId)
+    {
+        // Send email to A letting them know that B wants to be their friend
+        $success = false;
+        $htmlbody = null; 
+        $textbody = null;
+        
+        if(!isset($requester) || !isset($friend))
+        {
+            return $success;
+        }
+        
+        $htmlbody = $this->templating->render('WishlistUserBundle:Email:friendRequest.html.php', 
+                array('name' => $friend->getFirstName(), 
+                    'friendname' => $requester->getName(), 
+                    'notificationId' => $notificationId));
+        $textbody = strip_tags($htmlbody);
+        
+        if(isset($htmlbody) && isset($textbody))
+        {
+            $this->sendMail($friend->getEmail(), $this->getStandardFriendRequestSubject(), $htmlbody, $textbody);
+        }
+        
+        return $success;        
     }
     
     // TO DO: send notification to user. Explaining why the item was removed from 

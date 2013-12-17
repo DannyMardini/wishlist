@@ -34,6 +34,10 @@ WishlistUserBundle_acceptFriendRequest:
   pattern: /FriendRequestAccept/{notificationId}
   defaults: { _controller: WishlistUserBundle:Default:friendRequestAccept }
 
+WishlistUserBundle_acceptFriendRequestEmail:
+  pattern: /FriendRequestEmailAccept/{notificationId}
+  defaults: { _controller: WishlistUserBundle:Default:friendRequestEmailAccept }
+
 WishlistUserBundle_ignoreFriendRequest:
   pattern: /FriendRequestIgnore/{notificationId}
   defaults: { _controller: WishlistUserBundle:Default:friendRequestIgnore }

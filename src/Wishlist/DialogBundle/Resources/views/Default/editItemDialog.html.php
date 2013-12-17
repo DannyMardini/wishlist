@@ -1,8 +1,8 @@
 <div id='editItemDialog' title='Edit Wish' >  
     <input type='hidden' id='itemId' /> 
-    Item: <input disabled type='text' id='name' placeholder='Enter Item Name' />
-    Price: <input disabled type='text' id='price' placeholder='Enter Item Price' />
-    Link:  <input disabled type='text' id='link' placeholder='Enter Link to item page' />
-    Quantity: <input type='text' id='quantity' placeholder='Quantity (Default = 1)'/>
-    Notes: <input type='text' id='notes' placeholder='Notes (Optional)'/>
+    Item * <input disabled type='text' id='name' placeholder='item name goes here' />
+    Price (US dollars) * <input disabled type='text' id='price' placeholder='ex. 12.99' />
+    Link *  <input disabled type='text' id='link' placeholder='ex. http://www.link.com' />
+    Quantity <input type='text' id='quantity' placeholder='1'/>
+    Notes <input type='text' id='notes' placeholder='notes for your friends to see'/>
 </div>
