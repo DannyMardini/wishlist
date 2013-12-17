@@ -121,17 +121,10 @@ class MailerService
         if(isset($htmlbody) && isset($textbody))
         {
             $this->sendMail($userA->getEmail(), $this->getStandardFriendConfirmationSubject(), $htmlbody, $textbody);
+            $success = true;
         }
         
-        $htmlbody = $this->templating->render('WishlistUserBundle:Email:friendConfirmation.html.php', 
-                array('name' => $userB->getFirstName(), 'friendname' => $userA->getName()));
-        $textbody = strip_tags($htmlbody);
-        if(isset($htmlbody) && isset($textbody))
-        {
-            $this->sendMail($userB->getEmail(), $this->getStandardFriendConfirmationSubject(), $htmlbody, $textbody);            
-        }        
-        
-        return $success;
+        return $success;        
     }
     
     public function sendFriendRequest($requester, $friend, $notificationId)

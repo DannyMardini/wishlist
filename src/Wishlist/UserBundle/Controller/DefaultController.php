@@ -146,6 +146,7 @@ class DefaultController extends Controller
             $friendshipRepo->addNewFriendship($loggedInUser, $newFriend);
             $notificationRepo->removeNotification($complementNotification);
             $this->get("Mailer_Service")->sendFriendConfirmation($loggedInUser, $newFriend);
+            $this->get("Mailer_Service")->sendFriendConfirmation($newFriend, $loggedInUser);
         }
         else if(!($notificationRepo->notificationExists($loggedInUserId, $newFriendId))) //Does the request already exist?
         {
@@ -267,7 +268,18 @@ class DefaultController extends Controller
         if(isset($userA) && isset($userB) && isset($notification))
         {
             $friendshipRepo->addNewFriendship($userA, $userB);
-            $notificationRepo->removeNotification($notification);
+            
+            $response = $this->get("Mailer_Service")->sendFriendConfirmation($userA, $userB);
+            
+            if($response == true)
+            {
+                $response = $this->get("Mailer_Service")->sendFriendConfirmation($userB, $userA);
+            }
+            
+            if($response == true)
+            {
+                $notificationRepo->removeNotification($notification);
+            }
         }        
     }
 
