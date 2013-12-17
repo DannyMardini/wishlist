@@ -21,7 +21,7 @@
             <span id="linksContainer">
                 <ul id="navigation" class="font-style">
                     <li class="navButtons">
-                            <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($user->getProfileThumb()) : ""; ?>)"></span>
+                            <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($profileThumb) : ""; ?>)"></span>
                             <span id='homepageLink' class="navcenter ui-MenuLink"><?php echo $user->getName() ?></span>
                     </li><li id="updatesWindowButton" class="navButtons smallNavButtons" title="Updates">
                         <span class="ui-icon ui-icon-star navcenter"></span>

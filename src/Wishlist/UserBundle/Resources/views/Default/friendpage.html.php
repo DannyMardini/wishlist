@@ -23,7 +23,7 @@
         foreach($friends as $friend)
         {
             echo "<li><div class='userButton'>"
-                ."<img class='friendIcon' src='".$friend->getProfileUrl()."'/>"
+                ."<img class='friendIcon' src='".$friend->getProfileUrl($picService)."'/>"
                 ."<a class='friendLink' href='".$view['router']->generate('WishlistUserBundle_userpage', array('user_id' => $friend->getWishlistuserId()))."'></a>"
                     .$friend->getName()."</div></li>\n";
         }

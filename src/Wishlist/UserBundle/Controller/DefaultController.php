@@ -59,12 +59,13 @@ class DefaultController extends Controller
         $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');        
         $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
         $loggedInUser = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
+        $picService = $this->get('pic_service');
 
         if(!$loggedInUser){
             return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');            
         }        
         
-        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $userRepo->getFriendsOf($loggedInUser), 'username' => $loggedInUser->getName()));
+        return $this->render('WishlistUserBundle:Default:friendpage.html.php', array('friends' => $userRepo->getFriendsOf($loggedInUser), 'username' => $loggedInUser->getName(), 'picService' => $picService));
     }
     
     public function friendSearchAction()
@@ -322,6 +323,7 @@ class DefaultController extends Controller
     public function showUserpageAction(/*int*/ $user_id)
     {
         $userRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser');
+        $picService = $this->get('pic_service');
         $loggedInUserId;
         
         try
@@ -349,7 +351,7 @@ class DefaultController extends Controller
             return $this->render('WishlistCoreBundle:Default:friendlyErrorNotification.html.php', array('message' => $message));
         }
 
-        return $this->render('WishlistUserBundle:Default:userpage.html.php', array('wishlist_user' => $wishlist_user, 'loggedInUserId' => $loggedInUserId));
+        return $this->render('WishlistUserBundle:Default:userpage.html.php', array('wishlist_user' => $wishlist_user, 'loggedInUserId' => $loggedInUserId, 'picService' => $picService));
     }
     
     public function showShoppinglistPageAction()
@@ -382,7 +384,7 @@ class DefaultController extends Controller
                 $email = $user->getEmail();
                 $birthdate = $user->getBirthdate()->format('m-d-Y');
                 $gender = $user->getGender();
-                $profileImage = "<img id='user_image' src='" . PicService::getProfileUrl($loggedInUserId) . "'  class='preview'>";
+                $profileImage = "<img id='user_image' src='" . $this->get('pic_service')->getProfileUrl($loggedInUserId) . "'  class='preview'>";
                 
                 return $this->render('WishlistUserBundle:Default:accountsettings.html.php', array('userId' => $loggedInUserId, 'name' => $name,
                     'email' => $email, 'birthdate' => $birthdate, 'gender' => $gender, 'profileImage' => $profileImage));
@@ -404,6 +406,7 @@ class DefaultController extends Controller
         $request = $this->getRequest();
         $response = 'The settings could not be saved, please try again later.';
         try{
+            $picService = $this->get('pic_service');
             $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
             $updateSettings = false;
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
@@ -496,9 +499,9 @@ class DefaultController extends Controller
                     $user->setPassword($new_password);
                 }
                 
-                if(PicService::tempProfilePicExists($loggedInUserId))
+                if($picService->tempProfilePicExists($loggedInUserId))
                 {
-                    if(!PicService::persistTempProfilePic($loggedInUserId))
+                    if(!$picService->persistTempProfilePic($loggedInUserId))
                     {
                         throw new \Exception('Could not save new profile picture');
                     }
@@ -527,6 +530,7 @@ class DefaultController extends Controller
             $response = 'Image cannot be shown';
             $loggedInUserId = $request->getSession()->get('user_id');
             $slashlessPath = "images/temp/".$loggedInUserId;
+            $picService = $this->get('pic_service');
             
             // continue on to save the image in the user directory
             $valid_formats = array("jpg", "jpeg", "png", "gif", "bmp");
@@ -546,7 +550,7 @@ class DefaultController extends Controller
                         {                  
                             $tmp = $_FILES['photoimg']['tmp_name'];
                             
-                            $image_loc = PicService::uploadTempProfilePic($loggedInUserId, $ext, $tmp);
+                            $image_loc = $picService->uploadTempProfilePic($loggedInUserId, $ext, $tmp);
                             
                             $response = "<img id='user_image' src='/".$image_loc."'  class='preview'>";
                         }
@@ -698,8 +702,10 @@ class DefaultController extends Controller
         $updateRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUpdate');
         
         $friendUpdates =  $updateRepo->getFriendsUpdates($this->getLoggedInUserId());
+
+        $picService = $this->get('pic_service');
         
-        return $this->render('WishlistListBundle:Default:updatelist.html.php', array('updates' => $friendUpdates));
+        return $this->render('WishlistListBundle:Default:updatelist.html.php', array('updates' => $friendUpdates, 'picService' => $picService));
     }
     
     public function uploadUserImage()
