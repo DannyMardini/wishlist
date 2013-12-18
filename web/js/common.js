@@ -1025,7 +1025,8 @@ function setupItemView(data)
     
     $('#linkButton',itemDialog).button({
         icons: { primary: "ui-icon-link" }
-    }).click(function(){
+    }).unbind('click')
+    .click(function(){
         window.open(link,'_blank');
     });
     
