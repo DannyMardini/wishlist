@@ -197,7 +197,7 @@ function viewWishlistDialogInit()
             position: 'top', 
             resizable: false,
             height:300,
-            width:500,
+            width:600,
             modal: true,
             buttons: {
                     "Want This": function() {
@@ -564,15 +564,16 @@ function styleWishDialogButtons()
 
 function viewWishlistDialogInit()
 {
-    if($( "#itemDialog" ).length == 0)
+    if($( "#itemDialog" ).length == 0){
         return;
+    }
     
     $( "#itemDialog" ).dialog({
             autoOpen: false,
             position: 'top', 
             resizable: false,
             height:300,
-            width:500,
+            width:600,
             modal: true,
             buttons: {
                     "Want This": function() {
@@ -675,8 +676,9 @@ function amazonSearchDialogInit()
 
 function editWishlistDialogInit()
 {
-    if($( "#editItemDialog" ).length == 0 )
+    if($( "#editItemDialog" ).length == 0 ){
         return;
+    }
     
    $( "#editItemDialog" ).dialog({
             autoOpen: false,
@@ -1013,7 +1015,7 @@ function setupWishDialogView(data, options)
         editItemDialog.dialog('option', 'title', 'Save Wish');
     }
     
-    editItemDialog.dialog('option', 'height', '500').dialog('open');
+    editItemDialog.dialog('option', 'height', '500').dialog('open');    
 }
 
 function setupItemView(data)
@@ -1034,7 +1036,7 @@ function setupItemView(data)
     $('#itemDetails2', itemDialog).html(data.comment);
     $('#quantity2', itemDialog).html(data.quantity);
 
-    itemDialog.dialog('option', 'height', '500').dialog('open');
+    itemDialog.dialog('option', 'height', '500').dialog('open');    
 }
 
 function getIds(elements)
