@@ -1027,6 +1027,10 @@ function setupItemView(data)
         icons: { primary: "ui-icon-link" }
     }).unbind('click')
     .click(function(){
+        var protocol = "http\://"
+        if(link.indexOf(protocol) == -1) {
+            link = protocol+link;
+        }
         window.open(link,'_blank');
     });
     
