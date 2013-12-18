@@ -30,7 +30,7 @@ echo "Generating entities..."
 php app/console generate:doctrine:entities Wishlist --no-debug
 
 echo "Updating Database..."
-php app/console doctrine:schema:update --force --no-debug
+php app/console --env=prod doctrine:schema:update --force --no-debug
 
 echo "Updating assets..."
 php app/console assetic:dump --env=prod --no-debug -v
