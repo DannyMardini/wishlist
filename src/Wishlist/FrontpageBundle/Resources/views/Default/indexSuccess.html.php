@@ -2,11 +2,11 @@
     <head>
         <?php foreach ($view['assetic']->javascripts(
               array('js/jquery-1.8.2.js','js/frontPage.js','js/common.js'), array('?yui_js')) as $url): ?>
-              <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+              <script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script><?php endforeach; ?>
         
         <?php foreach ($view['assetic']->stylesheets(
             array('compass/stylesheets/frontPage.css', 'compass/stylesheets/main.css'), array('?yui_css')) as $url): ?>
-            <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
+            <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
 
         <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="/images/favicon.ico">        

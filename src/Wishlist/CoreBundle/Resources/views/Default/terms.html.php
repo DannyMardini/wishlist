@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/terms.css'), array('?yui_css')) as $url): ?>
-        <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>        
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>        
         <title>Wishenda Terms of Service</title>
     </head>
     <body>

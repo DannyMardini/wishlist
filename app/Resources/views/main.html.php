@@ -5,7 +5,7 @@
             'js/common.js', 
             'js/jquery-1.8.2.js', 
             'js/jquery-ui-1.8.23.custom.min.js'), array('?yui_js')) as $url): ?>
-        <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+        <script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script><?php endforeach; ?>
         <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />        
     </head>
     <body>

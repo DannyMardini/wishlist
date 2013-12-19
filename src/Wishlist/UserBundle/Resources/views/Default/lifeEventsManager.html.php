@@ -1,8 +1,8 @@
 <?php $view->extend('::navBar.html.php') ?>
 <?php foreach ($view['assetic']->javascripts(array('js/lifeEventsManager.js'), array('?yui_js')) as $url): ?>
-<script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+<script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script><?php endforeach; ?>
 <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/lifeEventsManager.css'), array('?yui_css')) as $url): ?>
-<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
+<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
 <div class="pageTitle">
     <?php $eventCount = count($events); ?>
     <label class="pageHeader" id="event_count_<?php echo $eventCount ?>">Events</label>

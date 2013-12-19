@@ -17,7 +17,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
             'compass/stylesheets/screen.css',
             'compass/stylesheets/print.css',
             'compass/stylesheets/formStyling.css'), array('?yui_css')) as $url): ?>
-        <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/fonts.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <?php foreach ($view['assetic']->javascripts(array(
@@ -27,7 +27,8 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
             'js/bootstrap/jquery.tablecloth.js',
             'js/common.js',
             'js/navBar.js'), array('?yui_js')) as $url): ?>
-        <script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+            <script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script>
+        <?php endforeach; ?>
         <script src="/js/jquery-ui-1.8.23.custom.min.js"></script>
         <script src="/js/bootstrap/jquery.tablesorter.min.js"></script>
         <script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>

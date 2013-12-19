@@ -1,8 +1,8 @@
 <?php $view->extend('::navBar.html.php') ?>
 <?php foreach ($view['assetic']->javascripts(array('js/jquery.form.js', 'js/accountsettings.js'), array('?yui_js')) as $url): ?>
-<script src="<?php echo $view->escape($url) ?>"></script><?php endforeach; ?>
+<script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script><?php endforeach; ?>
 <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/screen.css', 'compass/stylesheets/print.css'), array('?yui_css')) as $url): ?>
-<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
+<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
 <div id='accountSettings'>
     <?php
         // This is including the settingForms.html.php template into this page

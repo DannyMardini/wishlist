@@ -1,5 +1,5 @@
 <?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/QAMenu.css'), array('?yui_css')) as $url): ?>
-<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url) ?>" /><?php endforeach; ?>
+<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
 
 <input type="hidden" id="selectedOptionIndex" value="<?php echo $selectedOptionIndex; ?>" />
 <div>
