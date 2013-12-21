@@ -22,7 +22,7 @@ Wishlist\CoreBundle\Entity\WishlistUpdate:
       type: integer
       notnull: true
     message: 
-      type: string
+      type: text
       notnull: true
     datetime:
       type: datetime
