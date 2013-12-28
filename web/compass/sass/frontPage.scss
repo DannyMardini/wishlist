@@ -140,3 +140,14 @@ label {
         color: $global-button-hover-color;
     }
 }
+
+#email_addr {
+    display: inline-block;
+}
+
+#loader {
+    margin-left: 5px;
+    vertical-align: middle;
+    display: none;
+    height: 1.5em;
+}

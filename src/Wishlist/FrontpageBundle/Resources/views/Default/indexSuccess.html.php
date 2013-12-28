@@ -33,7 +33,8 @@
                         <br /><br />
                         <form id="requestInviteForm">
                             <label class="label">EMAIL:</label>
-                            <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required />
+                            <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required /><img id="loader" src="/images/swirl_loader.gif"> <!--display: none;">-->
+                            <br />
                             <br />
                             <input type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" />
                         </form>

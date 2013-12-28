@@ -57,6 +57,12 @@ services:
   pic_service:
     class: Wishlist\CoreBundle\Services\PicService
     arguments: ["@kernel"]
+  instant_mailer:
+    class: %swiftmailer.class%
+    arguments: ["@?swiftmailer.transport.real"]
+  instant_mailer_service:
+    class: Wishlist\CoreBundle\Services\MailerService
+    arguments: ["@instant_mailer", "@templating", "@doctrine"]
   mailer_service:
     class: Wishlist\CoreBundle\Services\MailerService
     arguments: ["@mailer", "@templating", "@doctrine"]

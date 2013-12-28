@@ -71,6 +71,7 @@ class DefaultController extends Controller
         try {
             $response = "The invite request has been submitted! We will contact you when we are ready for you to join!";
             $email = $this->getRequest()->get('email');
+            $mailer = $this->get("instant_mailer_service");
             
             if(!$email)
             {   
@@ -85,7 +86,8 @@ class DefaultController extends Controller
             }
             
             // make a database call to store the email in the invite queue
-            $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request')->addInviteToQueue($email, null);           
+            $requestInvite = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request')->addInviteToQueue($email, null);
+            $mailer->sendInvite($requestInvite);
             
             return new Response($response);
         }
