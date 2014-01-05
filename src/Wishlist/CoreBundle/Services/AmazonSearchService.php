@@ -92,10 +92,10 @@ class AmazonSearchService
         return $array;
     }
 
-    public function itemSearch($searchIndex, $keywords)
+    public function itemSearch($searchIndex, $keywords, $raw=false)
     {
         $request = $this->createItemSearchRequest($searchIndex, $keywords);
-        return $this->sendRequest($request);
+        return $this->sendRequest($request, $raw);
     }
 
     public function itemLookup($asin)
@@ -104,7 +104,7 @@ class AmazonSearchService
         return $this->sendRequest($request);
     }
 
-    protected function sendRequest($request)
+    protected function sendRequest($request, $raw=False)
     {
         $response = file_get_contents($request);
         $response = simplexml_load_string($response);
@@ -112,6 +112,11 @@ class AmazonSearchService
             throw new \Exception("Request was not valid");
         }
 
+        if(True === $raw)
+        {
+            return $response;
+        }
+        
         //return $response;
         return $this->responseToItems($response);
     }
