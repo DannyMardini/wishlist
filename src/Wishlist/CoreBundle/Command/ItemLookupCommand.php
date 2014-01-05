@@ -23,7 +23,7 @@ class ItemLookupCommand extends ContainerAwareCommand
         $asin = $input->getArgument('asin');
         $amazonService = $this->getContainer()->get('amazon_search_service');
 
-        $response = $amazonService->itemLookup($asin);
+        $response = $amazonService->itemLookup($asin, True);
 
         print_r($response);
     }

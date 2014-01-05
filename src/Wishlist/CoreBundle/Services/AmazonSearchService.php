@@ -92,16 +92,16 @@ class AmazonSearchService
         return $array;
     }
 
-    public function itemSearch($searchIndex, $keywords, $raw=false)
+    public function itemSearch($searchIndex, $keywords, $raw=False)
     {
         $request = $this->createItemSearchRequest($searchIndex, $keywords);
         return $this->sendRequest($request, $raw);
     }
 
-    public function itemLookup($asin)
+    public function itemLookup($asin, $raw=False)
     {
         $request = $this->createItemLookupRequest($asin);
-        return $this->sendRequest($request);
+        return $this->sendRequest($request, $raw);
     }
 
     protected function sendRequest($request, $raw=False)
