@@ -193,4 +193,79 @@ class Item
     {
         return $this->asin;
     }
+    /**
+     * @var text $mediumImage
+     */
+    private $mediumImage;
+
+
+    /**
+     * Set mediumImage
+     *
+     * @param text $mediumImage
+     */
+    public function setMediumImage($mediumImage)
+    {
+        $this->mediumImage = $mediumImage;
+    }
+
+    /**
+     * Get mediumImage
+     *
+     * @return text 
+     */
+    public function getMediumImage()
+    {
+        return $this->mediumImage;
+    }
+    /**
+     * @var text $smallImage
+     */
+    private $smallImage;
+
+    /**
+     * @var text $LargeImage
+     */
+    private $LargeImage;
+
+
+    /**
+     * Set smallImage
+     *
+     * @param text $smallImage
+     */
+    public function setSmallImage($smallImage)
+    {
+        $this->smallImage = $smallImage;
+    }
+
+    /**
+     * Get smallImage
+     *
+     * @return text 
+     */
+    public function getSmallImage()
+    {
+        return $this->smallImage;
+    }
+
+    /**
+     * Set LargeImage
+     *
+     * @param text $largeImage
+     */
+    public function setLargeImage($largeImage)
+    {
+        $this->LargeImage = $largeImage;
+    }
+
+    /**
+     * Get LargeImage
+     *
+     * @return text 
+     */
+    public function getLargeImage()
+    {
+        return $this->LargeImage;
+    }
 }

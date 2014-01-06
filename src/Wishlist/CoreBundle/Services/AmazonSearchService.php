@@ -9,7 +9,7 @@ class AmazonSearchService
     protected $accessId;
     protected $accessKey;
     const VERSION = "2011-08-01";
-    const ResponseGroup = "ItemAttributes";
+    const ResponseGroup = "ItemAttributes,Images";
 
     function __construct($accessId, $accessKey, $associateTag)
     {
@@ -86,6 +86,18 @@ class AmazonSearchService
             $item->setPrice(intval((string)$current->ItemAttributes->ListPrice->Amount), Item::CURRENCY_UNIT_CENT);
             $item->setLink((string)$current->DetailPageURL);
             $item->setAsin((string)$current->ASIN);
+            
+            if(isset($current->SmallImage) && isset($current->SmallImage->URL)) {
+                $item->setSmallImage((string)$current->SmallImage->URL);
+            }
+            
+            if(isset($current->MediumImage) && isset($current->MediumImage->URL)) {
+                $item->setMediumImage((string)$current->MediumImage->URL);
+            }
+            
+            if(isset($current->LargeImage) && isset($current->LargeImage->URL)) {
+                $item->setLargeImage((string)$current->LargeImage->URL);
+            }
             $array[] = $item;
         }
 
