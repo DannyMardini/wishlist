@@ -159,6 +159,29 @@ class PurchaseRepository extends EntityRepository
         return $q->getResult();
     }
     
+    public function getAllExpiredPurchases()
+    {
+        $em = $this->getEntityManager();
+
+        $q = $em->createQuery('
+            SELECT p 
+            FROM WishlistCoreBundle:Purchase p
+            LEFT JOIN p.wishlistUser usr
+            where p.gift_date < CURRENT_DATE()');            
+
+        return $q->getResult();
+    }    
+
+    public function getUsersWithExpiredPurchases()
+    {        
+        $purchases = $this->getAllExpiredPurchases();
+        $users = array();
+        foreach( $purchases as $p ){
+            array_push($users, $p->getWishlistUser());            
+        }
+        return $users;
+    }    
+    
     public function getPurchaseByItemId(/*int*/ $itemId)
     {
         $em = $this->getEntityManager();

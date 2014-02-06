@@ -104,6 +104,11 @@ class MailerService
         return "Your friend has invited you to join Wishenda!";
     }
     
+    public function getStandardExpiredPurchasesSubject()
+    {
+        return "Don't forget to log into Wishenda and view your shopping list so that the purchased items get checked off your list.";
+    }
+    
     public function sendFriendConfirmation($userA, $userB)
     {
         $success = false;
@@ -148,6 +153,38 @@ class MailerService
         if(isset($htmlbody) && isset($textbody))
         {
             $this->sendMail($friend->getEmail(), $this->getStandardFriendRequestSubject(), $htmlbody, $textbody);
+        }
+        
+        return $success;        
+    }
+    
+    public function sendExpiredPurchaseReminder($user)
+    {
+        // Send email to A letting them know that B wants to be their friend
+        $success = false;
+        $htmlbody = null; 
+        $textbody = null;
+        
+        if(!isset($user))
+        {
+            return $success;
+        }
+        
+        $htmlbody = $this->templating->render('WishlistUserBundle:Email:expiredPurchasesReminder.html.php', 
+                array('name' => $user->getFirstName()));
+        $textbody = strip_tags($htmlbody);
+
+        try 
+        {
+            if(isset($htmlbody) && isset($textbody))
+            {        
+                $this->sendMail($user->getEmail(), $this->getStandardExpiredPurchasesSubject(), $htmlbody, $textbody);
+                $success = true;
+            }
+        }
+        catch(Exception $e)
+        {
+            $success = false;
         }
         
         return $success;        
