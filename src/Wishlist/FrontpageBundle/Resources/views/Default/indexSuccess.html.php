@@ -54,6 +54,14 @@
                     </div>
                 </div>
             </div>
+            <?php 
+            if(preg_match('/(?i)msie [4-8]/',$_SERVER['HTTP_USER_AGENT']))
+            {
+                echo "<h3 style='color: FF8282;'>Please consider upgrading to a modern browser such as 
+                    <a href='https://www.google.com/intl/en/chrome/browser/' target='none'>Chrome</a> or 
+                    <a href='http://www.mozilla.org/en-US/firefox/new/' target='none'>Firefox</a></h3>\n";
+            }
+            ?>
         </div>
         <footer>
             <div id="footerDetails">
