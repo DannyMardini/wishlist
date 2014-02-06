@@ -406,29 +406,19 @@ class DefaultController extends Controller
     {
         $request = $this->getRequest();
         $response = 'The settings could not be saved, please try again later.';
-        try{
+        try
+        {
             $picService = $this->get('pic_service');
             $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
             $updateSettings = false;
             $loggedInUserId = $this->getRequest()->getSession()->get('user_id');
             $slashlessImagePath = "images/temp/".$loggedInUserId;
             $foundDir = is_dir($slashlessImagePath);
+            $acceptIdQuery = $this->getRequest()->query->get('acceptId');
 
-            // save image to user page if user uploaded a new image
-            if($foundDir) // move image to official user image and remove temp folder
-            {
-                // TODO
-            }
-
-            if(!isset($loggedInUserId))
+            if(isset($acceptIdQuery))
             {
                 $updateSettings = false;
-                
-                $acceptIdQuery = $this->getRequest()->query->get('acceptId');
-                if(!isset($acceptIdQuery))
-                {
-                    throw new \Exception($response);
-                }
 
                 $requestInvite = $requestRepo->findOneByAcceptString($acceptIdQuery); //Check to see if this is not found.
                 if(!isset($requestInvite))

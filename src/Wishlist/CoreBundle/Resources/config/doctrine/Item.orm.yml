@@ -29,4 +29,13 @@ Wishlist\CoreBundle\Entity\Item:
     asin:
       type: integer
       nullable: true
+    smallImage:
+      type: text
+      nullable: true
+    mediumImage:
+      type: text
+      nullable: true
+    LargeImage:
+      type: text
+      nullable: true
   lifecycleCallbacks: {  }

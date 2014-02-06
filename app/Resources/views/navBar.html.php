@@ -52,7 +52,16 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         </div>
 
         <div id="content" class="clearfix">
-        <?php $view['slots']->output('_content'); ?>
+        <?php 
+            $view['slots']->output('_content');
+
+            if(preg_match('/(?i)msie [4-8]/',$_SERVER['HTTP_USER_AGENT']))
+            {
+                echo "<h3 style='color: FF8282;'>Please consider upgrading to a modern browser such as 
+                    <a href='https://www.google.com/intl/en/chrome/browser/' target='none'>Chrome</a> or 
+                    <a href='http://www.mozilla.org/en-US/firefox/new/' target='none'>Firefox</a></h3>\n";
+            }
+        ?>
         </div>
         <?php 
             echo $view->render('WishlistDialogBundle:Default:amazonSearchDialog.html.php');

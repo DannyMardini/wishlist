@@ -98,7 +98,9 @@ $(document).ready(function()
         e.preventDefault();
         var url = Routing.generate('RequestInvite');
         var info = {email: $("#email_addr").val()};
+        $('#loader').show();
         ajaxPost(info, url, function(data){
+            $('#loader').hide();
             displayMessage(data, "Request Submitted");             
         }, null);
     });    

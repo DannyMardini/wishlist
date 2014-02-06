@@ -9,7 +9,7 @@ class AmazonSearchService
     protected $accessId;
     protected $accessKey;
     const VERSION = "2011-08-01";
-    const ResponseGroup = "ItemAttributes";
+    const ResponseGroup = "ItemAttributes,Images";
 
     function __construct($accessId, $accessKey, $associateTag)
     {
@@ -86,25 +86,63 @@ class AmazonSearchService
             $item->setPrice(intval((string)$current->ItemAttributes->ListPrice->Amount), Item::CURRENCY_UNIT_CENT);
             $item->setLink((string)$current->DetailPageURL);
             $item->setAsin((string)$current->ASIN);
+            
+            //Image Set to use in case there is no primary image set
+            if(isset($current->ImageSets) && isset($current->ImageSets->ImageSet)) {
+                if(is_array($current->ImageSets->ImageSet)) {
+                    $variantImageSet = $current->ImageSets->ImageSet[0];
+                }
+                else {
+                    $variantImageSet = $current->ImageSets->ImageSet;
+                }
+            }
+            
+            if(isset($current->SmallImage) && isset($current->SmallImage->URL)) {
+                $item->setSmallImage((string)$current->SmallImage->URL);
+            }
+            else if(isset($variantImageSet) && isset($variantImageSet->SmallImage)) {
+                if(isset($variantImageSet->SmallImage->URL)) {
+                    $item->setSmallImage((string)$variantImageSet->SmallImage->URL);
+                }
+            }
+            
+            if(isset($current->MediumImage) && isset($current->MediumImage->URL)) {
+                $item->setMediumImage((string)$current->MediumImage->URL);
+            }
+            else if(isset($variantImageSet) && isset($variantImageSet->MediumImage)) {
+                if(isset($variantImageSet->MediumImage->URL)) {
+                    $item->setMediumImage((string)$variantImageSet->MediumImage->URL);
+                }
+            }
+            
+            if(isset($current->LargeImage) && isset($current->LargeImage->URL)) {
+                $item->setLargeImage((string)$current->LargeImage->URL);
+            }
+            else if(isset($variantImageSet) && isset($variantImageSet->LargeImage)) {
+                if(isset($variantImageSet->LargeImage->URL)) {
+                    $item->setLargeImage((string)$variantImageSet->LargeImage->URL);
+                }
+            }
+            
             $array[] = $item;
         }
 
         return $array;
     }
 
-    public function itemSearch($searchIndex, $keywords)
+    public function itemSearch($searchIndex, $keywords, $raw=False)
     {
         $request = $this->createItemSearchRequest($searchIndex, $keywords);
-        return $this->sendRequest($request);
+        return $this->sendRequest($request, $raw);
     }
 
-    public function itemLookup($asin)
+    public function itemLookup($asin, $raw=False)
     {
         $request = $this->createItemLookupRequest($asin);
-        return $this->sendRequest($request);
+        return $this->sendRequest($request, $raw);
     }
 
-    protected function sendRequest($request)
+    protected function sendRequest($request, $raw=False)
     {
         $response = file_get_contents($request);
         $response = simplexml_load_string($response);
@@ -112,6 +150,11 @@ class AmazonSearchService
             throw new \Exception("Request was not valid");
         }
 
+        if(True === $raw)
+        {
+            return $response;
+        }
+        
         //return $response;
         return $this->responseToItems($response);
     }

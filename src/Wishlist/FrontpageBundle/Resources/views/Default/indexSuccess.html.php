@@ -33,7 +33,8 @@
                         <br /><br />
                         <form id="requestInviteForm">
                             <label class="label">EMAIL:</label>
-                            <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required />
+                            <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required /><img id="loader" src="/images/swirl_loader.gif"> <!--display: none;">-->
+                            <br />
                             <br />
                             <input type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" />
                         </form>
@@ -53,6 +54,14 @@
                     </div>
                 </div>
             </div>
+            <?php 
+            if(preg_match('/(?i)msie [4-8]/',$_SERVER['HTTP_USER_AGENT']))
+            {
+                echo "<h3 style='color: FF8282;'>Please consider upgrading to a modern browser such as 
+                    <a href='https://www.google.com/intl/en/chrome/browser/' target='none'>Chrome</a> or 
+                    <a href='http://www.mozilla.org/en-US/firefox/new/' target='none'>Firefox</a></h3>\n";
+            }
+            ?>
         </div>
         <footer>
             <div id="footerDetails">

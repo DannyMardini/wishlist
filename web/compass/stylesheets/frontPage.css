@@ -191,3 +191,16 @@ label {
 .forgotPassword:hover {
   color: #f1f1f1;
 }
+
+/* line 144, ../sass/frontPage.scss */
+#email_addr {
+  display: inline-block;
+}
+
+/* line 148, ../sass/frontPage.scss */
+#loader {
+  margin-left: 5px;
+  vertical-align: middle;
+  display: none;
+  height: 1.5em;
+}
