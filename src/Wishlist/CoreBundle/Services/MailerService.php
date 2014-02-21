@@ -106,7 +106,7 @@ class MailerService
     
     public function getStandardExpiredPurchasesSubject()
     {
-        return "Don't forget to log into Wishenda and view your shopping list so that the purchased items get checked off your list.";
+        return "You have expired shopping list items on Wishenda!";
     }
     
     public function sendFriendConfirmation($userA, $userB)

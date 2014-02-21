@@ -176,8 +176,12 @@ class PurchaseRepository extends EntityRepository
     {        
         $purchases = $this->getAllExpiredPurchases();
         $users = array();
-        foreach( $purchases as $p ){
-            array_push($users, $p->getWishlistUser());            
+        foreach( $purchases as $p ){            
+            $tmpUser = $p->getWishlistUser();            
+            if(!array_key_exists ($tmpUser->getWishlistuserId() , $users))
+            {            
+                $users[$tmpUser->getWishlistuserId()] = $p->getWishlistUser();                
+            }
         }
         return $users;
     }    
