@@ -174,8 +174,7 @@ $(document).ready(function(){
     var friendInviteDialog = $('#friendInviteDialog');
     var friendInviteEmail = $('#newFriendEmail');
     
-    createButtonLinks();
-    
+    createButtonLinks();    
     $('#friendSearch').keyup(keyTrigger);
 
     friendInviteDialog.dialog({
@@ -193,8 +192,7 @@ $(document).ready(function(){
     });
     
     $('#friendInviteForm').submit(function(e) {
-        e.preventDefault();
-        
+        e.preventDefault();        
         submitFriendInvite(friendInviteEmail.val());
     });
     
