@@ -8,14 +8,14 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
     <head>
         <link rel="shortcut icon" href="/images/favicon.ico" />
         <?php foreach ($view['assetic']->stylesheets(array(            
-            'compass/stylesheets/main.css',
-            'css/bootstrap/bootstrap.css',
-            'css/bootstrap/bootstrap-responsive.css',
+            'compass/stylesheets/main.css',            
             'css/bootstrap/tablecloth.css',
             'css/bootstrap/prettify.css',
             'compass/stylesheets/navBar.css',
             'compass/stylesheets/screen.css',
             'compass/stylesheets/print.css',
+            'css/bootstrap/bootstrap.css',
+            'css/bootstrap/bootstrap-responsive.css',            
             'compass/stylesheets/formStyling.css'), array('?yui_css')) as $url): ?>
         <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/fonts.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />

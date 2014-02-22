@@ -5,7 +5,7 @@
               <script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script><?php endforeach; ?>
         
         <?php foreach ($view['assetic']->stylesheets(
-            array('compass/stylesheets/frontPage.css', 'compass/stylesheets/main.css'), array('?yui_css')) as $url): ?>
+            array('css/bootstrap/bootstrap.css', 'compass/stylesheets/frontPage.css', 'compass/stylesheets/main.css'), array('?yui_css')) as $url): ?>
             <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
 
         <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -21,19 +21,23 @@
         <div id="registrationContainer">
             <div id="logoContainer">
                 <div id="name">Wishenda</div>
-                <div id="catchphrase">make your wishes come true!</div>
+                <div id="catchphrase">
+                    <div class="catchphrasecontent">
+                        See what your family & friends want for the holidays, their birthdays, or any special occasion!
+                    </div>
+                </div>
             </div>
             <div id="registrationForm">
                 <br /><br />
-                <a href="" id="requestInviteButton">Request Invite</a>
-                <a href="" id="loginButton">Login</a>
+                <button href="" id="requestInviteButton">Request Invite</button>
+                <button href="" id="loginButton">Login</button>
                 <br />
                 <div class="toggler">
                     <div id="requestInviteToggleWindow"> 
                         <br /><br />
-                        <form id="requestInviteForm">
-                            <label class="label">EMAIL:</label>
-                            <input type="email" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address" required /><img id="loader" src="/images/swirl_loader.gif"> <!--display: none;">-->
+                        <form role="form" id="requestInviteForm">
+                            <label for="email_addr" class="sr-only">EMAIL:</label>
+                            <input type="email" class="form-control" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required /><img id="loader" src="/images/swirl_loader.gif">
                             <br />
                             <br />
                             <input type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" />
@@ -42,14 +46,14 @@
                     <div id="loginToggleWindow">
                         <br /><br />
                         <form id="loginForm">
-                            <label class="label">EMAIL:</label>
-                            <input type="email" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email address or username" required />
+                            <label for="login_email_addr" class="sr-only">EMAIL:</label>
+                            <input type="email" class="form-control" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required />
                             <br />
-                            <label class="label">PASSWORD:</label>
-                            <input type="password" id="password" name="password" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" required />
+                            <label for="password" class="sr-only">PASSWORD:</label>
+                            <input type="password" class="form-control" id="password" name="password" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" placeholder="Password" required />
                             <br />
                             <input type="submit" id="submitLogin" name="submitLogin" value="Login" />
-                            <a href="<?php echo $view['router']->generate('WishlistQABundle_forgotpassword')?>" id="forgotPassword" target="_blank" class="forgotPassword">Forgot your password?</a>
+                            <span class="help-block"><a href="<?php echo $view['router']->generate('WishlistQABundle_forgotpassword')?>" id="forgotPassword" target="_blank" class="forgotPassword">Forgot your password?</a></span>                            
                         </form>
                     </div>
                 </div>

@@ -124,11 +124,16 @@ footer {
 /* line 87, ../sass/frontPage.scss */
 #catchphrase {
   font-family: 'Gruppo', sans-serif;
-  font-size: 28px;
-  text-indent: 30px;
+  font-size: 20px;
+  text-indent: 10px;
 }
 
 /* line 93, ../sass/frontPage.scss */
+.catchphrasecontent {
+  width: 900px;
+}
+
+/* line 97, ../sass/frontPage.scss */
 .toggler {
   width: 80%;
   padding-top: 15px;
@@ -136,7 +141,7 @@ footer {
   height: 88%;
 }
 
-/* line 100, ../sass/frontPage.scss */
+/* line 104, ../sass/frontPage.scss */
 #requestInviteToggleWindow, #loginToggleWindow {
   width: 500px;
   height: 90%;
@@ -145,20 +150,20 @@ footer {
   background-color: white;
 }
 
-/* line 108, ../sass/frontPage.scss */
+/* line 112, ../sass/frontPage.scss */
 #requestInviteButton, #loginButton {
   padding: .5em 1em;
   text-decoration: none;
 }
 
-/* line 113, ../sass/frontPage.scss */
+/* line 117, ../sass/frontPage.scss */
 #requestInviteToggleWindow h3, #loginToggleWindow h3 {
   margin: 0;
   padding: 0.4em;
   text-align: center;
 }
 
-/* line 119, ../sass/frontPage.scss */
+/* line 123, ../sass/frontPage.scss */
 input {
   display: block;
   width: 300px;
@@ -166,7 +171,7 @@ input {
   font-size: 15px;
 }
 
-/* line 126, ../sass/frontPage.scss */
+/* line 130, ../sass/frontPage.scss */
 #submitLogin, #submitRequestInvite {
   width: 200px;
   -webkit-border-radius: 5px;
@@ -176,28 +181,28 @@ input {
   border-radius: 5px;
 }
 
-/* line 131, ../sass/frontPage.scss */
+/* line 135, ../sass/frontPage.scss */
 label {
   display: block;
   font-weight: bolder;
   width: 200px;
 }
 
-/* line 137, ../sass/frontPage.scss */
+/* line 141, ../sass/frontPage.scss */
 .forgotPassword {
   color: #888888;
 }
-/* line 139, ../sass/frontPage.scss */
+/* line 143, ../sass/frontPage.scss */
 .forgotPassword:hover {
   color: #f1f1f1;
 }
 
-/* line 144, ../sass/frontPage.scss */
+/* line 148, ../sass/frontPage.scss */
 #email_addr {
   display: inline-block;
 }
 
-/* line 148, ../sass/frontPage.scss */
+/* line 152, ../sass/frontPage.scss */
 #loader {
   margin-left: 5px;
   vertical-align: middle;
