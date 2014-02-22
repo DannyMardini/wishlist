@@ -1,9 +1,8 @@
-<div id="friendInviteDialog" title="Invite a friend!">
-    <form id="friendInviteForm" style="width:inherit;">
-        <div class="message narrow-box">Need to shop for a friend who is not on Wishenda yet? Invite them to join!</div>
-        <div class="inviteFriendInput">
-            <label class="form-label">Email:</label>
-            <input name="email" id="newFriendEmail" type="email" placeholder="johndoe@email.com"></div>
+<div id="friendInviteDialog" title="Invite a friend!">    
+    <form role="form" id="friendInviteForm" style="width:inherit;">
+        <h1>Need to shop for a friend who is not on Wishenda?<small>Send them an invite!</small></h1><br />
+        <div class="form-group" class="inviteFriendInput">            
+            <input type="email" class="form-control" name="email" id="newFriendEmail" placeholder="johndoe@email.com"></div>
         <input id="friendInviteFormSubmit" type="submit" name="submitFriend" style="display: none" required>
     </form>
 </div>
