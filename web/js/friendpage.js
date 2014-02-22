@@ -171,12 +171,14 @@ function submitFriendInvite(email)
 }
 
 $(document).ready(function(){
+    var friendInviteDialog = $('#friendInviteDialog');
+    var friendInviteEmail = $('#newFriendEmail');
     
     createButtonLinks();
     
     $('#friendSearch').keyup(keyTrigger);
 
-    $('#friendInviteDialog').dialog({
+    friendInviteDialog.dialog({
             autoOpen: false,
             position: 'top', 
             resizable: false,
@@ -193,10 +195,11 @@ $(document).ready(function(){
     $('#friendInviteForm').submit(function(e) {
         e.preventDefault();
         
-        submitFriendInvite($('#newFriendEmail').val());
+        submitFriendInvite(friendInviteEmail.val());
     });
     
     $('#inviteFriendButton').click(function(){
-        $('#friendInviteDialog').dialog('open');
+        friendInviteDialog.dialog('open');
+        friendInviteEmail.val('');
     });
 });
