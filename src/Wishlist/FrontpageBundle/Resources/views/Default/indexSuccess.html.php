@@ -23,10 +23,16 @@
                 <div id="name">Wishenda</div>
                 <div id="catchphrase">
                     <div class="catchphrasecontent">
-                        See what your family & friends want for the holidays, their birthdays, or any special occasion!
+                        <b>Shopping for friends has never been easier.</b><br />
+                        <small>
+                            A central location to keep a wishlist of items from any online store. 
+                            Keep a shopping list of items you plan to buy for your friends. 
+                            Do it all without stepping into a store!
+                        </small>
                     </div>
                 </div>
             </div>
+            <br />
             <div id="registrationForm">
                 <br /><br />
                 <button href="" id="requestInviteButton">Request Invite</button>
