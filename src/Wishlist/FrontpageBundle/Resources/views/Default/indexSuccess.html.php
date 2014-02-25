@@ -27,7 +27,7 @@
                         <small>
                             A central location to keep a wishlist of items from any online store. 
                             Keep a shopping list of items you plan to buy for your friends. 
-                            Do it all without stepping into a store!
+                            Get your shopping done, without stepping into a store!
                         </small>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                 <br />
                 <div class="toggler">
                     <div id="requestInviteToggleWindow"> 
-                        <br /><br />
+                        <br />
                         <form role="form" id="requestInviteForm">
                             <label for="email_addr" class="sr-only">EMAIL:</label>
                             <input type="email" class="form-control" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required /><img id="loader" src="/images/swirl_loader.gif">
@@ -50,7 +50,7 @@
                         </form>
                     </div>
                     <div id="loginToggleWindow">
-                        <br /><br />
+                        <br />
                         <form id="loginForm">
                             <label for="login_email_addr" class="sr-only">EMAIL:</label>
                             <input type="email" class="form-control" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required />
