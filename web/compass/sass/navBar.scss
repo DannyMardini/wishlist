@@ -36,7 +36,7 @@ ul {
     margin-bottom: 10px;
     background-color: $global-color5;
     width: 100%;
-    @include box-shadow(0 2px 2px 0 $global-color6);
+    @include box-shadow(0 2px 2px 0 $global-color6);    
 
     li {
         display: inline-block;
@@ -81,7 +81,6 @@ ul {
 
 #logoContainer {
     display: inline-block;
-    margin-top: 15px;
 }
 
 #logoName {
