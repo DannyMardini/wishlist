@@ -27,7 +27,7 @@
                         <div class="catchphrasecontent-small">
                             Create a registry from all your favorite stores in one place.<br />
                             See your friends' wish lists.<br />
-                            Keep a shopping list of items you plan to buy for friends or yourself.                            
+                            Keep a shopping list of items you plan to buy for friends or yourself.         
                         </div>
                     </div>
                 </div>
@@ -75,11 +75,11 @@
         </div>
         <footer>
             <div id="footerDetails">
-                <a class="aboutLink frontpageLink" href="">ABOUT</a>
-                <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">TERMS</a>
-                <img src="/images/silverdot.gif" width="10" height="10" />
-                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">PRIVACY</a>                
+                <a class="aboutLink frontpageLink" href="">About</a>
+                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms</a>
+                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy</a>
+                <br />
+                <span>© 2014 Wishenda</span>
             </div>
         </footer>
         <div id="dialog-message" title=""></div>

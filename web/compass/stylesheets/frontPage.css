@@ -97,49 +97,50 @@ footer {
 .frontpageLink:visited, .frontpageLink:link, .frontpageLink:active {
   color: #888888;
   text-decoration: none;
+  margin-right: 5px;
 }
-/* line 67, ../sass/frontPage.scss */
+/* line 68, ../sass/frontPage.scss */
 .frontpageLink:hover {
   color: #f1f1f1;
 }
 
-/* line 72, ../sass/frontPage.scss */
+/* line 73, ../sass/frontPage.scss */
 #logoContainer {
   height: 35%;
   background-color: white;
   width: 100%;
 }
 
-/* line 78, ../sass/frontPage.scss */
+/* line 79, ../sass/frontPage.scss */
 #registrationForm {
   height: 55%;
 }
 
-/* line 82, ../sass/frontPage.scss */
+/* line 83, ../sass/frontPage.scss */
 #name {
   font-family: "Satisfy", cursive;
   font-size: 78px;
 }
 
-/* line 87, ../sass/frontPage.scss */
+/* line 88, ../sass/frontPage.scss */
 #catchphrase {
   font-family: Helvetica;
   font-size: 20px;
 }
 
-/* line 92, ../sass/frontPage.scss */
+/* line 93, ../sass/frontPage.scss */
 .catchphrasecontent :first-child {
   width: 1100px;
   font-size: 22px;
   color: #FC6DC0;
 }
 
-/* line 98, ../sass/frontPage.scss */
+/* line 99, ../sass/frontPage.scss */
 .catchphrasecontent-small {
   font-size: 14px;
 }
 
-/* line 102, ../sass/frontPage.scss */
+/* line 103, ../sass/frontPage.scss */
 .toggler {
   width: 80%;
   padding-top: 15px;
@@ -147,7 +148,7 @@ footer {
   height: 88%;
 }
 
-/* line 109, ../sass/frontPage.scss */
+/* line 110, ../sass/frontPage.scss */
 #requestInviteToggleWindow, #loginToggleWindow {
   width: 500px;
   height: 90%;
@@ -156,20 +157,20 @@ footer {
   background-color: white;
 }
 
-/* line 117, ../sass/frontPage.scss */
+/* line 118, ../sass/frontPage.scss */
 #requestInviteButton, #loginButton {
   padding: .5em 1em;
   text-decoration: none;
 }
 
-/* line 122, ../sass/frontPage.scss */
+/* line 123, ../sass/frontPage.scss */
 #requestInviteToggleWindow h3, #loginToggleWindow h3 {
   margin: 0;
   padding: 0.4em;
   text-align: center;
 }
 
-/* line 128, ../sass/frontPage.scss */
+/* line 129, ../sass/frontPage.scss */
 input {
   display: block;
   width: 300px;
@@ -177,7 +178,7 @@ input {
   font-size: 15px;
 }
 
-/* line 135, ../sass/frontPage.scss */
+/* line 136, ../sass/frontPage.scss */
 #submitLogin, #submitRequestInvite {
   width: 200px;
   -webkit-border-radius: 5px;
@@ -187,28 +188,28 @@ input {
   border-radius: 5px;
 }
 
-/* line 140, ../sass/frontPage.scss */
+/* line 141, ../sass/frontPage.scss */
 label {
   display: block;
   font-weight: bolder;
   width: 200px;
 }
 
-/* line 146, ../sass/frontPage.scss */
+/* line 147, ../sass/frontPage.scss */
 .forgotPassword {
   color: #888888;
 }
-/* line 148, ../sass/frontPage.scss */
+/* line 149, ../sass/frontPage.scss */
 .forgotPassword:hover {
   color: #f1f1f1;
 }
 
-/* line 153, ../sass/frontPage.scss */
+/* line 154, ../sass/frontPage.scss */
 #email_addr {
   display: inline-block;
 }
 
-/* line 157, ../sass/frontPage.scss */
+/* line 158, ../sass/frontPage.scss */
 #loader {
   margin-left: 5px;
   vertical-align: middle;

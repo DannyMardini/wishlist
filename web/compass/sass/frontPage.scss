@@ -61,7 +61,8 @@ footer {
 .frontpageLink {
     &:visited, &:link, &:active {
         color: $global-button-text-color;
-        text-decoration: none;        
+        text-decoration: none;
+        margin-right: 5px;
     }
 
     &:hover {
