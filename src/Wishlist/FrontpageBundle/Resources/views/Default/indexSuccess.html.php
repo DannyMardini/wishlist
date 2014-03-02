@@ -23,7 +23,7 @@
                 <div id="name">Wishenda</div>
                 <div id="catchphrase">
                     <div class="catchphrasecontent">
-                        <b>Shopping for friends just got easier... do it in 10 minutes</b><br />
+                        <b>shopping for friends just got easier... do it in minutes</b><br />
                         <div class="catchphrasecontent-small">
                             Create a registry from all your favorite stores in one place.<br />
                             See your friends' wish lists.<br />
