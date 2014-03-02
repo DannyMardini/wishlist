@@ -10,6 +10,12 @@ body {
     font-family: $global-font-family;
 }
 
+.strong-label{
+    color: black; 
+    font-weight: bold;
+    font-size: 16px;
+}
+
 .clearfix:after {
   clear: both;
   content: ".";
@@ -28,12 +34,12 @@ body {
 
 .addButton {
     margin-left: 10px;
-    margin-top: 5px;
+    margin-top: 15px;    
 }
 
 .removeButton {
     margin-left: 10px;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 .pageTitle {

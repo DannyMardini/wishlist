@@ -50,7 +50,7 @@ if($i > 0){
         }
 
         echo "<tr>
-            <td><a href='#' onclick='".$wishItemDialog."'>".$item->getName()."</a></td>
+            <td><a class='strong-label' href='#' onclick='".$wishItemDialog."'>".$item->getName()."</a></td>
             <td>".$item->getPrice(Item::CURRENCY_UNIT_DOLLAR)."</td>
             <td>".$purchasedCell."</td>
             </tr>";

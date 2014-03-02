@@ -11,6 +11,13 @@ body {
 }
 
 /* line 13, ../sass/main.scss */
+.strong-label {
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* line 19, ../sass/main.scss */
 .clearfix:after {
   clear: both;
   content: ".";
@@ -21,31 +28,31 @@ body {
   visibility: hidden;
 }
 
-/* line 23, ../sass/main.scss */
+/* line 29, ../sass/main.scss */
 #content {
   width: 981px;
   margin: auto;
   margin-top: 100px;
 }
 
-/* line 29, ../sass/main.scss */
+/* line 35, ../sass/main.scss */
 .addButton {
   margin-left: 10px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
-/* line 34, ../sass/main.scss */
+/* line 40, ../sass/main.scss */
 .removeButton {
   margin-left: 10px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
-/* line 39, ../sass/main.scss */
+/* line 45, ../sass/main.scss */
 .pageTitle {
   width: 90%;
 }
 
-/* line 43, ../sass/main.scss */
+/* line 49, ../sass/main.scss */
 .itemCountSpan {
   float: right;
   margin-top: 10px;
