@@ -23,12 +23,12 @@
                 <div id="name">Wishenda</div>
                 <div id="catchphrase">
                     <div class="catchphrasecontent">
-                        <b>Shopping for friends has never been easier.</b><br />
-                        <small>
-                            A central location to keep a wishlist of items from any online store. 
-                            Keep a shopping list of items you plan to buy for your friends. 
-                            Get your shopping done, without stepping into a store!
-                        </small>
+                        <b>Shopping for friends just got easier... do it in 10 minutes</b><br />
+                        <div class="catchphrasecontent-small">
+                            Create a registry from all your favorite stores in one place.<br />
+                            See your friends' wish lists.<br />
+                            Keep a shopping list of items you plan to buy for friends or yourself.                            
+                        </div>
                     </div>
                 </div>
             </div>

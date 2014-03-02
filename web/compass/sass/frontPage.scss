@@ -86,12 +86,17 @@ footer {
 
 #catchphrase {    
     font-family: Helvetica;
-    font-size: 20px;
-    text-indent: 30px;
+    font-size: 20px;    
 }
 
-.catchphrasecontent{
+.catchphrasecontent :first-child{
     width: 1100px;
+    font-size: 22px;
+    color: #FC6DC0;
+}
+
+.catchphrasecontent-small{
+    font-size: 14px;
 }
 
 .toggler { 
