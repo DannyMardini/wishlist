@@ -33,7 +33,7 @@ h1 {
 #div_left_panel {
     display: inline-block;
     float: left;
-    margin: 10px 60px 0px 10px;
+    margin: 0px 60px 0px 0px;
 }
 
 #div_right_panel {
@@ -43,22 +43,14 @@ h1 {
 
 #div_user_info {
     padding-top: 20px;
+    .user-info-label{
+        width: 70px;
+    }
+    .user-info {
+        font-weight: normal;       
+    }
 }
 
 #unfriendButton {
-    display: inline-block;
-    color: $global-button-text-color;
-    @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
-    background-color: $global-button-bg-color;
-    border: $global-button-border;
-    @include border-radius($global-button-radius);
-    margin-top: 4px;
-    cursor: pointer;
-    padding: 0px 5px 0px 5px;
-    margin-top: 5px;
-}
-
-#unfriendButton:hover {
-    background: $global-button-hover-color;
-    color: $global-button-hover-text-color;
+    margin-top: 10px;
 }

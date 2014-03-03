@@ -37,7 +37,7 @@ h1 {
 #div_left_panel {
   display: inline-block;
   float: left;
-  margin: 10px 60px 0px 10px;
+  margin: 0px 60px 0px 0px;
 }
 
 /* line 39, ../sass/userPage.scss */
@@ -50,31 +50,16 @@ h1 {
 #div_user_info {
   padding-top: 20px;
 }
-
-/* line 48, ../sass/userPage.scss */
-#unfriendButton {
-  display: inline-block;
-  color: #888888;
-  background-image: -webkit-linear-gradient(white, #f0f0f0);
-  background-image: -moz-linear-gradient(white, #f0f0f0);
-  background-image: -ms-linear-gradient(white, #f0f0f0);
-  background-image: -o-linear-gradient(white, #f0f0f0);
-  background-image: linear-gradient(#ffffff, #f0f0f0);
-  background-color: #f7f7f7;
-  border: 1px solid #cccccc;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -o-border-radius: 3px;
-  -ms-border-radius: 3px;
-  border-radius: 3px;
-  margin-top: 4px;
-  cursor: pointer;
-  padding: 0px 5px 0px 5px;
-  margin-top: 5px;
+/* line 46, ../sass/userPage.scss */
+#div_user_info .user-info-label {
+  width: 70px;
+}
+/* line 49, ../sass/userPage.scss */
+#div_user_info .user-info {
+  font-weight: normal;
 }
 
-/* line 61, ../sass/userPage.scss */
-#unfriendButton:hover {
-  background: #f1f1f1;
-  color: #333333;
+/* line 54, ../sass/userPage.scss */
+#unfriendButton {
+  margin-top: 10px;
 }
