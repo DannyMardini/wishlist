@@ -27,7 +27,7 @@
                         <div class="catchphrasecontent-small">
                             Create a registry from all your favorite stores in one place.<br />
                             See your friends' wish lists.<br />
-                            Keep a shopping list of items you plan to buy for friends or yourself.         
+                            Keep a shopping list of items you plan to buy.         
                         </div>
                     </div>
                 </div>
