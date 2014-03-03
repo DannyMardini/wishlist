@@ -330,12 +330,12 @@ $header-width: 70em;
 	 font-size: 11px;
 	 &:hover {
 	 	 cursor:pointer;	 
-	 }
+	 }        
 }
 
-#otherItem {
-	   &.subtext {
-	   	    font-weight: bold;
-		    font-size: 12px;
-	   }
+#otherItem {        
+        &.subtext {
+                 font-weight: bold;
+                 font-size: 12px;                 
+        }
 }
