@@ -43,7 +43,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
             <li><a href="<?php echo $friendsUrl ?>">Friends</a></li>
         </ul>
 
-        <div id="updatesComponent" class="positionmodulefixed">
+        <div id="updatesComponent" class="navBarComponent positionmodulefixed">
             <div class="updatesHeader">Recent Friend Activity</div>    
 
             <div id="updatesInnerComponent">

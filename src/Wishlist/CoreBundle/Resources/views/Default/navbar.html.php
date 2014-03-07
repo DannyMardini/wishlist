@@ -16,51 +16,42 @@
             <div id="logoContainer">        
                 <div id="logoname" class="logo">Wishenda<span id='betaTag'>beta</span></div>
             </div>
-        </div>
+        </div>        
         <div class="rightHeaderContent">
-            <span id="linksContainer">
-                <ul id="navigation" class="font-style">
-                    <li class="navButtons">
-                            <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($profileThumb) : ""; ?>)"></span>
-                            <span id='homepageLink' class="navcenter ui-MenuLink"><?php echo $user->getName() ?></span>
-                    </li><li id="updatesWindowButton" class="navButtons smallNavButtons" title="Updates">
-                        <span class="ui-icon ui-icon-star navcenter"></span>
-                    </li><li id="accountOptionsDropdownButton" class="navButtons smallNavButtons"><span class="ui-icon ui-icon-gear navcenter"></span>
-                    <?php
-                    if(count($user->getNotifications()) > 0)
-                    {
-                        //Note, there cannot be any white-space between li's if you want them to show up right next to each other.
-                        echo "</li><li id='notificationsDropDown' class='navButtons smallNavButtons'>";
-                        echo "<div id='notificationDiv' class='navcenter'><div id='viewNotificationsButton'><span class='ui-icon ui-icon-notice blue'></span></div>\n";
-                        echo "<div id='notificationWindow'>\n";
-                        echo "<ul>\n";
-                        foreach($user->getNotifications() as $notification)
-                        {
-                            $notificationId = $notification->getId();
-                            echo "<li id='notification_".$notificationId."' style='height:30px;' class='notifications'>
-                                <span style='margin:0 10px 0 10px;'>".$notification->getText()."</span>
-                                <a class='acceptFriend' href='#'>Accept</a> or
-                                <a class='ignoreFriend' href='#'>Ignore</a>
-                                </li>\n";
-                        }
-                        echo "</ul>\n";
-                        echo "</div></div>\n</li>";
-                    }
-                    else
-                    {
-                        //Note, there cannot be any white-space between li's if you want them to show up right next to each other.
-                        echo "</li>";
-                    }
-                    ?>                    
+            <div class="btn-group">  
+              <div class="btn-group">    
+                <span class="profilePicture" style="background-image:url(<?php echo $user!=null ? ($profileThumb) : ""; ?>)"></span>    
+                <button id="accountOptionsDropdownButton" type="button" class="btn btn-default dropdown-toggle navButton" data-toggle="dropdown"><?php echo $user->getName() ?></button>
+                <ul class="dropdown-menu">
+                    <li id="accountSettingsLink" class="ui-MenuLink"><a href="#">Settings</a></li>
+                    <li id="helpLink" class="ui-MenuLink"><a href="#">Help</a></li>
+                    <li id="logoutLink" class="ui-MenuLink"><a href="#">Log Out</a></li>
                 </ul>
-            </span>
+              </div>
+                <button type="button" for="updatesComponent" id="updatesWindowButton" class="btn btn-default headerButton navButton"><span class="ui-icon ui-icon-star navcenter"></span></button>                
+                <?php
+                if(count($user->getNotifications()) > 0)
+                {  
+                    echo "<button id='viewNotificationsButton' for='notificationWindow' type='button' class='btn btn-default headerButton navButton'><span class='ui-icon ui-icon-notice blue'></span></button></div>";
+                    echo "<div id='notificationDiv' class='navcenter'>\n";
+                    echo "<div id='notificationWindow' class='navBarComponent panel panel-default'>\n";
+                    echo "<ul class='list-group'>\n";
+                    foreach($user->getNotifications() as $notification)
+                    {
+                        $notificationId = $notification->getId();
+                        echo "<li class='list-group-item notifications' id='notification_".$notificationId."'>
+                                <h5 style='margin:10px 10px 10px 10px;'>".$notification->getText()."
+                                <small><a class='acceptFriend' href='#'>Accept</a> or
+                                <a class='ignoreFriend' href='#'>Ignore</a></small></h5>                                                   
+                            </li>\n";
+                    }
+                    echo "</ul>\n";
+                    echo "</div></div>";
+                }  
+                else {
+                    echo "</div>";
+                }
+                ?>
+            </div> 
         </div>
-    </div>    
-    <div id="accountOptionsDropdown" class="positionModuleFixed">
-        <ul>
-            <li id="accountSettingsLink" class="ui-MenuLink"><a href="#">Settings</a></li>
-            <li id="helpLink" class="ui-MenuLink"><a href="#">Help</a></li>
-            <li id="logoutLink" class="ui-MenuLink"><a href="#">Log Out</a></li>
-        </ul>
-    </div>    
 </div>

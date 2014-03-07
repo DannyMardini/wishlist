@@ -118,46 +118,40 @@ ul li a {
 
 /* line 100, ../sass/navBar.scss */
 .profilePicture {
-  -webkit-border-radius: 3px 0 0 3px;
-  -moz-border-radius: 3px 0 0 3px;
-  -o-border-radius: 3px 0 0 3px;
-  -ms-border-radius: 3px 0 0 3px;
-  border-radius: 3px 0 0 3px;
-  -webkit-box-shadow: 0 0 2px #cccccc inset;
-  -moz-box-shadow: 0 0 2px #cccccc inset;
-  -o-box-shadow: 0 0 2px #cccccc inset;
-  -ms-box-shadow: 0 0 2px #cccccc inset;
-  box-shadow: 0 0 2px #cccccc inset;
   background-size: cover;
   float: left;
-  height: 30px;
-  margin: -1px;
-  width: 30px;
+  height: 34px;
+  width: 34px;
 }
 
-/* line 110, ../sass/navBar.scss */
+/* line 107, ../sass/navBar.scss */
+.headerButton {
+  height: 34px;
+}
+
+/* line 111, ../sass/navBar.scss */
 #notificationDiv {
   position: relative;
 }
-/* line 113, ../sass/navBar.scss */
+/* line 114, ../sass/navBar.scss */
 #notificationDiv:hover {
   cursor: pointer;
 }
 
-/* line 118, ../sass/navBar.scss */
+/* line 119, ../sass/navBar.scss */
 #notificationWindow {
   display: none;
-  margin-top: 5px;
   position: absolute;
-  right: -1px;
-  width: 430px;
+  /*right: -1px;
+  margin-top: 20px;
+  font-size: 13px;
+  text-align: left;
+  width: 430px;   
+  top: 20px;*/
   border-width: 0px 1px 1px 1px;
   border-style: solid;
   border-color: #f7f7f7;
   border: 1px solid #cccccc;
-  background: white;
-  font-size: 13px;
-  text-align: left;
   background-image: -webkit-linear-gradient(white, #f0f0f0);
   background-image: -moz-linear-gradient(white, #f0f0f0);
   background-image: -ms-linear-gradient(white, #f0f0f0);
@@ -168,12 +162,9 @@ ul li a {
   -o-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
-  cursor: pointer;
-  font-weight: normal;
-  top: 20px;
 }
 
-/* line 142, ../sass/navBar.scss */
+/* line 140, ../sass/navBar.scss */
 .Header .headerContainer {
   -o-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -191,72 +182,24 @@ ul li a {
   right: 0;
 }
 
-/* line 155, ../sass/navBar.scss */
+/* line 153, ../sass/navBar.scss */
 .centeredWithinWrapper {
   margin: 0 auto;
   width: 800px;
 }
 
-/* line 160, ../sass/navBar.scss */
-#accountOptionsDropdown {
-  background-image: -webkit-linear-gradient(white, #f0f0f0);
-  background-image: -moz-linear-gradient(white, #f0f0f0);
-  background-image: -ms-linear-gradient(white, #f0f0f0);
-  background-image: -o-linear-gradient(white, #f0f0f0);
-  background-image: linear-gradient(#ffffff, #f0f0f0);
-  background-color: #f7f7f7;
-  border: 1px solid #cccccc;
-  display: none;
-  -webkit-border-radius: 3px 3px 0 0;
-  -moz-border-radius: 3px 3px 0 0;
-  -o-border-radius: 3px 3px 0 0;
-  -ms-border-radius: 3px 3px 0 0;
-  border-radius: 3px 3px 0 0;
-  border-bottom: 1px solid;
-  top: 41px;
-  width: 174px;
-  border-top-width: 0px;
-}
-/* line 162, ../sass/navBar.scss */
-#accountOptionsDropdown li {
-  text-decoration: none;
-  padding: 10px 0px 5px 0px;
-}
-/* line 163, ../sass/navBar.scss */
-#accountOptionsDropdown li a {
-  text-decoration: none;
-  color: #888888;
-}
-/* line 168, ../sass/navBar.scss */
-#accountOptionsDropdown li:hover {
-  color: #333333;
-  font-weight: bolder;
-  background-image: -webkit-linear-gradient(white, #f0f0f0);
-  background-image: -moz-linear-gradient(white, #f0f0f0);
-  background-image: -ms-linear-gradient(white, #f0f0f0);
-  background-image: -o-linear-gradient(white, #f0f0f0);
-  background-image: linear-gradient(#ffffff, #f0f0f0);
-}
-/* line 178, ../sass/navBar.scss */
-#accountOptionsDropdown ul {
-  list-style: none;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  text-align: center;
-}
-
-/* line 197, ../sass/navBar.scss */
+/* line 159, ../sass/navBar.scss */
 #navigation .navcenter {
   display: inline-block;
   margin-top: 5px;
 }
-/* line 202, ../sass/navBar.scss */
+/* line 164, ../sass/navBar.scss */
 #navigation .smallNavButtons {
   width: 26px;
   height: 30px;
 }
 
-/* line 208, ../sass/navBar.scss */
+/* line 170, ../sass/navBar.scss */
 .navButtons {
   vertical-align: top;
   background-image: -webkit-linear-gradient(white, #f0f0f0);
@@ -276,13 +219,13 @@ ul li a {
   cursor: pointer;
   height: 30px;
 }
-/* line 219, ../sass/navBar.scss */
+/* line 181, ../sass/navBar.scss */
 .navButtons:hover {
   background: #f1f1f1;
   color: #333333;
 }
 
-/* line 225, ../sass/navBar.scss */
+/* line 187, ../sass/navBar.scss */
 .header .headerBackground {
   -o-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -298,34 +241,34 @@ ul li a {
   right: 0;
 }
 
-/* line 238, ../sass/navBar.scss */
+/* line 200, ../sass/navBar.scss */
 .Header .headerContainer .leftHeaderContent {
   float: left;
 }
-/* line 241, ../sass/navBar.scss */
+/* line 203, ../sass/navBar.scss */
 .Header .headerContainer .rightHeaderContent {
   float: right;
   width: 236px;
 }
 
-/* line 253, ../sass/navBar.scss */
+/* line 215, ../sass/navBar.scss */
 .positionModuleFixed {
   position: fixed;
   z-index: 686;
 }
 
-/* line 258, ../sass/navBar.scss */
+/* line 220, ../sass/navBar.scss */
 .selected {
   background-color: #ececec;
   background: #ececec;
 }
 
-/* line 263, ../sass/navBar.scss */
+/* line 225, ../sass/navBar.scss */
 .ui-MenuLink {
   cursor: pointer;
 }
 
-/* line 267, ../sass/navBar.scss */
+/* line 229, ../sass/navBar.scss */
 #confirmEventContainer {
   border-style: solid;
   border-width: 2px;
@@ -336,12 +279,12 @@ ul li a {
   max-height: 4em;
 }
 
-/* line 277, ../sass/navBar.scss */
+/* line 239, ../sass/navBar.scss */
 div.confirmEvent {
   color: #888888;
 }
 
-/* line 281, ../sass/navBar.scss */
+/* line 243, ../sass/navBar.scss */
 div.confirmEvent:hover {
   background-image: -webkit-linear-gradient(white, #f0f0f0);
   background-image: -moz-linear-gradient(white, #f0f0f0);
@@ -353,12 +296,12 @@ div.confirmEvent:hover {
   cursor: pointer;
 }
 
-/* line 288, ../sass/navBar.scss */
+/* line 250, ../sass/navBar.scss */
 #confirmEventContainer {
   margin: 10px;
 }
 
-/* line 292, ../sass/navBar.scss */
+/* line 254, ../sass/navBar.scss */
 .styling-logo, .logo {
   position: absolute;
   display: inline-block;
@@ -375,63 +318,63 @@ div.confirmEvent:hover {
 
 /* Using CSS3 media queries to handle window resizing */
 @media screen and (min-width: 75em) {
-  /* line 310, ../sass/navBar.scss */
+  /* line 272, ../sass/navBar.scss */
   .centeredWithinWrapper {
     width: 70em;
   }
 
-  /* line 311, ../sass/navBar.scss */
+  /* line 273, ../sass/navBar.scss */
   .logo {
     left: 45%;
     font-size: 30px;
   }
 }
 @media screen and (min-width: 56.25em) and (max-width: 75em) {
-  /* line 315, ../sass/navBar.scss */
+  /* line 277, ../sass/navBar.scss */
   .centeredWithinWrapper {
     width: 50em;
   }
 
-  /* line 316, ../sass/navBar.scss */
+  /* line 278, ../sass/navBar.scss */
   .logo {
     left: 45%;
     font-size: 30px;
   }
 }
 @media screen and (min-width: 43.75em) and (max-width: 56.25em) {
-  /* line 320, ../sass/navBar.scss */
+  /* line 282, ../sass/navBar.scss */
   .centeredWithinWrapper {
     width: 45em;
   }
 
-  /* line 321, ../sass/navBar.scss */
+  /* line 283, ../sass/navBar.scss */
   .logo {
     left: 40%;
     font-size: 30px;
   }
 }
 @media screen and (max-width: 43.75em) {
-  /* line 325, ../sass/navBar.scss */
+  /* line 287, ../sass/navBar.scss */
   .centeredWithinWrapper {
     width: 35em;
   }
 
-  /* line 326, ../sass/navBar.scss */
+  /* line 288, ../sass/navBar.scss */
   .logo {
     left: 30%;
     font-size: 25px;
   }
 }
-/* line 329, ../sass/navBar.scss */
+/* line 291, ../sass/navBar.scss */
 .subtext {
   font-size: 11px;
 }
-/* line 331, ../sass/navBar.scss */
+/* line 293, ../sass/navBar.scss */
 .subtext:hover {
   cursor: pointer;
 }
 
-/* line 337, ../sass/navBar.scss */
+/* line 299, ../sass/navBar.scss */
 #otherItem.subtext {
   font-weight: bold;
   font-size: 12px;

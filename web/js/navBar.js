@@ -2,10 +2,6 @@ var userName;
 var userID;
 var dropDowns = ['#accountOptionsDropdown', '#notificationWindow', '#updatesComponent'];
 
-$(window).resize(function () {
-  resizeHeaderDropDownContainer();
-});
-
 /* Helper method for removeNotification */
 function removeNotificationHelper()
 {
@@ -48,39 +44,33 @@ function onLogoutClickEvent() {
 }
 
 function navButtonClicked(obj, id) {
-    if($(obj).hasClass('selected')) {
+    if($(obj).hasClass('selectedNavButton')) {
         $(id).hide();
-        $(obj).removeClass('selected');
+        $(obj).removeClass('selectedNavButton');
     }
     else {
         hideOpenDropDowns();
         $(id).show();
-        $(obj).addClass('selected');
+        $(obj).addClass('selectedNavButton');
     }
 }
 
-function resizeHeaderDropDownContainer()
+function blurNavigationButton(obj)
 {
-    // the drop down options container should be positioned to 
-    // the same position as the drop down button 
-    var buttonLeftPosition = $('#accountOptionsDropdownButton').offset().left;
-    $('#accountOptionsDropdown').css('left', buttonLeftPosition - 144);
+    if(!$(obj).hasClass('selectedNavButton')){
+        $(obj).blur();
+    }    
 }
 
 $(document).ready(function () {
     $('#logoutLink').click(onLogoutClickEvent);
 
-    $('#accountOptionsDropdownButton').click(function () {
-        navButtonClicked(this, '#accountOptionsDropdown');
-        resizeHeaderDropDownContainer();
-    });
-
-    $('#viewNotificationsButton').click(function () {
-        navButtonClicked(this, '#notificationWindow');
-    });
-    
-    $('#updatesWindowButton').click(function () {
-        navButtonClicked(this, '#updatesComponent');
+    $('.navButton')
+    .click(function () {
+        navButtonClicked(this, ("#"+$(this).attr('for')) );
+    })
+    .mouseout(function(){
+        blurNavigationButton(this);
     });
 
     $("a.acceptFriend").click(acceptFriendClicked);
@@ -90,16 +80,15 @@ $(document).ready(function () {
         navigate($(["#", $(this).attr('id'), "Path"].join('')).val());
     });
 
+    // hides the friend request after an option was clicked by the user. (accept or ignore)
     $(".notifications a").click(function () {
         removeNotification($(this).parent());
     });
 });
 
-function hideOpenDropDowns(){
-    $('#accountOptionsDropdown').hide();
-    $('#notificationWindow').hide();
-    $('#updatesComponent').hide();
-    $('#navigation li.selected').removeClass('selected');
+function hideOpenDropDowns(){    
+    $('.navBarComponent').hide();
+    $('.navButton').removeClass('selectedNavButton');
 }
 
 function getNotificationNumber(notification)

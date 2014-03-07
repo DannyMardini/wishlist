@@ -7,7 +7,7 @@
         <?php foreach ($view['assetic']->stylesheets(
             array('css/bootstrap/bootstrap.css', 'compass/stylesheets/frontPage.css', 'compass/stylesheets/main.css'), array('?yui_css')) as $url): ?>
             <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
-
+          
         <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="/images/favicon.ico">        
         <script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>

@@ -97,14 +97,15 @@ ul {
     right: 0px;
 }
 
-.profilePicture {
-    @include border-radius(3px 0 0 3px);
-    @include box-shadow(0 0 2px $global-color6 inset);
+.profilePicture {        
     background-size: cover;
-    float: left;
-    height: 30px;
-    margin: -1px;
-    width: 30px;
+    float: left;    
+    height: 34px;
+    width: 34px;
+}
+
+.headerButton{
+    height: 34px;
 }
 
 #notificationDiv {
@@ -116,24 +117,21 @@ ul {
 }
 
 #notificationWindow {
-    display: none;
-    margin-top: 5px;
+    display: none;    
     position: absolute;
-    right: -1px;
-    width: 430px;
+    /*right: -1px;
+    margin-top: 20px;
+    font-size: 13px;
+    text-align: left;
+    width: 430px;   
+    top: 20px;*/
     border-width: 0px 1px 1px 1px;
     border-style: solid;
     border-color: $global-button-bg-color;
     border: $global-button-border;
-    background: white;
-    font-size: 13px;
-    text-align: left;
     @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
     @include border-radius($global-button-radius);
-    cursor: pointer;
-    font-weight: normal;
-    top: 20px;
-
+       
     a {
         @extend .link-styling;
     }
@@ -155,42 +153,6 @@ ul {
 .centeredWithinWrapper {
     margin: 0 auto;
     width: 800px;    
-}
-
-#accountOptionsDropdown {
-
-    li {
-        a {
-            text-decoration: none;
-            color: $global-button-text-color;
-        }
-
-        &:hover {
-            color: $global-color2;
-            font-weight: bolder;
-            @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
-        }
-
-        text-decoration: none;
-        padding: 10px 0px 5px 0px;
-    }
-
-    ul{
-        list-style: none;
-        padding: 0px 0px 0px 0px;
-        margin: 0px 0px 0px 0px;
-        text-align: center;    
-    }
-
-    @include linear-gradient2($global-button-gradient1, $global-button-gradient2);
-    background-color: $global-button-bg-color; 
-    border: $global-button-border;
-    display: none;
-    @include border-radius(3px 3px 0 0);
-    border-bottom: 1px solid;
-    top: 41px;
-    width: 174px;
-    border-top-width: 0px;
 }
 
 #navigation {
