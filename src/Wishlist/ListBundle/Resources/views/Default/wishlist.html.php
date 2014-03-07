@@ -49,12 +49,14 @@ if($i > 0){
             $wishItemDialog = 'openWishDialog('.$itemId.', {selfWishlist: "0"}, setupItemView)';
         }
 
-        echo "<tr>
-            <td><a class='strong-label' href='#' onclick='".$wishItemDialog."'>".$item->getName()."</a></td>
-            <td>".$item->getPrice(Item::CURRENCY_UNIT_DOLLAR)."</td>
-            <td>".$purchasedCell."</td>
-            </tr>";
 
+        echo "<tr>"
+            ."<td><div class='itemContainer strong-label' onclick='".$wishItemDialog."'>"
+            ."<span class='imageContainer'><img class='itemImage' src=".(((strlen($item->getSmallImage())) ? $item->getSmallImage() : ""))." alt='Item Image'/></span>"
+            ."<div>".$item->getName()."</div></div></td>"
+            ."<td>".$item->getPrice(Item::CURRENCY_UNIT_DOLLAR)."</td>"
+            ."<td>".$purchasedCell."</td>"
+            ."</tr>";
         $i--;
     }
 

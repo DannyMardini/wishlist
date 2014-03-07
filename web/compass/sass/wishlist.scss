@@ -1,5 +1,19 @@
 @import 'partials/globalvariables';
 
+.itemContainer {
+    cursor: pointer;
+}
+
+.imageContainer {
+    float: left;
+}
+
+.itemImage {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
 .itemName {
     font-size: 20px;
     font-weight: bolder;
