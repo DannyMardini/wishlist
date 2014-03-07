@@ -60,6 +60,7 @@ function getItemDialogObj(dialog)
 {
     return {
          id: $('#itemId', dialog).val(),
+         image: $('#image', dialog).val(),
          name: $('#name', dialog).val(), 
          price: $('#price', dialog).val(), 
          link: $('#link', dialog).val(),
@@ -619,6 +620,7 @@ function addAmazonItemToWishlist()
         //extract data from rows
         var data = {}
         data.asin  = selected_amazonItem;
+        data.image = $(rowCells[0]).find('img').attr('src');
         data.link  = $(rowCells[0]).children('a').attr('href');
         data.name  = $(rowCells[1]).html();
         data.price = $(rowCells[2]).children('span.searchResultItemPrice').html();
@@ -965,6 +967,7 @@ function setupWishDialogView(data, options)
     updateButton.show(); deleteButton.show(); grantButton.show(); saveButton.show();
     
     var name = $('#name',editItemDialog);
+    var image = $('#image',editItemDialog);
     var price = $('#price',editItemDialog);
     var link = $('#link',editItemDialog);
     var id = $('#itemId',editItemDialog);
@@ -972,14 +975,15 @@ function setupWishDialogView(data, options)
     var notes = $('#notes',editItemDialog);
     
     // clear everything out first
-    id.val(''); quantity.val(''); notes.val('');
+    id.val(''); image.val(''); quantity.val(''); notes.val('');
     name.prop('disabled', false).val(''); 
     price.prop('disabled', false).val(''); 
     link.prop('disabled', false).val('');
     
     if(data){
         editItemDialog.dialog('option', 'title', 'Edit Wish');
-        id.val(data.id); // is this the item or wish ID? 
+        id.val(data.id); // is this the item or wish ID?
+        image.val(data.image);
         name.val(data.name);
         price.val(data.price);
         link.val(data.link);
@@ -1035,6 +1039,7 @@ function setupItemView(data)
     });
     
     $('#itemId', itemDialog).val(data.id);
+    $('#image', itemDialog).val(data.image);
     $('#name', itemDialog).html(data.name);
     $('#price', itemDialog).html(data.price);
     $('#link', itemDialog).html(data.link);

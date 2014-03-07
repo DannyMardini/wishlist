@@ -48,12 +48,14 @@ class WishlistController extends Controller
     
     public function newWishlistAction()
     {
-        $session = $this->getRequest()->getSession(); 
-        $name = urldecode($this->getRequest()->get('name'));
-        $price = $this->getRequest()->get('price');
-        $link = $this->getRequest()->get('link');
-        $quantity = $this->getRequest()->get('quantity');
-        $comment = $this->getRequest()->get('comment');
+        $request = $this->getRequest();
+        $session = $request->getSession(); 
+        $name = urldecode($request->get('name'));
+        $image = $request->get('image');
+        $price = $request->get('price');
+        $link = $request->get('link');
+        $quantity = $request->get('quantity');
+        $comment = $request->get('comment');
         $isPrivate = false;  // we are not supporting private items yet
         $loggedInUserId = $session->get('user_id');
         $user = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->find($loggedInUserId);
@@ -67,7 +69,7 @@ class WishlistController extends Controller
         }
         
         $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
-        $added = $wishRepo->makeWish($name, $price, $link, $isPrivate, $comment, $quantity, $user);
+        $added = $wishRepo->makeWish($name, $image, $price, $link, $isPrivate, $comment, $quantity, $user);
         
         if(!$added){   
             // The item was not added because it already exists    

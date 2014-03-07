@@ -48,6 +48,9 @@ php app/console doctrine:schema:update --force
 
 if [ $destructive = true ]; then
     echo "Loading Fixtures..."
+    sed -i '' 's/\(DROP PROCEDURE [A-z;]*\)/# \1/' src/Wishlist/CoreBundle/DataFixtures/SQL/StoredProcedures.sql
+    mysql -uroot < src/Wishlist/CoreBundle/DataFixtures/SQL/StoredProcedures.sql
+    sed -i '' 's/# \(DROP PROCEDURE [A-z;]*\)/\1/' src/Wishlist/CoreBundle/DataFixtures/SQL/StoredProcedures.sql
     php app/console doctrine:fixtures:load
 fi
 
