@@ -342,7 +342,7 @@ div#updatesComponent {
     -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
 
     .Update{
-        padding: 10px 30px 0px 20px;
+        padding: 10px 30px 20px 20px;
         border-bottom: 1px solid #ddd;
     }
 
@@ -350,11 +350,12 @@ div#updatesComponent {
         padding: 10px 30px 0px 5px;
         font-weight: bold;
         border-bottom: 1px solid #ddd;
+        text-align: center;
     }
 }
 
 #updatesInnerComponent{
-    min-height: 300px;
+    /*min-height: 300px;*/
 }
 
 #updatesInnerComponent .image {

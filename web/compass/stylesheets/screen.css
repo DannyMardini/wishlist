@@ -867,7 +867,7 @@ div#updatesComponent {
 }
 /* line 344, ../sass/screen.scss */
 div#updatesComponent .Update {
-  padding: 10px 30px 0px 20px;
+  padding: 10px 30px 20px 20px;
   border-bottom: 1px solid #ddd;
 }
 /* line 349, ../sass/screen.scss */
@@ -875,14 +875,15 @@ div#updatesComponent .updatesHeader {
   padding: 10px 30px 0px 5px;
   font-weight: bold;
   border-bottom: 1px solid #ddd;
+  text-align: center;
 }
 
-/* line 356, ../sass/screen.scss */
+/* line 357, ../sass/screen.scss */
 #updatesInnerComponent {
-  min-height: 300px;
+  /*min-height: 300px;*/
 }
 
-/* line 360, ../sass/screen.scss */
+/* line 361, ../sass/screen.scss */
 #updatesInnerComponent .image {
   float: left;
   background-repeat: no-repeat;
@@ -891,7 +892,7 @@ div#updatesComponent .updatesHeader {
   margin-right: 3px;
 }
 
-/* line 368, ../sass/screen.scss */
+/* line 369, ../sass/screen.scss */
 #updatesInnerComponent .name {
   margin-top: 15px;
   font-weight: bolder;
@@ -900,14 +901,14 @@ div#updatesComponent .updatesHeader {
   vertical-align: bottom;
 }
 
-/* line 376, ../sass/screen.scss */
+/* line 377, ../sass/screen.scss */
 #updatesInnerComponent .message {
   display: block;
   margin-top: 10px;
   margin-left: 15px;
 }
 
-/* line 382, ../sass/screen.scss */
+/* line 383, ../sass/screen.scss */
 #updatesInnerComponent .timestamp {
   margin-top: 5px;
   color: gray;
@@ -915,24 +916,24 @@ div#updatesComponent .updatesHeader {
   font-size: 12px;
 }
 
-/* line 389, ../sass/screen.scss */
+/* line 390, ../sass/screen.scss */
 #selectable {
   margin: 0px;
 }
 
-/* line 393, ../sass/screen.scss */
+/* line 394, ../sass/screen.scss */
 #updatesInnerComponent a {
   cursor: pointer;
   color: darkblue;
   text-decoration: none;
 }
 
-/* line 399, ../sass/screen.scss */
+/* line 400, ../sass/screen.scss */
 #updatesInnerComponent a:hover {
   text-decoration: underline;
 }
 
-/* line 403, ../sass/screen.scss */
+/* line 404, ../sass/screen.scss */
 .form-label {
   float: left;
   margin-right: 10px;
@@ -940,24 +941,24 @@ div#updatesComponent .updatesHeader {
   color: gray;
 }
 
-/* line 410, ../sass/screen.scss */
+/* line 411, ../sass/screen.scss */
 .narrow-box {
   width: 450px;
 }
 
-/* line 414, ../sass/screen.scss */
+/* line 415, ../sass/screen.scss */
 #errorDisplay {
   margin: 30px;
   color: red;
   font-weight: bold;
 }
 
-/* line 423, ../sass/screen.scss */
+/* line 424, ../sass/screen.scss */
 #resultsArea table {
   border-collapse: separate;
   border-spacing: 10px 15px;
 }
-/* line 428, ../sass/screen.scss */
+/* line 429, ../sass/screen.scss */
 #resultsArea td.searchResultItemLink:hover, #resultsArea td.searchResultItemName:hover {
   background-image: -webkit-linear-gradient(white, #d7d7d7);
   background-image: -moz-linear-gradient(white, #d7d7d7);
@@ -967,12 +968,12 @@ div#updatesComponent .updatesHeader {
   background-color: #d7d7d7;
   cursor: pointer;
 }
-/* line 438, ../sass/screen.scss */
+/* line 439, ../sass/screen.scss */
 #resultsArea td {
   vertical-align: top;
 }
 
-/* line 443, ../sass/screen.scss */
+/* line 444, ../sass/screen.scss */
 .container {
   width: 450px;
   height: 350px;
@@ -982,13 +983,13 @@ div#updatesComponent .updatesHeader {
   background: linear-gradient(#ffffff, #f0f0f0);
 }
 
-/* line 452, ../sass/screen.scss */
+/* line 453, ../sass/screen.scss */
 .lead {
   display: inline-block;
   margin-right: 10px;
 }
 
-/* line 457, ../sass/screen.scss */
+/* line 458, ../sass/screen.scss */
 .ui-icon.blue {
   background-image: url(/css/ui-darkness/images/ui-icons_a83300_256x240.png);
 }

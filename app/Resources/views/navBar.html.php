@@ -44,7 +44,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         </ul>
 
         <div id="updatesComponent" class="navBarComponent positionmodulefixed">
-            <div class="updatesHeader">Recent Friend Activity</div>    
+            <div class="updatesHeader">Recent Updates</div>    
 
             <div id="updatesInnerComponent">
                 <?php echo $view['actions']->render('WishlistUserBundle:Default:updates'); ?>

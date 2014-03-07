@@ -17,8 +17,8 @@ foreach ($updates as $update) {
 
 if(count($updates)<=0)
 {
-    echo "<div class='Update'><div class='message'>
-        There are no updates from your friends! <br /><br /> 
-        Add more friends or remind your current friends to add items to their wishlists! </div></div>";
+    echo "<div class='Update'>
+        <h4>No recent activity<br /><br /><small>Remind your friends to add items to their wishlists!</small></h4>  
+        </div>";
 }
 ?>
