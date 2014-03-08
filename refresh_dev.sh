@@ -54,8 +54,5 @@ if [ $destructive = true ]; then
     php app/console doctrine:fixtures:load
 fi
 
-echo "Updating assets..."
-php app/console assetic:dump --env=prod --no-debug -v
-
 exit 0
 
