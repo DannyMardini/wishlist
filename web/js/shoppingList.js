@@ -18,9 +18,9 @@ function checkCompleted()
 {
     var expiredPurchases = getIds($('#expiredPurchases div'));
     if(expiredPurchases.length > 0) {
-        confirm('Some of your shopping list items are expired! <br /><br />\n\
-                If you have given the gifts to your friends, may we remove them from your list?<br /><br />\n\
-                To review the items, click No.')
+        confirm('Some of your shopping list items have expired. Remember to give your friends their gifts! <br /><br />\n\
+                May we remove the expired items from your list?<br /><br />\n\
+                To review them first, click No.')
         .then(function (answer) {
             if(answer == 1) {
                 var url = Routing.generate('WishlistListBundle_completeShoppingListItems');
