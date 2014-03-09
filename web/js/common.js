@@ -1012,17 +1012,6 @@ function setupItemView(data)
         window.open(link,'_blank');
     });
     
-//    $('#linkButton',itemDialog).button({
-//        icons: { primary: "ui-icon-link" }
-//    }).unbind('click')
-//    .click(function(){
-//        var protocol = "http\://"
-//        if(link.indexOf(protocol) == -1) {
-//            link = protocol+link;
-//        }
-//        window.open(link,'_blank');
-//    });
-    
     $('#itemId', itemDialog).val(data.id);
     $('#image', itemDialog).val(data.image);
     $('#name', itemDialog).html(data.name);
