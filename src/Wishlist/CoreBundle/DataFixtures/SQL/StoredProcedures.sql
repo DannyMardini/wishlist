@@ -3,8 +3,8 @@
 
 use wishendadev;
 
- # DROP PROCEDURE selectPurchase;
- # DROP PROCEDURE PurchaseItem;
+  # DROP PROCEDURE selectPurchase;
+  # DROP PROCEDURE PurchaseItem;
 
 DELIMITER //
 

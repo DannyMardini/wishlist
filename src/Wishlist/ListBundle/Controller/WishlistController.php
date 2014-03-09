@@ -51,6 +51,7 @@ class WishlistController extends Controller
         $request = $this->getRequest();
         $session = $request->getSession(); 
         $name = urldecode($request->get('name'));
+        $asin = $request->get('asin');
         $image = $request->get('image');
         $price = $request->get('price');
         $link = $request->get('link');
@@ -69,7 +70,7 @@ class WishlistController extends Controller
         }
         
         $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
-        $added = $wishRepo->makeWish($name, $image, $price, $link, $isPrivate, $comment, $quantity, $user);
+        $added = $wishRepo->makeWish($name, $asin, $image, $price, $link, $isPrivate, $comment, $quantity, $user);
         
         if(!$added){   
             // The item was not added because it already exists    

@@ -60,6 +60,7 @@ function getItemDialogObj(dialog)
 {
     return {
          id: $('#itemId', dialog).val(),
+         asin: $('#asin', dialog).val(),
          image: $('#image', dialog).val(),
          name: $('#name', dialog).val(), 
          price: $('#price', dialog).val(), 
@@ -599,11 +600,11 @@ function fillResults(data, textStatus, jqXHR)
 {
     $('#resultsArea').html(data);
     $('#resultsArea td.searchResultItemName').click(function() {
-        if($(this).hasClass('selected')) {
+        if($(this).hasClass('selected')) {      //If the item is already selected, de-select it. 
             $(this).removeClass('selected');
             selected_amazonItem = -1;
         }
-        else {
+        else {  //Else if it is not already selected, select it.
             $('#resultsArea td.searchResultItemName').removeClass('selected');
             $(this).addClass('selected');
             selected_amazonItem = $(this).parent().attr('id');
@@ -967,6 +968,7 @@ function setupWishDialogView(data, options)
     updateButton.show(); deleteButton.show(); grantButton.show(); saveButton.show();
     
     var name = $('#name',editItemDialog);
+    var asin = $('#asin',editItemDialog);
     var image = $('#image',editItemDialog);
     var price = $('#price',editItemDialog);
     var link = $('#link',editItemDialog);
@@ -983,6 +985,9 @@ function setupWishDialogView(data, options)
     if(data){
         editItemDialog.dialog('option', 'title', 'Edit Wish');
         id.val(data.id); // is this the item or wish ID?
+        if('asin' in data) {
+            asin.val(data.asin);
+        }
         image.val(data.image);
         name.val(data.name);
         price.val(data.price);
