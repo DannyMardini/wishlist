@@ -441,7 +441,11 @@ $resultsHoverDark: darken($global-button-hover-color, 10%);
     }
 }
 
-.container {
+.wish-button-size {
+    width: 140px;
+}
+
+.wish-container {
     width: 450px;
     height: 350px;
     background-color: white;

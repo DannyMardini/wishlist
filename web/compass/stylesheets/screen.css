@@ -974,7 +974,12 @@ div#updatesComponent .updatesHeader {
 }
 
 /* line 444, ../sass/screen.scss */
-.container {
+.wish-button-size {
+  width: 140px;
+}
+
+/* line 448, ../sass/screen.scss */
+.wish-container {
   width: 450px;
   height: 350px;
   background-color: white;
@@ -983,13 +988,13 @@ div#updatesComponent .updatesHeader {
   background: linear-gradient(#ffffff, #f0f0f0);
 }
 
-/* line 453, ../sass/screen.scss */
+/* line 457, ../sass/screen.scss */
 .lead {
   display: inline-block;
   margin-right: 10px;
 }
 
-/* line 458, ../sass/screen.scss */
+/* line 462, ../sass/screen.scss */
 .ui-icon.blue {
   background-image: url(/css/ui-darkness/images/ui-icons_a83300_256x240.png);
 }

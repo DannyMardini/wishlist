@@ -199,7 +199,7 @@ function viewWishlistDialogInit()
             position: 'top', 
             resizable: false,
             height:300,
-            width:600,
+            width:500,
             modal: true,
             buttons: {
                     "Want This": function() {
@@ -555,45 +555,15 @@ function styleWishDialogButtons()
 
     if(iconNotDefined)
     {
-        wantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-plus"></span>');
-        grantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-cart"></span>');
+        wantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-plus"></span>').addClass('wish-button-size');
+        grantIt.prepend('<span style="float:left;" class="ui-icon ui-icon-cart"></span>').addClass('wish-button-size');
+        
+        
     }
     else {
         wantIt.show();
         grantIt.show();        
     }
-}
-
-function viewWishlistDialogInit()
-{
-    if($( "#itemDialog" ).length == 0){
-        return;
-    }
-    
-    $( "#itemDialog" ).dialog({
-            autoOpen: false,
-            position: 'top', 
-            resizable: false,
-            height:300,
-            width:600,
-            modal: true,
-            buttons: {
-                    "Want This": function() {
-                        onWantItClickEvent();
-                    },
-                    "Grant Wish": function() {                                            
-                        onGrantItClickEvent(this);                     
-                    },
-                    "Add Wish": function() {
-                        continueAddingItemToWishlist(this);
-                        $(this).dialog('close');
-                    }
-            },
-            open: function(event, ui) { 
-                styleWishDialogButtons();                
-                $(this).scrollTop(0);
-            }
-    });    
 }
 
 function fillResults(data, textStatus, jqXHR)
@@ -1032,9 +1002,8 @@ function setupItemView(data)
     var itemDialog = $('#itemDialog');
     var link = data.link;
     
-    $('#linkButton',itemDialog).button({
-        icons: { primary: "ui-icon-link" }
-    }).unbind('click')
+    $('#linkButton',itemDialog)
+    .unbind('click')
     .click(function(){
         var protocol = "http\://"
         if(link.indexOf(protocol) == -1) {
@@ -1042,6 +1011,17 @@ function setupItemView(data)
         }
         window.open(link,'_blank');
     });
+    
+//    $('#linkButton',itemDialog).button({
+//        icons: { primary: "ui-icon-link" }
+//    }).unbind('click')
+//    .click(function(){
+//        var protocol = "http\://"
+//        if(link.indexOf(protocol) == -1) {
+//            link = protocol+link;
+//        }
+//        window.open(link,'_blank');
+//    });
     
     $('#itemId', itemDialog).val(data.id);
     $('#image', itemDialog).val(data.image);
