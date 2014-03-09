@@ -56,5 +56,17 @@ class ItemRepository extends EntityRepository
                       
         $itemInDatabase = $q->getOneOrNullResult();  
         return $itemInDatabase;
-    }    
+    }
+    
+    public function getItemsMissingImages()
+    {
+        $em = $this->getEntityManager();
+        
+        $q = $em->createQuery("
+            SELECT i
+            FROM WishlistCoreBundle:Item i 
+            WHERE i.link LIKE 'http://www.amazon.com/%' AND (i.smallImage = '' or i.smallImage IS NULL)");
+        $items = $q->getResult();
+        return $items;
+    }
 }
