@@ -32,7 +32,7 @@
                 <?php
                 if(count($user->getNotifications()) > 0)
                 {  
-                    echo "<button id='viewNotificationsButton' for='notificationWindow' type='button' class='btn btn-default headerButton navButton'><span class='ui-icon ui-icon-notice blue'></span></button></div>";
+                    echo "<button id='viewNotificationsButton' for='notificationWindow' type='button' class='btn btn-default headerButton navButton'><span class='ui-icon  ui-icon-alert red'></span></button></div>";
                     echo "<div id='notificationDiv' class='navcenter'>\n";
                     echo "<div id='notificationWindow' class='navBarComponent panel panel-default'>\n";
                     echo "<ul class='list-group'>\n";
