@@ -979,6 +979,15 @@ div#updatesComponent .updatesHeader {
 }
 
 /* line 448, ../sass/screen.scss */
+.shopping-item-link {
+  cursor: pointer;
+}
+/* line 450, ../sass/screen.scss */
+.shopping-item-link:hover {
+  text-decoration: none;
+}
+
+/* line 455, ../sass/screen.scss */
 .wish-container {
   width: 450px;
   height: 350px;
@@ -988,13 +997,13 @@ div#updatesComponent .updatesHeader {
   background: linear-gradient(#ffffff, #f0f0f0);
 }
 
-/* line 457, ../sass/screen.scss */
+/* line 464, ../sass/screen.scss */
 .lead {
   display: inline-block;
   margin-right: 10px;
 }
 
-/* line 462, ../sass/screen.scss */
+/* line 469, ../sass/screen.scss */
 .ui-icon.blue {
   background-image: url(/css/ui-darkness/images/ui-icons_a83300_256x240.png);
 }

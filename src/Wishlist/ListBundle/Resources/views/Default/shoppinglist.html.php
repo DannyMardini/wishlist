@@ -15,7 +15,7 @@
     <?php
     if(count($purchases) > 0){
         echo "<table id='shoppingList_bs_table' class='shoppinglistItem'>
-            <tr><th>Select</th><th>Item</th><th>For</th><th>Date Due</th></tr>";
+            <tr><th>&nbsp;</th><th>Item</th><th>For</th><th>Date Due</th></tr>";
 
         foreach($purchases as $purchase)
         {
@@ -37,7 +37,7 @@
             $giftLink = $purchasedItem->getLink();
 
             echo "<tr><td><input id='".$giftId."' class='selectItem' type='checkbox' /></td>
-                <td><a class='strong-label' href='".$giftLink."' target='_blank'>".$giftName."</a></td>
+                <td><a class='strong-label shopping-item-link' onclick='openLink(&#39;".$giftLink."&#39;)' target='_blank'>".$giftName."</a></td>
                 <td>".$giftUser->getName()."</td>
                 <td>".$dateDisplay."</td>
                 </tr>";

@@ -445,6 +445,13 @@ $resultsHoverDark: darken($global-button-hover-color, 10%);
     width: 140px;
 }
 
+.shopping-item-link {
+    cursor: pointer;    
+    &:hover {
+        text-decoration: none;
+    }
+}
+
 .wish-container {
     width: 450px;
     height: 350px;

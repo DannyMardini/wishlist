@@ -997,6 +997,14 @@ function setupWishDialogView(data, options)
     editItemDialog.dialog('option', 'height', '500').dialog('open');    
 }
 
+function openLink(link){
+    var protocol = "http\://"
+    if(link.indexOf(protocol) == -1) {
+        link = protocol+link;
+    }
+    window.open(link,'_blank');    
+}
+
 function setupItemView(data)
 {   
     var itemDialog = $('#itemDialog');
@@ -1005,11 +1013,7 @@ function setupItemView(data)
     $('#linkButton',itemDialog)
     .unbind('click')
     .click(function(){
-        var protocol = "http\://"
-        if(link.indexOf(protocol) == -1) {
-            link = protocol+link;
-        }
-        window.open(link,'_blank');
+        openLink(link);
     });
     
     $('#itemId', itemDialog).val(data.id);
