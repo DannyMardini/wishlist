@@ -24,14 +24,14 @@ function removeNotification(notification)
 
 function ignoreFriendClicked()
 {
-    var parentLi = $(this).parent();
+    var parentLi = $(this).parent().parent().parent();
     var num = getNotificationNumber(parentLi);
     ajaxPost(null, Routing.generate('WishlistUserBundle_ignoreFriendRequest', {notificationId: num}), null, null);
 }
 
 function acceptFriendClicked()
 {
-    var parentLi = $(this).parent();
+    var parentLi = $(this).parent().parent().parent();
     var num = getNotificationNumber(parentLi);
     ajaxPost(null, Routing.generate('WishlistUserBundle_acceptFriendRequest', {notificationId: num}), null, null);
 }
@@ -82,7 +82,7 @@ $(document).ready(function () {
 
     // hides the friend request after an option was clicked by the user. (accept or ignore)
     $(".notifications a").click(function () {
-        removeNotification($(this).parent());
+        removeNotification($(this).parent().parent().parent());
     });
 });
 
