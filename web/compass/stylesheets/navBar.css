@@ -332,7 +332,7 @@ div.confirmEvent:hover {
 @media screen and (min-width: 56.25em) and (max-width: 75em) {
   /* line 277, ../sass/navBar.scss */
   .centeredWithinWrapper {
-    width: 50em;
+    width: 62em;
   }
 
   /* line 278, ../sass/navBar.scss */
@@ -344,7 +344,7 @@ div.confirmEvent:hover {
 @media screen and (min-width: 43.75em) and (max-width: 56.25em) {
   /* line 282, ../sass/navBar.scss */
   .centeredWithinWrapper {
-    width: 45em;
+    width: 54em;
   }
 
   /* line 283, ../sass/navBar.scss */
@@ -356,7 +356,7 @@ div.confirmEvent:hover {
 @media screen and (max-width: 43.75em) {
   /* line 287, ../sass/navBar.scss */
   .centeredWithinWrapper {
-    width: 35em;
+    width: 45em;
   }
 
   /* line 288, ../sass/navBar.scss */
