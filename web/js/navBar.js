@@ -9,7 +9,7 @@ function removeNotificationHelper()
     if(notsRemaining <= 0)
     {
         $('#notificationDiv').fadeOut(400, function(){$(this).remove()});
-        $('#notificationsDropDown').remove();
+        $('#viewNotificationsButton').remove();
     }
 }
 
@@ -22,19 +22,28 @@ function removeNotification(notification)
     });
 }
 
-function ignoreFriendClicked()
-{
-    var parentLi = $(this).parent().parent().parent();
+//function ignoreFriendClicked()
+//{
+//    var parentLi = $(this).parent().parent().parent();
+//    var num = getNotificationNumber(parentLi);
+//    ajaxPost(null, Routing.generate('WishlistUserBundle_ignoreFriendRequest', {notificationId: num}), null, null);
+//}
+
+function friendRequestResponse(response, request){
+    var path = (response == 'accept') 
+            ? 'WishlistUserBundle_acceptFriendRequest' 
+            : 'WishlistUserBundle_ignoreFriendRequest';    
+    var parentLi = $(request).parent().parent().parent();
     var num = getNotificationNumber(parentLi);
-    ajaxPost(null, Routing.generate('WishlistUserBundle_ignoreFriendRequest', {notificationId: num}), null, null);
+    ajaxPost(null, Routing.generate(path, {notificationId: num}), null, null);
 }
 
-function acceptFriendClicked()
-{
-    var parentLi = $(this).parent().parent().parent();
-    var num = getNotificationNumber(parentLi);
-    ajaxPost(null, Routing.generate('WishlistUserBundle_acceptFriendRequest', {notificationId: num}), null, null);
-}
+//function acceptFriendClicked()
+//{
+//    var parentLi = $(this).parent().parent().parent();
+//    var num = getNotificationNumber(parentLi);
+//    ajaxPost(null, Routing.generate('WishlistUserBundle_acceptFriendRequest', {notificationId: num}), null, null);
+//}
 
 /* Navigates to the frontpage and logs the user out */
 function onLogoutClickEvent() {
@@ -73,8 +82,8 @@ $(document).ready(function () {
         blurNavigationButton(this);
     });
 
-    $("a.acceptFriend").click(acceptFriendClicked);
-    $("a.ignoreFriend").click(ignoreFriendClicked);
+    $("a.acceptFriend").click(function(){friendRequestResponse('accept', this);});
+    $("a.ignoreFriend").click(function(){friendRequestResponse('ignore', this);});
 
     $('.ui-MenuLink').bind('click', function () {
         navigate($(["#", $(this).attr('id'), "Path"].join('')).val());
