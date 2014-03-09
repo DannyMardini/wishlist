@@ -37,7 +37,7 @@
             $giftLink = $purchasedItem->getLink();
 
             echo "<tr><td><input id='".$giftId."' class='selectItem' type='checkbox' /></td>
-                <td><a class='strong-label shopping-item-link' onclick='openLink(&#39;".$giftLink."&#39;)' target='_blank'>".$giftName."</a></td>
+                <td><a class='strong-label item-link' onclick='openLink(&#39;".$giftLink."&#39;)' target='_blank'>".$giftName."</a></td>
                 <td>".$giftUser->getName()."</td>
                 <td>".$dateDisplay."</td>
                 </tr>";

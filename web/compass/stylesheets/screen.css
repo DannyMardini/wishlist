@@ -96,7 +96,7 @@ a img {
   margin-bottom: 20px;
 }
 
-/* line 22, ../sass/screen.scss */
+/* line 23, ../sass/screen.scss */
 body.bp {
   line-height: 1.5;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -531,14 +531,14 @@ form.bp form.inline p {
   margin-bottom: 0;
 }
 
-/* line 39, ../sass/screen.scss */
+/* line 40, ../sass/screen.scss */
 body.two-col #container {
   width: 950px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 42, ../sass/screen.scss */
+/* line 43, ../sass/screen.scss */
 body.two-col #header, body.two-col #footer {
   display: inline;
   float: left;
@@ -549,7 +549,7 @@ body.two-col #header, body.two-col #footer {
 * html body.two-col #header, * html body.two-col #footer {
   overflow-x: hidden;
 }
-/* line 45, ../sass/screen.scss */
+/* line 46, ../sass/screen.scss */
 body.two-col #sidebar {
   display: inline;
   float: left;
@@ -560,7 +560,7 @@ body.two-col #sidebar {
 * html body.two-col #sidebar {
   overflow-x: hidden;
 }
-/* line 50, ../sass/screen.scss */
+/* line 51, ../sass/screen.scss */
 body.two-col #content {
   display: inline;
   float: left;
@@ -572,7 +572,7 @@ body.two-col #content {
   overflow-x: hidden;
 }
 
-/* line 65, ../sass/screen.scss */
+/* line 66, ../sass/screen.scss */
 body {
   background: -webkit-linear-gradient(left, #f7f7f7, white, #f7f7f7);
   background: -moz-linear-gradient(left, #f7f7f7, white, #f7f7f7);
@@ -581,7 +581,7 @@ body {
   background: linear-gradient(left, #f7f7f7, #ffffff, #f7f7f7);
 }
 
-/* line 73, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 span#betaTag {
   font-family: helvetica;
   font-size: 0.4em;
@@ -589,7 +589,7 @@ span#betaTag {
   color: #FC6DC0;
 }
 
-/* line 80, ../sass/screen.scss */
+/* line 81, ../sass/screen.scss */
 div.friendlist {
   text-decoration: none;
   color: #303030;
@@ -598,7 +598,7 @@ div.friendlist {
   border: 1px solid rgba(100, 100, 100, 0.4);
   background: linear-gradient(#ffffff, #f0f0f0);
 }
-/* line 81, ../sass/screen.scss */
+/* line 82, ../sass/screen.scss */
 div.friendlist ul {
   list-style: none;
   padding: 0;
@@ -606,37 +606,37 @@ div.friendlist ul {
   margin-left: 10px;
   margin-top: 5px;
 }
-/* line 89, ../sass/screen.scss */
+/* line 90, ../sass/screen.scss */
 div.friendlist li {
   margin-bottom: 5px;
 }
-/* line 91, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 div.friendlist li:hover {
   background-color: #efefef;
   cursor: pointer;
 }
 
-/* line 104, ../sass/screen.scss */
+/* line 105, ../sass/screen.scss */
 img.friendIcon {
   width: 50px;
   height: 50px;
   padding-right: 50px;
 }
 
-/* line 110, ../sass/screen.scss */
+/* line 111, ../sass/screen.scss */
 .inviteFriendInput #newFriendEmail {
   height: 30px;
   width: 400px;
   font-size: 11px;
 }
 
-/* line 120, ../sass/screen.scss */
+/* line 121, ../sass/screen.scss */
 .inviteFriendInput {
   margin-top: 20px;
   margin-left: 40px;
 }
 
-/* line 125, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
 #friendSearch {
   height: 50px;
   border-style: solid;
@@ -647,14 +647,14 @@ img.friendIcon {
   font-size: 14px;
 }
 
-/* line 135, ../sass/screen.scss */
+/* line 136, ../sass/screen.scss */
 #friendsContainer {
   width: 80%;
   margin: 10%;
   margin-top: 2%;
 }
 
-/* line 141, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 div.listSeparator {
   background-color: #efefef;
   font-weight: bold;
@@ -663,24 +663,24 @@ div.listSeparator {
   padding: 2px;
 }
 
-/* line 149, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 div.userButton {
   display: inline-block;
   width: 70%;
 }
 
-/* line 154, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 div.addFriendButtonDiv {
   float: right;
   margin-top: 10px;
   width: 30%;
 }
-/* line 155, ../sass/screen.scss */
+/* line 156, ../sass/screen.scss */
 div.addFriendButtonDiv .ui-button-text {
   font-size: 0.8em;
 }
 
-/* line 163, ../sass/screen.scss */
+/* line 164, ../sass/screen.scss */
 div.requestSentNotification {
   padding-top: 12px;
   font-style: italic;
@@ -688,7 +688,7 @@ div.requestSentNotification {
   color: #b0b0b0;
 }
 
-/* line 170, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 label.pageHeader {
   padding-top: 10px;
   padding-left: 60px;
@@ -699,17 +699,17 @@ label.pageHeader {
   font-weight: bold;
 }
 
-/* line 180, ../sass/screen.scss */
+/* line 181, ../sass/screen.scss */
 label.userName {
   padding-left: 0px;
 }
 
-/* line 184, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 .wishenda-button {
   cursor: pointer;
 }
 
-/* line 188, ../sass/screen.scss */
+/* line 189, ../sass/screen.scss */
 #accountSettings {
   text-align: center;
   font-family: 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
@@ -718,7 +718,7 @@ label.userName {
   color: #303030;
   -webkit-font-smoothing: antialiased;
 }
-/* line 196, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 #accountSettings input:invalid {
   border-color: #e88;
   -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
@@ -727,7 +727,7 @@ label.userName {
   -ms-box-shadow: 0 0 5px rbba(255, 0, 0, 0.8);
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
 }
-/* line 205, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 #accountSettings input:required {
   border-color: #88a;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
@@ -736,7 +736,7 @@ label.userName {
   -ms-box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
-/* line 214, ../sass/screen.scss */
+/* line 215, ../sass/screen.scss */
 #accountSettings input, #accountSettings select, #accountSettings textarea {
   border: 1px solid #ccc;
   min-height: 30px;
@@ -750,20 +750,20 @@ label.userName {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 229, ../sass/screen.scss */
+/* line 230, ../sass/screen.scss */
 #accountSettings form {
   width: auto;
 }
-/* line 233, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 #accountSettings input {
   display: inline-block;
   width: 30%;
 }
-/* line 238, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 #accountSettings label {
   color: #636363;
 }
-/* line 242, ../sass/screen.scss */
+/* line 243, ../sass/screen.scss */
 #accountSettings label.mainLabel {
   padding-right: 10px;
   display: inline-block;
@@ -771,87 +771,87 @@ label.userName {
   text-align: right;
   vertical-align: top;
 }
-/* line 250, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 #accountSettings .termsAndpolicy {
   text-align: center;
 }
-/* line 254, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 #accountSettings h1 {
   font-size: 30px;
 }
-/* line 258, ../sass/screen.scss */
+/* line 259, ../sass/screen.scss */
 #accountSettings ul {
   list-style: none;
 }
-/* line 262, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 #accountSettings #mainDiv {
   width: 80%;
   margin: 0 auto;
   text-align: left;
 }
-/* line 268, ../sass/screen.scss */
+/* line 269, ../sass/screen.scss */
 #accountSettings #genderPicker {
   width: 30%;
   display: inline-block;
 }
-/* line 273, ../sass/screen.scss */
+/* line 274, ../sass/screen.scss */
 #accountSettings #genderPicker li {
   display: inline-block;
   width: 25%;
   padding-right: 10px;
 }
-/* line 279, ../sass/screen.scss */
+/* line 280, ../sass/screen.scss */
 #accountSettings #genderPicker input {
   display: block;
 }
-/* line 283, ../sass/screen.scss */
+/* line 284, ../sass/screen.scss */
 #accountSettings #passwordInputs {
   display: inline-block;
   width: 30%;
 }
-/* line 287, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
 #accountSettings #passwordInputs input {
   width: 100%;
 }
-/* line 292, ../sass/screen.scss */
+/* line 293, ../sass/screen.scss */
 #accountSettings #saveChanges {
   width: 10%;
   background-color: #333333;
   color: white;
 }
-/* line 298, ../sass/screen.scss */
+/* line 299, ../sass/screen.scss */
 #accountSettings #saveChanges:hover {
   cursor: pointer;
 }
-/* line 302, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 #accountSettings img.preview {
   width: 200px;
   border: solid 1px #dedede;
   padding: 10px;
 }
-/* line 308, ../sass/screen.scss */
+/* line 309, ../sass/screen.scss */
 #accountSettings div#preview {
   text-align: center;
 }
-/* line 312, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 #accountSettings input.birthdate {
   width: 2.5em;
 }
-/* line 316, ../sass/screen.scss */
+/* line 317, ../sass/screen.scss */
 #accountSettings #birthYear {
   width: 4.5em;
 }
-/* line 320, ../sass/screen.scss */
+/* line 321, ../sass/screen.scss */
 #accountSettings input:disabled {
   background: #EBEBEB;
 }
 
-/* line 325, ../sass/screen.scss */
+/* line 326, ../sass/screen.scss */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 329, ../sass/screen.scss */
+/* line 330, ../sass/screen.scss */
 div#updatesComponent {
   width: 23%;
   position: absolute;
@@ -865,12 +865,12 @@ div#updatesComponent {
   -webkit-border-radius: 3px;
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
-/* line 344, ../sass/screen.scss */
+/* line 345, ../sass/screen.scss */
 div#updatesComponent .Update {
   padding: 10px 30px 20px 20px;
   border-bottom: 1px solid #ddd;
 }
-/* line 349, ../sass/screen.scss */
+/* line 350, ../sass/screen.scss */
 div#updatesComponent .updatesHeader {
   padding: 10px 30px 0px 5px;
   font-weight: bold;
@@ -878,12 +878,12 @@ div#updatesComponent .updatesHeader {
   text-align: center;
 }
 
-/* line 357, ../sass/screen.scss */
+/* line 358, ../sass/screen.scss */
 #updatesInnerComponent {
   /*min-height: 300px;*/
 }
 
-/* line 361, ../sass/screen.scss */
+/* line 362, ../sass/screen.scss */
 #updatesInnerComponent .image {
   float: left;
   background-repeat: no-repeat;
@@ -892,7 +892,7 @@ div#updatesComponent .updatesHeader {
   margin-right: 3px;
 }
 
-/* line 369, ../sass/screen.scss */
+/* line 370, ../sass/screen.scss */
 #updatesInnerComponent .name {
   margin-top: 15px;
   font-weight: bolder;
@@ -901,14 +901,14 @@ div#updatesComponent .updatesHeader {
   vertical-align: bottom;
 }
 
-/* line 377, ../sass/screen.scss */
+/* line 378, ../sass/screen.scss */
 #updatesInnerComponent .message {
   display: block;
   margin-top: 10px;
   margin-left: 15px;
 }
 
-/* line 383, ../sass/screen.scss */
+/* line 384, ../sass/screen.scss */
 #updatesInnerComponent .timestamp {
   margin-top: 5px;
   color: gray;
@@ -916,24 +916,24 @@ div#updatesComponent .updatesHeader {
   font-size: 12px;
 }
 
-/* line 390, ../sass/screen.scss */
+/* line 391, ../sass/screen.scss */
 #selectable {
   margin: 0px;
 }
 
-/* line 394, ../sass/screen.scss */
+/* line 395, ../sass/screen.scss */
 #updatesInnerComponent a {
   cursor: pointer;
   color: darkblue;
   text-decoration: none;
 }
 
-/* line 400, ../sass/screen.scss */
+/* line 401, ../sass/screen.scss */
 #updatesInnerComponent a:hover {
   text-decoration: underline;
 }
 
-/* line 404, ../sass/screen.scss */
+/* line 405, ../sass/screen.scss */
 .form-label {
   float: left;
   margin-right: 10px;
@@ -941,24 +941,24 @@ div#updatesComponent .updatesHeader {
   color: gray;
 }
 
-/* line 411, ../sass/screen.scss */
+/* line 412, ../sass/screen.scss */
 .narrow-box {
   width: 450px;
 }
 
-/* line 415, ../sass/screen.scss */
+/* line 416, ../sass/screen.scss */
 #errorDisplay {
   margin: 30px;
   color: red;
   font-weight: bold;
 }
 
-/* line 424, ../sass/screen.scss */
+/* line 425, ../sass/screen.scss */
 #resultsArea table {
   border-collapse: separate;
   border-spacing: 10px 15px;
 }
-/* line 429, ../sass/screen.scss */
+/* line 430, ../sass/screen.scss */
 #resultsArea td.searchResultItemLink:hover, #resultsArea td.searchResultItemName:hover {
   background-image: -webkit-linear-gradient(white, #d7d7d7);
   background-image: -moz-linear-gradient(white, #d7d7d7);
@@ -968,26 +968,27 @@ div#updatesComponent .updatesHeader {
   background-color: #d7d7d7;
   cursor: pointer;
 }
-/* line 439, ../sass/screen.scss */
+/* line 440, ../sass/screen.scss */
 #resultsArea td {
   vertical-align: top;
 }
 
-/* line 444, ../sass/screen.scss */
+/* line 445, ../sass/screen.scss */
 .wish-button-size {
   width: 140px;
 }
 
-/* line 448, ../sass/screen.scss */
-.shopping-item-link {
+/* line 449, ../sass/screen.scss */
+.item-link {
   cursor: pointer;
 }
-/* line 450, ../sass/screen.scss */
-.shopping-item-link:hover {
+/* line 451, ../sass/screen.scss */
+.item-link:hover {
   text-decoration: none;
+  color: #cccccc;
 }
 
-/* line 455, ../sass/screen.scss */
+/* line 457, ../sass/screen.scss */
 .wish-container {
   width: 450px;
   height: 350px;
@@ -997,13 +998,13 @@ div#updatesComponent .updatesHeader {
   background: linear-gradient(#ffffff, #f0f0f0);
 }
 
-/* line 464, ../sass/screen.scss */
+/* line 466, ../sass/screen.scss */
 .lead {
   display: inline-block;
   margin-right: 10px;
 }
 
-/* line 469, ../sass/screen.scss */
+/* line 471, ../sass/screen.scss */
 .ui-icon.blue {
   background-image: url(/css/ui-darkness/images/ui-icons_a83300_256x240.png);
 }

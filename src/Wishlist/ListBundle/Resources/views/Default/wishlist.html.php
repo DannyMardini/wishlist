@@ -55,7 +55,7 @@ if($i > 0){
         if( strlen($item->getSmallImage()) ) {
             $itemRow .= "<span class='imageContainer'><img class='itemImage' src=".$item->getSmallImage()." alt='Item Image'/></span>";
         }
-        $itemRow .= "<div class='itemName'>".$item->getName()."</div></div></td>"
+        $itemRow .= "<div class='itemName item-link'>".$item->getName()."</div></div></td>"
                     ."<td>".$item->getPrice(Item::CURRENCY_UNIT_DOLLAR)."</td>"
                     ."<td>".$purchasedCell."</td>"
                     ."</tr>";

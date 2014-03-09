@@ -11,6 +11,7 @@
 @import "blueprint/scaffolding";
 
 @import 'partials/sharedStyles';
+@import 'partials/globalvariables';
 
 // To generate css equivalent to the blueprint css but with your
 // configuration applied, uncomment:
@@ -445,10 +446,11 @@ $resultsHoverDark: darken($global-button-hover-color, 10%);
     width: 140px;
 }
 
-.shopping-item-link {
+.item-link {
     cursor: pointer;    
     &:hover {
         text-decoration: none;
+        color: $global-color6;
     }
 }
 
