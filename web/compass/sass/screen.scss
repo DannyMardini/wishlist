@@ -450,7 +450,7 @@ $resultsHoverDark: darken($global-button-hover-color, 10%);
     cursor: pointer;    
     &:hover {
         text-decoration: none;
-        color: $global-color6;
+        color: $global-button-hover-text-color;
     }
 }
 

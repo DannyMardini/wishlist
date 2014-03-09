@@ -43,11 +43,16 @@ ul {
         margin-right: 10px;
         padding: 5px;
         @include border-radius(0px 0px 5px 5px);
+        
+        a {
+            font-size: 18px;
 
-        a:hover {
+            &:hover {
             @include transition(.5s);
             color: $global-button-hover-text-color;
-        }
+            text-decoration: none;                
+            }
+        }        
     }
 }
 
