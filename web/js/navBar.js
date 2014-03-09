@@ -22,13 +22,6 @@ function removeNotification(notification)
     });
 }
 
-//function ignoreFriendClicked()
-//{
-//    var parentLi = $(this).parent().parent().parent();
-//    var num = getNotificationNumber(parentLi);
-//    ajaxPost(null, Routing.generate('WishlistUserBundle_ignoreFriendRequest', {notificationId: num}), null, null);
-//}
-
 function friendRequestResponse(response, request){
     var path = (response == 'accept') 
             ? 'WishlistUserBundle_acceptFriendRequest' 
@@ -37,13 +30,6 @@ function friendRequestResponse(response, request){
     var num = getNotificationNumber(parentLi);
     ajaxPost(null, Routing.generate(path, {notificationId: num}), null, null);
 }
-
-//function acceptFriendClicked()
-//{
-//    var parentLi = $(this).parent().parent().parent();
-//    var num = getNotificationNumber(parentLi);
-//    ajaxPost(null, Routing.generate('WishlistUserBundle_acceptFriendRequest', {notificationId: num}), null, null);
-//}
 
 /* Navigates to the frontpage and logs the user out */
 function onLogoutClickEvent() {
