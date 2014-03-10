@@ -1,7 +1,7 @@
 <?php 
 use Wishlist\CoreBundle\Entity\Item;
 
-foreach ($view['assetic']->stylesheets(array('compass/stylesheets/wishlist.css'), array('?yui_css')) as $url): ?>
+foreach ($view['assetic']->stylesheets(array('compass/stylesheets/wishlist.css', 'compass/stylesheets/main.css'), array('?yui_css')) as $url): ?>
 <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
 
 <?php
@@ -78,8 +78,13 @@ if(isset($nonNotifiedGranted))
 
 if(count($wishlistItems) <= 0 && ($selfWishlist))
 {
-    echo "<div class='message'> Your list is empty! In order for your friends to see what YOU WANT, start adding items to your list! <br /><br />
-        Click the (+) button above to add your first item.<br /><br /></div>";
+    echo "<div class='jumbotron'>
+              <h1><small>Friends see what you want by looking at your wish list</small></h1>
+              <h3>Add items to your wish list...</h3>
+              <p><span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Click the (+) button above<br />
+              <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Search for an item from online stores<br />
+              <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Or create your own item rather than searching online </p>
+            </div>";
 }
 ?>
 

@@ -2,6 +2,8 @@
 
 <?php foreach ($view['assetic']->javascripts(array('js/friendpage.js'), array('?yui_js')) as $url): ?>
 <script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script><?php endforeach; ?>
+<?php foreach ($view['assetic']->stylesheets(array('compass/stylesheets/main.css'), array('?yui_css')) as $url): ?>
+<link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
 
 <div class="pageTitle">
     <label class="pageHeader">Friends</label>
@@ -30,9 +32,14 @@
         echo "</div>";
     }
     else {
-        echo "<div class='message'>You haven't added any friends yet, you can: <br /><br />            
-            1. Search for people to add to your friends list by typing a name in the search box, or <br /><br />
-            2. Invite friends to join Wishenda by clicking 'Invite Friends' above.</div>";
+        echo "<br />
+        <div class='jumbotron'>
+          <h1><small>Shop for friends by looking at their wish lists</small></h1>
+          <h3>Add friends...</h3>
+          <p><span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Search for people on Wishenda by typing a name in the search box <br />
+          <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Invite friends to join Wishenda by clicking the 'Invite Friends' button
+          </p>  
+        </div>";
     }
 ?>
 </div>

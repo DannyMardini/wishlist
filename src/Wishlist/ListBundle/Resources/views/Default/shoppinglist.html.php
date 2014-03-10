@@ -46,11 +46,14 @@
         echo "</table>";
     }
     else {
-        echo "<div class='message'>Your shopping list is empty! Browse your friends wishlists to see what they want. <br /><br />
-            1. Find an item on your friends wishlist <br />
-            2. Click 'Grant Wish' <br />
-            3. The item will then show up in your shopping list<br /><br />
-            This list should help you track what you need to buy and for who!
+        echo "<div class='jumbotron'>
+              <h1><small>The shopping list helps you track what you need to buy and for who</small></h1>
+              <h3>Add items to your shopping list...</h3>
+              <p><span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Browse your friends' wish lists to see what they want <br />
+              <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Choose an item that you would like to give to your friend<br />
+              <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Click 'Grant Wish' to promise to get the item for your friend<br />
+              <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>The item will now show up on your shopping list
+              </p>
             </div>";
     }
     ?>

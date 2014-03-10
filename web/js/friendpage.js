@@ -49,8 +49,8 @@ function updateFriendList(results)
     var friendlist = $('div.friendlist');
    
     if(friendlist.size() == 0)
-    {
-        $('#friendsContainer').append('<div class="friendlist"></div>');
+    {       
+        $('#friendSearch').after('<div class="friendlist"></div>');        
         friendlist = $('div.friendlist');
         friendlist.addClass('friendlist');
     }
