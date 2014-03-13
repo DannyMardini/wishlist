@@ -5,13 +5,13 @@ set -e
 ShowUsage()
 {
     cat << EOF
-    usage: $0 [-d]
+    usage: $0
 
     Update database with changes using Doctrine.
 EOF
 }
 
-while getopts ":dh" OPTION
+while getopts ":h" OPTION
 do
     case $OPTION in
         h)
