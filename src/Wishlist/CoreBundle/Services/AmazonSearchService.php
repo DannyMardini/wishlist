@@ -55,7 +55,7 @@ class AmazonSearchService
     
     protected function CreateStringToSign($request) 
     {
-        $str = strtr( substr($request, strpos($request, "?")+1), array(',' => '%2C', ':' => '%3A', '+' => '%20') );
+        $str = strtr( substr($request, strpos($request, "?")+1), array(',' => '%2C', ':' => '%3A', '+' => '%20', '(' => '%28', ')' => '%29') );
         $params = explode("&", $str);
         natsort($params);
 
