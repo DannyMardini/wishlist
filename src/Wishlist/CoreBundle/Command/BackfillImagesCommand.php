@@ -21,27 +21,28 @@ class BackfillImagesCommand extends ContainerAwareCommand
         $itemRepo = $this->getContainer()->get('doctrine')->getRepository('WishlistCoreBundle:Item');
         $amazonService = $this->getContainer()->get('amazon_search_service');
         $em = $this->getContainer()->get('doctrine.orm.default_entity_manager');
-        $count = 0;
+        $countSuccess = 0;
         
         $items = $itemRepo->getItemsMissingImages();
+        $count = count($items);
         
         foreach ($items as $item)
         {
             $name = $item->getName();
-            $aitems = $amazonService->itemSearch("All", strtr($item->getName(), array(' ' => '+')));
+            $aitems = $amazonService->itemSearch("All", strtr($item->getName(), array(' ' => '+', '/' => '+')));
             foreach ($aitems as $aitem)
             {
                 if ($aitem->getName() == $name) {
+                    $countSuccess++;
                     $item->setSmallImage($aitem->getSmallImage());
                     break;
                 }
             }
             
             $em->persist($item);
-            $count++;
         }
         
         $em->flush();
-        $output->writeln($count." images backfilled!");
+        $output->writeln($countSuccess." out of ".$count." images backfilled!");
     }
 }
