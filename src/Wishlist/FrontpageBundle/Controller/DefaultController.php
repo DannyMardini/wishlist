@@ -10,6 +10,15 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+        $session = $this->getRequest()->getSession();
+        $email = $session->get('email_addr');
+        $userId = $session->get('user_id');
+        if(isset($email) && isset($userId))
+        {
+            $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
+            $user = $userRepo->getUserWithEmail($email);
+            return $this->render('WishlistUserBundle:Default:homepage.html.php', array( 'user' => $user));
+        }
         return $this->render('WishlistFrontpageBundle:Default:indexSuccess.html.php');
     }
 
