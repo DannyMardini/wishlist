@@ -1,11 +1,11 @@
 <html>
     <head>
         <?php foreach ($view['assetic']->javascripts(
-              array('js/jquery-1.8.2.js','js/frontPage.js','js/common.js'), array('?yui_js')) as $url): ?>
+              array('js/jquery-1.8.2.js','js/frontPage.js','js/common.js', 'js/bootstrap/bootstrap.js'), array('?yui_js')) as $url): ?>
               <script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script><?php endforeach; ?>
         
         <?php foreach ($view['assetic']->stylesheets(
-            array('css/bootstrap/bootstrap.css', 'compass/stylesheets/frontPage.css', 'compass/stylesheets/main.css'), array('?yui_css')) as $url): ?>
+            array('css/bootstrap/bootstrap.css', 'compass/stylesheets/frontPage.css'), array('?yui_css')) as $url): ?>
             <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
           
         <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -15,7 +15,69 @@
         <script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/fonts.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
     </head>
-    <body>
+    <body>        
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">            
+            <div class="navbar-header">              
+              <div class="navbar-brand" id="name">Wishenda</div>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">              
+                <form id="loginForm" class="navbar-form navbar-right" role="form">
+                  <div class="form-group">
+                    <label for="login_email_addr" class="sr-only">EMAIL:</label>
+                    <input type="email" class="form-control" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required />                      
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="sr-only">PASSWORD:</label>
+                    <input type="password" class="form-control" id="password" name="password" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" placeholder="Password" required />                            
+                  </div>  
+                  <button type="submit" class="btn btn-default" id="submitLogin" name="submitLogin" value="Sign in">Sign in</button>
+                  <span class="help-block"><a href="<?php echo $view['router']->generate('WishlistQABundle_forgotpassword')?>" id="forgotPassword" target="_blank" class="forgotPassword">Forgot password?</a></span>
+                </form>                
+            </div>
+          </div>
+        </nav>
+        
+        <img id="imageContainer" class="img-responsive" src="/images/dandelion.png" alt="wishenda logo" class="img-rounded">
+        
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>Shop for your friends in minutes</h2>
+            <small>
+                <p>Create a global wish list with items from any online store</p>
+                <p>Share your wish list and see friends wish lists</p>
+                <p>Keep a shopping list to remind you what to get for your friends</p>
+            </small>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>Request Invite</h2>
+                <form class="navbar-form" role="form" id="requestInviteForm">
+                    <div class="form-group">
+                        <label for="email_addr" class="sr-only">EMAIL:</label>
+                        <input type="email" class="form-control" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required />
+<!--                        <img id="loader" src="/images/swirl_loader.gif">-->
+                    </div>  
+                    <button type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" class="btn btn-default">Submit</button>
+                </form>
+          </div>
+        </div>
+        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+          <div class="container">
+             <div id="footerDetails">
+                <a class="aboutLink frontpageLink" href="">About</a>
+                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms</a>
+                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy</a>
+                <br />
+                <span>© 2014 Wishenda</span>
+            </div>
+          </div>
+        </nav>
+        <div id="dialog-message" title=""></div>
+    </body>
+<!--    <body>
         <input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />
         <div id="imageContainer"></div>
         <div id="registrationContainer">
@@ -83,5 +145,5 @@
             </div>
         </footer>
         <div id="dialog-message" title=""></div>
-    </body>
+    </body>-->
 </html>
