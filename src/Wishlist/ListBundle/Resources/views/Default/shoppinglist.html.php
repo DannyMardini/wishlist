@@ -47,7 +47,7 @@
     }
     else {
         echo "<div class='jumbotron'>
-              <h1><small>The shopping list helps you track what you need to buy and for who</small></h1>
+              <h1><small>Use the shopping list to track what to buy and for who</small></h1>
               <h3>Add items to your shopping list...</h3>
               <p><span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Browse your friends' wish lists to see what they want <br />
               <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>Choose an item that you would like to give to your friend<br />
