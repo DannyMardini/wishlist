@@ -4,7 +4,7 @@ namespace Wishlist\CoreBundle\Services;
 
 use Wishlist\CoreBundle\Entity\Item;
 
-class AmazonSearchService
+class AmazonSearchService extends VendorSearchService
 {
     protected $accessId;
     protected $accessKey;
@@ -37,10 +37,10 @@ class AmazonSearchService
         return $request;
     }
 
-    protected function createItemSearchRequest($searchIndex, $keywords)
+    protected function createItemSearchRequest($keywords)
     {
         $params = 
-             "&SearchIndex=" . $searchIndex
+             "&SearchIndex=All"
            . "&Keywords=" . strtr( $keywords, array('+' => '%20') );
 
         return $this->createRequestBase("ItemSearch", $params);
@@ -128,18 +128,6 @@ class AmazonSearchService
         }
 
         return $array;
-    }
-
-    public function itemSearch($searchIndex, $keywords, $raw=False)
-    {
-        $request = $this->createItemSearchRequest($searchIndex, $keywords);
-        return $this->sendRequest($request, $raw);
-    }
-
-    public function itemLookup($asin, $raw=False)
-    {
-        $request = $this->createItemLookupRequest($asin);
-        return $this->sendRequest($request, $raw);
     }
 
     protected function sendRequest($request, $raw=False)

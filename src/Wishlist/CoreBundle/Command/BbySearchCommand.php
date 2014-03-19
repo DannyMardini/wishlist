@@ -8,15 +8,15 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ItemSearchCommand extends ContainerAwareCommand
+class BbySearchCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('wishenda:itemsearch')
-            ->setDescription('Use the Amazon search API to send an item search')
+            ->setName('wishenda:bbysearch')
+            ->setDescription('Use the Best Buy API to send an item search')
             ->addArgument('keywords', InputArgument::REQUIRED, 'Search keywords')
-            ->addArgument('raw', InputArgument::OPTIONAL, 'set to \'raw\' to receive raw response from Amazon');
+            ->addArgument('raw', InputArgument::OPTIONAL, 'set to \'raw\' to receive raw response from Best Buy');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -31,9 +31,9 @@ class ItemSearchCommand extends ContainerAwareCommand
             $raw = False;
         }
         
-        $amazonService = $this->getContainer()->get('amazon_search_service');
+        $bestbuyService = $this->getContainer()->get('bestbuy_search_service');
 
-        $response = $amazonService->itemSearch($keywords, $raw);
+        $response = $bestbuyService->itemSearch($keywords, $raw);
 
         print_r($response);
     }

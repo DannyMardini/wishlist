@@ -69,6 +69,9 @@ services:
   amazon_search_service:
     class: Wishlist\CoreBundle\Services\AmazonSearchService
     arguments: [%access_key_id%, %access_key_secret%, %associate_tag%]
+  bestbuy_search_service:
+    class: Wishlist\CoreBundle\Services\BestBuySearchService
+    arguments: [%bbyopen_api_key%]
   
 
 fos_js_routing:
