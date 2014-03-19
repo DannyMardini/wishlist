@@ -10,7 +10,14 @@
     @extend .required-form-input;
 }
 
-body { padding-top: 70px; }
+body { 
+    background-image: url(/images/dandelion-bg.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 70px; 
+}
 
 #name {
     font-family: $global-main-font-family;

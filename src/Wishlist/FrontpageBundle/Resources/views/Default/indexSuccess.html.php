@@ -39,8 +39,6 @@
           </div>
         </nav>
         
-        <img id="imageContainer" class="img-responsive" src="/images/dandelion.png" alt="wishenda logo" class="img-rounded">
-        
         <div class="panel panel-default">
           <div class="panel-body">
             <h2>Shop for your friends in minutes</h2>

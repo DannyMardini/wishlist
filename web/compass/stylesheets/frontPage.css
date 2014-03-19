@@ -39,10 +39,15 @@
 
 /* line 13, ../sass/frontPage.scss */
 body {
+  background-image: url(/images/dandelion-bg.png);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   padding-top: 70px;
 }
 
-/* line 15, ../sass/frontPage.scss */
+/* line 22, ../sass/frontPage.scss */
 #name {
   font-family: "Satisfy", cursive;
   font-size: 35px;
@@ -51,13 +56,13 @@ body {
   padding: 25px 0px 0px 40px;
 }
 
-/* line 23, ../sass/frontPage.scss */
+/* line 30, ../sass/frontPage.scss */
 #imageContainer {
   float: left;
   display: inline-block;
 }
 
-/* line 28, ../sass/frontPage.scss */
+/* line 35, ../sass/frontPage.scss */
 .panel {
   width: 400px;
   background-color: black;
@@ -66,24 +71,24 @@ body {
   margin: 30px;
 }
 
-/* line 36, ../sass/frontPage.scss */
+/* line 43, ../sass/frontPage.scss */
 #footerDetails {
   text-align: center;
   vertical-align: bottom;
   padding-top: 10px;
 }
-/* line 42, ../sass/frontPage.scss */
+/* line 49, ../sass/frontPage.scss */
 #footerDetails a:visited, #footerDetails a:link, #footerDetails a:active {
   color: #888888;
   text-decoration: none;
   margin-right: 5px;
 }
-/* line 48, ../sass/frontPage.scss */
+/* line 55, ../sass/frontPage.scss */
 #footerDetails a:hover {
   color: #cccccc;
 }
 
-/* line 54, ../sass/frontPage.scss */
+/* line 61, ../sass/frontPage.scss */
 .help-block {
   display: inline-block;
   font-size: 10px;
