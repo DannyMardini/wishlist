@@ -64,186 +64,61 @@ body {
 
 /* line 35, ../sass/frontPage.scss */
 .panel {
-  width: 400px;
   background-color: black;
-  float: right;
   color: white;
-  margin: 30px;
+  width: 500px;
+  opacity: 0.7;
+}
+/* line 41, ../sass/frontPage.scss */
+.panel p {
+  font-size: 14px;
+}
+/* line 45, ../sass/frontPage.scss */
+.panel h2 {
+  margin-bottom: 30px;
+}
+/* line 49, ../sass/frontPage.scss */
+.panel .navbar-form .form-control {
+  display: block;
+  width: 100%;
+  vertical-align: inherit;
 }
 
-/* line 43, ../sass/frontPage.scss */
+/* line 56, ../sass/frontPage.scss */
+#wishenda-details-div {
+  height: 300px;
+  margin: 5% 30% 10px;
+}
+/* line 59, ../sass/frontPage.scss */
+#wishenda-details-div p {
+  text-align: left;
+}
+
+/* line 64, ../sass/frontPage.scss */
+#requestinvite-div {
+  margin: 0 30% 0;
+  text-align: center;
+}
+
+/* line 69, ../sass/frontPage.scss */
 #footerDetails {
   text-align: center;
   vertical-align: bottom;
   padding-top: 10px;
 }
-/* line 49, ../sass/frontPage.scss */
+/* line 75, ../sass/frontPage.scss */
 #footerDetails a:visited, #footerDetails a:link, #footerDetails a:active {
   color: #888888;
   text-decoration: none;
   margin-right: 5px;
 }
-/* line 55, ../sass/frontPage.scss */
+/* line 81, ../sass/frontPage.scss */
 #footerDetails a:hover {
   color: #cccccc;
 }
 
-/* line 61, ../sass/frontPage.scss */
+/* line 87, ../sass/frontPage.scss */
 .help-block {
   display: inline-block;
   font-size: 10px;
 }
-
-/*
-body {
-    background-color: black;
-    margin: 10px 10px 10px 10px;
-    position: relative;
-}
-
-#login, #registrationContainer, article, footer, address, #imageContainer {
-        display: block;
-}
-
-#loginContainer {
-    background-color: white;
-    height: 20px;
-    text-align: right;
-    width: 100%;
-}
-
-#registrationContainer {
-    background-color: white;
-    width: 100%;
-}
-
-#imageContainer{
-    width: 35%;
-    background-color: white;
-    float:left;
-    background-image: url(/images/dandelion.png);
-    background-size: 88%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#registrationContainer, #imageContainer {
-    height: 500px;
-}
-
-footer {
-    background-color: black;
-    height: 20px;
-    width: 100%;
-}
-
-#footerDetails {
-    text-align: center;
-    vertical-align: bottom;
-    padding-top: 10px;
-}
-
-.frontpageLink {
-    &:visited, &:link, &:active {
-        color: $global-button-text-color;
-        text-decoration: none;
-        margin-right: 5px;
-    }
-
-    &:hover {
-        color: $global-button-hover-color;
-    }
-}
-
-#logoContainer {
-    height: 35%;
-    background-color: white;
-    width: 100%;
-}
-
-#registrationForm {
-    height: 55%;
-}
-
-#name {
-    font-family: $global-main-font-family;
-    font-size: 78px;
-}
-
-#catchphrase {    
-    font-family: Helvetica;
-    font-size: 20px;    
-}
-
-.catchphrasecontent :first-child{
-    width: 1100px;
-    font-size: 22px;
-    color: #FC6DC0;
-}
-
-.catchphrasecontent-small{
-    font-size: 14px;
-}
-
-.toggler { 
-    width: 80%;
-    padding-top: 15px;
-    padding-left: 35%;
-    height: 88%; 
-}
-
-#requestInviteToggleWindow, #loginToggleWindow { 
-    width: 500px;
-    height: 90%;
-    padding: 0.4em; 
-    position: relative;
-    background-color: white;
-}
-
-#requestInviteButton, #loginButton { 
-    padding: .5em 1em; 
-    text-decoration: none; 
-}
-
-#requestInviteToggleWindow h3, #loginToggleWindow h3 { 
-    margin: 0; 
-    padding: 0.4em; 
-    text-align: center; 
-}
-
-input {
-    display: block;
-    width: 300px;
-    height: 30px;
-    font-size: 15px;
-}
-
-#submitLogin, #submitRequestInvite {    
-    width: 200px;
-    @include border-radius(5px);
-}
-
-label {
-    display: block;
-    font-weight:bolder;
-    width: 200px;
-}
-
-.forgotPassword {
-    color: $global-button-text-color;
-    &:hover {
-        color: $global-button-hover-color;
-    }
-}
-
-#email_addr {
-    display: inline-block;
-}
-
-#loader {
-    margin-left: 5px;
-    vertical-align: middle;
-    display: none;
-    height: 1.5em;
-}
-*/

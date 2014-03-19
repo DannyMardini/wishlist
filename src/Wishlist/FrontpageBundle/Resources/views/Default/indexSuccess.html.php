@@ -20,38 +20,33 @@
         <div class="container-fluid">            
             <div class="navbar-header">              
               <div class="navbar-brand" id="name">Wishenda</div>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">              
-                <form id="loginForm" class="navbar-form navbar-right" role="form">
-                  <div class="form-group">
-                    <label for="login_email_addr" class="sr-only">EMAIL:</label>
-                    <input type="email" class="form-control" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required />                      
-                  </div>
-                  <div class="form-group">
-                    <label for="password" class="sr-only">PASSWORD:</label>
-                    <input type="password" class="form-control" id="password" name="password" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" placeholder="Password" required />                            
-                  </div>  
-                  <button type="submit" class="btn btn-default" id="submitLogin" name="submitLogin" value="Sign in">Sign in</button>
-                  <span class="help-block"><a href="<?php echo $view['router']->generate('WishlistQABundle_forgotpassword')?>" id="forgotPassword" target="_blank" class="forgotPassword">Forgot password?</a></span>
-                </form>                
-            </div>
+            </div>           
+            <form id="loginForm" class="navbar-form navbar-right" role="form">
+              <div class="form-group">
+                <label for="login_email_addr" class="sr-only">EMAIL:</label>
+                <input type="email" class="form-control" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required />                      
+              </div>
+              <div class="form-group">
+                <label for="password" class="sr-only">PASSWORD:</label>
+                <input type="password" class="form-control" id="password" name="password" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" placeholder="Password" required />                            
+              </div>  
+              <button type="submit" class="btn btn-default" id="submitLogin" name="submitLogin" value="Sign in">Sign in</button>
+              <span class="help-block"><a href="<?php echo $view['router']->generate('WishlistQABundle_forgotpassword')?>" id="forgotPassword" target="_blank" class="forgotPassword">Forgot password?</a></span>
+            </form>
           </div>
         </nav>
-        
-        <div class="panel panel-default">
+        <div id="wishenda-details-div" class="panel panel-default">
           <div class="panel-body">
-            <h2>Shop for your friends in minutes</h2>
-            <small>
-                <p>Create a global wish list with items from any online store</p>
-                <p>Share your wish list and see friends wish lists</p>
-                <p>Keep a shopping list to remind you what to get for your friends</p>
-            </small>
+            <h2>Shop for your friends in minutes</h2>            
+                <p>Add items from any online store to your global wish list</p>
+                <p>Look at friends' wish lists to know what to get them</p>
+                <p>Add items to your shopping list, to remind you what to get for your friends</p>
+                <p>Use wishenda to share your wish list for any event, ie. baby shower, wedding, bridal shower, etc</p>
           </div>
         </div>
-        <div class="panel panel-default">
+        <div id="requestinvite-div" class="panel panel-default">
           <div class="panel-body">
-            <h2>Request Invite</h2>
+            <h2>Request an invite</h2>
                 <form class="navbar-form" role="form" id="requestInviteForm">
                     <div class="form-group">
                         <label for="email_addr" class="sr-only">EMAIL:</label>
@@ -61,7 +56,7 @@
                     <button type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" class="btn btn-default">Submit</button>
                 </form>
           </div>
-        </div>
+        </div>       
         <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
           <div class="container">
              <div id="footerDetails">
