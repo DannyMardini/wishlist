@@ -52,12 +52,20 @@
                     <div class="form-group">
                         <label for="email_addr" class="sr-only">EMAIL:</label>
                         <input type="email" class="form-control" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required />
-<!--                        <img id="loader" src="/images/swirl_loader.gif">-->
+                        <img id="loader" src="/images/swirl_loader.gif">
                     </div>  
                     <button type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" class="btn btn-default">Submit</button>
                 </form>
           </div>
-        </div>       
+        </div>
+        <?php 
+        if(preg_match('/(?i)msie [4-8]/',$_SERVER['HTTP_USER_AGENT']))
+        {
+            echo "<h3 style='color: FF8282;'>Please consider upgrading to a modern browser such as 
+                <a href='https://www.google.com/intl/en/chrome/browser/' target='none'>Chrome</a> or 
+                <a href='http://www.mozilla.org/en-US/firefox/new/' target='none'>Firefox</a></h3>\n";
+        }
+        ?>        
         <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
           <div class="container">
              <div id="footerDetails">
@@ -86,73 +94,4 @@
           </div>
         </div>
     </body>
-<!--    <body>
-        <input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />
-        <div id="imageContainer"></div>
-        <div id="registrationContainer">
-            <div id="logoContainer">
-                <div id="name">Wishenda</div>
-                <div id="catchphrase">
-                    <div class="catchphrasecontent">
-                        <b>shopping for friends just got easier... do it in minutes</b><br />
-                        <div class="catchphrasecontent-small">
-                            Create a registry from all your favorite stores in one place.<br />
-                            See your friends' wish lists.<br />
-                            Keep a shopping list of items you plan to buy.         
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br />
-            <div id="registrationForm">
-                <br /><br />
-                <button href="" id="requestInviteButton">Request Invite</button>
-                <button href="" id="loginButton">Login</button>
-                <br />
-                <div class="toggler">
-                    <div id="requestInviteToggleWindow"> 
-                        <br />
-                        <form role="form" id="requestInviteForm">
-                            <label for="email_addr" class="sr-only">EMAIL:</label>
-                            <input type="email" class="form-control" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required /><img id="loader" src="/images/swirl_loader.gif">
-                            <br />
-                            <br />
-                            <input type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" />
-                        </form>
-                    </div>
-                    <div id="loginToggleWindow">
-                        <br />
-                        <form id="loginForm">
-                            <label for="login_email_addr" class="sr-only">EMAIL:</label>
-                            <input type="email" class="form-control" id="login_email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required />
-                            <br />
-                            <label for="password" class="sr-only">PASSWORD:</label>
-                            <input type="password" class="form-control" id="password" name="password" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" placeholder="Password" required />
-                            <br />
-                            <input type="submit" id="submitLogin" name="submitLogin" value="Login" />
-                            <span class="help-block"><a href="<?php echo $view['router']->generate('WishlistQABundle_forgotpassword')?>" id="forgotPassword" target="_blank" class="forgotPassword">Forgot your password?</a></span>                            
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <?php 
-            if(preg_match('/(?i)msie [4-8]/',$_SERVER['HTTP_USER_AGENT']))
-            {
-                echo "<h3 style='color: FF8282;'>Please consider upgrading to a modern browser such as 
-                    <a href='https://www.google.com/intl/en/chrome/browser/' target='none'>Chrome</a> or 
-                    <a href='http://www.mozilla.org/en-US/firefox/new/' target='none'>Firefox</a></h3>\n";
-            }
-            ?>
-        </div>
-        <footer>
-            <div id="footerDetails">
-                <a class="aboutLink frontpageLink" href="">About</a>
-                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms</a>
-                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy</a>
-                <br />
-                <span>© 2014 Wishenda</span>
-            </div>
-        </footer>
-        <div id="dialog-message" title=""></div>
-    </body>-->
 </html>

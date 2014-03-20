@@ -78,20 +78,20 @@ class DefaultController extends Controller
     public function requestInviteAction()
     {
         try {
-            $response = "The invite request has been submitted! We will contact you when we are ready for you to join!";
+            $response = "Your request has been submitted and is being processed by the Wishenda Team. You will receive an email once your request is finished being processed.";
             $email = $this->getRequest()->get('email');
             $mailer = $this->get("instant_mailer_service");
             
             if(!$email)
             {   
-                $response = "Sorry about this! The system could not read your email. Please refresh your browser and try again. <br /><br />-Wishlist Team";           
+                $response = "The system could not process your email. Refresh the browser and try again.";           
             }
             
             $userExists = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistUser')->findOneByEmail($email);
             
             if($userExists)
             {
-                return new Response('It seems you are already a member of wishlist, please log in!');
+                return new Response('This email is already linked to a Wishenda account.');
             }
             
             // make a database call to store the email in the invite queue
@@ -102,7 +102,7 @@ class DefaultController extends Controller
         }
         catch(Exception $e)
         {
-            $response = "Sorry about this! An issue occurred while submitting your request. Please refresh your browser and try again. <br /><br />-Wishlist Team";
+            $response = "A system issue occurred while submitting your request. Refresh the browser and try again.";
             return $this->renderText($response);
         }
     }

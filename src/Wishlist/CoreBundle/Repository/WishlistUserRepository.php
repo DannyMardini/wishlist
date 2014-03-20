@@ -62,7 +62,7 @@ class WishlistUserRepository extends EntityRepository
             
             if(!$user)
             {
-                throw new \Exception("The email did not match any users in our system. <br /><br />-Wishlist Team");
+                throw new \Exception("The email you entered does not belong to any account. Make sure that it is typed correctly.");
             }
 
             if(StoPasswordHash::verifyPassword($password, $user->getPassword()))
@@ -70,12 +70,12 @@ class WishlistUserRepository extends EntityRepository
                 return $user->getWishlistUserId();
             }
             else {
-                throw new \Exception("Wrong password! Check it and try again. <br /><br />-Wishlist Team");
+                throw new \Exception("The password you entered is incorrect. Please try again and make sure your caps lock is off");
             }
             
         }catch(Exception $e)
         {
-            throw new \Exception("The system could not validate your login information. Please try again. <br /><br />-Wishlist Team");
+            throw new \Exception("The system could not validate your login information. Please refresh the browser and try again.");
         }
     }
     
