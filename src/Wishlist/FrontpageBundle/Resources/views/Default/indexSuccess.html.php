@@ -40,9 +40,9 @@
           <div class="panel-body">
             <h2>Shop for your friends in minutes</h2>            
                 <p>Add items from any online store to your global wish list</p>
-                <p>Look at friends' wish lists to know what to get them</p>
-                <p>Add items to your shopping list, to remind you what to get for your friends</p>
-                <p>Use wishenda to share your wish list for any event, ie. baby shower, wedding, bridal shower, etc</p>
+                <p>Look at your friends' wish lists to find what to get them</p>
+                <p>Use the shopping list to remember what to get your friends</p>
+                <p>Share your wish list with friends for showers, weddings, etc</p>
           </div>
         </div>
         <div id="requestinvite-div" class="panel panel-default">

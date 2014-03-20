@@ -71,53 +71,54 @@ body {
 }
 /* line 41, ../sass/frontPage.scss */
 .panel p {
-  font-size: 14px;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
-/* line 45, ../sass/frontPage.scss */
+/* line 46, ../sass/frontPage.scss */
 .panel h2 {
   margin-bottom: 30px;
 }
-/* line 49, ../sass/frontPage.scss */
+/* line 50, ../sass/frontPage.scss */
 .panel .navbar-form .form-control {
   display: block;
   width: 100%;
   vertical-align: inherit;
 }
 
-/* line 56, ../sass/frontPage.scss */
+/* line 57, ../sass/frontPage.scss */
 #wishenda-details-div {
   height: 300px;
   margin: 5% 30% 10px;
 }
-/* line 59, ../sass/frontPage.scss */
+/* line 60, ../sass/frontPage.scss */
 #wishenda-details-div p {
   text-align: left;
 }
 
-/* line 64, ../sass/frontPage.scss */
+/* line 65, ../sass/frontPage.scss */
 #requestinvite-div {
   margin: 0 30% 0;
   text-align: center;
 }
 
-/* line 69, ../sass/frontPage.scss */
+/* line 70, ../sass/frontPage.scss */
 #footerDetails {
   text-align: center;
   vertical-align: bottom;
   padding-top: 10px;
 }
-/* line 75, ../sass/frontPage.scss */
+/* line 76, ../sass/frontPage.scss */
 #footerDetails a:visited, #footerDetails a:link, #footerDetails a:active {
   color: #888888;
   text-decoration: none;
   margin-right: 5px;
 }
-/* line 81, ../sass/frontPage.scss */
+/* line 82, ../sass/frontPage.scss */
 #footerDetails a:hover {
   color: #cccccc;
 }
 
-/* line 87, ../sass/frontPage.scss */
+/* line 88, ../sass/frontPage.scss */
 .help-block {
   display: inline-block;
   font-size: 10px;
