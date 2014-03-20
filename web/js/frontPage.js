@@ -20,11 +20,6 @@ function runEffect(togglerWindow) {
         $(togglerWindow ).show( "slide",{direction: "left"}, 1500);
 }
 
-function displayMessageDialog(msg, title)
-{  
-    displayMessage(msg, title);
-}
-
 function redirectToHomePage()
 {
     // redirect to the logged in user's home page
@@ -128,9 +123,9 @@ $(document).ready(function()
     }); 
     
     
-    $(".aboutLink").click(function(e){
-        e.preventDefault();
-        eval('displayMessageDialog(aboutMessage, "What is Wishlist?")');
+    $(".aboutLink").click(function(){        
+        $('#myModalLabel').text('About Wishenda');
+        $('.modal-body').html(aboutMessage);        
     });
     
     // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
@@ -139,12 +134,11 @@ $(document).ready(function()
     
 });
 
-var aboutMessage = "The founders of Wishenda came up with the idea of making this site in hopes that it would help \n\
-                    their friends and family out during holidays, birthdays, and any other special occasion. <br /><br /> \n\
-                    Message from the founders:<br /> \n\
-                    'Every year for christmas we would write up our wish lists and wanted an easy way to share it with our close friends and family so that they would know what we want. \n\
-                    This gave us the idea to make this site and hope that other people would be able to use it to do the same.' <br /><br />\n\
-                    With Wishenda you know what all of your friends want and they know what you want. Shopping for each other has never been easier!";
+var aboutMessage = "The goal of Wishenda is to help everyone shop during holidays, birthdays, and \n\
+                    any other special occasion. <br /><br /> \n\
+                    <em>\"Every Christmas, we would type up our wish lists on a google spreadsheet and share it with our family. \n\
+                    This gave us the idea to make Wishenda! We hope other people will find this tool as useful as we have.\"</em><br /><br />\n\
+                    With Wishenda you know what all of your friends want and they know what you want. Shopping for each other will never be the same!";
 
 // run the currently selected effect
 function runEffect(togglerWindow) {        

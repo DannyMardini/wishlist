@@ -61,7 +61,7 @@
         <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
           <div class="container">
              <div id="footerDetails">
-                <a class="aboutLink frontpageLink" href="">About</a>
+                <a class="aboutLink frontpageLink" data-toggle="modal" data-target="#myModal" href="">About</a>
                 <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms</a>
                 <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy</a>
                 <br />
@@ -70,6 +70,21 @@
           </div>
         </nav>
         <div id="dialog-message" title=""></div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+              </div>
+              <div class="modal-body"></div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>        
+              </div>
+            </div>
+          </div>
+        </div>
     </body>
 <!--    <body>
         <input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />
