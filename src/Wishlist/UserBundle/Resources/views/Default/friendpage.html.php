@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
 
 <div class="pageTitle">
-    <label class="pageHeader">Friends</label>
+    <h2 class="pageHeader">Friends</h2>
     <button class="addButton" title="invite friends" id="inviteFriendButton"><span class="wishenda-button">Invite Friends</span></button>
     <span class="itemCountSpan"><?php echo count($friends) ?> Friend(s)</span>
 </div>

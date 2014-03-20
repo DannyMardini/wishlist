@@ -13,7 +13,7 @@ $selfWishlist = ($userId == $loggedInUserId)? true:false;
 <input id="userId" type="hidden" value="<?php echo $userId ?>"/>
 
 <div id="div_left_panel">
-    <label class="pageHeader userName"><?php echo $wishlist_user->getName() ?></label><br />
+    <h2 class="pageHeader userName"><?php echo $wishlist_user->getName() ?></h2><br />
     <div id="div_user_container">
         <div id="div_profile_pic">
             <img src="<?php echo $wishlist_user->getProfileUrl($picService) ?>"/>

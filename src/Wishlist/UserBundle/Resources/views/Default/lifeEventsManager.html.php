@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
 <div class="pageTitle">
     <?php $eventCount = count($events); ?>
-    <label class="pageHeader" id="event_count_<?php echo $eventCount ?>">Events</label>
+    <h2 class="pageHeader" id="event_count_<?php echo $eventCount ?>">Events</h2>
     <button class="addButton" title="add event" id="addLifeEventButton"><span class="ui-icon ui-icon-plus wishenda-button"></span></button>
     <span class="itemCountSpan"><span id='eventCount'><?php echo $eventCount ?></span> Event(s)</span>
 </div>        

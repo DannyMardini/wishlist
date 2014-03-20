@@ -5,7 +5,7 @@
 
 <div class="pageTitle">     
     <?php $shoppinglistCount = count($purchases); ?>
-    <label class="pageHeader" id="shoppinglist_count_<?php echo $shoppinglistCount ?>">Shopping List </label>    
+    <h2 class="pageHeader" id="shoppinglist_count_<?php echo $shoppinglistCount ?>">Shopping List </h2>
     <button class="removeButton" id='retractPurchaseButton' title='cancel selected item(s)' type='button'><span class='ui-icon ui-icon-minus'></span></button>
     <span class="itemCountSpan"><?php echo $shoppinglistCount ?> Item(s)</span>   
 </div> 

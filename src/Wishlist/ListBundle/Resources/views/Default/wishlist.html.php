@@ -8,7 +8,7 @@ foreach ($view['assetic']->stylesheets(array('compass/stylesheets/wishlist.css',
 //Helper functions
 $i = count($wishlistItems);
 
-echo "<label class='pageHeader'>Wishlist</label>";
+echo "<h2 class='pageHeader'>Wishlist</h2>";
 if ($selfWishlist)
 {    
     echo "<button class='addButton' title='add item' id='addItemButton'><span class='ui-icon ui-icon-plus'></span></button>";
