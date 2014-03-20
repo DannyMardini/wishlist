@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label for="email_addr" class="sr-only">EMAIL:</label>
                         <input type="email" class="form-control" id="email_addr" name="email_addr" autofocus="autofocus" placeholder="Email" required />
-<!--                        <img id="loader" src="/images/swirl_loader.gif">-->
+                        <img id="loader" src="/images/swirl_loader.gif">
                     </div>  
                     <button type="submit" id="submitRequestInvite" name="submitRequestInvite" value="Request Invite" class="btn btn-default">Submit</button>
                 </form>
