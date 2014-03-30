@@ -130,21 +130,14 @@ class AmazonSearchService extends VendorSearchService
 
         return $array;
     }
-
-    protected function sendRequest($request, $raw=False)
+    
+    protected function isResponseValid($response)
     {
-        $response = file_get_contents($request);
-        $response = simplexml_load_string($response);
-        if($response->Items->Request->IsValid != True) {
-            throw new \Exception("Request was not valid");
-        }
-
-        if(True === $raw)
+        if(!isset($response) || $response->Items->Request->IsValid != True)
         {
-            return $response;
+            return False;
         }
         
-        //return $response;
-        return $this->responseToItems($response);
+        return True;
     }
 }

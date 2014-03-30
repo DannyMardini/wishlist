@@ -27,25 +27,16 @@ class BestBuySearchService extends VendorSearchService
         return $request;
     }
     
-    protected function sendRequest($request, $raw)
+    protected function isResponseValid($response)
     {
-        
-        $response = file_get_contents($request);
-        $response = simplexml_load_string($response);
-        /*
-        if($response->Items->Request->IsValid != True) {
-            throw new \Exception("Request was not valid");
-        }
-         * 
-         */
-
-        if(True === $raw)
-        {
-            return $response;
-        }
-        
+        //todo: implement this function
+        return True;
+    }
+    
+    protected function responseToItems($response)
+    {
+        //todo: implement this function
         return $response;
-//        return $this->responseToItems($response);
     }
 }
 
