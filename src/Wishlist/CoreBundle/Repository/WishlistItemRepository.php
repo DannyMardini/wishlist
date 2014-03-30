@@ -50,10 +50,10 @@ class WishlistItemRepository extends EntityRepository
         return true;
     }    
     
-    public function makeWish($name, $asin, $image, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
+    public function makeWish($name, $vendorId, $image, $price, $link, $isPublic, $comment, $quantity, WishlistUser $wishlistUser)
     {
         $itemRepo = $this->getEntityManager()->getRepository('WishlistCoreBundle:Item');
-        $newItem = $itemRepo->newItem($name, $image, $price, $link, $asin); //, $isPublic, $comment, $quantity, $wishlistUser);
+        $newItem = $itemRepo->newItem($name, $image, $price, $link, $vendorId); //, $isPublic, $comment, $quantity, $wishlistUser);
         
         if($quantity=="")
         {

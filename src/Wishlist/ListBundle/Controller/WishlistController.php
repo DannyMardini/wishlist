@@ -51,7 +51,7 @@ class WishlistController extends Controller
         $request = $this->getRequest();
         $session = $request->getSession(); 
         $name = urldecode($request->get('name'));
-        $asin = $request->get('asin');
+        $vendorId = $request->get('vendorId');
         $image = $request->get('image');
         $price = $request->get('price');
         $link = $request->get('link');
@@ -70,7 +70,7 @@ class WishlistController extends Controller
         }
         
         $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
-        $added = $wishRepo->makeWish($name, $asin, $image, $price, $link, $isPrivate, $comment, $quantity, $user);
+        $added = $wishRepo->makeWish($name, $vendorId, $image, $price, $link, $isPrivate, $comment, $quantity, $user);
         
         if(!$added){   
             // The item was not added because it already exists    
@@ -107,8 +107,8 @@ class WishlistController extends Controller
         $amazonSearch = $this->get('amazon_search_service');
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
 
-        $asin = $request->get('ASIN');
-        if(!isset($asin))
+        $vendorId = $request->get('vendorId');
+        if(!isset($vendorId))
         {
             return new Response('failure');
         }

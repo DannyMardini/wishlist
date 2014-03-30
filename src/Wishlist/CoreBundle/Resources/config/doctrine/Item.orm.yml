@@ -26,7 +26,7 @@ Wishlist\CoreBundle\Entity\Item:
     link:
       type: text
       nullable: false
-    asin:
+    vendorId:
       type: integer
       nullable: true
     smallImage:

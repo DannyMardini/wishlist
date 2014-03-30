@@ -13,16 +13,16 @@ use Wishlist\CoreBundle\Entity\Item;
  */
 class ItemRepository extends EntityRepository
 {
-    public function newItem($name, $smallImage, $price, $link, $asin=null)
+    public function newItem($name, $smallImage, $price, $link, $vendorId=null)
     {        
         $newItem = new Item();
         $newItem->setName($name);
         $newItem->setSmallImage($smallImage);
         $newItem->setPrice($price, Item::CURRENCY_UNIT_DOLLAR);
         $newItem->setLink($link);
-        if(isset($asin))
+        if(isset($vendorId))
         {
-            $newItem->setAsin($asin);
+            $newItem->setvendorId($vendorId);
         }
 
         return $this->addItem($newItem);
