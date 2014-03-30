@@ -30,7 +30,10 @@ class BestBuySearchService extends VendorSearchService
     
     protected function isResponseValid($response)
     {
-        //todo: find if there is a check for validity.
+        if(!isset($response->product))
+        {
+            return False;
+        }
         return True;
     }
     
