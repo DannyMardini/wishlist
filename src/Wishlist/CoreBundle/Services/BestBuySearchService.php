@@ -1,6 +1,7 @@
 <?php
 
 namespace Wishlist\CoreBundle\Services;
+use Wishlist\CoreBundle\Entity\Item;
 
 class BestBuySearchService extends VendorSearchService
 {
@@ -29,14 +30,46 @@ class BestBuySearchService extends VendorSearchService
     
     protected function isResponseValid($response)
     {
-        //todo: implement this function
+        //todo: find if there is a check for validity.
         return True;
     }
     
     protected function responseToItems($response)
     {
         //todo: implement this function
-        return $response;
+        $array = array();
+        foreach($response->product as $current) {
+
+            if( !isset($current->name) || 
+                !isset($current->regularPrice) || 
+                !isset($current->url) || 
+                !isset($current->productId) ) 
+            {
+                //If any of the required info is not present skip this item.
+                continue;
+            }
+
+            $item = new Item();
+            $item->setName((string)$current->name);
+            $item->setPrice(intval((string)$current->regularPrice), Item::CURRENCY_UNIT_DOLLAR);
+            $item->setLink((string)$current->url);
+            $item->setvendorId((string)$current->productId);
+            
+            if(isset($current->thumbnailImage))
+            {
+                $item->setSmallImage((string)$current->thumbnailImage);
+            }
+            
+            if(isset($current->image))
+            {
+                $item->setMediumImage((string)$current->image);
+            }
+                        
+            $array[] = $item;
+        }
+
+        return $array;
+
     }
 }
 
