@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Wishlist\CoreBundle\Entity\Purchase;
 use Wishlist\CoreBundle\Entity\WishlistUser;
+use Wishlist\CoreBundle\Services\VendorSearchService;
 use \DateTime;
 
 class WishlistController extends Controller
@@ -87,7 +88,14 @@ class WishlistController extends Controller
     {
         $request = $this->getRequest()->request;
         $amazonSearch = $this->get('amazon_search_service');
+        $bestbuySearch = $this->get('bestbuy_search_service');
 
+        $vendor = $request->get('vendor');
+        if(!isset($vendor))
+        {
+            return new Response();
+        }
+        
         $keywords = $request->get('keywords');
         if(!isset($keywords))
         {
@@ -97,7 +105,20 @@ class WishlistController extends Controller
         //replace all white space with single + characters.
         $keywords = implode("+", explode(" ", $keywords));
         
-        $searchResults = $amazonSearch->itemSearch($keywords);
+        switch($vendor)
+        {
+            case VendorSearchService::VENDOR_BESTBUY:
+                $searchResults = $bestbuySearch->itemSearch($keywords);
+                break;
+            
+            case VendorSearchService::VENDOR_AMAZON:
+                $searchResults = $amazonSearch->itemSearch($keywords);
+                break;
+            
+            default:
+                //Don't know this vendor, return no search results
+                return new Response();
+        }
         return $this->render('WishlistDialogBundle:Default:itemSearchResults.html.php', array('items' => $searchResults));
     }
     
