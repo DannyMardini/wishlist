@@ -18,14 +18,14 @@ Wishlist\CoreBundle\Entity\Item:
       generator:
         strategy: AUTO
     name:
-      type: string
-      length: '255'
+      type: text
+      nullable: false
     price:
       type: integer
       length: null
     link:
-      type: string
-      length: '255'
+      type: text
+      nullable: false
     asin:
       type: integer
       nullable: true
