@@ -24,7 +24,7 @@ class AmazonSearchService extends VendorSearchService
              "http://webservices.amazon.com/onca/xml"
            . "?Service=AWSECommerceService"
            . "&AssociateTag=" . $this->associateTag
-           . "&AWSAccessKeyId=" . $this->accessId
+           . "&AWSAccessKeyId=" . $this->accessId        
            . "&Operation=" . $operation
            . "&Version=" . AmazonSearchService::VERSION
            . "&ResponseGroup=" . AmazonSearchService::ResponseGroup
@@ -37,10 +37,11 @@ class AmazonSearchService extends VendorSearchService
         return $request;
     }
 
-    protected function createItemSearchRequest($keywords)
+    protected function createItemSearchRequest($keywords, $pageNumber = 1)
     {
         $params = 
              "&SearchIndex=All"
+           . "&ItemPage=" . $pageNumber
            . "&Keywords=" . strtr( $keywords, array('+' => '%20') );
 
         return $this->createRequestBase("ItemSearch", $params);

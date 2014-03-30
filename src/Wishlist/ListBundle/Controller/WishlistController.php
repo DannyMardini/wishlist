@@ -97,7 +97,7 @@ class WishlistController extends Controller
         //replace all white space with single + characters.
         $keywords = implode("+", explode(" ", $keywords));
         
-        $searchResults = $amazonSearch->itemSearch("All", $keywords);
+        $searchResults = $amazonSearch->itemSearch($keywords);
         return $this->render('WishlistDialogBundle:Default:itemSearchResults.html.php', array('items' => $searchResults));
     }
     
