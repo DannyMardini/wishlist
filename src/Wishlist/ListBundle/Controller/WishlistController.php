@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Wishlist\CoreBundle\Entity\Purchase;
 use Wishlist\CoreBundle\Entity\WishlistUser;
+use Wishlist\CoreBundle\Services\VendorSearchService;
 use \DateTime;
 
 class WishlistController extends Controller
@@ -51,7 +52,7 @@ class WishlistController extends Controller
         $request = $this->getRequest();
         $session = $request->getSession(); 
         $name = urldecode($request->get('name'));
-        $asin = $request->get('asin');
+        $vendorId = $request->get('vendorId');
         $image = $request->get('image');
         $price = $request->get('price');
         $link = $request->get('link');
@@ -70,7 +71,7 @@ class WishlistController extends Controller
         }
         
         $wishRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:WishlistItem');
-        $added = $wishRepo->makeWish($name, $asin, $image, $price, $link, $isPrivate, $comment, $quantity, $user);
+        $added = $wishRepo->makeWish($name, $vendorId, $image, $price, $link, $isPrivate, $comment, $quantity, $user);
         
         if(!$added){   
             // The item was not added because it already exists    
@@ -87,7 +88,14 @@ class WishlistController extends Controller
     {
         $request = $this->getRequest()->request;
         $amazonSearch = $this->get('amazon_search_service');
+        $bestbuySearch = $this->get('bestbuy_search_service');
 
+        $vendor = $request->get('vendor');
+        if(!isset($vendor))
+        {
+            return new Response();
+        }
+        
         $keywords = $request->get('keywords');
         if(!isset($keywords))
         {
@@ -97,7 +105,20 @@ class WishlistController extends Controller
         //replace all white space with single + characters.
         $keywords = implode("+", explode(" ", $keywords));
         
-        $searchResults = $amazonSearch->itemSearch($keywords);
+        switch($vendor)
+        {
+            case VendorSearchService::VENDOR_BESTBUY:
+                $searchResults = $bestbuySearch->itemSearch($keywords);
+                break;
+            
+            case VendorSearchService::VENDOR_AMAZON:
+                $searchResults = $amazonSearch->itemSearch($keywords);
+                break;
+            
+            default:
+                //Don't know this vendor, return no search results
+                return new Response();
+        }
         return $this->render('WishlistDialogBundle:Default:itemSearchResults.html.php', array('items' => $searchResults));
     }
     
@@ -107,8 +128,8 @@ class WishlistController extends Controller
         $amazonSearch = $this->get('amazon_search_service');
         $itemRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Item');
 
-        $asin = $request->get('ASIN');
-        if(!isset($asin))
+        $vendorId = $request->get('vendorId');
+        if(!isset($vendorId))
         {
             return new Response('failure');
         }

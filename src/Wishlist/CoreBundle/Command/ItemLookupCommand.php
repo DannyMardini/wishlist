@@ -20,10 +20,10 @@ class ItemLookupCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $asin = $input->getArgument('asin');
+        $vendorId = $input->getArgument('asin');
         $amazonService = $this->getContainer()->get('amazon_search_service');
 
-        $response = $amazonService->itemLookup($asin, True);
+        $response = $amazonService->itemLookup($vendorId, True);
 
         print_r($response);
     }

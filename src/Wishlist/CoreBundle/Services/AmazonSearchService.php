@@ -47,9 +47,9 @@ class AmazonSearchService extends VendorSearchService
         return $this->createRequestBase("ItemSearch", $params);
     }
 
-    protected function createItemLookupRequest($asin)
+    protected function createItemLookupRequest($vendorId)
     {
-        $params = "&ItemId=" . $asin;
+        $params = "&ItemId=" . $vendorId;
 
         return $this->createRequestBase("ItemLookup", $params);
     }
@@ -86,7 +86,7 @@ class AmazonSearchService extends VendorSearchService
             $item->setName((string)$current->ItemAttributes->Title);
             $item->setPrice(intval((string)$current->ItemAttributes->ListPrice->Amount), Item::CURRENCY_UNIT_CENT);
             $item->setLink((string)$current->DetailPageURL);
-            $item->setAsin((string)$current->ASIN);
+            $item->setvendorId((string)$current->ASIN);
             
             //Image Set to use in case there is no primary image set
             if(isset($current->ImageSets) && isset($current->ImageSets->ImageSet)) {
@@ -130,21 +130,14 @@ class AmazonSearchService extends VendorSearchService
 
         return $array;
     }
-
-    protected function sendRequest($request, $raw=False)
+    
+    protected function isResponseValid($response)
     {
-        $response = file_get_contents($request);
-        $response = simplexml_load_string($response);
-        if($response->Items->Request->IsValid != True) {
-            throw new \Exception("Request was not valid");
-        }
-
-        if(True === $raw)
+        if(!isset($response) || $response->Items->Request->IsValid != True)
         {
-            return $response;
+            return False;
         }
         
-        //return $response;
-        return $this->responseToItems($response);
+        return True;
     }
 }

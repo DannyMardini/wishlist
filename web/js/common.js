@@ -60,7 +60,7 @@ function getItemDialogObj(dialog)
 {
     return {
          id: $('#itemId', dialog).val(),
-         asin: $('#asin', dialog).val(),
+         vendorId: $('#vendorId', dialog).val(),
          image: $('#image', dialog).val(),
          name: $('#name', dialog).val(), 
          price: $('#price', dialog).val(), 
@@ -590,7 +590,7 @@ function addAmazonItemToWishlist()
         
         //extract data from rows
         var data = {}
-        data.asin  = selected_amazonItem;
+        data.vendorId  = selected_amazonItem;
         data.image = $(rowCells[0]).find('img').attr('src');
         data.link  = $(rowCells[0]).children('a').attr('href');
         data.name  = $(rowCells[1]).html();
@@ -945,7 +945,7 @@ function setupWishDialogView(data, options)
     updateButton.show(); deleteButton.show(); grantButton.show(); saveButton.show();
     
     var name = $('#name',editItemDialog);
-    var asin = $('#asin',editItemDialog);
+    var vendorId = $('#vendorId',editItemDialog);
     var image = $('#image',editItemDialog);
     var price = $('#price',editItemDialog);
     var link = $('#link',editItemDialog);
@@ -962,8 +962,8 @@ function setupWishDialogView(data, options)
     if(data){
         editItemDialog.dialog('option', 'title', 'Edit Wish');
         id.val(data.id); // is this the item or wish ID?
-        if('asin' in data) {
-            asin.val(data.asin);
+        if('vendorId' in data) {
+            vendorId.val(data.vendorId);
         }
         image.val(data.image);
         name.val(data.name);

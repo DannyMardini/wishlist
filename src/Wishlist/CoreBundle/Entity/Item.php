@@ -169,31 +169,6 @@ class Item
         return $this->wishlistItems;
     }
     /**
-     * @var integer $asin
-     */
-    private $asin;
-
-
-    /**
-     * Set asin
-     *
-     * @param integer $asin
-     */
-    public function setAsin($asin)
-    {
-        $this->asin = $asin;
-    }
-
-    /**
-     * Get asin
-     *
-     * @return integer 
-     */
-    public function getAsin()
-    {
-        return $this->asin;
-    }
-    /**
      * @var text $mediumImage
      */
     private $mediumImage;
@@ -267,5 +242,30 @@ class Item
     public function getLargeImage()
     {
         return $this->LargeImage;
+    }
+    /**
+     * @var integer $vendorId
+     */
+    private $vendorId;
+
+
+    /**
+     * Set vendorId
+     *
+     * @param integer $vendorId
+     */
+    public function setVendorId($vendorId)
+    {
+        $this->vendorId = $vendorId;
+    }
+
+    /**
+     * Get vendorId
+     *
+     * @return integer 
+     */
+    public function getVendorId()
+    {
+        return $this->vendorId;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace Wishlist\CoreBundle\Services;
+use Wishlist\CoreBundle\Entity\Item;
 
 class BestBuySearchService extends VendorSearchService
 {
@@ -27,25 +28,51 @@ class BestBuySearchService extends VendorSearchService
         return $request;
     }
     
-    protected function sendRequest($request, $raw)
+    protected function isResponseValid($response)
     {
-        
-        $response = file_get_contents($request);
-        $response = simplexml_load_string($response);
-        /*
-        if($response->Items->Request->IsValid != True) {
-            throw new \Exception("Request was not valid");
-        }
-         * 
-         */
-
-        if(True === $raw)
+        if(!isset($response->product))
         {
-            return $response;
+            return False;
         }
-        
-        return $response;
-//        return $this->responseToItems($response);
+        return True;
+    }
+    
+    protected function responseToItems($response)
+    {
+        //todo: implement this function
+        $array = array();
+        foreach($response->product as $current) {
+
+            if( !isset($current->name) || 
+                !isset($current->regularPrice) || 
+                !isset($current->url) || 
+                !isset($current->productId) ) 
+            {
+                //If any of the required info is not present skip this item.
+                continue;
+            }
+
+            $item = new Item();
+            $item->setName((string)$current->name);
+            $item->setPrice(intval((string)$current->regularPrice), Item::CURRENCY_UNIT_DOLLAR);
+            $item->setLink((string)$current->url);
+            $item->setvendorId((string)$current->productId);
+            
+            if(isset($current->thumbnailImage))
+            {
+                $item->setSmallImage((string)$current->thumbnailImage);
+            }
+            
+            if(isset($current->image))
+            {
+                $item->setMediumImage((string)$current->image);
+            }
+                        
+            $array[] = $item;
+        }
+
+        return $array;
+
     }
 }
 
