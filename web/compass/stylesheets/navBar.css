@@ -389,3 +389,9 @@ div.confirmEvent:hover {
 .select2-itemsearch {
   top: -22px !important;
 }
+
+/* line 315, ../sass/navBar.scss */
+#item-search-keywords {
+  display: inline-block;
+  width: 370px;
+}

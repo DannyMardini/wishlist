@@ -9,9 +9,11 @@
     </select>    
 </div>
 <br />
-<div class="well">
-    <h5><small>(Hit enter to search)</small></h5>    
-    <input type='text' id='name' placeholder='Type search item name' />
+<div class="well">       
+    <input id="item-search-keywords" type='text' placeholder='Type search item name' />
+    <button id="item-search-submit" type="button" for="item-search-keywords" class="btn btn-default">
+        <span class="ui-icon ui-icon-search"></span>
+    </button>
 </div>
 <span id='resultsArea' class='message'></span>
 <h4 id="otherItem"><small>Can't find what you want? <a class="btn btn-default btn-sm" role="button">Create New Item</a></small></h4>

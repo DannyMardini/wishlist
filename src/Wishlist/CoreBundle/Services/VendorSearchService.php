@@ -5,8 +5,8 @@ namespace Wishlist\CoreBundle\Services;
 abstract class VendorSearchService
 {
     //Different vendors available
-    const VENDOR_BESTBUY = "BESTBUY";
-    const VENDOR_AMAZON  = "AMAZON";
+    const VENDOR_BESTBUY = "2";
+    const VENDOR_AMAZON  = "1";
     
     abstract protected function createItemSearchRequest($keywords);
     abstract protected function createItemLookupRequest($itemId);

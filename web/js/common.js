@@ -603,6 +603,12 @@ function addAmazonItemToWishlist()
     }
 }
 
+function submitItemSearch(keywords){
+    var vendor = $('#search-vendor').find(':selected').val();
+    ajaxPost({vendor:vendor, keywords: keywords},
+    Routing.generate("WishlistListBundle_itemSearch"), fillResults);    
+}
+
 function itemSearchDialogInit()
 {    
     $('#search-vendor').select2({
@@ -615,11 +621,13 @@ function itemSearchDialogInit()
         return; // dialog doesn't exist
     }
     
-    $('#name',itemSearchDialog).keyup(function(e) {
+    $('#item-search-submit', itemSearchDialog).click(function(){
+        submitItemSearch($('#item-search-keywords',itemSearchDialog).val());
+    });
+    
+    $('#item-search-keywords',itemSearchDialog).keyup(function(e) {
         if(e.keyCode === 13) {
-            var vendor = $('#search-vendor').find(':selected').val();
-            ajaxPost({vendor:vendor, keywords: $(this).val()},
-            Routing.generate("WishlistListBundle_itemSearch"), fillResults);
+            submitItemSearch($(this).val());            
         }
     });
     
