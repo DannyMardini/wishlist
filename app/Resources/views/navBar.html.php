@@ -20,15 +20,18 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
         <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/fonts.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
         <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href='<?php echo $view['assets']->getUrl('/css/select2/select2.css') ?>' media="screen, projection" rel="stylesheet" type="text/css" />        
+        <link href='<?php echo $view['assets']->getUrl('/css/select2/select2-bootstrap.css') ?>' media="screen, projection" rel="stylesheet" type="text/css" />
         <?php foreach ($view['assetic']->javascripts(array(
             'js/jquery-1.8.2.js',
             'js/bootstrap/bootstrap.js',
             'js/bootstrap/jquery.metadata.js',
-            'js/bootstrap/jquery.tablecloth.js',
+            'js/bootstrap/jquery.tablecloth.js',            
             'js/common.js',
             'js/navBar.js'), array('?yui_js')) as $url): ?>
             <script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script>
         <?php endforeach; ?>
+        <script src='<?php echo $view['assets']->getUrl('/js/select2/select2.min.js') ?>'></script>
         <script src="/js/jquery-ui-1.8.23.custom.min.js"></script>
         <script src="/js/bootstrap/jquery.tablesorter.min.js"></script>
         <script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>
@@ -64,7 +67,7 @@ $friendsUrl = $view['router']->generate('WishlistUserBundle_friendlist');
         ?>
         </div>
         <?php 
-            echo $view->render('WishlistDialogBundle:Default:amazonSearchDialog.html.php');
+            echo $view->render('WishlistDialogBundle:Default:itemSearchDialog.html.php');
             echo $view->render('WishlistDialogBundle:Default:showFriendsWishItem.html.php');
             echo $view->render('WishlistDialogBundle:Default:editItemDialog.html.php');
             echo $view->render('WishlistDialogBundle:Default:confirmPurchaseDialog.html.php');

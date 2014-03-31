@@ -1,19 +1,5 @@
 <html>
-    <head>
-        <?php foreach ($view['assetic']->javascripts(
-              array('js/jquery-1.8.2.js','js/frontPage.js','js/common.js', 'js/bootstrap/bootstrap.js'), array('?yui_js')) as $url): ?>
-              <script src="<?php echo $view->escape($url)."?rand=".rand() ?>"></script><?php endforeach; ?>
-        
-        <?php foreach ($view['assetic']->stylesheets(
-            array('css/bootstrap/bootstrap.css', 'compass/stylesheets/frontPage.css'), array('?yui_css')) as $url): ?>
-            <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $view->escape($url)."?rand=".rand() ?>" /><?php endforeach; ?>
-          
-        <link href="<?php echo $view['assets']->getUrl('/css/black-tie/jquery-ui-1.8.23.custom.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
-        <link rel="shortcut icon" href="/images/favicon.ico">        
-        <script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>
-        <script src="<?php echo $view['assets']->getUrl('bundles/fosjsrouting/js/router.js') ?>" type="text/javascript"></script>
-        <script src="<?php echo $view['router']->generate('fos_js_routing_js', array("callback" => "fos.Router.setData")) ?>"></script>
-        <link href="<?php echo $view['assets']->getUrl('compass/stylesheets/fonts.css') ?>" media="screen, projection" rel="stylesheet" type="text/css" />
+    <head>      
     </head>
     <body>
         <input type="hidden" id="homepageLinkPath" value="<?php echo $view['router']->generate('WishlistUserBundle_homepage')?>" />

@@ -384,3 +384,8 @@ div.confirmEvent:hover {
   font-weight: bold;
   font-size: 12px;
 }
+
+/* line 310, ../sass/navBar.scss */
+.select2-itemsearch {
+  top: -22px !important;
+}

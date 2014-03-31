@@ -26,7 +26,7 @@ function setupWishlist()
             text: false
     }).click(function(e){
         e.preventDefault();
-        $('#amazonSearchDialog').dialog('open');
+        $('#itemSearchDialog').dialog('open');
     });
     
     $('#addItemButton').css('height', '25');

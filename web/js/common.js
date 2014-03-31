@@ -402,8 +402,8 @@ function setupEvents()
 }
 
 function initWishlistDialogs()
-{
-    amazonSearchDialogInit();
+{    
+    itemSearchDialogInit();
     editWishlistDialogInit();
     viewWishlistDialogInit();
 }
@@ -603,27 +603,33 @@ function addAmazonItemToWishlist()
     }
 }
 
-function amazonSearchDialogInit()
-{
-    var amazonDialog = $( "#amazonSearchDialog" );
-    if(amazonDialog.length <= 0)
-    {
-        return; // the dialog does not exist
+function itemSearchDialogInit()
+{    
+    $('#search-vendor').select2({
+        dropdownCssClass: 'select2-itemsearch',
+        placeholder: "Select a Store"
+    });
+    var itemSearchDialog = $('#itemSearchDialog');        
+    
+    if(itemSearchDialog.length <= 0){
+        return; // dialog doesn't exist
     }
     
-    $('#name',amazonDialog).keyup(function(e) {
+    $('#name',itemSearchDialog).keyup(function(e) {
         if(e.keyCode === 13) {
-            ajaxPost({keywords: $(this).val()}, Routing.generate("WishlistListBundle_itemSearch"), fillResults);
+            var vendor = $('#search-vendor').find(':selected').val();
+            ajaxPost({vendor:vendor, keywords: $(this).val()},
+            Routing.generate("WishlistListBundle_itemSearch"), fillResults);
         }
     });
     
-    amazonDialog.dialog({
+    itemSearchDialog.dialog({
             autoOpen: false,
             position: 'top', 
             resizable: false,
             width:500,
             modal: true,
-            title: 'Amazon Search',
+            title: 'Item Search',
             close: function(){
                 var popup = $('#popupMessageDiv');
                 if(popup.length > 0)
@@ -641,10 +647,10 @@ function amazonSearchDialogInit()
             }
     });
     
-    $('#otherItem',amazonDialog).click(function(){
-        amazonDialog.dialog('close');
+    $('#otherItem', itemSearchDialog).click(function(){
+        itemSearchDialog.dialog('close');
         setupWishDialogView(null,{edit:"1", newItem:"1"});
-    });
+    });    
 }
 
 function editWishlistDialogInit()
@@ -675,7 +681,8 @@ function editWishlistDialogInit()
                         continueAddingItemToWishlist(this);
                         
                         //close amazon search dialog if it is open.
-                        $( "#amazonSearchDialog" ).dialog('close');
+                        $( "#itemSearchDialog" ).dialog('close');
+                        //$( "#amazonSearchDialog" ).dialog('close');
                     },                            
                     "Close": function() {
                         $(this).dialog('close');
