@@ -31,7 +31,8 @@ abstract class VendorSearchService
         $response = simplexml_load_string($response);
         
         if($this->isResponseValid($response) != True) {
-            throw new \Exception("Request was not valid");
+            //return empty results of reponse is not valid.
+            return array();
         }
 
         if(True === $raw)
