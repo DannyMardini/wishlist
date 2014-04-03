@@ -14,9 +14,18 @@ class BestBuySearchService extends VendorSearchService
     
     protected function createItemSearchRequest($keywords)
     {
-        $request = "http://api.remix.bestbuy.com/v1/products"
-            ."(name=".strtr( $keywords, array('+' => '%20') )."*)?"
-            ."apiKey=".$this->apiKey;
+        $keywordArray = explode('+', $keywords);
+        
+        $request = "http://api.remix.bestbuy.com/v1/products(";
+        
+        foreach($keywordArray as $word)
+        {
+            $request .= "search=".$word."&";
+        }
+        
+        $request = rtrim($request, '&');
+        $request .= ")?apiKey=".$this->apiKey;
+        
         return $request;
     }
     
