@@ -947,12 +947,17 @@ div#updatesComponent .updatesHeader {
   font-weight: bold;
 }
 
-/* line 419, ../sass/screen.scss */
+/* line 418, ../sass/screen.scss */
+#resultsArea {
+  overflow: scroll;
+  height: 200px;
+}
+/* line 422, ../sass/screen.scss */
 #resultsArea table {
   border-collapse: separate;
   border-spacing: 10px 15px;
 }
-/* line 424, ../sass/screen.scss */
+/* line 427, ../sass/screen.scss */
 #resultsArea td.searchResultItemLink:hover, #resultsArea td.searchResultItemName:hover {
   background-image: -webkit-linear-gradient(white, #d7d7d7);
   background-image: -moz-linear-gradient(white, #d7d7d7);
@@ -962,27 +967,27 @@ div#updatesComponent .updatesHeader {
   background-color: #d7d7d7;
   cursor: pointer;
 }
-/* line 434, ../sass/screen.scss */
+/* line 437, ../sass/screen.scss */
 #resultsArea td {
   vertical-align: top;
 }
 
-/* line 439, ../sass/screen.scss */
+/* line 442, ../sass/screen.scss */
 .wish-button-size {
   width: 140px;
 }
 
-/* line 443, ../sass/screen.scss */
+/* line 446, ../sass/screen.scss */
 .item-link {
   cursor: pointer;
 }
-/* line 445, ../sass/screen.scss */
+/* line 448, ../sass/screen.scss */
 .item-link:hover {
   text-decoration: none;
   color: #cccccc;
 }
 
-/* line 451, ../sass/screen.scss */
+/* line 454, ../sass/screen.scss */
 .wish-container {
   width: 450px;
   height: 350px;
@@ -992,13 +997,13 @@ div#updatesComponent .updatesHeader {
   background: linear-gradient(#ffffff, #f0f0f0);
 }
 
-/* line 460, ../sass/screen.scss */
+/* line 463, ../sass/screen.scss */
 .lead {
   display: inline-block;
   margin-right: 10px;
 }
 
-/* line 465, ../sass/screen.scss */
+/* line 468, ../sass/screen.scss */
 .ui-icon.red {
   background-image: url(/css/ui-darkness/images/ui-icons_a83300_256x240.png);
 }

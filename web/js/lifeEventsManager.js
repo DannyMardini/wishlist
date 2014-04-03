@@ -251,7 +251,7 @@ function renderNewEvent(id)
     var eventDay = $('#newEventDay').val();
     var dateObj = parseDate(eventMonth + "/" + eventDay + "/" + 2004); // the year is hard coded it's just a dummy year, because the year isn't being tracked anyway
     var day = dateObj.getDate();
-    var newEvent = ["<div class='Event' id='event_",id,"'><button id='remove_event_", id, "' class='remove' title='remove event'><span class='ui-icon ui-icon-minus wishenda-button'></span></button>",
+    var newEvent = ["<div class='Event' id='event_",id,"'><button id='remove_event_", id, "' class='remove' title='remove event'><span class='ui-icon ui-icon-close wishenda-button'></span></button>",
                    ,"<div class='image' title='", newEventName, "'><img src='", newImage,"' height='30' width='30' /></div>",
                    ,"<div class='name' title ='", newEventName, "'>", newEventName,"</div>",
                    ,"<div class='timestamp' title='", newEventName, "'>-- ", month[dateObj.getMonth()]," ",day,get_nth_suffix(day),"</div></div>"].join('');

@@ -416,6 +416,9 @@ div#updatesComponent {
 $resultsHoverDark: darken($global-button-hover-color, 10%);
 
 #resultsArea {
+    overflow: scroll;
+    height: 200px;
+
     table {
         border-collapse: separate;
         border-spacing: 10px 15px;
