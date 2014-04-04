@@ -5,6 +5,7 @@ use Wishlist\CoreBundle\Entity\Item;
 
 class BestBuySearchService extends VendorSearchService
 {
+    const PAGE_SIZE = 100;
     protected $apiKey;
     
     function __construct($apiKey)
@@ -14,17 +15,14 @@ class BestBuySearchService extends VendorSearchService
     
     protected function createItemSearchRequest($keywords)
     {
-        $keywordArray = explode('+', $keywords);
-        
         $request = "http://api.remix.bestbuy.com/v1/products(";
         
-        foreach($keywordArray as $word)
-        {
-            $request .= "search=".$word."&";
-        }
-        
-        $request = rtrim($request, '&');
-        $request .= ")?apiKey=".$this->apiKey;
+        $request .= "name=".(string)str_replace("+", "%20", $keywords);
+                
+                
+        $request .= "*)?page=1&pageSize=".BestBuySearchService::PAGE_SIZE
+                ."&sort=customerReviewCount.desc,customerReviewAverage.desc"
+                ."&apiKey=".$this->apiKey;
         
         return $request;
     }
