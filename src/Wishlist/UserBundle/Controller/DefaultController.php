@@ -642,10 +642,7 @@ class DefaultController extends Controller
            {
                 $eventRepo = $this->getDoctrine()->getRepository('WishlistCoreBundle:Event');
                 $saved = $eventRepo->removeEvent( $eventId );
-                if($saved == 'true')
-                {
-                    $this->get("Mailer_Service")->purchaseEventNotification($event_type, $purchase);
-                }
+                
                 $response = ($saved == 'true' ? (string)$eventId : '0');
                 return new Response( $response );
            }
