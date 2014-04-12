@@ -214,6 +214,7 @@ class DefaultController extends Controller
             
             $userRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:WishlistUser');
             $requestRepo = $this->getDoctrine()->getEntityManager()->getRepository('WishlistCoreBundle:Request');
+            $mailer = $this->get("instant_mailer_service");
             
             $userExists = $userRepo->findOneByEmail($email);
             if(isset($userExists))
@@ -222,23 +223,10 @@ class DefaultController extends Controller
                 throw new Exception();
             }
             
-            $userInvited = $userRepo->getUserWithId($session->get('user_id'));
-            $userInvitedName = $userInvited->getName();
+            $userInvited = $userRepo->getUserWithId($session->get('user_id'));            
             $newInvite = $requestRepo->addInviteToQueue($email, $userInvited);
-
-//            $htmlbody = $this->renderView('WishlistUserBundle:Email:friendinvite.html.php', array('name' => $userInvitedName));
-//            $textbody = strip_tags($htmlbody).'http://wishenda.com/join';
-//            $message = \Swift_Message::newInstance()
-//                ->setSubject($userInvitedName.' doesn\'t know what to get you!')
-//                ->setFrom('wishthrowaway@gmail.com')
-//                ->setTo($newInvite->getEmail())
-//                ->setBody($htmlbody, 'text/html')
-//                ->addPart($textbody, 'text/plain');
-//
-//            if (!$this->get('mailer')->send($message))
-//            {
-//                throw new Exception();
-//            }
+            $newInvite->setUserInvited($userInvited);
+            $mailer->sendInvite($newInvite);
         }
         catch(Exception $e)
         {
