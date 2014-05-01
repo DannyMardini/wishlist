@@ -1,9 +1,6 @@
 $(document).ready(function(){
-    $('#message').html('');
-    $('#close-window').hide();
-    
-    $('#reset-password').show();
-    
+    $('#message').html('');    
+    $('#reset-password').show();    
     $('#close-window').click(closeView);
     
     $("#submit-new-password").submit(function(e){
@@ -33,11 +30,10 @@ $(document).ready(function(){
 
 function displayMessage(response, textStatus, jqXHR, formId)
 {
-    formId.hide();
-    var dataArray = response.split(":"); 
-    var message = dataArray[1];
-    $('#message').html(message);
-    $('#close-window').show();    
+    //formId.hide();
+    var dataArray = response.split(":");    
+    $('#message').html(dataArray[1]);
+    $('#myModal').modal('show');        
 }
 
 function passwordValidation()
