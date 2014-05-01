@@ -31,7 +31,7 @@
                 <label for="password" class="sr-only">PASSWORD:</label>
                 <input type="password" class="form-control" id="password" name="password" autocomplete="off" pattern="[A-Za-z0-9]{4,20}" placeholder="Password" required />                            
               </div>  
-              <button type="submit" class="btn btn-default" id="submitLogin" name="submitLogin" value="Sign in">Sign in</button>
+              <button type="submit" class="btn btn-default" id="submitLogin" name="submitLogin" value="Sign in">Sign in</button>              
               <span class="help-block"><a href="<?php echo $view['router']->generate('WishlistQABundle_forgotpassword')?>" id="forgotPassword" target="_blank" class="forgotPassword">Forgot password?</a></span>
             </form>
           </div>
@@ -69,9 +69,9 @@
         <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
           <div class="container">
              <div id="footerDetails">
-                <a class="aboutLink frontpageLink" data-toggle="modal" data-target="#myModal" href="">About</a>
-                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms</a>
-                <a class="frontpageLink" target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy</a>
+                <a class="about-link" data-toggle="modal" data-target="#myModal" href="">About</a>
+                <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_Terms') ?>">Terms</a>
+                <a target="_blank" href="<?php echo $view['router']->generate('WishlistCoreBundle_PrivacyPolicy') ?>">Privacy</a>
                 <br />
                 <span>© 2014 Wishenda</span>
             </div>

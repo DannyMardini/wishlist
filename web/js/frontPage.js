@@ -54,9 +54,9 @@ $(document).ready(function()
         }, null);
     });                      
     
-    $(".aboutLink").click(function(){
+    $(".about-link").click(function(){
         displayMessage(aboutMessage,'About Wishenda');
-    });    
+    });
 //    // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 //    $( "#dialog:ui-dialog" ).dialog( "destroy" );    
 });
