@@ -123,3 +123,8 @@ body {
   display: inline-block;
   font-size: 10px;
 }
+
+/* line 93, ../sass/frontPage.scss */
+.spacer {
+  height: 100px;
+}

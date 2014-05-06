@@ -58,6 +58,7 @@
                 </form>
           </div>
         </div>
+        <div class="spacer"></div>
         <?php 
         if(preg_match('/(?i)msie [4-8]/',$_SERVER['HTTP_USER_AGENT']))
         {
