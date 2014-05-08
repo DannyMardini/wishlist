@@ -1,19 +1,30 @@
-
-<div class="contentInfoTopic">Wishenda</div>
-<div class="contentInfoDetails">
-    <b><u>Our Goal:</u></b><i> to make your life easier by providing a centralized location where you can take care of all of your shopping needs in just a click!</i><br /><br />
-    Join Wishenda and get your shopping done effortlessly! <br />
-    With Wishenda you know what all of your friends want and they know what you want, shopping for each other has never been easier!    
-    <br /><br />
-    Quickly find what your friends want for their birthdays, the holidays, or any other special occasion!
-    <br /><br />
-    Wishenda keeps track of items that you want as gifts from your friends, using your wish list.
-    You can keep track of items that you plan to get for your friends using your shopping list. 
-    Your friends will see when your birthday, anniversary or any other life event is coming up and grant you a wish from your wishlist without you knowing.
-    Items in your shopping list will be taken off the list automatically once the date that you promised to buy them by has passed.<br /><br />
+<div class='jumbotron'>
+    <h1><small>Welcome to Wishenda</small></h1><br />
+    <h4>Do all your shopping in one place</h4>
+        <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+        Search items from amazon, best buy (more vendors coming soon)<br />
+        <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+        Add your own item if you cannot find what you're looking for in the item search
+    <h4>Fast and easy shopping</h4>
+        <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+        See what your friends want by looking at their wish list<br />
+        <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+        Let your friends know what you want by adding items to your wish lists<br />
+        <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+        Keep track of items that you plan to purchase using your shopping list
+    <h4>Receive reminders</h4>
+        <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+        Receive a reminder for items on your shopping list that have passed their due date
+    <h4>Works just like a gift registry</h4>
+        <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+        Friends can grant you a wish from your wish list without you knowing!<br />
+        <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+        Friends can see when an item has already been promised to you by someone else
 </div>
-<div class="contentInfoTopic">Account Settings</div>
-<div class="contentInfoDetails">
-    Your account settings can be accessed by clicking on the wrench icon and going to 'Settings'. <br />
-    Once there, you can edit any of the information except your email. <br />
+<div class="jumbotron">
+  <h1><small>Account Settings</small></h1>  
+    <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+    Access your account settings by clicking on your name --> <i>Settings</i><br />
+    <span class='bullet-icon ui-icon ui-icon-carat-1-e'></span>
+    You may edit all information except your email
 </div>

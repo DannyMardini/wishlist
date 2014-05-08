@@ -9,8 +9,6 @@ $(document).ready(function(){
        appendIcon($('.currentSelection'));
    });
    
-   $(document).on("click", ".contentInfoTopic", onClickContentTopic); 
-   
    $('#goBack').click(goBackToPrevPage);
 
    preSelectMenuSubOption();
@@ -49,16 +47,5 @@ function selectMenuSubOption(option)
         $(option).append("<img class='silverDot' style='padding-left:15px;' src='/images/silverdot.gif' width='12px' height='12px' />");
         $('.silverDot', $(option).siblings()).remove();
    }
-}
-
-function onClickContentTopic(){    
-    
-    if(!$(this).next().hasClass('displayContentInfo')){
-        $(this).next().addClass('displayContentInfo');
-    }
-    else
-    {
-        $(this).next().removeClass('displayContentInfo');
-    }
 }
 

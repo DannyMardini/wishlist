@@ -35,22 +35,10 @@ body {
     display: inline-block;
 }
 
+
 .contentInfo {
     width: 68%;
     display: inline-block;
-}
-
-.contentInfoTopic{
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 38px;    
-    padding-left: 33%;
-    padding-top: 15px;
-}
-
-.contentInfoTopic:hover {
-    cursor: pointer;
-    text-decoration: underline;
 }
 
 .contentInfoDetails{
@@ -77,4 +65,8 @@ body {
         cursor: pointer;
         font-weight: bolder;
     }
+}
+
+.bullet-icon {
+    display: inline-block;
 }

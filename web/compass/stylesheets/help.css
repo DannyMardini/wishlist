@@ -39,40 +39,25 @@ body {
   display: inline-block;
 }
 
-/* line 38, ../sass/help.scss */
+/* line 39, ../sass/help.scss */
 .contentInfo {
   width: 68%;
   display: inline-block;
 }
 
-/* line 43, ../sass/help.scss */
-.contentInfoTopic {
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 38px;
-  padding-left: 33%;
-  padding-top: 15px;
-}
-
-/* line 51, ../sass/help.scss */
-.contentInfoTopic:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-/* line 56, ../sass/help.scss */
+/* line 44, ../sass/help.scss */
 .contentInfoDetails {
   display: none;
   font-size: 16px;
   line-height: 38px;
 }
 
-/* line 62, ../sass/help.scss */
+/* line 50, ../sass/help.scss */
 .displayContentInfo {
   display: inline-block;
 }
 
-/* line 66, ../sass/help.scss */
+/* line 54, ../sass/help.scss */
 .goBackDiv {
   margin-left: 5px;
   margin-right: 20px;
@@ -82,9 +67,14 @@ body {
   float: left;
   width: 100px;
 }
-/* line 75, ../sass/help.scss */
+/* line 63, ../sass/help.scss */
 .goBackDiv:hover {
   text-decoration: underline;
   cursor: pointer;
   font-weight: bolder;
+}
+
+/* line 70, ../sass/help.scss */
+.bullet-icon {
+  display: inline-block;
 }
