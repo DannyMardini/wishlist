@@ -610,8 +610,12 @@ function submitItemSearch(keywords){
 }
 
 function itemSearchDialogInit()
-{    
-    $('#search-vendor').select2({
+{
+    var search_vendor = $('#search-vendor');
+    
+    if(search_vendor.select2 == null) return;
+    
+    search_vendor.select2({
         dropdownCssClass: 'select2-itemsearch',
         placeholder: "Select a Store"
     });
